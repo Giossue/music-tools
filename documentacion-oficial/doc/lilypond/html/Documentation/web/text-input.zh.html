@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2009-2026 by the authors.
+
+LilyPond 网站由本文件归档。
+
+Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License,
+Version 1.1 or any later version published by the Free Software
+Foundation; with no Invariant Sections.  A copy of the license is
+included in the section entitled "GNU Free Documentation
+License". -->
+<title>文本输入 (LilyPond &ndash; 人人的乐谱软件)</title>
+
+<meta name="description" content="文本输入 (LilyPond &ndash; 人人的乐谱软件)">
+<meta name="keywords" content="文本输入 (LilyPond &ndash; 人人的乐谱软件)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.zh.html#top" rel="start" title="LilyPond &ndash; 人人的乐谱软件">
+<link href="web_toc.zh.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="introduction.zh.html" rel="up" title="简介">
+<link href="easier-editing.zh.html" rel="next" title="编辑更简单">
+<link href="reviews.zh.html" rel="prev" title="评价">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-website.css">
+
+
+</head>
+
+<body lang="zh" class="web">
+<div id="main">
+<div class="unnumberedsec" id="text-input">
+<hr>
+<span id="WenBen-Shu-Ru-"></span><h3 class="unnumberedsec">文本输入</h3>
+
+
+<span id="g_t_201cBian-Yi-_201d-Yin-Le-"></span><h4 class="subheading">&ldquo;编译&rdquo; 音乐</h4>
+
+<div class="float-right">
+  <a class="clickable" href="../pictures/nereid-shot.png">
+    <img src="../pictures/nereid-shot-small.png" alt="nereid-shot-small">
+  </a>
+  <p style="text-align: center">
+    (click to enlarge)
+  </p>
+</div>
+
+<p>LilyPond is a <em>compiled</em> system: it is run on a text file
+describing the music.  The resulting output is viewed on-screen or
+printed.  In some ways, LilyPond is more similar to a programming
+language than graphical score editing software.
+</p>
+<p>You do not write music by dragging notes from a graphical toolbar
+and placing them on a dynamically refreshing score; you write
+music by typing text.  This text is interpreted (or &ldquo;compiled&rdquo;)
+by LilyPond, which produces beautifully engraved sheet music.
+</p>
+<p>People accustomed to graphical user interfaces might need to learn
+a new way of working, but the results are definitely worth it!
+</p>
+<div class="warning">
+<p><strong>注意：</strong>We present a quick overview of our text input &ndash; it&rsquo;s not
+as complicated as it sounds!  Don&rsquo;t worry about understanding
+every detail in these examples; our beginner documentation covers
+everything at a much more gradual pace.
+</p>
+</div>
+
+
+<span id="Jiu-Xiang--A-B-C-YiYang-Jian-Dan-"></span><h4 class="subsubheading">就像 A B C 一样简单</h4>
+
+<p>Notes are encoded with letters and numbers.  Special commands are
+entered with backslashes.
+</p>
+<img class="float-center" src="../pictures/text-input-1-annotate.png" alt="text-input-1-annotate">
+<img class="float-center" src="../pictures/text-input-1-output.png" alt="text-input-1-output">
+
+<p>Alterations are made with different names: add <code><span class="nolinebreak">-is</span></code><!-- /@w --> for
+sharp, and <code><span class="nolinebreak">-es</span></code><!-- /@w --> for flat (these are Dutch note names, other
+languages are available).  LilyPond figures out where to put
+accidentals.
+</p>
+<img class="float-center" src="../pictures/text-input-2-annotate.png" alt="text-input-2-annotate">
+<img class="float-center" src="../pictures/text-input-2-output.png" alt="text-input-2-output">
+
+
+<span id="Liu-Xing-Yin-Le--1"></span><h4 class="subsubheading">流行音乐</h4>
+
+<p>Put chords and lyrics together to get a lead sheet:
+</p>
+<img class="float-center" src="../pictures/text-input-pop-annotate.png" alt="text-input-pop-annotate">
+<img class="float-center" src="../pictures/text-input-pop-output.png" alt="text-input-pop-output">
+
+
+
+<span id="Pei-Qi-Bu-Fen-"></span><h4 class="subsubheading">配器部分</h4>
+
+<p>The input file contains the notes of piece of music.  Score and
+parts can be made from a single input file, so that changing a
+note always affects the score and parts.  To be able to include
+the same music in multiple places, the music is assigned to a
+&ldquo;variable&rdquo; (a name).
+</p>
+<img class="float-center" src="../pictures/text-input-parts-both-annotate.png" alt="text-input-parts-both-annotate">
+
+
+<p>This variable is then used in a single part (here transposed, with
+condensed rests spanning several measures):
+</p>
+<img class="float-center" src="../pictures/text-input-parts-single-annotate.png" alt="text-input-parts-single-annotate">
+<img class="float-center" src="../pictures/text-input-parts-single-output.png" alt="text-input-parts-single-output">
+
+
+<p>The same variable is used in the full score (here in concert
+pitch):
+</p>
+<img class="float-center" src="../pictures/text-input-score-annotate.png" alt="text-input-score-annotate">
+<img class="float-center" src="../pictures/text-input-score-output.png" alt="text-input-score-output">
+
+
+<span id="Chu-XueZhe-De-WenDang-"></span><h4 class="subsubheading">初学者的文档</h4>
+
+<p>We realize that many users find this way of entering music a bit
+odd.  For this reason, we have written extensive documentation to
+help new users, beginning with <a href="learning.zh.html">学习</a>.  The Learning
+Manual is the best place to start, as many questions are answered
+before they come up!
+</p>
+<p>Please read the Learning Manual before complaining about bugs!
+New users occasionally believe that LilyPond is not working
+correctly, when in fact it is working precisely as designed.
+</p>
+<p>More in-depth information is available in <a href="manuals.zh.html">手册</a>.
+</p>
+
+<span id="Geng-Jian-Dan-De-Bian-Ji-Huan-Jing-"></span><h4 class="subsubheading">更简单的编辑环境</h4>
+
+<div class="float-right">
+  <a class="clickable" href="../pictures/lilykde-screenshot.png">
+    <img src="../pictures/lilykde-screenshot-small.png" alt="lilykde-screenshot-small">
+  </a>
+  <p style="text-align: center">
+      (click to enlarge)
+  </p>
+</div>
+
+<p>LilyPond is primarily concerned with producing top-quality
+engraved sheet music; creating a Graphical User Interface (GUI)
+would distract us from this goal.  However, there are other
+projects aimed at making it easier to create LilyPond input files.
+</p>
+<p>Some editing environments include syntax highlighting, automatic
+command completion, and pre-made templates.  Other programs
+actually provide a GUI which allows direct manipulation of a
+graphical score.  For more information, see <a href="easier-editing.zh.html">编辑更简单</a>.
+</p>
+
+
+<div class="column-center-bottom">
+<span id="Ran-Hou-Ni-_003f-6"></span><h4 class="subheading">然后呢？</h4>
+
+<p>您现在可以随时 <a href="download.zh.html">下载 LilyPond</a>
+了。还没动心吗？那就请您关注如何 <a href="easier-editing.zh.html">编辑更简单</a> 吧！
+</p>
+
+</div>
+
+
+</div>
+<hr>
+
+<div id="footer">
+<p id="languages">
+Other languages: <a href="text-input.html">English</a>, <a href="text-input.ca.html">Català</a>, <a href="text-input.de.html">Deutsch</a>, <a href="text-input.es.html">Español</a>, <a href="text-input.fr.html">Français</a>, <a href="text-input.it.html">Italiano</a>, <a href="text-input.ja.html">日本語</a>, <a href="text-input.tr.html">Türkçe</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-LilyPond" href="index.zh.html">LilyPond</a></li>
+  <li class="toc_current"><a id="toc-Jian-Jie-" href="introduction.zh.html">简介</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Te-Se-" href="features.zh.html">特色</a></li>
+    <li><a id="toc-LiZi-" href="examples.zh.html">例子</a></li>
+    <li><a id="toc-Zi-You-" href="freedom.zh.html">自由</a></li>
+    <li><a id="toc-Bei-Jing-" href="background.zh.html">背景</a></li>
+    <li><a id="toc-Zhi-Zuo-" href="productions.zh.html">制作</a></li>
+    <li><a id="toc-Ping-Jie-" href="reviews.zh.html">评价</a></li>
+    <li class="toc_current"><a id="toc-WenBen-Shu-Ru-" href="text-input.zh.html">文本输入</a></li>
+    <li><a id="toc-Bian-Ji-Geng-Jian-Dan-" href="easier-editing.zh.html">编辑更简单</a></li>
+  </ul></li>
+  <li><a id="toc-Download" href="download.zh.html">Download</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Source" href="source.zh.html">Source</a></li>
+    <li><a id="toc-Old-downloads" href="old-downloads.zh.html">Old downloads</a></li>
+    <li><a id="toc-GPL" href="gpl.zh.html">GPL</a></li>
+  </ul></li>
+  <li><a id="toc-Shou-Ce-" href="manuals.zh.html">手册</a>
+  <ul class="no-bullet">
+    <li><a id="toc-XueXi-" href="learning.zh.html">学习</a></li>
+    <li><a id="toc-Zhu-Yu-Biao-" href="glossary.zh.html">术语表</a></li>
+    <li><a id="toc-WenZhang" href="essay.zh.html">文章</a></li>
+    <li><a id="toc-Ji-Pu-Fa-" href="notation.zh.html">记谱法</a></li>
+    <li><a id="toc-Shi-Yong-" href="usage.zh.html">使用</a></li>
+    <li><a id="toc-Pian-Duan-" href="snippets.zh.html">片断</a></li>
+    <li><a id="toc-Chang-Jian-Wen-Ti-" href="faq.zh.html">常见问题</a></li>
+    <li><a id="toc-Web" href="web.zh.html">Web</a></li>
+    <li><a id="toc-Bian-Hua-" href="changes.zh.html">变化</a></li>
+    <li><a id="toc-Kuo-Zhan-" href="extending.zh.html">扩展</a></li>
+    <li><a id="toc-Nei-Bu-Ji-Zhi-" href="internals.zh.html">内部机制</a></li>
+    <li><a id="toc-Suo-You-" href="all.zh.html">所有</a></li>
+    <li><a id="toc-FDL" href="fdl.zh.html">FDL</a></li>
+  </ul></li>
+  <li><a id="toc-She-Qu-" href="community.zh.html">社区</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Lian-Xi-" href="contact.zh.html">联系</a></li>
+    <li><a id="toc-Xiao-LiZi-" href="tiny-examples.zh.html">小例子</a></li>
+    <li><a id="toc-Cuo-Wu-Bao-Gao-" href="bug-reports.zh.html">错误报告</a></li>
+    <li><a id="toc-Bang-Zhu-Wo-Men-" href="help-us.zh.html">帮助我们</a></li>
+    <li><a id="toc-Zan-Zhu-" href="sponsoring.zh.html">赞助</a></li>
+    <li><a id="toc-Kai-Fa-" href="development.zh.html">开发</a></li>
+    <li><a id="toc-Google-Summer-of-Code" href="google-summer-of-code.zh.html">Google Summer of Code</a></li>
+    <li><a id="toc-Zuo-Zhe-" href="authors.zh.html">作者</a></li>
+    <li><a id="toc-Chu-Ban-Wu-" href="publications.zh.html">出版物</a></li>
+    <li><a id="toc-Xin-Wen-" href="news.zh.html">新闻</a></li>
+    <li><a id="toc-Attic" href="attic.zh.html">Attic</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: ebe492ca408fb0d9abf80b94c56197eef8dc2f09
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google 搜索">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="搜索">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

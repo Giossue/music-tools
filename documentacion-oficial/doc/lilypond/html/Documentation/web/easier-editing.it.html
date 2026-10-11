@@ -1,0 +1,535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2003-2026 degli autori.
+
+This file documents the LilyPond website.
+
+Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License,
+Version 1.1 or any later version published by the Free Software
+Foundation; with no Invariant Sections.  A copy of the license is
+included in the section entitled "GNU Free Documentation
+License". -->
+<title>Editing facilitato (LilyPond &ndash; Notazione musicale per tutti)</title>
+
+<meta name="description" content="Editing facilitato (LilyPond &ndash; Notazione musicale per tutti)">
+<meta name="keywords" content="Editing facilitato (LilyPond &ndash; Notazione musicale per tutti)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.it.html#top" rel="start" title="LilyPond &ndash; Notazione musicale per tutti">
+<link href="web_toc.it.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="introduction.it.html" rel="up" title="Introduzione">
+<link href="text-input.it.html" rel="prev" title="Input testuale">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-website.css">
+
+
+</head>
+
+<body lang="it" class="web">
+<div id="main">
+<div class="unnumberedsec" id="easier-editing">
+<hr>
+<span id="Editing-facilitato"></span><h3 class="unnumberedsec">Editing facilitato</h3>
+
+<div class="column-center-top">
+<span id="Interfacce-grafiche"></span><h4 class="subheading">Interfacce grafiche</h4>
+<span id="Frescobaldi"></span><h4 class="subsubheading">Frescobaldi</h4>
+
+<div class="float-right">
+  <a class="clickable" href="../pictures/frescobaldi-lilypond-editor.png">
+    <img src="../pictures/frescobaldi-lilypond-editor-small.png" alt="frescobaldi-lilypond-editor-small">
+  </a>
+  <p style="text-align: center">
+      (clicca per ingrandire)
+  </p>
+</div>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-freebsd.png" alt="logo-freebsd">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+
+<p><a href="https://www.frescobaldi.org">https://www.frescobaldi.org</a>
+</p>
+<p>Frescobaldi è un editor di testo e musica leggero ma potente, con tante
+funzionalità e progettato specificamente per LilyPond.  Le principali
+funzionalità comprendono i collegamenti punta-e-clicca tra codice di
+input e spartito, guide assistite dettagliate alla creazione di un nuovo
+spartito, navigatore integrato della documentazione di LilyPond, evidenziazione
+della sintassi e completamento automatico.  Frescobaldi è scritto in Python,
+usa PyQt4 per la sua interfaccia utente e funziona su tutti i principali
+sistemi operativi (Linux, Mac OS X e Windows).
+</p>
+
+</div>
+
+<div class="column-center-top">
+<span id="Denemo"></span><h4 class="subsubheading">Denemo</h4>
+
+<div class="float-right">
+  <a class="clickable" href="../pictures/screenshot-denemo.png">
+    <img src="../pictures/screenshot-denemo-small.png" alt="screenshot-denemo-small">
+  </a>
+  <p style="text-align: center">
+      (clicca per ingrandire)
+  </p>
+</div>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<p><a href="http://denemo.org">http://denemo.org</a>
+</p>
+<p>Denemo è un editor grafico che genera codice sorgente LilyPond
+e permette anche la riproduzione audio.  Consente agli utenti di vedere
+il codice sorgente LilyPond in parallelo alla visualizzazione grafica.  Modifiche
+manuali del codice possono essere attaccate a note, accordi, etc. e vengono
+salvate nel file di Denemo, così che gli utenti possano continuare a
+modificare il documento tramite l&rsquo;interfaccia grafica.
+</p>
+<p>Se si muove il cursore nel codice LilyPond si muove anche il cursore
+nella visualizzazione grafica, e qualsiasi errore di sintassi nelle tue modifiche
+manuali al codice LilyPond viene evidenziato nella visualizzazione testuale
+quando elaborato da lì.
+</p>
+
+</div>
+
+
+<div class="column-center-top">
+<span id="Editor-online-su-browser"></span><h4 class="subheading">Editor online su browser</h4>
+
+<span id="Hacklily"></span><h4 class="subsubheading">Hacklily</h4>
+<p><a href="https://www.hacklily.org/">https://www.hacklily.org/</a>
+</p>
+<div class="float-right">
+  <a class="clickable" href="../pictures/screenshot-hacklily.png">
+    <img src="../pictures/screenshot-hacklily-small.png" alt="screenshot-hacklily-small">
+  </a>
+  <p style="text-align: center">
+      (clicca per ingrandire)
+  </p>
+</div>
+
+<p>Un editor online di spartiti musicali e strumento editoriale basato
+su LilyPond, con funzionalità particolari come l&rsquo;autocompletamento e
+l&rsquo;aiuto contestuale.  Il codice sottostante per il web hosting,
+rilasciato con licenza AGPL, è disponibile alla sua
+<a href="https://github.com/hacklily/hacklily">pagina per sviluppatori</a>.
+</p>
+<span id="www_002eomet_002eca"></span><h4 class="subsubheading">www.omet.ca</h4>
+<p><a href="http://www.omet.ca/">http://www.omet.ca/</a>
+</p>
+<div class="float-right">
+  <a class="clickable" href="../pictures/screenshot-omet.png">
+    <img src="../pictures/screenshot-omet-small.png" alt="screenshot-omet-small">
+  </a>
+  <p style="text-align: center">
+      (clicca per ingrandire)
+  </p>
+</div>
+
+<p>Dal 2010, Online Music Editing Tools (OMET) offre un servizio LilyPond
+pronto all&rsquo;uso con un&rsquo;interfaccia web adattabile.  La registrazione è
+obbligatoria ma il servizio è gratuito.
+</p>
+
+</div>
+
+<div class="column-center-top">
+<span id="Plugin-per-programmi-di-videoscrittura"></span><h4 class="subheading">Plugin per programmi di videoscrittura</h4>
+
+<span id="OOoLilyPond"></span><h4 class="subsubheading">OOoLilyPond</h4>
+
+<p><a href="https://extensions.services.openoffice.org/en/project/OOoLilyPond">https://extensions.services.openoffice.org/en/project/OOoLilyPond</a>
+</p>
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-freebsd.png" alt="logo-freebsd">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<p>Un&rsquo;estensione di OpenOffice.org che converte i file LilyPond in immagini
+incorporate nei documenti OpenOffice.org.
+</p>
+
+</div>
+
+
+<div class="column-center-top">
+<span id="Plugin-IDE"></span><h4 class="subheading">Plugin IDE</h4>
+<span id="Elysium"></span><h4 class="subsubheading">Elysium</h4>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-freebsd.png" alt="logo-freebsd">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<p><a href="https://github.com/thSoft/elysium">https://github.com/thSoft/elysium</a>
+</p>
+<p>È un ambiente completo per creare e modificare partiture con LilyPond
+nell&rsquo;editor Eclipse.  Offre un ricco set di strumenti per gestire
+facilmente LilyPond.
+</p>
+
+</div>
+
+
+<div class="column-center-top">
+<span id="Editor-testuali"></span><h4 class="subheading">Editor testuali</h4>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-freebsd.png" alt="logo-freebsd">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<span id="Emacs"></span><h4 class="subsubheading">Emacs</h4>
+<p><a href="https://www.gnu.org/software/emacs/">https://www.gnu.org/software/emacs/</a>
+</p>
+<p>Emacs è un editor di testo che ha la capacità di comprendere molti
+diversi linguaggi informatici.  Emacs è un editor molto estendibile
+e può essere usato come ambiente di sviluppo integrato (IDE).
+C&rsquo;è una &lsquo;modalità lilypond&rsquo; che fornisce le definizioni del
+linguaggio per poter lavorare con i file sorgente di LilyPond.
+Uno sviluppatore ha scritto
+<a href="https://github.com/nsceaux/lyqi">lyqi</a>, una
+modalità primaria di Emacs.
+</p>
+<p>A meno che tu non sia un utente esperto di Emacs, probabilmente
+dovresti usare un altro editor per scrivere file di input di
+LilyPond.
+</p>
+<p>Maggori informazioni su come impostare Emacs si trovano in
+<a href="../usage/text-editor-support.it.html">LilyPond e gli editor di testo</a>.
+</p>
+<span id="Vim"></span><h4 class="subsubheading">Vim</h4>
+<p><a href="https://www.vim.org">https://www.vim.org</a>
+</p>
+<p>Vim è un editor di testo minimale che deriva dal vecchio editor Unix
+<code>vi</code>.  Anch&rsquo;esso è estendibile e configurabile.
+</p>
+<p>A meno che tu non sia un utente esperto di Vim, probabilmente
+dovresti usare un altro editor per scrivere file di input di
+LilyPond.
+</p>
+<p>Puoi trovare maggiori informazioni sulla configurazione di Emacs e Vim in
+<a href="../usage/text-editor-support.it.html">LilyPond e gli editor di testo</a>.
+</p>
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+
+<span id="TeXShop"></span><h4 class="subsubheading">TeXShop</h4>
+<p><a href="https://pages.uoregon.edu/koch/texshop/">https://pages.uoregon.edu/koch/texshop/</a>
+</p>
+<p>L&rsquo;editor TeXShop per MacOS&nbsp;X può essere potenziato per eseguire LilyPond,
+<code>lilypond-book</code> e <code>convert-ly</code> all&rsquo;interno dell&rsquo;editor,
+usando le estensioni disponibili presso:
+</p>
+<div class="example">
+<pre class="example"><a href="http://users.dimi.uniud.it/~nicola.vitacolonna/home/content/lilypond-scripts">http://users.dimi.uniud.it/~nicola.vitacolonna/home/content/lilypond-scripts</a>
+</pre></div>
+
+
+
+</div>
+
+<div class="column-center-top">
+<span id="Altri-programmi-che-possono-esportare-in-codice-LilyPond"></span><h4 class="subheading">Altri programmi che possono esportare in codice LilyPond</h4>
+
+
+<span id="Editor-di-partiture_002c-intavolature-e-MIDI_003a"></span><h4 class="subsubheading">Editor di partiture, intavolature e MIDI:</h4>
+
+<ul>
+<li> <a href="http://www.jezra.net/projects/bwwtolily">bwwtolily</a> tenta
+di convertire un file <code>.bww</code> o <code>.bmw</code> in formato
+LilyPond.  Anche se non tutti gli abbellimenti verranno
+convertiti correttamente (questo vale soprattutto per i
+piobaireachd), il programma li elenca.
+
+</li><li> <a href="http://www.canorus.org">Canorus</a>, un editor di partiture, può anche
+esportare in formato LilyPond, ma è un software ancora in beta.  Gli utenti
+che vogliono provarlo sono benvenuti.
+
+</li><li> <a href="https://extensions.services.openoffice.org/en/project/OOoLilyPond">OOoLilyPond</a>,
+un&rsquo;estensione di OpenOffice.org che converte i file di LilyPond in immagini
+incluse nei documenti di OpenOffice.org.  Sebbene non sia più sviluppato,
+sembra che funzioni ancora nella versione 4.
+
+</li><li> <a href="http://enc2ly.sourceforge.net/en/">Enc2ly</a> è un programma GNU/Linux che
+converte uno spartito Encore in uno in formato LilyPond.
+
+</li><li> <a href="https://github.com/hanwen/go-enc2ly">go-enc2ly</a> è uno strumento Go che
+converte i file Encore in formato LilyPond. È stato creato grazie al
+lavoro di ricerca e di reverse engineering di Felipe Castro, che ha
+modificato file .enc esistenti e li ha caricati usando la versione demo 4.55.
+
+</li><li> <a href="https://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml">NtEd</a>,
+un editor di partiture basato sulla libreria
+<a href="https://www.cairographics.org">Cairo</a>, supporta in via sperimentale
+l&rsquo;esportazione in formato LilyPond.
+
+</li><li> <a href="http://www.holmessoft.co.uk/homepage/software/NWC2LY/index.htm">NW2LY</a> è un programma scritto in C# che converte una canzone di NoteWorthy
+in formato LilyPond.
+
+</li><li> <a href="https://github.com/ciconia/ripple/blob/master/README.markdown">Ripple</a> è
+un programma che aiuta a creare partiture e parti; include un modo per
+mischiare insieme opere musicali diverse in una singola partitura o parte.
+
+</li><li> <a href="https://www.rosegardenmusic.com">Rosegarden</a>, un sequencer audio
+e MIDI, che ha anche un editor per le partiture con un solo rigo.
+
+</li></ul>
+
+<span id="Generatori-di-codice-algoritmici_003a"></span><h4 class="subsubheading">Generatori di codice algoritmici:</h4>
+
+<ul>
+<li> <a href="http://www.projectabjad.org/">Abjad</a>, una API
+<a href="https://www.python.org/">Python</a> per il Formalized Score
+Control progettata per aiutare i compositori a costruire pezzi complessi
+di notazione LilyPond in modo iterativo e incrementale.
+
+</li><li> <a href="https://common-lisp.net/project/fomus/">FOMUS</a>, (FOrmat MUSic)
+è uno strumento di notazione musicale per compositori di
+musica elettronica.  È scritto nel linguaggio di programmazione
+LISP ed è stato testato su vari interpreti.  È disponibile
+anche un port in C++.
+
+</li><li> <a href="http://strasheela.sourceforge.net/strasheela/doc/index.html">Strasheela</a>, un
+ambiente costruito sul
+<a href="https://mozart.github.io/">Mozart Programming System</a>.
+</li></ul>
+
+
+</div>
+
+<div class="column-center-top">
+
+<span id="Altri-programmi-che-non-sono-piu-sviluppati-attivamente"></span><h4 class="subheading">Altri programmi che non sono più sviluppati attivamente</h4>
+
+<ul>
+<li> <a href="https://github.com/LilyBin/LilyBin">LilyBin</a> è un editor LilyPond
+che si usa nel browser e permette di scrivere una partitura direttamente
+senza dover installare LilyPond, purché si sia connessi a Internet.
+I frammenti di codice rimangono disponibili con
+un&rsquo;URL unico, come nei cosiddetti siti &ldquo;pastebin&rdquo;.  Sebbene
+<a href="https://lilybin.com">https://lilybin.com</a>, dove era ospitato, sia stato dismesso, il
+suo codice sorgente continua ad essere liberamente disponibile secondo
+i termini della licenza MIT; si trova alla sua
+<a href="https://github.com/LilyBin/LilyBin">pagina Github</a>.
+
+</li><li> <a href="https://www.weblily.net/">WebLily</a> è stato uno dei primi servizi web
+basati su LilyPond.
+
+</li><li> <a href="https://sourceforge.net/projects/lily4jedit">LilyPondTool</a> è stato
+creato come plugin dell&rsquo;editor di testo <a href="http://www.jedit.org">jEdit</a>.
+
+</li><li> <a href="https://lilykde.googlecode.com/">LilyKDE</a> è stato sostituito da
+<a href="https://www.frescobaldi.org/">Frescobaldi</a>; esiste soltanto come
+LilyKDE3 per KDE 3.5 e lilypond-KDE4 per KDE 4.1.
+
+</li><li> <a href="https://lilycomp.sourceforge.net">LilyComp</a> è un programma grafico di
+inserimento note, che si comporta in modo molto simile a un tastierino numerico
+che produce note nella sintassi di LilyPond.
+
+</li><li> <a href="https://www.musescore.org">MuseScore</a>, un editor di partiture.
+L&rsquo;esportazione in formato LilyPond è stata rimossa nella versione 2.0 ma
+sono ancora disponibili e scaricabili le versioni precedenti su
+<a href="https://sourceforge.net/projects/mscore/files/mscore/">Sourceforge</a>.
+
+</li><li> <a href="https://sourceforge.net/projects/noteedit.berlios/">NoteEdit</a>, che importava
+<a href="https://www.musicxml.com/">MusicXML</a>, è stato &quot;forkato&quot;
+in
+<a href="https://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml">NtEd</a>
+e <a href="https://canorus.org">Canorus</a>.
+
+</li><li> <a href="https://launchpad.net/rumor/">Rumor</a>, un convertitore
+realtime monofonico da MIDI a LilyPond.
+
+</li><li> <a href="https://github.com/tiredpixel/tunefl">tunefl</a>
+Con tunefl è possibile scrivere le partiture direttamente online,
+senza bisogno di installare LilyPond sul proprio computer. Consente di
+sperimentare tutte le funzionalità del programma usando una comoda
+interfaccia web.
+
+</li><li> <a href="http://www.tuxguitar.com.ar/">TuxGuitar</a>, un editor e riproduttore
+multitraccia per tablatura, include un visualizzatore della partitura e può
+esportare in formato LilyPond.
+
+</li></ul>
+
+
+</div>
+
+<div class="column-center-bottom">
+<span id="E-ora_003f-7"></span><h4 class="subheading">E ora?</h4>
+
+<p>Sei ora pronto per <a href="download.it.html">Scaricare LilyPond</a>.
+</p>
+<p>Non sei ancora convinto?  Molti compositori, musicisti e direttori
+hanno imparato a scrivere musica nel nostro formato di input.  Utenti
+esperti raccontano addirittura di poter scrivere una partitura completa
+in LilyPond più velocemente che con una tastiera di pianoforte o col mouse in
+un programma a interfaccia grafica!  Forse vuoi riesaminare
+le <a href="features.it.html">Funzionalità</a>, gli <a href="examples.it.html">Esempi</a>, o la
+<a href="freedom.it.html">Libertà</a> che LilyPond fornisce, o informarti sulle
+<a href="productions.it.html">Produzioni</a> degli utenti e le <a href="reviews.it.html">Recensioni</a>.  Inoltre, il nostro
+approccio all&rsquo;estetica computazionale della tipografia musicale classica
+viene spiegato nella nostra <a href="background.it.html">Storia</a>.
+</p>
+
+</div>
+
+
+<div class="column-center-bottom">
+<span id="Legalese"></span><h4 class="subheading">Legalese</h4>
+
+<div class="legal">
+<p>Si riconoscono il copyright e i marchi di tutti i loghi e le immagini dei prodotti.
+</p>
+<p>Tux the Linux Penguin è stato creato da
+<a href="mailto:lewing@isc.tamu.edu">lewing@isc.tamu.edu</a> con
+<a href="http://www.isc.tamu.edu/~lewing/gimp/">il Gnu Image
+Manipulation Program</a>.
+</p>
+
+<p>Il logo FreeBSD è un marchio registrato della
+<a href="https://www.freebsd.org/">FreeBSD Foundation</a>.
+</p>
+
+<p>L&rsquo; &ldquo;immagine X&rdquo; non è un marchio registrato.  È stato creato da
+<a href="https://en.wikipedia.org/wiki/User:Nihonjoe">Nihonjoe</a> e
+<a href="https://en.wikipedia.org/wiki/User:CyberSkull">CyberSkull</a>, e
+posto sotto la GNU Free Documentation License versione 1.2 o successive.
+Abbiamo trovato l&rsquo;immagine su
+<a href="https://commons.wikimedia.org/wiki/File:Mac_OS_X_Userbox_X.png">questa pagina di Wikimedia Commons</a>.
+</p>
+
+<p>L&rsquo; &ldquo;immagine con quattro rettangoli colorati&rdquo; non è un marchio
+registrato.  È stato creato da
+<a href="https://en.wikipedia.org/wiki/User:Rohitbd">Rohitbd</a> ed è
+posto sotto la GNU Free Documentation License versione 1.2.  Abbiamo
+trovato l&rsquo;immagine su
+<a href="https://commons.wikimedia.org/wiki/Category:Microsoft_Windows_logos">questa pagina di Wikimedia Commons</a>.
+</p>
+
+
+</div>
+
+
+</div>
+
+</div>
+<hr>
+
+<div id="footer">
+<p id="languages">
+Other languages: <a href="easier-editing.html">English</a>, <a href="easier-editing.ca.html">Català</a>, <a href="easier-editing.de.html">Deutsch</a>, <a href="easier-editing.es.html">Español</a>, <a href="easier-editing.fr.html">Français</a>, <a href="easier-editing.ja.html">日本語</a>, <a href="easier-editing.tr.html">Türkçe</a>, <a href="easier-editing.zh.html">中文</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-LilyPond" href="index.it.html">LilyPond</a></li>
+  <li class="toc_current"><a id="toc-Introduzione" href="introduction.it.html">Introduzione</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Funzionalita" href="features.it.html">Funzionalità</a></li>
+    <li><a id="toc-Esempi" href="examples.it.html">Esempi</a></li>
+    <li><a id="toc-Liberta" href="freedom.it.html">Libertà</a></li>
+    <li><a id="toc-Storia" href="background.it.html">Storia</a></li>
+    <li><a id="toc-Produzioni" href="productions.it.html">Produzioni</a></li>
+    <li><a id="toc-Recensioni" href="reviews.it.html">Recensioni</a></li>
+    <li><a id="toc-Input-testuale" href="text-input.it.html">Input testuale</a></li>
+    <li class="toc_current"><a id="toc-Editing-facilitato" href="easier-editing.it.html">Editing facilitato</a></li>
+  </ul></li>
+  <li><a id="toc-Download" href="download.it.html">Download</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Source" href="source.it.html">Source</a></li>
+    <li><a id="toc-Old-downloads" href="old-downloads.it.html">Old downloads</a></li>
+    <li><a id="toc-GPL" href="gpl.it.html">GPL</a></li>
+  </ul></li>
+  <li><a id="toc-Manuali" href="manuals.it.html">Manuali</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Apprendimento" href="learning.it.html">Apprendimento</a></li>
+    <li><a id="toc-Glossario" href="glossary.it.html">Glossario</a></li>
+    <li><a id="toc-Saggio" href="essay.it.html">Saggio</a></li>
+    <li><a id="toc-Notazione" href="notation.it.html">Notazione</a></li>
+    <li><a id="toc-Uso" href="usage.it.html">Uso</a></li>
+    <li><a id="toc-Frammenti" href="snippets.it.html">Frammenti</a></li>
+    <li><a id="toc-FAQ" href="faq.it.html">FAQ</a></li>
+    <li><a id="toc-Web" href="web.it.html">Web</a></li>
+    <li><a id="toc-Cambiamenti" href="changes.it.html">Cambiamenti</a></li>
+    <li><a id="toc-Estendere" href="extending.it.html">Estendere</a></li>
+    <li><a id="toc-Funzionamento-interno" href="internals.it.html">Funzionamento interno</a></li>
+    <li><a id="toc-Tutti" href="all.it.html">Tutti</a></li>
+    <li><a id="toc-FDL" href="fdl.it.html">FDL</a></li>
+  </ul></li>
+  <li><a id="toc-Comunita" href="community.it.html">Comunità</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Contatti" href="contact.it.html">Contatti</a></li>
+    <li><a id="toc-Esempi-minimi" href="tiny-examples.it.html">Esempi minimi</a></li>
+    <li><a id="toc-Segnalazione-bug" href="bug-reports.it.html">Segnalazione bug</a></li>
+    <li><a id="toc-Aiutaci" href="help-us.it.html">Aiutaci</a></li>
+    <li><a id="toc-Sponsor" href="sponsoring.it.html">Sponsor</a></li>
+    <li><a id="toc-Sviluppo" href="development.it.html">Sviluppo</a></li>
+    <li><a id="toc-Google-Summer-of-Code" href="google-summer-of-code.it.html">Google Summer of Code</a></li>
+    <li><a id="toc-Autori" href="authors.it.html">Autori</a></li>
+    <li><a id="toc-Pubblicazioni" href="publications.it.html">Pubblicazioni</a></li>
+    <li><a id="toc-Notizie" href="news.it.html">Notizie</a></li>
+    <li><a id="toc-Soffitta" href="attic.it.html">Soffitta</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca con Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Cerca">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

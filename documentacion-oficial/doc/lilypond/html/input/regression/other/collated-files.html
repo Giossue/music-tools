@@ -1,0 +1,1980 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Other regression tests</title>
+
+<meta name="description" content="Other regression tests">
+<meta name="keywords" content="Other regression tests">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="#top" rel="start" title="Other regression tests">
+<link href="#alternative_002dtrailing_002dvar_002dsimultaneous_002ely" rel="next" title="alternative-trailing-var-simultaneous.ly">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../../Documentation/css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../../../Documentation/css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="en" class="collated">
+<div id="main">
+
+
+
+
+
+
+<div class="top" id="top">
+<table class="nav_table">
+<tr><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td></tr>
+</table>
+<span id="Other-regression-tests"></span><h1 class="top">Other regression tests</h1>
+
+
+<hr>
+<div class="unnumbered" id="Introduction">
+<table class="nav_table">
+<tr><td align="left">[<a href="#top" title="Beginning of this chapter or previous chapter"> &lt;&lt; Top </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[<a href="#Regression-test-cases" title="Next chapter">  &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#top" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Top </a>]</td><td align="center">[<a href="#top" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[<a href="#Regression-test-cases" title="Next section in reading order" accesskey="n" rel="next">  &gt; </a>]</td></tr>
+</table>
+<h2 class="unnumbered">Introduction</h2>
+
+<p>This document presents regression tests for LilyPond development that don&rsquo;t
+have visually significant output; it mainly exists for completeness and to
+make the test documentation better available.
+</p>
+<p>In the web version of this document, you can click on the
+figure for each example to see the corresponding input file.
+</p>
+<hr>
+</div>
+<div class="unnumbered" id="Regression-test-cases">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#Introduction" title="Previous section in reading order" accesskey="p" rel="prev"> &lt;  </a>]</td><td align="center">[<a href="#top" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[<a href="#alternative_002dtrailing_002dvar_002dsimultaneous_002ely" title="Next section in reading order" accesskey="n" rel="next"> alternative-trailing-var-simultaneous.ly &gt; </a>]</td></tr>
+</table>
+<h2 class="unnumbered">Regression test cases</h2>
+
+
+<hr>
+<div class="unnumberedsec" id="alternative_002dtrailing_002dvar_002dsimultaneous_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#Regression-test-cases" title="Previous section in reading order" accesskey="p" rel="prev"> &lt;  </a>]</td><td align="center"></td><td align="right">[<a href="#alternative_002dvar_002dsimultaneous_002ely" title="Next section in reading order" accesskey="n" rel="next"> alternative-var-simultaneous.ly &gt; </a>]</td></tr>
+</table>
+<span id="alternative_002dtrailing_002dvar_002dsimultaneous_002ely-1"></span><h3 class="unnumberedsec">alternative-trailing-var-simultaneous.ly</h3>
+<p>It is an error to use <code>\alternative \var</code> following the body
+of a repeat when <var>var</var> holds any type of music other than sequential music
+(in this case, simultaneous music).
+</p>
+
+
+<a href="6a/lily-28609a72.ly">
+  <img align="middle"
+       border="0"
+       src="6a/lily-28609a72.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="alternative_002dvar_002dsimultaneous_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#alternative_002dtrailing_002dvar_002dsimultaneous_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; alternative-trailing-var-simultaneous.ly </a>]</td><td align="center"></td><td align="right">[<a href="#bar_002dcheck_002dsynchronize_002ely" title="Next section in reading order" accesskey="n" rel="next"> bar-check-synchronize.ly &gt; </a>]</td></tr>
+</table>
+<span id="alternative_002dvar_002dsimultaneous_002ely-1"></span><h3 class="unnumberedsec">alternative-var-simultaneous.ly</h3>
+<p>It is an error to use <code>\alternative \var</code> when <var>var</var>
+holds any type of music other than sequential music (in this case, simultaneous
+music).
+</p>
+
+
+<a href="e8/lily-eb30dee5.ly">
+  <img align="middle"
+       border="0"
+       src="e8/lily-eb30dee5.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="bar_002dcheck_002dsynchronize_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#alternative_002dvar_002dsimultaneous_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; alternative-var-simultaneous.ly </a>]</td><td align="center"></td><td align="right">[<a href="#base_002dmoment_002ely" title="Next section in reading order" accesskey="n" rel="next"> base-moment.ly &gt; </a>]</td></tr>
+</table>
+<span id="bar_002dcheck_002dsynchronize_002ely-1"></span><h3 class="unnumberedsec">bar-check-synchronize.ly</h3>
+<p>Setting the deprecated context property <code>barCheckSynchronize</code>
+triggers a warning.
+</p>
+
+
+<a href="04/lily-b9df1734.ly">
+  <img align="middle"
+       border="0"
+       src="04/lily-b9df1734.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="base_002dmoment_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#bar_002dcheck_002dsynchronize_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; bar-check-synchronize.ly </a>]</td><td align="center"></td><td align="right">[<a href="#beam_002dexceptions_002dalternating_002ely" title="Next section in reading order" accesskey="n" rel="next"> beam-exceptions-alternating.ly &gt; </a>]</td></tr>
+</table>
+<span id="base_002dmoment_002ely-1"></span><h3 class="unnumberedsec">base-moment.ly</h3>
+<p>The deprecated context property <code>baseMoment</code> accesses the
+value of <code>beatBase</code>.
+</p>
+
+
+<a href="62/lily-514988c0.ly">
+  <img align="middle"
+       border="0"
+       src="62/lily-514988c0.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="beam_002dexceptions_002dalternating_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#base_002dmoment_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; base-moment.ly </a>]</td><td align="center"></td><td align="right">[<a href="#beam_002dexceptions_002ely" title="Next section in reading order" accesskey="n" rel="next"> beam-exceptions.ly &gt; </a>]</td></tr>
+</table>
+<span id="beam_002dexceptions_002dalternating_002ely-1"></span><h3 class="unnumberedsec">beam-exceptions-alternating.ly</h3>
+<p>This is a set of tests of the <code>beam-exceptions</code> Scheme
+function for strictly alternating time signatures.  Problems are reported in the
+standard error stream.
+</p>
+
+
+<a href="36/lily-7a74ce7b.ly">
+  <img align="middle"
+       border="0"
+       src="36/lily-7a74ce7b.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="beam_002dexceptions_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#beam_002dexceptions_002dalternating_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; beam-exceptions-alternating.ly </a>]</td><td align="center"></td><td align="right">[<a href="#beat_002dbase_002dalternating_002ely" title="Next section in reading order" accesskey="n" rel="next"> beat-base-alternating.ly &gt; </a>]</td></tr>
+</table>
+<span id="beam_002dexceptions_002ely-1"></span><h3 class="unnumberedsec">beam-exceptions.ly</h3>
+<p>This is a set of tests of the <code>beam-exceptions</code> Scheme
+function for single-fraction time signatures.  Problems are reported in the
+standard error stream.
+</p>
+
+
+<a href="51/lily-7ea8ef46.ly">
+  <img align="middle"
+       border="0"
+       src="51/lily-7ea8ef46.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="beat_002dbase_002dalternating_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#beam_002dexceptions_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; beam-exceptions.ly </a>]</td><td align="center"></td><td align="right">[<a href="#beat_002dbase_002ely" title="Next section in reading order" accesskey="n" rel="next"> beat-base.ly &gt; </a>]</td></tr>
+</table>
+<span id="beat_002dbase_002dalternating_002ely-1"></span><h3 class="unnumberedsec">beat-base-alternating.ly</h3>
+<p>This is a set of tests of the <code>beat-base</code> Scheme function for
+strictly alternating time signatures.  Problems are reported in the standard
+error stream.
+</p>
+
+
+<a href="93/lily-40e0be0c.ly">
+  <img align="middle"
+       border="0"
+       src="93/lily-40e0be0c.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="beat_002dbase_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#beat_002dbase_002dalternating_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; beat-base-alternating.ly </a>]</td><td align="center"></td><td align="right">[<a href="#beat_002dstructure_002dalternating_002ely" title="Next section in reading order" accesskey="n" rel="next"> beat-structure-alternating.ly &gt; </a>]</td></tr>
+</table>
+<span id="beat_002dbase_002ely-1"></span><h3 class="unnumberedsec">beat-base.ly</h3>
+<p>This is a set of tests of the <code>beat-base</code> Scheme function for
+single-fraction time signatures.  Problems are reported in the standard error
+stream.
+</p>
+
+
+<a href="9a/lily-c930b759.ly">
+  <img align="middle"
+       border="0"
+       src="9a/lily-c930b759.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="beat_002dstructure_002dalternating_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#beat_002dbase_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; beat-base.ly </a>]</td><td align="center"></td><td align="right">[<a href="#beat_002dstructure_002dsenza_002dmisura_002ely" title="Next section in reading order" accesskey="n" rel="next"> beat-structure-senza-misura.ly &gt; </a>]</td></tr>
+</table>
+<span id="beat_002dstructure_002dalternating_002ely-1"></span><h3 class="unnumberedsec">beat-structure-alternating.ly</h3>
+<p>This is a set of tests of the <code>beat-structure</code> Scheme function
+for strictly alternating signatures.  Problems are reported in the standard
+error stream.
+</p>
+
+
+<a href="fa/lily-4a726506.ly">
+  <img align="middle"
+       border="0"
+       src="fa/lily-4a726506.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="beat_002dstructure_002dsenza_002dmisura_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#beat_002dstructure_002dalternating_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; beat-structure-alternating.ly </a>]</td><td align="center"></td><td align="right">[<a href="#beat_002dstructure_002ely" title="Next section in reading order" accesskey="n" rel="next"> beat-structure.ly &gt; </a>]</td></tr>
+</table>
+<span id="beat_002dstructure_002dsenza_002dmisura_002ely-1"></span><h3 class="unnumberedsec">beat-structure-senza-misura.ly</h3>
+<p>This is a set of tests of the <code>beat-structure</code> Scheme
+function.  This set includes cases where the time signature is <code>#f</code>
+(for senza misura).  Problems are reported in the standard error stream.
+</p>
+
+
+<a href="69/lily-5e3e7088.ly">
+  <img align="middle"
+       border="0"
+       src="69/lily-5e3e7088.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="beat_002dstructure_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#beat_002dstructure_002dsenza_002dmisura_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; beat-structure-senza-misura.ly </a>]</td><td align="center"></td><td align="right">[<a href="#binary_002dsearch_002ely" title="Next section in reading order" accesskey="n" rel="next"> binary-search.ly &gt; </a>]</td></tr>
+</table>
+<span id="beat_002dstructure_002ely-1"></span><h3 class="unnumberedsec">beat-structure.ly</h3>
+<p>This is a set of tests of the <code>beat-structure</code> Scheme function
+for single-fraction time signatures.  Problems are reported in the standard
+error stream.
+</p>
+
+
+<a href="c2/lily-689e6f41.ly">
+  <img align="middle"
+       border="0"
+       src="c2/lily-689e6f41.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="binary_002dsearch_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#beat_002dstructure_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; beat-structure.ly </a>]</td><td align="center"></td><td align="right">[<a href="#bookmark_002dencoding_002ely" title="Next section in reading order" accesskey="n" rel="next"> bookmark-encoding.ly &gt; </a>]</td></tr>
+</table>
+<span id="binary_002dsearch_002ely-1"></span><h3 class="unnumberedsec">binary-search.ly</h3>
+<p>The <code>binary-search</code> function works as documented.
+</p>
+
+
+<a href="92/lily-41963da6.ly">
+  <img align="middle"
+       border="0"
+       src="92/lily-41963da6.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="bookmark_002dencoding_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#binary_002dsearch_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; binary-search.ly </a>]</td><td align="center"></td><td align="right">[<a href="#calc_002dmeasure_002dlength_002ely" title="Next section in reading order" accesskey="n" rel="next"> calc-measure-length.ly &gt; </a>]</td></tr>
+</table>
+<span id="bookmark_002dencoding_002ely-1"></span><h3 class="unnumberedsec">bookmark-encoding.ly</h3>
+<p>PDF bookmarks can contain UTF-8 characters.  They
+are correctly rendered in PDF viewers.
+</p>
+<p>Note: due to the way the regression test infrastructure currently
+works, any breakage in this test will not be noticed automatically.
+</p>
+
+
+<a href="5c/lily-6d65423a.ly">
+  <img align="middle"
+       border="0"
+       src="5c/lily-6d65423a.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="calc_002dmeasure_002dlength_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#bookmark_002dencoding_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; bookmark-encoding.ly </a>]</td><td align="center"></td><td align="right">[<a href="#calc_002dsubmeasure_002dstructure_002dalternating_002ely" title="Next section in reading order" accesskey="n" rel="next"> calc-submeasure-structure-alternating.ly &gt; </a>]</td></tr>
+</table>
+<span id="calc_002dmeasure_002dlength_002ely-1"></span><h3 class="unnumberedsec">calc-measure-length.ly</h3>
+<p>This is a set of tests of the <code>calc-measure-length</code> Scheme
+function.  Problems are reported in the standard error stream.
+</p>
+
+
+<a href="bd/lily-bf306f66.ly">
+  <img align="middle"
+       border="0"
+       src="bd/lily-bf306f66.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="calc_002dsubmeasure_002dstructure_002dalternating_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#calc_002dmeasure_002dlength_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; calc-measure-length.ly </a>]</td><td align="center"></td><td align="right">[<a href="#calc_002dsubmeasure_002dstructure_002ely" title="Next section in reading order" accesskey="n" rel="next"> calc-submeasure-structure.ly &gt; </a>]</td></tr>
+</table>
+<span id="calc_002dsubmeasure_002dstructure_002dalternating_002ely-1"></span><h3 class="unnumberedsec">calc-submeasure-structure-alternating.ly</h3>
+<p>This is a set of tests of the <code>calc-submeasure-structure</code>
+Scheme function for strictly alternating signatures.  Problems are reported in
+the standard error stream.
+</p>
+
+
+<a href="b4/lily-44cc3f45.ly">
+  <img align="middle"
+       border="0"
+       src="b4/lily-44cc3f45.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="calc_002dsubmeasure_002dstructure_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#calc_002dsubmeasure_002dstructure_002dalternating_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; calc-submeasure-structure-alternating.ly </a>]</td><td align="center"></td><td align="right">[<a href="#calculate_002dcompound_002dbeat_002dbase_002ely" title="Next section in reading order" accesskey="n" rel="next"> calculate-compound-beat-base.ly &gt; </a>]</td></tr>
+</table>
+<span id="calc_002dsubmeasure_002dstructure_002ely-1"></span><h3 class="unnumberedsec">calc-submeasure-structure.ly</h3>
+<p>This is a set of tests of the <code>calc-submeasure-structure</code>
+Scheme function for single-fraction time signatures.  Problems are reported in
+the standard error stream.
+</p>
+
+
+<a href="8d/lily-653a9ac2.ly">
+  <img align="middle"
+       border="0"
+       src="8d/lily-653a9ac2.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="calculate_002dcompound_002dbeat_002dbase_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#calc_002dsubmeasure_002dstructure_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; calc-submeasure-structure.ly </a>]</td><td align="center"></td><td align="right">[<a href="#calculate_002dcompound_002dbeat_002dgrouping_002ely" title="Next section in reading order" accesskey="n" rel="next"> calculate-compound-beat-grouping.ly &gt; </a>]</td></tr>
+</table>
+<span id="calculate_002dcompound_002dbeat_002dbase_002ely-1"></span><h3 class="unnumberedsec">calculate-compound-beat-base.ly</h3>
+<p>Calling deprecated functions
+<code>calculate-compound-beat-base</code> and
+<code>calculate-compound-beat-base-as-moment</code> triggers warnings.
+</p>
+
+
+<a href="da/lily-638e9a17.ly">
+  <img align="middle"
+       border="0"
+       src="da/lily-638e9a17.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="calculate_002dcompound_002dbeat_002dgrouping_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#calculate_002dcompound_002dbeat_002dbase_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; calculate-compound-beat-base.ly </a>]</td><td align="center"></td><td align="right">[<a href="#calculate_002dcompound_002dmeasure_002dlength_002ely" title="Next section in reading order" accesskey="n" rel="next"> calculate-compound-measure-length.ly &gt; </a>]</td></tr>
+</table>
+<span id="calculate_002dcompound_002dbeat_002dgrouping_002ely-1"></span><h3 class="unnumberedsec">calculate-compound-beat-grouping.ly</h3>
+<p>Calling the deprecated function
+<code>calculate-compound-beat-grouping</code> triggers a warning.
+</p>
+
+
+<a href="b7/lily-50d56528.ly">
+  <img align="middle"
+       border="0"
+       src="b7/lily-50d56528.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="calculate_002dcompound_002dmeasure_002dlength_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#calculate_002dcompound_002dbeat_002dgrouping_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; calculate-compound-beat-grouping.ly </a>]</td><td align="center"></td><td align="right">[<a href="#completion_002dunit_002das_002dmoment_002ely" title="Next section in reading order" accesskey="n" rel="next"> completion-unit-as-moment.ly &gt; </a>]</td></tr>
+</table>
+<span id="calculate_002dcompound_002dmeasure_002dlength_002ely-1"></span><h3 class="unnumberedsec">calculate-compound-measure-length.ly</h3>
+<p>Calling deprecated functions
+<code>calculate-compound-measure-length</code> and
+<code>calculate-compound-measure-length-as-moment</code> triggers warnings.
+</p>
+
+
+<a href="71/lily-7b72d28c.ly">
+  <img align="middle"
+       border="0"
+       src="71/lily-7b72d28c.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="completion_002dunit_002das_002dmoment_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#calculate_002dcompound_002dmeasure_002dlength_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; calculate-compound-measure-length.ly </a>]</td><td align="center"></td><td align="right">[<a href="#context_002dproperty_002dcheck_002ely" title="Next section in reading order" accesskey="n" rel="next"> context-property-check.ly &gt; </a>]</td></tr>
+</table>
+<span id="completion_002dunit_002das_002dmoment_002ely-1"></span><h3 class="unnumberedsec">completion-unit-as-moment.ly</h3>
+<p>The deprecated context property <code>completionUnitAsMoment</code>
+accesses the value of <code>completionUnit</code>.
+</p>
+
+
+<a href="f4/lily-ba6619fc.ly">
+  <img align="middle"
+       border="0"
+       src="f4/lily-ba6619fc.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="context_002dproperty_002dcheck_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#completion_002dunit_002das_002dmoment_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; completion-unit-as-moment.ly </a>]</td><td align="center"></td><td align="right">[<a href="#deprecation_002dwarning_002ely" title="Next section in reading order" accesskey="n" rel="next"> deprecation-warning.ly &gt; </a>]</td></tr>
+</table>
+<span id="context_002dproperty_002dcheck_002ely-1"></span><h3 class="unnumberedsec">context-property-check.ly</h3>
+<p>This test covers <code>\contextPropertyCheck</code>.  It should run with
+expected warnings.  The visual output is not important.
+</p>
+
+
+<a href="04/lily-f1548728.ly">
+  <img align="middle"
+       border="0"
+       src="04/lily-f1548728.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="deprecation_002dwarning_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#context_002dproperty_002dcheck_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; context-property-check.ly </a>]</td><td align="center"></td><td align="right">[<a href="#display_002dlily_002dtests_002ely" title="Next section in reading order" accesskey="n" rel="next"> display-lily-tests.ly &gt; </a>]</td></tr>
+</table>
+<span id="deprecation_002dwarning_002ely-1"></span><h3 class="unnumberedsec">deprecation-warning.ly</h3>
+<p>Scheme function <code>ly:deprecation-warning</code> prints a given
+message the first time only.  Duplicate messages are recognized by the
+formatted message, not by the format string alone.
+</p>
+
+
+<a href="95/lily-a98bdc72.ly">
+  <img align="middle"
+       border="0"
+       src="95/lily-a98bdc72.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="display_002dlily_002dtests_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#deprecation_002dwarning_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; deprecation-warning.ly </a>]</td><td align="center"></td><td align="right">[<a href="#display_002dscheme_002dwith_002dpartial_002dmarkup_002ely" title="Next section in reading order" accesskey="n" rel="next"> display-scheme-with-partial-markup.ly &gt; </a>]</td></tr>
+</table>
+<span id="display_002dlily_002dtests_002ely-1"></span><h3 class="unnumberedsec">display-lily-tests.ly</h3>
+<p>This is a test of the display-lily-music unit. Problems
+are reported on the stderr of this run.
+</p>
+
+
+<a href="b9/lily-59d6b3c4.ly">
+  <img align="middle"
+       border="0"
+       src="b9/lily-59d6b3c4.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="display_002dscheme_002dwith_002dpartial_002dmarkup_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#display_002dlily_002dtests_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; display-lily-tests.ly </a>]</td><td align="center"></td><td align="right">[<a href="#embed_002dsource_002dcode_002dinclude_002dmultiple_002dtimes_002ely" title="Next section in reading order" accesskey="n" rel="next"> embed-source-code-include-multiple-times.ly &gt; </a>]</td></tr>
+</table>
+<span id="display_002dscheme_002dwith_002dpartial_002dmarkup_002ely-1"></span><h3 class="unnumberedsec">display-scheme-with-partial-markup.ly</h3>
+<p>Using <code>\displayScheme</code> with a partial markup should not crash.
+</p>
+
+
+<a href="a2/lily-95817c58.ly">
+  <img align="middle"
+       border="0"
+       src="a2/lily-95817c58.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="embed_002dsource_002dcode_002dinclude_002dmultiple_002dtimes_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#display_002dscheme_002dwith_002dpartial_002dmarkup_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; display-scheme-with-partial-markup.ly </a>]</td><td align="center"></td><td align="right">[<a href="#embed_002dsource_002dcode_002dorder_002ely" title="Next section in reading order" accesskey="n" rel="next"> embed-source-code-order.ly &gt; </a>]</td></tr>
+</table>
+<span id="embed_002dsource_002dcode_002dinclude_002dmultiple_002dtimes_002ely-1"></span><h3 class="unnumberedsec">embed-source-code-include-multiple-times.ly</h3>
+<p>With the <samp>-dembed-source-code</samp> option,
+a file included multiple times is only embedded once.
+</p>
+<p>Note: with the current regression testing infrastructure,
+any breakage of this test will not be noticed in
+<code>make check</code>.
+</p>
+
+
+<a href="3b/lily-766e4ebe.ly">
+  <img align="middle"
+       border="0"
+       src="3b/lily-766e4ebe.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="embed_002dsource_002dcode_002dorder_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#embed_002dsource_002dcode_002dinclude_002dmultiple_002dtimes_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; embed-source-code-include-multiple-times.ly </a>]</td><td align="center"></td><td align="right">[<a href="#embed_002dsource_002dcode_002ely" title="Next section in reading order" accesskey="n" rel="next"> embed-source-code.ly &gt; </a>]</td></tr>
+</table>
+<span id="embed_002dsource_002dcode_002dorder_002ely-1"></span><h3 class="unnumberedsec">embed-source-code-order.ly</h3>
+<p>When using the <samp>-dembed-source-code</samp> option, embedded
+files are displayed in alphabetical order.
+</p>
+<p>Note: with the current regression testing infrastructure,
+any breakage of this test will not be noticed in
+<code>make check</code>.
+</p>
+
+
+<a href="c0/lily-5b3d0c13.ly">
+  <img align="middle"
+       border="0"
+       src="c0/lily-5b3d0c13.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="embed_002dsource_002dcode_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#embed_002dsource_002dcode_002dorder_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; embed-source-code-order.ly </a>]</td><td align="center"></td><td align="right">[<a href="#engraver_002dorder_002ely" title="Next section in reading order" accesskey="n" rel="next"> engraver-order.ly &gt; </a>]</td></tr>
+</table>
+<span id="embed_002dsource_002dcode_002ely-1"></span><h3 class="unnumberedsec">embed-source-code.ly</h3>
+<p><code>-dembed-source-code</code> embeds source files
+in PDFs, including include files, images and verbatim files.
+</p>
+<p>Note: with the current regression testing infrastructure,
+any breakage of this test will not be noticed in
+<code>make check</code>.
+</p>
+
+
+<a href="34/lily-39b402ee.ly">
+  <img align="middle"
+       border="0"
+       src="34/lily-39b402ee.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="engraver_002dorder_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#embed_002dsource_002dcode_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; embed-source-code.ly </a>]</td><td align="center"></td><td align="right">[<a href="#get_002ddeprecated_002dproperty_002dspecial_002dwarning_002ely" title="Next section in reading order" accesskey="n" rel="next"> get-deprecated-property-special-warning.ly &gt; </a>]</td></tr>
+</table>
+<span id="engraver_002dorder_002ely-1"></span><h3 class="unnumberedsec">engraver-order.ly</h3>
+<p>Engravers are run in the same order as they
+are specified (although it is generally preferred that the
+order does not matter).
+</p>
+<p>This tests contains several scores, which output &ldquo;Engraver 1
+ran&rdquo; and &ldquo;Engraver 2 ran&rdquo; in the log file.  The order between
+these two lines in each score is what matters.
+</p>
+
+
+<a href="c8/lily-f6351cd2.ly">
+  <img align="middle"
+       border="0"
+       src="c8/lily-f6351cd2.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="get_002ddeprecated_002dproperty_002dspecial_002dwarning_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#engraver_002dorder_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; engraver-order.ly </a>]</td><td align="center"></td><td align="right">[<a href="#grace_002dstart_002dand_002dlength_002ely" title="Next section in reading order" accesskey="n" rel="next"> grace-start-and-length.ly &gt; </a>]</td></tr>
+</table>
+<span id="get_002ddeprecated_002dproperty_002dspecial_002dwarning_002ely-1"></span><h3 class="unnumberedsec">get-deprecated-property-special-warning.ly</h3>
+<p>Getting a deprecated property may issue a special warning.
+</p>
+
+
+<a href="b7/lily-3ef4eed5.ly">
+  <img align="middle"
+       border="0"
+       src="b7/lily-3ef4eed5.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="grace_002dstart_002dand_002dlength_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#get_002ddeprecated_002dproperty_002dspecial_002dwarning_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; get-deprecated-property-special-warning.ly </a>]</td><td align="center"></td><td align="right">[<a href="#gregorian_002ddeprecation_002ely" title="Next section in reading order" accesskey="n" rel="next"> gregorian-deprecation.ly &gt; </a>]</td></tr>
+</table>
+<span id="grace_002dstart_002dand_002dlength_002ely-1"></span><h3 class="unnumberedsec">grace-start-and-length.ly</h3>
+<p>This tests the calculation of music start and length for
+various kinds of grace music.  Problems are reported on stderr.
+</p>
+
+
+<a href="d6/lily-2777d426.ly">
+  <img align="middle"
+       border="0"
+       src="d6/lily-2777d426.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="gregorian_002ddeprecation_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#grace_002dstart_002dand_002dlength_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; grace-start-and-length.ly </a>]</td><td align="center"></td><td align="right">[<a href="#grid_002dinterval_002das_002dmoment_002ely" title="Next section in reading order" accesskey="n" rel="next"> grid-interval-as-moment.ly &gt; </a>]</td></tr>
+</table>
+<span id="gregorian_002ddeprecation_002ely-1"></span><h3 class="unnumberedsec">gregorian-deprecation.ly</h3>
+<p>Including the deprecated file <samp>gregorian.ly</samp> triggers a
+warning.
+</p>
+
+
+<a href="ec/lily-73c0d54f.ly">
+  <img align="middle"
+       border="0"
+       src="ec/lily-73c0d54f.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="grid_002dinterval_002das_002dmoment_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#gregorian_002ddeprecation_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; gregorian-deprecation.ly </a>]</td><td align="center"></td><td align="right">[<a href="#grob_002darray_002dlist_002ely" title="Next section in reading order" accesskey="n" rel="next"> grob-array-list.ly &gt; </a>]</td></tr>
+</table>
+<span id="grid_002dinterval_002das_002dmoment_002ely-1"></span><h3 class="unnumberedsec">grid-interval-as-moment.ly</h3>
+<p>The deprecated context property <code>gridIntervalAsMoment</code>
+accesses the value of <code>gridInterval</code>.
+</p>
+
+
+<a href="dd/lily-72c69684.ly">
+  <img align="middle"
+       border="0"
+       src="dd/lily-72c69684.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="grob_002darray_002dlist_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#grid_002dinterval_002das_002dmoment_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; grid-interval-as-moment.ly </a>]</td><td align="center"></td><td align="right">[<a href="#lilypond_002dversion_002doutdated_002ely" title="Next section in reading order" accesskey="n" rel="next"> lilypond-version-outdated.ly &gt; </a>]</td></tr>
+</table>
+<span id="grob_002darray_002dlist_002ely-1"></span><h3 class="unnumberedsec">grob-array-list.ly</h3>
+<p>Conversions are possible between grob arrays and
+grob lists.
+</p>
+
+
+<a href="53/lily-17995756.ly">
+  <img align="middle"
+       border="0"
+       src="53/lily-17995756.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="lilypond_002dversion_002doutdated_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#grob_002darray_002dlist_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; grob-array-list.ly </a>]</td><td align="center"></td><td align="right">[<a href="#lookup_002dmodule_002dvariable_002ely" title="Next section in reading order" accesskey="n" rel="next"> lookup-module-variable.ly &gt; </a>]</td></tr>
+</table>
+<span id="lilypond_002dversion_002doutdated_002ely-1"></span><h3 class="unnumberedsec">lilypond-version-outdated.ly</h3>
+<p>Test for versions considered outdated or not
+(used when suggesting <code>convert-ly</code>).
+</p>
+
+
+<a href="1a/lily-40f1f47e.ly">
+  <img align="middle"
+       border="0"
+       src="1a/lily-40f1f47e.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="lookup_002dmodule_002dvariable_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#lilypond_002dversion_002doutdated_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; lilypond-version-outdated.ly </a>]</td><td align="center"></td><td align="right">[<a href="#markup_002dto_002dstring_002ely" title="Next section in reading order" accesskey="n" rel="next"> markup-to-string.ly &gt; </a>]</td></tr>
+</table>
+<span id="lookup_002dmodule_002dvariable_002ely-1"></span><h3 class="unnumberedsec">lookup-module-variable.ly</h3>
+<p>Scoped variable references beginning with the name of a module
+perform module lookups until a non-module is found, then drop into alist
+lookups.  Problems are reported in the standard error stream.
+</p>
+
+
+<a href="f3/lily-9468fa5d.ly">
+  <img align="middle"
+       border="0"
+       src="f3/lily-9468fa5d.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="markup_002dto_002dstring_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#lookup_002dmodule_002dvariable_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; lookup-module-variable.ly </a>]</td><td align="center"></td><td align="right">[<a href="#markup_002dwith_002drelative_002ddir_002ely" title="Next section in reading order" accesskey="n" rel="next"> markup-with-relative-dir.ly &gt; </a>]</td></tr>
+</table>
+<span id="markup_002dto_002dstring_002ely-1"></span><h3 class="unnumberedsec">markup-to-string.ly</h3>
+<p><code>markup-&gt;string</code> takes a markup and tries
+to convert it into an approximate string representation.
+</p>
+
+
+<a href="12/lily-dcf23df7.ly">
+  <img align="middle"
+       border="0"
+       src="12/lily-dcf23df7.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="markup_002dwith_002drelative_002ddir_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#markup_002dto_002dstring_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; markup-to-string.ly </a>]</td><td align="center"></td><td align="right">[<a href="#measure_002dlength_002das_002dmoment_002ely" title="Next section in reading order" accesskey="n" rel="next"> measure-length-as-moment.ly &gt; </a>]</td></tr>
+</table>
+<span id="markup_002dwith_002drelative_002ddir_002ely-1"></span><h3 class="unnumberedsec">markup-with-relative-dir.ly</h3>
+<p>The function <code>\withRelativeDir</code> helps
+<code>\markup</code> find input files relative to the input file, without
+using <code>lilypond</code>&rsquo;s command line option <samp>-I</samp>.
+</p>
+<p>To actually test this, <code>lilypond</code> should be called from
+another directory, for example
+</p>
+<div class="example">
+<pre class="example">lilypond other/markup-with-relative-dir.ly
+</pre></div>
+
+<p>Note: with the current regression testing infrastructure it is not
+possible to check whether the command actually does its job.
+</p>
+
+
+<a href="7d/lily-70b025fa.ly">
+  <img align="middle"
+       border="0"
+       src="7d/lily-70b025fa.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="measure_002dlength_002das_002dmoment_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#markup_002dwith_002drelative_002ddir_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; markup-with-relative-dir.ly </a>]</td><td align="center"></td><td align="right">[<a href="#minimum_002drepeat_002dlength_002dfor_002dpage_002dturn_002ely" title="Next section in reading order" accesskey="n" rel="next"> minimum-repeat-length-for-page-turn.ly &gt; </a>]</td></tr>
+</table>
+<span id="measure_002dlength_002das_002dmoment_002ely-1"></span><h3 class="unnumberedsec">measure-length-as-moment.ly</h3>
+<p>The deprecated context property
+<code>measureLengthAsMoment</code> accesses the value of
+<code>measureLength</code>.
+</p>
+
+
+<a href="a6/lily-e779a120.ly">
+  <img align="middle"
+       border="0"
+       src="a6/lily-e779a120.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="minimum_002drepeat_002dlength_002dfor_002dpage_002dturn_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#measure_002dlength_002das_002dmoment_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; measure-length-as-moment.ly </a>]</td><td align="center"></td><td align="right">[<a href="#moment_002dmod_002ely" title="Next section in reading order" accesskey="n" rel="next"> moment-mod.ly &gt; </a>]</td></tr>
+</table>
+<span id="minimum_002drepeat_002dlength_002dfor_002dpage_002dturn_002ely-1"></span><h3 class="unnumberedsec">minimum-repeat-length-for-page-turn.ly</h3>
+<p>The deprecated context property
+<code>minimumRepeatLengthForPageTurn</code> accesses the value of
+<code>pageTurnMinimumRepeatLength</code>.
+</p>
+
+
+<a href="aa/lily-f8885f18.ly">
+  <img align="middle"
+       border="0"
+       src="aa/lily-f8885f18.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="moment_002dmod_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#minimum_002drepeat_002dlength_002dfor_002dpage_002dturn_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; minimum-repeat-length-for-page-turn.ly </a>]</td><td align="center"></td><td align="right">[<a href="#number_002dto_002dduration_002ely" title="Next section in reading order" accesskey="n" rel="next"> number-to-duration.ly &gt; </a>]</td></tr>
+</table>
+<span id="moment_002dmod_002ely-1"></span><h3 class="unnumberedsec">moment-mod.ly</h3>
+<p>Calling the deprecated function <code>ly:moment-mod</code> triggers a
+warning.
+</p>
+
+
+<a href="f4/lily-3e75a0fb.ly">
+  <img align="middle"
+       border="0"
+       src="f4/lily-3e75a0fb.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="number_002dto_002dduration_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#moment_002dmod_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; moment-mod.ly </a>]</td><td align="center"></td><td align="right">[<a href="#override_002dnon_002dexistent_002dproperty_002ely" title="Next section in reading order" accesskey="n" rel="next"> override-non-existent-property.ly &gt; </a>]</td></tr>
+</table>
+<span id="number_002dto_002dduration_002ely-1"></span><h3 class="unnumberedsec">number-to-duration.ly</h3>
+<p>This tests the internal function <code>ly:number-&gt;duration</code>.
+Problems are reported on stderr.
+</p>
+
+
+<a href="89/lily-c65bc02d.ly">
+  <img align="middle"
+       border="0"
+       src="89/lily-c65bc02d.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="override_002dnon_002dexistent_002dproperty_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#number_002dto_002dduration_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; number-to-duration.ly </a>]</td><td align="center"></td><td align="right">[<a href="#override_002dproperty_002dwrong_002dtype_002ely" title="Next section in reading order" accesskey="n" rel="next"> override-property-wrong-type.ly &gt; </a>]</td></tr>
+</table>
+<span id="override_002dnon_002dexistent_002dproperty_002ely-1"></span><h3 class="unnumberedsec">override-non-existent-property.ly</h3>
+<p><code>\override</code> warns and rejects the assignment
+if the property does not exist.
+</p>
+
+
+<a href="2b/lily-a84a0742.ly">
+  <img align="middle"
+       border="0"
+       src="2b/lily-a84a0742.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="override_002dproperty_002dwrong_002dtype_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#override_002dnon_002dexistent_002dproperty_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; override-non-existent-property.ly </a>]</td><td align="center"></td><td align="right">[<a href="#page_002dturn_002dminimum_002drest_002dlength_002ely" title="Next section in reading order" accesskey="n" rel="next"> page-turn-minimum-rest-length.ly &gt; </a>]</td></tr>
+</table>
+<span id="override_002dproperty_002dwrong_002dtype_002ely-1"></span><h3 class="unnumberedsec">override-property-wrong-type.ly</h3>
+<p><code>\override</code> warns and rejects the assignment
+if the value does not match the property&rsquo;s type predicate.
+</p>
+
+
+<a href="5c/lily-f0d9c724.ly">
+  <img align="middle"
+       border="0"
+       src="5c/lily-f0d9c724.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="page_002dturn_002dminimum_002drest_002dlength_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#override_002dproperty_002dwrong_002dtype_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; override-property-wrong-type.ly </a>]</td><td align="center"></td><td align="right">[<a href="#parser_002ddefine_002donce_002ely" title="Next section in reading order" accesskey="n" rel="next"> parser-define-once.ly &gt; </a>]</td></tr>
+</table>
+<span id="page_002dturn_002dminimum_002drest_002dlength_002ely-1"></span><h3 class="unnumberedsec">page-turn-minimum-rest-length.ly</h3>
+<p>The deprecated context property <code>minimumPageTurnLength</code>
+accesses the value of <code>pageTurnMinimumRestLength</code>.
+</p>
+
+
+<a href="22/lily-feed6c9e.ly">
+  <img align="middle"
+       border="0"
+       src="22/lily-feed6c9e.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="parser_002ddefine_002donce_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#page_002dturn_002dminimum_002drest_002dlength_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; page-turn-minimum-rest-length.ly </a>]</td><td align="center"></td><td align="right">[<a href="#parser_002dlookup_002ely" title="Next section in reading order" accesskey="n" rel="next"> parser-lookup.ly &gt; </a>]</td></tr>
+</table>
+<span id="parser_002ddefine_002donce_002ely-1"></span><h3 class="unnumberedsec">parser-define-once.ly</h3>
+<p>This is a set of tests of the Scheme function
+<code>ly:parser-define-once!</code>.  Problems are reported in the standard error
+stream.
+</p>
+
+
+<a href="1d/lily-20b511d0.ly">
+  <img align="middle"
+       border="0"
+       src="1d/lily-20b511d0.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="parser_002dlookup_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#parser_002ddefine_002donce_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; parser-define-once.ly </a>]</td><td align="center"></td><td align="right">[<a href="#proportional_002dnotation_002dduration_002das_002dmoment_002ely" title="Next section in reading order" accesskey="n" rel="next"> proportional-notation-duration-as-moment.ly &gt; </a>]</td></tr>
+</table>
+<span id="parser_002dlookup_002ely-1"></span><h3 class="unnumberedsec">parser-lookup.ly</h3>
+<p>This is a set of tests of the Scheme function
+<code>ly:parser-lookup</code>.  Problems are reported in the standard error stream.
+</p>
+
+
+<a href="12/lily-955a16b4.ly">
+  <img align="middle"
+       border="0"
+       src="12/lily-955a16b4.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="proportional_002dnotation_002dduration_002das_002dmoment_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#parser_002dlookup_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; parser-lookup.ly </a>]</td><td align="center"></td><td align="right">[<a href="#regex_002ely" title="Next section in reading order" accesskey="n" rel="next"> regex.ly &gt; </a>]</td></tr>
+</table>
+<span id="proportional_002dnotation_002dduration_002das_002dmoment_002ely-1"></span><h3 class="unnumberedsec">proportional-notation-duration-as-moment.ly</h3>
+<p>The deprecated context property
+<code>proportionalNotationDurationAsMoment</code> accesses the value of
+<code>proportionalNotationDuration</code>.
+</p>
+
+
+<a href="3e/lily-bc2cc4eb.ly">
+  <img align="middle"
+       border="0"
+       src="3e/lily-bc2cc4eb.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="regex_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#proportional_002dnotation_002dduration_002das_002dmoment_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; proportional-notation-duration-as-moment.ly </a>]</td><td align="center"></td><td align="right">[<a href="#repeat_002dstart_002dand_002dlength_002dno_002dalternatives_002ely" title="Next section in reading order" accesskey="n" rel="next"> repeat-start-and-length-no-alternatives.ly &gt; </a>]</td></tr>
+</table>
+<span id="regex_002ely-1"></span><h3 class="unnumberedsec">regex.ly</h3>
+<p>Test the behavior of regular expression
+functions.
+</p>
+
+
+<a href="d4/lily-9f151dcf.ly">
+  <img align="middle"
+       border="0"
+       src="d4/lily-9f151dcf.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="repeat_002dstart_002dand_002dlength_002dno_002dalternatives_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#regex_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; regex.ly </a>]</td><td align="center"></td><td align="right">[<a href="#repeat_002dstart_002dand_002dlength_002dwith_002dalternatives_002ely" title="Next section in reading order" accesskey="n" rel="next"> repeat-start-and-length-with-alternatives.ly &gt; </a>]</td></tr>
+</table>
+<span id="repeat_002dstart_002dand_002dlength_002dno_002dalternatives_002ely-1"></span><h3 class="unnumberedsec">repeat-start-and-length-no-alternatives.ly</h3>
+<p>This tests the calculation of music start and length for
+various kinds of repeated music without alternatives.  Problems are
+reported on stderr.
+</p>
+
+
+<a href="89/lily-d14e8400.ly">
+  <img align="middle"
+       border="0"
+       src="89/lily-d14e8400.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="repeat_002dstart_002dand_002dlength_002dwith_002dalternatives_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#repeat_002dstart_002dand_002dlength_002dno_002dalternatives_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; repeat-start-and-length-no-alternatives.ly </a>]</td><td align="center"></td><td align="right">[<a href="#rhythmic_002dlocation_002ddead_002dgrob_002ely" title="Next section in reading order" accesskey="n" rel="next"> rhythmic-location-dead-grob.ly &gt; </a>]</td></tr>
+</table>
+<span id="repeat_002dstart_002dand_002dlength_002dwith_002dalternatives_002ely-1"></span><h3 class="unnumberedsec">repeat-start-and-length-with-alternatives.ly</h3>
+<p>This tests the calculation of music start and length for
+various kinds of repeated music with alternatives.  Problems are
+reported on stderr.
+</p>
+
+
+<a href="9a/lily-71080bfa.ly">
+  <img align="middle"
+       border="0"
+       src="9a/lily-71080bfa.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="rhythmic_002dlocation_002ddead_002dgrob_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#repeat_002dstart_002dand_002dlength_002dwith_002dalternatives_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; repeat-start-and-length-with-alternatives.ly </a>]</td><td align="center"></td><td align="right">[<a href="#scheme_002derror_002dlocations_002dinclude_002dfiles_002ely" title="Next section in reading order" accesskey="n" rel="next"> scheme-error-locations-include-files.ly &gt; </a>]</td></tr>
+</table>
+<span id="rhythmic_002dlocation_002ddead_002dgrob_002ely-1"></span><h3 class="unnumberedsec">rhythmic-location-dead-grob.ly</h3>
+<p><code>grob::when</code> and <code>grob::rhythmic-location</code> also work on
+dead grobs.
+</p>
+
+
+<a href="bd/lily-de5d4e8d.ly">
+  <img align="middle"
+       border="0"
+       src="bd/lily-de5d4e8d.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="scheme_002derror_002dlocations_002dinclude_002dfiles_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#rhythmic_002dlocation_002ddead_002dgrob_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; rhythmic-location-dead-grob.ly </a>]</td><td align="center"></td><td align="right">[<a href="#scheme_002derror_002dlocations_002dincluded_002dstring_002ely" title="Next section in reading order" accesskey="n" rel="next"> scheme-error-locations-included-string.ly &gt; </a>]</td></tr>
+</table>
+<span id="scheme_002derror_002dlocations_002dinclude_002dfiles_002ely-1"></span><h3 class="unnumberedsec">scheme-error-locations-include-files.ly</h3>
+<p>In <code>-dcompile-scheme-code</code> mode, source locations
+are printed for Scheme errors, even if the faulty Scheme code
+is in an include file.
+</p>
+
+
+<a href="6a/lily-1f94fdb2.ly">
+  <img align="middle"
+       border="0"
+       src="6a/lily-1f94fdb2.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="scheme_002derror_002dlocations_002dincluded_002dstring_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#scheme_002derror_002dlocations_002dinclude_002dfiles_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; scheme-error-locations-include-files.ly </a>]</td><td align="center"></td><td align="right">[<a href="#scheme_002derror_002dlocations_002ely" title="Next section in reading order" accesskey="n" rel="next"> scheme-error-locations.ly &gt; </a>]</td></tr>
+</table>
+<span id="scheme_002derror_002dlocations_002dincluded_002dstring_002ely-1"></span><h3 class="unnumberedsec">scheme-error-locations-included-string.ly</h3>
+<p><code>-dcompile-scheme-code</code> also works with
+expressions included by <code>ly:parser-include-string</code>
+and <code>ly:parser-parse-string</code>.  This test should print
+two Scheme errors.  (However, providing error messages that
+point to the precise form that fails is not currently
+implemented for included strings of code.)
+</p>
+
+
+<a href="17/lily-f9460962.ly">
+  <img align="middle"
+       border="0"
+       src="17/lily-f9460962.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="scheme_002derror_002dlocations_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#scheme_002derror_002dlocations_002dincluded_002dstring_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; scheme-error-locations-included-string.ly </a>]</td><td align="center"></td><td align="right">[<a href="#set_002ddeprecated_002dproperty_002dspecial_002dwarning_002ely" title="Next section in reading order" accesskey="n" rel="next"> set-deprecated-property-special-warning.ly &gt; </a>]</td></tr>
+</table>
+<span id="scheme_002derror_002dlocations_002ely-1"></span><h3 class="unnumberedsec">scheme-error-locations.ly</h3>
+<p>When using the <code>-dcompile-scheme-code</code> option,
+Scheme errors point at the precise form where the error occurs
+(this is limited by the precision of the information Guile provides).
+</p>
+
+
+<a href="ce/lily-9b415503.ly">
+  <img align="middle"
+       border="0"
+       src="ce/lily-9b415503.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="set_002ddeprecated_002dproperty_002dspecial_002dwarning_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#scheme_002derror_002dlocations_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; scheme-error-locations.ly </a>]</td><td align="center"></td><td align="right">[<a href="#set_002ddeprecated_002dproperty_002dwrong_002dtype_002ely" title="Next section in reading order" accesskey="n" rel="next"> set-deprecated-property-wrong-type.ly &gt; </a>]</td></tr>
+</table>
+<span id="set_002ddeprecated_002dproperty_002dspecial_002dwarning_002ely-1"></span><h3 class="unnumberedsec">set-deprecated-property-special-warning.ly</h3>
+<p>Setting a deprecated property may issue a special warning.
+</p>
+
+
+<a href="78/lily-bbc7e52e.ly">
+  <img align="middle"
+       border="0"
+       src="78/lily-bbc7e52e.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="set_002ddeprecated_002dproperty_002dwrong_002dtype_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#set_002ddeprecated_002dproperty_002dspecial_002dwarning_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; set-deprecated-property-special-warning.ly </a>]</td><td align="center"></td><td align="right">[<a href="#set_002dnon_002dexistent_002dproperty_002dscheme_002ely" title="Next section in reading order" accesskey="n" rel="next"> set-non-existent-property-scheme.ly &gt; </a>]</td></tr>
+</table>
+<span id="set_002ddeprecated_002dproperty_002dwrong_002dtype_002ely-1"></span><h3 class="unnumberedsec">set-deprecated-property-wrong-type.ly</h3>
+<p><code>\set</code> warns and refuses to assign a value that does not
+match a deprecated property&rsquo;s type predicate.
+</p>
+
+
+<a href="d1/lily-6db4b470.ly">
+  <img align="middle"
+       border="0"
+       src="d1/lily-6db4b470.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="set_002dnon_002dexistent_002dproperty_002dscheme_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#set_002ddeprecated_002dproperty_002dwrong_002dtype_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; set-deprecated-property-wrong-type.ly </a>]</td><td align="center"></td><td align="right">[<a href="#set_002dnon_002dexistent_002dproperty_002ely" title="Next section in reading order" accesskey="n" rel="next"> set-non-existent-property.ly &gt; </a>]</td></tr>
+</table>
+<span id="set_002dnon_002dexistent_002dproperty_002dscheme_002ely-1"></span><h3 class="unnumberedsec">set-non-existent-property-scheme.ly</h3>
+<p><code>ly:context-set-property!</code> warns if the property does not
+exist.
+</p>
+
+
+<a href="0f/lily-eba5efd5.ly">
+  <img align="middle"
+       border="0"
+       src="0f/lily-eba5efd5.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="set_002dnon_002dexistent_002dproperty_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#set_002dnon_002dexistent_002dproperty_002dscheme_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; set-non-existent-property-scheme.ly </a>]</td><td align="center"></td><td align="right">[<a href="#set_002dproperty_002dwrong_002dtype_002ely" title="Next section in reading order" accesskey="n" rel="next"> set-property-wrong-type.ly &gt; </a>]</td></tr>
+</table>
+<span id="set_002dnon_002dexistent_002dproperty_002ely-1"></span><h3 class="unnumberedsec">set-non-existent-property.ly</h3>
+<p><code>\set</code> warns and rejects the assignment
+if the property does not exist.
+</p>
+
+
+<a href="24/lily-a07e343b.ly">
+  <img align="middle"
+       border="0"
+       src="24/lily-a07e343b.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="set_002dproperty_002dwrong_002dtype_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#set_002dnon_002dexistent_002dproperty_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; set-non-existent-property.ly </a>]</td><td align="center"></td><td align="right">[<a href="#start_002dand_002dlength_002ely" title="Next section in reading order" accesskey="n" rel="next"> start-and-length.ly &gt; </a>]</td></tr>
+</table>
+<span id="set_002dproperty_002dwrong_002dtype_002ely-1"></span><h3 class="unnumberedsec">set-property-wrong-type.ly</h3>
+<p><code>\set</code> warns and rejects the assignment
+if the value does not match the property&rsquo;s type predicate.
+</p>
+
+
+<a href="9d/lily-98ef3d1e.ly">
+  <img align="middle"
+       border="0"
+       src="9d/lily-98ef3d1e.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="start_002dand_002dlength_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#set_002dproperty_002dwrong_002dtype_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; set-property-wrong-type.ly </a>]</td><td align="center"></td><td align="right">[<a href="#suggest_002dconvert_002dly_002ely" title="Next section in reading order" accesskey="n" rel="next"> suggest-convert-ly.ly &gt; </a>]</td></tr>
+</table>
+<span id="start_002dand_002dlength_002ely-1"></span><h3 class="unnumberedsec">start-and-length.ly</h3>
+<p>This tests the calculation of music start and length for
+various kinds of music.  Problems are reported on stderr.
+</p>
+
+
+<a href="77/lily-b7d63f55.ly">
+  <img align="middle"
+       border="0"
+       src="77/lily-b7d63f55.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="suggest_002dconvert_002dly_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#start_002dand_002dlength_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; start-and-length.ly </a>]</td><td align="center"></td><td align="right">[<a href="#syntax_002dfunction_002dcurried_002ely" title="Next section in reading order" accesskey="n" rel="next"> syntax-function-curried.ly &gt; </a>]</td></tr>
+</table>
+<span id="suggest_002dconvert_002dly_002ely-1"></span><h3 class="unnumberedsec">suggest-convert-ly.ly</h3>
+<p>When the file&rsquo;s version statement is outdated
+and compilation fails, a message is printed to encourage use
+of <code>convert-ly</code>.
+</p>
+
+
+<a href="53/lily-f2c051f6.ly">
+  <img align="middle"
+       border="0"
+       src="53/lily-f2c051f6.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="syntax_002dfunction_002dcurried_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#suggest_002dconvert_002dly_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; suggest-convert-ly.ly </a>]</td><td align="center"></td><td align="right">[<a href="#syntax_002dfunction_002ddocstring_002ely" title="Next section in reading order" accesskey="n" rel="next"> syntax-function-docstring.ly &gt; </a>]</td></tr>
+</table>
+<span id="syntax_002dfunction_002dcurried_002ely-1"></span><h3 class="unnumberedsec">syntax-function-curried.ly</h3>
+<p>Syntax functions can use curried definitions.
+</p>
+
+
+<a href="6a/lily-77278528.ly">
+  <img align="middle"
+       border="0"
+       src="6a/lily-77278528.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="syntax_002dfunction_002ddocstring_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#syntax_002dfunction_002dcurried_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; syntax-function-curried.ly </a>]</td><td align="center"></td><td align="right">[<a href="#syntax_002dfunction_002drest_002ely" title="Next section in reading order" accesskey="n" rel="next"> syntax-function-rest.ly &gt; </a>]</td></tr>
+</table>
+<span id="syntax_002dfunction_002ddocstring_002ely-1"></span><h3 class="unnumberedsec">syntax-function-docstring.ly</h3>
+<p>Syntax functions&rsquo; docstrings are preserved (mainly for the sake
+of doc autogeneration).
+</p>
+
+
+<a href="ed/lily-ab85a3ba.ly">
+  <img align="middle"
+       border="0"
+       src="ed/lily-ab85a3ba.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="syntax_002dfunction_002drest_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#syntax_002dfunction_002ddocstring_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; syntax-function-docstring.ly </a>]</td><td align="center"></td><td align="right">[<a href="#tempo_002dwholes_002dper_002dminute_002das_002dmoment_002ely" title="Next section in reading order" accesskey="n" rel="next"> tempo-wholes-per-minute-as-moment.ly &gt; </a>]</td></tr>
+</table>
+<span id="syntax_002dfunction_002drest_002ely-1"></span><h3 class="unnumberedsec">syntax-function-rest.ly</h3>
+<p>Syntax functions can use rest arguments.
+</p>
+
+
+<a href="28/lily-3a0825df.ly">
+  <img align="middle"
+       border="0"
+       src="28/lily-3a0825df.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="tempo_002dwholes_002dper_002dminute_002das_002dmoment_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#syntax_002dfunction_002drest_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; syntax-function-rest.ly </a>]</td><td align="center"></td><td align="right">[<a href="#time_002dsignature_002dfraction_002ely" title="Next section in reading order" accesskey="n" rel="next"> time-signature-fraction.ly &gt; </a>]</td></tr>
+</table>
+<span id="tempo_002dwholes_002dper_002dminute_002das_002dmoment_002ely-1"></span><h3 class="unnumberedsec">tempo-wholes-per-minute-as-moment.ly</h3>
+<p>The deprecated context property <code>tempoWholesPerMinuteAsMoment</code>
+accesses the value of <code>tempoWholesPerMinute</code>.
+</p>
+
+
+<a href="64/lily-93155e75.ly">
+  <img align="middle"
+       border="0"
+       src="64/lily-93155e75.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="time_002dsignature_002dfraction_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#tempo_002dwholes_002dper_002dminute_002das_002dmoment_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; tempo-wholes-per-minute-as-moment.ly </a>]</td><td align="center"></td><td align="right">[<a href="#time_002dsignature_002dto_002dfraction_002ely" title="Next section in reading order" accesskey="n" rel="next"> time-signature-to-fraction.ly &gt; </a>]</td></tr>
+</table>
+<span id="time_002dsignature_002dfraction_002ely-1"></span><h3 class="unnumberedsec">time-signature-fraction.ly</h3>
+<p>The deprecated context property <code>timeSignatureFraction</code>
+accesses the value of <code>timeSignature</code>.
+</p>
+
+
+<a href="46/lily-4463a41b.ly">
+  <img align="middle"
+       border="0"
+       src="46/lily-4463a41b.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="time_002dsignature_002dto_002dfraction_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#time_002dsignature_002dfraction_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; time-signature-fraction.ly </a>]</td><td align="center"></td><td align="right">[<a href="#translator_002dduplicate_002ely" title="Next section in reading order" accesskey="n" rel="next"> translator-duplicate.ly &gt; </a>]</td></tr>
+</table>
+<span id="time_002dsignature_002dto_002dfraction_002ely-1"></span><h3 class="unnumberedsec">time-signature-to-fraction.ly</h3>
+<p>This is a set of tests of the <code>time-signature-&gt;fraction</code>
+Scheme function.  Problems are reported in the standard error stream.
+</p>
+
+
+<a href="16/lily-c880607f.ly">
+  <img align="middle"
+       border="0"
+       src="16/lily-c880607f.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="translator_002dduplicate_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#time_002dsignature_002dto_002dfraction_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; time-signature-to-fraction.ly </a>]</td><td align="center"></td><td align="right">[<a href="#tsig_002dabbr_002dexpand_002ely" title="Next section in reading order" accesskey="n" rel="next"> tsig-abbr-expand.ly &gt; </a>]</td></tr>
+</table>
+<span id="translator_002dduplicate_002ely-1"></span><h3 class="unnumberedsec">translator-duplicate.ly</h3>
+<p>Only one instance of a translator can exist in a context.
+Duplicates are eliminated.
+</p>
+
+
+<a href="4c/lily-3143e96b.ly">
+  <img align="middle"
+       border="0"
+       src="4c/lily-3143e96b.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="tsig_002dabbr_002dexpand_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#translator_002dduplicate_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; translator-duplicate.ly </a>]</td><td align="center"></td><td align="right">[<a href="#tuplet_002dspanner_002dduration_002das_002dmoment_002ely" title="Next section in reading order" accesskey="n" rel="next"> tuplet-spanner-duration-as-moment.ly &gt; </a>]</td></tr>
+</table>
+<span id="tsig_002dabbr_002dexpand_002ely-1"></span><h3 class="unnumberedsec">tsig-abbr-expand.ly</h3>
+<p>This tests the internal function tsig-abbr-expand.  Problems are
+reported on stderr.
+</p>
+
+
+<a href="3c/lily-db9ffd4b.ly">
+  <img align="middle"
+       border="0"
+       src="3c/lily-db9ffd4b.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="tuplet_002dspanner_002dduration_002das_002dmoment_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#tsig_002dabbr_002dexpand_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; tsig-abbr-expand.ly </a>]</td><td align="center"></td><td align="right">[<a href="#unset_002dnon_002dexistent_002dproperty_002dscheme_002ely" title="Next section in reading order" accesskey="n" rel="next"> unset-non-existent-property-scheme.ly &gt; </a>]</td></tr>
+</table>
+<span id="tuplet_002dspanner_002dduration_002das_002dmoment_002ely-1"></span><h3 class="unnumberedsec">tuplet-spanner-duration-as-moment.ly</h3>
+<p>The deprecated context property
+<code>tupletSpannerDurationAsMoment</code> accesses the value of
+<code>tupletSpannerDuration</code>.
+</p>
+
+
+<a href="72/lily-11471d95.ly">
+  <img align="middle"
+       border="0"
+       src="72/lily-11471d95.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="unset_002dnon_002dexistent_002dproperty_002dscheme_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#tuplet_002dspanner_002dduration_002das_002dmoment_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; tuplet-spanner-duration-as-moment.ly </a>]</td><td align="center"></td><td align="right">[<a href="#unset_002dnon_002dexistent_002dproperty_002ely" title="Next section in reading order" accesskey="n" rel="next"> unset-non-existent-property.ly &gt; </a>]</td></tr>
+</table>
+<span id="unset_002dnon_002dexistent_002dproperty_002dscheme_002ely-1"></span><h3 class="unnumberedsec">unset-non-existent-property-scheme.ly</h3>
+<p><code>ly:context-unset-property</code> warns if the property does not
+exist.
+</p>
+
+
+<a href="19/lily-f6efa66c.ly">
+  <img align="middle"
+       border="0"
+       src="19/lily-f6efa66c.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="unset_002dnon_002dexistent_002dproperty_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#unset_002dnon_002dexistent_002dproperty_002dscheme_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; unset-non-existent-property-scheme.ly </a>]</td><td align="center"></td><td align="right">[<a href="#unspecified_002dfrom_002dcallback_002ely" title="Next section in reading order" accesskey="n" rel="next"> unspecified-from-callback.ly &gt; </a>]</td></tr>
+</table>
+<span id="unset_002dnon_002dexistent_002dproperty_002ely-1"></span><h3 class="unnumberedsec">unset-non-existent-property.ly</h3>
+<p><code>\unset</code> warns if the property does not exist.
+</p>
+
+
+<a href="88/lily-20a0d15c.ly">
+  <img align="middle"
+       border="0"
+       src="88/lily-20a0d15c.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="unspecified_002dfrom_002dcallback_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#unset_002dnon_002dexistent_002dproperty_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; unset-non-existent-property.ly </a>]</td><td align="center"></td><td align="right">[<a href="#version_002dincomplete_002dbad_002ely" title="Next section in reading order" accesskey="n" rel="next"> version-incomplete-bad.ly &gt; </a>]</td></tr>
+</table>
+<span id="unspecified_002dfrom_002dcallback_002ely-1"></span><h3 class="unnumberedsec">unspecified-from-callback.ly</h3>
+<p>Callbacks returning <code>*unspecified*</code> are only
+run once, as all callbacks.
+</p>
+
+
+<a href="c1/lily-a0d02084.ly">
+  <img align="middle"
+       border="0"
+       src="c1/lily-a0d02084.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="version_002dincomplete_002dbad_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#unspecified_002dfrom_002dcallback_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; unspecified-from-callback.ly </a>]</td><td align="center"></td><td align="right">[<a href="#version_002dincomplete_002dgood_002ely" title="Next section in reading order" accesskey="n" rel="next"> version-incomplete-good.ly &gt; </a>]</td></tr>
+</table>
+<span id="version_002dincomplete_002dbad_002ely-1"></span><h3 class="unnumberedsec">version-incomplete-bad.ly</h3>
+<p>An incomplete version statement, with the third number omitted, is
+rejected if the second number is odd.
+</p>
+
+
+<a href="a3/lily-71ed621f.ly">
+  <img align="middle"
+       border="0"
+       src="a3/lily-71ed621f.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="version_002dincomplete_002dgood_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#version_002dincomplete_002dbad_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; version-incomplete-bad.ly </a>]</td><td align="center"></td><td align="right">[<a href="#version_002dinvalid_002ely" title="Next section in reading order" accesskey="n" rel="next"> version-invalid.ly &gt; </a>]</td></tr>
+</table>
+<span id="version_002dincomplete_002dgood_002ely-1"></span><h3 class="unnumberedsec">version-incomplete-good.ly</h3>
+<p>An incomplete version statement, with the third number omitted,
+is accepted if the second number is even.  This also tests the message
+suggesting <code>convert-ly</code> in such cases.
+</p>
+
+
+<a href="97/lily-1a0c82aa.ly">
+  <img align="middle"
+       border="0"
+       src="97/lily-1a0c82aa.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="version_002dinvalid_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#version_002dincomplete_002dgood_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; version-incomplete-good.ly </a>]</td><td align="center"></td><td align="right">[<a href="#version_002doutdated_002derror_002ely" title="Next section in reading order" accesskey="n" rel="next"> version-outdated-error.ly &gt; </a>]</td></tr>
+</table>
+<span id="version_002dinvalid_002ely-1"></span><h3 class="unnumberedsec">version-invalid.ly</h3>
+<p>An invalid <code>\version</code> statement should result in an error
+and a nonzero return code.
+</p>
+
+
+<a href="c1/lily-bcf1c10c.ly">
+  <img align="middle"
+       border="0"
+       src="c1/lily-bcf1c10c.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="version_002doutdated_002derror_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#version_002dinvalid_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; version-invalid.ly </a>]</td><td align="center"></td><td align="right">[<a href="#void_002dfunction_002dempty_002ely" title="Next section in reading order" accesskey="n" rel="next"> void-function-empty.ly &gt; </a>]</td></tr>
+</table>
+<span id="version_002doutdated_002derror_002ely-1"></span><h3 class="unnumberedsec">version-outdated-error.ly</h3>
+<p>A <code>\version</code> statement newer than the running
+version of LilyPond should result in an error and a nonzero return
+code.
+</p>
+
+
+<a href="ea/lily-faf4d443.ly">
+  <img align="middle"
+       border="0"
+       src="ea/lily-faf4d443.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="void_002dfunction_002dempty_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#version_002doutdated_002derror_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; version-outdated-error.ly </a>]</td><td align="center"></td><td align="right">[<a href="#volta_002dspanner_002dduration_002das_002dmoment_002ely" title="Next section in reading order" accesskey="n" rel="next"> volta-spanner-duration-as-moment.ly &gt; </a>]</td></tr>
+</table>
+<span id="void_002dfunction_002dempty_002ely-1"></span><h3 class="unnumberedsec">void-function-empty.ly</h3>
+<p>A void function&rsquo;s body can be empty.
+</p>
+
+
+<a href="ab/lily-9a2a8549.ly">
+  <img align="middle"
+       border="0"
+       src="ab/lily-9a2a8549.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="volta_002dspanner_002dduration_002das_002dmoment_002ely">
+<table class="nav_table">
+<tr><td align="left">[<a href="#Regression-test-cases" title="Beginning of this chapter or previous chapter"> &lt;&lt;  </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][Contents]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#void_002dfunction_002dempty_002ely" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; void-function-empty.ly </a>]</td><td align="center"></td><td align="right">[  &gt; ]</td></tr>
+</table>
+<span id="volta_002dspanner_002dduration_002das_002dmoment_002ely-1"></span><h3 class="unnumberedsec">volta-spanner-duration-as-moment.ly</h3>
+<p>The deprecated context property <code>voltaSpannerDurationAsMoment</code>
+accesses the value of internal property <code>voltaBracketMusicalLength</code>.
+</p>
+
+
+<a href="c1/lily-18002006.ly">
+  <img align="middle"
+       border="0"
+       src="c1/lily-18002006.png"
+       alt="[image of music]"></a>
+
+
+
+</div>
+</div>
+</div>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../../../Documentation/web/manuals.html" title="Documentation Index">
+    &lt;&lt; Back to Documentation Index
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="collated-files.html#top" title="Cover (top) of document">
+    Other regression tests  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Introduction" href="collated-files.html#Introduction">Introduction</a></li>
+  <li class="toc_current"><a id="toc-Regression-test-cases" href="collated-files.html#Regression-test-cases">Regression test cases</a>
+  <ul class="no-bullet">
+    <li><a id="toc-alternative_002dtrailing_002dvar_002dsimultaneous_002ely-1" href="collated-files.html#alternative_002dtrailing_002dvar_002dsimultaneous_002ely">alternative-trailing-var-simultaneous.ly</a></li>
+    <li><a id="toc-alternative_002dvar_002dsimultaneous_002ely-1" href="collated-files.html#alternative_002dvar_002dsimultaneous_002ely">alternative-var-simultaneous.ly</a></li>
+    <li><a id="toc-bar_002dcheck_002dsynchronize_002ely-1" href="collated-files.html#bar_002dcheck_002dsynchronize_002ely">bar-check-synchronize.ly</a></li>
+    <li><a id="toc-base_002dmoment_002ely-1" href="collated-files.html#base_002dmoment_002ely">base-moment.ly</a></li>
+    <li><a id="toc-beam_002dexceptions_002dalternating_002ely-1" href="collated-files.html#beam_002dexceptions_002dalternating_002ely">beam-exceptions-alternating.ly</a></li>
+    <li><a id="toc-beam_002dexceptions_002ely-1" href="collated-files.html#beam_002dexceptions_002ely">beam-exceptions.ly</a></li>
+    <li><a id="toc-beat_002dbase_002dalternating_002ely-1" href="collated-files.html#beat_002dbase_002dalternating_002ely">beat-base-alternating.ly</a></li>
+    <li><a id="toc-beat_002dbase_002ely-1" href="collated-files.html#beat_002dbase_002ely">beat-base.ly</a></li>
+    <li><a id="toc-beat_002dstructure_002dalternating_002ely-1" href="collated-files.html#beat_002dstructure_002dalternating_002ely">beat-structure-alternating.ly</a></li>
+    <li><a id="toc-beat_002dstructure_002dsenza_002dmisura_002ely-1" href="collated-files.html#beat_002dstructure_002dsenza_002dmisura_002ely">beat-structure-senza-misura.ly</a></li>
+    <li><a id="toc-beat_002dstructure_002ely-1" href="collated-files.html#beat_002dstructure_002ely">beat-structure.ly</a></li>
+    <li><a id="toc-binary_002dsearch_002ely-1" href="collated-files.html#binary_002dsearch_002ely">binary-search.ly</a></li>
+    <li><a id="toc-bookmark_002dencoding_002ely-1" href="collated-files.html#bookmark_002dencoding_002ely">bookmark-encoding.ly</a></li>
+    <li><a id="toc-calc_002dmeasure_002dlength_002ely-1" href="collated-files.html#calc_002dmeasure_002dlength_002ely">calc-measure-length.ly</a></li>
+    <li><a id="toc-calc_002dsubmeasure_002dstructure_002dalternating_002ely-1" href="collated-files.html#calc_002dsubmeasure_002dstructure_002dalternating_002ely">calc-submeasure-structure-alternating.ly</a></li>
+    <li><a id="toc-calc_002dsubmeasure_002dstructure_002ely-1" href="collated-files.html#calc_002dsubmeasure_002dstructure_002ely">calc-submeasure-structure.ly</a></li>
+    <li><a id="toc-calculate_002dcompound_002dbeat_002dbase_002ely-1" href="collated-files.html#calculate_002dcompound_002dbeat_002dbase_002ely">calculate-compound-beat-base.ly</a></li>
+    <li><a id="toc-calculate_002dcompound_002dbeat_002dgrouping_002ely-1" href="collated-files.html#calculate_002dcompound_002dbeat_002dgrouping_002ely">calculate-compound-beat-grouping.ly</a></li>
+    <li><a id="toc-calculate_002dcompound_002dmeasure_002dlength_002ely-1" href="collated-files.html#calculate_002dcompound_002dmeasure_002dlength_002ely">calculate-compound-measure-length.ly</a></li>
+    <li><a id="toc-completion_002dunit_002das_002dmoment_002ely-1" href="collated-files.html#completion_002dunit_002das_002dmoment_002ely">completion-unit-as-moment.ly</a></li>
+    <li><a id="toc-context_002dproperty_002dcheck_002ely-1" href="collated-files.html#context_002dproperty_002dcheck_002ely">context-property-check.ly</a></li>
+    <li><a id="toc-deprecation_002dwarning_002ely-1" href="collated-files.html#deprecation_002dwarning_002ely">deprecation-warning.ly</a></li>
+    <li><a id="toc-display_002dlily_002dtests_002ely-1" href="collated-files.html#display_002dlily_002dtests_002ely">display-lily-tests.ly</a></li>
+    <li><a id="toc-display_002dscheme_002dwith_002dpartial_002dmarkup_002ely-1" href="collated-files.html#display_002dscheme_002dwith_002dpartial_002dmarkup_002ely">display-scheme-with-partial-markup.ly</a></li>
+    <li><a id="toc-embed_002dsource_002dcode_002dinclude_002dmultiple_002dtimes_002ely-1" href="collated-files.html#embed_002dsource_002dcode_002dinclude_002dmultiple_002dtimes_002ely">embed-source-code-include-multiple-times.ly</a></li>
+    <li><a id="toc-embed_002dsource_002dcode_002dorder_002ely-1" href="collated-files.html#embed_002dsource_002dcode_002dorder_002ely">embed-source-code-order.ly</a></li>
+    <li><a id="toc-embed_002dsource_002dcode_002ely-1" href="collated-files.html#embed_002dsource_002dcode_002ely">embed-source-code.ly</a></li>
+    <li><a id="toc-engraver_002dorder_002ely-1" href="collated-files.html#engraver_002dorder_002ely">engraver-order.ly</a></li>
+    <li><a id="toc-get_002ddeprecated_002dproperty_002dspecial_002dwarning_002ely-1" href="collated-files.html#get_002ddeprecated_002dproperty_002dspecial_002dwarning_002ely">get-deprecated-property-special-warning.ly</a></li>
+    <li><a id="toc-grace_002dstart_002dand_002dlength_002ely-1" href="collated-files.html#grace_002dstart_002dand_002dlength_002ely">grace-start-and-length.ly</a></li>
+    <li><a id="toc-gregorian_002ddeprecation_002ely-1" href="collated-files.html#gregorian_002ddeprecation_002ely">gregorian-deprecation.ly</a></li>
+    <li><a id="toc-grid_002dinterval_002das_002dmoment_002ely-1" href="collated-files.html#grid_002dinterval_002das_002dmoment_002ely">grid-interval-as-moment.ly</a></li>
+    <li><a id="toc-grob_002darray_002dlist_002ely-1" href="collated-files.html#grob_002darray_002dlist_002ely">grob-array-list.ly</a></li>
+    <li><a id="toc-lilypond_002dversion_002doutdated_002ely-1" href="collated-files.html#lilypond_002dversion_002doutdated_002ely">lilypond-version-outdated.ly</a></li>
+    <li><a id="toc-lookup_002dmodule_002dvariable_002ely-1" href="collated-files.html#lookup_002dmodule_002dvariable_002ely">lookup-module-variable.ly</a></li>
+    <li><a id="toc-markup_002dto_002dstring_002ely-1" href="collated-files.html#markup_002dto_002dstring_002ely">markup-to-string.ly</a></li>
+    <li><a id="toc-markup_002dwith_002drelative_002ddir_002ely-1" href="collated-files.html#markup_002dwith_002drelative_002ddir_002ely">markup-with-relative-dir.ly</a></li>
+    <li><a id="toc-measure_002dlength_002das_002dmoment_002ely-1" href="collated-files.html#measure_002dlength_002das_002dmoment_002ely">measure-length-as-moment.ly</a></li>
+    <li><a id="toc-minimum_002drepeat_002dlength_002dfor_002dpage_002dturn_002ely-1" href="collated-files.html#minimum_002drepeat_002dlength_002dfor_002dpage_002dturn_002ely">minimum-repeat-length-for-page-turn.ly</a></li>
+    <li><a id="toc-moment_002dmod_002ely-1" href="collated-files.html#moment_002dmod_002ely">moment-mod.ly</a></li>
+    <li><a id="toc-number_002dto_002dduration_002ely-1" href="collated-files.html#number_002dto_002dduration_002ely">number-to-duration.ly</a></li>
+    <li><a id="toc-override_002dnon_002dexistent_002dproperty_002ely-1" href="collated-files.html#override_002dnon_002dexistent_002dproperty_002ely">override-non-existent-property.ly</a></li>
+    <li><a id="toc-override_002dproperty_002dwrong_002dtype_002ely-1" href="collated-files.html#override_002dproperty_002dwrong_002dtype_002ely">override-property-wrong-type.ly</a></li>
+    <li><a id="toc-page_002dturn_002dminimum_002drest_002dlength_002ely-1" href="collated-files.html#page_002dturn_002dminimum_002drest_002dlength_002ely">page-turn-minimum-rest-length.ly</a></li>
+    <li><a id="toc-parser_002ddefine_002donce_002ely-1" href="collated-files.html#parser_002ddefine_002donce_002ely">parser-define-once.ly</a></li>
+    <li><a id="toc-parser_002dlookup_002ely-1" href="collated-files.html#parser_002dlookup_002ely">parser-lookup.ly</a></li>
+    <li><a id="toc-proportional_002dnotation_002dduration_002das_002dmoment_002ely-1" href="collated-files.html#proportional_002dnotation_002dduration_002das_002dmoment_002ely">proportional-notation-duration-as-moment.ly</a></li>
+    <li><a id="toc-regex_002ely-1" href="collated-files.html#regex_002ely">regex.ly</a></li>
+    <li><a id="toc-repeat_002dstart_002dand_002dlength_002dno_002dalternatives_002ely-1" href="collated-files.html#repeat_002dstart_002dand_002dlength_002dno_002dalternatives_002ely">repeat-start-and-length-no-alternatives.ly</a></li>
+    <li><a id="toc-repeat_002dstart_002dand_002dlength_002dwith_002dalternatives_002ely-1" href="collated-files.html#repeat_002dstart_002dand_002dlength_002dwith_002dalternatives_002ely">repeat-start-and-length-with-alternatives.ly</a></li>
+    <li><a id="toc-rhythmic_002dlocation_002ddead_002dgrob_002ely-1" href="collated-files.html#rhythmic_002dlocation_002ddead_002dgrob_002ely">rhythmic-location-dead-grob.ly</a></li>
+    <li><a id="toc-scheme_002derror_002dlocations_002dinclude_002dfiles_002ely-1" href="collated-files.html#scheme_002derror_002dlocations_002dinclude_002dfiles_002ely">scheme-error-locations-include-files.ly</a></li>
+    <li><a id="toc-scheme_002derror_002dlocations_002dincluded_002dstring_002ely-1" href="collated-files.html#scheme_002derror_002dlocations_002dincluded_002dstring_002ely">scheme-error-locations-included-string.ly</a></li>
+    <li><a id="toc-scheme_002derror_002dlocations_002ely-1" href="collated-files.html#scheme_002derror_002dlocations_002ely">scheme-error-locations.ly</a></li>
+    <li><a id="toc-set_002ddeprecated_002dproperty_002dspecial_002dwarning_002ely-1" href="collated-files.html#set_002ddeprecated_002dproperty_002dspecial_002dwarning_002ely">set-deprecated-property-special-warning.ly</a></li>
+    <li><a id="toc-set_002ddeprecated_002dproperty_002dwrong_002dtype_002ely-1" href="collated-files.html#set_002ddeprecated_002dproperty_002dwrong_002dtype_002ely">set-deprecated-property-wrong-type.ly</a></li>
+    <li><a id="toc-set_002dnon_002dexistent_002dproperty_002dscheme_002ely-1" href="collated-files.html#set_002dnon_002dexistent_002dproperty_002dscheme_002ely">set-non-existent-property-scheme.ly</a></li>
+    <li><a id="toc-set_002dnon_002dexistent_002dproperty_002ely-1" href="collated-files.html#set_002dnon_002dexistent_002dproperty_002ely">set-non-existent-property.ly</a></li>
+    <li><a id="toc-set_002dproperty_002dwrong_002dtype_002ely-1" href="collated-files.html#set_002dproperty_002dwrong_002dtype_002ely">set-property-wrong-type.ly</a></li>
+    <li><a id="toc-start_002dand_002dlength_002ely-1" href="collated-files.html#start_002dand_002dlength_002ely">start-and-length.ly</a></li>
+    <li><a id="toc-suggest_002dconvert_002dly_002ely-1" href="collated-files.html#suggest_002dconvert_002dly_002ely">suggest-convert-ly.ly</a></li>
+    <li><a id="toc-syntax_002dfunction_002dcurried_002ely-1" href="collated-files.html#syntax_002dfunction_002dcurried_002ely">syntax-function-curried.ly</a></li>
+    <li><a id="toc-syntax_002dfunction_002ddocstring_002ely-1" href="collated-files.html#syntax_002dfunction_002ddocstring_002ely">syntax-function-docstring.ly</a></li>
+    <li><a id="toc-syntax_002dfunction_002drest_002ely-1" href="collated-files.html#syntax_002dfunction_002drest_002ely">syntax-function-rest.ly</a></li>
+    <li><a id="toc-tempo_002dwholes_002dper_002dminute_002das_002dmoment_002ely-1" href="collated-files.html#tempo_002dwholes_002dper_002dminute_002das_002dmoment_002ely">tempo-wholes-per-minute-as-moment.ly</a></li>
+    <li><a id="toc-time_002dsignature_002dfraction_002ely-1" href="collated-files.html#time_002dsignature_002dfraction_002ely">time-signature-fraction.ly</a></li>
+    <li><a id="toc-time_002dsignature_002dto_002dfraction_002ely-1" href="collated-files.html#time_002dsignature_002dto_002dfraction_002ely">time-signature-to-fraction.ly</a></li>
+    <li><a id="toc-translator_002dduplicate_002ely-1" href="collated-files.html#translator_002dduplicate_002ely">translator-duplicate.ly</a></li>
+    <li><a id="toc-tsig_002dabbr_002dexpand_002ely-1" href="collated-files.html#tsig_002dabbr_002dexpand_002ely">tsig-abbr-expand.ly</a></li>
+    <li><a id="toc-tuplet_002dspanner_002dduration_002das_002dmoment_002ely-1" href="collated-files.html#tuplet_002dspanner_002dduration_002das_002dmoment_002ely">tuplet-spanner-duration-as-moment.ly</a></li>
+    <li><a id="toc-unset_002dnon_002dexistent_002dproperty_002dscheme_002ely-1" href="collated-files.html#unset_002dnon_002dexistent_002dproperty_002dscheme_002ely">unset-non-existent-property-scheme.ly</a></li>
+    <li><a id="toc-unset_002dnon_002dexistent_002dproperty_002ely-1" href="collated-files.html#unset_002dnon_002dexistent_002dproperty_002ely">unset-non-existent-property.ly</a></li>
+    <li><a id="toc-unspecified_002dfrom_002dcallback_002ely-1" href="collated-files.html#unspecified_002dfrom_002dcallback_002ely">unspecified-from-callback.ly</a></li>
+    <li><a id="toc-version_002dincomplete_002dbad_002ely-1" href="collated-files.html#version_002dincomplete_002dbad_002ely">version-incomplete-bad.ly</a></li>
+    <li><a id="toc-version_002dincomplete_002dgood_002ely-1" href="collated-files.html#version_002dincomplete_002dgood_002ely">version-incomplete-good.ly</a></li>
+    <li><a id="toc-version_002dinvalid_002ely-1" href="collated-files.html#version_002dinvalid_002ely">version-invalid.ly</a></li>
+    <li><a id="toc-version_002doutdated_002derror_002ely-1" href="collated-files.html#version_002doutdated_002derror_002ely">version-outdated-error.ly</a></li>
+    <li><a id="toc-void_002dfunction_002dempty_002ely-1" href="collated-files.html#void_002dfunction_002dempty_002ely">void-function-empty.ly</a></li>
+    <li class="toc_current"><a id="toc-volta_002dspanner_002dduration_002das_002dmoment_002ely-1" href="collated-files.html#volta_002dspanner_002dduration_002das_002dmoment_002ely">volta-spanner-duration-as-moment.ly</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: FILL-IN-HEAD-COMMITTISH
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google Search">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Search">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1999-2026 bei den Autoren.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+Die Übersetzung der folgenden Lizenzanmerkung ist zur Orientierung
+für Leser, die nicht Englisch sprechen. Im rechtlichen Sinne ist aber
+nur die englische Version gültig.
+
+Es ist erlaubt, dieses Dokument unter den Bedingungen der
+GNU Free Documentation Lizenz (Version 1.1 oder
+spätere, von der Free Software Foundation publizierte Versionen, ohne
+invariante Abschnitte),
+zu kopieren, zu verbreiten und/oder
+zu verändern. Eine Kopie der Lizenz ist im Abschnitt "GNU
+Free Documentation License" angefügt.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>A.5.2 SATB-Partitur und automatischer Klavierauszug (LilyPond Handbuch zum Lernen)</title>
+
+<meta name="description" content="A.5.2 SATB-Partitur und automatischer Klavierauszug (LilyPond Handbuch zum Lernen)">
+<meta name="keywords" content="A.5.2 SATB-Partitur und automatischer Klavierauszug (LilyPond Handbuch zum Lernen)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.de.html" rel="start" title="LilyPond &ndash; Learning Manual">
+<link href="index-of-commands-and-concepts.de.html" rel="index" title="Appendix C Register">
+<link href="learning_toc.de.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="vocal-ensembles-templates.de.html" rel="up" title="A.5 Vokalensemble">
+<link href="satb-with-aligned-contexts.de.html" rel="next" title="A.5.3 SATB mit daran ausgerichteten Kontexten">
+<link href="satb-vocal-score.de.html" rel="prev" title="A.5.1 SATB-Partitur">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="de" class="learning">
+<div id="main">
+<div class="appendixsubsec" id="satb-vocal-score-and-automatic-piano-reduction">
+<table class="nav_table">
+<tr><td align="left">[<a href="templates.de.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Vorlagen </a>]</td><td align="center">[<a href="index.de.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.de.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.de.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="gnu-free-documentation-license.de.html" title="Next chapter"> GNU Free Documentation License &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="satb-vocal-score.de.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; SATB-Partitur </a>]</td><td align="center">[<a href="vocal-ensembles-templates.de.html" title="Up section" accesskey="u" rel="up">  Up: Vokalensemble </a>]</td><td align="right">[<a href="satb-with-aligned-contexts.de.html" title="Next section in reading order" accesskey="n" rel="next"> SATB mit daran ausgerichteten Kontexten &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="SATB_002dPartitur-und-automatischer-Klavierauszug"></span><h4 class="appendixsubsec">A.5.2 SATB-Partitur und automatischer Klavierauszug</h4>
+
+
+<p>In diesem Beispiel wird ein automatischer Klavierauszug zu der
+Chorpartitur hinzugefügt. Das zeigt eine der Stärken von LilyPond
+&ndash; man kann eine Variable mehr als einmal benutzen. Wenn Sie
+irgendeine Änderung an einer Chorstimme vornehmen, (etwa
+tenorMusic), verändert sich auch der Klavierauszug entsprechend.
+</p>
+
+
+<blockquote>
+<pre class="verbatim"><span class="k">\paper</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-PaperVariable">top-system-spacing</span><span class="p">.</span><span class="nb nb-PaperVariable">basic-distance</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">10</span>
+<span class="w">  </span><span class="nb nb-PaperVariable">score-system-spacing</span><span class="p">.</span><span class="nb nb-PaperVariable">basic-distance</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">20</span>
+<span class="w">  </span><span class="nb nb-PaperVariable">system-system-spacing</span><span class="p">.</span><span class="nb nb-PaperVariable">basic-distance</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">20</span>
+<span class="w">  </span><span class="nb nb-PaperVariable">last-bottom-spacing</span><span class="p">.</span><span class="nb nb-PaperVariable">basic-distance</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">10</span>
+<span class="p">}</span>
+
+<span class="n n-Lvalue">global</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="nb nb-Scale">\major</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\time</span><span class="w"> </span><span class="m m-Fraction">4/4</span>
+<span class="p">}</span>
+
+<span class="n n-Lvalue">sopMusic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">8</span><span class="nb nb-Articulation">[(</span><span class="w"> </span><span class=" -Pitch">b</span><span class="nb nb-Articulation">)]</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">4</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">sopWords</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">\lyricmode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>hi<span class="w"> </span>hi<span class="w"> </span>hi<span class="w"> </span>hi
+<span class="p">}</span>
+
+<span class="n n-Lvalue">altoMusic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">e&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">e</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">altoWords</span><span class="w"> </span><span class="p">=</span><span class="k">\lyricmode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>ha<span class="w"> </span>ha<span class="w"> </span>ha<span class="w"> </span>ha
+<span class="p">}</span>
+
+<span class="n n-Lvalue">tenorMusic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">g</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">g</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">tenorWords</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">\lyricmode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>hu<span class="w"> </span>hu<span class="w"> </span>hu<span class="w"> </span>hu
+<span class="p">}</span>
+
+<span class="n n-Lvalue">bassMusic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">c</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">bassWords</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">\lyricmode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>ho<span class="w"> </span>ho<span class="w"> </span>ho<span class="w"> </span>ho
+<span class="p">}</span>
+
+<span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">ChoirStaff</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">      </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;sopranos&quot;</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">% This is needed for lyrics above a staff</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">VerticalAxisGroup</span><span class="p">.</span><span class="nb nb-GrobProperty">staff-affinity</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="nv">DOWN</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;women&quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;sopranos&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicCommand">\voiceOne</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n n-BackslashReference">\global</span><span class="w"> </span><span class="n n-BackslashReference">\sopMusic</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;altos&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicCommand">\voiceTwo</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n n-BackslashReference">\global</span><span class="w"> </span><span class="n n-BackslashReference">\altoMusic</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">&gt;&gt;</span>
+<span class="w">      </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;altos&quot;</span>
+
+<span class="w">      </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;tenors&quot;</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">% This is needed for lyrics above a staff</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">VerticalAxisGroup</span><span class="p">.</span><span class="nb nb-GrobProperty">staff-affinity</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="nv">DOWN</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;men&quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">bass</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;tenors&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicCommand">\voiceOne</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n n-BackslashReference">\global</span><span class="w"> </span><span class="n n-BackslashReference">\tenorMusic</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;basses&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicCommand">\voiceTwo</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n n-BackslashReference">\global</span><span class="w"> </span><span class="n n-BackslashReference">\bassMusic</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">&gt;&gt;</span>
+<span class="w">      </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;basses&quot;</span>
+
+<span class="w">      </span><span class="k">\context</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;sopranos&quot;</span><span class="w"> </span><span class="k">\lyricsto</span><span class="w"> </span><span class="s">&quot;sopranos&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\sopWords</span>
+<span class="w">      </span><span class="k">\context</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;altos&quot;</span><span class="w"> </span><span class="k">\lyricsto</span><span class="w"> </span><span class="s">&quot;altos&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\altoWords</span>
+<span class="w">      </span><span class="k">\context</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;tenors&quot;</span><span class="w"> </span><span class="k">\lyricsto</span><span class="w"> </span><span class="s">&quot;tenors&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\tenorWords</span>
+<span class="w">      </span><span class="k">\context</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;basses&quot;</span><span class="w"> </span><span class="k">\lyricsto</span><span class="w"> </span><span class="s">&quot;basses&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\bassWords</span>
+<span class="w">    </span><span class="p">&gt;&gt;</span>
+
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">PianoStaff</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">      </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">printPartCombineTexts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="no">#f</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\partCombine</span>
+<span class="w">        </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n n-BackslashReference">\global</span><span class="w"> </span><span class="n n-BackslashReference">\sopMusic</span><span class="w"> </span><span class="p">&gt;&gt;</span>
+<span class="w">        </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n n-BackslashReference">\global</span><span class="w"> </span><span class="n n-BackslashReference">\altoMusic</span><span class="w"> </span><span class="p">&gt;&gt;</span>
+<span class="w">      </span><span class="p">&gt;&gt;</span>
+<span class="w">      </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">bass</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">printPartCombineTexts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="no">#f</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\partCombine</span>
+<span class="w">        </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n n-BackslashReference">\global</span><span class="w"> </span><span class="n n-BackslashReference">\tenorMusic</span><span class="w"> </span><span class="p">&gt;&gt;</span>
+<span class="w">        </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n n-BackslashReference">\global</span><span class="w"> </span><span class="n n-BackslashReference">\bassMusic</span><span class="w"> </span><span class="p">&gt;&gt;</span>
+<span class="w">      </span><span class="p">&gt;&gt;</span>
+<span class="w">    </span><span class="p">&gt;&gt;</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../a2/lily-edb1f109.ly">
+  <img align="middle"
+       border="0"
+       src="../a2/lily-edb1f109.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="templates.de.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Vorlagen </a>]</td><td align="center">[<a href="index.de.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.de.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.de.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="gnu-free-documentation-license.de.html" title="Next chapter"> GNU Free Documentation License &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="satb-vocal-score.de.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; SATB-Partitur </a>]</td><td align="center">[<a href="vocal-ensembles-templates.de.html" title="Up section" accesskey="u" rel="up">  Up: Vokalensemble </a>]</td><td align="right">[<a href="satb-with-aligned-contexts.de.html" title="Next section in reading order" accesskey="n" rel="next"> SATB mit daran ausgerichteten Kontexten &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="satb-vocal-score-and-automatic-piano-reduction.html">English</a>, <a href="satb-vocal-score-and-automatic-piano-reduction.ca.html">Català</a>, <a href="satb-vocal-score-and-automatic-piano-reduction.es.html">Español</a>, <a href="satb-vocal-score-and-automatic-piano-reduction.fr.html">Français</a>, <a href="satb-vocal-score-and-automatic-piano-reduction.it.html">Italiano</a>, <a href="satb-vocal-score-and-automatic-piano-reduction.ja.html">日本語</a>, <a href="satb-vocal-score-and-automatic-piano-reduction.zh.html">中文</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.de.html" title="Documentation Index">
+    &lt;&lt; Zur Dokumentationsübersicht
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.de.html#top" title="Cover (top) of document">
+    LilyPond Handbuch zum Lernen  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Installing" href="installing.de.html">1 Installing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Graphical-setup" href="graphical-setup.de.html">1.1 Graphical setup</a></li>
+    <li><a id="toc-Command-line-setup" href="command-line-setup.de.html">1.2 Command line setup</a></li>
+  </ul></li>
+  <li><a id="toc-Tutorium" href="tutorial.de.html">2 Tutorium</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Eine-Quelldatei-ubersetzen" href="compiling-a-file.de.html">2.1 Eine Quelldatei übersetzen</a></li>
+    <li><a id="toc-Wie-werden-Eingabe_002dDateien-geschrieben" href="how-to-write-input-files.de.html">2.2 Wie werden Eingabe-Dateien geschrieben</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Einfache-Notation" href="simple-notation.de.html">2.2.1 Einfache Notation</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Tonhohen" href="pitches.de.html">Tonhöhen</a></li>
+        <li><a id="toc-Tondauern-_0028Rhythmen_0029" href="durations-_0028rhythms_0029.de.html">Tondauern (Rhythmen)</a></li>
+        <li><a id="toc-Pausen" href="rests.de.html">Pausen</a></li>
+        <li><a id="toc-Taktartangabe" href="time-signature.de.html">Taktartangabe</a></li>
+        <li><a id="toc-Tempobezeichnung" href="tempo-marks.de.html">Tempobezeichnung</a></li>
+        <li><a id="toc-Notenschlussel" href="clef.de.html">Notenschlüssel</a></li>
+        <li><a id="toc-Alles-zusammen" href="all-together.de.html">Alles zusammen</a></li>
+      </ul></li>
+      <li><a id="toc-Arbeiten-an-Eingabe_002dDateien" href="working-on-input-files.de.html">2.2.2 Arbeiten an Eingabe-Dateien</a></li>
+    </ul></li>
+    <li><a id="toc-Fehlerbehandlung" href="dealing-with-errors.de.html">2.3 Fehlerbehandlung</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Allgemeine-Fehlerbehandlungstipps" href="general-troubleshooting-tips.de.html">2.3.1 Allgemeine Fehlerbehandlungstipps</a></li>
+      <li><a id="toc-Einige-haufige-Fehler" href="some-common-errors.de.html">2.3.2 Einige häufige Fehler</a></li>
+    </ul></li>
+    <li><a id="toc-Wie-die-Handbucher-gelesen-werden-sollten" href="how-to-read-the-manuals.de.html">2.4 Wie die Handbücher gelesen werden sollten</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Ausgelassenes-Material" href="omitted-material.de.html">2.4.1 Ausgelassenes Material</a></li>
+      <li><a id="toc-Anklickbare-Beispiele" href="clickable-examples.de.html">2.4.2 Anklickbare Beispiele</a></li>
+      <li><a id="toc-Uberblick-uber-die-Handbucher" href="overview-of-manuals.de.html">2.4.3 Überblick über die Handbücher</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Ubliche-Notation" href="common-notation.de.html">3 Übliche Notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Notation-auf-einem-System" href="single-staff-notation.de.html">3.1 Notation auf einem System</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Taktstriche-und-Taktuberprufung" href="bar-lines-and-bar-checks.de.html">3.1.1 Taktstriche und Taktüberprüfung</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Taktstriche" href="bar-lines.de.html">Taktstriche</a></li>
+        <li><a id="toc-Taktuberprufungen" href="bar-checks.de.html">Taktüberprüfungen</a></li>
+      </ul></li>
+      <li><a id="toc-Tonhohen-und-Tonartbezeichnungen-_0028Vorzeichen_0029" href="pitches-and-key-signatures.de.html">3.1.2 Tonhöhen und Tonartbezeichnungen (Vorzeichen)</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Tonhohenveranderungen" href="pitch-alterations.de.html">Tonhöhenveränderungen</a></li>
+        <li><a id="toc-Tonartbezeichnungen-_0028Vorzeichen_0029" href="key-signatures.de.html">Tonartbezeichnungen (Vorzeichen)</a></li>
+        <li><a id="toc-Warnung-bzgl_002e-Tonartbezeichnungen-und-Tonhohen" href="warning-key-signatures-and-pitches.de.html">Warnung bzgl. Tonartbezeichnungen und Tonhöhen</a></li>
+      </ul></li>
+      <li><a id="toc-Bindebogen-und-Legatobogen" href="ties-and-slurs.de.html">3.1.3 Bindebögen und Legatobögen</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Bindebogen" href="ties.de.html">Bindebögen</a></li>
+        <li><a id="toc-Legatobogen" href="slurs.de.html">Legatobögen</a></li>
+        <li><a id="toc-Phrasierungsbogen" href="phrasing-slurs.de.html">Phrasierungsbögen</a></li>
+        <li><a id="toc-Achtung-Bindebogen-sind-nicht-Legatobogen" href="warnings-slurs-vs-ties.de.html">Achtung Bindebögen sind nicht Legatobögen</a></li>
+      </ul></li>
+      <li><a id="toc-Artikulationszeichen-und-Lautstarke" href="articulation-and-dynamics.de.html">3.1.4 Artikulationszeichen und Lautstärke</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Artikulationszeichen" href="articulations.de.html">Artikulationszeichen</a></li>
+        <li><a id="toc-Fingersatze" href="fingerings.de.html">Fingersätze</a></li>
+        <li><a id="toc-Dynamik" href="dynamics.de.html">Dynamik</a></li>
+      </ul></li>
+      <li><a id="toc-Text-hinzufugen" href="adding-text.de.html">3.1.5 Text hinzufügen</a></li>
+      <li><a id="toc-Automatische-und-manuelle-Balken" href="automatic-and-manual-beams.de.html">3.1.6 Automatische und manuelle Balken</a></li>
+      <li><a id="toc-Zusatzliche-rhythmische-Befehle" href="advanced-rhythmic-commands.de.html">3.1.7 Zusätzliche rhythmische Befehle</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Auftakt" href="partial-measure.de.html">Auftakt</a></li>
+        <li><a id="toc-N_002dtolen" href="tuplets.de.html">N-tolen</a></li>
+        <li><a id="toc-Verzierungen" href="grace-notes.de.html">Verzierungen</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Mehrere-Noten-auf-einmal" href="multiple-notes-at-once.de.html">3.2 Mehrere Noten auf einmal</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Musikalische-Ausdrucke-erklart" href="music-expressions-explained.de.html">3.2.1 Musikalische Ausdrücke erklärt</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Analogie-mathematische-Ausdrucke" href="analogy-mathematical-expressions.de.html">Analogie mathematische Ausdrücke</a></li>
+        <li><a id="toc-Gleichzeitige-musikalische-Ausdrucke-mehrere-Notensysteme" href="simultaneous-music-expressions-multiple-staves.de.html">Gleichzeitige musikalische Ausdrücke mehrere Notensysteme</a></li>
+        <li><a id="toc-Gleichzeitige-musikalische-Ausdrucke-ein-Notensystem" href="simultaneous-music-expressions-single-staff.de.html">Gleichzeitige musikalische Ausdrücke ein Notensystem</a></li>
+      </ul></li>
+      <li><a id="toc-Mehrere-Notensysteme" href="multiple-staves.de.html">3.2.2 Mehrere Notensysteme</a></li>
+      <li><a id="toc-Notensysteme-gruppieren" href="staff-groups.de.html">3.2.3 Notensysteme gruppieren</a></li>
+      <li><a id="toc-Noten-zu-Akkorden-verbinden" href="combining-notes-into-chords.de.html">3.2.4 Noten zu Akkorden verbinden</a></li>
+      <li><a id="toc-Mehrstimmigkeit-in-einem-System" href="single-staff-polyphony.de.html">3.2.5 Mehrstimmigkeit in einem System</a></li>
+    </ul></li>
+    <li><a id="toc-Lieder" href="songs.de.html">3.3 Lieder</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Einfache-Lieder-setzen" href="setting-simple-songs.de.html">3.3.1 Einfache Lieder setzen</a></li>
+      <li><a id="toc-Text-an-einer-Melodie-ausrichten" href="aligning-lyrics-to-a-melody.de.html">3.3.2 Text an einer Melodie ausrichten</a></li>
+      <li><a id="toc-Text-zu-mehreren-Systemen" href="lyrics-to-multiple-staves.de.html">3.3.3 Text zu mehreren Systemen</a></li>
+    </ul></li>
+    <li><a id="toc-Letzter-Schliff" href="final-touches.de.html">3.4 Letzter Schliff</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Stucke-durch-Variablen-organisieren" href="organizing-pieces-with-variables.de.html">3.4.1 Stücke durch Variablen organisieren</a></li>
+      <li><a id="toc-Titel-hinzufugen" href="adding-titles.de.html">3.4.2 Titel hinzufügen</a></li>
+      <li><a id="toc-Absolute-Notenbezeichnungen" href="absolute-note-names.de.html">3.4.3 Absolute Notenbezeichnungen</a></li>
+      <li><a id="toc-Nach-dem-Tutorium" href="after-the-tutorial.de.html">3.4.4 Nach dem Tutorium</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Grundbegriffe" href="fundamental-concepts.de.html">4 Grundbegriffe</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Wie-eine-LilyPond_002dEingabe_002dDatei-funktioniert" href="how-lilypond-input-files-work.de.html">4.1 Wie eine LilyPond-Eingabe-Datei funktioniert</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Einfuhrung-in-die-Dateistruktur-von-LilyPond" href="introduction-to-the-lilypond-file-structure.de.html">4.1.1 Einführung in die Dateistruktur von LilyPond</a></li>
+      <li><a id="toc-Score-ist-ein-_0028einziger_0029-zusammengesetzter-musikalischer-Ausdruck" href="score-is-a-_0028single_0029-compound-musical-expression.de.html">4.1.2 Score ist ein (einziger) zusammengesetzter musikalischer Ausdruck</a></li>
+      <li><a id="toc-Musikalische-Ausdrucke-ineinander-verschachteln" href="nesting-music-expressions.de.html">4.1.3 Musikalische Ausdrücke ineinander verschachteln</a></li>
+      <li><a id="toc-Uber-die-Nicht_002dSchachtelung-von-Klammern-und-Bindebogen" href="on-the-un_002dnestedness-of-brackets-and-ties.de.html">4.1.4 Über die Nicht-Schachtelung von Klammern und Bindebögen</a></li>
+    </ul></li>
+    <li><a id="toc-Voice-enthalt-Noten" href="voices-contain-music.de.html">4.2 Voice enthält Noten</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Ich-hore-Stimmen" href="i_0027m-hearing-voices.de.html">4.2.1 Ich höre Stimmen</a></li>
+      <li><a id="toc-Stimmen-explizit-beginnen" href="explicitly-instantiating-voices.de.html">4.2.2 Stimmen explizit beginnen</a></li>
+      <li><a id="toc-Stimmen-und-Text" href="voices-and-vocals.de.html">4.2.3 Stimmen und Text</a></li>
+    </ul></li>
+    <li><a id="toc-Kontexte-und-Engraver" href="contexts-and-engravers.de.html">4.3 Kontexte und Engraver</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Was-sind-Kontexte_003f" href="contexts-explained.de.html">4.3.1 Was sind Kontexte?</a></li>
+      <li><a id="toc-Kontexte-erstellen" href="creating-contexts.de.html">4.3.2 Kontexte erstellen</a></li>
+      <li><a id="toc-Was-sind-Engraver_003f" href="engravers-explained.de.html">4.3.3 Was sind Engraver?</a></li>
+      <li><a id="toc-Kontexteigenschaften-verandern" href="modifying-context-properties.de.html">4.3.4 Kontexteigenschaften verändern</a></li>
+      <li><a id="toc-Engraver-hinzufugen-und-entfernen" href="adding-and-removing-engravers.de.html">4.3.5 Engraver hinzufügen und entfernen</a></li>
+    </ul></li>
+    <li><a id="toc-Erweiterung-der-Vorlagen" href="extending-the-templates.de.html">4.4 Erweiterung der Vorlagen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Sopran-und-Cello" href="soprano-and-cello.de.html">4.4.1 Sopran und Cello</a></li>
+      <li><a id="toc-Vierstimmige-SATB_002dPartitur" href="four_002dpart-satb-vocal-score.de.html">4.4.2 Vierstimmige SATB-Partitur</a></li>
+      <li><a id="toc-Eine-Partitur-von-Grund-auf-erstellen" href="building-a-score-from-scratch.de.html">4.4.3 Eine Partitur von Grund auf erstellen</a></li>
+      <li><a id="toc-Tipparbeit-durch-Variablen-und-Funktionen-einsparen" href="saving-typing-with-variables-and-functions.de.html">4.4.4 Tipparbeit durch Variablen und Funktionen einsparen</a></li>
+      <li><a id="toc-Partituren-und-Stimmen" href="scores-and-parts.de.html">4.4.5 Partituren und Stimmen</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Die-Ausgabe-verbessern" href="tweaking-output.de.html">5 Die Ausgabe verbessern</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Grundlagen-fur-die-Optimierung" href="tweaking-basics.de.html">5.1 Grundlagen für die Optimierung</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Grundlagen-zur-Optimierung" href="introduction-to-tweaks.de.html">5.1.1 Grundlagen zur Optimierung</a></li>
+      <li><a id="toc-Objekte-und-Schnittstellen" href="objects-and-interfaces.de.html">5.1.2 Objekte und Schnittstellen</a></li>
+      <li><a id="toc-Regeln-zur-Benennung-von-Objekten-und-Eigenschaften" href="naming-conventions-of-objects-and-properties.de.html">5.1.3 Regeln zur Benennung von Objekten und Eigenschaften</a></li>
+      <li><a id="toc-Optimierungsmethoden" href="tweaking-methods.de.html">5.1.4 Optimierungsmethoden</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Der-_005coverride_002dBefehl" href="the-override-command.de.html">Der <code>\override</code>-Befehl</a></li>
+        <li><a id="toc-Der-_005crevert_002dBefehl" href="the-revert-command.de.html">Der <code>\revert</code>-Befehl</a></li>
+        <li><a id="toc-Der-_005conce_002dPrafix" href="the-once-prefix.de.html">Der <code>\once</code>-Präfix</a></li>
+        <li><a id="toc-Der-_005ctweak_002dBefehl" href="the-tweak-command.de.html">Der <code>\tweak</code>-Befehl</a></li>
+        <li><a id="toc-Der-_005csingle_002dPrafix" href="the-single-prefix.de.html">Der <code>\single</code>-Präfix</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Die-Referenz-der-Programminterna" href="the-internals-reference-manual.de.html">5.2 Die Referenz der Programminterna</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Eigenschaften-von-Layoutobjekten" href="properties-of-layout-objects.de.html">5.2.1 Eigenschaften von Layoutobjekten</a></li>
+      <li><a id="toc-Eigenschaften_002c-die-Schnittstellen-besitzen-konnen" href="properties-found-in-interfaces.de.html">5.2.2 Eigenschaften, die Schnittstellen besitzen können</a></li>
+      <li><a id="toc-Typen-von-Eigenschaften" href="types-of-properties.de.html">5.2.3 Typen von Eigenschaften</a></li>
+    </ul></li>
+    <li><a id="toc-Erscheinung-von-Objekten" href="appearance-of-objects.de.html">5.3 Erscheinung von Objekten</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Sichtbarkeit-und-Farbe-von-Objekten" href="visibility-and-color-of-objects.de.html">5.3.1 Sichtbarkeit und Farbe von Objekten</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Die-stencil_002dEigenschaft-_0028Matrize_0029" href="the-stencil-property.de.html">Die <code>stencil</code>-Eigenschaft (Matrize)</a></li>
+        <li><a id="toc-The-break_002dvisibility_002dEigenschaft-_0028unsichtbar-machen_0029" href="the-break_002dvisibility-property.de.html">The <code>break-visibility</code>-Eigenschaft (unsichtbar machen)</a></li>
+        <li><a id="toc-Die-transparent_002dEigenschaft-_0028durchsichtig_0029" href="the-transparent-property.de.html">Die <code>transparent</code>-Eigenschaft (durchsichtig)</a></li>
+        <li><a id="toc-Die-color_002dEigenschaft-_0028Farbe_0029" href="the-color-property.de.html">Die <code>color</code>-Eigenschaft (Farbe)</a></li>
+      </ul></li>
+      <li><a id="toc-Grosse-von-Objekten" href="size-of-objects.de.html">5.3.2 Größe von Objekten</a></li>
+      <li><a id="toc-Lange-und-Dicke-von-Objekten" href="length-and-thickness-of-objects.de.html">5.3.3 Länge und Dicke von Objekten</a></li>
+    </ul></li>
+    <li><a id="toc-Positionierung-von-Objekten" href="placement-of-objects.de.html">5.4 Positionierung von Objekten</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Automatisches-Verhalten" href="automatic-behavior.de.html">5.4.1 Automatisches Verhalten</a></li>
+      <li><a id="toc-within_002dstaff-_0028Objekte-innerhalb-des-Notensystems_0029" href="within_002dstaff-objects.de.html">5.4.2 within-staff (Objekte innerhalb des Notensystems)</a>
+      <ul class="no-bullet">
+        <li><a id="toc-The-direction_002dEigenschaft-_0028Richtung_0029" href="the-direction-property.de.html">The <code>direction</code>-Eigenschaft (Richtung)</a></li>
+        <li><a id="toc-Fingersatz" href="fingering.de.html">Fingersatz</a></li>
+      </ul></li>
+      <li><a id="toc-Objekte-ausserhalb-des-Notensystems" href="outside_002dstaff-objects.de.html">5.4.3 Objekte außerhalb des Notensystems</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Die-outside_002dstaff_002dpriority_002dEigenschaft" href="the-outside_002dstaff_002dpriority-property.de.html">Die <code>outside-staff-priority</code>-Eigenschaft</a></li>
+        <li><a id="toc-Der-_005ctextLengthOn_002dBefehl-_0028Textlange-berucksichtigen_0029" href="the-textlengthon-command.de.html">Der <code>\textLengthOn</code>-Befehl (Textlänge berücksichtigen)</a></li>
+        <li><a id="toc-Positionierung-von-Dynamikzeichen" href="dynamics-placement.de.html">Positionierung von Dynamikzeichen</a></li>
+        <li><a id="toc-Verandern-der-Grosse-von-grobs" href="grob-sizing.de.html">Verändern der Größe von grobs</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Vertikale-Abstande" href="vertical-spacing.de.html">5.5 Vertikale Abstände</a></li>
+    <li><a id="toc-Kollision-von-Objekten" href="collisions-of-objects.de.html">5.6 Kollision von Objekten</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Verschieben-von-Objekten" href="moving-objects.de.html">5.6.1 Verschieben von Objekten</a></li>
+      <li><a id="toc-Uberlappende-Notation-in-Ordnung-bringen" href="fixing-overlapping-notation.de.html">5.6.2 Überlappende Notation in Ordnung bringen</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Die-padding_002dEigenschaft-_0028auffullen_0029" href="the-padding-property.de.html">Die <code>padding</code>-Eigenschaft (auffüllen)</a></li>
+        <li><a id="toc-Die-right_002dpadding_002dEigenschaft-_0028rechts-auffullen_0029" href="the-right_002dpadding-property.de.html">Die <code>right-padding</code>-Eigenschaft (rechts auffüllen)</a></li>
+        <li><a id="toc-The-staff_002dpadding_002dEigenschaft-_0028Systemfullungseigenschaft_0029" href="the-staff_002dpadding-property.de.html">The <code>staff-padding</code>-Eigenschaft (Systemfüllungseigenschaft)</a></li>
+        <li><a id="toc-Die-self_002dalignment_002dX_002dEigenschaft-_0028Selbstausrichtung_002dX_002dEigenschaft_0029" href="the-self_002dalignment_002dx-property.de.html">Die <code>self-alignment-X</code>-Eigenschaft (Selbstausrichtung-X-Eigenschaft)</a></li>
+        <li><a id="toc-Die-staff_002dposition_002dEigenschaft-_0028Position-innerhalb-des-Systems_0029" href="the-staff_002dposition-property.de.html">Die <code>staff-position</code>-Eigenschaft (Position innerhalb des Systems)</a></li>
+        <li><a id="toc-Die-extra_002doffset_002dEigenschaft-_0028Genaues-Positionieren_0029" href="the-extra_002doffset-property.de.html">Die <code>extra-offset</code>-Eigenschaft (Genaues Positionieren)</a></li>
+        <li><a id="toc-Die-positions_002dEigenschaft-_0028Ausrichtungseigenschaft_0029" href="the-positions-property.de.html">Die <code>positions</code>-Eigenschaft (Ausrichtungseigenschaft)</a></li>
+        <li><a id="toc-Die-force_002dhshift_002dEigenschaft-_0028horizontale-Verschiebunseigenschaft_0029" href="the-force_002dhshift-property.de.html">Die <code>force-hshift</code>-Eigenschaft (horizontale Verschiebunseigenschaft)</a></li>
+      </ul></li>
+      <li><a id="toc-Beispiel-aus-dem-Leben" href="real-music-example.de.html">5.6.3 Beispiel aus dem Leben</a></li>
+    </ul></li>
+    <li><a id="toc-Weitere-Optimierungen" href="further-tweaking.de.html">5.7 Weitere Optimierungen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Andere-Benutzung-von-Optimierungen" href="other-uses-for-tweaks.de.html">5.7.1 Andere Benutzung von Optimierungen</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Noten-zwischen-unterschiedlichen-Stimmen-uberbinden" href="tying-notes-across-voices.de.html">Noten zwischen unterschiedlichen Stimmen überbinden</a></li>
+        <li><a id="toc-Eine-Fermate-in-MIDI-simulieren" href="simulating-a-fermata-in-midi.de.html">Eine Fermate in MIDI simulieren</a></li>
+      </ul></li>
+      <li><a id="toc-Variablen-fur-Layout-Anpassungen-einsetzen" href="using-variables-for-layout-adjustments.de.html">5.7.2 Variablen für Layout Anpassungen einsetzen</a></li>
+      <li><a id="toc-Formatvorlagen" href="style-sheets.de.html">5.7.3 Formatvorlagen</a></li>
+      <li><a id="toc-Mehr-Information" href="other-sources-of-information.de.html">5.7.4 Mehr Information</a></li>
+      <li><a id="toc-Fortgeschrittene-Optimierungen-mit-Scheme" href="advanced-tweaks-with-scheme.de.html">5.7.5 Fortgeschrittene Optimierungen mit Scheme</a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Vorlagen" href="templates.de.html">Appendix A Vorlagen</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Eingebaute-Vorlagen" href="built_002din-templates.de.html">A.1 Eingebaute Vorlagen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-SATB-Vorlage" href="satb-template.de.html">A.1.1 SATB Vorlage</a></li>
+      <li><a id="toc-SSAATTBB-Vorlage" href="ssaattbb-template.de.html">A.1.2 SSAATTBB Vorlage</a></li>
+    </ul></li>
+    <li><a id="toc-Vorlagen-fur-ein-einzelnes-System" href="single-staff-templates.de.html">A.2 Vorlagen für ein einzelnes System</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Nur-Noten" href="notes-only.de.html">A.2.1 Nur Noten</a></li>
+      <li><a id="toc-Noten-und-Text" href="notes-and-lyrics.de.html">A.2.2 Noten und Text</a></li>
+      <li><a id="toc-Noten-und-Akkordbezeichnungen" href="notes-and-chords.de.html">A.2.3 Noten und Akkordbezeichnungen</a></li>
+      <li><a id="toc-Noten_002c-Text-und-Akkordbezeichnungen" href="notes-lyrics-and-chords.de.html">A.2.4 Noten, Text und Akkordbezeichnungen</a></li>
+    </ul></li>
+    <li><a id="toc-Klaviervorlagen" href="piano-templates.de.html">A.3 Klaviervorlagen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Piano-Solo" href="solo-piano.de.html">A.3.1 Piano Solo</a></li>
+      <li><a id="toc-Klavier-und-Gesangsstimme" href="piano-and-melody-with-lyrics.de.html">A.3.2 Klavier und Gesangsstimme</a></li>
+      <li><a id="toc-Klavier-mit-eingeschobenem-Gesangstext" href="piano-centered-lyrics.de.html">A.3.3 Klavier mit eingeschobenem Gesangstext</a></li>
+    </ul></li>
+    <li><a id="toc-Vorlagen-fur-Streichquartette" href="string-quartet-templates.de.html">A.4 Vorlagen für Streichquartette</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Streichquartett" href="string-quartet.de.html">A.4.1 Streichquartett</a></li>
+      <li><a id="toc-Streichquartettstimmen" href="string-quartet-parts.de.html">A.4.2 Streichquartettstimmen</a></li>
+    </ul></li>
+    <li class="toc_current"><a id="toc-Vokalensemble" href="vocal-ensembles-templates.de.html">A.5 Vokalensemble</a>
+    <ul class="no-bullet">
+      <li><a id="toc-SATB_002dPartitur" href="satb-vocal-score.de.html">A.5.1 SATB-Partitur</a></li>
+      <li class="toc_current"><a id="toc-SATB_002dPartitur-und-automatischer-Klavierauszug" href="satb-vocal-score-and-automatic-piano-reduction.de.html">A.5.2 SATB-Partitur und automatischer Klavierauszug</a></li>
+      <li><a id="toc-SATB-mit-daran-ausgerichteten-Kontexten" href="satb-with-aligned-contexts.de.html">A.5.3 SATB mit daran ausgerichteten Kontexten</a></li>
+      <li><a id="toc-SATB-auf-vier-Systemen" href="satb-on-four-staves.de.html">A.5.4 SATB auf vier Systemen</a></li>
+      <li><a id="toc-Sologesang-und-zweistimmiger-Refrain" href="solo-verse-and-two_002dpart-refrain.de.html">A.5.5 Sologesang und zweistimmiger Refrain</a></li>
+      <li><a id="toc-Kirchenlieder" href="hymn-tunes.de.html">A.5.6 Kirchenlieder</a></li>
+      <li><a id="toc-Psalmengesang" href="psalms.de.html">A.5.7 Psalmengesang</a></li>
+    </ul></li>
+    <li><a id="toc-Orchestervorlagen" href="orchestral-templates.de.html">A.6 Orchestervorlagen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Orchester_002c-Chor-und-Klavier" href="orchestra-choir-and-piano.de.html">A.6.1 Orchester, Chor und Klavier</a></li>
+    </ul></li>
+    <li><a id="toc-Vorlagen-fur-alte-Notation" href="ancient-notation-templates.de.html">A.7 Vorlagen für alte Notation</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Transkription-mensuraler-Musik" href="transcription-of-mensural-music.de.html">A.7.1 Transkription mensuraler Musik</a></li>
+      <li><a id="toc-Vorlage-zur-Transkription-von-Gregorianik" href="gregorian-transcription-template.de.html">A.7.2 Vorlage zur Transkription von Gregorianik</a></li>
+    </ul></li>
+    <li><a id="toc-Andere-Vorlagen" href="other-templates.de.html">A.8 Andere Vorlagen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Jazz_002dCombo" href="jazz-combo.de.html">A.8.1 Jazz-Combo</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.de.html">Appendix B GNU Free Documentation License</a></li>
+  <li><a id="toc-Register" href="index-of-commands-and-concepts.de.html" rel="index">Appendix C Register</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: ebe492ca408fb0d9abf80b94c56197eef8dc2f09
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Mit Google suchen">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Suche">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2003-2026 por los autores.
+
+This file documents the LilyPond website.
+
+Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License,
+Version 1.1 or any later version published by the Free Software
+Foundation; with no Invariant Sections.  A copy of the license is
+included in the section entitled "GNU Free Documentation
+License". -->
+<title>Desarrollo (LilyPond: notación musical para todos)</title>
+
+<meta name="description" content="Desarrollo (LilyPond: notación musical para todos)">
+<meta name="keywords" content="Desarrollo (LilyPond: notación musical para todos)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.es.html#top" rel="start" title="LilyPond: notación musical para todos">
+<link href="web_toc.es.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="community.es.html" rel="up" title="Comunidad">
+<link href="google-summer-of-code.es.html" rel="next" title="Google Summer of Code">
+<link href="sponsoring.es.html" rel="prev" title="Patrocinio">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-website.css">
+
+
+</head>
+
+<body lang="es" class="web">
+<div id="main">
+<div class="unnumberedsec" id="development">
+<hr>
+<span id="Desarrollo"></span><h3 class="unnumberedsec">Desarrollo</h3>
+
+<div class="heading-center">
+<span id="Materiales-de-desarrollo-para-LilyPond-2_002e25_002e81"></span><h3 class="heading">Materiales de desarrollo para LilyPond 2.25.81</h3>
+
+
+<div class="warning">
+<p><strong>Nota:</strong> Éstas son las versiones <em>inestables de desarrollo</em>.
+Si tiene la más ligera duda acerca de cómo usar o instalar
+LilyPond, le pedimos encarecidamente que utilice la
+<a href="download.es.html">descarga estable</a>, y lea los
+<a href="manuals.es.html">manuales estables</a>.
+</p>
+</div>
+
+
+</div>
+
+<div class="column-center-top">
+<span id="Numeros-de-version"></span><h4 class="subheading">Números de versión</h4>
+
+<p>Existen dos conjuntos de lanzamientos para LilyPond: lanzamientos
+estables, y lanzamientos inestables de desarrollo.  Las versiones
+estables tienen un número de versión &lsquo;menor&rsquo; par (p.ej., 2.14,
+2.16, 2.18).  Las versiones de desarrollo tienen un número
+&lsquo;menor&rsquo; de versión impar (p.ej., 2.15, 2.17, 2.19).
+</p>
+
+</div>
+
+
+<div class="column-left-top">
+<span id="Descarga-1"></span><h4 class="subheading">Descarga</h4>
+
+<p>Las instrucciones de Git y para la compilación están en la Guía
+del Colaborador.
+</p>
+<blockquote>
+<p><a href="https://git.sv.gnu.org/gitweb/?p=lilypond.git">Repositorio Git de LilyPond</a>
+</p></blockquote>
+
+<p>En general, los redactores de la documentación y los pilotos de
+pruebas querrán descargar el último archivo binario:
+</p>
+<blockquote>
+
+<p><a href="https://gitlab.com/lilypond/lilypond/-/releases/v2.25.81/downloads/lilypond-2.25.81-linux-x86_64.tar.gz">GNU/Linux x86_64: LilyPond 2.25.81</a>
+</p>
+<p><a href="https://gitlab.com/lilypond/lilypond/-/releases/v2.25.81/downloads/lilypond-2.25.81-darwin-arm64.tar.gz">macOS arm64: LilyPond 2.25.81</a>
+</p>
+<p><a href="https://gitlab.com/lilypond/lilypond/-/releases/v2.25.81/downloads/lilypond-2.25.81-darwin-x86_64.tar.gz">macOS x86_64: LilyPond 2.25.81</a>
+</p>
+<p><a href="https://ports.macports.org/port/lilypond-devel/summary">Paquete de MacPorts</a>
+</p>
+<p><a href="https://gitlab.com/lilypond/lilypond/-/releases/v2.25.81/downloads/lilypond-2.25.81-mingw-x86_64.zip">Windows x86_64: LilyPond 2.25.81</a>
+</p>
+<p><a href="https://lilypond.org/download/sources/v2.25/lilypond-2.25.81.tar.gz">Código fuente: lilypond-2.25.81.tar.gz</a>
+</p>
+</blockquote>
+
+<p>Si no está seguro acerca de cómo instalar estos archivos binarios,
+lea el inicio del manual de
+<a href="../learning/index.es.html">Aprendizaje</a>.
+</p>
+
+</div>
+
+
+<div class="column-right-top">
+<span id="Guia-del-colaborador"></span><h4 class="subheading">Guía del colaborador</h4>
+
+<p>El desarrollo de LilyPond es un asunto bastante complicado.
+LilyPond es un proyecto grande y (más o menos) estable.  Para
+poder ayudar a los nuevos colaboradores, y para mantener todo el
+sistema (más o menos) estable, hemos escrito un manual para los
+colaboradores.
+</p>
+
+<div class="keep-bullets">
+<ul>
+<li> <a href="../contributor/index.html">Guía del colaborador (HTML seccionado)</a> −
+  el manual está dividido en muchas páginas HTML.
+  <br>&nbsp;&nbsp;<em>(una descarga pequeña por cada página)</em>
+
+</li><li> <a href="../contributor-big-page.html">Guía del colaborador (HTML monolítico)</a> −
+  lea este manual como una sola página HTML enorme.
+  <br>&nbsp;&nbsp;<em>(una sola descarga grande, 740K)</em>
+
+</li><li> <a href="../contributor.pdf">contributor.pdf</a> −
+  descárguelo como un archivo en formato PDF.
+  <br>&nbsp;&nbsp;<em>(una sola descarga grande, 832K)</em>
+
+</li></ul>
+
+
+</div>
+
+
+
+</div>
+
+
+<div class="column-center-top">
+<span id="Pruebas-de-regresion"></span><h4 class="subheading">Pruebas de regresión</h4>
+
+<div class="keep-bullets">
+
+
+<ul>
+<li> <a href="../../input/regression/collated-files.html">Pruebas visuales de regresión</a>:
+Pruebas de regresión de esta versión que contienen información
+visual útil.  (<a href="../../input/regression/collated-files.pdf">versión PDF</a>)
+
+</li><li> <a href="../../input/regression/midi/collated-files.html">Pruebas de regresión de MIDI</a>:
+Pruebas de regresión de esta versión relativas a la salida
+MIDI.  (<a href="../../input/regression/midi/collated-files.pdf">versión PDF</a>)
+
+</li><li> <a href="../../input/regression/other/collated-files.html">      Otras pruebas de regresión</a>:
+Pruebas de regresión de esta versión sin salida visual.
+(<a href="../../input/regression/other/collated-files.pdf">versión PDF</a>)
+
+</li><li> <a href="../../input/regression/musicxml/collated-files.html">      Pruebas de MusicXML</a>:
+Pruebas de MusicXML de esta versión (convertidas con <code>musicxml2ly</code>).
+(<a href="../../input/regression/musicxml/collated-files.pdf">versión PDF</a>)
+
+</li><li> <a href="../../input/regression/abc2ly/collated-files.html">      Pruebas de ABC</a>:
+Pruebas de notación ABC de esta versión (convertidas con <code>abc2ly</code>).
+(<a href="../../input/regression/abc2ly/collated-files.pdf">versión PDF</a>)
+</li></ul>
+
+
+
+
+</div>
+
+</div>
+
+
+
+<div class="column-center-bottom">
+<span id="Manuales-1"></span><h4 class="subheading">Manuales</h4>
+
+<div class="warning">
+<p><strong>Nota:</strong> Estos manuales son para LilyPond 2.26.0; los manuales
+más recientes están en <a href="https://lilypond.org">https://lilypond.org</a>
+</p>
+</div>
+
+<div class="normal-table">
+<table>
+<thead><tr><th width="30%">Introducción</th></tr></thead>
+<tr><td width="30%"><a href="../learning/index.es.html">Aprendizaje (HTML seccionado)</a></td><td width="30%"><a href="../learning-big-page.es.html">Aprendizaje (HTML monolítico)</a></td><td width="30%"><a href="../learning.pdf">learning.pdf</a></td></tr>
+<tr><td width="30%"><a href="../music-glossary/index.html">Glosario (HTML seccionado)</a></td><td width="30%"><a href="../music-glossary-big-page.html">Glosario (HTML monolítico)</a></td><td width="30%"><a href="../music-glossary.pdf">music-glossary.pdf</a></td></tr>
+<tr><td width="30%"><a href="../essay/index.es.html">Ensayo (HTML seccionado)</a></td><td width="30%"><a href="../essay-big-page.es.html">Ensayo (HTML monolítico)</a></td><td width="30%"><a href="../essay.pdf">essay.pdf</a></td></tr>
+</table>
+
+<table>
+<thead><tr><th width="30%">Estándar</th></tr></thead>
+<tr><td width="30%"><a href="../notation/index.es.html">Notación (HTML seccionado)</a></td><td width="30%"><a href="../notation-big-page.es.html">Notación (HTML monolítico)</a></td><td width="30%"><a href="../notation.pdf">notation.pdf</a></td></tr>
+<tr><td width="30%"><a href="../usage/index.es.html">Utilización (HTML seccionado)</a></td><td width="30%"><a href="../usage-big-page.es.html">Utilización (HTML monolítico)</a></td><td width="30%"><a href="../usage.pdf">usage.pdf</a></td></tr>
+<tr><td width="30%"><a href="../snippets/index.es.html">Fragmentos (HTML seccionado)</a></td><td width="30%"><a href="../snippets-big-page.es.html">Fragmentos (HTML monolítico)</a></td><td width="30%"><a href="../snippets.pdf">snippets.pdf</a></td></tr>
+<tr><td width="30%"><a href="../ly-examples/visualindex.pdf">Visual Index (PDF)</a></td><td width="30%"></td><td width="30%"></td></tr>
+</table>
+
+<table>
+<thead><tr><th width="30%">Poco frecuentes</th></tr></thead>
+<tr><td width="30%"><a href="../web/index.es.html">Web (HTML seccionado)</a></td><td width="30%"><a href="../web-big-page.es.html">Web (HTML monolítico)</a></td><td width="30%"><a href="../web.pdf">web.pdf</a></td></tr>
+<tr><td width="30%"><a href="../changes/index.html">Cambios (HTML seccionado)</a></td><td width="30%"><a href="../changes-big-page.html">Cambios (HTML monolítico)</a></td><td width="30%"><a href="../changes.pdf">changes.pdf</a></td></tr>
+<tr><td width="30%"><a href="../extending/index.es.html">Extensiones (HTML seccionado)</a></td><td width="30%"><a href="../extending-big-page.es.html">Extensiones (HTML monolítico)</a></td><td width="30%"><a href="../extending.pdf">extending.pdf</a></td></tr>
+<tr><td width="30%"><a href="../internals/index.html">Funcionamiento interno (HTML seccionado)</a></td><td width="30%"><a href="../internals-big-page.html">Funcionamiento interno (HTML monolítico)</a></td><td width="30%"><a href="../internals.pdf">internals.pdf</a></td></tr>
+</table>
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+</div>
+<hr>
+
+<div id="footer">
+<p id="languages">
+Other languages: <a href="development.html">English</a>, <a href="development.ca.html">Català</a>, <a href="development.de.html">Deutsch</a>, <a href="development.fr.html">Français</a>, <a href="development.it.html">Italiano</a>, <a href="development.ja.html">日本語</a>, <a href="development.tr.html">Türkçe</a>, <a href="development.zh.html">中文</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-LilyPond" href="index.es.html">LilyPond</a></li>
+  <li><a id="toc-Introduccion" href="introduction.es.html">Introducción</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Posibilidades" href="features.es.html">Posibilidades</a></li>
+    <li><a id="toc-Ejemplos" href="examples.es.html">Ejemplos</a></li>
+    <li><a id="toc-Libertad" href="freedom.es.html">Libertad</a></li>
+    <li><a id="toc-Trasfondo" href="background.es.html">Trasfondo</a></li>
+    <li><a id="toc-Producciones" href="productions.es.html">Producciones</a></li>
+    <li><a id="toc-Resenas" href="reviews.es.html">Reseñas</a></li>
+    <li><a id="toc-Entrada-de-texto" href="text-input.es.html">Entrada de texto</a></li>
+    <li><a id="toc-Entornos-mejorados" href="easier-editing.es.html">Entornos mejorados</a></li>
+  </ul></li>
+  <li><a id="toc-Descarga" href="download.es.html">Descarga</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Codigo-fuente" href="source.es.html">Código fuente</a></li>
+    <li><a id="toc-Descargas-antiguas" href="old-downloads.es.html">Descargas antiguas</a></li>
+    <li><a id="toc-GPL" href="gpl.es.html">GPL</a></li>
+  </ul></li>
+  <li><a id="toc-Manuales" href="manuals.es.html">Manuales</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Aprendizaje" href="learning.es.html">Aprendizaje</a></li>
+    <li><a id="toc-Glosario" href="glossary.es.html">Glosario</a></li>
+    <li><a id="toc-Ensayo" href="essay.es.html">Ensayo</a></li>
+    <li><a id="toc-Notacion" href="notation.es.html">Notación</a></li>
+    <li><a id="toc-Utilizacion" href="usage.es.html">Utilización</a></li>
+    <li><a id="toc-Fragmentos" href="snippets.es.html">Fragmentos</a></li>
+    <li><a id="toc-FAQ" href="faq.es.html">FAQ</a></li>
+    <li><a id="toc-Web" href="web.es.html">Web</a></li>
+    <li><a id="toc-Cambios" href="changes.es.html">Cambios</a></li>
+    <li><a id="toc-Extender" href="extending.es.html">Extender</a></li>
+    <li><a id="toc-Funcionamiento-interno" href="internals.es.html">Funcionamiento interno</a></li>
+    <li><a id="toc-Todos" href="all.es.html">Todos</a></li>
+    <li><a id="toc-FDL" href="fdl.es.html">FDL</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Comunidad" href="community.es.html">Comunidad</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Contacto" href="contact.es.html">Contacto</a></li>
+    <li><a id="toc-Ejemplos-minimos" href="tiny-examples.es.html">Ejemplos mínimos</a></li>
+    <li><a id="toc-Informes-de-fallos" href="bug-reports.es.html">Informes de fallos</a></li>
+    <li><a id="toc-Preste-su-ayuda" href="help-us.es.html">Preste su ayuda</a></li>
+    <li><a id="toc-Patrocinio" href="sponsoring.es.html">Patrocinio</a></li>
+    <li class="toc_current"><a id="toc-Desarrollo" href="development.es.html">Desarrollo</a></li>
+    <li><a id="toc-Google-Summer-of-Code" href="google-summer-of-code.es.html">Google Summer of Code</a></li>
+    <li><a id="toc-Autores" href="authors.es.html">Autores</a></li>
+    <li><a id="toc-Publicaciones" href="publications.es.html">Publicaciones</a></li>
+    <li><a id="toc-Noticias" href="news.es.html">Noticias</a></li>
+    <li><a id="toc-Desvan" href="attic.es.html">Desván</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Búsqueda de Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

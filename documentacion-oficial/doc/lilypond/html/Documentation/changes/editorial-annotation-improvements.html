@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This document has been placed in the public domain. -->
+<title>Editorial annotation improvements (LilyPond Changes)</title>
+
+<meta name="description" content="Editorial annotation improvements (LilyPond Changes)">
+<meta name="keywords" content="Editorial annotation improvements (LilyPond Changes)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="LilyPond &mdash; Changes">
+<link href="changes_toc.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="new-for-musical-notation.html" rel="up" title="New for musical notation">
+<link href="text-and-font-improvements.html" rel="next" title="Text and font improvements">
+<link href="repeat-improvements.html" rel="prev" title="Repeat improvements">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="en" class="changes">
+<div id="main">
+<div class="unnumberedsec" id="editorial-annotation-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="new-for-musical-notation.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; New for musical notation </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="changes_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="new-for-specialist-notation.html" title="Next chapter"> New for specialist notation &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="repeat-improvements.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Repeat improvements </a>]</td><td align="center">[<a href="new-for-musical-notation.html" title="Up section" accesskey="u" rel="up">  Up: New for musical notation </a>]</td><td align="right">[<a href="text-and-font-improvements.html" title="Next section in reading order" accesskey="n" rel="next"> Text and font improvements &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Editorial-annotation-improvements"></span><h3 class="unnumberedsec">Editorial annotation improvements</h3>
+
+<ul>
+<li> Incipits may now be printed with various context types.  It also
+got an optional argument to shift the incipit to the left.
+
+
+<blockquote>
+<pre class="verbatim"><span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;MensuralStaff&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\incipit</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class=" -Pitch">e&#39;</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="m">1</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;KievanStaff&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\incipit</span><span class="w"> </span><span class="p">#</span><span class="mi">2</span><span class="w"> </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">KievanStaff</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class=" -Pitch">e&#39;</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="m">1</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span>
+<span class="w">      </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;TabStaff&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\incipit</span>
+<span class="w">          </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">TabStaff</span>
+<span class="w">            </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\magnifyStaff</span><span class="w"> </span><span class="mf">0.5</span>
+<span class="w">                    </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">InstrumentName</span><span class="p">.</span><span class="nb nb-GrobProperty">font-size</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class=" -Pitch">e&#39;</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="m">1</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+<span class="w">  </span><span class="k">\layout</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb nb-PaperVariable">indent</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">5\cm</span>
+<span class="w">    </span><span class="nb nb-PaperVariable">incipit-width</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">2\cm</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../05/lily-169ff8b3.ly">
+  <img align="middle"
+       border="0"
+       src="../05/lily-169ff8b3.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Optional additional material can be enclosed in brackets that pass
+through the staff with <code>\startOptionalMaterial</code> and
+<code>\stopOptionalMaterial</code>.
+
+
+<blockquote>
+<a href="../5a/lily-66b7aaab.ly">
+  <img align="middle"
+       border="0"
+       src="../5a/lily-66b7aaab.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> The <code>FingerGlideSpanner</code> may now connect <code>StringNumber</code> and
+<code>StrokeFinger</code> grobs.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-ContextProperty">strokeFingerOrientations</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="nv">down</span><span class="p">)</span>
+<span class="w">  </span><span class=" -Pitch">b</span><span class="m">2</span><span class="w"> </span><span class="nb nb-Articulation">\glide</span><span class="w"> </span><span class="nb nb-MusicFunction">-\rightHandFinger</span><span class="w"> </span><span class="p">#</span><span class="mi">1</span><span class="w"> </span><span class="nb nb-Articulation">\glide</span><span class="w"> </span><span class="m">-2</span><span class="w"> </span><span class="nb nb-Articulation">\glide</span><span class="w"> </span><span class="nb nb-Articulation">\5</span>
+<span class="w">  </span><span class=" -Pitch">e&#39;</span><span class="nb nb-MusicFunction">-\rightHandFinger</span><span class="w"> </span><span class="p">#</span><span class="mi">1</span><span class="w"> </span><span class="m">-2</span><span class="w"> </span><span class="nb nb-Articulation">\5</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../4d/lily-1970039f.ly">
+  <img align="middle"
+       border="0"
+       src="../4d/lily-1970039f.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> A new engraver, <code>Toe_heel_engraver</code> (enabled by default)
+listens to the context variable <code>toeHeelStyle</code> to provide
+styling options for the commands <code>\rtoe</code>, <code>\ltoe</code>,
+<code>\rheel</code>, and <code>\lheel</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="nb nb-Articulation">\rtoe</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="nb nb-Articulation">\rheel</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="nb nb-Articulation">\ltoe</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="nb nb-Articulation">\lheel</span><span class="w"> </span><span class="nb nb-MusicFunction">\bar</span><span class="w"> </span><span class="s">&quot;||&quot;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\music</span><span class="w">            </span><span class="c1">% #&#39;default</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;standard</span><span class="w">    </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;reversed</span><span class="w">    </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;below</span><span class="w">       </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;circleheels</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../70/lily-9f66cc7b.ly">
+  <img align="middle"
+       border="0"
+       src="../70/lily-9f66cc7b.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>If the engraver is enabled, these commands no longer behave like
+normal <code>Script</code> grobs since they ignore direction changes
+(i.e., &lsquo;<samp>^</samp>&rsquo;, &lsquo;<samp>_</samp>&rsquo;, and <code>\tweak direction</code> are
+ignored).  If the need arises to position pedal marks
+individually, the new, standard articulation commands <code>\toe</code>,
+<code>\vartoe</code>, <code>\heel</code>, <code>\varheel</code>, and
+<code>\heelcircle</code> (accessing the new glyph
+<code>scripts.pedalheelcircle</code>) should be used instead.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">f&#39;</span><span class="m">2</span><span class="n n-BackslashReference">\toe</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">2</span><span class="n n-BackslashReference">\vartoe</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class=" -Pitch">f&#39;</span><span class="m">2</span><span class="n n-BackslashReference">\heel</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">2</span><span class="n n-BackslashReference">\varheel</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class=" -Pitch">f&#39;</span><span class="m">1</span><span class="n n-BackslashReference">\heelcircle</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../5a/lily-6e3ff290.ly">
+  <img align="middle"
+       border="0"
+       src="../5a/lily-6e3ff290.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Removing the engraver makes <code>\rtoe</code> and siblings behave as in
+previous LilyPond versions.
+</p>
+</li><li> Directly related to the previous item are four new,
+articulation-like commands to indicate toe-heel and heel-toe
+substitutions, <code>\ltoeheel</code>, <code>\rtoeheel</code>,
+<code>\lheeltoe</code>, and <code>\rheeltoe</code>.  They are influenced by
+the <code>Toe_heel_engraver</code> in the same way as <code>\rtoe</code> and
+siblings.  Toe and heel glyphs have been harmonized in size to
+make these substitution marks look good.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="n n-BackslashReference">\rtoeheel</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="n n-BackslashReference">\rheeltoe</span>
+<span class="w">          </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="n n-BackslashReference">\ltoeheel</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="n n-BackslashReference">\lheeltoe</span><span class="w"> </span><span class="nb nb-MusicFunction">\bar</span><span class="w"> </span><span class="s">&quot;||&quot;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\music</span><span class="w">            </span><span class="c1">% #&#39;default</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;standard</span><span class="w">    </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;reversed</span><span class="w">    </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;below</span><span class="w">       </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;circleheels</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../6a/lily-27802303.ly">
+  <img align="middle"
+       border="0"
+       src="../6a/lily-27802303.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> <code>NoteName</code> grobs are now horizontally centered by default.
+
+</li></ul>
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="new-for-musical-notation.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; New for musical notation </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="changes_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="new-for-specialist-notation.html" title="Next chapter"> New for specialist notation &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="repeat-improvements.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Repeat improvements </a>]</td><td align="center">[<a href="new-for-musical-notation.html" title="Up section" accesskey="u" rel="up">  Up: New for musical notation </a>]</td><td align="right">[<a href="text-and-font-improvements.html" title="Next section in reading order" accesskey="n" rel="next"> Text and font improvements &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="editorial-annotation-improvements.fr.html">Français</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.html" title="Documentation Index">
+    &lt;&lt; Back to Documentation Index
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.html#top" title="Cover (top) of document">
+    LilyPond Changes  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Major-changes-in-LilyPond" href="major-changes-in-lilypond.html">Major changes in LilyPond</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Notes-for-source-compilation-and-packagers" href="notes-for-source-compilation-and-packagers.html">Notes for source compilation and packagers</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-New-for-musical-notation" href="new-for-musical-notation.html">New for musical notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Pitches-improvements" href="pitches-improvements.html">Pitches improvements</a></li>
+    <li><a id="toc-Rhythm-improvements" href="rhythm-improvements.html">Rhythm improvements</a></li>
+    <li><a id="toc-Expressive-mark-improvements" href="expressive-mark-improvements.html">Expressive mark improvements</a></li>
+    <li><a id="toc-Repeat-improvements" href="repeat-improvements.html">Repeat improvements</a></li>
+    <li class="toc_current"><a id="toc-Editorial-annotation-improvements" href="editorial-annotation-improvements.html">Editorial annotation improvements</a></li>
+    <li><a id="toc-Text-and-font-improvements" href="text-and-font-improvements.html">Text and font improvements</a></li>
+  </ul></li>
+  <li><a id="toc-New-for-specialist-notation" href="new-for-specialist-notation.html">New for specialist notation</a></li>
+  <li><a id="toc-Miscellaneous-improvements" href="miscellaneous-improvements.html">Miscellaneous improvements</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: FILL-IN-HEAD-COMMITTISH
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google Search">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Search">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

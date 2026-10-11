@@ -1,0 +1,1201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This document has been placed in the public domain. -->
+<title>Plantilla de un solo pentagrama, con notas únicamente (LilyPond snippets)</title>
+
+<meta name="description" content="Plantilla de un solo pentagrama, con notas únicamente (LilyPond snippets)">
+<meta name="keywords" content="Plantilla de un solo pentagrama, con notas únicamente (LilyPond snippets)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.es.html" rel="start" title="LilyPond &mdash; Fragmentos de código">
+<link href="snippets_toc.es.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="templates.es.html" rel="up" title="36 Templates">
+<link href="templates-_002d-string-quartet-template-_0028simple_0029.es.html" rel="next" title="Plantilla de cuarteto de cuerda (sencilla)">
+<link href="templates-_002d-single_002dstaff-template-with-notes-and-lyrics.es.html" rel="prev" title="Plantilla de pentagrama único don notas y letra">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="es" class="snippets">
+<div id="main">
+<div class="unnumberedsec" id="templates-_002d-single_002dstaff-template-with-only-notes">
+<table class="nav_table">
+<tr><td align="left">[<a href="templates.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Templates </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="snippets_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="titles.es.html" title="Next chapter"> Titles &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="templates-_002d-single_002dstaff-template-with-notes-and-lyrics.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Plantilla de pentagrama único don notas y letra </a>]</td><td align="center">[<a href="templates.es.html" title="Up section" accesskey="u" rel="up">  Up: Templates </a>]</td><td align="right">[<a href="templates-_002d-string-quartet-template-_0028simple_0029.es.html" title="Next section in reading order" accesskey="n" rel="next"> Plantilla de cuarteto de cuerda (sencilla) &gt; </a>]</td></tr>
+</table>
+<hr>
+
+<span id="Plantilla-de-un-solo-pentagrama_002c-con-notas-unicamente-1"></span><h3 class="unnumberedsec">Plantilla de un solo pentagrama, con notas únicamente</h3>
+
+
+<p>Esta plantilla simple prepara un pentagrama con notas, adecuado para
+un instrumento solista o un fragmento melódico. Córtelo y péguelo en
+un archivo, escriba las notas y ¡ya está!
+</p>
+
+
+
+<pre class="verbatim"><span class="n n-Lvalue">melody</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">treble</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="nb nb-Scale">\major</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\time</span><span class="w"> </span><span class="m m-Fraction">4/4</span>
+
+<span class="w">  </span><span class=" -Pitch">a</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">d</span>
+<span class="p">}</span>
+
+<span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="n n-BackslashReference">\melody</span>
+<span class="w">  </span><span class="k">\layout</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">\midi</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../2d/lily-9d80c7a3.ly">
+  <img align="middle"
+       border="0"
+       src="../2d/lily-9d80c7a3.png"
+       alt="[image of music]"></a>
+
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="templates.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Templates </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="snippets_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="titles.es.html" title="Next chapter"> Titles &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="templates-_002d-single_002dstaff-template-with-notes-and-lyrics.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Plantilla de pentagrama único don notas y letra </a>]</td><td align="center">[<a href="templates.es.html" title="Up section" accesskey="u" rel="up">  Up: Templates </a>]</td><td align="right">[<a href="templates-_002d-string-quartet-template-_0028simple_0029.es.html" title="Next section in reading order" accesskey="n" rel="next"> Plantilla de cuarteto de cuerda (sencilla) &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="templates-_002d-single_002dstaff-template-with-only-notes.html">English</a>, <a href="templates-_002d-single_002dstaff-template-with-only-notes.ca.html">Català</a>, <a href="templates-_002d-single_002dstaff-template-with-only-notes.de.html">Deutsch</a>, <a href="templates-_002d-single_002dstaff-template-with-only-notes.fr.html">Français</a>, <a href="templates-_002d-single_002dstaff-template-with-only-notes.it.html">Italiano</a>, <a href="templates-_002d-single_002dstaff-template-with-only-notes.ja.html">日本語</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.es.html" title="Documentation Index">
+    &lt;&lt; Volver al índice de la documentación
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.es.html#top" title="Cover (top) of document">
+    LilyPond snippets  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+<ul class="no-bullet">
+<li>
+<ul class="no-bullet">
+  <li><a id="toc-Preface" href="preface.es.html">Preface</a></li>
+</ul></li>
+<li><a id="toc-Musical-notation" href="pitches.es.html#Musical-notation">Musical notation</a>
+<ul class="no-bullet">
+  <li><a id="toc-Pitches" href="pitches.es.html">1 Pitches</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-un-ambito-por-voz" href="pitches-_002d-adding-ambitus-per-voice.es.html">Añadir un ámbito por voz</a></li>
+    <li><a id="toc-Anadir-una-indicacion-de-octava-alta-a-una-sola-voz" href="pitches-_002d-adding-an-ottava-marking-to-a-single-voice.es.html">Añadir una indicación de octava alta a una sola voz</a></li>
+    <li><a id="toc-Cabezas-de-nota-tipo-Aiken_002c-variante-delgada" href="pitches-_002d-aiken-head-thin-variant-noteheads.es.html">Cabezas de nota tipo Aiken, variante delgada</a></li>
+    <li><a id="toc-Alterar-la-longitud-de-las-plicas-unidas-por-una-barra" href="pitches-_002d-altering-the-length-of-beamed-stems.es.html">Alterar la longitud de las plicas unidas por una barra</a></li>
+    <li><a id="toc-Indicaciones-de-tesitura" href="pitches-_002d-ambitus.es.html">Indicaciones de tesitura</a></li>
+    <li><a id="toc-Indicacion-de-tesitura-despues-de-la-armadura" href="pitches-_002d-ambitus-after-key-signature.es.html">Indicación de tesitura después de la armadura</a></li>
+    <li><a id="toc-Ambitos-con-varias-voces" href="pitches-_002d-ambitus-with-multiple-voices.es.html">Ámbitos con varias voces</a></li>
+    <li><a id="toc-Aplicar-estilos-de-cabeza-segun-la-nota-de-la-escala" href="pitches-_002d-applying-note-head-styles-depending-on-the-step-of-the-scale.es.html">Aplicar estilos de cabeza según la nota de la escala</a></li>
+    <li><a id="toc-Cambiar-la-direccion-de-la-plica-de-las-notas-de-la-tercera-linea-automaticamente_002c-basado-en-la-melodia" href="pitches-_002d-automatically-changing-the-stem-direction-of-the-middle-note-based-on-the-melody.es.html">Cambiar la dirección de la plica de las notas de la tercera línea automáticamente, basado en la melodía</a></li>
+    <li><a id="toc-Cambiar-el-texto-de-las-indicaciones-de-octava-alta-y-baja" href="pitches-_002d-changing-ottava-text.es.html">Cambiar el texto de las indicaciones de octava alta y baja</a></li>
+    <li><a id="toc-Modificacion-de-la-separacion-en-las-indicaciones-de-tesitura" href="pitches-_002d-changing-the-ambitus-gap.es.html">Modificación de la separación en las indicaciones de tesitura</a></li>
+    <li><a id="toc-Cambiar-el-intervalo-de-las-lineas-de-la-pauta" href="pitches-_002d-changing-the-interval-of-lines-on-the-stave.es.html">Cambiar el intervalo de las líneas de la pauta</a></li>
+    <li><a id="toc-Las-claves-se-pueden-transponer-en-intervalos-arbitrarios" href="pitches-_002d-clefs-can-be-transposed-by-arbitrary-amounts.es.html">Las claves se pueden transponer en intervalos arbitrarios</a></li>
+    <li><a id="toc-Colorear-las-notas-segun-su-altura" href="pitches-_002d-coloring-notes-depending-on-their-pitch.es.html">Colorear las notas según su altura</a></li>
+    <li><a id="toc-Crear-una-secuencia-de-notas-a-distintas-alturas" href="pitches-_002d-creating-a-sequence-of-notes-on-various-pitches.es.html">Crear una secuencia de notas a distintas alturas</a></li>
+    <li><a id="toc-Creacion-de-armaduras-de-clave-personalizadas" href="pitches-_002d-creating-custom-key-signatures.es.html">Creación de armaduras de clave personalizadas</a></li>
+    <li><a id="toc-Direction-of-merged-_2018fa_2019-shape-note-heads" href="pitches-_002d-direction-of-merged-_2018fa_2019-shape-note-heads.es.html">Direction of merged &lsquo;fa&rsquo; shape note heads</a></li>
+    <li><a id="toc-Forzar-un-becuadro-de-cancelacion-antes-de-una-alteracion-accidental" href="pitches-_002d-force-a-cancellation-natural-before-accidentals.es.html">Forzar un becuadro de cancelación antes de una alteración accidental</a></li>
+    <li><a id="toc-Forzar-la-impresion-de-la-clave" href="pitches-_002d-forcing-a-clef-symbol-to-be-displayed.es.html">Forzar la impresión de la clave</a></li>
+    <li><a id="toc-Generacion-de-notas-aleatorias" href="pitches-_002d-generating-random-notes.es.html">Generación de notas aleatorias</a></li>
+    <li><a id="toc-Ocultar-las-alteraciones-sobre-notas-ligadas-al-principio-de-un-sistema-nuevo" href="pitches-_002d-hiding-accidentals-on-tied-notes-at-the-start-of-a-new-system.es.html">Ocultar las alteraciones sobre notas ligadas al principio de un sistema nuevo</a></li>
+    <li><a id="toc-Mantener-el-tamano-del-simbolo-en-los-cambios-de-clave" href="pitches-_002d-keep-change-clefs-full_002dsized.es.html">Mantener el tamaño del símbolo en los cambios de clave</a></li>
+    <li><a id="toc-Ejemplo-de-makam" href="pitches-_002d-makam-example.es.html">Ejemplo de <em>makam</em></a></li>
+    <li><a id="toc-Modificacion-de-la-inclinacion-de-la-linea-de-octava" href="pitches-_002d-modifying-the-ottava-spanner-slope.es.html">Modificación de la inclinación de la línea de octava</a></li>
+    <li><a id="toc-Armaduras-de-tonalidad-no-tradicionales" href="pitches-_002d-non_002dtraditional-key-signatures.es.html">Armaduras de tonalidad no tradicionales</a></li>
+    <li><a id="toc-Numeros-como-notas-de-notacion-facil" href="pitches-_002d-numbers-as-easy-note-heads.es.html">Números como notas de notación fácil</a></li>
+    <li><a id="toc-Plantilla-de-orquesta_002c-coro-y-piano" href="pitches-_002d-orchestra_002c-choir-and-piano-template.es.html">Plantilla de orquesta, coro y piano</a></li>
+    <li><a id="toc-Evitar-que-se-anadan-becuadros-adicionales-automaticamente" href="pitches-_002d-preventing-extra-naturals-from-being-automatically-added.es.html">Evitar que se añadan becuadros adicionales automáticamente</a></li>
+    <li><a id="toc-Evitar-que-se-impriman-becuadros-cuando-cambia-la-armadura" href="pitches-_002d-preventing-natural-signs-from-being-printed-when-the-key-signature-changes.es.html">Evitar que se impriman becuadros cuando cambia la armadura</a></li>
+    <li><a id="toc-Citar-otra-voz-con-transposicion" href="pitches-_002d-quoting-another-voice-with-transposition.es.html">Citar otra voz con transposición</a></li>
+    <li><a id="toc-Separar-las-cancelaciones-de-tonalidad-de-los-cambios-de-armadura" href="pitches-_002d-separating-key-cancellations-from-key-signature-changes.es.html">Separar las cancelaciones de tonalidad de los cambios de armadura</a></li>
+    <li><a id="toc-Transposing-pitches-with-minimum-accidentals-_0028_201csmart_201d-transpose_0029" href="pitches-_002d-transposing-pitches-with-minimum-accidentals-_0028_201csmart_201d-transpose_0029.es.html">Transposing pitches with minimum accidentals (&ldquo;smart&rdquo; transpose)</a></li>
+    <li><a id="toc-Ejemplo-de-makam-en-la-musica-turca" href="pitches-_002d-turkish-makam-example.es.html">Ejemplo de <em>makam</em> en la música turca</a></li>
+    <li><a id="toc-Trucaje-de-las-propiedades-de-clave" href="pitches-_002d-tweaking-clef-properties.es.html">Trucaje de las propiedades de clave</a></li>
+    <li><a id="toc-Using-_005cautoChange-with-more-than-one-voice" href="pitches-_002d-using-_005cautochange-with-more-than-one-voice.es.html">Using \autoChange with more than one voice</a></li>
+  </ul></li>
+  <li><a id="toc-Rhythms" href="rhythms.es.html">2 Rhythms</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Adding-beams_002c-slurs_002c-ties_002c-etc_002e_002c-when-using-tuplet-and-non_002dtuplet-rhythms" href="rhythms-_002d-adding-beams_002c-slurs_002c-ties_002c-etc_002e_002c-when-using-tuplet-and-non_002dtuplet-rhythms.es.html">Adding beams, slurs, ties, etc., when using tuplet and non-tuplet rhythms</a></li>
+    <li><a id="toc-Escritura-de-partes-de-percusion" href="rhythms-_002d-adding-drum-parts.es.html">Escritura de partes de percusión</a></li>
+    <li><a id="toc-Ajuste-del-espaciado-de-las-notas-de-adorno" href="rhythms-_002d-adjusting-grace-note-spacing.es.html">Ajuste del espaciado de las notas de adorno</a></li>
+    <li><a id="toc-Alineacion-de-los-numeros-de-compas" href="rhythms-_002d-aligning-bar-numbers.es.html">Alineación de los números de compás</a></li>
+    <li><a id="toc-Formas-alternativas-de-la-figura-breve" href="rhythms-_002d-alternative-breve-notes.es.html">Formas alternativas de la figura breve</a></li>
+    <li><a id="toc-Apoyatura-o-nota-de-adorno-antes-de-la-linea-divisoria" href="rhythms-_002d-appoggiatura-or-grace-note-before-a-bar-line.es.html">Apoyatura o nota de adorno antes de la línea divisoria</a></li>
+    <li><a id="toc-Subdivisiones-de-barra-automaticas" href="rhythms-_002d-automatic-beam-subdivisions.es.html">Subdivisiones de barra automáticas</a></li>
+    <li><a id="toc-Modificar-duraciones-automaticamente" href="rhythms-_002d-automatically-change-durations.es.html">Modificar duraciones automáticamente</a></li>
+    <li><a id="toc-Finales-de-barra-en-el-contexto-Score" href="rhythms-_002d-beam-endings-in-score-context.es.html">Finales de barra en el contexto Score</a></li>
+    <li><a id="toc-Barras-recortadas" href="rhythms-_002d-beam-nibs.es.html">Barras recortadas</a></li>
+    <li><a id="toc-Barras-que-atraviesan-saltos-de-linea" href="rhythms-_002d-beams-across-line-breaks.es.html">Barras que atraviesan saltos de línea</a></li>
+    <li><a id="toc-Cambiar-el-salto-de-las-barras-en-angulo" href="rhythms-_002d-changing-beam-knee-gap.es.html">Cambiar el salto de las barras en ángulo</a></li>
+    <li><a id="toc-Cambiar-la-forma-de-los-silencios-multicompas" href="rhythms-_002d-changing-form-of-multi_002dmeasure-rests.es.html">Cambiar la forma de los silencios multicompás</a></li>
+    <li><a id="toc-Modificar-el-numero-de-puntillos-de-una-nota" href="rhythms-_002d-changing-the-number-of-augmentation-dots-per-note.es.html">Modificar el número de puntillos de una nota</a></li>
+    <li><a id="toc-Cambiar-el-tempo-sin-indicacion-metronomica" href="rhythms-_002d-changing-the-tempo-without-a-metronome-mark.es.html">Cambiar el tempo sin indicación metronómica</a></li>
+    <li><a id="toc-Cambiar-el-numero-del-grupo-especial" href="rhythms-_002d-changing-the-tuplet-number.es.html">Cambiar el número del grupo especial</a></li>
+    <li><a id="toc-Modificar-el-compas-dentro-de-una-seccion-polimetrica-utilizando-_005cscaleDurations" href="rhythms-_002d-changing-time-signatures-inside-a-polymetric-section-using-_005cscaledurations.es.html">Modificar el compás dentro de una sección polimétrica utilizando <code>\scaleDurations</code></a></li>
+    <li><a id="toc-Chant-or-psalm-notation" href="rhythms-_002d-chant-or-psalm-notation.es.html">Chant or psalm notation</a></li>
+    <li><a id="toc-Complex-time-signatures" href="rhythms-_002d-complex-time-signatures.es.html">Complex time signatures</a></li>
+    <li><a id="toc-Simbolos-de-direccion-y-simbolos-de-agrupacion-de-compas" href="rhythms-_002d-conducting-signs_002c-measure-grouping-signs.es.html">Símbolos de dirección y símbolos de agrupación de compás</a></li>
+    <li><a id="toc-Controlar-la-visibilidad-de-los-corchetes-de-grupo-especial" href="rhythms-_002d-controlling-tuplet-bracket-visibility.es.html">Controlar la visibilidad de los corchetes de grupo especial</a></li>
+    <li><a id="toc-Ejemplo-de-cencerro-y-campana" href="rhythms-_002d-cow-and-ride-bell-example.es.html">Ejemplo de cencerro y campana</a></li>
+    <li><a id="toc-Crear-indicaciones-metronomicas-en-modo-de-marcado" href="rhythms-_002d-creating-metronome-marks-in-markup-mode.es.html">Crear indicaciones metronómicas en modo de marcado</a></li>
+    <li><a id="toc-Grabado-manual-de-las-ligaduras" href="rhythms-_002d-engraving-ties-manually.es.html">Grabado manual de las ligaduras</a></li>
+    <li><a id="toc-Tremolos-con-barras-flotantes" href="rhythms-_002d-engraving-tremolos-with-floating-beams.es.html">Trémolos con barras flotantes</a></li>
+    <li><a id="toc-Escribir-varios-tresillos-con-una-sola-instruccion-_005ctuplet" href="rhythms-_002d-entering-several-tuplets-using-only-one-_005ctuplet-command.es.html">Escribir varios tresillos con una sola instrucción <code>\tuplet</code></a></li>
+    <li><a id="toc-Forzar-que-las-marcas-de-ensayo-comiencen-en-una-letra-o-numero-dados" href="rhythms-_002d-forcing-rehearsal-marks-to-start-from-a-given-letter-or-number.es.html">Forzar que las marcas  de ensayo comiencen en una letra o número dados</a></li>
+    <li><a id="toc-Generar-corchetes-personalizados" href="rhythms-_002d-generating-custom-flags.es.html">Generar corchetes personalizados</a></li>
+    <li><a id="toc-Ritmos-rasgueados-de-guitarra" href="rhythms-_002d-guitar-strum-rhythms.es.html">Ritmos rasgueados de guitarra</a></li>
+    <li><a id="toc-Indicaciones-de-compas-polimetricas-profundamente-personalizadas" href="rhythms-_002d-heavily-customized-polymetric-time-signatures.es.html">Indicaciones de compás polimétricas profundamente personalizadas</a></li>
+    <li><a id="toc-Ejemplo-de-cajas-chinas-grave-y-aguda" href="rhythms-_002d-high-and-low-woodblock-example.es.html">Ejemplo de cajas chinas grave y aguda</a></li>
+    <li><a id="toc-Making-an-object-invisible-using-_005chide" href="rhythms-_002d-making-an-object-invisible-using-_005chide.es.html">Making an object invisible using \hide</a></li>
+    <li><a id="toc-Hacer-ligaduras-de-expresion-con-estructura-compleja-de-discontinuidad" href="rhythms-_002d-making-slurs-with-complex-dash-structure.es.html">Hacer ligaduras de expresión con estructura compleja de discontinuidad</a></li>
+    <li><a id="toc-Controlar-manualmente-las-posiciones-de-las-barras" href="rhythms-_002d-manually-controlling-beam-positions.es.html">Controlar manualmente las posiciones de las barras</a></li>
+    <li><a id="toc-Combinar-los-silencios-multicompas-en-una-parte-polifonica" href="rhythms-_002d-merging-multi_002dmeasure-rests-in-a-polyphonic-part.es.html">Combinar los silencios multicompás en una parte polifónica</a></li>
+    <li><a id="toc-Modificar-la-longitud-del-corchete-de-grupo-especial" href="rhythms-_002d-modifying-tuplet-bracket-length.es.html">Modificar la longitud del corchete de grupo especial</a></li>
+    <li><a id="toc-Desplazar-las-notas-con-puntillo-en-polifonia" href="rhythms-_002d-moving-dotted-notes-in-polyphony.es.html">Desplazar las notas con puntillo en polifonía</a></li>
+    <li><a id="toc-Control-de-la-anchura-de-un-silencio-multicompas" href="rhythms-_002d-multi_002dmeasure-rest-length-control.es.html">Control de la anchura de un silencio multicompás</a></li>
+    <li><a id="toc-Marcado-de-silencios-multicompas" href="rhythms-_002d-multi_002dmeasure-rest-markup.es.html">Marcado de silencios multicompás</a></li>
+    <li><a id="toc-Numeros-de-agrupacion-especial-distintos-a-los-predeterminados" href="rhythms-_002d-non_002ddefault-tuplet-numbers.es.html">Números de agrupación especial distintos a los predeterminados</a></li>
+    <li><a id="toc-Numerar-silencios-seguidos-de-un-compas" href="rhythms-_002d-numbering-single-measure-rests.es.html">Numerar silencios seguidos de un compás</a></li>
+    <li><a id="toc-Partcombine-y-_005cautoBeamOff" href="rhythms-_002d-partcombine-and-_005cautobeamoff.es.html"><code>Partcombine</code> y <code>\autoBeamOff</code></a></li>
+    <li><a id="toc-Ejemplo-de-percusion" href="rhythms-_002d-percussion-example.es.html">Ejemplo de percusión</a></li>
+    <li><a id="toc-Permitir-saltos-de-linea-dentro-de-grupos-especiales-con-barra" href="rhythms-_002d-permitting-line-breaks-within-beamed-tuplets.es.html">Permitir saltos de línea dentro de grupos especiales con barra</a></li>
+    <li><a id="toc-Colocar-las-barras-de-las-notas-de-adorno-a-la-misma-altura-que-las-barras-de-notas-normales" href="rhythms-_002d-positioning-grace-note-beams-at-the-height-of-normal-note-beams.es.html">Colocar las barras de las notas de adorno a la misma altura que las barras de notas normales</a></li>
+    <li><a id="toc-Posicionamiento-de-las-notas-de-adorno-con-espacio-flotante" href="rhythms-_002d-positioning-grace-notes-with-floating-space.es.html">Posicionamiento de las notas de adorno con espacio flotante</a></li>
+    <li><a id="toc-Posicionar-los-silencios-multicompas" href="rhythms-_002d-positioning-multi_002dmeasure-rests.es.html">Posicionar los silencios multicompás</a></li>
+    <li><a id="toc-Colocar-calderones-opuestos-sobre-la-barra-de-compas" href="rhythms-_002d-positioning-opposing-fermatas-on-a-bar-line.es.html">Colocar calderones opuestos sobre la barra de compás</a></li>
+    <li><a id="toc-Evitar-que-una-marca-de-ensayo-final-suprima-el-corchete-de-un-grupo-de-valoracion-especial" href="rhythms-_002d-preventing-final-mark-from-removing-final-tuplet.es.html">Evitar que una marca de ensayo final suprima el corchete de un grupo de valoración especial</a></li>
+    <li><a id="toc-Imprimir-numeros-de-compas-a-intervalos-regulares" href="rhythms-_002d-printing-bar-numbers-at-regular-intervals.es.html">Imprimir números de compás a intervalos regulares</a></li>
+    <li><a id="toc-Impresion-de-numeros-de-compas-para-compases-divididos" href="rhythms-_002d-printing-bar-numbers-for-broken-measures.es.html">Impresión de números de compás para compases divididos</a></li>
+    <li><a id="toc-Imprimir-numeros-de-compas-dentro-de-rectangulos-o-circunferencias" href="rhythms-_002d-printing-bar-numbers-inside-boxes-or-circles.es.html">Imprimir números de compás dentro de rectángulos o circunferencias</a></li>
+    <li><a id="toc-Impresion-de-los-numeros-de-compas-usando-modulo_002dbar_002dnumber_002dvisible" href="rhythms-_002d-printing-bar-numbers-using-modulo_002dbar_002dnumber_002dvisible.es.html">Impresión de los números de compás usando <code>modulo-bar-number-visible</code></a></li>
+    <li><a id="toc-Impresion-de-los-numeros-de-compas-con-intervalos-regulares-variables" href="rhythms-_002d-printing-bar-numbers-with-changing-regular-intervals.es.html">Impresión de los números de compás con intervalos regulares variables</a></li>
+    <li><a id="toc-Impresion-de-indicaciones-metronomicas-y-letras-de-ensayo-debajo-del-pentagrama" href="rhythms-_002d-printing-metronome-and-rehearsal-marks-below-the-staff.es.html">Impresión de indicaciones metronómicas y letras de ensayo debajo del pentagrama</a></li>
+    <li><a id="toc-Imprimir-musica-que-tenga-compases-distintos-en-cada-pentagrama" href="rhythms-_002d-printing-music-with-different-time-signatures.es.html">Imprimir música que tenga compases distintos en cada pentagrama</a></li>
+    <li><a id="toc-Imprimir-el-numero-de-compas-en-el-primer-compas" href="rhythms-_002d-printing-the-bar-number-for-the-first-measure.es.html">Imprimir el número de compás en el primer compás</a></li>
+    <li><a id="toc-Imrpesion-de-corchetes-de-tresillo-en-el-lado-de-la-cabeza-de-la-nota" href="rhythms-_002d-printing-tuplet-brackets-on-the-note-head-side.es.html">Imrpesión de corchetes de tresillo en el lado de la cabeza de la nota</a></li>
+    <li><a id="toc-Redefinicion-de-los-valores-globales-predeterminados-para-notas-de-adorno" href="rhythms-_002d-redefining-grace-note-global-defaults.es.html">Redefinición de los valores globales predeterminados para notas de adorno</a></li>
+    <li><a id="toc-Suprimir-los-numeros-de-compas-de-toda-la-partitura" href="rhythms-_002d-removing-bar-numbers-from-a-score.es.html">Suprimir los números de compás de toda la partitura</a></li>
+    <li><a id="toc-Estilos-de-silencios" href="rhythms-_002d-rest-styles.es.html">Estilos de silencios</a></li>
+    <li><a id="toc-Alteracion-de-los-finales-de-barra-predeterminados" href="rhythms-_002d-reverting-default-beam-endings.es.html">Alteración de los finales de barra predeterminados</a></li>
+    <li><a id="toc-Barras-ritmicas" href="rhythms-_002d-rhythmic-slashes.es.html">Barras rítmicas</a></li>
+    <li><a id="toc-Silencios-de-separacion-en-modo-de-letra" href="rhythms-_002d-skips-in-lyric-mode.es.html">Silencios de separación en modo de letra</a></li>
+    <li><a id="toc-Silencios-de-separacion-en-modo-de-letra-_00282_0029" href="rhythms-_002d-skips-in-lyric-mode-_00282_0029.es.html">Silencios de separación en modo de letra (2)</a></li>
+    <li><a id="toc-Stemlets-_0028plicas-de-tamano-reducido_0029" href="rhythms-_002d-stemlets.es.html">Stemlets (plicas de tamaño reducido)</a></li>
+    <li><a id="toc-Barras-que-se-atienen-al-pulso-estrictamente" href="rhythms-_002d-strict-beat-beaming.es.html">Barras que se atienen al pulso estrictamente</a></li>
+    <li><a id="toc-Subdivision-de-barras" href="rhythms-_002d-subdividing-beams.es.html">Subdivisión de barras</a></li>
+    <li><a id="toc-Ejemplo-de-musica-para-tam_002dtam" href="rhythms-_002d-tam_002dtam-example.es.html">Ejemplo de música para tam-tam</a></li>
+    <li><a id="toc-Ejemlo-de-pandereta" href="rhythms-_002d-tambourine-example.es.html">Ejemlo de pandereta</a></li>
+    <li><a id="toc-Rectangulo-de-tres-segmentos-visibles" href="rhythms-_002d-three_002dsided-box.es.html">Rectángulo de tres segmentos visibles</a></li>
+    <li><a id="toc-Indicacion-de-compas-entre-corchetes" href="rhythms-_002d-time-signature-in-brackets.es.html">Indicación de compás entre corchetes</a></li>
+    <li><a id="toc-Compas-entre-parentesis" href="rhythms-_002d-time-signature-in-parentheses.es.html">Compás entre paréntesis</a></li>
+    <li><a id="toc-Indicacion-de-compas-imprimiendo-solo-el-numerador-_0028en-lugar-de-la-fraccion_0029" href="rhythms-_002d-time-signature-printing-only-the-numerator-as-a-number-_0028instead-of-the-fraction_0029.es.html">Indicación de compás imprimiendo solo el numerador (en lugar de la fracción)</a></li>
+    <li><a id="toc-Trucar-la-disposicion-de-las-notas-de-adorno-dentro-de-la-musica" href="rhythms-_002d-tweaking-grace-layout-within-music.es.html">Trucar la disposición de las notas de adorno dentro de la música</a></li>
+    <li><a id="toc-Indicaciones-de-compas-personalizadas" href="rhythms-_002d-user_002ddefined-time-signatures.es.html">Indicaciones de compás personalizadas</a></li>
+    <li><a id="toc-Uso-de-estilos-alternativos-para-los-corchetes" href="rhythms-_002d-using-alternative-flag-styles.es.html">Uso de estilos alternativos para los corchetes</a></li>
+    <li><a id="toc-Utilizar-la-barra-que-tacha-las-notas-de-adorno-con-notas-normales" href="rhythms-_002d-using-grace-note-slashes-with-normal-heads.es.html">Utilizar la barra que tacha las notas de adorno con notas normales</a></li>
+    <li><a id="toc-Uso-de-ligaduras-en-los-arpegios" href="rhythms-_002d-using-ties-with-arpeggios.es.html">Uso de ligaduras en los arpegios</a></li>
+  </ul></li>
+  <li><a id="toc-Expressive-marks" href="expressive-marks.es.html">3 Expressive marks</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Encerrar-entre-parentesis-una-marca-expresiva-o-una-nota-de-un-acorde" href="expressive-marks-_002d-adding-parentheses-around-an-expressive-mark-or-chordal-note.es.html">Encerrar entre paréntesis una marca expresiva o una nota de un acorde</a></li>
+    <li><a id="toc-Anadir-marcas-de-tiempo-a-glissandos-largos" href="expressive-marks-_002d-adding-timing-marks-to-long-glissandi.es.html">Añadir marcas de tiempo a glissandos largos</a></li>
+    <li><a id="toc-Ajustar-las-posiciones-de-las-ligaduras-verticalmente" href="expressive-marks-_002d-adjusting-slur-positions-vertically.es.html">Ajustar las posiciones de las ligaduras verticalmente</a></li>
+    <li><a id="toc-Ajustar-la-forma-de-las-subidas-y-caidas-de-tono" href="expressive-marks-_002d-adjusting-the-shape-of-falls-and-doits.es.html">Ajustar la forma de las subidas y caídas de tono</a></li>
+    <li><a id="toc-Alinear-los-extremos-de-los-reguladores-con-las-direcciones-de-NoteColumn" href="expressive-marks-_002d-aligning-the-ends-of-hairpins-to-notecolumn-directions.es.html">Alinear los extremos de los reguladores con las direcciones de <code>NoteColumn</code></a></li>
+    <li><a id="toc-Formas-alternativas-de-la-figura-breve-1" href="expressive-marks-_002d-alternative-breve-notes.es.html">Formas alternativas de la figura breve</a></li>
+    <li><a id="toc-Ligaduras-asimetricas" href="expressive-marks-_002d-asymmetric-slurs.es.html">Ligaduras asimétricas</a></li>
+    <li><a id="toc-Marcas-de-respiracion" href="expressive-marks-_002d-breathing-signs.es.html">Marcas de respiración</a></li>
+    <li><a id="toc-Regulador-interrumpido" href="expressive-marks-_002d-broken-crescendo-hairpin.es.html">Regulador interrumpido</a></li>
+    <li><a id="toc-Caesura-_0028_201crailtracks_201d_0029-with-fermata" href="expressive-marks-_002d-caesura-_0028_201crailtracks_201d_0029-with-fermata.es.html">Caesura (&ldquo;railtracks&rdquo;) with fermata</a></li>
+    <li><a id="toc-Centrar-texto-debajo-de-un-regulador" href="expressive-marks-_002d-center-text-below-hairpin-dynamics.es.html">Centrar texto debajo de un regulador</a></li>
+    <li><a id="toc-Cambiar-el-texto-y-los-estilos-de-objeto-de-extension-para-las-indicaciones-dinamicas-textuales" href="expressive-marks-_002d-changing-text-and-spanner-styles-for-text-dynamics.es.html">Cambiar el texto y los estilos de objeto de extensión para las indicaciones dinámicas textuales</a></li>
+    <li><a id="toc-Modificar-el-aspecto-continuo-de-una-ligadura-de-expresion-a-punteado-o-intermitente" href="expressive-marks-_002d-changing-the-appearance-of-a-slur-from-solid-to-dotted-or-dashed.es.html">Modificar el aspecto continuo de una ligadura de expresión a punteado o intermitente</a></li>
+    <li><a id="toc-Cambiar-el-simbolo-de-la-marca-de-respiracion" href="expressive-marks-_002d-changing-the-breath-mark-symbol.es.html">Cambiar el símbolo de la marca de respiración</a></li>
+    <li><a id="toc-Modificar-el-numero-de-puntillos-de-una-nota-1" href="expressive-marks-_002d-changing-the-number-of-augmentation-dots-per-note.es.html">Modificar el número de puntillos de una nota</a></li>
+    <li><a id="toc-Combinar-indicaciones-dinamicas-con-marcados-textuales" href="expressive-marks-_002d-combining-dynamics-with-markup-texts.es.html">Combinar indicaciones dinámicas con marcados textuales</a></li>
+    <li><a id="toc-Combining-dynamics-with-markup-texts-_00282_0029" href="expressive-marks-_002d-combining-dynamics-with-markup-texts-_00282_0029.es.html">Combining dynamics with markup texts (2)</a></li>
+    <li><a id="toc-Glissando-contemporaneo" href="expressive-marks-_002d-contemporary-glissando.es.html">Glissando contemporáneo</a></li>
+    <li><a id="toc-Controlar-la-visibilidad-de-los-objetos-de-extension-despues-de-un-salto-de-linea" href="expressive-marks-_002d-controlling-spanner-visibility-after-a-line-break.es.html">Controlar la visibilidad de los objetos de extensión después de un salto de línea</a></li>
+    <li><a id="toc-Controlar-la-colocacion-de-las-digitaciones-de-acordes" href="expressive-marks-_002d-controlling-the-placement-of-chord-fingerings.es.html">Controlar la colocación de las digitaciones de acordes</a></li>
+    <li><a id="toc-Controlar-la-ordenacion-vertical-de-las-inscripciones" href="expressive-marks-_002d-controlling-the-vertical-ordering-of-scripts.es.html">Controlar la ordenación vertical de las inscripciones</a></li>
+    <li><a id="toc-Crear-un-grupeto-de-anticipacion" href="expressive-marks-_002d-creating-a-delayed-turn.es.html">Crear un grupeto de anticipación</a></li>
+    <li><a id="toc-Crear-arpegios-entre-notas-de-voces-distintas" href="expressive-marks-_002d-creating-arpeggios-across-notes-in-different-voices.es.html">Crear arpegios entre notas de voces distintas</a></li>
+    <li><a id="toc-Crear-arpegios-que-se-cruzan-entre-pentagramas-dentro-de-un-sistema-de-piano" href="expressive-marks-_002d-creating-cross_002dstaff-arpeggios-in-a-piano-staff.es.html">Crear arpegios que se cruzan entre pentagramas dentro de un sistema de piano</a></li>
+    <li><a id="toc-Creacion-de-arpegios-que-se-cruzan-entre-pentagramas-dentro-de-otros-contextos" href="expressive-marks-_002d-creating-cross_002dstaff-arpeggios-in-other-contexts.es.html">Creación de arpegios que se cruzan entre pentagramas dentro de otros contextos</a></li>
+    <li><a id="toc-Crear-digitaciones-de-dos-cifras" href="expressive-marks-_002d-creating-double_002ddigit-fingerings.es.html">Crear digitaciones de dos cifras</a></li>
+    <li><a id="toc-Hacer-ligaduras-entre-voces-distintas" href="expressive-marks-_002d-creating-slurs-across-voices.es.html">Hacer ligaduras entre voces distintas</a></li>
+    <li><a id="toc-Crear-elementos-de-extension-textuales" href="expressive-marks-_002d-creating-text-spanners.es.html">Crear elementos de extensión textuales</a></li>
+    <li><a id="toc-Dynamics-spanner-with-custom-text" href="expressive-marks-_002d-dynamics-spanner-with-custom-text.es.html">Dynamics spanner with custom text</a></li>
+    <li><a id="toc-Glissando-por-debajo-de-un-objeto-grafico" href="expressive-marks-_002d-glissandi-can-skip-grobs.es.html">Glissando por debajo de un objeto gráfico</a></li>
+    <li><a id="toc-Reguladores-con-distintos-estilos-de-linea" href="expressive-marks-_002d-hairpins-with-different-line-styles.es.html">Reguladores con distintos estilos de línea</a></li>
+    <li><a id="toc-Ocultar-la-linea-de-extension-de-las-expresiones-textuales-de-dinamica" href="expressive-marks-_002d-hiding-the-extender-line-for-text-dynamics.es.html">Ocultar la línea de extensión de las expresiones textuales de dinámica</a></li>
+    <li><a id="toc-Horizontally-aligning-custom-dynamics-like-_201cpiu-f_201d" href="expressive-marks-_002d-horizontally-aligning-custom-dynamics-like-_201cpiu-f_201d.es.html#expressive-marks-_002d-horizontally-aligning-custom-dynamics-like-_201cpi_00f9-f_201d">Horizontally aligning custom dynamics like &ldquo;più f&rdquo;</a></li>
+    <li><a id="toc-Insertar-una-cesura" href="expressive-marks-_002d-inserting-a-caesura.es.html">Insertar una cesura</a></li>
+    <li><a id="toc-Ligaduras-laissez-vibrer" href="expressive-marks-_002d-laissez-vibrer-ties.es.html">Ligaduras <em>laissez vibrer</em></a></li>
+    <li><a id="toc-Puntas-de-flecha-para-las-lineas" href="expressive-marks-_002d-line-arrows.es.html">Puntas de flecha para las líneas</a></li>
+    <li><a id="toc-Hacer-ligaduras-de-expresion-con-estructura-compleja-de-discontinuidad-1" href="expressive-marks-_002d-making-slurs-with-complex-dash-structure.es.html">Hacer ligaduras de expresión con estructura compleja de discontinuidad</a></li>
+    <li><a id="toc-Modificar-los-valores-predeterminados-para-la-notacion-abreviada-de-las-articulaciones" href="expressive-marks-_002d-modifying-default-values-for-articulation-shorthand-notation.es.html">Modificar los valores predeterminados para la notación abreviada de las articulaciones</a></li>
+    <li><a id="toc-Desplazar-ligaduras-de-expresion-verticalmente" href="expressive-marks-_002d-moving-slur-positions-vertically.es.html">Desplazar ligaduras de expresión verticalmente</a></li>
+    <li><a id="toc-Desplazar-los-extremos-de-un-regulador" href="expressive-marks-_002d-moving-the-ends-of-hairpins.es.html">Desplazar los extremos de un regulador</a></li>
+    <li><a id="toc-Posicionar-simbolos-de-arpegio" href="expressive-marks-_002d-positioning-arpeggios.es.html">Posicionar símbolos de arpegio</a></li>
+    <li><a id="toc-Situar-los-elementos-de-marcado-de-texto-por-dentro-de-las-ligaduras" href="expressive-marks-_002d-positioning-text-markups-inside-slurs.es.html">Situar los elementos de marcado de texto por dentro de las ligaduras</a></li>
+    <li><a id="toc-Imprimir-reguladores-en-diversos-estilos" href="expressive-marks-_002d-printing-hairpins-in-various-styles.es.html">Imprimir reguladores en diversos estilos</a></li>
+    <li><a id="toc-Impresion-de-reguladores-utilizando-la-notacion-_00abal-niente_00bb" href="expressive-marks-_002d-printing-hairpins-using-al-niente-notation.es.html">Impresión de reguladores utilizando la notación «al niente»</a></li>
+    <li><a id="toc-Impresion-de-indicaciones-metronomicas-y-letras-de-ensayo-debajo-del-pentagrama-1" href="expressive-marks-_002d-printing-metronome-and-rehearsal-marks-below-the-staff.es.html">Impresión de indicaciones metronómicas y letras de ensayo debajo del pentagrama</a></li>
+    <li><a id="toc-Establecer-el-comportamiento-de-los-reguladores-en-las-barras-de-compas" href="expressive-marks-_002d-setting-hairpin-behavior-at-bar-lines.es.html">Establecer el comportamiento de los reguladores en las barras de compás</a></li>
+    <li><a id="toc-Ajustar-la-longitud-minima-de-los-reguladores" href="expressive-marks-_002d-setting-the-minimum-length-of-hairpins.es.html">Ajustar la longitud mínima de los reguladores</a></li>
+    <li><a id="toc-Imprimir-la-misma-articulacion-encima-y-debajo-de-la-misma-nota-o-acorde" href="expressive-marks-_002d-showing-the-same-articulation-above-and-below-a-note-or-chord.es.html">Imprimir la misma articulación encima y debajo de la misma nota o acorde</a></li>
+    <li><a id="toc-Slanted-parentheses-around-dynamics" href="expressive-marks-_002d-slanted-parentheses-around-dynamics.es.html">Slanted parentheses around dynamics</a></li>
+    <li><a id="toc-Snap-pizzicato-_0028_201cBartok_201d-pizzicato_0029" href="expressive-marks-_002d-snap-pizzicato-_0028_201cbartok_201d-pizzicato_0029.es.html">Snap pizzicato (&ldquo;Bartok&rdquo; pizzicato)</a></li>
+    <li><a id="toc-Using-_005carpeggioBracket-to-make-divisi-more-visible" href="expressive-marks-_002d-using-_005carpeggiobracket-to-make-divisi-more-visible.es.html">Using \arpeggioBracket to make divisi more visible</a></li>
+    <li><a id="toc-Using-a-bracket-to-clarify-divisi" href="expressive-marks-_002d-using-a-bracket-to-clarify-divisi.es.html">Using a bracket to clarify divisi</a></li>
+    <li><a id="toc-Usar-una-raya-corta-como-simbolo-de-respiracion" href="expressive-marks-_002d-using-a-tick-as-the-breath-mark-symbol.es.html">Usar una raya corta como símbolo de respiración</a></li>
+    <li><a id="toc-Utilizar-ligaduras-dobles-para-acordes-legato" href="expressive-marks-_002d-using-double-slurs-for-legato-chords.es.html">Utilizar ligaduras dobles para acordes legato</a></li>
+    <li><a id="toc-Uso-de-la-propiedad-whiteout" href="expressive-marks-_002d-using-the-whiteout-property.es.html">Uso de la propiedad <code>whiteout</code></a></li>
+    <li><a id="toc-Linea-vertical-como-una-articulacion-barroca" href="expressive-marks-_002d-vertical-line-as-a-baroque-articulation-mark.es.html">Línea vertical como una articulación barroca</a></li>
+    <li><a id="toc-Alinear-verticalmente-expresiones-dinamicas-que-abarcan-varias-notas" href="expressive-marks-_002d-vertically-aligning-dynamics-across-multiple-notes.es.html">Alinear verticalmente expresiones dinámicas que abarcan varias notas</a></li>
+  </ul></li>
+  <li><a id="toc-Repeats" href="repeats.es.html">4 Repeats</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Cambiar-las-lineas-divisorias-predeterminadas" href="repeats-_002d-changing-the-default-bar-lines.es.html">Cambiar las líneas divisorias predeterminadas</a></li>
+    <li><a id="toc-Controlar-el-aspecto-de-las-barras-de-tremolo" href="repeats-_002d-controlling-the-appearance-of-tremolo-slashes.es.html">Controlar el aspecto de las barras de trémolo</a></li>
+    <li><a id="toc-Tremolos-de-pentagrama-cruzado" href="repeats-_002d-cross_002dstaff-tremolos.es.html">Trémolos de pentagrama cruzado</a></li>
+    <li><a id="toc-Tremolos-con-barras-flotantes-1" href="repeats-_002d-engraving-tremolos-with-floating-beams.es.html">Trémolos con barras flotantes</a></li>
+    <li><a id="toc-Simbolos-de-porcentaje-sueltos" href="repeats-_002d-isolated-percent-repeats.es.html">Símbolos de porcentaje sueltos</a></li>
+    <li><a id="toc-Measure-counters" href="repeats-_002d-measure-counters.es.html">Measure counters</a></li>
+    <li><a id="toc-Visibilidad-del-contador-de-repeticiones-de-tipo-porcentaje" href="repeats-_002d-percent-repeat-count-visibility.es.html">Visibilidad del contador de repeticiones de tipo porcentaje</a></li>
+    <li><a id="toc-Contador-de-repeticiones-de-tipo-porcentaje" href="repeats-_002d-percent-repeat-counter.es.html">Contador de repeticiones de tipo porcentaje</a></li>
+    <li><a id="toc-Posicionar-los-simbolos-de-repeticion-segno-y-coda-_0028con-saltos-de-linea_0029" href="repeats-_002d-positioning-segno-and-coda-_0028with-line-break_0029.es.html">Posicionar los símbolos de repetición segno y coda (con saltos de línea)</a></li>
+    <li><a id="toc-Establecer-el-tipo-de-repeticion-doble-predeterminado-para-la-primera-y-segunda-vez" href="repeats-_002d-setting-the-double-repeat-default-for-volte.es.html">Establecer el tipo de repetición doble predeterminado para la primera y segunda vez</a></li>
+    <li><a id="toc-Acortar-los-corchetes-de-primera-y-segunda-vez" href="repeats-_002d-shortening-volta-brackets.es.html">Acortar los corchetes de primera y segunda vez</a></li>
+    <li><a id="toc-Unfolding-tremolo-repeats" href="repeats-_002d-unfolding-tremolo-repeats.es.html">Unfolding tremolo repeats</a></li>
+    <li><a id="toc-Corchetes-de-primera-y-segunda-vez-debajo-de-los-acordes" href="repeats-_002d-volta-below-chords.es.html">Corchetes de primera y segunda vez debajo de los acordes</a></li>
+    <li><a id="toc-Casillas-de-primera-y-segunda-vez-en-varios-pentagramas" href="repeats-_002d-volta-brackets-in-multiple-staves.es.html">Casillas de primera y segunda vez en varios pentagramas</a></li>
+    <li><a id="toc-Elementos-de-marcado-para-el-texto-de-las-casillas-de-repeticion-usando-repeatCommands" href="repeats-_002d-volta-text-markup-using-repeatcommands.es.html">Elementos de marcado para el texto de las casillas de repetición usando <code>repeatCommands</code></a></li>
+  </ul></li>
+  <li><a id="toc-Simultaneous-notes" href="simultaneous-notes.es.html">5 Simultaneous notes</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Voces-adicionales-para-evitar-colisiones" href="simultaneous-notes-_002d-additional-voices-to-avoid-collisions.es.html">Voces adicionales para evitar colisiones</a></li>
+    <li><a id="toc-Cambiar-los-textos-de-_005cpartCombine" href="simultaneous-notes-_002d-changing-_005cpartcombine-texts.es.html">Cambiar los textos de <code>\partCombine</code></a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord" href="simultaneous-notes-_002d-changing-a-single-note_0027s-size-in-a-chord.es.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-Clusters-_0028_00abracimos_00bb_0029" href="simultaneous-notes-_002d-clusters.es.html">Clusters («racimos»)</a></li>
+    <li><a id="toc-Combinar-dos-partes-sobre-el-mismo-pentagrama" href="simultaneous-notes-_002d-combining-two-parts-on-the-same-staff.es.html">Combinar dos partes sobre el mismo pentagrama</a></li>
+    <li><a id="toc-Impresion-de-acordes-complejos" href="simultaneous-notes-_002d-displaying-complex-chords.es.html">Impresión de acordes complejos</a></li>
+    <li><a id="toc-Forzar-el-desplazamiento-horizontal-de-las-notas" href="simultaneous-notes-_002d-forcing-horizontal-shift-of-notes.es.html">Forzar el desplazamiento horizontal de las notas</a></li>
+    <li><a id="toc-Making-an-object-invisible-using-_005chide-1" href="simultaneous-notes-_002d-making-an-object-invisible-using-_005chide.es.html">Making an object invisible using \hide</a></li>
+    <li><a id="toc-Desplazar-las-notas-con-puntillo-en-polifonia-1" href="simultaneous-notes-_002d-moving-dotted-notes-in-polyphony.es.html">Desplazar las notas con puntillo en polifonía</a></li>
+    <li><a id="toc-Evitar-las-advertencias-sobre-columnas-de-notas-que-chocan" href="simultaneous-notes-_002d-suppressing-warnings-for-clashing-note-columns.es.html">Evitar las advertencias sobre columnas de notas que chocan</a></li>
+    <li><a id="toc-Dos-pares-de-_005cpartCombine-en-un-solo-pentagrama" href="simultaneous-notes-_002d-two-_005cpartcombine-pairs-on-one-staff.es.html">Dos pares de <code>\partCombine</code> en un solo pentagrama</a></li>
+  </ul></li>
+  <li><a id="toc-Staff-notation" href="staff-notation.es.html">6 Staff notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-un-ambito-por-voz-1" href="staff-notation-_002d-adding-ambitus-per-voice.es.html">Añadir un ámbito por voz</a></li>
+    <li><a id="toc-Anadir-un-pentagrama-nuevo" href="staff-notation-_002d-adding-an-extra-staff.es.html">Añadir un pentagrama nuevo</a></li>
+    <li><a id="toc-Anadir-un-pentagrama-adicional-en-un-salto-de-linea" href="staff-notation-_002d-adding-an-extra-staff-at-a-line-break.es.html">Añadir un pentagrama adicional en un salto de línea</a></li>
+    <li><a id="toc-Anadir-indicadores-a-los-pentagramas-que-se-dividen-despues-de-un-salto-de-linea" href="staff-notation-_002d-adding-indicators-to-staves-which-get-split-after-a-break.es.html">Añadir indicadores a los pentagramas que se dividen después de un salto de línea</a></li>
+    <li><a id="toc-Anadir-notas-guia-orquestales-a-una-partitura-vocal" href="staff-notation-_002d-adding-orchestral-cues-to-a-vocal-score.es.html">Añadir notas guía orquestales a una partitura vocal</a></li>
+    <li><a id="toc-Numeracion-de-compases-alternativa" href="staff-notation-_002d-alternative-bar-numbering.es.html">Numeración de compases alternativa</a></li>
+    <li><a id="toc-Indicacion-de-tesitura-despues-de-la-armadura-1" href="staff-notation-_002d-ambitus-after-key-signature.es.html">Indicación de tesitura después de la armadura</a></li>
+    <li><a id="toc-Cambiar-las-lineas-divisorias-predeterminadas-1" href="staff-notation-_002d-changing-the-default-bar-lines.es.html">Cambiar las líneas divisorias predeterminadas</a></li>
+    <li><a id="toc-Cambiar-el-numero-de-lineas-de-una-pauta" href="staff-notation-_002d-changing-the-number-of-lines-in-a-staff.es.html">Cambiar el número de líneas de una pauta</a></li>
+    <li><a id="toc-Modificar-el-tamano-de-la-pauta" href="staff-notation-_002d-changing-the-staff-size.es.html">Modificar el tamaño de la pauta</a></li>
+    <li><a id="toc-Crear-pentagramas-en-blanco" href="staff-notation-_002d-creating-blank-staves.es.html">Crear pentagramas en blanco</a></li>
+    <li><a id="toc-Creacion-de-armaduras-de-clave-personalizadas-1" href="staff-notation-_002d-creating-custom-key-signatures.es.html">Creación de armaduras de clave personalizadas</a></li>
+    <li><a id="toc-Plicas-de-pentagrama-cruzado" href="staff-notation-_002d-cross_002dstaff-stems.es.html">Plicas de pentagrama cruzado</a></li>
+    <li><a id="toc-Mostrar-corchete-o-llave-en-grupos-de-un-solo-pentagrama" href="staff-notation-_002d-display-bracket-with-only-one-staff-in-a-system.es.html">Mostrar corchete o llave en grupos de un solo pentagrama</a></li>
+    <li><a id="toc-Mostrar-un-sistema-GrandStaff-completo-si-sigue-con-vida-uno-solo-de-sus-pentagramas" href="staff-notation-_002d-displaying-a-whole-grandstaff-system-if-only-one-of-its-staves-is-alive.es.html">Mostrar un sistema GrandStaff completo si sigue con vida uno solo de sus pentagramas</a></li>
+    <li><a id="toc-Extending-a-trill-spanner" href="staff-notation-_002d-extending-a-trill-spanner.es.html">Extending a trill spanner</a></li>
+    <li><a id="toc-Extender-glissandos-sobre-repeticiones" href="staff-notation-_002d-extending-glissandi-across-repeats.es.html">Extender glissandos sobre repeticiones</a></li>
+    <li><a id="toc-Ligaduras-planas" href="staff-notation-_002d-flat-ties.es.html">Ligaduras planas</a></li>
+    <li><a id="toc-Forcing-measure-width-to-adapt-to-a-metronome-mark_0027s-width" href="staff-notation-_002d-forcing-measure-width-to-adapt-to-a-metronome-mark_0027s-width.es.html">Forcing measure width to adapt to a metronome mark&rsquo;s width</a></li>
+    <li><a id="toc-Glissando-por-debajo-de-un-objeto-grafico-1" href="staff-notation-_002d-glissandi-can-skip-grobs.es.html">Glissando por debajo de un objeto gráfico</a></li>
+    <li><a id="toc-Harmonizing-bar-line-thickness-for-staves-with-different-sizes" href="staff-notation-_002d-harmonizing-bar-line-thickness-for-staves-with-different-sizes.es.html">Harmonizing bar line thickness for staves with different sizes</a></li>
+    <li><a id="toc-Incipits" href="staff-notation-_002d-incipit.es.html"><em>Incipits</em></a></li>
+    <li><a id="toc-Insertar-fragmentos-de-partituras-sobre-el-pentagrama_002c-como-elementos-de-marcado" href="staff-notation-_002d-inserting-score-fragments-above-a-staff_002c-as-markups.es.html">Insertar fragmentos de partituras sobre el pentagrama, como elementos de marcado</a></li>
+    <li><a id="toc-Hacer-que-TabStaff-imprima-la-cuerda-superior-en-la-parte-de-abajo" href="staff-notation-_002d-let-tabstaff-print-the-topmost-string-at-bottom.es.html">Hacer que <code>TabStaff</code> imprima la cuerda superior en la parte de abajo</a></li>
+    <li><a id="toc-Formateado-de-tablaturas-con-letras" href="staff-notation-_002d-letter-tablature-formatting.es.html">Formateado de tablaturas con letras</a></li>
+    <li><a id="toc-Hacer-que-los-glissandos-se-puedan-dividir-en-el-salto-de-linea" href="staff-notation-_002d-making-glissandi-breakable.es.html">Hacer que los glissandos se puedan dividir en el salto de línea</a></li>
+    <li><a id="toc-Hacer-unas-lineas-del-pentagrama-mas-gruesas-que-las-otras" href="staff-notation-_002d-making-some-staff-lines-thicker-than-the-others.es.html">Hacer unas líneas del pentagrama más gruesas que las otras</a></li>
+    <li><a id="toc-Measure-counters-1" href="staff-notation-_002d-measure-counters.es.html">Measure counters</a></li>
+    <li><a id="toc-Disposicion-Mensurstriche-_0028lineas-divisorias-entre-pentagramas_0029" href="staff-notation-_002d-mensurstriche-layout-_0028bar-lines-between-the-staves_0029.es.html">Disposición <em>Mensurstriche</em> (líneas divisorias entre pentagramas)</a></li>
+    <li><a id="toc-Modificacion-de-la-inclinacion-de-la-linea-de-octava-1" href="staff-notation-_002d-modifying-the-ottava-spanner-slope.es.html">Modificación de la inclinación de la línea de octava</a></li>
+    <li><a id="toc-Anidado-de-grupos-de-pentagramas" href="staff-notation-_002d-nesting-staves.es.html">Anidado de grupos de pentagramas</a></li>
+    <li><a id="toc-Armaduras-de-tonalidad-no-tradicionales-1" href="staff-notation-_002d-non_002dtraditional-key-signatures.es.html">Armaduras de tonalidad no tradicionales</a></li>
+    <li><a id="toc-Plantilla-de-orquesta_002c-coro-y-piano-1" href="staff-notation-_002d-orchestra_002c-choir-and-piano-template.es.html">Plantilla de orquesta, coro y piano</a></li>
+    <li><a id="toc-Print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note" href="staff-notation-_002d-print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note.es.html">Print chord names with same root and different bass as slash and bass note</a></li>
+    <li><a id="toc-Putting-lyrics-inside-the-staff" href="staff-notation-_002d-putting-lyrics-inside-the-staff.es.html">Putting lyrics inside the staff</a></li>
+    <li><a id="toc-Citar-otra-voz" href="staff-notation-_002d-quoting-another-voice.es.html">Citar otra voz</a></li>
+    <li><a id="toc-Citar-otra-voz-con-transposicion-1" href="staff-notation-_002d-quoting-another-voice-with-transposition.es.html">Citar otra voz con transposición</a></li>
+    <li><a id="toc-Quitar-la-llave-en-el-primer-sistema-de-una-partitura-de-piano" href="staff-notation-_002d-removing-brace-on-first-line-of-piano-score.es.html">Quitar la llave en el primer sistema de una partitura de piano</a></li>
+    <li><a id="toc-Quitar-las-barras-de-compas-entre-los-pentagramas-de-un-StaffGroup_002c-PianoStaff-o-GrandStaff" href="staff-notation-_002d-removing-connecting-bar-lines-on-staffgroup_002c-pianostaff_002c-or-grandstaff.es.html">Quitar las barras de compás entre los pentagramas de un StaffGroup, PianoStaff o GrandStaff</a></li>
+    <li><a id="toc-Quitar-la-primera-linea-vacia" href="staff-notation-_002d-removing-the-first-empty-line.es.html">Quitar la primera línea vacía</a></li>
+    <li><a id="toc-Fijar-un-separador-entre-los-sistemas" href="staff-notation-_002d-setting-system-separators.es.html">Fijar un separador entre los sistemas</a></li>
+    <li><a id="toc-Dar-forma-a-ligaduras-de-union-individuales-entre-acordes" href="staff-notation-_002d-shape-individual-ties-in-chords.es.html">Dar forma a ligaduras de unión individuales entre acordes</a></li>
+    <li><a id="toc-Barras-de-compas-en-forma-de-raya-corta" href="staff-notation-_002d-tick-bar-lines.es.html">Barras de compás en forma de raya corta</a></li>
+    <li><a id="toc-Indicacion-de-compas-entre-corchetes-1" href="staff-notation-_002d-time-signature-in-brackets.es.html">Indicación de compás entre corchetes</a></li>
+    <li><a id="toc-Compas-entre-parentesis-1" href="staff-notation-_002d-time-signature-in-parentheses.es.html">Compás entre paréntesis</a></li>
+    <li><a id="toc-Trucaje-de-las-propiedades-de-clave-1" href="staff-notation-_002d-tweaking-clef-properties.es.html">Trucaje de las propiedades de clave</a></li>
+    <li><a id="toc-Dos-pares-de-_005cpartCombine-en-un-solo-pentagrama-1" href="staff-notation-_002d-two-_005cpartcombine-pairs-on-one-staff.es.html">Dos pares de <code>\partCombine</code> en un solo pentagrama</a></li>
+    <li><a id="toc-Uso-del-corchete-recto-al-comienzo-de-un-grupo-de-pentagramas" href="staff-notation-_002d-use-square-bracket-at-the-start-of-a-staff-group.es.html">Uso del corchete recto al comienzo de un grupo de pentagramas</a></li>
+    <li><a id="toc-Using-_005cautoChange-with-more-than-one-voice-1" href="staff-notation-_002d-using-_005cautochange-with-more-than-one-voice.es.html">Using \autoChange with more than one voice</a></li>
+    <li><a id="toc-Using-mark-lines-in-a-Frenched-score" href="staff-notation-_002d-using-mark-lines-in-a-frenched-score.es.html">Using mark lines in a Frenched score</a></li>
+    <li><a id="toc-Grupos-de-pentagramas-alineados-verticalmente-sin-barra-inicial-de-conexion" href="staff-notation-_002d-vertically-aligned-staffgroups-without-connecting-systemstartbar.es.html">Grupos de pentagramas alineados verticalmente sin barra inicial de conexión</a></li>
+    <li><a id="toc-Corchetes-de-primera-y-segunda-vez-debajo-de-los-acordes-1" href="staff-notation-_002d-volta-below-chords.es.html">Corchetes de primera y segunda vez debajo de los acordes</a></li>
+    <li><a id="toc-Casillas-de-primera-y-segunda-vez-en-varios-pentagramas-1" href="staff-notation-_002d-volta-brackets-in-multiple-staves.es.html">Casillas de primera y segunda vez en varios pentagramas</a></li>
+  </ul></li>
+  <li><a id="toc-Editorial-annotations" href="editorial-annotations.es.html">7 Editorial annotations</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-digitaciones-a-la-partitura" href="editorial-annotations-_002d-adding-fingerings-to-a-score.es.html">Añadir digitaciones a la partitura</a></li>
+    <li><a id="toc-Anadir-enlaces-a-los-objetos" href="editorial-annotations-_002d-adding-links-to-objects.es.html">Añadir enlaces a los objetos</a></li>
+    <li><a id="toc-Insertar-elementos-de-marcado-en-una-tablatura" href="editorial-annotations-_002d-adding-markups-in-a-tablature.es.html">Insertar elementos de marcado en una tablatura</a></li>
+    <li><a id="toc-Permitir-que-las-digitaciones-se-impriman-dentro-del-pentagrama" href="editorial-annotations-_002d-allowing-fingerings-to-be-printed-inside-the-staff.es.html">Permitir que las digitaciones se impriman dentro del pentagrama</a></li>
+    <li><a id="toc-Numeracion-de-compases-alternativa-1" href="editorial-annotations-_002d-alternative-bar-numbering.es.html">Numeración de compases alternativa</a></li>
+    <li><a id="toc-Corchetes-de-analisis-encima-del-pentagrama" href="editorial-annotations-_002d-analysis-brackets-above-the-staff.es.html">Corchetes de análisis encima del pentagrama</a></li>
+    <li><a id="toc-Corchetes-de-analisis-con-etiquetas" href="editorial-annotations-_002d-analysis-brackets-with-labels.es.html">Corchetes de análisis con etiquetas</a></li>
+    <li><a id="toc-Aplicar-estilos-de-cabeza-segun-la-nota-de-la-escala-1" href="editorial-annotations-_002d-applying-note-head-styles-depending-on-the-step-of-the-scale.es.html">Aplicar estilos de cabeza según la nota de la escala</a></li>
+    <li><a id="toc-Poner-en-blanco-las-lineas-del-pentagrama-utilizando-la-instruccion-_005cwhiteout" href="editorial-annotations-_002d-blanking-staff-lines-using-the-_005cwhiteout-command.es.html">Poner en blanco las líneas del pentagrama utilizando la instrucción <code>\whiteout</code></a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord-1" href="editorial-annotations-_002d-changing-a-single-note_0027s-size-in-a-chord.es.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-Modificar-el-aspecto-continuo-de-una-ligadura-de-expresion-a-punteado-o-intermitente-1" href="editorial-annotations-_002d-changing-the-appearance-of-a-slur-from-solid-to-dotted-or-dashed.es.html">Modificar el aspecto continuo de una ligadura de expresión a punteado o intermitente</a></li>
+    <li><a id="toc-Colorear-las-notas-segun-su-altura-1" href="editorial-annotations-_002d-coloring-notes-depending-on-their-pitch.es.html">Colorear las notas según su altura</a></li>
+    <li><a id="toc-Controlar-la-colocacion-de-las-digitaciones-de-acordes-1" href="editorial-annotations-_002d-controlling-the-placement-of-chord-fingerings.es.html">Controlar la colocación de las digitaciones de acordes</a></li>
+    <li><a id="toc-Crear-un-grupeto-de-anticipacion-1" href="editorial-annotations-_002d-creating-a-delayed-turn.es.html">Crear un grupeto de anticipación</a></li>
+    <li><a id="toc-Crear-pentagramas-en-blanco-1" href="editorial-annotations-_002d-creating-blank-staves.es.html">Crear pentagramas en blanco</a></li>
+    <li><a id="toc-Crear-digitaciones-de-dos-cifras-1" href="editorial-annotations-_002d-creating-double_002ddigit-fingerings.es.html">Crear digitaciones de dos cifras</a></li>
+    <li><a id="toc-Direccion-predeterminada-de-las-plicas-sobre-la-tercera-linea-del-pentagrama" href="editorial-annotations-_002d-default-direction-of-stems-on-the-center-line-of-the-staff.es.html">Dirección predeterminada de las plicas sobre la tercera línea del pentagrama</a></li>
+    <li><a id="toc-Diferentes-tamanos-de-fuente-para-instrumentName-y-shortInstrumentName" href="editorial-annotations-_002d-different-font-size-settings-for-instrumentname-and-shortinstrumentname.es.html">Diferentes tamaños de fuente para <code>instrumentName</code> y <code>shortInstrumentName</code></a></li>
+    <li><a id="toc-Rodear-los-objetos-graficos-con-rectangulos" href="editorial-annotations-_002d-drawing-boxes-around-grobs.es.html">Rodear los objetos gráficos con rectángulos</a></li>
+    <li><a id="toc-Trazar-circunferencias-alrededor-de-la-cabeza-de-las-notas" href="editorial-annotations-_002d-drawing-circles-around-note-heads.es.html">Trazar circunferencias alrededor de la cabeza de las notas</a></li>
+    <li><a id="toc-Rodear-diversos-objetos-con-una-circunferencia" href="editorial-annotations-_002d-drawing-circles-around-various-objects.es.html">Rodear diversos objetos con una circunferencia</a></li>
+    <li><a id="toc-Empotrar-PostScript-nativo-dentro-de-un-bloque-_005cmarkup" href="editorial-annotations-_002d-embedding-native-postscript-in-a-_005cmarkup-block.es.html">Empotrar PostScript nativo dentro de un bloque \markup</a></li>
+    <li><a id="toc-Generate-special-note-head-shapes" href="editorial-annotations-_002d-generate-special-note-head-shapes.es.html">Generate special note head shapes</a></li>
+    <li><a id="toc-Lineas-de-rejilla_003a-modificar-su-aspecto" href="editorial-annotations-_002d-grid-lines_003a-changing-their-appearance.es.html">Líneas de rejilla: modificar su aspecto</a></li>
+    <li><a id="toc-Lineas-de-rejilla_003a-destacar-ritmos-y-la-relacion-temporal-entre-notas" href="editorial-annotations-_002d-grid-lines_003a-emphasizing-rhythms-and-notes-synchronization.es.html">Líneas de rejilla: destacar ritmos y la relación temporal entre notas</a></li>
+    <li><a id="toc-Ligados-ascendentes-y-descendentes-_0028hammer_002don-y-pull_002doff_0029" href="editorial-annotations-_002d-hammer_002don-and-pull_002doff.es.html">Ligados ascendentes y descendentes (<em>hammer-on</em> y <em>pull-off</em>)</a></li>
+    <li><a id="toc-Indicaciones-de-ligado-ascendente-y-descendente-_0028hammer_002don-y-pull_002doff_0029-usando-acordes" href="editorial-annotations-_002d-hammer_002don-and-pull_002doff-using-chords.es.html">Indicaciones de ligado ascendente y descendente (<em>hammer-on</em> y <em>pull-off</em>) usando acordes</a></li>
+    <li><a id="toc-Indicaciones-de-hammer_002don-y-pull_002doff-usando-voces" href="editorial-annotations-_002d-hammer_002don-and-pull_002doff-using-voices.es.html">Indicaciones de <em>hammer-on</em> y <em>pull-off</em> usando voces</a></li>
+    <li><a id="toc-Hacer-unas-lineas-del-pentagrama-mas-gruesas-que-las-otras-1" href="editorial-annotations-_002d-making-some-staff-lines-thicker-than-the-others.es.html">Hacer unas líneas del pentagrama más gruesas que las otras</a></li>
+    <li><a id="toc-Marcar-notas-de-las-partes-habladas-con-unas-aspas-en-la-plica" href="editorial-annotations-_002d-marking-notes-of-spoken-parts-with-a-cross-on-the-stem-_0028sprechstimme_0029.es.html">Marcar notas de las partes habladas con unas aspas en la plica</a></li>
+    <li><a id="toc-Measure-counters-2" href="editorial-annotations-_002d-measure-counters.es.html">Measure counters</a></li>
+    <li><a id="toc-Corchete-que-abarca-varios-compases" href="editorial-annotations-_002d-measure-spanner.es.html">Corchete que abarca varios compases</a></li>
+    <li><a id="toc-Posicionamiento-preciso-de-indicaciones-de-digitacion" href="editorial-annotations-_002d-positioning-fingering-indications-precisely.es.html">Posicionamiento preciso de indicaciones de digitación</a></li>
+    <li><a id="toc-Situar-los-elementos-de-marcado-de-texto-por-dentro-de-las-ligaduras-1" href="editorial-annotations-_002d-positioning-text-markups-inside-slurs.es.html">Situar los elementos de marcado de texto por dentro de las ligaduras</a></li>
+    <li><a id="toc-Impresion-de-texto-de-derecha-a-izquierda" href="editorial-annotations-_002d-printing-text-from-right-to-left.es.html">Impresión de texto de derecha a izquierda</a></li>
+    <li><a id="toc-Lineas-de-extension-para-numeros-de-cuerda" href="editorial-annotations-_002d-string-number-extender-lines.es.html">Líneas de extensión para números de cuerda</a></li>
+    <li><a id="toc-Uso-de-la-propiedad-whiteout-1" href="editorial-annotations-_002d-using-the-whiteout-property.es.html">Uso de la propiedad <code>whiteout</code></a></li>
+  </ul></li>
+  <li><a id="toc-Text" href="text.es.html">8 Text</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Insertar-elementos-de-marcado-en-una-tablatura-1" href="text-_002d-adding-markups-in-a-tablature.es.html">Insertar elementos de marcado en una tablatura</a></li>
+    <li><a id="toc-Anadir-la-fecha-actual-a-una-partitura" href="text-_002d-adding-the-current-date-to-a-score.es.html">Añadir la fecha actual a una partitura</a></li>
+    <li><a id="toc-Adjusting-vertical-spacing-of-lyrics" href="text-_002d-adjusting-vertical-spacing-of-lyrics.es.html">Adjusting vertical spacing of lyrics</a></li>
+    <li><a id="toc-Alinear-y-centrar-los-nombres-de-instrumento" href="text-_002d-aligning-and-centering-instrument-names.es.html">Alinear y centrar los nombres de instrumento</a></li>
+    <li><a id="toc-Alineacion-de-silabas-con-melisma" href="text-_002d-aligning-syllables-with-melisma.es.html">Alineación de sílabas con melisma</a></li>
+    <li><a id="toc-Aligning-text-marks-to-notes" href="text-_002d-aligning-text-marks-to-notes.es.html">Aligning text marks to notes</a></li>
+    <li><a id="toc-Poner-en-blanco-las-lineas-del-pentagrama-utilizando-la-instruccion-_005cwhiteout-1" href="text-_002d-blanking-staff-lines-using-the-_005cwhiteout-command.es.html">Poner en blanco las líneas del pentagrama utilizando la instrucción <code>\whiteout</code></a></li>
+    <li><a id="toc-Centrar-texto-debajo-de-un-regulador-1" href="text-_002d-center-text-below-hairpin-dynamics.es.html">Centrar texto debajo de un regulador</a></li>
+    <li><a id="toc-Cambiar-el-texto-de-las-indicaciones-de-octava-alta-y-baja-1" href="text-_002d-changing-ottava-text.es.html">Cambiar el texto de las indicaciones de octava alta y baja</a></li>
+    <li><a id="toc-Cambiar-la-familia-de-tipografia-predeterminada-para-el-texto" href="text-_002d-changing-the-default-text-font-family.es.html">Cambiar la familia de tipografía predeterminada para el texto</a></li>
+    <li><a id="toc-Combinar-indicaciones-dinamicas-con-marcados-textuales-1" href="text-_002d-combining-dynamics-with-markup-texts.es.html">Combinar indicaciones dinámicas con marcados textuales</a></li>
+    <li><a id="toc-Combining-dynamics-with-markup-texts-_00282_0029-1" href="text-_002d-combining-dynamics-with-markup-texts-_00282_0029.es.html">Combining dynamics with markup texts (2)</a></li>
+    <li><a id="toc-Combinar-dos-partes-sobre-el-mismo-pentagrama-1" href="text-_002d-combining-two-parts-on-the-same-staff.es.html">Combinar dos partes sobre el mismo pentagrama</a></li>
+    <li><a id="toc-Crear-elementos-de-extension-textuales-1" href="text-_002d-creating-text-spanners.es.html">Crear elementos de extensión textuales</a></li>
+    <li><a id="toc-Demonstrating-all-_005cheader-fields" href="text-_002d-demonstrating-all-_005cheader-fields.es.html">Demonstrating all \header fields</a></li>
+    <li><a id="toc-Empotrar-PostScript-nativo-dentro-de-un-bloque-_005cmarkup-1" href="text-_002d-embedding-native-postscript-in-a-_005cmarkup-block.es.html">Empotrar PostScript nativo dentro de un bloque \markup</a></li>
+    <li><a id="toc-Dar-formato-a-silabas-de-la-letra" href="text-_002d-formatting-lyrics-syllables.es.html">Dar formato a sílabas de la letra</a></li>
+    <li><a id="toc-Como-poner-ligaduras-entre-silabas-de-la-letra" href="text-_002d-how-to-put-ties-between-syllables-in-lyrics.es.html">Cómo poner ligaduras entre sílabas de la letra</a></li>
+    <li><a id="toc-Alineacion-de-la-letra" href="text-_002d-lyrics-alignment.es.html">Alineación de la letra</a></li>
+    <li><a id="toc-Objetos-de-lista-de-marcados" href="text-_002d-markup-list.es.html">Objetos de lista de marcados</a></li>
+    <li><a id="toc-Marcado-de-silencios-multicompas-1" href="text-_002d-multi_002dmeasure-rest-markup.es.html">Marcado de silencios multicompás</a></li>
+    <li><a id="toc-Acerca-de-la-ubicuidad-de-los-objetos-de-marcado" href="text-_002d-of-the-ubiquity-of-markup-objects.es.html">Acerca de la ubicuidad de los objetos de marcado</a></li>
+    <li><a id="toc-Imprimir-el-numero-de-version" href="text-_002d-outputting-the-version-number.es.html">Imprimir el número de versión</a></li>
+    <li><a id="toc-Plantilla-de-piano-con-letra-centrada" href="text-_002d-piano-template-with-centered-lyrics.es.html">Plantilla de piano con letra centrada</a></li>
+    <li><a id="toc-Imprimir-marcas-de-ensayo-en-cualquier-pentagrama" href="text-_002d-printing-marks-on-every-staff.es.html">Imprimir marcas de ensayo en cualquier pentagrama</a></li>
+    <li><a id="toc-Impresion-de-texto-de-derecha-a-izquierda-1" href="text-_002d-printing-text-from-right-to-left.es.html">Impresión de texto de derecha a izquierda</a></li>
+    <li><a id="toc-Putting-lyrics-inside-the-staff-1" href="text-_002d-putting-lyrics-inside-the-staff.es.html">Putting lyrics inside the staff</a></li>
+    <li><a id="toc-Slanted-parentheses-around-dynamics-1" href="text-_002d-slanted-parentheses-around-dynamics.es.html">Slanted parentheses around dynamics</a></li>
+    <li><a id="toc-Elemento-de-marcado-de-texto-independiente-en-dos-columnas" href="text-_002d-stand_002dalone-two_002dcolumn-markup.es.html">Elemento de marcado de texto independiente en dos columnas</a></li>
+    <li><a id="toc-Lineas-de-extension-para-numeros-de-cuerda-1" href="text-_002d-string-number-extender-lines.es.html">Líneas de extensión para números de cuerda</a></li>
+    <li><a id="toc-Rectangulo-de-tres-segmentos-visibles-1" href="text-_002d-three_002dsided-box.es.html">Rectángulo de tres segmentos visibles</a></li>
+    <li><a id="toc-UTF_002d8" href="text-_002d-utf_002d8.es.html">UTF-8</a></li>
+    <li><a id="toc-Plantilla-para-conjunto-vocal-con-letras-alineadas-encima-y-debajo-de-los-pentagramas" href="text-_002d-vocal-ensemble-template-with-lyrics-aligned-below-and-above-the-staves.es.html">Plantilla para conjunto vocal con letras alineadas encima y debajo de los pentagramas</a></li>
+    <li><a id="toc-Elementos-de-marcado-para-el-texto-de-las-casillas-de-repeticion-usando-repeatCommands-1" href="text-_002d-volta-text-markup-using-repeatcommands.es.html">Elementos de marcado para el texto de las casillas de repetición usando <code>repeatCommands</code></a></li>
+  </ul></li>
+</ul></li>
+<li><a id="toc-Specialist-notation" href="vocal-music.es.html#Specialist-notation">Specialist notation</a>
+<ul class="no-bullet">
+  <li><a id="toc-Vocal-music" href="vocal-music.es.html">9 Vocal music</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-un-ambito-por-voz-2" href="vocal-music-_002d-adding-ambitus-per-voice.es.html">Añadir un ámbito por voz</a></li>
+    <li><a id="toc-Anadir-indicadores-a-los-pentagramas-que-se-dividen-despues-de-un-salto-de-linea-1" href="vocal-music-_002d-adding-indicators-to-staves-which-get-split-after-a-break.es.html">Añadir indicadores a los pentagramas que se dividen después de un salto de línea</a></li>
+    <li><a id="toc-Anadir-notas-guia-orquestales-a-una-partitura-vocal-1" href="vocal-music-_002d-adding-orchestral-cues-to-a-vocal-score.es.html">Añadir notas guía orquestales a una partitura vocal</a></li>
+    <li><a id="toc-Adjusting-vertical-spacing-of-lyrics-1" href="vocal-music-_002d-adjusting-vertical-spacing-of-lyrics.es.html">Adjusting vertical spacing of lyrics</a></li>
+    <li><a id="toc-Alineacion-de-silabas-con-melisma-1" href="vocal-music-_002d-aligning-syllables-with-melisma.es.html">Alineación de sílabas con melisma</a></li>
+    <li><a id="toc-Indicaciones-de-tesitura-1" href="vocal-music-_002d-ambitus.es.html">Indicaciones de tesitura</a></li>
+    <li><a id="toc-Indicacion-de-tesitura-despues-de-la-armadura-2" href="vocal-music-_002d-ambitus-after-key-signature.es.html">Indicación de tesitura después de la armadura</a></li>
+    <li><a id="toc-Ambitos-con-varias-voces-1" href="vocal-music-_002d-ambitus-with-multiple-voices.es.html">Ámbitos con varias voces</a></li>
+    <li><a id="toc-Ancient-notation-template-_002d-modern-transcription-of-Gregorian-music" href="vocal-music-_002d-ancient-notation-template-_002d-modern-transcription-of-gregorian-music.es.html#vocal-music-_002d-ancient-notation-template-_2013-modern-transcription-of-gregorian-music">Ancient notation template – modern transcription of Gregorian music</a></li>
+    <li><a id="toc-Plantilla-de-salmo-del-canto-anglicano" href="vocal-music-_002d-anglican-psalm-template.es.html">Plantilla de salmo del canto anglicano</a></li>
+    <li><a id="toc-Disposicion-de-distintas-letras-en-la-misma-linea" href="vocal-music-_002d-arranging-separate-lyrics-on-a-single-line.es.html">Disposición de distintas letras en la misma línea</a></li>
+    <li><a id="toc-Modificar-la-tipografia-para-cada-estrofa" href="vocal-music-_002d-changing-stanza-fonts.es.html">Modificar la tipografía para cada estrofa</a></li>
+    <li><a id="toc-Chant-or-psalm-notation-1" href="vocal-music-_002d-chant-or-psalm-notation.es.html">Chant or psalm notation</a></li>
+    <li><a id="toc-Forzar-la-visibilidad-de-los-guiones-separadores-de-silabas" href="vocal-music-_002d-forcing-hyphens-to-be-shown.es.html">Forzar la visibilidad de los guiones separadores de sílabas</a></li>
+    <li><a id="toc-Dar-formato-a-silabas-de-la-letra-1" href="vocal-music-_002d-formatting-lyrics-syllables.es.html">Dar formato a sílabas de la letra</a></li>
+    <li><a id="toc-Como-poner-ligaduras-entre-silabas-de-la-letra-1" href="vocal-music-_002d-how-to-put-ties-between-syllables-in-lyrics.es.html">Cómo poner ligaduras entre sílabas de la letra</a></li>
+    <li><a id="toc-Plantilla-para-himnos" href="vocal-music-_002d-hymn-template.es.html">Plantilla para himnos</a></li>
+    <li><a id="toc-Alineacion-de-la-letra-1" href="vocal-music-_002d-lyrics-alignment.es.html">Alineación de la letra</a></li>
+    <li><a id="toc-Marcar-notas-de-las-partes-habladas-con-unas-aspas-en-la-plica-1" href="vocal-music-_002d-marking-notes-of-spoken-parts-with-a-cross-on-the-stem-_0028sprechstimme_0029.es.html">Marcar notas de las partes habladas con unas aspas en la plica</a></li>
+    <li><a id="toc-Plantilla-de-orquesta_002c-coro-y-piano-2" href="vocal-music-_002d-orchestra_002c-choir-and-piano-template.es.html">Plantilla de orquesta, coro y piano</a></li>
+    <li><a id="toc-Plantilla-de-piano-con-melodia-y-letra" href="vocal-music-_002d-piano-template-with-melody-and-lyrics.es.html">Plantilla de piano con melodía y letra</a></li>
+    <li><a id="toc-Putting-lyrics-inside-the-staff-2" href="vocal-music-_002d-putting-lyrics-inside-the-staff.es.html">Putting lyrics inside the staff</a></li>
+    <li><a id="toc-Plantilla-de-coro-SATB_002c-a-cuatro-pentagramas" href="vocal-music-_002d-satb-choir-template-_002d_002d-four-staves.es.html">Plantilla de coro SATB, a cuatro pentagramas</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unico-con-musica_002c-letra-y-acordes" href="vocal-music-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-and-chords.es.html">Plantilla de pentagrama único con música, letra y acordes</a></li>
+    <li><a id="toc-Single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets" href="vocal-music-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets.es.html">Single-staff template with notes, lyrics, chords, and frets</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unico-don-notas-y-letra" href="vocal-music-_002d-single_002dstaff-template-with-notes-and-lyrics.es.html">Plantilla de pentagrama único don notas y letra</a></li>
+    <li><a id="toc-Silencios-de-separacion-en-modo-de-letra-1" href="vocal-music-_002d-skips-in-lyric-mode.es.html">Silencios de separación en modo de letra</a></li>
+    <li><a id="toc-Silencios-de-separacion-en-modo-de-letra-_00282_0029-1" href="vocal-music-_002d-skips-in-lyric-mode-_00282_0029.es.html">Silencios de separación en modo de letra (2)</a></li>
+    <li><a id="toc-Using-_005carpeggioBracket-to-make-divisi-more-visible-1" href="vocal-music-_002d-using-_005carpeggiobracket-to-make-divisi-more-visible.es.html">Using \arpeggioBracket to make divisi more visible</a></li>
+    <li><a id="toc-Using-a-bracket-to-clarify-divisi-1" href="vocal-music-_002d-using-a-bracket-to-clarify-divisi.es.html">Using a bracket to clarify divisi</a></li>
+    <li><a id="toc-Uso-de-etiquetas-para-producir-musica-mensural-y-moderna-a-partir-del-mismo-codigo-fuente" href="vocal-music-_002d-using-tags-to-produce-mensural-and-modern-music-from-the-same-source.es.html">Uso de etiquetas para producir música mensural y moderna a partir del mismo código fuente</a></li>
+    <li><a id="toc-Alineacion-vertical-de-la-letra-y-los-compases-de-ossia" href="vocal-music-_002d-vertically-aligning-ossias-and-lyrics.es.html">Alineación vertical de la letra y los compases de ossia</a></li>
+    <li><a id="toc-Alineacion-vertical-de-los-numeros-de-estrofa-de-diferentes-pentagramas" href="vocal-music-_002d-vertically-aligning-stanza-numbers-of-different-staves.es.html">Alineación vertical de los números de estrofa de diferentes pentagramas</a></li>
+    <li><a id="toc-Letra-comun-centrada-verticalmente" href="vocal-music-_002d-vertically-centered-common-lyrics.es.html">Letra común centrada verticalmente</a></li>
+    <li><a id="toc-Plantilla-de-conjunto-vocal" href="vocal-music-_002d-vocal-ensemble-template.es.html">Plantilla de conjunto vocal</a></li>
+    <li><a id="toc-Plantilla-de-conjunto-vocal-con-reduccion-de-piano-automatica" href="vocal-music-_002d-vocal-ensemble-template-with-automatic-piano-reduction.es.html">Plantilla de conjunto vocal con reducción de piano automática</a></li>
+    <li><a id="toc-Plantilla-para-conjunto-vocal-con-letras-alineadas-encima-y-debajo-de-los-pentagramas-1" href="vocal-music-_002d-vocal-ensemble-template-with-lyrics-aligned-below-and-above-the-staves.es.html">Plantilla para conjunto vocal con letras alineadas encima y debajo de los pentagramas</a></li>
+    <li><a id="toc-Estrofa-para-solista-y-estribillo-a-dos-voces" href="vocal-music-_002d-vocal-ensemble-template-with-verse-and-refrain.es.html">Estrofa para solista y estribillo a dos voces</a></li>
+  </ul></li>
+  <li><a id="toc-Keyboard-and-other-multi_002dstaff-instruments" href="keyboard-and-other-multi_002dstaff-instruments.es.html">10 Keyboard and other multi-staff instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Simbolos-de-registracion-de-acordeon" href="keyboard-and-other-multi_002dstaff-instruments-_002d-accordion-register-symbols.es.html">Símbolos de registración de acordeón</a></li>
+    <li><a id="toc-Modificar-el-texto-de-las-indicaciones-de-pedal" href="keyboard-and-other-multi_002dstaff-instruments-_002d-changing-the-text-for-sustain-markings.es.html">Modificar el texto de las indicaciones de pedal</a></li>
+    <li><a id="toc-Clusters-_0028_00abracimos_00bb_0029-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-clusters.es.html">Clusters («racimos»)</a></li>
+    <li><a id="toc-Controlar-la-colocacion-de-las-digitaciones-de-acordes-2" href="keyboard-and-other-multi_002dstaff-instruments-_002d-controlling-the-placement-of-chord-fingerings.es.html">Controlar la colocación de las digitaciones de acordes</a></li>
+    <li><a id="toc-Hacer-ligaduras-entre-voces-distintas-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-creating-slurs-across-voices.es.html">Hacer ligaduras entre voces distintas</a></li>
+    <li><a id="toc-Solucion-de-problemas-de-acordes-y-barras-que-cruzan-el-pentagrama" href="keyboard-and-other-multi_002dstaff-instruments-_002d-cross_002dstaff-chords-_002d_002d-beaming-problems-workaround.es.html">Solución de problemas de acordes y barras que cruzan el pentagrama</a></li>
+    <li><a id="toc-Tremolos-de-pentagrama-cruzado-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-cross_002dstaff-tremolos.es.html">Trémolos de pentagrama cruzado</a></li>
+    <li><a id="toc-Ajuste-fino-de-las-lineas-de-pedal" href="keyboard-and-other-multi_002dstaff-instruments-_002d-fine_002dtuning-pedal-brackets.es.html">Ajuste fino de las líneas de pedal</a></li>
+    <li><a id="toc-Indicating-cross_002dstaff-chords-with-a-bracket" href="keyboard-and-other-multi_002dstaff-instruments-_002d-indicating-cross_002dstaff-chords-with-a-bracket.es.html">Indicating cross-staff chords with a bracket</a></li>
+    <li><a id="toc-Plantilla-para-combo-de-jazz" href="keyboard-and-other-multi_002dstaff-instruments-_002d-jazz-combo-template.es.html">Plantilla para combo de jazz</a></li>
+    <li><a id="toc-Ligaduras-laissez-vibrer-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-laissez-vibrer-ties.es.html">Ligaduras <em>laissez vibrer</em></a></li>
+    <li><a id="toc-Plantilla-de-piano-_0028sencilla_0029" href="keyboard-and-other-multi_002dstaff-instruments-_002d-piano-template-_0028simple_0029.es.html">Plantilla de piano (sencilla)</a></li>
+    <li><a id="toc-Plantilla-de-piano-con-letra-centrada-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-piano-template-with-centered-lyrics.es.html">Plantilla de piano con letra centrada</a></li>
+    <li><a id="toc-Plantilla-de-piano-con-melodia-y-letra-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-piano-template-with-melody-and-lyrics.es.html">Plantilla de piano con melodía y letra</a></li>
+    <li><a id="toc-Quitar-la-llave-en-el-primer-sistema-de-una-partitura-de-piano-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-removing-brace-on-first-line-of-piano-score.es.html">Quitar la llave en el primer sistema de una partitura de piano</a></li>
+    <li><a id="toc-Using-_005cautoChange-with-more-than-one-voice-2" href="keyboard-and-other-multi_002dstaff-instruments-_002d-using-_005cautochange-with-more-than-one-voice.es.html">Using \autoChange with more than one voice</a></li>
+    <li><a id="toc-Plantilla-de-conjunto-vocal-con-reduccion-de-piano-automatica-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-vocal-ensemble-template-with-automatic-piano-reduction.es.html">Plantilla de conjunto vocal con reducción de piano automática</a></li>
+  </ul></li>
+  <li><a id="toc-Unfretted-string-instruments" href="unfretted-string-instruments.es.html">11 Unfretted string instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Hacer-ligaduras-entre-voces-distintas-2" href="unfretted-string-instruments-_002d-creating-slurs-across-voices.es.html">Hacer ligaduras entre voces distintas</a></li>
+    <li><a id="toc-Armonicos-con-puntillo" href="unfretted-string-instruments-_002d-dotted-harmonics.es.html">Armónicos con puntillo</a></li>
+    <li><a id="toc-Snap-pizzicato-_0028_201cBartok_201d-pizzicato_0029-1" href="unfretted-string-instruments-_002d-snap-pizzicato-_0028_201cbartok_201d-pizzicato_0029.es.html">Snap pizzicato (&ldquo;Bartok&rdquo; pizzicato)</a></li>
+    <li><a id="toc-Plantilla-de-cuarteto-de-cuerda-_0028sencilla_0029" href="unfretted-string-instruments-_002d-string-quartet-template-_0028simple_0029.es.html">Plantilla de cuarteto de cuerda (sencilla)</a></li>
+    <li><a id="toc-Plantilla-de-cuarteto-de-cuerda-con-particellas-independientes" href="unfretted-string-instruments-_002d-string-quartet-template-with-separate-parts.es.html">Plantilla de cuarteto de cuerda con particellas independientes</a></li>
+  </ul></li>
+  <li><a id="toc-Fretted-string-instruments" href="fretted-string-instruments.es.html">12 Fretted string instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-digitaciones-a-la-partitura-1" href="fretted-string-instruments-_002d-adding-fingerings-to-a-score.es.html">Añadir digitaciones a la partitura</a></li>
+    <li><a id="toc-Anadir-digitaciones-a-las-tablaturas" href="fretted-string-instruments-_002d-adding-fingerings-to-tablatures.es.html">Añadir digitaciones a las tablaturas</a></li>
+    <li><a id="toc-Insertar-elementos-de-marcado-en-una-tablatura-2" href="fretted-string-instruments-_002d-adding-markups-in-a-tablature.es.html">Insertar elementos de marcado en una tablatura</a></li>
+    <li><a id="toc-Permitir-que-las-digitaciones-se-impriman-dentro-del-pentagrama-1" href="fretted-string-instruments-_002d-allowing-fingerings-to-be-printed-inside-the-staff.es.html">Permitir que las digitaciones se impriman dentro del pentagrama</a></li>
+    <li><a id="toc-Automatic-fretboards-barre" href="fretted-string-instruments-_002d-automatic-fretboards-barre.es.html#fretted-string-instruments-_002d-automatic-fretboards-barr_00e9">Automatic fretboards barré</a></li>
+    <li><a id="toc-Modificar-la-orientacion-de-los-trastes" href="fretted-string-instruments-_002d-changing-fret-orientations.es.html">Modificar la orientación de los trastes</a></li>
+    <li><a id="toc-Chord-changes-for-fretboards" href="fretted-string-instruments-_002d-chord-changes-for-fretboards.es.html">Chord changes for fretboards</a></li>
+    <li><a id="toc-Glissando-de-acordes-en-tablatura" href="fretted-string-instruments-_002d-chord-glissando-in-tablature.es.html">Glissando de acordes en tablatura</a></li>
+    <li><a id="toc-Acordes-con-digitaciones-ampliadas-para-diagramas-de-trastes-y-tablaturas" href="fretted-string-instruments-_002d-chords-with-stretched-fingering-for-fretboards-and-tabvoice.es.html">Acordes con digitaciones ampliadas para diagramas de trastes y tablaturas</a></li>
+    <li><a id="toc-Controlar-la-colocacion-de-las-digitaciones-de-acordes-3" href="fretted-string-instruments-_002d-controlling-the-placement-of-chord-fingerings.es.html">Controlar la colocación de las digitaciones de acordes</a></li>
+    <li><a id="toc-Personalizar-los-diagramas-de-posiciones" href="fretted-string-instruments-_002d-customizing-fretboard-fret-diagrams.es.html">Personalizar los diagramas de posiciones</a></li>
+    <li><a id="toc-Personalizar-diagramas-de-posiciones-de-marcado" href="fretted-string-instruments-_002d-customizing-markup-fret-diagrams.es.html">Personalizar diagramas de posiciones de marcado</a></li>
+    <li><a id="toc-Digitaciones_002c-indicacion-del-numero-de-cuerda-y-digitaciones-de-mano-derecha" href="fretted-string-instruments-_002d-fingerings_002c-string-indications_002c-and-right_002dhand-fingerings.es.html">Digitaciones, indicación del número de cuerda y digitaciones de mano derecha</a></li>
+    <li><a id="toc-Notacion-del-flamenco" href="fretted-string-instruments-_002d-flamenco-notation.es.html">Notación del flamenco</a></li>
+    <li><a id="toc-Diagramas-de-posiciones-de-acorde_002c-explicados-y-desarrollados" href="fretted-string-instruments-_002d-fret-diagrams-explained-and-developed.es.html">Diagramas de posiciones de acorde, explicados y desarrollados</a></li>
+    <li><a id="toc-Tablas-alternativas-de-diagramas-de-posiciones" href="fretted-string-instruments-_002d-fretboards-alternate-tables.es.html">Tablas alternativas de diagramas de posiciones</a></li>
+    <li><a id="toc-Armonicos-sobre-cuerdas-pisadas-en-tablatura" href="fretted-string-instruments-_002d-fretted_002dstring-harmonics-in-tablature.es.html">Armónicos sobre cuerdas pisadas en tablatura</a></li>
+    <li><a id="toc-Ligaduras-de-guitarra" href="fretted-string-instruments-_002d-guitar-slides.es.html">Ligaduras de guitarra</a></li>
+    <li><a id="toc-Ritmos-rasgueados-de-guitarra-1" href="fretted-string-instruments-_002d-guitar-strum-rhythms.es.html">Ritmos rasgueados de guitarra</a></li>
+    <li><a id="toc-Ligados-ascendentes-y-descendentes-_0028hammer_002don-y-pull_002doff_0029-1" href="fretted-string-instruments-_002d-hammer_002don-and-pull_002doff.es.html">Ligados ascendentes y descendentes (<em>hammer-on</em> y <em>pull-off</em>)</a></li>
+    <li><a id="toc-Indicaciones-de-ligado-ascendente-y-descendente-_0028hammer_002don-y-pull_002doff_0029-usando-acordes-1" href="fretted-string-instruments-_002d-hammer_002don-and-pull_002doff-using-chords.es.html">Indicaciones de ligado ascendente y descendente (<em>hammer-on</em> y <em>pull-off</em>) usando acordes</a></li>
+    <li><a id="toc-Indicaciones-de-hammer_002don-y-pull_002doff-usando-voces-1" href="fretted-string-instruments-_002d-hammer_002don-and-pull_002doff-using-voices.es.html">Indicaciones de <em>hammer-on</em> y <em>pull-off</em> usando voces</a></li>
+    <li><a id="toc-Como-cambiar-la-posicion-de-un-diagrama-de-posiciones" href="fretted-string-instruments-_002d-how-to-change-fret-diagram-position.es.html">Cómo cambiar la posición de un diagrama de posiciones</a></li>
+    <li><a id="toc-Plantilla-para-combo-de-jazz-1" href="fretted-string-instruments-_002d-jazz-combo-template.es.html">Plantilla para combo de jazz</a></li>
+    <li><a id="toc-Ligaduras-laissez-vibrer-2" href="fretted-string-instruments-_002d-laissez-vibrer-ties.es.html">Ligaduras <em>laissez vibrer</em></a></li>
+    <li><a id="toc-Hacer-que-TabStaff-imprima-la-cuerda-superior-en-la-parte-de-abajo-1" href="fretted-string-instruments-_002d-let-tabstaff-print-the-topmost-string-at-bottom.es.html">Hacer que <code>TabStaff</code> imprima la cuerda superior en la parte de abajo</a></li>
+    <li><a id="toc-Formateado-de-tablaturas-con-letras-1" href="fretted-string-instruments-_002d-letter-tablature-formatting.es.html">Formateado de tablaturas con letras</a></li>
+    <li><a id="toc-Referencia-para-armonicos-sobre-cuerdas-al-aire" href="fretted-string-instruments-_002d-open_002dstring-harmonics-in-tablature.es.html">Referencia para armónicos sobre cuerdas al aire</a></li>
+    <li><a id="toc-Posicionamiento-de-digitaciones-de-mano-derecha" href="fretted-string-instruments-_002d-placement-of-right_002dhand-fingerings.es.html">Posicionamiento de digitaciones de mano derecha</a></li>
+    <li><a id="toc-Polifonia-en-tablaturas" href="fretted-string-instruments-_002d-polyphony-in-tablature.es.html">Polifonía en tablaturas</a></li>
+    <li><a id="toc-Setting-up-predefined-fretboards-for-other-instruments" href="fretted-string-instruments-_002d-setting-up-predefined-fretboards-for-other-instruments.es.html">Setting up predefined fretboards for other instruments</a></li>
+    <li><a id="toc-Deslizamientos-en-tablatura" href="fretted-string-instruments-_002d-slides-in-tablature.es.html">Deslizamientos en tablatura</a></li>
+    <li><a id="toc-Comportamiento-de-las-plicas-y-las-barras-de-corchea-en-tablaturas" href="fretted-string-instruments-_002d-stem-and-beam-behavior-in-tablature.es.html">Comportamiento de las plicas y las barras de corchea en tablaturas</a></li>
+    <li><a id="toc-Lineas-de-extension-para-numeros-de-cuerda-2" href="fretted-string-instruments-_002d-string-number-extender-lines.es.html">Líneas de extensión para números de cuerda</a></li>
+  </ul></li>
+  <li><a id="toc-Percussion" href="percussion.es.html">13 Percussion</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Escritura-de-partes-de-percusion-1" href="percussion-_002d-adding-drum-parts.es.html">Escritura de partes de percusión</a></li>
+    <li><a id="toc-Ejemplo-de-cencerro-y-campana-1" href="percussion-_002d-cow-and-ride-bell-example.es.html">Ejemplo de cencerro y campana</a></li>
+    <li><a id="toc-Indicaciones-de-compas-polimetricas-profundamente-personalizadas-1" href="percussion-_002d-heavily-customized-polymetric-time-signatures.es.html">Indicaciones de compás polimétricas profundamente personalizadas</a></li>
+    <li><a id="toc-Ejemplo-de-cajas-chinas-grave-y-aguda-1" href="percussion-_002d-high-and-low-woodblock-example.es.html">Ejemplo de cajas chinas grave y aguda</a></li>
+    <li><a id="toc-Plantilla-para-combo-de-jazz-2" href="percussion-_002d-jazz-combo-template.es.html">Plantilla para combo de jazz</a></li>
+    <li><a id="toc-Simbolos-de-golpes-de-percusion" href="percussion-_002d-percussion-beaters.es.html">Símbolos de golpes de percusión</a></li>
+    <li><a id="toc-Ejemplo-de-percusion-1" href="percussion-_002d-percussion-example.es.html">Ejemplo de percusión</a></li>
+    <li><a id="toc-Imprimir-musica-que-tenga-compases-distintos-en-cada-pentagrama-1" href="percussion-_002d-printing-music-with-different-time-signatures.es.html">Imprimir música que tenga compases distintos en cada pentagrama</a></li>
+    <li><a id="toc-Ejemplo-de-musica-para-tam_002dtam-1" href="percussion-_002d-tam_002dtam-example.es.html">Ejemplo de música para tam-tam</a></li>
+    <li><a id="toc-Ejemlo-de-pandereta-1" href="percussion-_002d-tambourine-example.es.html">Ejemlo de pandereta</a></li>
+  </ul></li>
+  <li><a id="toc-Wind-instruments" href="wind-instruments.es.html">14 Wind instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Modificar-el-tamano-de-los-diagramas-de-viento-madera" href="wind-instruments-_002d-changing-the-size-of-woodwind-diagrams.es.html">Modificar el tamaño de los diagramas de viento madera</a></li>
+    <li><a id="toc-Simbolos-de-digitacion-para-instrumentos-de-viento" href="wind-instruments-_002d-fingering-symbols-for-wind-instruments.es.html">Símbolos de digitación para instrumentos de viento</a></li>
+    <li><a id="toc-Notacion-de-los-golpes-de-lengua-de-la-flauta" href="wind-instruments-_002d-flute-slap-notation.es.html">Notación de los golpes de lengua de la flauta</a></li>
+    <li><a id="toc-Diagramas-para-viento-madera-graficos-y-textuales" href="wind-instruments-_002d-graphical-and-text-woodwind-diagrams.es.html">Diagramas para viento madera gráficos y textuales</a></li>
+    <li><a id="toc-Diagramas-de-digitacion-para-la-flauta-dulce" href="wind-instruments-_002d-recorder-fingering-chart.es.html">Diagramas de digitación para la flauta dulce</a></li>
+    <li><a id="toc-Listas-de-llaves-para-los-diagramas-de-viento-madera" href="wind-instruments-_002d-woodwind-diagrams-key-lists.es.html">Listas de llaves para los diagramas de viento madera</a></li>
+    <li><a id="toc-Listado-de-los-diagramas-para-viento-madera" href="wind-instruments-_002d-woodwind-diagrams-listing.es.html">Listado de los diagramas para viento madera</a></li>
+  </ul></li>
+  <li><a id="toc-Chord-notation" href="chord-notation.es.html">15 Chord notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-un-bajo-cifrado-encima-o-debajo-de-las-notas" href="chord-notation-_002d-adding-a-figured-bass-above-or-below-the-notes.es.html">Añadir un bajo cifrado encima o debajo de las notas</a></li>
+    <li><a id="toc-Anadir-barras-de-compas-al-contexto-de-nombres-de-acorde-_0028ChordNames_0029" href="chord-notation-_002d-adding-bar-lines-to-chordnames-context.es.html">Añadir barras de compás al contexto de nombres de acorde (ChordNames)</a></li>
+    <li><a id="toc-Ajustar-los-glifos-de-las-alteraciones-en-el-bajo-cifrado" href="chord-notation-_002d-adjusting-figured-bass-alteration-glyphs.es.html">Ajustar los glifos de las alteraciones en el bajo cifrado</a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord-2" href="chord-notation-_002d-changing-a-single-note_0027s-size-in-a-chord.es.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-Modificacion-del-separador-de-acordes" href="chord-notation-_002d-changing-chord-separator.es.html">Modificación del separador de acordes</a></li>
+    <li><a id="toc-Cambiar-las-posiciones-de-las-alteraciones-del-bajo-cifrado" href="chord-notation-_002d-changing-the-positions-of-figured-bass-alterations.es.html">Cambiar las posiciones de las alteraciones del bajo cifrado</a></li>
+    <li><a id="toc-Excepciones-para-los-nombres-de-acorde" href="chord-notation-_002d-chord-name-exceptions.es.html">Excepciones para los nombres de acorde</a></li>
+    <li><a id="toc-Nombre-de-acorde-maj7" href="chord-notation-_002d-chord-name-major7.es.html">Nombre de acorde maj7</a></li>
+    <li><a id="toc-Nombres-alternativos-de-acordes" href="chord-notation-_002d-chord-names-alternative.es.html">Nombres alternativos de acordes</a></li>
+    <li><a id="toc-Acordes-con-digitaciones-ampliadas-para-diagramas-de-trastes-y-tablaturas-1" href="chord-notation-_002d-chords-with-stretched-fingering-for-fretboards-and-tabvoice.es.html">Acordes con digitaciones ampliadas para diagramas de trastes y tablaturas</a></li>
+    <li><a id="toc-Clusters-_0028_00abracimos_00bb_0029-2" href="chord-notation-_002d-clusters.es.html">Clusters («racimos»)</a></li>
+    <li><a id="toc-Controlar-la-colocacion-de-las-digitaciones-de-acordes-4" href="chord-notation-_002d-controlling-the-placement-of-chord-fingerings.es.html">Controlar la colocación de las digitaciones de acordes</a></li>
+    <li><a id="toc-Solucion-de-problemas-de-acordes-y-barras-que-cruzan-el-pentagrama-1" href="chord-notation-_002d-cross_002dstaff-chords-_002d_002d-beaming-problems-workaround.es.html">Solución de problemas de acordes y barras que cruzan el pentagrama</a></li>
+    <li><a id="toc-Personalizacion-del-estilo-de-las-rejillas-de-acordes" href="chord-notation-_002d-customizing-the-chord-grid-style.es.html">Personalización del estilo de las rejillas de acordes</a></li>
+    <li><a id="toc-Personalizacion-del-simbolo-de-Sin-Acorde" href="chord-notation-_002d-customizing-the-no_002dchord-symbol.es.html">Personalización del símbolo de Sin Acorde</a></li>
+    <li><a id="toc-Impresion-de-acordes-complejos-1" href="chord-notation-_002d-displaying-complex-chords.es.html">Impresión de acordes complejos</a></li>
+    <li><a id="toc-Dividir-manualmente-las-lineas-de-extension-del-bajo-cifrado-para-ciertos-numeros-solamente" href="chord-notation-_002d-manually-break-figured-bass-extenders-for-only-some-numbers.es.html">Dividir manualmente las líneas de extensión del bajo cifrado para ciertos números solamente</a></li>
+    <li><a id="toc-Print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note-1" href="chord-notation-_002d-print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note.es.html">Print chord names with same root and different bass as slash and bass note</a></li>
+    <li><a id="toc-Imprimir-los-acordes-cuando-se-produce-un-cambio" href="chord-notation-_002d-showing-chords-at-changes.es.html">Imprimir los acordes cuando se produce un cambio</a></li>
+    <li><a id="toc-Hoja-guia-de-acordes-o-lead-sheet-sencilla" href="chord-notation-_002d-simple-lead-sheet.es.html">Hoja guía de acordes o <em>lead sheet</em> sencilla</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unico-con-musica_002c-letra-y-acordes-1" href="chord-notation-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-and-chords.es.html">Plantilla de pentagrama único con música, letra y acordes</a></li>
+    <li><a id="toc-Single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets-1" href="chord-notation-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets.es.html">Single-staff template with notes, lyrics, chords, and frets</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unico-con-musica-y-acordes" href="chord-notation-_002d-single_002dstaff-template-with-notes-and-chords.es.html">Plantilla de pentagrama único con música y acordes</a></li>
+    <li><a id="toc-Centrado-vertical-de-las-lineas-de-bajo-cifrado-emparejadas" href="chord-notation-_002d-vertically-centering-paired-figured-bass-extenders.es.html">Centrado vertical de las líneas de bajo cifrado emparejadas</a></li>
+    <li><a id="toc-Corchetes-de-primera-y-segunda-vez-debajo-de-los-acordes-2" href="chord-notation-_002d-volta-below-chords.es.html">Corchetes de primera y segunda vez debajo de los acordes</a></li>
+  </ul></li>
+  <li><a id="toc-Contemporary-music" href="contemporary-music.es.html">16 Contemporary music</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Barras-recortadas-1" href="contemporary-music-_002d-beam-nibs.es.html">Barras recortadas</a></li>
+    <li><a id="toc-Regulador-interrumpido-1" href="contemporary-music-_002d-broken-crescendo-hairpin.es.html">Regulador interrumpido</a></li>
+    <li><a id="toc-Modificar-el-compas-dentro-de-una-seccion-polimetrica-utilizando-_005cscaleDurations-1" href="contemporary-music-_002d-changing-time-signatures-inside-a-polymetric-section-using-_005cscaledurations.es.html">Modificar el compás dentro de una sección polimétrica utilizando <code>\scaleDurations</code></a></li>
+    <li><a id="toc-Clusters-_0028_00abracimos_00bb_0029-3" href="contemporary-music-_002d-clusters.es.html">Clusters («racimos»)</a></li>
+    <li><a id="toc-Glissando-contemporaneo-1" href="contemporary-music-_002d-contemporary-glissando.es.html">Glissando contemporáneo</a></li>
+    <li><a id="toc-Ligaduras-planas-1" href="contemporary-music-_002d-flat-ties.es.html">Ligaduras planas</a></li>
+    <li><a id="toc-Notacion-de-los-golpes-de-lengua-de-la-flauta-1" href="contemporary-music-_002d-flute-slap-notation.es.html">Notación de los golpes de lengua de la flauta</a></li>
+    <li><a id="toc-Indicaciones-de-compas-polimetricas-profundamente-personalizadas-2" href="contemporary-music-_002d-heavily-customized-polymetric-time-signatures.es.html">Indicaciones de compás polimétricas profundamente personalizadas</a></li>
+    <li><a id="toc-Marcar-notas-de-las-partes-habladas-con-unas-aspas-en-la-plica-2" href="contemporary-music-_002d-marking-notes-of-spoken-parts-with-a-cross-on-the-stem-_0028sprechstimme_0029.es.html">Marcar notas de las partes habladas con unas aspas en la plica</a></li>
+    <li><a id="toc-Armaduras-de-tonalidad-no-tradicionales-2" href="contemporary-music-_002d-non_002dtraditional-key-signatures.es.html">Armaduras de tonalidad no tradicionales</a></li>
+    <li><a id="toc-Imprimir-musica-que-tenga-compases-distintos-en-cada-pentagrama-2" href="contemporary-music-_002d-printing-music-with-different-time-signatures.es.html">Imprimir música que tenga compases distintos en cada pentagrama</a></li>
+    <li><a id="toc-Screech-and-boink" href="contemporary-music-_002d-screech-and-boink.es.html"><em>Screech and boink</em></a></li>
+    <li><a id="toc-Stemlets-_0028plicas-de-tamano-reducido_0029-1" href="contemporary-music-_002d-stemlets.es.html">Stemlets (plicas de tamaño reducido)</a></li>
+  </ul></li>
+  <li><a id="toc-Ancient-notation" href="ancient-notation.es.html">17 Ancient notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-un-bajo-cifrado-encima-o-debajo-de-las-notas-1" href="ancient-notation-_002d-adding-a-figured-bass-above-or-below-the-notes.es.html">Añadir un bajo cifrado encima o debajo de las notas</a></li>
+    <li><a id="toc-Tipografia-de-musica-antigua" href="ancient-notation-_002d-ancient-fonts.es.html">Tipografía de música antigua</a></li>
+    <li><a id="toc-Ancient-notation-template-_002d-modern-transcription-of-Gregorian-music-1" href="ancient-notation-_002d-ancient-notation-template-_002d-modern-transcription-of-gregorian-music.es.html#ancient-notation-_002d-ancient-notation-template-_2013-modern-transcription-of-gregorian-music">Ancient notation template – modern transcription of Gregorian music</a></li>
+    <li><a id="toc-Indicaciones-de-compas-antiguas" href="ancient-notation-_002d-ancient-time-signatures.es.html">Indicaciones de compás antiguas</a></li>
+    <li><a id="toc-Chant-or-psalm-notation-2" href="ancient-notation-_002d-chant-or-psalm-notation.es.html">Chant or psalm notation</a></li>
+    <li><a id="toc-Custos" href="ancient-notation-_002d-custodes.es.html">Custos</a></li>
+    <li><a id="toc-Incipits-1" href="ancient-notation-_002d-incipit.es.html"><em>Incipits</em></a></li>
+    <li><a id="toc-Disposicion-Mensurstriche-_0028lineas-divisorias-entre-pentagramas_0029-1" href="ancient-notation-_002d-mensurstriche-layout-_0028bar-lines-between-the-staves_0029.es.html">Disposición <em>Mensurstriche</em> (líneas divisorias entre pentagramas)</a></li>
+    <li><a id="toc-Estilos-de-silencios-1" href="ancient-notation-_002d-rest-styles.es.html">Estilos de silencios</a></li>
+    <li><a id="toc-Uso-de-etiquetas-para-producir-musica-mensural-y-moderna-a-partir-del-mismo-codigo-fuente-1" href="ancient-notation-_002d-using-tags-to-produce-mensural-and-modern-music-from-the-same-source.es.html">Uso de etiquetas para producir música mensural y moderna a partir del mismo código fuente</a></li>
+    <li><a id="toc-Linea-vertical-como-una-articulacion-barroca-1" href="ancient-notation-_002d-vertical-line-as-a-baroque-articulation-mark.es.html">Línea vertical como una articulación barroca</a></li>
+  </ul></li>
+  <li><a id="toc-World-music" href="world-music.es.html">18 World music</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Improvisacion-de-musica-arabe" href="world-music-_002d-arabic-improvisation.es.html">Improvisación de música árabe</a></li>
+    <li><a id="toc-Ejemplo-de-makam-1" href="world-music-_002d-makam-example.es.html">Ejemplo de <em>makam</em></a></li>
+    <li><a id="toc-Impresion-de-texto-de-derecha-a-izquierda-2" href="world-music-_002d-printing-text-from-right-to-left.es.html">Impresión de texto de derecha a izquierda</a></li>
+    <li><a id="toc-Ejemplo-de-makam-en-la-musica-turca-1" href="world-music-_002d-turkish-makam-example.es.html">Ejemplo de <em>makam</em> en la música turca</a></li>
+  </ul></li>
+</ul></li>
+<li class="toc_current"><a id="toc-Other-collections" href="automatic-notation.es.html#Other-collections">Other collections</a>
+<ul class="no-bullet">
+  <li><a id="toc-Automatic-notation" href="automatic-notation.es.html">19 Automatic notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Subdivisiones-de-barra-automaticas-1" href="automatic-notation-_002d-automatic-beam-subdivisions.es.html">Subdivisiones de barra automáticas</a></li>
+    <li><a id="toc-Forzar-que-las-marcas-de-ensayo-comiencen-en-una-letra-o-numero-dados-1" href="automatic-notation-_002d-forcing-rehearsal-marks-to-start-from-a-given-letter-or-number.es.html">Forzar que las marcas  de ensayo comiencen en una letra o número dados</a></li>
+    <li><a id="toc-Generacion-de-partituras-completas-y-partes-de-libro-en-Scheme-sin-usar-el-analizador-sintactico" href="automatic-notation-_002d-generating-whole-scores-_0028also-book-parts_0029-in-scheme-without-using-the-parser.es.html">Generación de partituras completas y partes de libro en Scheme sin usar el analizador sintáctico</a></li>
+    <li><a id="toc-Evitar-que-se-anadan-becuadros-adicionales-automaticamente-1" href="automatic-notation-_002d-preventing-extra-naturals-from-being-automatically-added.es.html">Evitar que se añadan becuadros adicionales automáticamente</a></li>
+    <li><a id="toc-Evitar-que-se-impriman-becuadros-cuando-cambia-la-armadura-1" href="automatic-notation-_002d-preventing-natural-signs-from-being-printed-when-the-key-signature-changes.es.html">Evitar que se impriman becuadros cuando cambia la armadura</a></li>
+    <li><a id="toc-Plantilla-de-conjunto-vocal-con-reduccion-de-piano-automatica-2" href="automatic-notation-_002d-vocal-ensemble-template-with-automatic-piano-reduction.es.html">Plantilla de conjunto vocal con reducción de piano automática</a></li>
+  </ul></li>
+  <li><a id="toc-Breaks" href="breaks.es.html">20 Breaks</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-un-pentagrama-adicional-en-un-salto-de-linea-1" href="breaks-_002d-adding-an-extra-staff-at-a-line-break.es.html">Añadir un pentagrama adicional en un salto de línea</a></li>
+    <li><a id="toc-Posicionar-los-simbolos-de-repeticion-segno-y-coda-_0028con-saltos-de-linea_0029-1" href="breaks-_002d-positioning-segno-and-coda-_0028with-line-break_0029.es.html">Posicionar los símbolos de repetición segno y coda (con saltos de línea)</a></li>
+    <li><a id="toc-Quitar-la-primera-linea-vacia-1" href="breaks-_002d-removing-the-first-empty-line.es.html">Quitar la primera línea vacía</a></li>
+  </ul></li>
+  <li><a id="toc-Connecting-notes" href="connecting-notes.es.html">21 Connecting notes</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Adding-beams_002c-slurs_002c-ties_002c-etc_002e_002c-when-using-tuplet-and-non_002dtuplet-rhythms-1" href="connecting-notes-_002d-adding-beams_002c-slurs_002c-ties_002c-etc_002e_002c-when-using-tuplet-and-non_002dtuplet-rhythms.es.html">Adding beams, slurs, ties, etc., when using tuplet and non-tuplet rhythms</a></li>
+    <li><a id="toc-Subdivisiones-de-barra-automaticas-2" href="connecting-notes-_002d-automatic-beam-subdivisions.es.html">Subdivisiones de barra automáticas</a></li>
+    <li><a id="toc-Modificar-el-aspecto-continuo-de-una-ligadura-de-expresion-a-punteado-o-intermitente-2" href="connecting-notes-_002d-changing-the-appearance-of-a-slur-from-solid-to-dotted-or-dashed.es.html">Modificar el aspecto continuo de una ligadura de expresión a punteado o intermitente</a></li>
+    <li><a id="toc-Controlar-la-visibilidad-de-los-corchetes-de-grupo-especial-1" href="connecting-notes-_002d-controlling-tuplet-bracket-visibility.es.html">Controlar la visibilidad de los corchetes de grupo especial</a></li>
+    <li><a id="toc-Hacer-ligaduras-entre-voces-distintas-3" href="connecting-notes-_002d-creating-slurs-across-voices.es.html">Hacer ligaduras entre voces distintas</a></li>
+    <li><a id="toc-Ligaduras-laissez-vibrer-3" href="connecting-notes-_002d-laissez-vibrer-ties.es.html">Ligaduras <em>laissez vibrer</em></a></li>
+    <li><a id="toc-Controlar-manualmente-las-posiciones-de-las-barras-1" href="connecting-notes-_002d-manually-controlling-beam-positions.es.html">Controlar manualmente las posiciones de las barras</a></li>
+  </ul></li>
+  <li><a id="toc-Contexts-and-engravers" href="contexts-and-engravers.es.html">22 Contexts and engravers</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-un-ambito-por-voz-3" href="contexts-and-engravers-_002d-adding-ambitus-per-voice.es.html">Añadir un ámbito por voz</a></li>
+    <li><a id="toc-Anadir-un-pentagrama-nuevo-1" href="contexts-and-engravers-_002d-adding-an-extra-staff.es.html">Añadir un pentagrama nuevo</a></li>
+    <li><a id="toc-Anadir-un-pentagrama-adicional-en-un-salto-de-linea-2" href="contexts-and-engravers-_002d-adding-an-extra-staff-at-a-line-break.es.html">Añadir un pentagrama adicional en un salto de línea</a></li>
+    <li><a id="toc-Anadir-barras-de-compas-al-contexto-de-nombres-de-acorde-_0028ChordNames_0029-1" href="contexts-and-engravers-_002d-adding-bar-lines-to-chordnames-context.es.html">Añadir barras de compás al contexto de nombres de acorde (ChordNames)</a></li>
+    <li><a id="toc-Indicacion-de-tesitura-despues-de-la-armadura-3" href="contexts-and-engravers-_002d-ambitus-after-key-signature.es.html">Indicación de tesitura después de la armadura</a></li>
+    <li><a id="toc-Corchetes-de-analisis-con-etiquetas-1" href="contexts-and-engravers-_002d-analysis-brackets-with-labels.es.html">Corchetes de análisis con etiquetas</a></li>
+    <li><a id="toc-Cambiar-la-direccion-de-la-plica-de-las-notas-de-la-tercera-linea-automaticamente_002c-basado-en-la-melodia-1" href="contexts-and-engravers-_002d-automatically-changing-the-stem-direction-of-the-middle-note-based-on-the-melody.es.html">Cambiar la dirección de la plica de las notas de la tercera línea automáticamente, basado en la melodía</a></li>
+    <li><a id="toc-Modificar-la-salida-MIDI-para-que-tenga-un-canal-por-cada-voz" href="contexts-and-engravers-_002d-changing-midi-output-to-one-channel-per-voice.es.html">Modificar la salida MIDI para que tenga un canal por cada voz</a></li>
+    <li><a id="toc-Modificar-el-compas-dentro-de-una-seccion-polimetrica-utilizando-_005cscaleDurations-2" href="contexts-and-engravers-_002d-changing-time-signatures-inside-a-polymetric-section-using-_005cscaledurations.es.html">Modificar el compás dentro de una sección polimétrica utilizando <code>\scaleDurations</code></a></li>
+    <li><a id="toc-Crear-arpegios-entre-notas-de-voces-distintas-1" href="contexts-and-engravers-_002d-creating-arpeggios-across-notes-in-different-voices.es.html">Crear arpegios entre notas de voces distintas</a></li>
+    <li><a id="toc-Crear-pentagramas-en-blanco-2" href="contexts-and-engravers-_002d-creating-blank-staves.es.html">Crear pentagramas en blanco</a></li>
+    <li><a id="toc-Creacion-de-arpegios-que-se-cruzan-entre-pentagramas-dentro-de-otros-contextos-1" href="contexts-and-engravers-_002d-creating-cross_002dstaff-arpeggios-in-other-contexts.es.html">Creación de arpegios que se cruzan entre pentagramas dentro de otros contextos</a></li>
+    <li><a id="toc-Creacion-de-armaduras-de-clave-personalizadas-2" href="contexts-and-engravers-_002d-creating-custom-key-signatures.es.html">Creación de armaduras de clave personalizadas</a></li>
+    <li><a id="toc-Plicas-de-pentagrama-cruzado-1" href="contexts-and-engravers-_002d-cross_002dstaff-stems.es.html">Plicas de pentagrama cruzado</a></li>
+    <li><a id="toc-Definir-un-grabador-en-Scheme_003a-grabador-de-ambito-o-tesitura" href="contexts-and-engravers-_002d-defining-an-engraver-in-scheme_003a-ambitus-engraver.es.html">Definir un grabador en Scheme: grabador de ámbito o tesitura</a></li>
+    <li><a id="toc-Mostrar-un-sistema-GrandStaff-completo-si-sigue-con-vida-uno-solo-de-sus-pentagramas-1" href="contexts-and-engravers-_002d-displaying-a-whole-grandstaff-system-if-only-one-of-its-staves-is-alive.es.html">Mostrar un sistema GrandStaff completo si sigue con vida uno solo de sus pentagramas</a></li>
+    <li><a id="toc-Los-grabadores_002c-uno-por-uno" href="contexts-and-engravers-_002d-engravers-one-by-one.es.html">Los grabadores, uno por uno</a></li>
+    <li><a id="toc-Lineas-de-rejilla_003a-modificar-su-aspecto-1" href="contexts-and-engravers-_002d-grid-lines_003a-changing-their-appearance.es.html">Líneas de rejilla: modificar su aspecto</a></li>
+    <li><a id="toc-Lineas-de-rejilla_003a-destacar-ritmos-y-la-relacion-temporal-entre-notas-1" href="contexts-and-engravers-_002d-grid-lines_003a-emphasizing-rhythms-and-notes-synchronization.es.html">Líneas de rejilla: destacar ritmos y la relación temporal entre notas</a></li>
+    <li><a id="toc-Measure-counters-3" href="contexts-and-engravers-_002d-measure-counters.es.html">Measure counters</a></li>
+    <li><a id="toc-Corchete-que-abarca-varios-compases-1" href="contexts-and-engravers-_002d-measure-spanner.es.html">Corchete que abarca varios compases</a></li>
+    <li><a id="toc-Disposicion-Mensurstriche-_0028lineas-divisorias-entre-pentagramas_0029-2" href="contexts-and-engravers-_002d-mensurstriche-layout-_0028bar-lines-between-the-staves_0029.es.html">Disposición <em>Mensurstriche</em> (líneas divisorias entre pentagramas)</a></li>
+    <li><a id="toc-Anidado-de-grupos-de-pentagramas-1" href="contexts-and-engravers-_002d-nesting-staves.es.html">Anidado de grupos de pentagramas</a></li>
+    <li><a id="toc-Permitir-saltos-de-linea-dentro-de-grupos-especiales-con-barra-1" href="contexts-and-engravers-_002d-permitting-line-breaks-within-beamed-tuplets.es.html">Permitir saltos de línea dentro de grupos especiales con barra</a></li>
+    <li><a id="toc-Print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note-2" href="contexts-and-engravers-_002d-print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note.es.html">Print chord names with same root and different bass as slash and bass note</a></li>
+    <li><a id="toc-Imprimir-marcas-de-ensayo-en-cualquier-pentagrama-1" href="contexts-and-engravers-_002d-printing-marks-on-every-staff.es.html">Imprimir marcas de ensayo en cualquier pentagrama</a></li>
+    <li><a id="toc-Imprimir-musica-que-tenga-compases-distintos-en-cada-pentagrama-3" href="contexts-and-engravers-_002d-printing-music-with-different-time-signatures.es.html">Imprimir música que tenga compases distintos en cada pentagrama</a></li>
+    <li><a id="toc-Suprimir-los-numeros-de-compas-de-toda-la-partitura-1" href="contexts-and-engravers-_002d-removing-bar-numbers-from-a-score.es.html">Suprimir los números de compás de toda la partitura</a></li>
+    <li><a id="toc-Uso-del-corchete-recto-al-comienzo-de-un-grupo-de-pentagramas-1" href="contexts-and-engravers-_002d-use-square-bracket-at-the-start-of-a-staff-group.es.html">Uso del corchete recto al comienzo de un grupo de pentagramas</a></li>
+    <li><a id="toc-Using-mark-lines-in-a-Frenched-score-1" href="contexts-and-engravers-_002d-using-mark-lines-in-a-frenched-score.es.html">Using mark lines in a Frenched score</a></li>
+    <li><a id="toc-Uso-de-etiquetas-para-producir-musica-mensural-y-moderna-a-partir-del-mismo-codigo-fuente-2" href="contexts-and-engravers-_002d-using-tags-to-produce-mensural-and-modern-music-from-the-same-source.es.html">Uso de etiquetas para producir música mensural y moderna a partir del mismo código fuente</a></li>
+    <li><a id="toc-Estrofa-para-solista-y-estribillo-a-dos-voces-1" href="contexts-and-engravers-_002d-vocal-ensemble-template-with-verse-and-refrain.es.html">Estrofa para solista y estribillo a dos voces</a></li>
+    <li><a id="toc-Corchetes-de-primera-y-segunda-vez-debajo-de-los-acordes-3" href="contexts-and-engravers-_002d-volta-below-chords.es.html">Corchetes de primera y segunda vez debajo de los acordes</a></li>
+    <li><a id="toc-Casillas-de-primera-y-segunda-vez-en-varios-pentagramas-2" href="contexts-and-engravers-_002d-volta-brackets-in-multiple-staves.es.html">Casillas de primera y segunda vez en varios pentagramas</a></li>
+  </ul></li>
+  <li><a id="toc-Education" href="education.es.html">23 Education</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Lineas-de-rejilla_003a-destacar-ritmos-y-la-relacion-temporal-entre-notas-2" href="education-_002d-grid-lines_003a-emphasizing-rhythms-and-notes-synchronization.es.html">Líneas de rejilla: destacar ritmos y la relación temporal entre notas</a></li>
+    <li><a id="toc-Hacer-unas-lineas-del-pentagrama-mas-gruesas-que-las-otras-2" href="education-_002d-making-some-staff-lines-thicker-than-the-others.es.html">Hacer unas líneas del pentagrama más gruesas que las otras</a></li>
+  </ul></li>
+  <li><a id="toc-Headword" href="headword.es.html">24 Headword</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Encabezamiento-de-musica-antigua" href="headword-_002d-ancient-headword.es.html">Encabezamiento de música antigua</a></li>
+    <li><a id="toc-Encabezamiento-de-acordes" href="headword-_002d-chords-headword.es.html">Encabezamiento de acordes</a></li>
+    <li><a id="toc-Encabezamiento-de-indicaciones-editoriales" href="headword-_002d-editorial-headword.es.html">Encabezamiento de indicaciones editoriales</a></li>
+    <li><a id="toc-Encabezamiento-de-indicaciones-expresivas" href="headword-_002d-expressive-headword.es.html">Encabezamiento de indicaciones expresivas</a></li>
+    <li><a id="toc-Encabezamiento-de-bajo-cifrado" href="headword-_002d-figured-bass-headword.es.html">Encabezamiento de bajo cifrado</a></li>
+    <li><a id="toc-Encabezamiento-de-instrumentos-con-trastes" href="headword-_002d-fretted-headword.es.html">Encabezamiento de instrumentos con trastes</a></li>
+    <li><a id="toc-Encabezamiento-de-instrumentos-de-teclado" href="headword-_002d-keyboard-headword.es.html">Encabezamiento de instrumentos de teclado</a></li>
+    <li><a id="toc-Encabezamiento-de-alturas" href="headword-_002d-pitches-headword.es.html">Encabezamiento de alturas</a></li>
+    <li><a id="toc-Encabezamiento-de-repeticiones" href="headword-_002d-repeats-headword.es.html">Encabezamiento de repeticiones</a></li>
+    <li><a id="toc-Encabezamiento-de-Duraciones" href="headword-_002d-rhythms-headword.es.html">Encabezamiento de Duraciones</a></li>
+    <li><a id="toc-Encabezamiento-de-notas-simultaneas" href="headword-_002d-simultaneous-headword.es.html">Encabezamiento de notas simultáneas</a></li>
+    <li><a id="toc-Encabezamiento-de-pentagramas" href="headword-_002d-staff-headword.es.html">Encabezamiento de pentagramas</a></li>
+    <li><a id="toc-Encabezamiento-de-Texto" href="headword-_002d-text-headword.es.html">Encabezamiento de Texto</a></li>
+    <li><a id="toc-Encabezamiento-de-Instrumentos-sin-trastes" href="headword-_002d-unfretted-headword.es.html">Encabezamiento de Instrumentos sin trastes</a></li>
+    <li><a id="toc-Encabezamiento-de-musica-vocal" href="headword-_002d-vocal-headword.es.html">Encabezamiento de música vocal</a></li>
+    <li><a id="toc-Encabezamiento-de-instrumentos-de-viento" href="headword-_002d-wind-headword.es.html">Encabezamiento de instrumentos de viento</a></li>
+  </ul></li>
+  <li><a id="toc-MIDI" href="midi.es.html">25 MIDI</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Modificar-la-salida-MIDI-para-que-tenga-un-canal-por-cada-voz-1" href="midi-_002d-changing-midi-output-to-one-channel-per-voice.es.html">Modificar la salida MIDI para que tenga un canal por cada voz</a></li>
+    <li><a id="toc-Cambiar-el-tempo-sin-indicacion-metronomica-1" href="midi-_002d-changing-the-tempo-without-a-metronome-mark.es.html">Cambiar el tempo sin indicación metronómica</a></li>
+    <li><a id="toc-Creacaion-de-matices-dinamicos-personalizados-en-el-MIDI" href="midi-_002d-creating-custom-dynamics-in-midi-output.es.html">Creacaión de matices dinámicos personalizados en el MIDI</a></li>
+    <li><a id="toc-Demo-of-MIDI-instruments" href="midi-_002d-demo-of-midi-instruments.es.html">Demo of MIDI instruments</a></li>
+    <li><a id="toc-Reemplazo-de-la-ecualizacion-predeterminada-de-instrumentos-MIDI" href="midi-_002d-replacing-default-midi-instrument-equalization.es.html">Reemplazo de la ecualización predeterminada de instrumentos MIDI</a></li>
+  </ul></li>
+  <li><a id="toc-Non_002dmusic" href="non_002dmusic.es.html">26 Non-music</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Alinear-y-centrar-los-nombres-de-instrumento-1" href="non_002dmusic-_002d-aligning-and-centering-instrument-names.es.html">Alinear y centrar los nombres de instrumento</a></li>
+    <li><a id="toc-Demonstrating-all-_005cheader-fields-1" href="non_002dmusic-_002d-demonstrating-all-_005cheader-fields.es.html">Demonstrating all \header fields</a></li>
+    <li><a id="toc-Listas-de-llaves-para-los-diagramas-de-viento-madera-1" href="non_002dmusic-_002d-woodwind-diagrams-key-lists.es.html">Listas de llaves para los diagramas de viento madera</a></li>
+  </ul></li>
+  <li><a id="toc-Paper-and-layout" href="paper-and-layout.es.html">27 Paper and layout</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Alinear-y-centrar-los-nombres-de-instrumento-2" href="paper-and-layout-_002d-aligning-and-centering-instrument-names.es.html">Alinear y centrar los nombres de instrumento</a></li>
+    <li><a id="toc-Disposicion-de-distintas-letras-en-la-misma-linea-1" href="paper-and-layout-_002d-arranging-separate-lyrics-on-a-single-line.es.html">Disposición de distintas letras en la misma línea</a></li>
+    <li><a id="toc-Partes-de-libro" href="paper-and-layout-_002d-book-parts.es.html">Partes de libro</a></li>
+    <li><a id="toc-Modificar-el-tamano-de-la-pauta-1" href="paper-and-layout-_002d-changing-the-staff-size.es.html">Modificar el tamaño de la pauta</a></li>
+    <li><a id="toc-Recorte-de-sistemas" href="paper-and-layout-_002d-clip-systems.es.html">Recorte de sistemas</a></li>
+    <li><a id="toc-Crear-pentagramas-en-blanco-3" href="paper-and-layout-_002d-creating-blank-staves.es.html">Crear pentagramas en blanco</a></li>
+    <li><a id="toc-Demonstrating-all-_005cheader-fields-2" href="paper-and-layout-_002d-demonstrating-all-_005cheader-fields.es.html">Demonstrating all \header fields</a></li>
+    <li><a id="toc-Mostrar-un-sistema-GrandStaff-completo-si-sigue-con-vida-uno-solo-de-sus-pentagramas-2" href="paper-and-layout-_002d-displaying-a-whole-grandstaff-system-if-only-one-of-its-staves-is-alive.es.html">Mostrar un sistema GrandStaff completo si sigue con vida uno solo de sus pentagramas</a></li>
+    <li><a id="toc-Fijar-un-separador-entre-los-sistemas-1" href="paper-and-layout-_002d-setting-system-separators.es.html">Fijar un separador entre los sistemas</a></li>
+    <li><a id="toc-Indice-general-_0028tabla-de-contenidos_0029" href="paper-and-layout-_002d-table-of-contents.es.html">Índice general (tabla de contenidos)</a></li>
+    <li><a id="toc-Grupos-de-pentagramas-alineados-verticalmente-sin-barra-inicial-de-conexion-1" href="paper-and-layout-_002d-vertically-aligned-staffgroups-without-connecting-systemstartbar.es.html">Grupos de pentagramas alineados verticalmente sin barra inicial de conexión</a></li>
+  </ul></li>
+  <li><a id="toc-Preparing-parts" href="preparing-parts.es.html">28 Preparing parts</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Forzar-que-las-marcas-de-ensayo-comiencen-en-una-letra-o-numero-dados-2" href="preparing-parts-_002d-forcing-rehearsal-marks-to-start-from-a-given-letter-or-number.es.html">Forzar que las marcas  de ensayo comiencen en una letra o número dados</a></li>
+    <li><a id="toc-Numerar-silencios-seguidos-de-un-compas-1" href="preparing-parts-_002d-numbering-single-measure-rests.es.html">Numerar silencios seguidos de un compás</a></li>
+    <li><a id="toc-Plantilla-de-cuarteto-de-cuerda-con-particellas-independientes-1" href="preparing-parts-_002d-string-quartet-template-with-separate-parts.es.html">Plantilla de cuarteto de cuerda con particellas independientes</a></li>
+  </ul></li>
+  <li><a id="toc-Real-music" href="real-music.es.html">29 Real music</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Modificar-la-salida-MIDI-para-que-tenga-un-canal-por-cada-voz-2" href="real-music-_002d-changing-midi-output-to-one-channel-per-voice.es.html">Modificar la salida MIDI para que tenga un canal por cada voz</a></li>
+    <li><a id="toc-Crear-una-secuencia-de-notas-a-distintas-alturas-1" href="real-music-_002d-creating-a-sequence-of-notes-on-various-pitches.es.html">Crear una secuencia de notas a distintas alturas</a></li>
+    <li><a id="toc-Hacer-ligaduras-entre-voces-distintas-4" href="real-music-_002d-creating-slurs-across-voices.es.html">Hacer ligaduras entre voces distintas</a></li>
+    <li><a id="toc-Tremolos-de-pentagrama-cruzado-2" href="real-music-_002d-cross_002dstaff-tremolos.es.html">Trémolos de pentagrama cruzado</a></li>
+    <li><a id="toc-Demo-of-MIDI-instruments-1" href="real-music-_002d-demo-of-midi-instruments.es.html">Demo of MIDI instruments</a></li>
+    <li><a id="toc-Armonicos-con-puntillo-1" href="real-music-_002d-dotted-harmonics.es.html">Armónicos con puntillo</a></li>
+    <li><a id="toc-Indicaciones-de-compas-polimetricas-profundamente-personalizadas-3" href="real-music-_002d-heavily-customized-polymetric-time-signatures.es.html">Indicaciones de compás polimétricas profundamente personalizadas</a></li>
+    <li><a id="toc-Indicating-cross_002dstaff-chords-with-a-bracket-1" href="real-music-_002d-indicating-cross_002dstaff-chords-with-a-bracket.es.html">Indicating cross-staff chords with a bracket</a></li>
+    <li><a id="toc-Insertar-fragmentos-de-partituras-sobre-el-pentagrama_002c-como-elementos-de-marcado-1" href="real-music-_002d-inserting-score-fragments-above-a-staff_002c-as-markups.es.html">Insertar fragmentos de partituras sobre el pentagrama, como elementos de marcado</a></li>
+    <li><a id="toc-Ejemplo-de-percusion-2" href="real-music-_002d-percussion-example.es.html">Ejemplo de percusión</a></li>
+    <li><a id="toc-Imprimir-musica-que-tenga-compases-distintos-en-cada-pentagrama-4" href="real-music-_002d-printing-music-with-different-time-signatures.es.html">Imprimir música que tenga compases distintos en cada pentagrama</a></li>
+  </ul></li>
+  <li><a id="toc-Really-cool" href="really-cool.es.html">30 Really cool</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-la-fecha-actual-a-una-partitura-1" href="really-cool-_002d-adding-the-current-date-to-a-score.es.html">Añadir la fecha actual a una partitura</a></li>
+    <li><a id="toc-Poner-en-blanco-las-lineas-del-pentagrama-utilizando-la-instruccion-_005cwhiteout-2" href="really-cool-_002d-blanking-staff-lines-using-the-_005cwhiteout-command.es.html">Poner en blanco las líneas del pentagrama utilizando la instrucción <code>\whiteout</code></a></li>
+    <li><a id="toc-Centrar-texto-debajo-de-un-regulador-2" href="really-cool-_002d-center-text-below-hairpin-dynamics.es.html">Centrar texto debajo de un regulador</a></li>
+    <li><a id="toc-Modificacion-de-propiedades-para-objetos-graficos-individuales" href="really-cool-_002d-changing-properties-for-individual-grobs.es.html">Modificación de propiedades para objetos gráficos individuales</a></li>
+    <li><a id="toc-Clusters-_0028_00abracimos_00bb_0029-4" href="really-cool-_002d-clusters.es.html">Clusters («racimos»)</a></li>
+    <li><a id="toc-Colorear-las-notas-segun-su-altura-2" href="really-cool-_002d-coloring-notes-depending-on-their-pitch.es.html">Colorear las notas según su altura</a></li>
+    <li><a id="toc-Crear-una-secuencia-de-notas-a-distintas-alturas-2" href="really-cool-_002d-creating-a-sequence-of-notes-on-various-pitches.es.html">Crear una secuencia de notas a distintas alturas</a></li>
+    <li><a id="toc-Generacion-de-notas-aleatorias-1" href="really-cool-_002d-generating-random-notes.es.html">Generación de notas aleatorias</a></li>
+    <li><a id="toc-Generacion-de-partituras-completas-y-partes-de-libro-en-Scheme-sin-usar-el-analizador-sintactico-1" href="really-cool-_002d-generating-whole-scores-_0028also-book-parts_0029-in-scheme-without-using-the-parser.es.html">Generación de partituras completas y partes de libro en Scheme sin usar el analizador sintáctico</a></li>
+    <li><a id="toc-Hacer-unas-lineas-del-pentagrama-mas-gruesas-que-las-otras-3" href="really-cool-_002d-making-some-staff-lines-thicker-than-the-others.es.html">Hacer unas líneas del pentagrama más gruesas que las otras</a></li>
+    <li><a id="toc-Armaduras-de-tonalidad-no-tradicionales-3" href="really-cool-_002d-non_002dtraditional-key-signatures.es.html">Armaduras de tonalidad no tradicionales</a></li>
+    <li><a id="toc-Imprimir-musica-que-tenga-compases-distintos-en-cada-pentagrama-5" href="really-cool-_002d-printing-music-with-different-time-signatures.es.html">Imprimir música que tenga compases distintos en cada pentagrama</a></li>
+  </ul></li>
+  <li><a id="toc-Really-simple" href="really-simple.es.html">31 Really simple</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-un-pentagrama-nuevo-2" href="really-simple-_002d-adding-an-extra-staff.es.html">Añadir un pentagrama nuevo</a></li>
+    <li><a id="toc-Escritura-de-partes-de-percusion-2" href="really-simple-_002d-adding-drum-parts.es.html">Escritura de partes de percusión</a></li>
+    <li><a id="toc-Anadir-digitaciones-a-la-partitura-2" href="really-simple-_002d-adding-fingerings-to-a-score.es.html">Añadir digitaciones a la partitura</a></li>
+    <li><a id="toc-Aligning-text-marks-to-notes-1" href="really-simple-_002d-aligning-text-marks-to-notes.es.html">Aligning text marks to notes</a></li>
+    <li><a id="toc-Corchetes-de-analisis-encima-del-pentagrama-1" href="really-simple-_002d-analysis-brackets-above-the-staff.es.html">Corchetes de análisis encima del pentagrama</a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord-3" href="really-simple-_002d-changing-a-single-note_0027s-size-in-a-chord.es.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-Modificar-la-tipografia-para-cada-estrofa-1" href="really-simple-_002d-changing-stanza-fonts.es.html">Modificar la tipografía para cada estrofa</a></li>
+    <li><a id="toc-Modificar-el-aspecto-continuo-de-una-ligadura-de-expresion-a-punteado-o-intermitente-3" href="really-simple-_002d-changing-the-appearance-of-a-slur-from-solid-to-dotted-or-dashed.es.html">Modificar el aspecto continuo de una ligadura de expresión a punteado o intermitente</a></li>
+    <li><a id="toc-Combinar-indicaciones-dinamicas-con-marcados-textuales-2" href="really-simple-_002d-combining-dynamics-with-markup-texts.es.html">Combinar indicaciones dinámicas con marcados textuales</a></li>
+    <li><a id="toc-Combining-dynamics-with-markup-texts-_00282_0029-2" href="really-simple-_002d-combining-dynamics-with-markup-texts-_00282_0029.es.html">Combining dynamics with markup texts (2)</a></li>
+    <li><a id="toc-Forzar-que-las-marcas-de-ensayo-comiencen-en-una-letra-o-numero-dados-3" href="really-simple-_002d-forcing-rehearsal-marks-to-start-from-a-given-letter-or-number.es.html">Forzar que las marcas  de ensayo comiencen en una letra o número dados</a></li>
+    <li><a id="toc-Alineacion-de-la-letra-2" href="really-simple-_002d-lyrics-alignment.es.html">Alineación de la letra</a></li>
+    <li><a id="toc-Combinar-los-silencios-multicompas-en-una-parte-polifonica-1" href="really-simple-_002d-merging-multi_002dmeasure-rests-in-a-polyphonic-part.es.html">Combinar los silencios multicompás en una parte polifónica</a></li>
+    <li><a id="toc-Modificar-la-longitud-del-corchete-de-grupo-especial-1" href="really-simple-_002d-modifying-tuplet-bracket-length.es.html">Modificar la longitud del corchete de grupo especial</a></li>
+    <li><a id="toc-Imprimir-el-numero-de-version-1" href="really-simple-_002d-outputting-the-version-number.es.html">Imprimir el número de versión</a></li>
+    <li><a id="toc-Plantilla-de-piano-_0028sencilla_0029-1" href="really-simple-_002d-piano-template-_0028simple_0029.es.html">Plantilla de piano (sencilla)</a></li>
+    <li><a id="toc-Plantilla-de-piano-con-letra-centrada-2" href="really-simple-_002d-piano-template-with-centered-lyrics.es.html">Plantilla de piano con letra centrada</a></li>
+    <li><a id="toc-Plantilla-de-piano-con-melodia-y-letra-2" href="really-simple-_002d-piano-template-with-melody-and-lyrics.es.html">Plantilla de piano con melodía y letra</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unico-con-musica_002c-letra-y-acordes-2" href="really-simple-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-and-chords.es.html">Plantilla de pentagrama único con música, letra y acordes</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unico-con-musica-y-acordes-1" href="really-simple-_002d-single_002dstaff-template-with-notes-and-chords.es.html">Plantilla de pentagrama único con música y acordes</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unico-don-notas-y-letra-1" href="really-simple-_002d-single_002dstaff-template-with-notes-and-lyrics.es.html">Plantilla de pentagrama único don notas y letra</a></li>
+    <li><a id="toc-Plantilla-de-un-solo-pentagrama_002c-con-notas-unicamente" href="really-simple-_002d-single_002dstaff-template-with-only-notes.es.html">Plantilla de un solo pentagrama, con notas únicamente</a></li>
+    <li><a id="toc-Silencios-de-separacion-en-modo-de-letra-2" href="really-simple-_002d-skips-in-lyric-mode.es.html">Silencios de separación en modo de letra</a></li>
+    <li><a id="toc-Silencios-de-separacion-en-modo-de-letra-_00282_0029-2" href="really-simple-_002d-skips-in-lyric-mode-_00282_0029.es.html">Silencios de separación en modo de letra (2)</a></li>
+    <li><a id="toc-Plantilla-de-cuarteto-de-cuerda-_0028sencilla_0029-1" href="really-simple-_002d-string-quartet-template-_0028simple_0029.es.html">Plantilla de cuarteto de cuerda (sencilla)</a></li>
+    <li><a id="toc-Uso-de-la-instruccion-_005ctweak-para-retocar-objetos-graficos-individuales" href="really-simple-_002d-using-the-_005ctweak-command-to-tweak-individual-grobs.es.html">Uso de la instrucción \tweak para retocar objetos gráficos individuales</a></li>
+    <li><a id="toc-Plantilla-de-conjunto-vocal-1" href="really-simple-_002d-vocal-ensemble-template.es.html">Plantilla de conjunto vocal</a></li>
+    <li><a id="toc-Casillas-de-primera-y-segunda-vez-en-varios-pentagramas-3" href="really-simple-_002d-volta-brackets-in-multiple-staves.es.html">Casillas de primera y segunda vez en varios pentagramas</a></li>
+  </ul></li>
+  <li><a id="toc-Scheme" href="scheme.es.html">32 Scheme</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Incluir-digitaciones-adicionales-con-Scheme" href="scheme-_002d-adding-extra-fingering-with-scheme.es.html">Incluir digitaciones adicionales con Scheme</a></li>
+    <li><a id="toc-Anadir-indicadores-a-los-pentagramas-que-se-dividen-despues-de-un-salto-de-linea-2" href="scheme-_002d-adding-indicators-to-staves-which-get-split-after-a-break.es.html">Añadir indicadores a los pentagramas que se dividen después de un salto de línea</a></li>
+    <li><a id="toc-Anadir-enlaces-a-los-objetos-1" href="scheme-_002d-adding-links-to-objects.es.html">Añadir enlaces a los objetos</a></li>
+    <li><a id="toc-Anadir-notas-guia-orquestales-a-una-partitura-vocal-2" href="scheme-_002d-adding-orchestral-cues-to-a-vocal-score.es.html">Añadir notas guía orquestales a una partitura vocal</a></li>
+    <li><a id="toc-Anadir-la-fecha-actual-a-una-partitura-2" href="scheme-_002d-adding-the-current-date-to-a-score.es.html">Añadir la fecha actual a una partitura</a></li>
+    <li><a id="toc-Ajustar-las-posiciones-de-las-ligaduras-verticalmente-1" href="scheme-_002d-adjusting-slur-positions-vertically.es.html">Ajustar las posiciones de las ligaduras verticalmente</a></li>
+    <li><a id="toc-Centrar-texto-debajo-de-un-regulador-3" href="scheme-_002d-center-text-below-hairpin-dynamics.es.html">Centrar texto debajo de un regulador</a></li>
+    <li><a id="toc-Modificacion-de-propiedades-para-objetos-graficos-individuales-1" href="scheme-_002d-changing-properties-for-individual-grobs.es.html">Modificación de propiedades para objetos gráficos individuales</a></li>
+    <li><a id="toc-Excepciones-para-los-nombres-de-acorde-1" href="scheme-_002d-chord-name-exceptions.es.html">Excepciones para los nombres de acorde</a></li>
+    <li><a id="toc-Colorear-las-notas-segun-su-altura-3" href="scheme-_002d-coloring-notes-depending-on-their-pitch.es.html">Colorear las notas según su altura</a></li>
+    <li><a id="toc-Crear-una-secuencia-de-notas-a-distintas-alturas-3" href="scheme-_002d-creating-a-sequence-of-notes-on-various-pitches.es.html">Crear una secuencia de notas a distintas alturas</a></li>
+    <li><a id="toc-Creacaion-de-matices-dinamicos-personalizados-en-el-MIDI-1" href="scheme-_002d-creating-custom-dynamics-in-midi-output.es.html">Creacaión de matices dinámicos personalizados en el MIDI</a></li>
+    <li><a id="toc-Personalizar-la-posicion-y-el-numero-de-puntos-en-las-lineas-divisorias-de-repeticion" href="scheme-_002d-customizing-the-position-and-number-of-dots-in-repeat-sign-bar-lines.es.html">Personalizar la posición y el número de puntos en las líneas divisorias de repetición</a></li>
+    <li><a id="toc-Definir-un-grabador-en-Scheme_003a-grabador-de-ambito-o-tesitura-1" href="scheme-_002d-defining-an-engraver-in-scheme_003a-ambitus-engraver.es.html">Definir un grabador en Scheme: grabador de ámbito o tesitura</a></li>
+    <li><a id="toc-Diferentes-tamanos-de-fuente-para-instrumentName-y-shortInstrumentName-1" href="scheme-_002d-different-font-size-settings-for-instrumentname-and-shortinstrumentname.es.html">Diferentes tamaños de fuente para <code>instrumentName</code> y <code>shortInstrumentName</code></a></li>
+    <li><a id="toc-Imprimir-el-arbol-genealogico-de-un-grob" href="scheme-_002d-displaying-grob-ancestry.es.html">Imprimir el árbol genealógico de un grob</a></li>
+    <li><a id="toc-Trazar-circunferencias-alrededor-de-la-cabeza-de-las-notas-1" href="scheme-_002d-drawing-circles-around-note-heads.es.html">Trazar circunferencias alrededor de la cabeza de las notas</a></li>
+    <li><a id="toc-Rodear-diversos-objetos-con-una-circunferencia-1" href="scheme-_002d-drawing-circles-around-various-objects.es.html">Rodear diversos objetos con una circunferencia</a></li>
+    <li><a id="toc-Extender-glissandos-sobre-repeticiones-1" href="scheme-_002d-extending-glissandi-across-repeats.es.html">Extender glissandos sobre repeticiones</a></li>
+    <li><a id="toc-Ligaduras-planas-2" href="scheme-_002d-flat-ties.es.html">Ligaduras planas</a></li>
+    <li><a id="toc-Notacion-de-los-golpes-de-lengua-de-la-flauta-2" href="scheme-_002d-flute-slap-notation.es.html">Notación de los golpes de lengua de la flauta</a></li>
+    <li><a id="toc-Tablas-alternativas-de-diagramas-de-posiciones-1" href="scheme-_002d-fretboards-alternate-tables.es.html">Tablas alternativas de diagramas de posiciones</a></li>
+    <li><a id="toc-Generate-special-note-head-shapes-1" href="scheme-_002d-generate-special-note-head-shapes.es.html">Generate special note head shapes</a></li>
+    <li><a id="toc-Generar-corchetes-personalizados-1" href="scheme-_002d-generating-custom-flags.es.html">Generar corchetes personalizados</a></li>
+    <li><a id="toc-Generacion-de-notas-aleatorias-2" href="scheme-_002d-generating-random-notes.es.html">Generación de notas aleatorias</a></li>
+    <li><a id="toc-Generacion-de-partituras-completas-y-partes-de-libro-en-Scheme-sin-usar-el-analizador-sintactico-2" href="scheme-_002d-generating-whole-scores-_0028also-book-parts_0029-in-scheme-without-using-the-parser.es.html">Generación de partituras completas y partes de libro en Scheme sin usar el analizador sintáctico</a></li>
+    <li><a id="toc-Simbolos-de-porcentaje-sueltos-1" href="scheme-_002d-isolated-percent-repeats.es.html">Símbolos de porcentaje sueltos</a></li>
+    <li><a id="toc-Numeros-como-notas-de-notacion-facil-1" href="scheme-_002d-numbers-as-easy-note-heads.es.html">Números como notas de notación fácil</a></li>
+    <li><a id="toc-Modificacion-de-articulaciones-por-tipo" href="scheme-_002d-overriding-articulations-by-type.es.html">Modificación de articulaciones por tipo</a></li>
+    <li><a id="toc-Posicionamiento-de-las-notas-de-adorno-con-espacio-flotante-1" href="scheme-_002d-positioning-grace-notes-with-floating-space.es.html">Posicionamiento de las notas de adorno con espacio flotante</a></li>
+    <li><a id="toc-Print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note-3" href="scheme-_002d-print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note.es.html">Print chord names with same root and different bass as slash and bass note</a></li>
+    <li><a id="toc-Reemplazo-de-la-ecualizacion-predeterminada-de-instrumentos-MIDI-1" href="scheme-_002d-replacing-default-midi-instrument-equalization.es.html">Reemplazo de la ecualización predeterminada de instrumentos MIDI</a></li>
+    <li><a id="toc-Separar-las-cancelaciones-de-tonalidad-de-los-cambios-de-armadura-1" href="scheme-_002d-separating-key-cancellations-from-key-signature-changes.es.html">Separar las cancelaciones de tonalidad de los cambios de armadura</a></li>
+    <li><a id="toc-Slanted-parentheses-around-dynamics-2" href="scheme-_002d-slanted-parentheses-around-dynamics.es.html">Slanted parentheses around dynamics</a></li>
+    <li><a id="toc-Lineas-de-extension-para-numeros-de-cuerda-3" href="scheme-_002d-string-number-extender-lines.es.html">Líneas de extensión para números de cuerda</a></li>
+    <li><a id="toc-Rectangulo-de-tres-segmentos-visibles-2" href="scheme-_002d-three_002dsided-box.es.html">Rectángulo de tres segmentos visibles</a></li>
+    <li><a id="toc-Transposing-pitches-with-minimum-accidentals-_0028_201csmart_201d-transpose_0029-1" href="scheme-_002d-transposing-pitches-with-minimum-accidentals-_0028_201csmart_201d-transpose_0029.es.html">Transposing pitches with minimum accidentals (&ldquo;smart&rdquo; transpose)</a></li>
+    <li><a id="toc-Dos-pares-de-_005cpartCombine-en-un-solo-pentagrama-2" href="scheme-_002d-two-_005cpartcombine-pairs-on-one-staff.es.html">Dos pares de <code>\partCombine</code> en un solo pentagrama</a></li>
+    <li><a id="toc-Indicaciones-de-compas-personalizadas-1" href="scheme-_002d-user_002ddefined-time-signatures.es.html">Indicaciones de compás personalizadas</a></li>
+    <li><a id="toc-Utilizar-ly_003agrob_002dobject-para-acceder-a-los-grobs-con-_005ctweak" href="scheme-_002d-using-ly_003agrob_002dobject-to-access-grobs-with-_005ctweak.es.html">Utilizar ly:grob-object para acceder a los grobs con \tweak</a></li>
+    <li><a id="toc-Linea-vertical-como-una-articulacion-barroca-2" href="scheme-_002d-vertical-line-as-a-baroque-articulation-mark.es.html">Línea vertical como una articulación barroca</a></li>
+  </ul></li>
+  <li><a id="toc-Spacing" href="spacing.es.html">33 Spacing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Adjusting-vertical-spacing-of-lyrics-2" href="spacing-_002d-adjusting-vertical-spacing-of-lyrics.es.html">Adjusting vertical spacing of lyrics</a></li>
+    <li><a id="toc-Permitir-que-las-digitaciones-se-impriman-dentro-del-pentagrama-2" href="spacing-_002d-allowing-fingerings-to-be-printed-inside-the-staff.es.html">Permitir que las digitaciones se impriman dentro del pentagrama</a></li>
+    <li><a id="toc-Breaking-horizontal-alignment-of-dynamics-and-textscripts" href="spacing-_002d-breaking-horizontal-alignment-of-dynamics-and-textscripts.es.html">Breaking horizontal alignment of dynamics and textscripts</a></li>
+    <li><a id="toc-Desalinear-indicaciones-dinamicas-y-textuales-verticalmente" href="spacing-_002d-breaking-vertical-alignment-of-dynamics-and-textscripts.es.html">Desalinear indicaciones dinámicas y textuales verticalmente</a></li>
+    <li><a id="toc-Harmonizing-bar-line-thickness-for-staves-with-different-sizes-1" href="spacing-_002d-harmonizing-bar-line-thickness-for-staves-with-different-sizes.es.html">Harmonizing bar line thickness for staves with different sizes</a></li>
+    <li><a id="toc-Etiqueta-de-pagina" href="spacing-_002d-page-label.es.html">Etiqueta de página</a></li>
+    <li><a id="toc-Espaciado-de-las-notas-estrictamente-proporcional" href="spacing-_002d-proportional-strict-notespacing.es.html">Espaciado de las notas estrictamente proporcional</a></li>
+    <li><a id="toc-Indicaciones-dinamicas-y-textuales-alineadas-verticalmente" href="spacing-_002d-vertically-aligned-dynamics-and-textscripts.es.html">Indicaciones dinámicas y textuales alineadas verticalmente</a></li>
+    <li><a id="toc-Alineacion-vertical-de-la-letra-y-los-compases-de-ossia-1" href="spacing-_002d-vertically-aligning-ossias-and-lyrics.es.html">Alineación vertical de la letra y los compases de ossia</a></li>
+  </ul></li>
+  <li><a id="toc-Specific-notation" href="specific-notation.es.html">34 Specific notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Simbolos-de-registracion-de-acordeon-1" href="specific-notation-_002d-accordion-register-symbols.es.html">Símbolos de registración de acordeón</a></li>
+    <li><a id="toc-Anadir-barras-de-compas-al-contexto-de-nombres-de-acorde-_0028ChordNames_0029-2" href="specific-notation-_002d-adding-bar-lines-to-chordnames-context.es.html">Añadir barras de compás al contexto de nombres de acorde (ChordNames)</a></li>
+    <li><a id="toc-Escritura-de-partes-de-percusion-3" href="specific-notation-_002d-adding-drum-parts.es.html">Escritura de partes de percusión</a></li>
+    <li><a id="toc-Anadir-digitaciones-a-las-tablaturas-1" href="specific-notation-_002d-adding-fingerings-to-tablatures.es.html">Añadir digitaciones a las tablaturas</a></li>
+    <li><a id="toc-Cabezas-de-nota-tipo-Aiken_002c-variante-delgada-1" href="specific-notation-_002d-aiken-head-thin-variant-noteheads.es.html">Cabezas de nota tipo Aiken, variante delgada</a></li>
+    <li><a id="toc-Permitir-que-las-digitaciones-se-impriman-dentro-del-pentagrama-3" href="specific-notation-_002d-allowing-fingerings-to-be-printed-inside-the-staff.es.html">Permitir que las digitaciones se impriman dentro del pentagrama</a></li>
+    <li><a id="toc-Cambiar-el-numero-de-lineas-de-una-pauta-1" href="specific-notation-_002d-changing-the-number-of-lines-in-a-staff.es.html">Cambiar el número de líneas de una pauta</a></li>
+    <li><a id="toc-Chant-or-psalm-notation-3" href="specific-notation-_002d-chant-or-psalm-notation.es.html">Chant or psalm notation</a></li>
+    <li><a id="toc-Excepciones-para-los-nombres-de-acorde-2" href="specific-notation-_002d-chord-name-exceptions.es.html">Excepciones para los nombres de acorde</a></li>
+    <li><a id="toc-Nombre-de-acorde-maj7-1" href="specific-notation-_002d-chord-name-major7.es.html">Nombre de acorde maj7</a></li>
+    <li><a id="toc-Acordes-con-digitaciones-ampliadas-para-diagramas-de-trastes-y-tablaturas-2" href="specific-notation-_002d-chords-with-stretched-fingering-for-fretboards-and-tabvoice.es.html">Acordes con digitaciones ampliadas para diagramas de trastes y tablaturas</a></li>
+    <li><a id="toc-Clusters-_0028_00abracimos_00bb_0029-5" href="specific-notation-_002d-clusters.es.html">Clusters («racimos»)</a></li>
+    <li><a id="toc-Glissando-contemporaneo-2" href="specific-notation-_002d-contemporary-glissando.es.html">Glissando contemporáneo</a></li>
+    <li><a id="toc-Controlar-la-colocacion-de-las-digitaciones-de-acordes-5" href="specific-notation-_002d-controlling-the-placement-of-chord-fingerings.es.html">Controlar la colocación de las digitaciones de acordes</a></li>
+    <li><a id="toc-Ejemplo-de-cencerro-y-campana-2" href="specific-notation-_002d-cow-and-ride-bell-example.es.html">Ejemplo de cencerro y campana</a></li>
+    <li><a id="toc-Crear-pentagramas-en-blanco-4" href="specific-notation-_002d-creating-blank-staves.es.html">Crear pentagramas en blanco</a></li>
+    <li><a id="toc-Custos-1" href="specific-notation-_002d-custodes.es.html">Custos</a></li>
+    <li><a id="toc-Demo-of-MIDI-instruments-2" href="specific-notation-_002d-demo-of-midi-instruments.es.html">Demo of MIDI instruments</a></li>
+    <li><a id="toc-Direction-of-merged-_2018fa_2019-shape-note-heads-1" href="specific-notation-_002d-direction-of-merged-_2018fa_2019-shape-note-heads.es.html">Direction of merged &lsquo;fa&rsquo; shape note heads</a></li>
+    <li><a id="toc-Empotrar-PostScript-nativo-dentro-de-un-bloque-_005cmarkup-2" href="specific-notation-_002d-embedding-native-postscript-in-a-_005cmarkup-block.es.html">Empotrar PostScript nativo dentro de un bloque \markup</a></li>
+    <li><a id="toc-Los-grabadores_002c-uno-por-uno-1" href="specific-notation-_002d-engravers-one-by-one.es.html">Los grabadores, uno por uno</a></li>
+    <li><a id="toc-Notacion-del-flamenco-1" href="specific-notation-_002d-flamenco-notation.es.html">Notación del flamenco</a></li>
+    <li><a id="toc-Ejemplo-de-cajas-chinas-grave-y-aguda-2" href="specific-notation-_002d-high-and-low-woodblock-example.es.html">Ejemplo de cajas chinas grave y aguda</a></li>
+    <li><a id="toc-Como-cambiar-la-posicion-de-un-diagrama-de-posiciones-1" href="specific-notation-_002d-how-to-change-fret-diagram-position.es.html">Cómo cambiar la posición de un diagrama de posiciones</a></li>
+    <li><a id="toc-Como-poner-ligaduras-entre-silabas-de-la-letra-2" href="specific-notation-_002d-how-to-put-ties-between-syllables-in-lyrics.es.html">Cómo poner ligaduras entre sílabas de la letra</a></li>
+    <li><a id="toc-Ligaduras-laissez-vibrer-4" href="specific-notation-_002d-laissez-vibrer-ties.es.html">Ligaduras <em>laissez vibrer</em></a></li>
+    <li><a id="toc-Ejemplo-de-percusion-3" href="specific-notation-_002d-percussion-example.es.html">Ejemplo de percusión</a></li>
+    <li><a id="toc-Ejemplo-de-musica-para-tam_002dtam-2" href="specific-notation-_002d-tam_002dtam-example.es.html">Ejemplo de música para tam-tam</a></li>
+    <li><a id="toc-Ejemlo-de-pandereta-2" href="specific-notation-_002d-tambourine-example.es.html">Ejemlo de pandereta</a></li>
+    <li><a id="toc-Indicacion-de-compas-entre-corchetes-2" href="specific-notation-_002d-time-signature-in-brackets.es.html">Indicación de compás entre corchetes</a></li>
+    <li><a id="toc-Compas-entre-parentesis-2" href="specific-notation-_002d-time-signature-in-parentheses.es.html">Compás entre paréntesis</a></li>
+    <li><a id="toc-Uso-de-una-voz-adicional-para-los-saltos-de-linea-y-de-pagina" href="specific-notation-_002d-using-an-extra-voice-for-breaks.es.html">Uso de una voz adicional para los saltos de línea y de página</a></li>
+    <li><a id="toc-Listado-de-los-diagramas-para-viento-madera-1" href="specific-notation-_002d-woodwind-diagrams-listing.es.html">Listado de los diagramas para viento madera</a></li>
+  </ul></li>
+  <li><a id="toc-Symbols-and-glyphs" href="symbols-and-glyphs.es.html">35 Symbols and glyphs</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Simbolos-de-registracion-de-acordeon-2" href="symbols-and-glyphs-_002d-accordion-register-symbols.es.html">Símbolos de registración de acordeón</a></li>
+    <li><a id="toc-Anadir-indicadores-a-los-pentagramas-que-se-dividen-despues-de-un-salto-de-linea-3" href="symbols-and-glyphs-_002d-adding-indicators-to-staves-which-get-split-after-a-break.es.html">Añadir indicadores a los pentagramas que se dividen después de un salto de línea</a></li>
+    <li><a id="toc-Tipografia-de-musica-antigua-1" href="symbols-and-glyphs-_002d-ancient-fonts.es.html">Tipografía de música antigua</a></li>
+    <li><a id="toc-Marcas-de-respiracion-1" href="symbols-and-glyphs-_002d-breathing-signs.es.html">Marcas de respiración</a></li>
+    <li><a id="toc-Regulador-interrumpido-2" href="symbols-and-glyphs-_002d-broken-crescendo-hairpin.es.html">Regulador interrumpido</a></li>
+    <li><a id="toc-Caesura-_0028_201crailtracks_201d_0029-with-fermata-1" href="symbols-and-glyphs-_002d-caesura-_0028_201crailtracks_201d_0029-with-fermata.es.html">Caesura (&ldquo;railtracks&rdquo;) with fermata</a></li>
+    <li><a id="toc-Custos-2" href="symbols-and-glyphs-_002d-custodes.es.html">Custos</a></li>
+    <li><a id="toc-Personalizar-la-posicion-y-el-numero-de-puntos-en-las-lineas-divisorias-de-repeticion-1" href="symbols-and-glyphs-_002d-customizing-the-position-and-number-of-dots-in-repeat-sign-bar-lines.es.html">Personalizar la posición y el número de puntos en las líneas divisorias de repetición</a></li>
+    <li><a id="toc-Simbolos-de-digitacion-para-instrumentos-de-viento-1" href="symbols-and-glyphs-_002d-fingering-symbols-for-wind-instruments.es.html">Símbolos de digitación para instrumentos de viento</a></li>
+    <li><a id="toc-Como-poner-ligaduras-entre-silabas-de-la-letra-3" href="symbols-and-glyphs-_002d-how-to-put-ties-between-syllables-in-lyrics.es.html">Cómo poner ligaduras entre sílabas de la letra</a></li>
+    <li><a id="toc-Posicionar-los-simbolos-de-repeticion-segno-y-coda-_0028con-saltos-de-linea_0029-2" href="symbols-and-glyphs-_002d-positioning-segno-and-coda-_0028with-line-break_0029.es.html">Posicionar los símbolos de repetición segno y coda (con saltos de línea)</a></li>
+    <li><a id="toc-Estilos-de-silencios-2" href="symbols-and-glyphs-_002d-rest-styles.es.html">Estilos de silencios</a></li>
+    <li><a id="toc-Elementos-de-marcado-para-el-texto-de-las-casillas-de-repeticion-usando-repeatCommands-2" href="symbols-and-glyphs-_002d-volta-text-markup-using-repeatcommands.es.html">Elementos de marcado para el texto de las casillas de repetición usando <code>repeatCommands</code></a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Templates" href="templates.es.html">36 Templates</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Ancient-notation-template-_002d-modern-transcription-of-Gregorian-music-2" href="templates-_002d-ancient-notation-template-_002d-modern-transcription-of-gregorian-music.es.html#templates-_002d-ancient-notation-template-_2013-modern-transcription-of-gregorian-music">Ancient notation template – modern transcription of Gregorian music</a></li>
+    <li><a id="toc-Plantilla-de-salmo-del-canto-anglicano-1" href="templates-_002d-anglican-psalm-template.es.html">Plantilla de salmo del canto anglicano</a></li>
+    <li><a id="toc-Plantilla-para-himnos-1" href="templates-_002d-hymn-template.es.html">Plantilla para himnos</a></li>
+    <li><a id="toc-Plantilla-para-combo-de-jazz-3" href="templates-_002d-jazz-combo-template.es.html">Plantilla para combo de jazz</a></li>
+    <li><a id="toc-Plantilla-de-orquesta_002c-coro-y-piano-3" href="templates-_002d-orchestra_002c-choir-and-piano-template.es.html">Plantilla de orquesta, coro y piano</a></li>
+    <li><a id="toc-Plantilla-de-piano-_0028sencilla_0029-2" href="templates-_002d-piano-template-_0028simple_0029.es.html">Plantilla de piano (sencilla)</a></li>
+    <li><a id="toc-Plantilla-de-piano-con-letra-centrada-3" href="templates-_002d-piano-template-with-centered-lyrics.es.html">Plantilla de piano con letra centrada</a></li>
+    <li><a id="toc-Plantilla-de-piano-con-melodia-y-letra-3" href="templates-_002d-piano-template-with-melody-and-lyrics.es.html">Plantilla de piano con melodía y letra</a></li>
+    <li><a id="toc-Plantilla-de-coro-SATB_002c-a-cuatro-pentagramas-1" href="templates-_002d-satb-choir-template-_002d_002d-four-staves.es.html">Plantilla de coro SATB, a cuatro pentagramas</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unico-con-musica_002c-letra-y-acordes-3" href="templates-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-and-chords.es.html">Plantilla de pentagrama único con música, letra y acordes</a></li>
+    <li><a id="toc-Single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets-2" href="templates-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets.es.html">Single-staff template with notes, lyrics, chords, and frets</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unico-con-musica-y-acordes-2" href="templates-_002d-single_002dstaff-template-with-notes-and-chords.es.html">Plantilla de pentagrama único con música y acordes</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unico-don-notas-y-letra-2" href="templates-_002d-single_002dstaff-template-with-notes-and-lyrics.es.html">Plantilla de pentagrama único don notas y letra</a></li>
+    <li class="toc_current"><a id="toc-Plantilla-de-un-solo-pentagrama_002c-con-notas-unicamente-1" href="templates-_002d-single_002dstaff-template-with-only-notes.es.html">Plantilla de un solo pentagrama, con notas únicamente</a></li>
+    <li><a id="toc-Plantilla-de-cuarteto-de-cuerda-_0028sencilla_0029-2" href="templates-_002d-string-quartet-template-_0028simple_0029.es.html">Plantilla de cuarteto de cuerda (sencilla)</a></li>
+    <li><a id="toc-Plantilla-de-cuarteto-de-cuerda-con-particellas-independientes-2" href="templates-_002d-string-quartet-template-with-separate-parts.es.html">Plantilla de cuarteto de cuerda con particellas independientes</a></li>
+    <li><a id="toc-Plantilla-de-conjunto-vocal-2" href="templates-_002d-vocal-ensemble-template.es.html">Plantilla de conjunto vocal</a></li>
+    <li><a id="toc-Plantilla-de-conjunto-vocal-con-reduccion-de-piano-automatica-3" href="templates-_002d-vocal-ensemble-template-with-automatic-piano-reduction.es.html">Plantilla de conjunto vocal con reducción de piano automática</a></li>
+    <li><a id="toc-Plantilla-para-conjunto-vocal-con-letras-alineadas-encima-y-debajo-de-los-pentagramas-2" href="templates-_002d-vocal-ensemble-template-with-lyrics-aligned-below-and-above-the-staves.es.html">Plantilla para conjunto vocal con letras alineadas encima y debajo de los pentagramas</a></li>
+    <li><a id="toc-Estrofa-para-solista-y-estribillo-a-dos-voces-2" href="templates-_002d-vocal-ensemble-template-with-verse-and-refrain.es.html">Estrofa para solista y estribillo a dos voces</a></li>
+  </ul></li>
+  <li><a id="toc-Titles" href="titles.es.html">37 Titles</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-la-fecha-actual-a-una-partitura-3" href="titles-_002d-adding-the-current-date-to-a-score.es.html">Añadir la fecha actual a una partitura</a></li>
+    <li><a id="toc-Alinear-y-centrar-los-nombres-de-instrumento-3" href="titles-_002d-aligning-and-centering-instrument-names.es.html">Alinear y centrar los nombres de instrumento</a></li>
+    <li><a id="toc-Demonstrating-all-_005cheader-fields-3" href="titles-_002d-demonstrating-all-_005cheader-fields.es.html">Demonstrating all \header fields</a></li>
+    <li><a id="toc-Imprimir-el-numero-de-version-2" href="titles-_002d-outputting-the-version-number.es.html">Imprimir el número de versión</a></li>
+  </ul></li>
+  <li><a id="toc-Tweaks-and-overrides" href="tweaks-and-overrides.es.html">38 Tweaks and overrides</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-una-indicacion-de-octava-alta-a-una-sola-voz-1" href="tweaks-and-overrides-_002d-adding-an-ottava-marking-to-a-single-voice.es.html">Añadir una indicación de octava alta a una sola voz</a></li>
+    <li><a id="toc-Anadir-enlaces-a-los-objetos-2" href="tweaks-and-overrides-_002d-adding-links-to-objects.es.html">Añadir enlaces a los objetos</a></li>
+    <li><a id="toc-Insertar-elementos-de-marcado-en-una-tablatura-3" href="tweaks-and-overrides-_002d-adding-markups-in-a-tablature.es.html">Insertar elementos de marcado en una tablatura</a></li>
+    <li><a id="toc-Anadir-marcas-de-tiempo-a-glissandos-largos-1" href="tweaks-and-overrides-_002d-adding-timing-marks-to-long-glissandi.es.html">Añadir marcas de tiempo a glissandos largos</a></li>
+    <li><a id="toc-Ajuste-del-espaciado-de-las-notas-de-adorno-1" href="tweaks-and-overrides-_002d-adjusting-grace-note-spacing.es.html">Ajuste del espaciado de las notas de adorno</a></li>
+    <li><a id="toc-Ajustar-las-posiciones-de-las-ligaduras-verticalmente-2" href="tweaks-and-overrides-_002d-adjusting-slur-positions-vertically.es.html">Ajustar las posiciones de las ligaduras verticalmente</a></li>
+    <li><a id="toc-Adjusting-vertical-spacing-of-lyrics-3" href="tweaks-and-overrides-_002d-adjusting-vertical-spacing-of-lyrics.es.html">Adjusting vertical spacing of lyrics</a></li>
+    <li><a id="toc-Aligning-text-marks-to-notes-2" href="tweaks-and-overrides-_002d-aligning-text-marks-to-notes.es.html">Aligning text marks to notes</a></li>
+    <li><a id="toc-Alterar-la-longitud-de-las-plicas-unidas-por-una-barra-1" href="tweaks-and-overrides-_002d-altering-the-length-of-beamed-stems.es.html">Alterar la longitud de las plicas unidas por una barra</a></li>
+    <li><a id="toc-Numeracion-de-compases-alternativa-2" href="tweaks-and-overrides-_002d-alternative-bar-numbering.es.html">Numeración de compases alternativa</a></li>
+    <li><a id="toc-Corchetes-de-analisis-encima-del-pentagrama-2" href="tweaks-and-overrides-_002d-analysis-brackets-above-the-staff.es.html">Corchetes de análisis encima del pentagrama</a></li>
+    <li><a id="toc-Corchetes-de-analisis-con-etiquetas-2" href="tweaks-and-overrides-_002d-analysis-brackets-with-labels.es.html">Corchetes de análisis con etiquetas</a></li>
+    <li><a id="toc-Ligaduras-asimetricas-1" href="tweaks-and-overrides-_002d-asymmetric-slurs.es.html">Ligaduras asimétricas</a></li>
+    <li><a id="toc-Breaking-horizontal-alignment-of-dynamics-and-textscripts-1" href="tweaks-and-overrides-_002d-breaking-horizontal-alignment-of-dynamics-and-textscripts.es.html">Breaking horizontal alignment of dynamics and textscripts</a></li>
+    <li><a id="toc-Desalinear-indicaciones-dinamicas-y-textuales-verticalmente-1" href="tweaks-and-overrides-_002d-breaking-vertical-alignment-of-dynamics-and-textscripts.es.html">Desalinear indicaciones dinámicas y textuales verticalmente</a></li>
+    <li><a id="toc-Caesura-_0028_201crailtracks_201d_0029-with-fermata-2" href="tweaks-and-overrides-_002d-caesura-_0028_201crailtracks_201d_0029-with-fermata.es.html">Caesura (&ldquo;railtracks&rdquo;) with fermata</a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord-4" href="tweaks-and-overrides-_002d-changing-a-single-note_0027s-size-in-a-chord.es.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-Cambiar-el-grosor-y-el-espaciado-de-las-barras" href="tweaks-and-overrides-_002d-changing-beam-thickness-and-spacing.es.html">Cambiar el grosor y el espaciado de las barras</a></li>
+    <li><a id="toc-Cambiar-la-forma-de-los-silencios-multicompas-1" href="tweaks-and-overrides-_002d-changing-form-of-multi_002dmeasure-rests.es.html">Cambiar la forma de los silencios multicompás</a></li>
+    <li><a id="toc-Modificacion-de-propiedades-para-objetos-graficos-individuales-2" href="tweaks-and-overrides-_002d-changing-properties-for-individual-grobs.es.html">Modificación de propiedades para objetos gráficos individuales</a></li>
+    <li><a id="toc-Cambiar-el-texto-y-los-estilos-de-objeto-de-extension-para-las-indicaciones-dinamicas-textuales-1" href="tweaks-and-overrides-_002d-changing-text-and-spanner-styles-for-text-dynamics.es.html">Cambiar el texto y los estilos de objeto de extensión para las indicaciones dinámicas textuales</a></li>
+    <li><a id="toc-Cambiar-la-familia-de-tipografia-predeterminada-para-el-texto-1" href="tweaks-and-overrides-_002d-changing-the-default-text-font-family.es.html">Cambiar la familia de tipografía predeterminada para el texto</a></li>
+    <li><a id="toc-Modificar-el-tamano-de-la-pauta-2" href="tweaks-and-overrides-_002d-changing-the-staff-size.es.html">Modificar el tamaño de la pauta</a></li>
+    <li><a id="toc-Cambiar-el-tempo-sin-indicacion-metronomica-2" href="tweaks-and-overrides-_002d-changing-the-tempo-without-a-metronome-mark.es.html">Cambiar el tempo sin indicación metronómica</a></li>
+    <li><a id="toc-Modificar-el-texto-de-las-indicaciones-de-pedal-1" href="tweaks-and-overrides-_002d-changing-the-text-for-sustain-markings.es.html">Modificar el texto de las indicaciones de pedal</a></li>
+    <li><a id="toc-Controlar-la-visibilidad-de-los-objetos-de-extension-despues-de-un-salto-de-linea-1" href="tweaks-and-overrides-_002d-controlling-spanner-visibility-after-a-line-break.es.html">Controlar la visibilidad de los objetos de extensión después de un salto de línea</a></li>
+    <li><a id="toc-Controlar-el-aspecto-de-las-barras-de-tremolo-1" href="tweaks-and-overrides-_002d-controlling-the-appearance-of-tremolo-slashes.es.html">Controlar el aspecto de las barras de trémolo</a></li>
+    <li><a id="toc-Controlar-la-ordenacion-vertical-de-las-inscripciones-1" href="tweaks-and-overrides-_002d-controlling-the-vertical-ordering-of-scripts.es.html">Controlar la ordenación vertical de las inscripciones</a></li>
+    <li><a id="toc-Controlar-la-visibilidad-de-los-corchetes-de-grupo-especial-2" href="tweaks-and-overrides-_002d-controlling-tuplet-bracket-visibility.es.html">Controlar la visibilidad de los corchetes de grupo especial</a></li>
+    <li><a id="toc-Crear-un-grupeto-de-anticipacion-2" href="tweaks-and-overrides-_002d-creating-a-delayed-turn.es.html">Crear un grupeto de anticipación</a></li>
+    <li><a id="toc-Creacion-de-armaduras-de-clave-personalizadas-3" href="tweaks-and-overrides-_002d-creating-custom-key-signatures.es.html">Creación de armaduras de clave personalizadas</a></li>
+    <li><a id="toc-Crear-elementos-de-extension-textuales-2" href="tweaks-and-overrides-_002d-creating-text-spanners.es.html">Crear elementos de extensión textuales</a></li>
+    <li><a id="toc-Solucion-de-problemas-de-acordes-y-barras-que-cruzan-el-pentagrama-2" href="tweaks-and-overrides-_002d-cross_002dstaff-chords-_002d_002d-beaming-problems-workaround.es.html">Solución de problemas de acordes y barras que cruzan el pentagrama</a></li>
+    <li><a id="toc-Plicas-de-pentagrama-cruzado-2" href="tweaks-and-overrides-_002d-cross_002dstaff-stems.es.html">Plicas de pentagrama cruzado</a></li>
+    <li><a id="toc-Custos-3" href="tweaks-and-overrides-_002d-custodes.es.html">Custos</a></li>
+    <li><a id="toc-Personalizar-los-diagramas-de-posiciones-1" href="tweaks-and-overrides-_002d-customizing-fretboard-fret-diagrams.es.html">Personalizar los diagramas de posiciones</a></li>
+    <li><a id="toc-Personalizar-diagramas-de-posiciones-de-marcado-1" href="tweaks-and-overrides-_002d-customizing-markup-fret-diagrams.es.html">Personalizar diagramas de posiciones de marcado</a></li>
+    <li><a id="toc-Mostrar-corchete-o-llave-en-grupos-de-un-solo-pentagrama-1" href="tweaks-and-overrides-_002d-display-bracket-with-only-one-staff-in-a-system.es.html">Mostrar corchete o llave en grupos de un solo pentagrama</a></li>
+    <li><a id="toc-Imprimir-el-arbol-genealogico-de-un-grob-1" href="tweaks-and-overrides-_002d-displaying-grob-ancestry.es.html">Imprimir el árbol genealógico de un grob</a></li>
+    <li><a id="toc-Armonicos-con-puntillo-2" href="tweaks-and-overrides-_002d-dotted-harmonics.es.html">Armónicos con puntillo</a></li>
+    <li><a id="toc-Rodear-los-objetos-graficos-con-rectangulos-1" href="tweaks-and-overrides-_002d-drawing-boxes-around-grobs.es.html">Rodear los objetos gráficos con rectángulos</a></li>
+    <li><a id="toc-Rodear-diversos-objetos-con-una-circunferencia-2" href="tweaks-and-overrides-_002d-drawing-circles-around-various-objects.es.html">Rodear diversos objetos con una circunferencia</a></li>
+    <li><a id="toc-Dynamics-spanner-with-custom-text-1" href="tweaks-and-overrides-_002d-dynamics-spanner-with-custom-text.es.html">Dynamics spanner with custom text</a></li>
+    <li><a id="toc-Extending-a-trill-spanner-1" href="tweaks-and-overrides-_002d-extending-a-trill-spanner.es.html">Extending a trill spanner</a></li>
+    <li><a id="toc-Extender-glissandos-sobre-repeticiones-2" href="tweaks-and-overrides-_002d-extending-glissandi-across-repeats.es.html">Extender glissandos sobre repeticiones</a></li>
+    <li><a id="toc-Ajuste-fino-de-las-lineas-de-pedal-1" href="tweaks-and-overrides-_002d-fine_002dtuning-pedal-brackets.es.html">Ajuste fino de las líneas de pedal</a></li>
+    <li><a id="toc-Ligaduras-planas-3" href="tweaks-and-overrides-_002d-flat-ties.es.html">Ligaduras planas</a></li>
+    <li><a id="toc-Forzar-un-becuadro-de-cancelacion-antes-de-una-alteracion-accidental-1" href="tweaks-and-overrides-_002d-force-a-cancellation-natural-before-accidentals.es.html">Forzar un becuadro de cancelación antes de una alteración accidental</a></li>
+    <li><a id="toc-Forzar-el-desplazamiento-horizontal-de-las-notas-1" href="tweaks-and-overrides-_002d-forcing-horizontal-shift-of-notes.es.html">Forzar el desplazamiento horizontal de las notas</a></li>
+    <li><a id="toc-Diagramas-de-posiciones-de-acorde_002c-explicados-y-desarrollados-1" href="tweaks-and-overrides-_002d-fret-diagrams-explained-and-developed.es.html">Diagramas de posiciones de acorde, explicados y desarrollados</a></li>
+    <li><a id="toc-Generate-special-note-head-shapes-2" href="tweaks-and-overrides-_002d-generate-special-note-head-shapes.es.html">Generate special note head shapes</a></li>
+    <li><a id="toc-Generar-corchetes-personalizados-2" href="tweaks-and-overrides-_002d-generating-custom-flags.es.html">Generar corchetes personalizados</a></li>
+    <li><a id="toc-Glissando-por-debajo-de-un-objeto-grafico-2" href="tweaks-and-overrides-_002d-glissandi-can-skip-grobs.es.html">Glissando por debajo de un objeto gráfico</a></li>
+    <li><a id="toc-Reguladores-con-distintos-estilos-de-linea-1" href="tweaks-and-overrides-_002d-hairpins-with-different-line-styles.es.html">Reguladores con distintos estilos de línea</a></li>
+    <li><a id="toc-Horizontally-aligning-custom-dynamics-like-_201cpiu-f_201d-1" href="tweaks-and-overrides-_002d-horizontally-aligning-custom-dynamics-like-_201cpiu-f_201d.es.html#tweaks-and-overrides-_002d-horizontally-aligning-custom-dynamics-like-_201cpi_00f9-f_201d">Horizontally aligning custom dynamics like &ldquo;più f&rdquo;</a></li>
+    <li><a id="toc-Como-cambiar-la-posicion-de-un-diagrama-de-posiciones-2" href="tweaks-and-overrides-_002d-how-to-change-fret-diagram-position.es.html">Cómo cambiar la posición de un diagrama de posiciones</a></li>
+    <li><a id="toc-Insertar-una-cesura-1" href="tweaks-and-overrides-_002d-inserting-a-caesura.es.html">Insertar una cesura</a></li>
+    <li><a id="toc-Mantener-el-tamano-del-simbolo-en-los-cambios-de-clave-1" href="tweaks-and-overrides-_002d-keep-change-clefs-full_002dsized.es.html">Mantener el tamaño del símbolo en los cambios de clave</a></li>
+    <li><a id="toc-Puntas-de-flecha-para-las-lineas-1" href="tweaks-and-overrides-_002d-line-arrows.es.html">Puntas de flecha para las líneas</a></li>
+    <li><a id="toc-Making-an-object-invisible-using-_005chide-2" href="tweaks-and-overrides-_002d-making-an-object-invisible-using-_005chide.es.html">Making an object invisible using \hide</a></li>
+    <li><a id="toc-Hacer-que-los-glissandos-se-puedan-dividir-en-el-salto-de-linea-1" href="tweaks-and-overrides-_002d-making-glissandi-breakable.es.html">Hacer que los glissandos se puedan dividir en el salto de línea</a></li>
+    <li><a id="toc-Controlar-manualmente-las-posiciones-de-las-barras-2" href="tweaks-and-overrides-_002d-manually-controlling-beam-positions.es.html">Controlar manualmente las posiciones de las barras</a></li>
+    <li><a id="toc-Numero-del-compas-centrado-entre-las-barras" href="tweaks-and-overrides-_002d-measure_002dcentered-bar-numbers.es.html">Número del compás centrado entre las barras</a></li>
+    <li><a id="toc-Disposicion-Mensurstriche-_0028lineas-divisorias-entre-pentagramas_0029-3" href="tweaks-and-overrides-_002d-mensurstriche-layout-_0028bar-lines-between-the-staves_0029.es.html">Disposición <em>Mensurstriche</em> (líneas divisorias entre pentagramas)</a></li>
+    <li><a id="toc-Modificacion-de-la-inclinacion-de-la-linea-de-octava-2" href="tweaks-and-overrides-_002d-modifying-the-ottava-spanner-slope.es.html">Modificación de la inclinación de la línea de octava</a></li>
+    <li><a id="toc-Desplazar-las-notas-con-puntillo-en-polifonia-2" href="tweaks-and-overrides-_002d-moving-dotted-notes-in-polyphony.es.html">Desplazar las notas con puntillo en polifonía</a></li>
+    <li><a id="toc-Desplazar-ligaduras-de-expresion-verticalmente-1" href="tweaks-and-overrides-_002d-moving-slur-positions-vertically.es.html">Desplazar ligaduras de expresión verticalmente</a></li>
+    <li><a id="toc-Anidado-de-grupos-de-pentagramas-2" href="tweaks-and-overrides-_002d-nesting-staves.es.html">Anidado de grupos de pentagramas</a></li>
+    <li><a id="toc-Modificacion-de-articulaciones-por-tipo-1" href="tweaks-and-overrides-_002d-overriding-articulations-by-type.es.html">Modificación de articulaciones por tipo</a></li>
+    <li><a id="toc-Visibilidad-del-contador-de-repeticiones-de-tipo-porcentaje-1" href="tweaks-and-overrides-_002d-percent-repeat-count-visibility.es.html">Visibilidad del contador de repeticiones de tipo porcentaje</a></li>
+    <li><a id="toc-Posicionar-simbolos-de-arpegio-1" href="tweaks-and-overrides-_002d-positioning-arpeggios.es.html">Posicionar símbolos de arpegio</a></li>
+    <li><a id="toc-Posicionamiento-preciso-de-indicaciones-de-digitacion-1" href="tweaks-and-overrides-_002d-positioning-fingering-indications-precisely.es.html">Posicionamiento preciso de indicaciones de digitación</a></li>
+    <li><a id="toc-Posicionar-los-silencios-multicompas-1" href="tweaks-and-overrides-_002d-positioning-multi_002dmeasure-rests.es.html">Posicionar los silencios multicompás</a></li>
+    <li><a id="toc-Situar-los-elementos-de-marcado-de-texto-por-dentro-de-las-ligaduras-2" href="tweaks-and-overrides-_002d-positioning-text-markups-inside-slurs.es.html">Situar los elementos de marcado de texto por dentro de las ligaduras</a></li>
+    <li><a id="toc-Imprimir-numeros-de-compas-dentro-de-rectangulos-o-circunferencias-1" href="tweaks-and-overrides-_002d-printing-bar-numbers-inside-boxes-or-circles.es.html">Imprimir números de compás dentro de rectángulos o circunferencias</a></li>
+    <li><a id="toc-Impresion-de-indicaciones-metronomicas-y-letras-de-ensayo-debajo-del-pentagrama-2" href="tweaks-and-overrides-_002d-printing-metronome-and-rehearsal-marks-below-the-staff.es.html">Impresión de indicaciones metronómicas y letras de ensayo debajo del pentagrama</a></li>
+    <li><a id="toc-Impresion-de-los-nombres-de-las-notas-con-o-sin-indicacion-de-la-octava" href="tweaks-and-overrides-_002d-printing-note-names-with-and-without-an-octave-marker.es.html">Impresión de los nombres de las notas con o sin indicación de la octava</a></li>
+    <li><a id="toc-Imrpesion-de-corchetes-de-tresillo-en-el-lado-de-la-cabeza-de-la-nota-1" href="tweaks-and-overrides-_002d-printing-tuplet-brackets-on-the-note-head-side.es.html">Imrpesión de corchetes de tresillo en el lado de la cabeza de la nota</a></li>
+    <li><a id="toc-Espaciado-de-las-notas-estrictamente-proporcional-1" href="tweaks-and-overrides-_002d-proportional-strict-notespacing.es.html">Espaciado de las notas estrictamente proporcional</a></li>
+    <li><a id="toc-Quitar-la-llave-en-el-primer-sistema-de-una-partitura-de-piano-2" href="tweaks-and-overrides-_002d-removing-brace-on-first-line-of-piano-score.es.html">Quitar la llave en el primer sistema de una partitura de piano</a></li>
+    <li><a id="toc-Quitar-las-barras-de-compas-entre-los-pentagramas-de-un-StaffGroup_002c-PianoStaff-o-GrandStaff-1" href="tweaks-and-overrides-_002d-removing-connecting-bar-lines-on-staffgroup_002c-pianostaff_002c-or-grandstaff.es.html">Quitar las barras de compás entre los pentagramas de un StaffGroup, PianoStaff o GrandStaff</a></li>
+    <li><a id="toc-Quitar-la-primera-linea-vacia-2" href="tweaks-and-overrides-_002d-removing-the-first-empty-line.es.html">Quitar la primera línea vacía</a></li>
+    <li><a id="toc-Estilos-de-silencios-3" href="tweaks-and-overrides-_002d-rest-styles.es.html">Estilos de silencios</a></li>
+    <li><a id="toc-Barras-ritmicas-1" href="tweaks-and-overrides-_002d-rhythmic-slashes.es.html">Barras rítmicas</a></li>
+    <li><a id="toc-Separar-las-cancelaciones-de-tonalidad-de-los-cambios-de-armadura-2" href="tweaks-and-overrides-_002d-separating-key-cancellations-from-key-signature-changes.es.html">Separar las cancelaciones de tonalidad de los cambios de armadura</a></li>
+    <li><a id="toc-Establecer-el-comportamiento-de-los-reguladores-en-las-barras-de-compas-1" href="tweaks-and-overrides-_002d-setting-hairpin-behavior-at-bar-lines.es.html">Establecer el comportamiento de los reguladores en las barras de compás</a></li>
+    <li><a id="toc-Fijar-un-separador-entre-los-sistemas-2" href="tweaks-and-overrides-_002d-setting-system-separators.es.html">Fijar un separador entre los sistemas</a></li>
+    <li><a id="toc-Dar-forma-a-ligaduras-de-union-individuales-entre-acordes-1" href="tweaks-and-overrides-_002d-shape-individual-ties-in-chords.es.html">Dar forma a ligaduras de unión individuales entre acordes</a></li>
+    <li><a id="toc-Imprimir-la-misma-articulacion-encima-y-debajo-de-la-misma-nota-o-acorde-1" href="tweaks-and-overrides-_002d-showing-the-same-articulation-above-and-below-a-note-or-chord.es.html">Imprimir la misma articulación encima y debajo de la misma nota o acorde</a></li>
+    <li><a id="toc-Lineas-de-extension-para-numeros-de-cuerda-4" href="tweaks-and-overrides-_002d-string-number-extender-lines.es.html">Líneas de extensión para números de cuerda</a></li>
+    <li><a id="toc-Evitar-las-advertencias-sobre-columnas-de-notas-que-chocan-1" href="tweaks-and-overrides-_002d-suppressing-warnings-for-clashing-note-columns.es.html">Evitar las advertencias sobre columnas de notas que chocan</a></li>
+    <li><a id="toc-Indicacion-de-compas-entre-corchetes-3" href="tweaks-and-overrides-_002d-time-signature-in-brackets.es.html">Indicación de compás entre corchetes</a></li>
+    <li><a id="toc-Compas-entre-parentesis-3" href="tweaks-and-overrides-_002d-time-signature-in-parentheses.es.html">Compás entre paréntesis</a></li>
+    <li><a id="toc-Indicacion-de-compas-imprimiendo-solo-el-numerador-_0028en-lugar-de-la-fraccion_0029-1" href="tweaks-and-overrides-_002d-time-signature-printing-only-the-numerator-as-a-number-_0028instead-of-the-fraction_0029.es.html">Indicación de compás imprimiendo solo el numerador (en lugar de la fracción)</a></li>
+    <li><a id="toc-Corchete-de-tresillo-y-cambio-de-pentagrama" href="tweaks-and-overrides-_002d-tuplet-bracket-and-change-staff.es.html">Corchete de tresillo y cambio de pentagrama</a></li>
+    <li><a id="toc-Trucaje-de-las-propiedades-de-clave-2" href="tweaks-and-overrides-_002d-tweaking-clef-properties.es.html">Trucaje de las propiedades de clave</a></li>
+    <li><a id="toc-Trucar-la-disposicion-de-las-notas-de-adorno-dentro-de-la-musica-1" href="tweaks-and-overrides-_002d-tweaking-grace-layout-within-music.es.html">Trucar la disposición de las notas de adorno dentro de la música</a></li>
+    <li><a id="toc-Uso-de-estilos-alternativos-para-los-corchetes-1" href="tweaks-and-overrides-_002d-using-alternative-flag-styles.es.html">Uso de estilos alternativos para los corchetes</a></li>
+    <li><a id="toc-Utilizar-ly_003agrob_002dobject-para-acceder-a-los-grobs-con-_005ctweak-1" href="tweaks-and-overrides-_002d-using-ly_003agrob_002dobject-to-access-grobs-with-_005ctweak.es.html">Utilizar ly:grob-object para acceder a los grobs con \tweak</a></li>
+    <li><a id="toc-Uso-de-la-instruccion-_005ctweak-para-retocar-objetos-graficos-individuales-1" href="tweaks-and-overrides-_002d-using-the-_005ctweak-command-to-tweak-individual-grobs.es.html">Uso de la instrucción \tweak para retocar objetos gráficos individuales</a></li>
+    <li><a id="toc-Indicaciones-dinamicas-y-textuales-alineadas-verticalmente-1" href="tweaks-and-overrides-_002d-vertically-aligned-dynamics-and-textscripts.es.html">Indicaciones dinámicas y textuales alineadas verticalmente</a></li>
+    <li><a id="toc-Alineacion-vertical-de-la-letra-y-los-compases-de-ossia-2" href="tweaks-and-overrides-_002d-vertically-aligning-ossias-and-lyrics.es.html">Alineación vertical de la letra y los compases de ossia</a></li>
+    <li><a id="toc-Alineacion-vertical-de-los-numeros-de-estrofa-de-diferentes-pentagramas-1" href="tweaks-and-overrides-_002d-vertically-aligning-stanza-numbers-of-different-staves.es.html">Alineación vertical de los números de estrofa de diferentes pentagramas</a></li>
+    <li><a id="toc-Centrado-vertical-de-las-lineas-de-bajo-cifrado-emparejadas-1" href="tweaks-and-overrides-_002d-vertically-centering-paired-figured-bass-extenders.es.html">Centrado vertical de las líneas de bajo cifrado emparejadas</a></li>
+  </ul></li>
+  <li><a id="toc-Workaround" href="workaround.es.html">39 Workaround</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Anadir-un-pentagrama-adicional-en-un-salto-de-linea-3" href="workaround-_002d-adding-an-extra-staff-at-a-line-break.es.html">Añadir un pentagrama adicional en un salto de línea</a></li>
+    <li><a id="toc-Apoyatura-o-nota-de-adorno-antes-de-la-linea-divisoria-1" href="workaround-_002d-appoggiatura-or-grace-note-before-a-bar-line.es.html">Apoyatura o nota de adorno antes de la línea divisoria</a></li>
+    <li><a id="toc-Breaking-horizontal-alignment-of-dynamics-and-textscripts-2" href="workaround-_002d-breaking-horizontal-alignment-of-dynamics-and-textscripts.es.html">Breaking horizontal alignment of dynamics and textscripts</a></li>
+    <li><a id="toc-Desalinear-indicaciones-dinamicas-y-textuales-verticalmente-2" href="workaround-_002d-breaking-vertical-alignment-of-dynamics-and-textscripts.es.html">Desalinear indicaciones dinámicas y textuales verticalmente</a></li>
+    <li><a id="toc-Modificar-el-compas-dentro-de-una-seccion-polimetrica-utilizando-_005cscaleDurations-3" href="workaround-_002d-changing-time-signatures-inside-a-polymetric-section-using-_005cscaledurations.es.html">Modificar el compás dentro de una sección polimétrica utilizando <code>\scaleDurations</code></a></li>
+    <li><a id="toc-Solucion-de-problemas-de-acordes-y-barras-que-cruzan-el-pentagrama-3" href="workaround-_002d-cross_002dstaff-chords-_002d_002d-beaming-problems-workaround.es.html">Solución de problemas de acordes y barras que cruzan el pentagrama</a></li>
+    <li><a id="toc-Impresion-de-acordes-complejos-2" href="workaround-_002d-displaying-complex-chords.es.html">Impresión de acordes complejos</a></li>
+    <li><a id="toc-Extender-glissandos-sobre-repeticiones-3" href="workaround-_002d-extending-glissandi-across-repeats.es.html">Extender glissandos sobre repeticiones</a></li>
+    <li><a id="toc-Forcing-measure-width-to-adapt-to-a-metronome-mark_0027s-width-1" href="workaround-_002d-forcing-measure-width-to-adapt-to-a-metronome-mark_0027s-width.es.html">Forcing measure width to adapt to a metronome mark&rsquo;s width</a></li>
+    <li><a id="toc-Hacer-unas-lineas-del-pentagrama-mas-gruesas-que-las-otras-4" href="workaround-_002d-making-some-staff-lines-thicker-than-the-others.es.html">Hacer unas líneas del pentagrama más gruesas que las otras</a></li>
+    <li><a id="toc-Marcar-notas-de-las-partes-habladas-con-unas-aspas-en-la-plica-3" href="workaround-_002d-marking-notes-of-spoken-parts-with-a-cross-on-the-stem-_0028sprechstimme_0029.es.html">Marcar notas de las partes habladas con unas aspas en la plica</a></li>
+    <li><a id="toc-Posicionamiento-de-las-notas-de-adorno-con-espacio-flotante-2" href="workaround-_002d-positioning-grace-notes-with-floating-space.es.html">Posicionamiento de las notas de adorno con espacio flotante</a></li>
+    <li><a id="toc-Posicionar-los-simbolos-de-repeticion-segno-y-coda-_0028con-saltos-de-linea_0029-3" href="workaround-_002d-positioning-segno-and-coda-_0028with-line-break_0029.es.html">Posicionar los símbolos de repetición segno y coda (con saltos de línea)</a></li>
+    <li><a id="toc-Evitar-que-una-marca-de-ensayo-final-suprima-el-corchete-de-un-grupo-de-valoracion-especial-1" href="workaround-_002d-preventing-final-mark-from-removing-final-tuplet.es.html">Evitar que una marca de ensayo final suprima el corchete de un grupo de valoración especial</a></li>
+    <li><a id="toc-Impresion-de-texto-de-derecha-a-izquierda-3" href="workaround-_002d-printing-text-from-right-to-left.es.html">Impresión de texto de derecha a izquierda</a></li>
+    <li><a id="toc-Slanted-parentheses-around-dynamics-3" href="workaround-_002d-slanted-parentheses-around-dynamics.es.html">Slanted parentheses around dynamics</a></li>
+    <li><a id="toc-Ejemlo-de-pandereta-3" href="workaround-_002d-tambourine-example.es.html">Ejemlo de pandereta</a></li>
+    <li><a id="toc-Transposing-pitches-with-minimum-accidentals-_0028_201csmart_201d-transpose_0029-2" href="workaround-_002d-transposing-pitches-with-minimum-accidentals-_0028_201csmart_201d-transpose_0029.es.html">Transposing pitches with minimum accidentals (&ldquo;smart&rdquo; transpose)</a></li>
+    <li><a id="toc-Unfolding-tremolo-repeats-1" href="workaround-_002d-unfolding-tremolo-repeats.es.html">Unfolding tremolo repeats</a></li>
+    <li><a id="toc-Uso-de-una-voz-adicional-para-los-saltos-de-linea-y-de-pagina-1" href="workaround-_002d-using-an-extra-voice-for-breaks.es.html">Uso de una voz adicional para los saltos de línea y de página</a></li>
+    <li><a id="toc-Indicaciones-dinamicas-y-textuales-alineadas-verticalmente-2" href="workaround-_002d-vertically-aligned-dynamics-and-textscripts.es.html">Indicaciones dinámicas y textuales alineadas verticalmente</a></li>
+  </ul></li>
+</ul></li>
+
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Búsqueda de Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

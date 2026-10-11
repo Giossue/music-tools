@@ -1,0 +1,735 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1999-2026 bei den Autoren.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+Die Übersetzung der folgenden Lizenzanmerkung ist zur Orientierung
+für Leser, die nicht Englisch sprechen. Im rechtlichen Sinne ist aber
+nur die englische Version gültig.
+
+Es ist erlaubt, dieses Dokument unter den Bedingungen der
+GNU Free Documentation Lizenz (Version 1.1 oder
+spätere, von der Free Software Foundation publizierte Versionen, ohne
+invariante Abschnitte),
+zu kopieren, zu verbreiten und/oder
+zu verändern. Eine Kopie der Lizenz ist im Abschnitt "GNU
+Free Documentation License" angefügt.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>5.6.1 Verschieben von Objekten (LilyPond Handbuch zum Lernen)</title>
+
+<meta name="description" content="5.6.1 Verschieben von Objekten (LilyPond Handbuch zum Lernen)">
+<meta name="keywords" content="5.6.1 Verschieben von Objekten (LilyPond Handbuch zum Lernen)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.de.html" rel="start" title="LilyPond &ndash; Learning Manual">
+<link href="index-of-commands-and-concepts.de.html" rel="index" title="Appendix C Register">
+<link href="learning_toc.de.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="collisions-of-objects.de.html" rel="up" title="5.6 Kollision von Objekten">
+<link href="fixing-overlapping-notation.de.html" rel="next" title="5.6.2 Überlappende Notation in Ordnung bringen">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="de" class="learning">
+<div id="main">
+<div class="subsection" id="moving-objects">
+<table class="nav_table">
+<tr><td align="left">[<a href="tweaking-output.de.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Die Ausgabe verbessern </a>]</td><td align="center">[<a href="index.de.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.de.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.de.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="templates.de.html" title="Next chapter"> Vorlagen &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="collisions-of-objects.de.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Kollision von Objekten </a>]</td><td align="center">[<a href="collisions-of-objects.de.html" title="Up section" accesskey="u" rel="up">  Up: Kollision von Objekten </a>]</td><td align="right">[<a href="fixing-overlapping-notation.de.html" title="Next section in reading order" accesskey="n" rel="next"> Überlappende Notation in Ordnung bringen &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Verschieben-von-Objekten"></span><h4 class="subsection">5.6.1 Verschieben von Objekten</h4>
+
+<span id="index-Verschieben-von-uberschneidenden-Objekten"></span>
+<span id="index-Verschieben-von-Zusammenstossen"></span>
+<span id="index-Zusammenstosse-vermeiden"></span>
+<span id="index-Objekte_002c-verschieben-von-Zusammenstossen"></span>
+<span id="index-Vermeiden-von-Zusammenstossen"></span>
+
+<p>Es wird vielleicht eine Überraschung sein, aber LilyPond ist nicht
+perfekt. Einige Notationselemente können sich überschneiden. Das
+ist nicht schön, aber zum Glück sehr selten.  Normalerweise müssen
+die Objekte zur Klarheit oder aus ästhetischen Gründen verschoben
+werden &ndash; sie könnten besser aussehen, wenn sie etwas zusätzlichen
+Platz erhalten.
+</p>
+<p>Es gibt im Grunde drei Herangehensweisen, überlappende Notation
+zu verbessern.  Man sollte sie in der folgenden Reihenfolge
+anwenden:
+</p>
+<ol>
+<li> Die <strong>Richtung</strong> eines der überlappenden Objekte kann
+geändert werden, indem die vordefinierten Befehle für
+Innersystemobjekte verwendet werden, wie beschrieben in
+<a href="within_002dstaff-objects.de.html">within-staff (Objekte innerhalb des Notensystems)</a>.
+Hälse, Bögen, Balken, Dynamik-Zeichen
+und Triolen können auf diese Weise einfach umgeordnet
+werden.  Beschränkt ist diese Methode insofern, als es nur
+zwei Möglichkeiten zur Veränderung gibt: oben oder unten.
+
+</li><li> Die <strong>Objekteigenschaft</strong>, die LilyPond benutzt um die
+Layout-Objekte zu platzieren, können mit dem
+<code>\override</code>-Befehl positioniert werden.  Die Vorteile
+von Änderungen dieser Art sind a) dass einige Objekte
+automatisch verschoben werden, wenn es nötig ist Platz zu
+schaffen und b) ein einziges <code>\override</code> sich auf
+alle Fälle eines Objekttyps bezieht.  Zu diesen Eigenschaften
+gehören:
+
+<ul>
+<li> <code>direction</code> (Richtung)
+
+<p>Das wurde schon detailliert behandelt, siehe
+<a href="within_002dstaff-objects.de.html">within-staff (Objekte innerhalb des Notensystems)</a>.
+</p>
+</li><li> <code>padding</code>, <code>right-padding</code>, <code>staff-padding</code> (Verschiebung)
+
+<span id="index-Padding_002dEigenschaft"></span>
+<span id="index-right_002dpadding_002dEigenschaft"></span>
+<span id="index-staff_002dpadding_002dEigenschaft"></span>
+<span id="index-Verschieben-_0028padding_0029"></span>
+<span id="index-Fullung-_0028padding_0029"></span>
+<span id="index-padding-_0028Fullung_0029"></span>
+
+<p>Wenn ein Objekt platziert wird, bestimmt der Wert seiner
+<code>padding</code>-(Füllungs)-Eigenschaft die Größe des
+Abstandes, der zwischen dem Objekt selber und dem
+Objekt, relativ zu welchem es positioniert wird, gelassen
+werden muss.  Dabei zählt der <code>padding</code>-Wert
+des Objektes, das platziert werden soll, der <code>padding</code>-Wert
+des Objektes, das schon gesetzt wurde, wird hingegen
+ignoriert.  Abstände mit <code>padding</code> können zu
+allen Objekten hinzugefügt werden, die das
+<code>side-position-interface</code> unterstützen.
+</p>
+<p>Anstelle von <code>padding</code> wird die Position von
+Versetzungszeichengruppen durch die Eigenschaften
+<code>right-padding</code> bestimmt. Diese Eigenschaft wird im
+<code>AccidentalPlacement</code>-(Versetzungszeichen-Positionierungs)-Objekt
+gefunden, das sich innerhalb des <strong>Staff</strong>-Kontexts
+befindet.  Während des Notensatzes werden die Notenköpfe
+zuerst gesetzt und dann die Versetzungszeichen, wenn denn
+welche gesetzt werden, durch die <code>right-padding</code>-Eigenschaft
+auf die linke Seite der Notenköpfe positioniert, um die Entfernung
+von den Notenköpfen und zwischen den einzelnen Versetzungszeichen zu
+bestimmen.  Also nur die <code>right-padding</code>-(Verschiebung nach rechts)-Eigenschaft
+des <code>AccidentalPlacement</code>-Objekts hat Einfluss auf die
+Positionierung der Versetzungszeichen.
+</p>
+<p>Die <code>staff-padding</code>-(Verschiebung zum System)-Eigenschaft
+ist sehr ähnlich wie die <code>padding</code>-Eigenschaft:
+<code>padding</code> bestimmt den Minimalabstand zwischen
+einem Objekt, das das <code>side-position-interface</code>
+unterstützt, und dem nächsten anderen Objekt (normalerweise
+die Note oder Notenlinie); <code>staff-padding</code> dagegen
+wirkt nur auf Objekte die immer außerhalb des Notensystems
+sind &ndash; damit wird der minimale Abstand bestimmt, der
+zwischen dem Objekt und dem Notensystem gelassen werden
+soll.  <code>staff-padding</code> hat also <strong>keinen Einfluss</strong>
+auf Objekte, die relativ zu einer Note positioniert werden, sondern
+nur auf solche, die zum System relativ stehen. Wenn es mit einem
+anderen Objekt eingesetzt wird, erhält man keine Fehlermeldung, aber
+der Befehl hat auch keine Auswirkungen.
+</p>
+<p>Um herauszufinden, welche <code>padding</code>-Eigenschaft für
+das bestimmte Objekt nötig, ist, das Sie verschieben wollen,
+müssen Sie in der IR nach den Objekt-Eigenschaften schauen.
+Dabei sollten Sie bedenken, dass sich die <code>padding</code>-Eigenschaften
+nicht unbedingt in dem Objekt selber befinden, schauen Sie
+also auch in Objekten nach, die offensichtlich Ähnlichkeiten
+haben.
+</p>
+<p>Alle <code>padding</code>-Werte werden in Notenlinienabständen
+gemessen.  Für die meisten Objekte ist der Wert ungefähr auf
+1.0 oder weniger gesetzt (das variiert von Objekt zu Objekt).
+Der Wert kann geändert werden, wenn ein größerer (oder
+kleinerer) Abstand gewünscht wird.
+</p>
+</li><li> <code>self-alignment-X</code> (Selbstpositionierung)
+
+<span id="index-self_002dalignment_002dX_002dEigenschaft"></span>
+<span id="index-Selbstpositionierung-von-Objekten"></span>
+<span id="index-Ausrichtung-von-Objekten"></span>
+
+<p>Diese Eigenschaft kann benutzt werden, um ein Objekt
+nach links, rechts oder zentriert an dem Referenzpunkt des Objekts
+auszurichten, an das es verknüpft ist.  Es kann bei allen
+Objekten benutzt werden, die das <code>self-alignment-interface</code>
+unterstützen.  Das sind üblicherweise Objekte, die Text
+enthalten.  Die möglichen Werte der Eigenschaft sind <code>LEFT</code>,
+<code>RIGHT</code> oder <code>CENTER</code>.  Alternativ kann ein
+numerischer Wert zwischen <code><span class="nolinebreak">-1</span></code><!-- /@w --> und <code>+1</code>
+bestimmt werden: <code><span class="nolinebreak">-1</span></code><!-- /@w --> heißt linksbündig, <code>+1</code>
+rechtsbündig und Zahlen dazwischen bewegen den Text
+schrittweise von links nach rechts.  Zahlen größer als
+<code>1</code> können angegeben werden, um den Text
+noch weiter nach links zu bewegen, oder weniger als <code><span class="nolinebreak">-1</span></code><!-- /@w -->,
+um ihn weiter nach rechts zu schieben.  Eine Änderung
+um <code>1</code> des Wertes entspricht einer Bewegung um
+die halbe Textbreite.
+</p>
+</li><li> <code>extra-spacing-width</code> (zusätzliche Breite)
+
+<span id="index-extra_002dspacing_002dwidth_002dEigenschaft"></span>
+
+<p>Diese Eigenschaft steht für alle Objekte zur Verfügung, die
+das <code>item-interface</code> unterstützen.  Es braucht zwei
+Zahlen als Argument, die erste wird zur rechten Ausdehnung,
+die zweite zur linken Ausdehnung hinzugerechnet.  Negative
+Zahlen verschieben die Ausdehnung nach rechts, positive nach
+links, um also ein Objekt zu verbreitern, muss die erste
+Zahl negativ und die zweite positiv sein.  Allerdings beachten
+nicht alle Objekte beide Zahlen.  Das
+<code>accidental</code>-(Versetzungszeichen)-Objekt etwa beachtet
+nur erste Zahl für die linke Ausdehnung.
+</p>
+</li><li> <code>staff-position</code> (Notensystempositionierung)
+
+<span id="index-staff_002dposition_002dEigenschaft"></span>
+
+<p><code>staff-position</code> ist eine Eigenschaft des
+<code>staff-symbol-referencer-interface</code>, die von Objekten unterstützt
+wird, die relativ zum Notensystem (engl. staff) positioniert werden.
+Hiermit wird die vertikale Position eines Objekts relativ zur
+Mittellinie des Systems in halben Notenlinienabständen angegeben.
+Das ist sehr nützlich, um Zusammenstöße zwischen Layout-Objekten
+wie Ganztaktpausen, Bögen und Noten in verschiedenen Stimmen
+zu lösen.
+</p>
+</li><li> <code>horizontal-shift</code> (horizontale Verschiebung)
+
+<span id="index-horizontal_002dshift_002dEigenschaft"></span>
+<span id="index-Notenkolumne-1"></span>
+<span id="index-Notenkollisionen"></span>
+<span id="index-Kollision_002c-Noten"></span>
+<span id="index-shift-Befehl"></span>
+<span id="index-_005cshiftOff-1"></span>
+<span id="index-_005cshiftOn-1"></span>
+<span id="index-_005cshiftOnn-1"></span>
+<span id="index-_005cshiftOnnn-1"></span>
+
+<p>Innerhalb einer Stimme werden alle Noten, die zeitgleich stattfinden,
+zu einer Gruppe zusammen gefasst, einem sog. <code>NoteColumn</code> Objekt.
+Dieses Objekt dient dem Zweck, diese Gruppe von Noten horizontal zu
+positionieren (siehe auch &bdquo;Notenkolumnen&ldquo; in <a href="explicitly-instantiating-voices.de.html">Stimmen explizit beginnen</a>).
+<em>Genau dann, wenn</em> zwei oder mehr Notenkolumnen innerhalb eines
+Systemkontexts, die beide jeweils die Hälse in die gleiche Richtung haben
+und auch zur gleichen Zeit stattfinden, werden die Werte ihrer
+<code>horizontal-shift</code>-Eigenschaften nach Größe sortiert und die Objekte
+dann mit einer Ordnungsnummer versehen. Je größer diese Ordnungsnummer,
+desto stärker wird ein Objekt verschoben um eine Kollision der Notenköpfe
+zu vermeiden.  Diese Eigenschaft wird mit den <code>\voiceXXX</code>-Befehlen
+gesetzt und kann direkt durch einen <code>\override</code>-Befehl, oder was für
+gewöhnlich häufiger vorkommt, durch einen <code>\shiftOn</code>-Befehl gesetzt
+werden.  Bedenken sie bitte, diese Eigenschaft dient lediglich dazu, den
+Notenkolumnen eine <em>Ordnungsnummer</em> zuzuweisen - sie bestimmt in
+keinster Weise die Größe der jeweiligen Verschiebung.  Die steigt mit
+zunehmender Ordnungsnummer in festen Schritten.  Die Schrittweite ist
+für gewöhnlich eine halbe Notenkopfbreite.  Bei sehr eng platzierten Notengruppen
+kann sie aber auch mal eine ganze Notenkopfbreite betragen.
+</p>
+</li><li> <code>force-hshift</code> (horizontale Verschiebung erzwingen)
+
+<span id="index-force_002dhshift_002dEigenschaft"></span>
+
+<p>Die <code>force-hshift</code>-(erzwinge horizontale Verschiebung)-Eigenschaft
+ist eine Eigenschaft von <code>NoteColumn</code> (bzw. vom
+<code>note-column-interface</code>).  Eine Veränderung dieser Eigenschaft
+macht es möglich, eine Notenkolumne zu verschieben, wenn sie mit anderen
+überlappt.  Diese Eigenschaft hat keinerlei Auswirkungen, wenn keine
+Überlappung vorliegt.  Veränderungen werden in einer Einheit angegeben,
+die zu der Notenkolumne passt, d.h. der Breite des Notenkopfes der Note
+der ersten Stimme.  Diese Eigenschaft sollte in denjenigen komplexen
+Fällen verwendet werden, die sich nicht mit dem normalen <code>\shiftOn</code>-Befehle
+(siehe auch <a href="explicitly-instantiating-voices.de.html">Stimmen explizit beginnen</a>) lösen lassen.
+Sie ist auf jeden Fall der Verwendung der <code>extra-offset</code>-Eigenschaft
+vorzuziehen, weil man die richtige Entfernung nicht
+in Notenlinienabständen ausrechnen muss.  Wenn eine Note in eine
+Notenkolumne oder aus ihr heraus geschoben wird, werden auch andere
+Funktionen beeinflusst, wie etwa die Verschmelzung von Notenköpfen.
+</p>
+</li></ul>
+
+</li><li> Zu guter Letzt, wenn alles andere nicht funktioniert, können Objekte auch
+manuell positioniert werden, entweder vertikal in Bezug auf die
+Mittellinie des Systems, oder indem sie einen beliebigen Abstand weit
+auf eine neue Position verschoben werden.  Der Nachteil ist, dass die
+richtigen Werte für eine gute Position manuell ausprobiert werden müssen,
+meistens durch Herantasten an den richtigen Wert, und das für jedes
+einzelne Objekt extra.  Und weil diese Verschiebungen erst vorgenommen
+werden, wenn LilyPond alle anderen Objekte gesetzt hat, ist man als
+Notensetzer selber dafür verantwortlich, ob es Zusammenstöße gibt.
+Am schwerwiegendsten ist aber die Tatsache, dass die
+Verschiebungskoordinaten wahrscheinlich neu errechnet oder
+ausprobiert werden müssen, wenn sich an den Noten und deren
+Layout später irgend etwas ändert.  Die Eigenschaften, die für diese
+Arte der manuellen Verschiebung verwendet werden können, sind:
+
+<dl compact="compact">
+<dt><span><code>extra-offset (zusätzlicher Abstand)</code></span></dt>
+<dd>
+<span id="index-extra_002doffset_002dEigenschaft"></span>
+
+<p>Diese Eigenschaft gehört zu jedem Layout-Objekt, das das
+<code>grob-interface</code> unterstützt.  Sie braucht ein Zahlenpaar,
+das die exakte Verschiebung in horizontaler und vertikaler Richtung
+bezeichnet.  Negative Zahlen verschieben das Objekt nach links oder
+unten.  Die Einheit sind Notenlinienabstände.  Die zusätzliche
+Positionierung wird vorgenommen, nachdem alle anderen Objekte
+platziert sind, weshalb ein Objekt irgendwohin verschoben werden
+kann, ohne den restlichen Satz zu beeinflussen.
+</p>
+</dd>
+<dt><span><code>positions (Position)</code></span></dt>
+<dd>
+<span id="index-positions_002dEigenschaft"></span>
+
+<p>Diese Eigenschaft ist am sinnvollsten, um die Steigung und die
+Höhe von Balken, Bögen und Triolenklammern anzupassen.
+Sie braucht ein Zahlenpaar, das die Position des rechten und linken
+Endes relativ zur Mittellinie des Notensystems bestimmt.  Die
+Einheit sind Notenlinienabstände.  Bögen allerdings können nicht
+beliebig weit weg positioniert werden.  LilyPond erstellt zunächst eine
+Liste an möglichen Positionen für den Bogen und findet normalerweise
+die Version, die &bdquo;am besten aussieht&ldquo;.  Wenn die
+<code>positions</code>-Eigenschaft verändert worden ist, wird der
+Bogen aus der Liste gewählt, der der gewünschten Position am
+nächsten kommt.
+</p></dd>
+</dl>
+
+</li></ol>
+
+<p>Ein bestimmtes Objekt hat vielleicht nicht alle dieser Eigenschaften.
+Darum ist es nötig, in der IR nachzuschlagen, welche Eigenschaften
+ein bestimmtes Objekt unterstützt.
+</p>
+<p>Hier ist eine Liste an Objekten, die am wahrscheinlichsten an einer
+Kollision beteiligt sind, daneben findet sich die Bezeichnung des
+Objektes, mit der Sie es in der IR finden, um zu bestimmen,
+welche Eigenschaften benutzt werden können, um es zu verschieben.
+</p>
+<table>
+<thead><tr><th width="50%">Objekttyp</th><th width="50%">Objektbezeichnung</th></tr></thead>
+<tr><td width="50%">Articulationszeichen</td><td width="50%"><code>Script</code></td></tr>
+<tr><td width="50%">Balken</td><td width="50%"><code>Beam</code></td></tr>
+<tr><td width="50%">Dynamikzeichen (vertikal)</td><td width="50%"><code>DynamicLineSpanner</code></td></tr>
+<tr><td width="50%">Dynamikzeichen (horizontal)</td><td width="50%"><code>DynamicText</code></td></tr>
+<tr><td width="50%">Fingersatz</td><td width="50%"><code>Fingering</code></td></tr>
+<tr><td width="50%">Übungs-/Textmarken</td><td width="50%"><code>RehearsalMark</code></td></tr>
+<tr><td width="50%">Legatobögen</td><td width="50%"><code>Slur</code></td></tr>
+<tr><td width="50%">Text z. B. <code>^&quot;text&quot;</code></td><td width="50%"><code>TextScript</code></td></tr>
+<tr><td width="50%">Bindebögen</td><td width="50%"><code>Tie</code></td></tr>
+<tr><td width="50%">N-tolen</td><td width="50%"><code>TupletBracket</code></td></tr>
+</table>
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="tweaking-output.de.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Die Ausgabe verbessern </a>]</td><td align="center">[<a href="index.de.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.de.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.de.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="templates.de.html" title="Next chapter"> Vorlagen &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="collisions-of-objects.de.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Kollision von Objekten </a>]</td><td align="center">[<a href="collisions-of-objects.de.html" title="Up section" accesskey="u" rel="up">  Up: Kollision von Objekten </a>]</td><td align="right">[<a href="fixing-overlapping-notation.de.html" title="Next section in reading order" accesskey="n" rel="next"> Überlappende Notation in Ordnung bringen &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="moving-objects.html">English</a>, <a href="moving-objects.ca.html">Català</a>, <a href="moving-objects.es.html">Español</a>, <a href="moving-objects.fr.html">Français</a>, <a href="moving-objects.it.html">Italiano</a>, <a href="moving-objects.ja.html">日本語</a>, <a href="moving-objects.zh.html">中文</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.de.html" title="Documentation Index">
+    &lt;&lt; Zur Dokumentationsübersicht
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.de.html#top" title="Cover (top) of document">
+    LilyPond Handbuch zum Lernen  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Installing" href="installing.de.html">1 Installing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Graphical-setup" href="graphical-setup.de.html">1.1 Graphical setup</a></li>
+    <li><a id="toc-Command-line-setup" href="command-line-setup.de.html">1.2 Command line setup</a></li>
+  </ul></li>
+  <li><a id="toc-Tutorium" href="tutorial.de.html">2 Tutorium</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Eine-Quelldatei-ubersetzen" href="compiling-a-file.de.html">2.1 Eine Quelldatei übersetzen</a></li>
+    <li><a id="toc-Wie-werden-Eingabe_002dDateien-geschrieben" href="how-to-write-input-files.de.html">2.2 Wie werden Eingabe-Dateien geschrieben</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Einfache-Notation" href="simple-notation.de.html">2.2.1 Einfache Notation</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Tonhohen" href="pitches.de.html">Tonhöhen</a></li>
+        <li><a id="toc-Tondauern-_0028Rhythmen_0029" href="durations-_0028rhythms_0029.de.html">Tondauern (Rhythmen)</a></li>
+        <li><a id="toc-Pausen" href="rests.de.html">Pausen</a></li>
+        <li><a id="toc-Taktartangabe" href="time-signature.de.html">Taktartangabe</a></li>
+        <li><a id="toc-Tempobezeichnung" href="tempo-marks.de.html">Tempobezeichnung</a></li>
+        <li><a id="toc-Notenschlussel" href="clef.de.html">Notenschlüssel</a></li>
+        <li><a id="toc-Alles-zusammen" href="all-together.de.html">Alles zusammen</a></li>
+      </ul></li>
+      <li><a id="toc-Arbeiten-an-Eingabe_002dDateien" href="working-on-input-files.de.html">2.2.2 Arbeiten an Eingabe-Dateien</a></li>
+    </ul></li>
+    <li><a id="toc-Fehlerbehandlung" href="dealing-with-errors.de.html">2.3 Fehlerbehandlung</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Allgemeine-Fehlerbehandlungstipps" href="general-troubleshooting-tips.de.html">2.3.1 Allgemeine Fehlerbehandlungstipps</a></li>
+      <li><a id="toc-Einige-haufige-Fehler" href="some-common-errors.de.html">2.3.2 Einige häufige Fehler</a></li>
+    </ul></li>
+    <li><a id="toc-Wie-die-Handbucher-gelesen-werden-sollten" href="how-to-read-the-manuals.de.html">2.4 Wie die Handbücher gelesen werden sollten</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Ausgelassenes-Material" href="omitted-material.de.html">2.4.1 Ausgelassenes Material</a></li>
+      <li><a id="toc-Anklickbare-Beispiele" href="clickable-examples.de.html">2.4.2 Anklickbare Beispiele</a></li>
+      <li><a id="toc-Uberblick-uber-die-Handbucher" href="overview-of-manuals.de.html">2.4.3 Überblick über die Handbücher</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Ubliche-Notation" href="common-notation.de.html">3 Übliche Notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Notation-auf-einem-System" href="single-staff-notation.de.html">3.1 Notation auf einem System</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Taktstriche-und-Taktuberprufung" href="bar-lines-and-bar-checks.de.html">3.1.1 Taktstriche und Taktüberprüfung</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Taktstriche" href="bar-lines.de.html">Taktstriche</a></li>
+        <li><a id="toc-Taktuberprufungen" href="bar-checks.de.html">Taktüberprüfungen</a></li>
+      </ul></li>
+      <li><a id="toc-Tonhohen-und-Tonartbezeichnungen-_0028Vorzeichen_0029" href="pitches-and-key-signatures.de.html">3.1.2 Tonhöhen und Tonartbezeichnungen (Vorzeichen)</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Tonhohenveranderungen" href="pitch-alterations.de.html">Tonhöhenveränderungen</a></li>
+        <li><a id="toc-Tonartbezeichnungen-_0028Vorzeichen_0029" href="key-signatures.de.html">Tonartbezeichnungen (Vorzeichen)</a></li>
+        <li><a id="toc-Warnung-bzgl_002e-Tonartbezeichnungen-und-Tonhohen" href="warning-key-signatures-and-pitches.de.html">Warnung bzgl. Tonartbezeichnungen und Tonhöhen</a></li>
+      </ul></li>
+      <li><a id="toc-Bindebogen-und-Legatobogen" href="ties-and-slurs.de.html">3.1.3 Bindebögen und Legatobögen</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Bindebogen" href="ties.de.html">Bindebögen</a></li>
+        <li><a id="toc-Legatobogen" href="slurs.de.html">Legatobögen</a></li>
+        <li><a id="toc-Phrasierungsbogen" href="phrasing-slurs.de.html">Phrasierungsbögen</a></li>
+        <li><a id="toc-Achtung-Bindebogen-sind-nicht-Legatobogen" href="warnings-slurs-vs-ties.de.html">Achtung Bindebögen sind nicht Legatobögen</a></li>
+      </ul></li>
+      <li><a id="toc-Artikulationszeichen-und-Lautstarke" href="articulation-and-dynamics.de.html">3.1.4 Artikulationszeichen und Lautstärke</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Artikulationszeichen" href="articulations.de.html">Artikulationszeichen</a></li>
+        <li><a id="toc-Fingersatze" href="fingerings.de.html">Fingersätze</a></li>
+        <li><a id="toc-Dynamik" href="dynamics.de.html">Dynamik</a></li>
+      </ul></li>
+      <li><a id="toc-Text-hinzufugen" href="adding-text.de.html">3.1.5 Text hinzufügen</a></li>
+      <li><a id="toc-Automatische-und-manuelle-Balken" href="automatic-and-manual-beams.de.html">3.1.6 Automatische und manuelle Balken</a></li>
+      <li><a id="toc-Zusatzliche-rhythmische-Befehle" href="advanced-rhythmic-commands.de.html">3.1.7 Zusätzliche rhythmische Befehle</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Auftakt" href="partial-measure.de.html">Auftakt</a></li>
+        <li><a id="toc-N_002dtolen" href="tuplets.de.html">N-tolen</a></li>
+        <li><a id="toc-Verzierungen" href="grace-notes.de.html">Verzierungen</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Mehrere-Noten-auf-einmal" href="multiple-notes-at-once.de.html">3.2 Mehrere Noten auf einmal</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Musikalische-Ausdrucke-erklart" href="music-expressions-explained.de.html">3.2.1 Musikalische Ausdrücke erklärt</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Analogie-mathematische-Ausdrucke" href="analogy-mathematical-expressions.de.html">Analogie mathematische Ausdrücke</a></li>
+        <li><a id="toc-Gleichzeitige-musikalische-Ausdrucke-mehrere-Notensysteme" href="simultaneous-music-expressions-multiple-staves.de.html">Gleichzeitige musikalische Ausdrücke mehrere Notensysteme</a></li>
+        <li><a id="toc-Gleichzeitige-musikalische-Ausdrucke-ein-Notensystem" href="simultaneous-music-expressions-single-staff.de.html">Gleichzeitige musikalische Ausdrücke ein Notensystem</a></li>
+      </ul></li>
+      <li><a id="toc-Mehrere-Notensysteme" href="multiple-staves.de.html">3.2.2 Mehrere Notensysteme</a></li>
+      <li><a id="toc-Notensysteme-gruppieren" href="staff-groups.de.html">3.2.3 Notensysteme gruppieren</a></li>
+      <li><a id="toc-Noten-zu-Akkorden-verbinden" href="combining-notes-into-chords.de.html">3.2.4 Noten zu Akkorden verbinden</a></li>
+      <li><a id="toc-Mehrstimmigkeit-in-einem-System" href="single-staff-polyphony.de.html">3.2.5 Mehrstimmigkeit in einem System</a></li>
+    </ul></li>
+    <li><a id="toc-Lieder" href="songs.de.html">3.3 Lieder</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Einfache-Lieder-setzen" href="setting-simple-songs.de.html">3.3.1 Einfache Lieder setzen</a></li>
+      <li><a id="toc-Text-an-einer-Melodie-ausrichten" href="aligning-lyrics-to-a-melody.de.html">3.3.2 Text an einer Melodie ausrichten</a></li>
+      <li><a id="toc-Text-zu-mehreren-Systemen" href="lyrics-to-multiple-staves.de.html">3.3.3 Text zu mehreren Systemen</a></li>
+    </ul></li>
+    <li><a id="toc-Letzter-Schliff" href="final-touches.de.html">3.4 Letzter Schliff</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Stucke-durch-Variablen-organisieren" href="organizing-pieces-with-variables.de.html">3.4.1 Stücke durch Variablen organisieren</a></li>
+      <li><a id="toc-Titel-hinzufugen" href="adding-titles.de.html">3.4.2 Titel hinzufügen</a></li>
+      <li><a id="toc-Absolute-Notenbezeichnungen" href="absolute-note-names.de.html">3.4.3 Absolute Notenbezeichnungen</a></li>
+      <li><a id="toc-Nach-dem-Tutorium" href="after-the-tutorial.de.html">3.4.4 Nach dem Tutorium</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Grundbegriffe" href="fundamental-concepts.de.html">4 Grundbegriffe</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Wie-eine-LilyPond_002dEingabe_002dDatei-funktioniert" href="how-lilypond-input-files-work.de.html">4.1 Wie eine LilyPond-Eingabe-Datei funktioniert</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Einfuhrung-in-die-Dateistruktur-von-LilyPond" href="introduction-to-the-lilypond-file-structure.de.html">4.1.1 Einführung in die Dateistruktur von LilyPond</a></li>
+      <li><a id="toc-Score-ist-ein-_0028einziger_0029-zusammengesetzter-musikalischer-Ausdruck" href="score-is-a-_0028single_0029-compound-musical-expression.de.html">4.1.2 Score ist ein (einziger) zusammengesetzter musikalischer Ausdruck</a></li>
+      <li><a id="toc-Musikalische-Ausdrucke-ineinander-verschachteln" href="nesting-music-expressions.de.html">4.1.3 Musikalische Ausdrücke ineinander verschachteln</a></li>
+      <li><a id="toc-Uber-die-Nicht_002dSchachtelung-von-Klammern-und-Bindebogen" href="on-the-un_002dnestedness-of-brackets-and-ties.de.html">4.1.4 Über die Nicht-Schachtelung von Klammern und Bindebögen</a></li>
+    </ul></li>
+    <li><a id="toc-Voice-enthalt-Noten" href="voices-contain-music.de.html">4.2 Voice enthält Noten</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Ich-hore-Stimmen" href="i_0027m-hearing-voices.de.html">4.2.1 Ich höre Stimmen</a></li>
+      <li><a id="toc-Stimmen-explizit-beginnen" href="explicitly-instantiating-voices.de.html">4.2.2 Stimmen explizit beginnen</a></li>
+      <li><a id="toc-Stimmen-und-Text" href="voices-and-vocals.de.html">4.2.3 Stimmen und Text</a></li>
+    </ul></li>
+    <li><a id="toc-Kontexte-und-Engraver" href="contexts-and-engravers.de.html">4.3 Kontexte und Engraver</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Was-sind-Kontexte_003f" href="contexts-explained.de.html">4.3.1 Was sind Kontexte?</a></li>
+      <li><a id="toc-Kontexte-erstellen" href="creating-contexts.de.html">4.3.2 Kontexte erstellen</a></li>
+      <li><a id="toc-Was-sind-Engraver_003f" href="engravers-explained.de.html">4.3.3 Was sind Engraver?</a></li>
+      <li><a id="toc-Kontexteigenschaften-verandern" href="modifying-context-properties.de.html">4.3.4 Kontexteigenschaften verändern</a></li>
+      <li><a id="toc-Engraver-hinzufugen-und-entfernen" href="adding-and-removing-engravers.de.html">4.3.5 Engraver hinzufügen und entfernen</a></li>
+    </ul></li>
+    <li><a id="toc-Erweiterung-der-Vorlagen" href="extending-the-templates.de.html">4.4 Erweiterung der Vorlagen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Sopran-und-Cello" href="soprano-and-cello.de.html">4.4.1 Sopran und Cello</a></li>
+      <li><a id="toc-Vierstimmige-SATB_002dPartitur" href="four_002dpart-satb-vocal-score.de.html">4.4.2 Vierstimmige SATB-Partitur</a></li>
+      <li><a id="toc-Eine-Partitur-von-Grund-auf-erstellen" href="building-a-score-from-scratch.de.html">4.4.3 Eine Partitur von Grund auf erstellen</a></li>
+      <li><a id="toc-Tipparbeit-durch-Variablen-und-Funktionen-einsparen" href="saving-typing-with-variables-and-functions.de.html">4.4.4 Tipparbeit durch Variablen und Funktionen einsparen</a></li>
+      <li><a id="toc-Partituren-und-Stimmen" href="scores-and-parts.de.html">4.4.5 Partituren und Stimmen</a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Die-Ausgabe-verbessern" href="tweaking-output.de.html">5 Die Ausgabe verbessern</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Grundlagen-fur-die-Optimierung" href="tweaking-basics.de.html">5.1 Grundlagen für die Optimierung</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Grundlagen-zur-Optimierung" href="introduction-to-tweaks.de.html">5.1.1 Grundlagen zur Optimierung</a></li>
+      <li><a id="toc-Objekte-und-Schnittstellen" href="objects-and-interfaces.de.html">5.1.2 Objekte und Schnittstellen</a></li>
+      <li><a id="toc-Regeln-zur-Benennung-von-Objekten-und-Eigenschaften" href="naming-conventions-of-objects-and-properties.de.html">5.1.3 Regeln zur Benennung von Objekten und Eigenschaften</a></li>
+      <li><a id="toc-Optimierungsmethoden" href="tweaking-methods.de.html">5.1.4 Optimierungsmethoden</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Der-_005coverride_002dBefehl" href="the-override-command.de.html">Der <code>\override</code>-Befehl</a></li>
+        <li><a id="toc-Der-_005crevert_002dBefehl" href="the-revert-command.de.html">Der <code>\revert</code>-Befehl</a></li>
+        <li><a id="toc-Der-_005conce_002dPrafix" href="the-once-prefix.de.html">Der <code>\once</code>-Präfix</a></li>
+        <li><a id="toc-Der-_005ctweak_002dBefehl" href="the-tweak-command.de.html">Der <code>\tweak</code>-Befehl</a></li>
+        <li><a id="toc-Der-_005csingle_002dPrafix" href="the-single-prefix.de.html">Der <code>\single</code>-Präfix</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Die-Referenz-der-Programminterna" href="the-internals-reference-manual.de.html">5.2 Die Referenz der Programminterna</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Eigenschaften-von-Layoutobjekten" href="properties-of-layout-objects.de.html">5.2.1 Eigenschaften von Layoutobjekten</a></li>
+      <li><a id="toc-Eigenschaften_002c-die-Schnittstellen-besitzen-konnen" href="properties-found-in-interfaces.de.html">5.2.2 Eigenschaften, die Schnittstellen besitzen können</a></li>
+      <li><a id="toc-Typen-von-Eigenschaften" href="types-of-properties.de.html">5.2.3 Typen von Eigenschaften</a></li>
+    </ul></li>
+    <li><a id="toc-Erscheinung-von-Objekten" href="appearance-of-objects.de.html">5.3 Erscheinung von Objekten</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Sichtbarkeit-und-Farbe-von-Objekten" href="visibility-and-color-of-objects.de.html">5.3.1 Sichtbarkeit und Farbe von Objekten</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Die-stencil_002dEigenschaft-_0028Matrize_0029" href="the-stencil-property.de.html">Die <code>stencil</code>-Eigenschaft (Matrize)</a></li>
+        <li><a id="toc-The-break_002dvisibility_002dEigenschaft-_0028unsichtbar-machen_0029" href="the-break_002dvisibility-property.de.html">The <code>break-visibility</code>-Eigenschaft (unsichtbar machen)</a></li>
+        <li><a id="toc-Die-transparent_002dEigenschaft-_0028durchsichtig_0029" href="the-transparent-property.de.html">Die <code>transparent</code>-Eigenschaft (durchsichtig)</a></li>
+        <li><a id="toc-Die-color_002dEigenschaft-_0028Farbe_0029" href="the-color-property.de.html">Die <code>color</code>-Eigenschaft (Farbe)</a></li>
+      </ul></li>
+      <li><a id="toc-Grosse-von-Objekten" href="size-of-objects.de.html">5.3.2 Größe von Objekten</a></li>
+      <li><a id="toc-Lange-und-Dicke-von-Objekten" href="length-and-thickness-of-objects.de.html">5.3.3 Länge und Dicke von Objekten</a></li>
+    </ul></li>
+    <li><a id="toc-Positionierung-von-Objekten" href="placement-of-objects.de.html">5.4 Positionierung von Objekten</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Automatisches-Verhalten" href="automatic-behavior.de.html">5.4.1 Automatisches Verhalten</a></li>
+      <li><a id="toc-within_002dstaff-_0028Objekte-innerhalb-des-Notensystems_0029" href="within_002dstaff-objects.de.html">5.4.2 within-staff (Objekte innerhalb des Notensystems)</a>
+      <ul class="no-bullet">
+        <li><a id="toc-The-direction_002dEigenschaft-_0028Richtung_0029" href="the-direction-property.de.html">The <code>direction</code>-Eigenschaft (Richtung)</a></li>
+        <li><a id="toc-Fingersatz" href="fingering.de.html">Fingersatz</a></li>
+      </ul></li>
+      <li><a id="toc-Objekte-ausserhalb-des-Notensystems" href="outside_002dstaff-objects.de.html">5.4.3 Objekte außerhalb des Notensystems</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Die-outside_002dstaff_002dpriority_002dEigenschaft" href="the-outside_002dstaff_002dpriority-property.de.html">Die <code>outside-staff-priority</code>-Eigenschaft</a></li>
+        <li><a id="toc-Der-_005ctextLengthOn_002dBefehl-_0028Textlange-berucksichtigen_0029" href="the-textlengthon-command.de.html">Der <code>\textLengthOn</code>-Befehl (Textlänge berücksichtigen)</a></li>
+        <li><a id="toc-Positionierung-von-Dynamikzeichen" href="dynamics-placement.de.html">Positionierung von Dynamikzeichen</a></li>
+        <li><a id="toc-Verandern-der-Grosse-von-grobs" href="grob-sizing.de.html">Verändern der Größe von grobs</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Vertikale-Abstande" href="vertical-spacing.de.html">5.5 Vertikale Abstände</a></li>
+    <li class="toc_current"><a id="toc-Kollision-von-Objekten" href="collisions-of-objects.de.html">5.6 Kollision von Objekten</a>
+    <ul class="no-bullet">
+      <li class="toc_current"><a id="toc-Verschieben-von-Objekten" href="moving-objects.de.html">5.6.1 Verschieben von Objekten</a></li>
+      <li><a id="toc-Uberlappende-Notation-in-Ordnung-bringen" href="fixing-overlapping-notation.de.html">5.6.2 Überlappende Notation in Ordnung bringen</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Die-padding_002dEigenschaft-_0028auffullen_0029" href="the-padding-property.de.html">Die <code>padding</code>-Eigenschaft (auffüllen)</a></li>
+        <li><a id="toc-Die-right_002dpadding_002dEigenschaft-_0028rechts-auffullen_0029" href="the-right_002dpadding-property.de.html">Die <code>right-padding</code>-Eigenschaft (rechts auffüllen)</a></li>
+        <li><a id="toc-The-staff_002dpadding_002dEigenschaft-_0028Systemfullungseigenschaft_0029" href="the-staff_002dpadding-property.de.html">The <code>staff-padding</code>-Eigenschaft (Systemfüllungseigenschaft)</a></li>
+        <li><a id="toc-Die-self_002dalignment_002dX_002dEigenschaft-_0028Selbstausrichtung_002dX_002dEigenschaft_0029" href="the-self_002dalignment_002dx-property.de.html">Die <code>self-alignment-X</code>-Eigenschaft (Selbstausrichtung-X-Eigenschaft)</a></li>
+        <li><a id="toc-Die-staff_002dposition_002dEigenschaft-_0028Position-innerhalb-des-Systems_0029" href="the-staff_002dposition-property.de.html">Die <code>staff-position</code>-Eigenschaft (Position innerhalb des Systems)</a></li>
+        <li><a id="toc-Die-extra_002doffset_002dEigenschaft-_0028Genaues-Positionieren_0029" href="the-extra_002doffset-property.de.html">Die <code>extra-offset</code>-Eigenschaft (Genaues Positionieren)</a></li>
+        <li><a id="toc-Die-positions_002dEigenschaft-_0028Ausrichtungseigenschaft_0029" href="the-positions-property.de.html">Die <code>positions</code>-Eigenschaft (Ausrichtungseigenschaft)</a></li>
+        <li><a id="toc-Die-force_002dhshift_002dEigenschaft-_0028horizontale-Verschiebunseigenschaft_0029" href="the-force_002dhshift-property.de.html">Die <code>force-hshift</code>-Eigenschaft (horizontale Verschiebunseigenschaft)</a></li>
+      </ul></li>
+      <li><a id="toc-Beispiel-aus-dem-Leben" href="real-music-example.de.html">5.6.3 Beispiel aus dem Leben</a></li>
+    </ul></li>
+    <li><a id="toc-Weitere-Optimierungen" href="further-tweaking.de.html">5.7 Weitere Optimierungen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Andere-Benutzung-von-Optimierungen" href="other-uses-for-tweaks.de.html">5.7.1 Andere Benutzung von Optimierungen</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Noten-zwischen-unterschiedlichen-Stimmen-uberbinden" href="tying-notes-across-voices.de.html">Noten zwischen unterschiedlichen Stimmen überbinden</a></li>
+        <li><a id="toc-Eine-Fermate-in-MIDI-simulieren" href="simulating-a-fermata-in-midi.de.html">Eine Fermate in MIDI simulieren</a></li>
+      </ul></li>
+      <li><a id="toc-Variablen-fur-Layout-Anpassungen-einsetzen" href="using-variables-for-layout-adjustments.de.html">5.7.2 Variablen für Layout Anpassungen einsetzen</a></li>
+      <li><a id="toc-Formatvorlagen" href="style-sheets.de.html">5.7.3 Formatvorlagen</a></li>
+      <li><a id="toc-Mehr-Information" href="other-sources-of-information.de.html">5.7.4 Mehr Information</a></li>
+      <li><a id="toc-Fortgeschrittene-Optimierungen-mit-Scheme" href="advanced-tweaks-with-scheme.de.html">5.7.5 Fortgeschrittene Optimierungen mit Scheme</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Vorlagen" href="templates.de.html">Appendix A Vorlagen</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Eingebaute-Vorlagen" href="built_002din-templates.de.html">A.1 Eingebaute Vorlagen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-SATB-Vorlage" href="satb-template.de.html">A.1.1 SATB Vorlage</a></li>
+      <li><a id="toc-SSAATTBB-Vorlage" href="ssaattbb-template.de.html">A.1.2 SSAATTBB Vorlage</a></li>
+    </ul></li>
+    <li><a id="toc-Vorlagen-fur-ein-einzelnes-System" href="single-staff-templates.de.html">A.2 Vorlagen für ein einzelnes System</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Nur-Noten" href="notes-only.de.html">A.2.1 Nur Noten</a></li>
+      <li><a id="toc-Noten-und-Text" href="notes-and-lyrics.de.html">A.2.2 Noten und Text</a></li>
+      <li><a id="toc-Noten-und-Akkordbezeichnungen" href="notes-and-chords.de.html">A.2.3 Noten und Akkordbezeichnungen</a></li>
+      <li><a id="toc-Noten_002c-Text-und-Akkordbezeichnungen" href="notes-lyrics-and-chords.de.html">A.2.4 Noten, Text und Akkordbezeichnungen</a></li>
+    </ul></li>
+    <li><a id="toc-Klaviervorlagen" href="piano-templates.de.html">A.3 Klaviervorlagen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Piano-Solo" href="solo-piano.de.html">A.3.1 Piano Solo</a></li>
+      <li><a id="toc-Klavier-und-Gesangsstimme" href="piano-and-melody-with-lyrics.de.html">A.3.2 Klavier und Gesangsstimme</a></li>
+      <li><a id="toc-Klavier-mit-eingeschobenem-Gesangstext" href="piano-centered-lyrics.de.html">A.3.3 Klavier mit eingeschobenem Gesangstext</a></li>
+    </ul></li>
+    <li><a id="toc-Vorlagen-fur-Streichquartette" href="string-quartet-templates.de.html">A.4 Vorlagen für Streichquartette</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Streichquartett" href="string-quartet.de.html">A.4.1 Streichquartett</a></li>
+      <li><a id="toc-Streichquartettstimmen" href="string-quartet-parts.de.html">A.4.2 Streichquartettstimmen</a></li>
+    </ul></li>
+    <li><a id="toc-Vokalensemble" href="vocal-ensembles-templates.de.html">A.5 Vokalensemble</a>
+    <ul class="no-bullet">
+      <li><a id="toc-SATB_002dPartitur" href="satb-vocal-score.de.html">A.5.1 SATB-Partitur</a></li>
+      <li><a id="toc-SATB_002dPartitur-und-automatischer-Klavierauszug" href="satb-vocal-score-and-automatic-piano-reduction.de.html">A.5.2 SATB-Partitur und automatischer Klavierauszug</a></li>
+      <li><a id="toc-SATB-mit-daran-ausgerichteten-Kontexten" href="satb-with-aligned-contexts.de.html">A.5.3 SATB mit daran ausgerichteten Kontexten</a></li>
+      <li><a id="toc-SATB-auf-vier-Systemen" href="satb-on-four-staves.de.html">A.5.4 SATB auf vier Systemen</a></li>
+      <li><a id="toc-Sologesang-und-zweistimmiger-Refrain" href="solo-verse-and-two_002dpart-refrain.de.html">A.5.5 Sologesang und zweistimmiger Refrain</a></li>
+      <li><a id="toc-Kirchenlieder" href="hymn-tunes.de.html">A.5.6 Kirchenlieder</a></li>
+      <li><a id="toc-Psalmengesang" href="psalms.de.html">A.5.7 Psalmengesang</a></li>
+    </ul></li>
+    <li><a id="toc-Orchestervorlagen" href="orchestral-templates.de.html">A.6 Orchestervorlagen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Orchester_002c-Chor-und-Klavier" href="orchestra-choir-and-piano.de.html">A.6.1 Orchester, Chor und Klavier</a></li>
+    </ul></li>
+    <li><a id="toc-Vorlagen-fur-alte-Notation" href="ancient-notation-templates.de.html">A.7 Vorlagen für alte Notation</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Transkription-mensuraler-Musik" href="transcription-of-mensural-music.de.html">A.7.1 Transkription mensuraler Musik</a></li>
+      <li><a id="toc-Vorlage-zur-Transkription-von-Gregorianik" href="gregorian-transcription-template.de.html">A.7.2 Vorlage zur Transkription von Gregorianik</a></li>
+    </ul></li>
+    <li><a id="toc-Andere-Vorlagen" href="other-templates.de.html">A.8 Andere Vorlagen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Jazz_002dCombo" href="jazz-combo.de.html">A.8.1 Jazz-Combo</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.de.html">Appendix B GNU Free Documentation License</a></li>
+  <li><a id="toc-Register" href="index-of-commands-and-concepts.de.html" rel="index">Appendix C Register</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: ebe492ca408fb0d9abf80b94c56197eef8dc2f09
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Mit Google suchen">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Suche">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

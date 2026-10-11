@@ -1,0 +1,257 @@
+This is lilypond-contributor.info, produced by texi2any version 6.8 from
+contributor.texi.
+
+Copyright © 2007–2026 by the authors.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections.  A copy of the license is
+     included in the section entitled “GNU Free Documentation License”.
+INFO-DIR-SECTION LilyPond – the music typesetter
+START-INFO-DIR-ENTRY
+* Contributing: (lilypond-contributor). How to contribute to LilyPond.
+END-INFO-DIR-ENTRY
+
+
+Indirect:
+lilypond-contributor.info-1: 648
+lilypond-contributor.info-2: 301172
+
+Tag Table:
+(Indirect)
+Node: Top648
+Node: Introduction to contributing1778
+Node: Help us2124
+Node: Overview of work flow5320
+Node: Summary for experienced developers7790
+Node: Mentors11523
+Node: Quick start15302
+Node: LilyDev15744
+Node: Installing LilyDev in VirtualBox17914
+Node: Configuring LilyDev in VirtualBox24228
+Node: Compiling with LilyDev25702
+Node: Now start work!27964
+Node: Working with source code28689
+Node: Setting up29287
+Node: Installing Git29564
+Node: Creating a GitLab account and setting up SSH30282
+Node: Cloning and forking the repository32656
+Node: Configuring Git33681
+Node: Git cheat sheet35551
+Ref: Git cheat sheet-Footnote-141924
+Ref: Git cheat sheet-Footnote-242039
+Ref: Git cheat sheet-Footnote-342154
+Node: Lifecycle of a merge request42310
+Node: Uploading a patch for review42670
+Node: Automated testing44687
+Node: Patch countdown46374
+Node: Merging to master48997
+Node: Abandoned patches51883
+Node: Writing good commit messages52351
+Node: Commit access54089
+Node: Further Git documentation resources55363
+Node: Repository directory structure55956
+Node: Compiling61945
+Node: Overview of compiling62413
+Node: Requirements63623
+Node: Requirements for running LilyPond63924
+Node: Requirements for compiling LilyPond66889
+Node: Fedora67806
+Node: Linux Mint69244
+Node: OpenSUSE71146
+Node: Ubuntu72746
+Node: Other74255
+Node: Requirements for building documentation76483
+Ref: Noto Serif CJK warning78301
+Ref: Requirements for building documentation-Footnote-180820
+Ref: Requirements for building documentation-Footnote-280925
+Node: Getting the source code81027
+Node: Configuring make82696
+Node: Build modes82950
+Ref: Build modes-Footnote-183727
+Node: Running autogen83855
+Node: Running configure85855
+Node: Configuration options86123
+Node: Checking build dependencies86565
+Node: Configuring target directories87768
+Node: Compiling LilyPond89420
+Node: Using make89689
+Ref: Using make-Footnote-190574
+Node: Saving time with the -j option90728
+Node: Useful make variables91520
+Node: Post-compilation options92244
+Node: Installing LilyPond from a local build92541
+Node: Generating documentation93697
+Node: Documentation editor's edit/compile cycle94914
+Node: Building documentation95689
+Node: Building a single document98019
+Node: Saving time with CPU_COUNT98681
+Node: Installing documentation99574
+Node: Building documentation without compiling101374
+Node: Testing LilyPond binary102561
+Node: Problems103149
+Node: Concurrent stable and development versions106519
+Node: Replacing the notation fonts in development versions108155
+Node: Build system109313
+Node: Documentation work110024
+Node: Introduction to documentation work111019
+Node: version in documentation files113329
+Node: Documentation suggestions114252
+Node: Texinfo introduction and usage policy117998
+Node: Texinfo introduction118431
+Node: Documentation files119304
+Node: Sectioning commands121056
+Node: Menus123770
+Node: LilyPond formatting125144
+Node: Text formatting130654
+Node: Syntax survey132322
+Node: Comments132661
+Node: Cross-references132924
+Node: External links134375
+Node: Fixed-width font134722
+Node: Indexing140518
+Node: Lists143531
+Node: Special characters144595
+Node: Miscellany146020
+Node: Other text concerns147583
+Ref: Other text concerns-Footnote-1149128
+Node: Documentation policy149264
+Node: Books149612
+Node: Section organization153708
+Node: Checking cross-references156654
+Node: General writing158129
+Node: Technical writing style160020
+Node: Tips for writing documentation161167
+Node: Working on subsections161460
+Node: Searching164070
+Ref: Searching-Footnote-1166377
+Node: Scripts to ease documentation work166558
+Node: Building only one section of the documentation167148
+Node: Updating documentation with convert-ly169951
+Node: Documentation strings in the Internals Reference170378
+Node: Translating the documentation171060
+Node: Getting started with documentation translation171450
+Node: Translation requirements171932
+Node: Which documentation can be translated172820
+Node: Starting translation in a new language173585
+Node: Documentation translation details175655
+Node: Files to be translated176187
+Node: Translating the website and other Texinfo documentation180107
+Node: Adding a Texinfo manual185727
+Node: Documentation translation maintenance186512
+Node: Check state of translation187615
+Node: Updating documentation translation189874
+Node: Updating translation committishes192519
+Node: Maintaining without updating translations194169
+Node: Technical background200954
+Node: Website work202097
+Node: Introduction to website work202380
+Node: Uploading website204527
+Node: Debugging website and docs locally205820
+Node: Translating the website207752
+Node: LilyPond Wiki work208827
+Node: Introduction to the LilyPond Wiki209133
+Node: Adding and editing snippets209686
+Node: Snippet administration214086
+Node: The makelsr script215751
+Ref: The makelsr script-Footnote-1218517
+Ref: The makelsr script-Footnote-2218671
+Node: LilyPond Wiki to Git218828
+Node: Issues224641
+Node: Introduction to issues224974
+Node: Triaging bugs227147
+Node: Issue classification230783
+Node: Adding issues to the tracker234120
+Node: Regression tests235856
+Node: Introduction to regression tests236231
+Node: Precompiled regression tests237594
+Node: Compiling regression tests238534
+Node: Regtest comparison240408
+Node: Pixel-based regtest comparison242504
+Node: Finding the cause of a regression244430
+Node: MusicXML tests247528
+Node: Programming work248222
+Node: Overview of LilyPond architecture248924
+Node: LilyPond programming languages251453
+Node: Programming without compiling254870
+Node: Finding functions257272
+Node: Code style260735
+Node: Languages261140
+Node: Filenames261325
+Node: Code formatting262246
+Node: Naming conventions266466
+Node: Broken code267494
+Node: Code comments268042
+Node: Handling errors268778
+Node: Localization269406
+Node: Warnings Errors Progress and Debug Output274567
+Node: Debugging LilyPond280412
+Node: Debugging overview281084
+Node: Debugging C++ code281690
+Node: Debugging Scheme code284762
+Node: Debugging scoring algorithms289740
+Node: Debugging skylines294226
+Node: Tracing object relationships295134
+Node: Tracing processing time299101
+Node: Adding or modifying features299766
+Node: Write the code301173
+Node: Write regression tests301626
+Node: Write convert-ly rule302637
+Node: Automatically update documentation303282
+Node: Manually update documentation304055
+Node: Edit the Changes file306598
+Node: Verify successful build307233
+Node: Verify regression tests307802
+Node: Post patch for comments309952
+Node: Push patch310213
+Node: Closing the issues310607
+Node: Iterator tutorial311069
+Node: Engraver tutorial311574
+Node: Useful methods for information processing312466
+Node: Translation process313712
+Node: Listening to music events314736
+Node: Acknowledging grobs315592
+Node: Engraver declaration/documentation318333
+Node: Callback tutorial319850
+Node: Understanding pure properties320117
+Node: Purity in LilyPond320960
+Node: Writing a pure function324735
+Node: How purity is defined and stored325764
+Node: Where purity is used326827
+Node: Case studies328119
+Node: Debugging tips330806
+Node: LilyPond scoping331595
+Node: Regular expressions332863
+Node: Scheme->C interface333340
+Node: Comparison334023
+Node: Conversion337199
+Node: Garbage collection for dummies337964
+Node: LilyPond miscellany349736
+Node: Spacing algorithms350245
+Node: Info from Han-Wen email352229
+Node: Music functions and Guile debugging363638
+Node: Articulations on EventChord366457
+Node: Release work367949
+Node: Development phases368194
+Node: Release checklist369823
+Node: Major release checklist376539
+Node: Modifying the Emmentaler font380633
+Node: Overview of the Emmentaler font381019
+Node: Font creation tools382139
+Node: Adding a new font section382760
+Node: Adding a new glyph383747
+Node: Building the changed font384620
+Node: METAFONT formatting rules385026
+Node: Administrative policies385893
+Node: LilyPond is GNU Software386315
+Node: Environment variables386741
+Node: Performing yearly copyright update (grand-replace)387735
+Node: GNU Free Documentation License388601
+
+End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

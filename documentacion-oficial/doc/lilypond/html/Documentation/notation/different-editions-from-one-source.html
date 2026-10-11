@@ -1,0 +1,1971 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1998-2026 by the authors.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>22.2 Different editions from one source (LilyPond Notation Reference)</title>
+
+<meta name="description" content="22.2 Different editions from one source (LilyPond Notation Reference)">
+<meta name="keywords" content="22.2 Different editions from one source (LilyPond Notation Reference)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="LilyPond &mdash; Notation Reference">
+<link href="index-of-commands-and-concepts.html" rel="index" title="Appendix E Index">
+<link href="notation_toc.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="working-with-input-files.html" rel="up" title="22 Working with input files">
+<link href="using-music-functions.html" rel="next" title="22.3 Using music functions">
+<link href="including-lilypond-files.html" rel="prev" title="22.1 Including LilyPond files">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="en" class="notation">
+<div id="main">
+<div class="section" id="different-editions-from-one-source">
+<table class="nav_table">
+<tr><td align="left">[<a href="working-with-input-files.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Working with input files </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="notation_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="controlling-output.html" title="Next chapter"> Controlling output &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="including-lilypond-files.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Including LilyPond files </a>]</td><td align="center">[<a href="working-with-input-files.html" title="Up section" accesskey="u" rel="up">  Up: Working with input files </a>]</td><td align="right">[<a href="#using-variables" title="Next section in reading order" accesskey="n" rel="next"> Using variables &gt; </a>]</td></tr>
+</table>
+<span id="Different-editions-from-one-source"></span><h3 class="section">22.2 Different editions from one source</h3>
+
+<p>Several methods can be used to generate different versions of a score
+from the same music source.  Variables are perhaps the most useful for
+combining lengthy sections of music and/or annotation.  Tags are more
+useful for selecting one section from several alternative shorter
+sections of music, and can also be used for splicing pieces of music
+together at different points.
+</p>
+<p>Whichever method is used, separating the notation from the structure of
+the score will make it easier to change the structure while leaving the
+notation untouched.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#using-variables" accesskey="1">22.2.1 Using variables</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#using-tags" accesskey="2">22.2.2 Using tags</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#using-global-settings" accesskey="3">22.2.3 Using global settings</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="subsection" id="using-variables">
+<table class="nav_table">
+<tr><td align="left">[<a href="working-with-input-files.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Working with input files </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="notation_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="controlling-output.html" title="Next chapter"> Controlling output &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#different-editions-from-one-source" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Different editions from one source </a>]</td><td align="center">[<a href="#different-editions-from-one-source" title="Up section" accesskey="u" rel="up">  Up: Different editions from one source </a>]</td><td align="right">[<a href="#using-tags" title="Next section in reading order" accesskey="n" rel="next"> Using tags &gt; </a>]</td></tr>
+</table>
+<span id="Using-variables"></span><h4 class="subsection">22.2.1 Using variables</h4>
+
+<span id="index-variable_002c-using"></span>
+
+<p>If sections of the music are defined in variables they can be
+reused in different parts of the score, see <a href="../learning/organizing-pieces-with-variables.html">Organizing
+pieces with variables</a>.  For example, an <var>a cappella</var>
+vocal score frequently includes a piano reduction of the parts
+for rehearsal purposes which is identical to the vocal music, so
+the music need be entered only once.  Music from two variables
+may be combined on one staff, see <a href="multiple-voices.html#automatic-part-combining">Automatic part combining</a>.
+Here is an example:
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">sopranoMusic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">8</span><span class="nb nb-Articulation">(</span><span class="w"> </span><span class=" -Pitch">a</span><span class="nb nb-Articulation">)</span><span class="w"> </span><span class="p">}</span>
+<span class="n n-Lvalue">altoMusic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">e&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class="p">}</span>
+<span class="n n-Lvalue">tenorMusic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">8</span><span class="nb nb-Articulation">(</span><span class="w"> </span><span class=" -Pitch">c</span><span class="nb nb-Articulation">)</span><span class="w"> </span><span class="p">}</span>
+<span class="n n-Lvalue">bassMusic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">gis</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">d,</span><span class="w"> </span><span class="p">}</span>
+<span class="n n-Lvalue">allLyrics</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">\lyricmode</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>King<span class="w"> </span>of<span class="w"> </span>glo<span class="w"> </span><span class="p">--</span><span class="w"> </span>ry<span class="w"> </span><span class="p">}</span>
+<span class="p">&lt;&lt;</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Soprano&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\sopranoMusic</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="n n-BackslashReference">\allLyrics</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Alto&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\altoMusic</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="n n-BackslashReference">\allLyrics</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Tenor&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="s">&quot;treble_8&quot;</span>
+<span class="w">    </span><span class="n n-BackslashReference">\tenorMusic</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="n n-BackslashReference">\allLyrics</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Bass&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="s">&quot;bass&quot;</span>
+<span class="w">    </span><span class="n n-BackslashReference">\bassMusic</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="n n-BackslashReference">\allLyrics</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">PianoStaff</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;RH&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb nb-MusicFunction">\partCombine</span><span class="w"> </span><span class="n n-BackslashReference">\sopranoMusic</span><span class="w"> </span><span class="n n-BackslashReference">\altoMusic</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;LH&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="s">&quot;bass&quot;</span>
+<span class="w">      </span><span class="nb nb-MusicFunction">\partCombine</span><span class="w"> </span><span class="n n-BackslashReference">\tenorMusic</span><span class="w"> </span><span class="n n-BackslashReference">\bassMusic</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+<span class="p">&gt;&gt;</span>
+</pre>
+
+<a href="../d9/lily-756ba9e0.ly">
+  <img align="middle"
+       border="0"
+       src="../d9/lily-756ba9e0.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Separate scores showing just the vocal parts or just the piano
+part can be produced by changing just the structural statements,
+leaving the musical notation unchanged.
+</p>
+<p>For lengthy scores, the variable definitions may be placed in
+separate files which are then included, see <a href="including-lilypond-files.html">Including LilyPond files</a>.
+</p>
+
+<hr>
+</div>
+<div class="subsection" id="using-tags">
+<table class="nav_table">
+<tr><td align="left">[<a href="working-with-input-files.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Working with input files </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="notation_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="controlling-output.html" title="Next chapter"> Controlling output &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#using-variables" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Using variables </a>]</td><td align="center">[<a href="#different-editions-from-one-source" title="Up section" accesskey="u" rel="up">  Up: Different editions from one source </a>]</td><td align="right">[<a href="#using-global-settings" title="Next section in reading order" accesskey="n" rel="next"> Using global settings &gt; </a>]</td></tr>
+</table>
+<span id="Using-tags"></span><h4 class="subsection">22.2.2 Using tags</h4>
+
+<span id="index-_005ctag"></span>
+<span id="index-tag"></span>
+
+<p>The <code>\tag</code> command marks a music expression with a name.
+</p>
+<div class="example">
+<pre class="example">\tag #'foo { ... }
+</pre></div>
+
+<p>Expressions tagged in this way can be conviently manipulated as a
+whole.
+</p>
+
+<span id="Keeping-and-removing-tagged-music"></span><h4 class="subsubheading">Keeping and removing tagged music</h4>
+
+<span id="index-_005ckeepWithTag"></span>
+<span id="index-_005cremoveWithTag"></span>
+<span id="index-keeping-tagged-music"></span>
+<span id="index-removing-tagged-music"></span>
+
+<p>The command <code>\keepWithTag</code> selects tagged music.  On the
+other hand, <code>\removeWithTag</code> filters out tagged music.
+</p>
+<blockquote class="indentedblock">
+<table>
+<thead><tr><th width="55%">Filter</th><th width="45%">Result</th></tr></thead>
+<tr><td width="55%">Tagged music preceded by
+
+<div class="example">
+<pre class="example">\keepWithTag #'<var>name</var>
+</pre></div>
+
+<p>or
+</p>
+<div class="example">
+<pre class="example">\keepWithTag #'(<var>name1</var> <var>name2</var>&hellip;)
+</pre></div></td><td width="45%">Untagged music and music tagged with any of the given tag
+       names is included;
+       music tagged with any other tag name is excluded.</td></tr>
+<tr><td width="55%">Tagged music preceded by
+
+<div class="example">
+<pre class="example">\removeWithTag #'<var>name</var>
+</pre></div>
+
+<p>or
+</p>
+<div class="example">
+<pre class="example">\removeWithTag #'(<var>name1</var> <var>name2</var>&hellip;)
+</pre></div></td><td width="45%">Untagged music and music not tagged with any of the given tag names
+       is included; music tagged with any of the given tag names is
+       excluded.</td></tr>
+<tr><td width="55%">Tagged music not preceded by either<br>
+<code>\keepWithTag</code> or <code>\removeWithTag</code></td><td width="45%">All tagged and untagged music is included.</td></tr>
+</table>
+</blockquote>
+
+<p>The arguments of the <code>\tag</code>, <code>\keepWithTag</code>, and
+<code>\removeWithTag</code> commands should be a symbol or a list of
+symbols such as <code>#'score</code> or <code>#'(violinI violinII)</code>,
+followed by a music expression.  If <em>and only if</em> the symbols
+are valid LilyPond identifiers (alphabetic characters only, no
+numbers, underscores, or dashes, and different from any note
+names), the <code>#'</code> prefix may be omitted and, as a shorthand, a
+list of symbols can use the comma separator.  For example,
+<code>\tag #'(violinI violinII)</code> can be written as <code>\tag
+violinI,violinII</code>.  The same applies to the arguments of
+<code>\keepWithTag</code> and <code>\removeWithTag</code>.
+</p>
+<p>Tagging commands are music functions, thus they cannot be used to
+filter items that are not music expressions, such as <code>\book</code>
+or <code>\score</code> blocks.
+</p>
+<p>In the following example, we see two versions of a piece of music,
+one showing trills with the usual notation, and one with trills
+explicitly expanded.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">g&#39;</span><span class="m">8.</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">32</span><span class="w"> </span><span class=" -Pitch">d</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;trills</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">8.</span><span class="nb nb-Articulation">\trill</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;expand</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\repeat</span><span class="w"> </span><span class="nb nb-RepeatType">unfold</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">e</span><span class="m">32</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">32</span><span class="w"> </span><span class=" -Pitch">d</span>
+<span class="w"> </span><span class="p">}</span>
+
+<span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;trills</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+<span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;expand</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../d8/lily-53aafc83.ly">
+  <img align="middle"
+       border="0"
+       src="../d8/lily-53aafc83.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Alternatively, it is sometimes easier to exclude sections of
+music.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">g&#39;</span><span class="m">8.</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">32</span><span class="w"> </span><span class=" -Pitch">d</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;trills</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">8.</span><span class="nb nb-Articulation">\trill</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;expand</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\repeat</span><span class="w"> </span><span class="nb nb-RepeatType">unfold</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">e</span><span class="m">32</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">32</span><span class="w"> </span><span class=" -Pitch">d</span>
+<span class="w"> </span><span class="p">}</span>
+
+<span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\removeWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;expand</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+<span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\removeWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;trills</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../a0/lily-03361fa0.ly">
+  <img align="middle"
+       border="0"
+       src="../a0/lily-03361fa0.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="index-_005ccueDuring_002c-and-tags"></span>
+<span id="index-_005cquoteDuring_002c-and-tags"></span>
+<span id="index-_005ctag_002c-and-quoting-music"></span>
+
+<p>If tags mark alternatives that have non-zero duration, the
+alternatives are often conceptually simultaneous.  In this case it
+is best to put the alternatives in a simultaneous music expression
+so that the music expression has the same duration no matter which
+tags are retained.  This is especially important if you are using
+tags in combination with commands like <code>\cueDuring</code>.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">outputTypeTag</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;isScore&quot;</span>
+
+<span class="n n-Lvalue">firstInstrument</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;isPart</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb nb-MusicFunction">\cueDuring</span><span class="w"> </span><span class="s">&quot;quoteSecondInstrument&quot;</span><span class="w"> </span><span class="p">#</span><span class="nv">UP</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">r</span><span class="m">2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;isScore</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">r</span><span class="m">2</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+<span class="w">  </span><span class=" -Pitch">e</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class=" -Pitch">g</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+
+<span class="n n-Lvalue">secondInstrument</span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">r</span><span class="m">2</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\cueDuring</span><span class="w"> </span><span class="s">&quot;quoteFirstInstrument&quot;</span><span class="w"> </span><span class="p">#</span><span class="nv">DOWN</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">r</span><span class="m">2</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+
+<span class="nb nb-MusicFunction">\addQuote</span><span class="w"> </span>quoteFirstInstrument<span class="w"> </span><span class="n n-BackslashReference">\firstInstrument</span>
+<span class="nb nb-MusicFunction">\addQuote</span><span class="w"> </span>quoteSecondInstrument<span class="w"> </span><span class="n n-BackslashReference">\secondInstrument</span>
+
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span><span class="n n-BackslashReference">\outputTypeTag</span><span class="w"> </span><span class="n n-BackslashReference">\firstInstrument</span>
+<span class="p">}</span>
+
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span><span class="n n-BackslashReference">\outputTypeTag</span><span class="w"> </span><span class="n n-BackslashReference">\secondInstrument</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../91/lily-101c5ade.ly">
+  <img align="middle"
+       border="0"
+       src="../91/lily-101c5ade.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Tagged filtering can be applied to articulations, texts, etc., by
+prepending
+</p>
+<div class="example">
+<pre class="example">-\tag #'<var>your-tag</var>
+</pre></div>
+
+<p>to an articulation.  For example, the following defines a note
+with a conditional fingering indication and a note with a
+conditional annotation.
+</p>
+<div class="example">
+<pre class="example">c1-\tag #'finger ^4
+c1-\tag #'warn ^&quot;Watch!&quot;
+</pre></div>
+
+<p>Multiple tags may be placed on expressions with multiple
+<code>\tag</code> entries, or by combining multiple tags into one symbol
+list.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>AA<span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>AB<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>BB<span class="p">,</span>both<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">&lt;&lt;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span>AA<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span>BB<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span>AB<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">&gt;&gt;</span>
+</pre>
+
+<a href="../6f/lily-31eb0d70.ly">
+  <img align="middle"
+       border="0"
+       src="../6f/lily-31eb0d70.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Multiple <code>\removeWithTag</code> filters may be applied to a single
+music expression to remove several differently named tagged
+sections.  Alternatively, you can use a single <code>\removeWithTag</code>
+with a list of tags.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>AA<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>BB<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>CC<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>DD<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\removeWithTag</span><span class="w"> </span>BB<span class="w"> </span><span class="nb nb-MusicFunction">\removeWithTag</span><span class="w"> </span>CC<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\removeWithTag</span><span class="w"> </span>BB<span class="p">,</span>CC<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../ee/lily-61c7486d.ly">
+  <img align="middle"
+       border="0"
+       src="../ee/lily-61c7486d.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Using two or more <code>\keepWithTag</code> filters on a single music
+expression causes <em>all</em> of the tagged sections to be removed,
+which is certainly not what you want: the first filter removes
+everything except the one named, and any subsequent filter removes
+the rest.  Instead, use one <code>\keepWithTag</code> command with a
+list of multiple tags to remove all tagged sections that are not
+specified in that list.  As an example, the following code prints
+music tagged with <var>violinI</var> and <var>violinII</var> but not tagged
+with <var>viola</var> or <var>cello</var>.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>violinI<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>violinII<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>viola<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>cello<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span>violinI<span class="p">,</span>violinII<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../1c/lily-8a74710c.ly">
+  <img align="middle"
+       border="0"
+       src="../1c/lily-8a74710c.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="Using-tag-groups"></span><h4 class="subsubheading"><i>Using tag groups</i></h4>
+
+<span id="index-tag-groups"></span>
+<span id="index-_005ctagGroup"></span>
+
+<p>While <code>\keepWithTag</code> is convenient when dealing with
+<em>one</em> set of alternatives, the removal of music tagged with
+unrelated tags is problematic when using them for more than one
+purpose.  In that case tags can be grouped with <code>\tagGroup</code>.
+The following code
+</p>
+<div class="example">
+<pre class="example">\tagGroup violinI,violinII,viola,cello
+</pre></div>
+
+<p>puts the four tags into a single tag group.  As a result, code
+like
+</p>
+<div class="example">
+<pre class="example">\keepWithTag violinI &hellip;
+</pre></div>
+
+<p>now only shows music tagged from <code>violinI</code>&rsquo;s tag group; any
+music tagged with one of the other tags in the group is removed,
+as the following example demonstrates.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MusicFunction">\tagGroup</span><span class="w"> </span>violinI<span class="p">,</span>violinII
+<span class="nb nb-MusicFunction">\tagGroup</span><span class="w"> </span>original<span class="p">,</span>arranged
+
+<span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>violinI<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="m">4</span><span class="s">^&quot;violinI&quot;</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>violinII<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>original<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">e</span><span class="m">8</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">e</span><span class="m">2.</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>arranged<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>other<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">f</span><span class="s">^&quot;other&quot;</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class=" -Pitch">R</span><span class="m">1</span><span class="s">^&quot;untagged&quot;</span>
+<span class="p">}</span>
+
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span>violinI<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../1d/lily-66f662f9.ly">
+  <img align="middle"
+       border="0"
+       src="../1d/lily-66f662f9.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Note that individual tags cannot be members of more than one tag
+group.
+</p>
+<span id="index-_005ctagGroupRef"></span>
+
+<p>It is possible to modify tag groups.  There is an
+alternative way of defining them using <code>\tagGroupRef</code>
+to be able to reference the tag group later for modification.  The call
+</p>
+<div class="example">
+<pre class="example">tg = \tagGroupRef violinI,violinII
+</pre></div>
+
+<p>is essentially the same as
+</p>
+<div class="example">
+<pre class="example">tg = #'(violinI violinII)
+\tagGroup \tg
+</pre></div>
+
+<p>There are different possibilities to change existing tag groups.
+</p>
+<ul>
+<li><span id="index-_005cresetTagGroups"></span>
+
+</li><li> To undo the effects of every call of <code>\tagGroup</code>
+or <code>\tagGroupRef</code> you can just use <code>\resetTagGroups</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MusicFunction">\tagGroup</span><span class="w"> </span>tagI<span class="p">,</span>tagII
+
+<span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>tagI<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="m">4</span><span class="s">^&quot;tagI&quot;</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>tagII<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">2</span><span class="s">^&quot;tagII&quot;</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>otherI<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">4</span><span class="s">^&quot;otherI&quot;</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>otherII<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">f,</span><span class="m">4</span><span class="s">^&quot;otherII&quot;</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span>tagI<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+
+<span class="n n-BackslashReference">\resetTagGroups</span>
+
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span>tagI<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../b0/lily-35e59bed.ly">
+  <img align="middle"
+       border="0"
+       src="../b0/lily-35e59bed.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="index-_005cresetTagGroup"></span>
+
+</li><li> If you want to reset one specific tag group you have to
+use <code>\resetTagGroup</code> with a given tag group specified
+by all of its tags.  It is handy to use <code>\tagGroupRef</code>
+for the definition of the tag group.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">tgI</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n n-BackslashReference">\tagGroupRef</span><span class="w"> </span>tagI<span class="p">,</span>tagII
+<span class="n n-Lvalue">tgII</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n n-BackslashReference">\tagGroupRef</span><span class="w"> </span>otherI<span class="p">,</span>otherII
+
+<span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>tagI<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="m">4</span><span class="s">^&quot;tagI&quot;</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>tagII<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">2</span><span class="s">^&quot;tagII&quot;</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>otherI<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">4</span><span class="s">^&quot;otherI&quot;</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>otherII<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">f,</span><span class="m">4</span><span class="s">^&quot;otherII&quot;</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>test<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">8</span><span class="s">^&quot;test&quot;</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">e</span><span class="m">2</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">% &#39;otherI&#39;, &#39;otherII&#39; and &#39;test&#39; are not in the same group</span>
+<span class="c1">% as &#39;tagI&#39; so they stay untouched.</span>
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span>tagI<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+
+<span class="n n-BackslashReference">\resetTagGroup</span><span class="w"> </span><span class="n n-BackslashReference">\tgI</span>
+
+<span class="c1">% now only &#39;otherI&#39; and &#39;otherII&#39; are in a tag group,</span>
+<span class="c1">% so &#39;\keepWithTag tagI&#39; filters &#39;tagII&#39; and &#39;test&#39;.</span>
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span>tagI<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../6c/lily-88841b30.ly">
+  <img align="middle"
+       border="0"
+       src="../6c/lily-88841b30.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="index-_005caddToTagGroup"></span>
+<span id="index-_005cremoveFromTagGroup"></span>
+
+</li><li> Another way of modifying an existing tag group is
+to add or remove single tags with the commands
+<code>\addToTagGroup</code> and <code>\removeFromTagGroup</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">tgI</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n n-BackslashReference">\tagGroupRef</span><span class="w"> </span>tagI<span class="p">,</span>tagII
+<span class="n n-Lvalue">tgII</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n n-BackslashReference">\tagGroupRef</span><span class="w"> </span>otherI<span class="p">,</span>otherII
+
+<span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>tagI<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="m">4</span><span class="s">^&quot;tagI&quot;</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>tagII<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">2</span><span class="s">^&quot;tagII&quot;</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>otherI<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">4</span><span class="s">^&quot;otherI&quot;</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>otherII<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">f,</span><span class="m">4</span><span class="s">^&quot;otherII&quot;</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span>test<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">8</span><span class="s">^&quot;test&quot;</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">e</span><span class="m">2</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">% &#39;otherI&#39;, &#39;otherII&#39; and &#39;test&#39; are not in the same group</span>
+<span class="c1">% as &#39;tagI&#39; so they stay untouched.</span>
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span>tagI<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+
+<span class="n n-BackslashReference">\addToTagGroup</span><span class="w"> </span><span class="n n-BackslashReference">\tgI</span><span class="w"> </span>test
+
+<span class="c1">% now &#39;tagI&#39;, &#39;tagII&#39; and &#39;test&#39; are in the same group</span>
+<span class="c1">% so &#39;tagII&#39; and &#39;test&#39; are removed.</span>
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span>tagI<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+
+<span class="n n-BackslashReference">\removeFromTagGroup</span><span class="w"> </span><span class="n n-BackslashReference">\tgII</span><span class="w"> </span>otherII
+<span class="n n-BackslashReference">\addToTagGroup</span><span class="w"> </span><span class="n n-BackslashReference">\tgI</span><span class="w"> </span>otherII
+
+<span class="c1">% now &#39;otherII&#39; is removed from &#39;tgII&#39; and</span>
+<span class="c1">% added to &#39;tgI&#39; so only &#39;otherI&#39; is in its</span>
+<span class="c1">% own tag group and is not filtered.</span>
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span>tagI<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../5a/lily-4c3169dd.ly">
+  <img align="middle"
+       border="0"
+       src="../5a/lily-4c3169dd.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li></ul>
+
+<span id="Prepending-and-appending-to-tagged-music"></span><h4 class="subsubheading">Prepending and appending to tagged music</h4>
+
+<span id="index-_005cpushToTag"></span>
+<span id="index-_005cappendToTag"></span>
+<span id="index-splicing_002c-into-tagged-music"></span>
+
+<p>Sometimes you want to splice some music at a particular place in
+an existing music expression.  You can use <code>\pushToTag</code> and
+<code>\appendToTag</code> to add material at the front and end of
+various music constructs, respectively.  The supported places are
+</p>
+<blockquote class="indentedblock">
+<dl compact="compact">
+<dt><span>sequential and simultaneous music</span></dt>
+<dd><p>If you tag an entire <code>{&hellip;}</code> or <code>&lt;&lt;&hellip;&gt;&gt;</code>
+construct, you can add music expressions at its front or back.
+</p></dd>
+<dt><span>chords</span></dt>
+<dd><p>If you tag a chord <code>&lt;&hellip;&gt;</code>, you can either add notes at
+its front or back, or articulations for the whole chord.
+</p></dd>
+<dt><span>notes and rests</span></dt>
+<dd><p>If you tag a note (also inside of a chord) or a rest, you can add
+articulations to the front or back of its existing articulations.
+Note that to add other notes, you have to put the note inside of a
+chord and tag the <em>chord</em> instead.
+</p>
+<p>Also note that you cannot tag a single articulation and add to it
+since it isn&rsquo;t inherently a list.  Instead, tag the note.
+</p></dd>
+</dl>
+</blockquote>
+
+<p>Both commands get a tag, the material to splice in at every
+occurrence of the tag, and the tagged expression.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class=" -Pitch">c&#39;&#39;</span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\pushToTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class=" -Pitch">c&#39;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\pushToTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class=" -Pitch">e&#39;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\pushToTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\appendToTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class=" -Pitch">c&#39;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\appendToTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class=" -Pitch">e&#39;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\appendToTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../83/lily-4265fc79.ly">
+  <img align="middle"
+       border="0"
+       src="../83/lily-4265fc79.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+
+<span id="Replace-tagged-music"></span><h4 class="subsubheading">Replace tagged music</h4>
+
+<span id="index-_005creplaceWithTag"></span>
+
+<p>It is possible to replace tagged music with other music.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class=" -Pitch">e&#39;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="n n-BackslashReference">\replaceWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../e7/lily-9bec7437.ly">
+  <img align="middle"
+       border="0"
+       src="../e7/lily-9bec7437.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Keep in mind that the tag is gone after the replacement,
+so you can only replace it once.  Filtering is also not
+possible after replacement.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class=" -Pitch">e&#39;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\removeWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class="c1">% does nothing because tag is replaced</span>
+<span class="w">  </span><span class="n n-BackslashReference">\replaceWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;here</span><span class="w"> </span><span class=" -Pitch">c&#39;</span>
+<span class="w">  </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../b5/lily-485d517a.ly">
+  <img align="middle"
+       border="0"
+       src="../b5/lily-485d517a.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+
+<span id="Tagging-within-markups"></span><h4 class="subsubheading">Tagging within markups</h4>
+
+<span id="index-_005ckeep_002dwith_002dtag"></span>
+<span id="index-_005cremove_002dwith_002dtag"></span>
+<span id="index-_005cpush_002dto_002dtag"></span>
+<span id="index-_005cappend_002dto_002dtag"></span>
+<span id="index-_005creplace_002dwith_002dtag"></span>
+
+<p>The <code>\tag</code> command can also be used within <code>\markup</code>.
+LilyPond provides markup commands <code>\keep-with-tag</code>,
+<code>\remove-with-tag</code>, <code>\push-to-tag</code>, <code>\append-to-tag</code>
+and <code>\replace-with-tag</code> in analogy to the corresponding commands
+for music expressions.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">test</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;AA</span><span class="w"> </span><span class=" -Pitch">a</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;BB</span><span class="w"> </span><span class=" -Pitch">b</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;CC</span><span class="w"> </span><span class=" -Pitch">c</span>
+<span class="p">}</span>
+
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\keep-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;BB</span><span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\remove-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;BB</span><span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\push-to-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;CC</span><span class="w"> </span>pre<span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\append-to-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;CC</span><span class="w"> </span>post<span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n n-BackslashReference">\replace-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;CC</span><span class="w"> </span>sub<span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+</pre>
+
+<a href="../13/lily-b50a1e00.ly">
+  <img align="middle"
+       border="0"
+       src="../13/lily-b50a1e00.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Music commands like <code>\keepWithTag</code> and <code>\removeWithTag</code>
+filter tags in <code>\markup</code> parts in the related music, too.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="nb nb-MarkupCommand">^\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;one</span><span class="w"> </span>first<span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;two</span><span class="w"> </span>second<span class="w"> </span>part<span class="w"> </span><span class="p">}</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;one</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\removeWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;one</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../47/lily-f5e90dc0.ly">
+  <img align="middle"
+       border="0"
+       src="../47/lily-f5e90dc0.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="index-_005cpushToTagMarkup"></span>
+<span id="index-_005cappendToTagMarkup"></span>
+<span id="index-_005creplaceWithTagMarkup"></span>
+
+<p>It is also possible to push and append something to the
+<code>\markup</code> of musical objects.  However, we cannot use
+<code>\pushToTag</code>, <code>\appendToTag</code> or <code>\replaceWithTag</code>
+because they only insert some music, so we need commands like
+<code>\pushToTagMarkup</code>, <code>\appendToTagMarkup</code> or
+<code>\replaceWithTagMarkup</code> to insert markup.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="nb nb-MarkupCommand">^\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;part</span><span class="w"> </span>part<span class="w"> </span><span class="p">}</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\pushToTagMarkup</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;part</span><span class="w"> </span><span class="s">&quot;great&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\appendToTagMarkup</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;part</span><span class="w"> </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>is<span class="w"> </span>also<span class="w"> </span>great<span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="n n-BackslashReference">\replaceWithTagMarkup</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;part</span><span class="w"> </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>cool<span class="w"> </span>substitution<span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../c0/lily-a0abb052.ly">
+  <img align="middle"
+       border="0"
+       src="../c0/lily-a0abb052.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>The filtering of tags also works for music embedded within
+<code>\score</code> blocks in markup commands.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span><span class="m">2</span><span class="nb nb-MarkupCommand">^\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;first</span><span class="w"> </span>first<span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;second</span><span class="w"> </span>second<span class="w"> </span><span class="p">}</span><span class="w"> </span><span class=" -Pitch">c</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;first</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;second</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\keep-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;first</span><span class="w"> </span><span class="k">\score</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n n-BackslashReference">\music</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\remove-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;first</span><span class="w"> </span><span class="k">\score</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n n-BackslashReference">\music</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../e7/lily-a4e65242.ly">
+  <img align="middle"
+       border="0"
+       src="../e7/lily-a4e65242.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="index-_005ctag_002dlist"></span>
+
+<p>Tagging lists of markup need special attention.  While the filter
+functions work as expected, commands like <code>\push-to-tag</code>,
+<code>\append-to-tag</code> and <code>\replace-with-tag</code> do not.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\remove-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;test</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;test</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\push-to-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;test</span><span class="w"> </span><span class="s">&quot;twice&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;test</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\replace-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;test</span><span class="w"> </span><span class="s">&quot;twice&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;test</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../a7/lily-b610bb8e.ly">
+  <img align="middle"
+       border="0"
+       src="../a7/lily-b610bb8e.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>The reason for this behavior is that LilyPond resolves
+</p>
+<div class="example">
+<pre class="example">\tag #'test { b c }
+</pre></div>
+
+<p>internally to
+</p>
+<div class="example">
+<pre class="example">\tag #'test b
+\tag #'test c
+</pre></div>
+
+<p>and thus the given text is inserted twice.
+For tagging a list to insert or append something
+before or after the whole list the command
+<code>\tag-list</code> should be used.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\push-to-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;test</span><span class="w"> </span><span class="s">&quot;once&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="nb nb-MarkupCommand">\tag-list</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;test</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../10/lily-69909841.ly">
+  <img align="middle"
+       border="0"
+       src="../10/lily-69909841.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="See-also-229"></span><h4 class="subheading">See also</h4>
+<p>Learning Manual:
+<a href="../learning/organizing-pieces-with-variables.html">Organizing pieces with variables</a>.
+</p>
+<p>Notation Reference:
+<a href="multiple-voices.html#automatic-part-combining">Automatic part combining</a>,
+<a href="including-lilypond-files.html">Including LilyPond files</a>.
+</p>
+<span id="Known-issues-and-warnings-75"></span><h4 class="subheading">Known issues and warnings</h4>
+<p>Calling <code>\relative</code> on a music expression obtained by
+filtering music through <code>\keepWithTag</code> or
+<code>\removeWithTag</code> might cause the octave relations to change,
+as only the pitches actually remaining in the filtered expression
+are considered.  Applying <code>\relative</code> first, before
+<code>\keepWithTag</code> or <code>\removeWithTag</code>, avoids this danger
+as <code>\relative</code> then acts on all the pitches as input.
+</p>
+<p>Even when using tag groups, commands like <code>\keepWithTag</code> are
+not commutative.  Code like
+</p>
+<div class="example">
+<pre class="example">\keepWithTag violinI,original \someMusic
+</pre></div>
+
+<p>does not produce the same output as
+</p>
+<div class="example">
+<pre class="example">\keepWithTag violinI \keepWithTag original \someMusic
+</pre></div>
+
+
+<hr>
+</div>
+<div class="subsection" id="using-global-settings">
+<table class="nav_table">
+<tr><td align="left">[<a href="working-with-input-files.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Working with input files </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="notation_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="controlling-output.html" title="Next chapter"> Controlling output &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#using-tags" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Using tags </a>]</td><td align="center">[<a href="#different-editions-from-one-source" title="Up section" accesskey="u" rel="up">  Up: Different editions from one source </a>]</td><td align="right">[<a href="using-music-functions.html" title="Next section in reading order" accesskey="n" rel="next"> Using music functions &gt; </a>]</td></tr>
+</table>
+<span id="Using-global-settings"></span><h4 class="subsection">22.2.3 Using global settings</h4>
+
+<span id="index-include-settings"></span>
+
+<p>Global settings can be included from a separate file:
+</p>
+<div class="example">
+<pre class="example">lilypond -dinclude-settings=MY_SETTINGS.ly MY_SCORE.ly
+</pre></div>
+
+<p>Groups of settings such as page size, font or type face can be
+stored in separate files and loaded with several
+<code>-dinclude-settings</code> options.  This allows different editions
+from the same score as well as standard settings to be applied to
+many scores, simply by specifying the proper settings file.
+</p>
+<p>This technique also works well with the use of style sheets, as
+discussed in <a href="../learning/style-sheets.html">Style sheets</a>.
+</p>
+<span id="See-also-230"></span><h4 class="subheading">See also</h4>
+<p>Learning Manual:
+<a href="../learning/organizing-pieces-with-variables.html">Organizing pieces with variables</a>,
+<a href="../learning/style-sheets.html">Style sheets</a>.
+</p>
+<p>Notation Reference:
+<a href="including-lilypond-files.html">Including LilyPond files</a>.
+</p>
+
+</div>
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="notation_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.html" title="Index" rel="index">Index</a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="different-editions-from-one-source.ca.html">Català</a>, <a href="different-editions-from-one-source.de.html">Deutsch</a>, <a href="different-editions-from-one-source.es.html">Español</a>, <a href="different-editions-from-one-source.fr.html">Français</a>, <a href="different-editions-from-one-source.it.html">Italiano</a>, <a href="different-editions-from-one-source.ja.html">日本語</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.html" title="Documentation Index">
+    &lt;&lt; Back to Documentation Index
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.html#top" title="Cover (top) of document">
+    LilyPond Notation Reference  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+<ul class="no-bullet">
+<li><a id="toc-Musical-notation" href="pitches.html#Musical-notation">Musical notation</a>
+<ul class="no-bullet">
+  <li><a id="toc-Pitches" href="pitches.html">1 Pitches</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Writing-pitches" href="writing-pitches.html">1.1 Writing pitches</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Absolute-octave-entry" href="writing-pitches.html#absolute-octave-entry">1.1.1 Absolute octave entry</a></li>
+      <li><a id="toc-Relative-octave-entry" href="writing-pitches.html#relative-octave-entry">1.1.2 Relative octave entry</a></li>
+      <li><a id="toc-Accidentals" href="writing-pitches.html#accidentals">1.1.3 Accidentals</a></li>
+      <li><a id="toc-Approximate-pitches" href="writing-pitches.html#approximate-pitches">1.1.4 Approximate pitches</a></li>
+      <li><a id="toc-Note-names-in-other-languages" href="writing-pitches.html#note-names-in-other-languages">1.1.5 Note names in other languages</a></li>
+    </ul></li>
+    <li><a id="toc-Changing-multiple-pitches" href="changing-multiple-pitches.html">1.2 Changing multiple pitches</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Octave-checks" href="changing-multiple-pitches.html#octave-checks">1.2.1 Octave checks</a></li>
+      <li><a id="toc-Transpose" href="changing-multiple-pitches.html#transpose">1.2.2 Transpose</a></li>
+      <li><a id="toc-Inversion" href="changing-multiple-pitches.html#inversion">1.2.3 Inversion</a></li>
+      <li><a id="toc-Retrograde" href="changing-multiple-pitches.html#retrograde">1.2.4 Retrograde</a></li>
+      <li><a id="toc-Modal-transformations" href="changing-multiple-pitches.html#modal-transformations">1.2.5 Modal transformations</a></li>
+    </ul></li>
+    <li><a id="toc-Displaying-pitches" href="displaying-pitches.html">1.3 Displaying pitches</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Clef" href="displaying-pitches.html#clef">1.3.1 Clef</a></li>
+      <li><a id="toc-Key-signature" href="displaying-pitches.html#key-signature">1.3.2 Key signature</a></li>
+      <li><a id="toc-Ottava-brackets" href="displaying-pitches.html#ottava-brackets">1.3.3 Ottava brackets</a></li>
+      <li><a id="toc-Instrument-transpositions" href="displaying-pitches.html#instrument-transpositions">1.3.4 Instrument transpositions</a></li>
+      <li><a id="toc-Automatic-accidentals" href="displaying-pitches.html#automatic-accidentals">1.3.5 Automatic accidentals</a></li>
+      <li><a id="toc-Alternate-accidental-glyphs" href="displaying-pitches.html#alternate-accidental-glyphs">1.3.6 Alternate accidental glyphs</a></li>
+      <li><a id="toc-Ambitus" href="displaying-pitches.html#ambitus">1.3.7 Ambitus</a></li>
+    </ul></li>
+    <li><a id="toc-Note-heads" href="note-heads.html">1.4 Note heads</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Special-note-heads" href="note-heads.html#special-note-heads">1.4.1 Special note heads</a></li>
+      <li><a id="toc-Easy-notation-note-heads" href="note-heads.html#easy-notation-note-heads">1.4.2 Easy notation note heads</a></li>
+      <li><a id="toc-Shape-note-heads" href="note-heads.html#shape-note-heads">1.4.3 Shape note heads</a></li>
+      <li><a id="toc-Improvisation" href="note-heads.html#improvisation">1.4.4 Improvisation</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Rhythms" href="rhythms.html">2 Rhythms</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Writing-rhythms" href="writing-rhythms.html">2.1 Writing rhythms</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Durations" href="writing-rhythms.html#durations">2.1.1 Durations</a></li>
+      <li><a id="toc-Tuplets" href="writing-rhythms.html#tuplets">2.1.2 Tuplets</a></li>
+      <li><a id="toc-Scaling-durations" href="writing-rhythms.html#scaling-durations">2.1.3 Scaling durations</a></li>
+      <li><a id="toc-Ties" href="writing-rhythms.html#ties">2.1.4 Ties</a></li>
+    </ul></li>
+    <li><a id="toc-Writing-rests" href="writing-rests.html">2.2 Writing rests</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Rests" href="writing-rests.html">2.2.1 Rests</a></li>
+      <li><a id="toc-Invisible-rests" href="writing-rests.html#invisible-rests">2.2.2 Invisible rests</a></li>
+      <li><a id="toc-Full-measure-rests" href="writing-rests.html#full-measure-rests">2.2.3 Full measure rests</a></li>
+      <li><a id="toc-Caesuras" href="writing-rests.html#caesuras">2.2.4 Caesuras</a></li>
+    </ul></li>
+    <li><a id="toc-Displaying-rhythms" href="displaying-rhythms.html">2.3 Displaying rhythms</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Time-signature" href="displaying-rhythms.html#time-signature">2.3.1 Time signature</a></li>
+      <li><a id="toc-Metronome-marks" href="displaying-rhythms.html#metronome-marks">2.3.2 Metronome marks</a></li>
+      <li><a id="toc-Upbeats" href="displaying-rhythms.html#upbeats">2.3.3 Upbeats</a></li>
+      <li><a id="toc-Unmetered-music" href="displaying-rhythms.html#unmetered-music">2.3.4 Unmetered music</a></li>
+      <li><a id="toc-Polymetric-notation" href="displaying-rhythms.html#polymetric-notation">2.3.5 Polymetric notation</a></li>
+      <li><a id="toc-Automatic-note-splitting" href="displaying-rhythms.html#automatic-note-splitting">2.3.6 Automatic note splitting</a></li>
+      <li><a id="toc-Showing-melody-rhythms" href="displaying-rhythms.html#showing-melody-rhythms">2.3.7 Showing melody rhythms</a></li>
+    </ul></li>
+    <li><a id="toc-Beams" href="beams.html">2.4 Beams</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Automatic-beams" href="beams.html#automatic-beams">2.4.1 Automatic beams</a></li>
+      <li><a id="toc-Setting-automatic-beam-behavior" href="beams.html#setting-automatic-beam-behavior">2.4.2 Setting automatic beam behavior</a></li>
+      <li><a id="toc-Manual-beams" href="beams.html#manual-beams">2.4.3 Manual beams</a></li>
+      <li><a id="toc-Feathered-beams" href="beams.html#feathered-beams">2.4.4 Feathered beams</a></li>
+      <li><a id="toc-Slashed-beams" href="beams.html#slashed-beams">2.4.5 Slashed beams</a></li>
+    </ul></li>
+    <li><a id="toc-Bars" href="bars.html">2.5 Bars</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Bar-lines" href="bars.html#bar-lines">2.5.1 Bar lines</a></li>
+      <li><a id="toc-Automatic-bar-lines" href="bars.html#automatic-bar-lines">2.5.2 Automatic bar lines</a></li>
+      <li><a id="toc-Bar-numbers" href="bars.html#bar-numbers">2.5.3 Bar numbers</a></li>
+      <li><a id="toc-Bar-and-bar-number-checks" href="bars.html#bar-and-bar-number-checks">2.5.4 Bar and bar number checks</a></li>
+      <li><a id="toc-Rehearsal-marks" href="bars.html#rehearsal-marks">2.5.5 Rehearsal marks</a></li>
+      <li><a id="toc-Measure-counts" href="bars.html#measure-counts">2.5.6 Measure counts</a></li>
+      <li><a id="toc-Section-divisions" href="bars.html#section-divisions">2.5.7 Section divisions</a></li>
+    </ul></li>
+    <li><a id="toc-Special-rhythmic-concerns" href="special-rhythmic-concerns.html">2.6 Special rhythmic concerns</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Grace-notes" href="special-rhythmic-concerns.html#grace-notes">2.6.1 Grace notes</a></li>
+      <li><a id="toc-Aligning-to-cadenzas" href="special-rhythmic-concerns.html#aligning-to-cadenzas">2.6.2 Aligning to cadenzas</a></li>
+      <li><a id="toc-Time-administration" href="special-rhythmic-concerns.html#time-administration">2.6.3 Time administration</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Expressive-marks" href="expressive-marks.html">3 Expressive marks</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Expressive-marks-attached-to-notes" href="expressive-marks-attached-to-notes.html">3.1 Expressive marks attached to notes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Articulations-and-ornamentations" href="expressive-marks-attached-to-notes.html#articulations-and-ornamentations">3.1.1 Articulations and ornamentations</a></li>
+      <li><a id="toc-Dynamics" href="expressive-marks-attached-to-notes.html#dynamics">3.1.2 Dynamics</a></li>
+      <li><a id="toc-New-dynamic-marks" href="expressive-marks-attached-to-notes.html#new-dynamic-marks">3.1.3 New dynamic marks</a></li>
+    </ul></li>
+    <li><a id="toc-Expressive-marks-as-curves" href="expressive-marks-as-curves.html">3.2 Expressive marks as curves</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Slurs" href="expressive-marks-as-curves.html#slurs">3.2.1 Slurs</a></li>
+      <li><a id="toc-Phrasing-slurs" href="expressive-marks-as-curves.html#phrasing-slurs">3.2.2 Phrasing slurs</a></li>
+      <li><a id="toc-Breath-marks" href="expressive-marks-as-curves.html#breath-marks">3.2.3 Breath marks</a></li>
+      <li><a id="toc-Falls-and-doits" href="expressive-marks-as-curves.html#falls-and-doits">3.2.4 Falls and doits</a></li>
+    </ul></li>
+    <li><a id="toc-Expressive-marks-as-lines" href="expressive-marks-as-lines.html">3.3 Expressive marks as lines</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Glissando" href="expressive-marks-as-lines.html#glissando">3.3.1 Glissando</a></li>
+      <li><a id="toc-Arpeggio" href="expressive-marks-as-lines.html#arpeggio">3.3.2 Arpeggio</a></li>
+      <li><a id="toc-Trills" href="expressive-marks-as-lines.html#trills">3.3.3 Trills</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Repeats" href="repeats.html">4 Repeats</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Long-repeats" href="long-repeats.html">4.1 Long repeats</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Written_002dout-repeats" href="long-repeats.html#written_002dout-repeats">4.1.1 Written-out repeats</a></li>
+      <li><a id="toc-Simple-repeats" href="long-repeats.html#simple-repeats">4.1.2 Simple repeats</a></li>
+      <li><a id="toc-Alternative-endings" href="long-repeats.html#alternative-endings">4.1.3 Alternative endings</a></li>
+      <li><a id="toc-Other-variation-in-repeated-sections" href="long-repeats.html#other-variation-in-repeated-sections">4.1.4 Other variation in repeated sections</a></li>
+      <li><a id="toc-Al_002dfine-repeats" href="long-repeats.html#al_002dfine-repeats">4.1.5 Al-fine repeats</a></li>
+      <li><a id="toc-Segno-repeat-structure" href="long-repeats.html#segno-repeat-structure">4.1.6 Segno repeat structure</a></li>
+      <li><a id="toc-Segno-repeat-appearance" href="long-repeats.html#segno-repeat-appearance">4.1.7 Segno repeat appearance</a></li>
+      <li><a id="toc-Manual-repeat-marks" href="long-repeats.html#manual-repeat-marks">4.1.8 Manual repeat marks</a></li>
+    </ul></li>
+    <li><a id="toc-Short-repeats" href="short-repeats.html">4.2 Short repeats</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Percent-repeats" href="short-repeats.html#percent-repeats">4.2.1 Percent repeats</a></li>
+      <li><a id="toc-Tremolo-repeats" href="short-repeats.html#tremolo-repeats">4.2.2 Tremolo repeats</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Simultaneous-notes" href="simultaneous-notes.html">5 Simultaneous notes</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Single-voice" href="single-voice.html">5.1 Single voice</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Chorded-notes" href="single-voice.html#chorded-notes">5.1.1 Chorded notes</a></li>
+      <li><a id="toc-Chord-repetition" href="single-voice.html#chord-repetition">5.1.2 Chord repetition</a></li>
+      <li><a id="toc-Simultaneous-expressions" href="single-voice.html#simultaneous-expressions">5.1.3 Simultaneous expressions</a></li>
+      <li><a id="toc-Clusters" href="single-voice.html#clusters">5.1.4 Clusters</a></li>
+    </ul></li>
+    <li><a id="toc-Multiple-voices" href="multiple-voices.html">5.2 Multiple voices</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Single_002dstaff-polyphony" href="multiple-voices.html#single_002dstaff-polyphony">5.2.1 Single-staff polyphony</a></li>
+      <li><a id="toc-Voice-styles" href="multiple-voices.html#voice-styles">5.2.2 Voice styles</a></li>
+      <li><a id="toc-Collision-resolution" href="multiple-voices.html#collision-resolution">5.2.3 Collision resolution</a></li>
+      <li><a id="toc-Merging-rests" href="multiple-voices.html#merging-rests">5.2.4 Merging rests</a></li>
+      <li><a id="toc-Automatic-part-combining" href="multiple-voices.html#automatic-part-combining">5.2.5 Automatic part combining</a></li>
+      <li><a id="toc-Writing-music-in-parallel" href="multiple-voices.html#writing-music-in-parallel">5.2.6 Writing music in parallel</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Staff-notation" href="staff-notation.html">6 Staff notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Displaying-staves" href="displaying-staves.html">6.1 Displaying staves</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Instantiating-new-staves" href="displaying-staves.html#instantiating-new-staves">6.1.1 Instantiating new staves</a></li>
+      <li><a id="toc-Grouping-staves" href="displaying-staves.html#grouping-staves">6.1.2 Grouping staves</a></li>
+      <li><a id="toc-Nested-staff-groups" href="displaying-staves.html#nested-staff-groups">6.1.3 Nested staff groups</a></li>
+      <li><a id="toc-Separating-systems" href="displaying-staves.html#separating-systems">6.1.4 Separating systems</a></li>
+    </ul></li>
+    <li><a id="toc-Modifying-single-staves" href="modifying-single-staves.html">6.2 Modifying single staves</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Staff-symbol" href="modifying-single-staves.html#staff-symbol">6.2.1 Staff symbol</a></li>
+      <li><a id="toc-Ossia-staves" href="modifying-single-staves.html#ossia-staves">6.2.2 Ossia staves</a></li>
+      <li><a id="toc-Hiding-staves" href="modifying-single-staves.html#hiding-staves">6.2.3 Hiding staves</a></li>
+    </ul></li>
+    <li><a id="toc-Writing-parts" href="writing-parts.html">6.3 Writing parts</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Instrument-names" href="writing-parts.html#instrument-names">6.3.1 Instrument names</a></li>
+      <li><a id="toc-Quoting-other-voices" href="writing-parts.html#quoting-other-voices">6.3.2 Quoting other voices</a></li>
+      <li><a id="toc-Formatting-cue-notes" href="writing-parts.html#formatting-cue-notes">6.3.3 Formatting cue notes</a></li>
+      <li><a id="toc-Compressing-empty-measures" href="writing-parts.html#compressing-empty-measures">6.3.4 Compressing empty measures</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Editorial-annotations" href="editorial-annotations.html">7 Editorial annotations</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Inside-the-staff" href="inside-the-staff.html">7.1 Inside the staff</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Selecting-notation-font-size" href="inside-the-staff.html#selecting-notation-font-size">7.1.1 Selecting notation font size</a></li>
+      <li><a id="toc-Fingering-instructions" href="inside-the-staff.html#fingering-instructions">7.1.2 Fingering instructions</a></li>
+      <li><a id="toc-Gliding-fingers" href="inside-the-staff.html#gliding-fingers">7.1.3 Gliding fingers</a></li>
+      <li><a id="toc-Hidden-notes" href="inside-the-staff.html#hidden-notes">7.1.4 Hidden notes</a></li>
+      <li><a id="toc-Coloring-objects" href="inside-the-staff.html#coloring-objects">7.1.5 Coloring objects</a></li>
+      <li><a id="toc-Staff-highlights" href="inside-the-staff.html#staff-highlights">7.1.6 Staff highlights</a></li>
+      <li><a id="toc-Brackets-for-optional-material" href="inside-the-staff.html#brackets-for-optional-material">7.1.7 Brackets for optional material</a></li>
+      <li><a id="toc-Parentheses" href="inside-the-staff.html#parentheses">7.1.8 Parentheses</a></li>
+      <li><a id="toc-Stems" href="inside-the-staff.html#stems">7.1.9 Stems</a></li>
+    </ul></li>
+    <li><a id="toc-Outside-the-staff" href="outside-the-staff.html">7.2 Outside the staff</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Note-names" href="outside-the-staff.html#note-names">7.2.1 Note names</a></li>
+      <li><a id="toc-Balloon-help" href="outside-the-staff.html#balloon-help">7.2.2 Balloon help</a></li>
+      <li><a id="toc-Grid-lines" href="outside-the-staff.html#grid-lines">7.2.3 Grid lines</a></li>
+      <li><a id="toc-Analysis-brackets" href="outside-the-staff.html#analysis-brackets">7.2.4 Analysis brackets</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Text" href="text.html">8 Text</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Writing-text" href="writing-text.html">8.1 Writing text</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Text-objects-overview" href="writing-text.html#text-objects-overview">8.1.1 Text objects overview</a></li>
+      <li><a id="toc-Text-scripts" href="writing-text.html#text-scripts">8.1.2 Text scripts</a></li>
+      <li><a id="toc-Text-spanners" href="writing-text.html#text-spanners">8.1.3 Text spanners</a></li>
+      <li><a id="toc-Section-labels" href="writing-text.html#section-labels">8.1.4 Section labels</a></li>
+      <li><a id="toc-Text-marks" href="writing-text.html#text-marks">8.1.5 Text marks</a></li>
+      <li><a id="toc-Separate-text" href="writing-text.html#separate-text">8.1.6 Separate text</a></li>
+    </ul></li>
+    <li><a id="toc-Formatting-text" href="formatting-text.html">8.2 Formatting text</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Text-markup-introduction" href="formatting-text.html#text-markup-introduction">8.2.1 Text markup introduction</a></li>
+      <li><a id="toc-Selecting-font-and-font-size" href="formatting-text.html#selecting-font-and-font-size">8.2.2 Selecting font and font size</a></li>
+      <li><a id="toc-Text-alignment" href="formatting-text.html#text-alignment">8.2.3 Text alignment</a></li>
+      <li><a id="toc-Graphic-notation-inside-markup" href="formatting-text.html#graphic-notation-inside-markup">8.2.4 Graphic notation inside markup</a></li>
+      <li><a id="toc-Music-notation-inside-markup" href="formatting-text.html#music-notation-inside-markup">8.2.5 Music notation inside markup</a></li>
+    </ul></li>
+    <li><a id="toc-Fonts" href="fonts.html">8.3 Fonts</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Unsupported-font-formats" href="fonts.html#unsupported-font-formats">8.3.1 Unsupported font formats</a></li>
+      <li><a id="toc-Finding-fonts" href="fonts.html#finding-fonts">8.3.2 Finding fonts</a></li>
+      <li><a id="toc-Font-families" href="fonts.html#font-families">8.3.3 Font families</a></li>
+      <li><a id="toc-Font-features" href="fonts.html#font-features">8.3.4 Font features</a></li>
+      <li><a id="toc-Changing-fonts" href="fonts.html#changing-fonts">8.3.5 Changing fonts</a></li>
+    </ul></li>
+  </ul></li>
+</ul></li>
+<li><a id="toc-Specialist-notation" href="vocal-music.html#Specialist-notation">Specialist notation</a>
+<ul class="no-bullet">
+  <li><a id="toc-Vocal-music" href="vocal-music.html">9 Vocal music</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Common-notation-for-vocal-music" href="common-notation-for-vocal-music.html">9.1 Common notation for vocal music</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-vocal-music" href="common-notation-for-vocal-music.html#references-for-vocal-music">9.1.1 References for vocal music</a></li>
+      <li><a id="toc-Entering-lyrics" href="common-notation-for-vocal-music.html#entering-lyrics">9.1.2 Entering lyrics</a></li>
+      <li><a id="toc-Aligning-lyrics-to-a-melody" href="common-notation-for-vocal-music.html#aligning-lyrics-to-a-melody">9.1.3 Aligning lyrics to a melody</a></li>
+      <li><a id="toc-Automatic-syllable-durations" href="common-notation-for-vocal-music.html#automatic-syllable-durations">9.1.4 Automatic syllable durations</a></li>
+      <li><a id="toc-Manual-syllable-durations" href="common-notation-for-vocal-music.html#manual-syllable-durations">9.1.5 Manual syllable durations</a></li>
+      <li><a id="toc-Multiple-syllables-to-one-note" href="common-notation-for-vocal-music.html#multiple-syllables-to-one-note">9.1.6 Multiple syllables to one note</a></li>
+      <li><a id="toc-Multiple-notes-to-one-syllable" href="common-notation-for-vocal-music.html#multiple-notes-to-one-syllable">9.1.7 Multiple notes to one syllable</a></li>
+      <li><a id="toc-Extenders-and-hyphens" href="common-notation-for-vocal-music.html#extenders-and-hyphens">9.1.8 Extenders and hyphens</a></li>
+      <li><a id="toc-Gradual-changes-of-vowel" href="common-notation-for-vocal-music.html#gradual-changes-of-vowel">9.1.9 Gradual changes of vowel</a></li>
+    </ul></li>
+    <li><a id="toc-Techniques-specific-to-lyrics" href="techniques-specific-to-lyrics.html">9.2 Techniques specific to lyrics</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Working-with-lyrics-and-variables" href="techniques-specific-to-lyrics.html#working-with-lyrics-and-variables">9.2.1 Working with lyrics and variables</a></li>
+      <li><a id="toc-Placing-lyrics-vertically" href="techniques-specific-to-lyrics.html#placing-lyrics-vertically">9.2.2 Placing lyrics vertically</a></li>
+      <li><a id="toc-Placing-syllables-horizontally" href="techniques-specific-to-lyrics.html#placing-syllables-horizontally">9.2.3 Placing syllables horizontally</a></li>
+      <li><a id="toc-Lyrics-and-repeats" href="techniques-specific-to-lyrics.html#lyrics-and-repeats">9.2.4 Lyrics and repeats</a></li>
+      <li><a id="toc-Divisi-lyrics" href="techniques-specific-to-lyrics.html#divisi-lyrics">9.2.5 Divisi lyrics</a></li>
+      <li><a id="toc-Polyphony-with-shared-lyrics" href="techniques-specific-to-lyrics.html#polyphony-with-shared-lyrics">9.2.6 Polyphony with shared lyrics</a></li>
+    </ul></li>
+    <li><a id="toc-Stanzas" href="stanzas.html">9.3 Stanzas</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Adding-stanza-numbers" href="stanzas.html#adding-stanza-numbers">9.3.1 Adding stanza numbers</a></li>
+      <li><a id="toc-Adding-dynamics-marks-to-stanzas" href="stanzas.html#adding-dynamics-marks-to-stanzas">9.3.2 Adding dynamics marks to stanzas</a></li>
+      <li><a id="toc-Adding-singers_0027-names-to-stanzas" href="stanzas.html#adding-singers_0027-names-to-stanzas">9.3.3 Adding singers&rsquo; names to stanzas</a></li>
+      <li><a id="toc-Stanzas-with-different-rhythms" href="stanzas.html#stanzas-with-different-rhythms">9.3.4 Stanzas with different rhythms</a></li>
+      <li><a id="toc-Printing-stanzas-at-the-end" href="stanzas.html#printing-stanzas-at-the-end">9.3.5 Printing stanzas at the end</a></li>
+      <li><a id="toc-Printing-stanzas-at-the-end-in-multiple-columns" href="stanzas.html#printing-stanzas-at-the-end-in-multiple-columns">9.3.6 Printing stanzas at the end in multiple columns</a></li>
+    </ul></li>
+    <li><a id="toc-Songs" href="songs.html">9.4 Songs</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-songs" href="songs.html#references-for-songs">9.4.1 References for songs</a></li>
+      <li><a id="toc-Lead-sheets" href="songs.html#lead-sheets">9.4.2 Lead sheets</a></li>
+    </ul></li>
+    <li><a id="toc-Choral" href="choral.html">9.5 Choral</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-choral" href="choral.html#references-for-choral">9.5.1 References for choral</a></li>
+      <li><a id="toc-Score-layouts-for-choral" href="choral.html#score-layouts-for-choral">9.5.2 Score layouts for choral</a></li>
+    </ul></li>
+    <li><a id="toc-Opera-and-stage-musicals" href="opera-and-stage-musicals.html">9.6 Opera and stage musicals</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-opera-and-stage-musicals" href="opera-and-stage-musicals.html#references-for-opera-and-stage-musicals">9.6.1 References for opera and stage musicals</a></li>
+      <li><a id="toc-Character-names" href="opera-and-stage-musicals.html#character-names">9.6.2 Character names</a></li>
+      <li><a id="toc-Musical-cues" href="opera-and-stage-musicals.html#musical-cues">9.6.3 Musical cues</a></li>
+      <li><a id="toc-Spoken-music" href="opera-and-stage-musicals.html#spoken-music">9.6.4 Spoken music</a></li>
+      <li><a id="toc-Dialogue-over-music" href="opera-and-stage-musicals.html#dialogue-over-music">9.6.5 Dialogue over music</a></li>
+    </ul></li>
+    <li><a id="toc-Chants-psalms-and-hymns" href="chants-psalms-and-hymns.html">9.7 Chants psalms and hymns</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-chants-and-psalms" href="chants-psalms-and-hymns.html#references-for-chants-and-psalms">9.7.1 References for chants and psalms</a></li>
+      <li><a id="toc-Setting-a-chant" href="chants-psalms-and-hymns.html#setting-a-chant">9.7.2 Setting a chant</a></li>
+      <li><a id="toc-Pointing-a-psalm" href="chants-psalms-and-hymns.html#pointing-a-psalm">9.7.3 Pointing a psalm</a></li>
+      <li><a id="toc-Phrase-bar-lines-in-hymn-tunes" href="chants-psalms-and-hymns.html#phrase-bar-lines-in-hymn-tunes">9.7.4 Phrase bar lines in hymn tunes</a></li>
+      <li><a id="toc-Partial-measures-in-hymn-tunes" href="chants-psalms-and-hymns.html#partial-measures-in-hymn-tunes">9.7.5 Partial measures in hymn tunes</a></li>
+    </ul></li>
+    <li><a id="toc-Ancient-vocal-music" href="ancient-vocal-music.html">9.8 Ancient vocal music</a></li>
+  </ul></li>
+  <li><a id="toc-Keyboard-and-other-multi_002dstaff-instruments" href="keyboard-and-other-multi_002dstaff-instruments.html">10 Keyboard and other multi-staff instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Common-notation-for-keyboards" href="common-notation-for-keyboards.html">10.1 Common notation for keyboards</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-keyboards" href="common-notation-for-keyboards.html#references-for-keyboards">10.1.1 References for keyboards</a></li>
+      <li><a id="toc-Changing-staff-manually" href="common-notation-for-keyboards.html#changing-staff-manually">10.1.2 Changing staff manually</a></li>
+      <li><a id="toc-Changing-staff-automatically" href="common-notation-for-keyboards.html#changing-staff-automatically">10.1.3 Changing staff automatically</a></li>
+      <li><a id="toc-Staff_002dchange-lines" href="common-notation-for-keyboards.html#staff_002dchange-lines">10.1.4 Staff-change lines</a></li>
+    </ul></li>
+    <li><a id="toc-Piano" href="piano.html">10.2 Piano</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Piano-pedals" href="piano.html#piano-pedals">10.2.1 Piano pedals</a></li>
+    </ul></li>
+    <li><a id="toc-Organ" href="organ.html">10.3 Organ</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Organ-pedal-marks" href="organ.html#organ-pedal-marks">10.3.1 Organ pedal marks</a></li>
+    </ul></li>
+    <li><a id="toc-Accordion" href="accordion.html">10.4 Accordion</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Discant-symbols" href="accordion.html#discant-symbols">10.4.1 Discant symbols</a></li>
+    </ul></li>
+    <li><a id="toc-Harp" href="harp.html">10.5 Harp</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-harps" href="harp.html#references-for-harps">10.5.1 References for harps</a></li>
+      <li><a id="toc-Harp-pedals" href="harp.html#harp-pedals">10.5.2 Harp pedals</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Unfretted-string-instruments" href="unfretted-string-instruments.html">11 Unfretted string instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Common-notation-for-unfretted-strings" href="common-notation-for-unfretted-strings.html">11.1 Common notation for unfretted strings</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-unfretted-strings" href="common-notation-for-unfretted-strings.html#references-for-unfretted-strings">11.1.1 References for unfretted strings</a></li>
+      <li><a id="toc-Bowing-indications" href="common-notation-for-unfretted-strings.html#bowing-indications">11.1.2 Bowing indications</a></li>
+      <li><a id="toc-Harmonics" href="common-notation-for-unfretted-strings.html#harmonics">11.1.3 Harmonics</a></li>
+      <li><a id="toc-Snap-_0028Bartok_0029-pizzicato" href="common-notation-for-unfretted-strings.html#snap-_0028bartok_0029-pizzicato">11.1.4 Snap (Bartók) pizzicato</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Fretted-string-instruments" href="fretted-string-instruments.html">12 Fretted string instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Common-notation-for-fretted-strings" href="common-notation-for-fretted-strings.html">12.1 Common notation for fretted strings</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-fretted-strings" href="common-notation-for-fretted-strings.html#references-for-fretted-strings">12.1.1 References for fretted strings</a></li>
+      <li><a id="toc-String-number-indications" href="common-notation-for-fretted-strings.html#string-number-indications">12.1.2 String number indications</a></li>
+      <li><a id="toc-Default-tablatures" href="common-notation-for-fretted-strings.html#default-tablatures">12.1.3 Default tablatures</a></li>
+      <li><a id="toc-Custom-tablatures" href="common-notation-for-fretted-strings.html#custom-tablatures">12.1.4 Custom tablatures</a></li>
+      <li><a id="toc-Fret-diagram-markups" href="common-notation-for-fretted-strings.html#fret-diagram-markups">12.1.5 Fret diagram markups</a></li>
+      <li><a id="toc-Predefined-fret-diagrams" href="common-notation-for-fretted-strings.html#predefined-fret-diagrams">12.1.6 Predefined fret diagrams</a></li>
+      <li><a id="toc-Automatic-fret-diagrams" href="common-notation-for-fretted-strings.html#automatic-fret-diagrams">12.1.7 Automatic fret diagrams</a></li>
+      <li><a id="toc-Right_002dhand-fingerings" href="common-notation-for-fretted-strings.html#right_002dhand-fingerings">12.1.8 Right-hand fingerings</a></li>
+    </ul></li>
+    <li><a id="toc-Guitar" href="guitar.html">12.2 Guitar</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Indicating-position-and-barring" href="guitar.html#indicating-position-and-barring">12.2.1 Indicating position and barring</a></li>
+      <li><a id="toc-Indicating-harmonics-and-dampened-notes" href="guitar.html#indicating-harmonics-and-dampened-notes">12.2.2 Indicating harmonics and dampened notes</a></li>
+      <li><a id="toc-Indicating-power-chords" href="guitar.html#indicating-power-chords">12.2.3 Indicating power chords</a></li>
+    </ul></li>
+    <li><a id="toc-Banjo" href="banjo.html">12.3 Banjo</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Banjo-tablatures" href="banjo.html#banjo-tablatures">12.3.1 Banjo tablatures</a></li>
+    </ul></li>
+    <li><a id="toc-Lute" href="lute.html">12.4 Lute</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Lute-tablatures" href="lute.html#lute-tablatures">12.4.1 Lute tablatures</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Percussion" href="percussion.html">13 Percussion</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Common-notation-for-percussion" href="common-notation-for-percussion.html">13.1 Common notation for percussion</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-percussion" href="common-notation-for-percussion.html#references-for-percussion">13.1.1 References for percussion</a></li>
+      <li><a id="toc-Basic-percussion-notation" href="common-notation-for-percussion.html#basic-percussion-notation">13.1.2 Basic percussion notation</a></li>
+      <li><a id="toc-Drum-rolls" href="common-notation-for-percussion.html#drum-rolls">13.1.3 Drum rolls</a></li>
+      <li><a id="toc-Pitched-percussion" href="common-notation-for-percussion.html#pitched-percussion">13.1.4 Pitched percussion</a></li>
+      <li><a id="toc-Percussion-staves" href="common-notation-for-percussion.html#percussion-staves">13.1.5 Percussion staves</a></li>
+      <li><a id="toc-Custom-percussion-staves" href="common-notation-for-percussion.html#custom-percussion-staves">13.1.6 Custom percussion staves</a></li>
+      <li><a id="toc-Ghost-notes" href="common-notation-for-percussion.html#ghost-notes">13.1.7 Ghost notes</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Wind-instruments" href="wind-instruments.html">14 Wind instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Common-notation-for-wind-instruments" href="common-notation-for-wind-instruments.html">14.1 Common notation for wind instruments</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-wind-instruments" href="common-notation-for-wind-instruments.html#references-for-wind-instruments">14.1.1 References for wind instruments</a></li>
+      <li><a id="toc-Fingerings" href="common-notation-for-wind-instruments.html#fingerings">14.1.2 Fingerings</a></li>
+    </ul></li>
+    <li><a id="toc-Bagpipes" href="bagpipes.html">14.2 Bagpipes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Bagpipe-definitions" href="bagpipes.html#bagpipe-definitions">14.2.1 Bagpipe definitions</a></li>
+      <li><a id="toc-Bagpipe-example" href="bagpipes.html#bagpipe-example">14.2.2 Bagpipe example</a></li>
+    </ul></li>
+    <li><a id="toc-Woodwinds" href="woodwinds.html">14.3 Woodwinds</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Woodwind-diagrams" href="woodwinds.html#woodwind-diagrams">14.3.1 Woodwind diagrams</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Chord-notation" href="chord-notation.html">15 Chord notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Chord-mode" href="chord-mode.html">15.1 Chord mode</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Chord-mode-overview" href="chord-mode.html#chord-mode-overview">15.1.1 Chord mode overview</a></li>
+      <li><a id="toc-Common-chords" href="chord-mode.html#common-chords">15.1.2 Common chords</a></li>
+      <li><a id="toc-Extended-and-altered-chords" href="chord-mode.html#extended-and-altered-chords">15.1.3 Extended and altered chords</a></li>
+      <li><a id="toc-Chord-inversions-and-specific-voicings" href="chord-mode.html#chord-inversions-and-specific-voicings">15.1.4 Chord inversions and specific voicings</a></li>
+    </ul></li>
+    <li><a id="toc-Displaying-chords" href="displaying-chords.html">15.2 Displaying chords</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Printing-chord-names" href="displaying-chords.html#printing-chord-names">15.2.1 Printing chord names</a></li>
+      <li><a id="toc-Customizing-chord-names" href="displaying-chords.html#customizing-chord-names">15.2.2 Customizing chord names</a></li>
+      <li><a id="toc-Chord-grids" href="displaying-chords.html#chord-grids">15.2.3 Chord grids</a></li>
+    </ul></li>
+    <li><a id="toc-Figured-bass" href="figured-bass.html">15.3 Figured bass</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Introduction-to-figured-bass" href="figured-bass.html#introduction-to-figured-bass">15.3.1 Introduction to figured bass</a></li>
+      <li><a id="toc-Entering-figured-bass" href="figured-bass.html#entering-figured-bass">15.3.2 Entering figured bass</a></li>
+      <li><a id="toc-Displaying-figured-bass" href="figured-bass.html#displaying-figured-bass">15.3.3 Displaying figured bass</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Contemporary-music" href="contemporary-music.html">16 Contemporary music</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Pitch-and-harmony-in-contemporary-music" href="pitch-and-harmony-in-contemporary-music.html">16.1 Pitch and harmony in contemporary music</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-pitch-and-harmony-in-contemporary-music" href="pitch-and-harmony-in-contemporary-music.html#references-for-pitch-and-harmony-in-contemporary-music">16.1.1 References for pitch and harmony in contemporary music</a></li>
+      <li><a id="toc-Microtonal-notation" href="pitch-and-harmony-in-contemporary-music.html#microtonal-notation">16.1.2 Microtonal notation</a></li>
+      <li><a id="toc-Contemporary-key-signatures-and-harmony" href="pitch-and-harmony-in-contemporary-music.html#contemporary-key-signatures-and-harmony">16.1.3 Contemporary key signatures and harmony</a></li>
+    </ul></li>
+    <li><a id="toc-Contemporary-approaches-to-rhythm" href="contemporary-approaches-to-rhythm.html">16.2 Contemporary approaches to rhythm</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-contemporary-approaches-to-rhythm" href="contemporary-approaches-to-rhythm.html#references-for-contemporary-approaches-to-rhythm">16.2.1 References for contemporary approaches to rhythm</a></li>
+      <li><a id="toc-Tuplets-in-contemporary-music" href="contemporary-approaches-to-rhythm.html#tuplets-in-contemporary-music">16.2.2 Tuplets in contemporary music</a></li>
+      <li><a id="toc-Contemporary-time-signatures" href="contemporary-approaches-to-rhythm.html#contemporary-time-signatures">16.2.3 Contemporary time signatures</a></li>
+      <li><a id="toc-Extended-polymetric-notation" href="contemporary-approaches-to-rhythm.html#extended-polymetric-notation">16.2.4 Extended polymetric notation</a></li>
+      <li><a id="toc-Beams-in-contemporary-music" href="contemporary-approaches-to-rhythm.html#beams-in-contemporary-music">16.2.5 Beams in contemporary music</a></li>
+      <li><a id="toc-Bar-lines-in-contemporary-music" href="contemporary-approaches-to-rhythm.html#bar-lines-in-contemporary-music">16.2.6 Bar lines in contemporary music</a></li>
+    </ul></li>
+    <li><a id="toc-Graphical-notation" href="graphical-notation.html">16.3 Graphical notation</a></li>
+    <li><a id="toc-Contemporary-scoring-techniques" href="contemporary-scoring-techniques.html">16.4 Contemporary scoring techniques</a></li>
+    <li><a id="toc-New-instrumental-techniques" href="new-instrumental-techniques.html">16.5 New instrumental techniques</a></li>
+    <li><a id="toc-Further-reading-and-scores-of-interest" href="further-reading-and-scores-of-interest.html">16.6 Further reading and scores of interest</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Books-and-articles-on-contemporary-musical-notation" href="further-reading-and-scores-of-interest.html#books-and-articles-on-contemporary-musical-notation">16.6.1 Books and articles on contemporary musical notation</a></li>
+      <li><a id="toc-Scores-and-musical-examples" href="further-reading-and-scores-of-interest.html#scores-and-musical-examples">16.6.2 Scores and musical examples</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Ancient-notation" href="ancient-notation.html">17 Ancient notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Overview-of-the-supported-styles" href="overview-of-the-supported-styles.html">17.1 Overview of the supported styles</a></li>
+    <li><a id="toc-Ancient-notation-_002d_002d-common-features" href="ancient-notation-_002d-common-features.html">17.2 Ancient notation &ndash; common features</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Predefined-contexts" href="ancient-notation-_002d-common-features.html#predefined-contexts">17.2.1 Predefined contexts</a></li>
+      <li><a id="toc-Ligatures" href="ancient-notation-_002d-common-features.html#ligatures">17.2.2 Ligatures</a></li>
+      <li><a id="toc-Custodes" href="ancient-notation-_002d-common-features.html#custodes">17.2.3 Custodes</a></li>
+    </ul></li>
+    <li><a id="toc-Typesetting-mensural-music" href="typesetting-mensural-music.html">17.3 Typesetting mensural music</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Mensural-contexts" href="typesetting-mensural-music.html#mensural-contexts">17.3.1 Mensural contexts</a></li>
+      <li><a id="toc-Mensural-clefs" href="typesetting-mensural-music.html#mensural-clefs">17.3.2 Mensural clefs</a></li>
+      <li><a id="toc-Mensural-time-signatures" href="typesetting-mensural-music.html#mensural-time-signatures">17.3.3 Mensural time signatures</a></li>
+      <li><a id="toc-Mensural-note-heads" href="typesetting-mensural-music.html#mensural-note-heads">17.3.4 Mensural note heads</a></li>
+      <li><a id="toc-Mensural-flags" href="typesetting-mensural-music.html#mensural-flags">17.3.5 Mensural flags</a></li>
+      <li><a id="toc-Mensural-rests" href="typesetting-mensural-music.html#mensural-rests">17.3.6 Mensural rests</a></li>
+      <li><a id="toc-Mensural-accidentals-and-key-signatures" href="typesetting-mensural-music.html#mensural-accidentals-and-key-signatures">17.3.7 Mensural accidentals and key signatures</a></li>
+      <li><a id="toc-Annotational-accidentals-_0028musica-ficta_0029" href="typesetting-mensural-music.html#annotational-accidentals-_0028musica-ficta_0029">17.3.8 Annotational accidentals (<em>musica ficta</em>)</a></li>
+      <li><a id="toc-White-mensural-ligatures" href="typesetting-mensural-music.html#white-mensural-ligatures">17.3.9 White mensural ligatures</a></li>
+    </ul></li>
+    <li><a id="toc-Typesetting-Gregorian-chant" href="typesetting-gregorian-chant.html">17.4 Typesetting Gregorian chant</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Gregorian-chant-contexts" href="typesetting-gregorian-chant.html#gregorian-chant-contexts">17.4.1 Gregorian chant contexts</a></li>
+      <li><a id="toc-Gregorian-clefs" href="typesetting-gregorian-chant.html#gregorian-clefs">17.4.2 Gregorian clefs</a></li>
+      <li><a id="toc-Gregorian-accidentals-and-key-signatures" href="typesetting-gregorian-chant.html#gregorian-accidentals-and-key-signatures">17.4.3 Gregorian accidentals and key signatures</a></li>
+      <li><a id="toc-Divisiones" href="typesetting-gregorian-chant.html#divisiones">17.4.4 Divisiones</a></li>
+      <li><a id="toc-Gregorian-articulation-signs" href="typesetting-gregorian-chant.html#gregorian-articulation-signs">17.4.5 Gregorian articulation signs</a></li>
+      <li><a id="toc-Augmentum-dots-_0028morae_0029" href="typesetting-gregorian-chant.html#augmentum-dots-_0028morae_0029">17.4.6 Augmentum dots (<em>morae</em>)</a></li>
+      <li><a id="toc-Gregorian-square-neume-ligatures" href="typesetting-gregorian-chant.html#gregorian-square-neume-ligatures">17.4.7 Gregorian square neume ligatures</a></li>
+    </ul></li>
+    <li><a id="toc-Typesetting-Kievan-square-notation" href="typesetting-kievan-square-notation.html">17.5 Typesetting Kievan square notation</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Kievan-contexts" href="typesetting-kievan-square-notation.html#kievan-contexts">17.5.1 Kievan contexts</a></li>
+      <li><a id="toc-Kievan-clefs" href="typesetting-kievan-square-notation.html#kievan-clefs">17.5.2 Kievan clefs</a></li>
+      <li><a id="toc-Kievan-notes" href="typesetting-kievan-square-notation.html#kievan-notes">17.5.3 Kievan notes</a></li>
+      <li><a id="toc-Kievan-accidentals" href="typesetting-kievan-square-notation.html#kievan-accidentals">17.5.4 Kievan accidentals</a></li>
+      <li><a id="toc-Kievan-bar-lines" href="typesetting-kievan-square-notation.html#kievan-bar-lines">17.5.5 Kievan bar lines</a></li>
+      <li><a id="toc-Kievan-melismata" href="typesetting-kievan-square-notation.html#kievan-melismata">17.5.6 Kievan melismata</a></li>
+    </ul></li>
+    <li><a id="toc-Working-with-ancient-music-_002d_002d-scenarios-and-solutions" href="working-with-ancient-music-_002d-scenarios-and-solutions.html">17.6 Working with ancient music &ndash; scenarios and solutions</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Incipits" href="working-with-ancient-music-_002d-scenarios-and-solutions.html#incipits">17.6.1 Incipits</a></li>
+      <li><a id="toc-Mensurstriche-layout" href="working-with-ancient-music-_002d-scenarios-and-solutions.html#mensurstriche-layout">17.6.2 Mensurstriche layout</a></li>
+      <li><a id="toc-Transcribing-Gregorian-chant" href="working-with-ancient-music-_002d-scenarios-and-solutions.html#transcribing-gregorian-chant">17.6.3 Transcribing Gregorian chant</a></li>
+      <li><a id="toc-Ancient-and-modern-from-one-source" href="working-with-ancient-music-_002d-scenarios-and-solutions.html#ancient-and-modern-from-one-source">17.6.4 Ancient and modern from one source</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-World-music" href="world-music.html">18 World music</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Common-notation-for-non_002dWestern-music" href="common-notation-for-non_002dwestern-music.html">18.1 Common notation for non-Western music</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Extending-notation-and-tuning-systems" href="common-notation-for-non_002dwestern-music.html#extending-notation-and-tuning-systems">18.1.1 Extending notation and tuning systems</a></li>
+    </ul></li>
+    <li><a id="toc-Arabic-music" href="arabic-music.html">18.2 Arabic music</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-Arabic-music" href="arabic-music.html#references-for-arabic-music">18.2.1 References for Arabic music</a></li>
+      <li><a id="toc-Arabic-note-names" href="arabic-music.html#arabic-note-names">18.2.2 Arabic note names</a></li>
+      <li><a id="toc-Arabic-key-signatures" href="arabic-music.html#arabic-key-signatures">18.2.3 Arabic key signatures</a></li>
+      <li><a id="toc-Arabic-time-signatures" href="arabic-music.html#arabic-time-signatures">18.2.4 Arabic time signatures</a></li>
+      <li><a id="toc-Arabic-music-example" href="arabic-music.html#arabic-music-example">18.2.5 Arabic music example</a></li>
+      <li><a id="toc-Further-reading-for-Arabic-music" href="arabic-music.html#further-reading-for-arabic-music">18.2.6 Further reading for Arabic music</a></li>
+    </ul></li>
+    <li><a id="toc-Turkish-classical-music" href="turkish-classical-music.html">18.3 Turkish classical music</a>
+    <ul class="no-bullet">
+      <li><a id="toc-References-for-Turkish-classical-music" href="turkish-classical-music.html#references-for-turkish-classical-music">18.3.1 References for Turkish classical music</a></li>
+      <li><a id="toc-Turkish-note-names" href="turkish-classical-music.html#turkish-note-names">18.3.2 Turkish note names</a></li>
+      <li><a id="toc-Turkish-key-signatures" href="turkish-classical-music.html#turkish-key-signatures">18.3.3 Turkish key signatures</a></li>
+      <li><a id="toc-Further-reading-for-Turkish-music" href="turkish-classical-music.html#further-reading-for-turkish-music">18.3.4 Further reading for Turkish music</a></li>
+    </ul></li>
+    <li><a id="toc-Persian-classical-music" href="persian-classical-music.html">18.4 Persian classical music</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Persian-music-notation" href="persian-classical-music.html#persian-music-notation">18.4.1 Persian music notation</a></li>
+      <li><a id="toc-Persian-tunings" href="persian-classical-music.html#persian-tunings">18.4.2 Persian tunings</a></li>
+      <li><a id="toc-Persian-key-signatures" href="persian-classical-music.html#persian-key-signatures">18.4.3 Persian key signatures</a></li>
+      <li><a id="toc-Further-reading-on-Persian-music" href="persian-classical-music.html#further-reading-on-persian-music">18.4.4 Further reading on Persian music</a></li>
+    </ul></li>
+  </ul></li>
+</ul></li>
+<li class="toc_current"><a id="toc-General-input-and-output" href="input-modes.html#General-input-and-output">General input and output</a>
+<ul class="no-bullet">
+  <li><a id="toc-Input-modes" href="input-modes.html">19 Input modes</a></li>
+  <li><a id="toc-Input-structure" href="input-structure.html">20 Input structure</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Structure-of-a-score" href="structure-of-a-score.html">20.1 Structure of a score</a></li>
+    <li><a id="toc-Multiple-scores-in-a-book" href="multiple-scores-in-a-book.html">20.2 Multiple scores in a book</a></li>
+    <li><a id="toc-Multiple-output-files-from-one-input-file" href="multiple-output-files-from-one-input-file.html">20.3 Multiple output files from one input file</a></li>
+    <li><a id="toc-Output-file-names" href="output-file-names.html">20.4 Output file names</a></li>
+    <li><a id="toc-File-structure" href="file-structure.html">20.5 File structure</a></li>
+  </ul></li>
+  <li><a id="toc-Titles-and-headers" href="titles-and-headers.html">21 Titles and headers</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Creating-titles_002c-headers_002c-and-footers" href="creating-titles-headers-and-footers.html">21.1 Creating titles, headers, and footers</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Titles-explained" href="creating-titles-headers-and-footers.html#titles-explained">21.1.1 Titles explained</a></li>
+      <li><a id="toc-Default-layout-of-bookpart-and-score-titles" href="creating-titles-headers-and-footers.html#default-layout-of-bookpart-and-score-titles">21.1.2 Default layout of bookpart and score titles</a></li>
+      <li><a id="toc-Default-layout-of-headers-and-footers" href="creating-titles-headers-and-footers.html#default-layout-of-headers-and-footers">21.1.3 Default layout of headers and footers</a></li>
+    </ul></li>
+    <li><a id="toc-Custom-titles_002c-headers_002c-and-footers" href="custom-titles-headers-and-footers.html">21.2 Custom titles, headers, and footers</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Custom-text-formatting-for-titles" href="custom-titles-headers-and-footers.html#custom-text-formatting-for-titles">21.2.1 Custom text formatting for titles</a></li>
+      <li><a id="toc-Custom-layout-for-titles" href="custom-titles-headers-and-footers.html#custom-layout-for-titles">21.2.2 Custom layout for titles</a></li>
+      <li><a id="toc-Custom-layout-for-headers-and-footers" href="custom-titles-headers-and-footers.html#custom-layout-for-headers-and-footers">21.2.3 Custom layout for headers and footers</a></li>
+    </ul></li>
+    <li><a id="toc-Creating-output-file-metadata" href="creating-output-file-metadata.html">21.3 Creating output file metadata</a></li>
+    <li><a id="toc-Creating-footnotes" href="creating-footnotes.html">21.4 Creating footnotes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Footnotes-in-music-expressions" href="creating-footnotes.html#footnotes-in-music-expressions">21.4.1 Footnotes in music expressions</a></li>
+      <li><a id="toc-Footnotes-in-stand_002dalone-text" href="creating-footnotes.html#footnotes-in-stand_002dalone-text">21.4.2 Footnotes in stand-alone text</a></li>
+    </ul></li>
+    <li><a id="toc-Creating-in_002dnotes" href="creating-in_002dnotes.html">21.5 Creating in-notes</a></li>
+    <li><a id="toc-Reference-to-page-numbers" href="reference-to-page-numbers.html">21.6 Reference to page numbers</a></li>
+    <li><a id="toc-Table-of-contents" href="table-of-contents.html">21.7 Table of contents</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Working-with-input-files" href="working-with-input-files.html">22 Working with input files</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Including-LilyPond-files" href="including-lilypond-files.html">22.1 Including LilyPond files</a></li>
+    <li class="toc_current"><a id="toc-Different-editions-from-one-source" href="different-editions-from-one-source.html">22.2 Different editions from one source</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Using-variables" href="different-editions-from-one-source.html#using-variables">22.2.1 Using variables</a></li>
+      <li><a id="toc-Using-tags" href="different-editions-from-one-source.html#using-tags">22.2.2 Using tags</a></li>
+      <li class="toc_current"><a id="toc-Using-global-settings" href="different-editions-from-one-source.html#using-global-settings">22.2.3 Using global settings</a></li>
+    </ul></li>
+    <li><a id="toc-Using-music-functions" href="using-music-functions.html">22.3 Using music functions</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Substitution-function-syntax" href="using-music-functions.html#substitution-function-syntax">22.3.1 Substitution function syntax</a></li>
+      <li><a id="toc-Substitution-function-examples" href="using-music-functions.html#substitution-function-examples">22.3.2 Substitution function examples</a></li>
+      <li><a id="toc-How-to-prevent-sharing-of-music-expressions" href="using-music-functions.html#how-to-prevent-sharing-of-music-expressions">22.3.3 How to prevent sharing of music expressions</a></li>
+      <li><a id="toc-Substitution-functions-and-relative-octave-entry" href="using-music-functions.html#substitution-functions-and-relative-octave-entry">22.3.4 Substitution functions and relative octave entry</a></li>
+    </ul></li>
+    <li><a id="toc-Special-characters" href="special-characters.html">22.4 Special characters</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Text-encoding" href="special-characters.html#text-encoding">22.4.1 Text encoding</a></li>
+      <li><a id="toc-Unicode" href="special-characters.html#unicode">22.4.2 Unicode</a></li>
+      <li><a id="toc-ASCII-aliases" href="special-characters.html#ascii-aliases">22.4.3 ASCII aliases</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Controlling-output" href="controlling-output.html">23 Controlling output</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Extracting-fragments-of-music" href="extracting-fragments-of-music.html">23.1 Extracting fragments of music</a></li>
+    <li><a id="toc-Skipping-corrected-music" href="skipping-corrected-music.html">23.2 Skipping corrected music</a></li>
+    <li><a id="toc-Alternative-output-formats" href="alternative-output-formats.html">23.3 Alternative output formats</a>
+    <ul class="no-bullet">
+      <li><a id="toc-SVG-Output" href="alternative-output-formats.html#svg-output">23.3.1 SVG Output</a></li>
+    </ul></li>
+    <li><a id="toc-Embedding-files-in-PDF-output" href="embedding-files-in-pdf-output.html">23.4 Embedding files in PDF output</a></li>
+    <li><a id="toc-Replacing-the-notation-font" href="replacing-the-notation-font.html">23.5 Replacing the notation font</a></li>
+  </ul></li>
+  <li><a id="toc-Creating-MIDI-output" href="creating-midi-output.html">24 Creating MIDI output</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Supported-notation-for-MIDI" href="supported-notation-for-midi.html">24.1 Supported notation for MIDI</a></li>
+    <li><a id="toc-Unsupported-notation-for-MIDI" href="unsupported-notation-for-midi.html">24.2 Unsupported notation for MIDI</a></li>
+    <li><a id="toc-The-MIDI-block" href="the-midi-block.html">24.3 The MIDI block</a></li>
+    <li><a id="toc-Controlling-MIDI-dynamics" href="controlling-midi-dynamics.html">24.4 Controlling MIDI dynamics</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Dynamic-marks-in-MIDI" href="controlling-midi-dynamics.html#dynamic-marks-in-midi">24.4.1 Dynamic marks in MIDI</a></li>
+      <li><a id="toc-Setting-MIDI-volume" href="controlling-midi-dynamics.html#setting-midi-volume">24.4.2 Setting MIDI volume</a></li>
+      <li><a id="toc-Setting-MIDI-block-properties" href="controlling-midi-dynamics.html#setting-midi-block-properties">24.4.3 Setting MIDI block properties</a></li>
+    </ul></li>
+    <li><a id="toc-Using-MIDI-instruments" href="using-midi-instruments.html">24.5 Using MIDI instruments</a></li>
+    <li><a id="toc-Using-repeats-with-MIDI" href="using-repeats-with-midi.html">24.6 Using repeats with MIDI</a></li>
+    <li><a id="toc-MIDI-channel-mapping" href="midi-channel-mapping.html">24.7 MIDI channel mapping</a></li>
+    <li><a id="toc-Context-properties-for-MIDI-effects" href="context-properties-for-midi-effects.html">24.8 Context properties for MIDI effects</a></li>
+    <li><a id="toc-Enhancing-MIDI-output" href="enhancing-midi-output.html">24.9 Enhancing MIDI output</a>
+    <ul class="no-bullet">
+      <li><a id="toc-The-articulate-script" href="enhancing-midi-output.html#the-articulate-script">24.9.1 The <samp>articulate</samp> script</a></li>
+      <li><a id="toc-The-swing-script" href="enhancing-midi-output.html#the-swing-script">24.9.2 The <samp>swing</samp> script</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Extracting-musical-information" href="extracting-musical-information.html">25 Extracting musical information</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Displaying-LilyPond-notation" href="displaying-lilypond-notation.html">25.1 Displaying LilyPond notation</a></li>
+    <li><a id="toc-Displaying-Scheme-music-expressions" href="displaying-scheme-music-expressions.html">25.2 Displaying Scheme music expressions</a></li>
+    <li><a id="toc-Saving-music-events-to-a-file" href="saving-music-events-to-a-file.html">25.3 Saving music events to a file</a></li>
+  </ul></li>
+</ul></li>
+<li><a id="toc-Spacing-issues" href="page-layout.html#Spacing-issues">Spacing issues</a>
+<ul class="no-bullet">
+  <li><a id="toc-Page-layout" href="page-layout.html">26 Page layout</a>
+  <ul class="no-bullet">
+    <li><a id="toc-The-_005cpaper-block" href="the-paper-block.html">26.1 The <code>\paper</code> block</a></li>
+    <li><a id="toc-Paper-size-and-automatic-scaling" href="paper-size-and-automatic-scaling.html">26.2 Paper size and automatic scaling</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Setting-the-paper-size" href="paper-size-and-automatic-scaling.html#setting-the-paper-size">26.2.1 Setting the paper size</a></li>
+      <li><a id="toc-Automatic-scaling-to-paper-size" href="paper-size-and-automatic-scaling.html#automatic-scaling-to-paper-size">26.2.2 Automatic scaling to paper size</a></li>
+    </ul></li>
+    <li><a id="toc-Fixed-vertical-spacing-_005cpaper-variables" href="fixed-vertical-spacing-paper-variables.html">26.3 Fixed vertical spacing <code>\paper</code> variables</a></li>
+    <li><a id="toc-Flexible-vertical-spacing-_005cpaper-variables" href="flexible-vertical-spacing-paper-variables.html">26.4 Flexible vertical spacing <code>\paper</code> variables</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Structure-of-flexible-vertical-spacing-alists" href="flexible-vertical-spacing-paper-variables.html#structure-of-flexible-vertical-spacing-alists">26.4.1 Structure of flexible vertical spacing alists</a></li>
+      <li><a id="toc-List-of-flexible-vertical-spacing-_005cpaper-variables" href="flexible-vertical-spacing-paper-variables.html#list-of-flexible-vertical-spacing-paper-variables">26.4.2 List of flexible vertical spacing <code>\paper</code> variables</a></li>
+    </ul></li>
+    <li><a id="toc-Horizontal-spacing-_005cpaper-variables" href="horizontal-spacing-paper-variables.html">26.5 Horizontal spacing <code>\paper</code> variables</a>
+    <ul class="no-bullet">
+      <li><a id="toc-_005cpaper-variables-for-widths-and-margins" href="horizontal-spacing-paper-variables.html#paper-variables-for-widths-and-margins">26.5.1 <code>\paper</code> variables for widths and margins</a></li>
+      <li><a id="toc-_005cpaper-variables-for-two_002dsided-mode" href="horizontal-spacing-paper-variables.html#paper-variables-for-two_002dsided-mode">26.5.2 <code>\paper</code> variables for two-sided mode</a></li>
+      <li><a id="toc-_005cpaper-variables-for-shifts-and-indents" href="horizontal-spacing-paper-variables.html#paper-variables-for-shifts-and-indents">26.5.3 <code>\paper</code> variables for shifts and indents</a></li>
+    </ul></li>
+    <li><a id="toc-Other-_005cpaper-variables" href="other-paper-variables.html">26.6 Other <code>\paper</code> variables</a>
+    <ul class="no-bullet">
+      <li><a id="toc-_005cpaper-variables-for-line-breaking" href="other-paper-variables.html#paper-variables-for-line-breaking">26.6.1 <code>\paper</code> variables for line breaking</a></li>
+      <li><a id="toc-_005cpaper-variables-for-page-breaking" href="other-paper-variables.html#paper-variables-for-page-breaking">26.6.2 <code>\paper</code> variables for page breaking</a></li>
+      <li><a id="toc-_005cpaper-variables-for-page-numbering" href="other-paper-variables.html#paper-variables-for-page-numbering">26.6.3 <code>\paper</code> variables for page numbering</a></li>
+      <li><a id="toc-_005cpaper-variables-concerning-headers-and-markups" href="other-paper-variables.html#paper-variables-concerning-headers-and-markups">26.6.4 <code>\paper</code> variables concerning headers and markups</a></li>
+      <li><a id="toc-_005cpaper-variables-for-debugging" href="other-paper-variables.html#paper-variables-for-debugging">26.6.5 <code>\paper</code> variables for debugging</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Score-layout" href="score-layout.html">27 Score layout</a>
+  <ul class="no-bullet">
+    <li><a id="toc-The-_005clayout-block" href="the-layout-block.html">27.1 The <code>\layout</code> block</a></li>
+    <li><a id="toc-Setting-the-staff-size" href="setting-the-staff-size.html">27.2 Setting the staff size</a></li>
+  </ul></li>
+  <li><a id="toc-Breaks" href="breaks.html">28 Breaks</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Line-breaking" href="line-breaking.html">28.1 Line breaking</a></li>
+    <li><a id="toc-Page-breaking" href="page-breaking.html">28.2 Page breaking</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Manual-page-breaking" href="page-breaking.html#manual-page-breaking">28.2.1 Manual page breaking</a></li>
+      <li><a id="toc-Optimal-page-breaking" href="page-breaking.html#optimal-page-breaking">28.2.2 Optimal page breaking</a></li>
+      <li><a id="toc-Minimal-page-breaking" href="page-breaking.html#minimal-page-breaking">28.2.3 Minimal page breaking</a></li>
+      <li><a id="toc-One_002dpage-page-breaking" href="page-breaking.html#one_002dpage-page-breaking">28.2.4 One-page page breaking</a></li>
+      <li><a id="toc-One_002dline-page-breaking" href="page-breaking.html#one_002dline-page-breaking">28.2.5 One-line page breaking</a></li>
+      <li><a id="toc-One_002dline_002dauto_002dheight-page-breaking" href="page-breaking.html#one_002dline_002dauto_002dheight-page-breaking">28.2.6 One-line-auto-height page breaking</a></li>
+      <li><a id="toc-Optimal-page-turning" href="page-breaking.html#optimal-page-turning">28.2.7 Optimal page turning</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Vertical-spacing" href="vertical-spacing.html">29 Vertical spacing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Flexible-vertical-spacing-within-systems" href="flexible-vertical-spacing-within-systems.html">29.1 Flexible vertical spacing within systems</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Within_002dsystem-spacing-properties" href="flexible-vertical-spacing-within-systems.html#within_002dsystem-spacing-properties">29.1.1 Within-system spacing properties</a></li>
+      <li><a id="toc-Spacing-of-ungrouped-staves" href="flexible-vertical-spacing-within-systems.html#spacing-of-ungrouped-staves">29.1.2 Spacing of ungrouped staves</a></li>
+      <li><a id="toc-Spacing-of-grouped-staves" href="flexible-vertical-spacing-within-systems.html#spacing-of-grouped-staves">29.1.3 Spacing of grouped staves</a></li>
+      <li><a id="toc-Spacing-of-non_002dstaff-lines" href="flexible-vertical-spacing-within-systems.html#spacing-of-non_002dstaff-lines">29.1.4 Spacing of non-staff lines</a></li>
+    </ul></li>
+    <li><a id="toc-Explicit-staff-and-system-positioning" href="explicit-staff-and-system-positioning.html">29.2 Explicit staff and system positioning</a></li>
+    <li><a id="toc-Vertical-collision-avoidance" href="vertical-collision-avoidance.html">29.3 Vertical collision avoidance</a></li>
+  </ul></li>
+  <li><a id="toc-Horizontal-spacing" href="horizontal-spacing.html">30 Horizontal spacing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Horizontal-spacing-overview" href="horizontal-spacing-overview.html">30.1 Horizontal spacing overview</a></li>
+    <li><a id="toc-New-spacing-section" href="new-spacing-section.html">30.2 New spacing section</a></li>
+    <li><a id="toc-Changing-horizontal-spacing-globally" href="changing-horizontal-spacing-globally.html">30.3 Changing horizontal spacing globally</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Uniform-stretching-of-tuplets" href="changing-horizontal-spacing-globally.html#uniform-stretching-of-tuplets">30.3.1 Uniform stretching of tuplets</a></li>
+      <li><a id="toc-Strict-note-spacing" href="changing-horizontal-spacing-globally.html#strict-note-spacing">30.3.2 Strict note spacing</a></li>
+    </ul></li>
+    <li><a id="toc-Adjusting-horizontal-spacing-for-specific-layout-objects" href="adjusting-horizontal-spacing-for-specific-layout-objects.html">30.4 Adjusting horizontal spacing for specific layout objects</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Overview-of-object_002dspecific-horizontal-spacing-tweaks" href="adjusting-horizontal-spacing-for-specific-layout-objects.html#overview-of-object_002dspecific-horizontal-spacing-tweaks">30.4.1 Overview of object-specific horizontal spacing tweaks</a></li>
+      <li><a id="toc-Spacing-between-adjacent-non_002dmusical-items" href="adjusting-horizontal-spacing-for-specific-layout-objects.html#spacing-between-adjacent-non_002dmusical-items">30.4.2 Spacing between adjacent non-musical items</a></li>
+      <li><a id="toc-Spacing-between-adjacent-columns" href="adjusting-horizontal-spacing-for-specific-layout-objects.html#spacing-between-adjacent-columns">30.4.3 Spacing between adjacent columns</a></li>
+    </ul></li>
+    <li><a id="toc-Line-width" href="line-width.html">30.5 Line width</a></li>
+    <li><a id="toc-Proportional-notation" href="proportional-notation.html">30.6 Proportional notation</a></li>
+  </ul></li>
+  <li><a id="toc-Fitting-music-onto-fewer-pages" href="fitting-music-onto-fewer-pages.html">31 Fitting music onto fewer pages</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Displaying-spacing" href="displaying-spacing.html">31.1 Displaying spacing</a></li>
+    <li><a id="toc-Changing-spacing" href="changing-spacing.html">31.2 Changing spacing</a></li>
+  </ul></li>
+</ul></li>
+<li><a id="toc-Changing-defaults" href="tuning-output.html#Changing-defaults">Changing defaults</a>
+<ul class="no-bullet">
+  <li><a id="toc-Tuning-output" href="tuning-output.html">32 Tuning output</a></li>
+  <li><a id="toc-Interpretation-contexts" href="interpretation-contexts.html">33 Interpretation contexts</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Contexts-explained" href="contexts-explained.html">33.1 Contexts explained</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Output-definitions-_002d_002d-blueprints-for-contexts" href="contexts-explained.html#output-definitions-_002d-blueprints-for-contexts">33.1.1 Output definitions &ndash; blueprints for contexts</a></li>
+      <li><a id="toc-Score-_002d_002d-the-master-of-all-contexts" href="contexts-explained.html#score-_002d-the-master-of-all-contexts">33.1.2 <code>Score</code> &ndash; the master of all contexts</a></li>
+      <li><a id="toc-Top_002dlevel-contexts-_002d_002d-staff-containers" href="contexts-explained.html#top_002dlevel-contexts-_002d-staff-containers">33.1.3 Top-level contexts &ndash; staff containers</a></li>
+      <li><a id="toc-Intermediate_002dlevel-contexts-_002d_002d-staves" href="contexts-explained.html#intermediate_002dlevel-contexts-_002d-staves">33.1.4 Intermediate-level contexts &ndash; staves</a></li>
+      <li><a id="toc-Bottom_002dlevel-contexts-_002d_002d-voices" href="contexts-explained.html#bottom_002dlevel-contexts-_002d-voices">33.1.5 Bottom-level contexts &ndash; voices</a></li>
+    </ul></li>
+    <li><a id="toc-Creating-and-referencing-contexts" href="creating-and-referencing-contexts.html">33.2 Creating and referencing contexts</a></li>
+    <li><a id="toc-Keeping-contexts-alive" href="keeping-contexts-alive.html">33.3 Keeping contexts alive</a></li>
+    <li><a id="toc-Modifying-context-plug_002dins" href="modifying-context-plug_002dins.html">33.4 Modifying context plug-ins</a></li>
+    <li><a id="toc-Changing-context-default-settings" href="changing-context-default-settings.html">33.5 Changing context default settings</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Changing-all-contexts-of-the-same-type" href="changing-context-default-settings.html#changing-all-contexts-of-the-same-type">33.5.1 Changing all contexts of the same type</a></li>
+      <li><a id="toc-Changing-just-one-specific-context" href="changing-context-default-settings.html#changing-just-one-specific-context">33.5.2 Changing just one specific context</a></li>
+      <li><a id="toc-Order-of-precedence" href="changing-context-default-settings.html#order-of-precedence">33.5.3 Order of precedence</a></li>
+    </ul></li>
+    <li><a id="toc-Defining-new-contexts" href="defining-new-contexts.html">33.6 Defining new contexts</a></li>
+    <li><a id="toc-Context-layout-order" href="context-layout-order.html">33.7 Context layout order</a></li>
+  </ul></li>
+  <li><a id="toc-Explaining-the-Internals-Reference" href="explaining-the-internals-reference.html">34 Explaining the Internals Reference</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Navigating-the-program-reference" href="navigating-the-program-reference.html">34.1 Navigating the program reference</a></li>
+    <li><a id="toc-Layout-interfaces" href="layout-interfaces.html">34.2 Layout interfaces</a></li>
+    <li><a id="toc-Determining-the-grob-property" href="determining-the-grob-property.html">34.3 Determining the grob property</a></li>
+  </ul></li>
+  <li><a id="toc-Modifying-properties" href="modifying-properties.html">35 Modifying properties</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Overview-of-modifying-properties" href="overview-of-modifying-properties.html">35.1 Overview of modifying properties</a></li>
+    <li><a id="toc-_005cset-and-_005cunset" href="set-and-unset.html">35.2 <code>\set</code> and <code>\unset</code></a></li>
+    <li><a id="toc-_005coverride-and-_005crevert" href="override-and-revert.html">35.3 <code>\override</code> and <code>\revert</code></a></li>
+    <li><a id="toc-The-_005conce-command" href="the-once-command.html">35.4 The <code>\once</code> command</a></li>
+    <li><a id="toc-_005cset-versus-_005coverride" href="set-versus-override.html">35.5 <code>\set</code> versus <code>\override</code></a></li>
+    <li><a id="toc-_005ctweak-and-_005csingle" href="tweak-and-single.html">35.6 <code>\tweak</code> and <code>\single</code></a></li>
+    <li><a id="toc-The-_005coffset-command" href="the-offset-command.html">35.7 The <code>\offset</code> command</a></li>
+    <li><a id="toc-Modifying-alists" href="modifying-alists.html">35.8 Modifying alists</a></li>
+  </ul></li>
+  <li><a id="toc-Useful-concepts-and-properties" href="useful-concepts-and-properties.html">36 Useful concepts and properties</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Direction-and-placement" href="direction-and-placement.html">36.1 Direction and placement</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Articulation-direction-indicators" href="direction-and-placement.html#articulation-direction-indicators">36.1.1 Articulation direction indicators</a></li>
+      <li><a id="toc-The-direction-property" href="direction-and-placement.html#the-direction-property">36.1.2 The direction property</a></li>
+    </ul></li>
+    <li><a id="toc-Distances-and-measurements" href="distances-and-measurements.html">36.2 Distances and measurements</a></li>
+    <li><a id="toc-Dimensions" href="dimensions.html">36.3 Dimensions</a></li>
+    <li><a id="toc-Spanners" href="spanners.html">36.4 Spanners</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Modifying-broken-spanners" href="spanners.html#modifying-broken-spanners">36.4.1 Modifying broken spanners</a></li>
+      <li><a id="toc-Setting-minimum-lengths-for-spanners" href="spanners.html#setting-minimum-lengths-for-spanners">36.4.2 Setting minimum lengths for spanners</a></li>
+      <li><a id="toc-Controlling-spanner-end-points" href="spanners.html#controlling-spanner-end-points">36.4.3 Controlling spanner end points</a></li>
+    </ul></li>
+    <li><a id="toc-Line-styles" href="line-styles.html">36.5 Line styles</a></li>
+    <li><a id="toc-Line-spanners" href="line-spanners.html">36.6 Line spanners</a></li>
+    <li><a id="toc-Visibility-of-objects" href="visibility-of-objects.html">36.7 Visibility of objects</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Removing-the-stencil" href="visibility-of-objects.html#removing-the-stencil">36.7.1 Removing the stencil</a></li>
+      <li><a id="toc-Making-objects-transparent" href="visibility-of-objects.html#making-objects-transparent">36.7.2 Making objects transparent</a></li>
+      <li><a id="toc-Painting-objects-white" href="visibility-of-objects.html#painting-objects-white">36.7.3 Painting objects white</a></li>
+      <li><a id="toc-Using-break_002dvisibility" href="visibility-of-objects.html#using-break_002dvisibility">36.7.4 Using <code>break-visibility</code></a></li>
+      <li><a id="toc-Special-considerations" href="visibility-of-objects.html#special-considerations">36.7.5 Special considerations</a></li>
+    </ul></li>
+    <li><a id="toc-Rotating-objects" href="rotating-objects.html">36.8 Rotating objects</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Rotating-layout-objects" href="rotating-objects.html#rotating-layout-objects">36.8.1 Rotating layout objects</a></li>
+      <li><a id="toc-Rotating-markup" href="rotating-objects.html#rotating-markup">36.8.2 Rotating markup</a></li>
+    </ul></li>
+    <li><a id="toc-Aligning-objects" href="aligning-objects.html">36.9 Aligning objects</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Setting-X_002doffset-and-Y_002doffset-directly" href="aligning-objects.html#setting-x_002doffset-and-y_002doffset-directly">36.9.1 Setting <code>X-offset</code> and <code>Y-offset</code> directly</a></li>
+      <li><a id="toc-Using-the-side_002dposition_002dinterface" href="aligning-objects.html#using-the-side_002dposition_002dinterface">36.9.2 Using the <code>side-position-interface</code></a></li>
+      <li><a id="toc-Using-the-self_002dalignment_002dinterface" href="aligning-objects.html#using-the-self_002dalignment_002dinterface">36.9.3 Using the <code>self-alignment-interface</code></a></li>
+      <li><a id="toc-Using-the-break_002dalignable_002dinterface" href="aligning-objects.html#using-the-break_002dalignable_002dinterface">36.9.4 Using the <code>break-alignable-interface</code></a></li>
+    </ul></li>
+    <li><a id="toc-Modifying-stencils" href="modifying-stencils.html">36.10 Modifying stencils</a></li>
+    <li><a id="toc-Modifying-shapes" href="modifying-shapes.html">36.11 Modifying shapes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Modifying-ties-and-slurs" href="modifying-shapes.html#modifying-ties-and-slurs">36.11.1 Modifying ties and slurs</a></li>
+    </ul></li>
+  </ul></li>
+</ul></li>
+<li><a id="toc-Appendices" href="markup-commands.html#Appendices">Appendices</a>
+<ul class="no-bullet">
+  <li><a id="toc-Markup-commands" href="markup-commands.html">Appendix A Markup commands</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Text-markup-commands" href="text-markup-commands.html">A.1 Text markup commands</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Font-markup" href="text-markup-commands.html#font-markup">A.1.1 Font markup</a></li>
+      <li><a id="toc-Markup-for-text-alignment" href="text-markup-commands.html#markup-for-text-alignment">A.1.2 Markup for text alignment</a></li>
+      <li><a id="toc-Graphical-markup" href="text-markup-commands.html#graphical-markup">A.1.3 Graphical markup</a></li>
+      <li><a id="toc-Markup-for-music-and-musical-symbols" href="text-markup-commands.html#markup-for-music-and-musical-symbols">A.1.4 Markup for music and musical symbols</a></li>
+      <li><a id="toc-Conditional-markup" href="text-markup-commands.html#conditional-markup">A.1.5 Conditional markup</a></li>
+      <li><a id="toc-Instrument_002dspecific-markup" href="text-markup-commands.html#instrument_002dspecific-markup">A.1.6 Instrument-specific markup</a></li>
+      <li><a id="toc-Accordion-registers" href="text-markup-commands.html#accordion-registers">A.1.7 Accordion registers</a></li>
+      <li><a id="toc-Other-markup-commands" href="text-markup-commands.html#other-markup-commands">A.1.8 Other markup commands</a></li>
+    </ul></li>
+    <li><a id="toc-Text-markup-list-commands" href="text-markup-list-commands.html">A.2 Text markup list commands</a></li>
+  </ul></li>
+  <li><a id="toc-Notation-manual-tables" href="notation-manual-tables.html">Appendix B Notation manual tables</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Chord-name-chart" href="chord-name-chart.html">B.1 Chord name chart</a></li>
+    <li><a id="toc-Common-chord-modifiers" href="common-chord-modifiers.html">B.2 Common chord modifiers</a></li>
+    <li><a id="toc-Predefined-string-tunings" href="predefined-string-tunings.html">B.3 Predefined string tunings</a></li>
+    <li><a id="toc-Predefined-fretboard-diagrams" href="predefined-fretboard-diagrams.html">B.4 Predefined fretboard diagrams</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Diagrams-for-Guitar" href="predefined-fretboard-diagrams.html#diagrams-for-guitar">B.4.1 Diagrams for Guitar</a></li>
+      <li><a id="toc-Diagrams-for-Ukulele" href="predefined-fretboard-diagrams.html#diagrams-for-ukulele">B.4.2 Diagrams for Ukulele</a></li>
+      <li><a id="toc-Diagrams-for-Mandolin" href="predefined-fretboard-diagrams.html#diagrams-for-mandolin">B.4.3 Diagrams for Mandolin</a></li>
+    </ul></li>
+    <li><a id="toc-Predefined-paper-sizes" href="predefined-paper-sizes.html">B.5 Predefined paper sizes</a></li>
+    <li><a id="toc-MIDI-instruments" href="midi-instruments.html">B.6 MIDI instruments</a></li>
+    <li><a id="toc-List-of-colors" href="list-of-colors.html">B.7 List of colors</a></li>
+    <li><a id="toc-The-Emmentaler-font" href="the-emmentaler-font.html">B.8 The Emmentaler font</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Modern-glyph-charts" href="the-emmentaler-font.html#modern-glyph-charts">B.8.1 Modern glyph charts</a></li>
+      <li><a id="toc-Ancient-glyph-charts" href="the-emmentaler-font.html#ancient-glyph-charts">B.8.2 Ancient glyph charts</a></li>
+    </ul></li>
+    <li><a id="toc-Note-head-styles" href="note-head-styles.html">B.9 Note head styles</a></li>
+    <li><a id="toc-Accidental-glyph-sets" href="accidental-glyph-sets.html">B.10 Accidental glyph sets</a></li>
+    <li><a id="toc-Clef-styles" href="clef-styles.html">B.11 Clef styles</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Standard-clefs" href="clef-styles.html#standard-clefs">B.11.1 Standard clefs</a></li>
+      <li><a id="toc-Percussion-staff-clef" href="clef-styles.html#percussion-staff-clef">B.11.2 Percussion staff clef</a></li>
+      <li><a id="toc-Tab-staff-clefs" href="clef-styles.html#tab-staff-clefs">B.11.3 Tab staff clefs</a></li>
+      <li><a id="toc-Ancient-music-clefs" href="clef-styles.html#ancient-music-clefs">B.11.4 Ancient music clefs</a></li>
+    </ul></li>
+    <li><a id="toc-List-of-special-characters" href="list-of-special-characters.html">B.12 List of special characters</a></li>
+    <li><a id="toc-List-of-articulations" href="list-of-articulations.html">B.13 List of articulations</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Articulation-scripts" href="list-of-articulations.html#articulation-scripts">B.13.1 Articulation scripts</a></li>
+      <li><a id="toc-Ornament-scripts" href="list-of-articulations.html#ornament-scripts">B.13.2 Ornament scripts</a></li>
+      <li><a id="toc-Fermata-scripts" href="list-of-articulations.html#fermata-scripts">B.13.3 Fermata scripts</a></li>
+      <li><a id="toc-Instrument_002dspecific-scripts" href="list-of-articulations.html#instrument_002dspecific-scripts">B.13.4 Instrument-specific scripts</a></li>
+      <li><a id="toc-Repeat-sign-scripts" href="list-of-articulations.html#repeat-sign-scripts">B.13.5 Repeat sign scripts</a></li>
+      <li><a id="toc-Ancient-scripts" href="list-of-articulations.html#ancient-scripts">B.13.6 Ancient scripts</a></li>
+    </ul></li>
+    <li><a id="toc-List-of-breath-marks" href="list-of-breath-marks.html">B.14 List of breath marks</a></li>
+    <li><a id="toc-Percussion-notes" href="percussion-notes.html">B.15 Percussion notes</a></li>
+    <li><a id="toc-List-of-bar-lines" href="list-of-bar-lines.html">B.16 List of bar lines</a></li>
+    <li><a id="toc-Default-values-for-outside_002dstaff_002dpriority" href="default-values-for-outside_002dstaff_002dpriority.html">B.17 Default values for <code>outside-staff-priority</code></a></li>
+    <li><a id="toc-Default-values-for-script_002dpriority" href="default-values-for-script_002dpriority.html">B.18 Default values for <code>script-priority</code></a></li>
+    <li><a id="toc-Grobs-and-their-break_002dalign-symbols" href="grobs-and-their-break_002dalign-symbols.html">B.19 Grobs and their break-align symbols</a></li>
+    <li><a id="toc-Technical-glossary" href="technical-glossary.html">B.20 Technical glossary</a></li>
+    <li><a id="toc-Available-music-functions" href="available-music-functions.html">B.21 Available music functions</a></li>
+    <li><a id="toc-Context-modification-identifiers" href="context-modification-identifiers.html">B.22 Context modification identifiers</a></li>
+    <li><a id="toc-Paper-variables" href="paper-variables.html">B.23 Paper variables</a></li>
+    <li><a id="toc-Naming-conventions" href="naming-conventions.html">B.24 Naming conventions</a></li>
+    <li><a id="toc-Predefined-type-predicates" href="predefined-type-predicates.html">B.25 Predefined type predicates</a>
+    <ul class="no-bullet">
+      <li><a id="toc-R5RS-primary-predicates" href="predefined-type-predicates.html#r5rs-primary-predicates">B.25.1 R5RS primary predicates</a></li>
+      <li><a id="toc-R5RS-secondary-predicates" href="predefined-type-predicates.html#r5rs-secondary-predicates">B.25.2 R5RS secondary predicates</a></li>
+      <li><a id="toc-Guile-predicates" href="predefined-type-predicates.html#guile-predicates">B.25.3 Guile predicates</a></li>
+      <li><a id="toc-LilyPond-scheme-predicates" href="predefined-type-predicates.html#lilypond-scheme-predicates">B.25.4 LilyPond scheme predicates</a></li>
+      <li><a id="toc-LilyPond-exported-predicates" href="predefined-type-predicates.html#lilypond-exported-predicates">B.25.5 LilyPond exported predicates</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Cheat-sheet" href="cheat-sheet.html">Appendix C Cheat sheet</a></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.html">Appendix D GNU Free Documentation License</a></li>
+  <li><a id="toc-Index" href="index-of-commands-and-concepts.html" rel="index">Appendix E Index</a></li>
+</ul></li>
+
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: FILL-IN-HEAD-COMMITTISH
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google Search">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Search">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

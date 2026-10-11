@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2002-2026 bei den Autoren.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+Die Übersetzung der folgenden Lizenzanmerkung ist zur Orientierung
+für Leser, die nicht Englisch sprechen. Im rechtlichen Sinne ist aber
+nur die englische Version gültig.
+
+Es ist erlaubt, dieses Dokument unter den Bedingungen der
+GNU Free Documentation Lizenz (Version 1.1 oder
+spätere, von der Free Software Foundation publizierte Versionen, ohne
+invariante Abschnitte),
+zu kopieren, zu verbreiten und/oder
+zu verändern. Eine Kopie der Lizenz ist im Abschnitt "GNU
+Free Documentation License" angefügt.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>1.4 Ein Programm bauen (Aufsatz über den automatischen Musiksatz)</title>
+
+<meta name="description" content="1.4 Ein Programm bauen (Aufsatz über den automatischen Musiksatz)">
+<meta name="keywords" content="1.4 Ein Programm bauen (Aufsatz über den automatischen Musiksatz)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.de.html" rel="start" title="LilyPond &ndash; Aufsatz über den automatischen Musiksatz">
+<link href="index-of-commands-and-concepts.de.html" rel="index" title="Appendix B Register">
+<link href="essay_toc.de.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="music-engraving.de.html" rel="up" title="1 Notensatz">
+<link href="putting-lilypond-to-work.de.html" rel="next" title="1.5 LilyPond die Arbeit überlassen">
+<link href="automated-engraving.de.html" rel="prev" title="1.3 Automatisierter Notensatz">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="de" class="essay">
+<div id="main">
+<div class="section" id="building-software">
+<table class="nav_table">
+<tr><td align="left">[<a href="music-engraving.de.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Notensatz </a>]</td><td align="center">[<a href="index.de.html" title="Cover (top) of document" rel="start">Top</a>][<a href="essay_toc.de.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.de.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="literature-list.de.html" title="Next chapter"> Literatur &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="getting-things-right.de.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Alles richtig machen </a>]</td><td align="center">[<a href="music-engraving.de.html" title="Up section" accesskey="u" rel="up">  Up: Notensatz </a>]</td><td align="right">[<a href="music-representation.de.html" title="Next section in reading order" accesskey="n" rel="next"> Die Darstellung der Musik &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Ein-Programm-bauen"></span><h3 class="section">1.4 Ein Programm bauen</h3>
+
+<p>Dieser Abschnitt beschreibt einige der Entscheidungen,
+die wir während des Programmierens für das Design von LilyPond
+getroffen haben.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="music-representation.de.html" accesskey="1">Die Darstellung der Musik</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="what-symbols-to-engrave_003f.de.html" accesskey="2">Welche Symbole?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="flexible-architecture.de.html" accesskey="3">Flexible Architektur</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="music-engraving.de.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Notensatz </a>]</td><td align="center">[<a href="index.de.html" title="Cover (top) of document" rel="start">Top</a>][<a href="essay_toc.de.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.de.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="literature-list.de.html" title="Next chapter"> Literatur &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="getting-things-right.de.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Alles richtig machen </a>]</td><td align="center">[<a href="music-engraving.de.html" title="Up section" accesskey="u" rel="up">  Up: Notensatz </a>]</td><td align="right">[<a href="music-representation.de.html" title="Next section in reading order" accesskey="n" rel="next"> Die Darstellung der Musik &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="building-software.html">English</a>, <a href="building-software.ca.html">Català</a>, <a href="building-software.es.html">Español</a>, <a href="building-software.fr.html">Français</a>, <a href="building-software.it.html">Italiano</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.de.html" title="Documentation Index">
+    &lt;&lt; Zur Dokumentationsübersicht
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.de.html#top" title="Cover (top) of document">
+    Aufsatz über den automatischen Musiksatz  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li class="toc_current"><a id="toc-Notensatz" href="music-engraving.de.html">1 Notensatz</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Die-Geschichte-von-LilyPond" href="the-lilypond-story.de.html">1.1 Die Geschichte von LilyPond</a></li>
+    <li><a id="toc-Details-des-Notensetzens" href="engraving-details.de.html">1.2 Details des Notensetzens</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Notenschriftarten" href="music-fonts.de.html">Notenschriftarten</a></li>
+      <li><a id="toc-Optischer-Ausgleich" href="optical-spacing.de.html">Optischer Ausgleich</a></li>
+      <li><a id="toc-Hilfslinien" href="ledger-lines.de.html">Hilfslinien</a></li>
+      <li><a id="toc-Optische-Grossen" href="optical-sizing.de.html">Optische Größen</a></li>
+      <li><a id="toc-Warum-der-grosse-Aufwand_003f" href="why-work-so-hard_003f.de.html">Warum der große Aufwand?</a></li>
+    </ul></li>
+    <li><a id="toc-Automatisierter-Notensatz" href="automated-engraving.de.html">1.3 Automatisierter Notensatz</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Schonheitswettbewerb" href="beauty-contests.de.html">Schönheitswettbewerb</a></li>
+      <li><a id="toc-Verbessern-durch-Benchmarking" href="improvement-by-benchmarking.de.html">Verbessern durch Benchmarking</a></li>
+      <li><a id="toc-Alles-richtig-machen" href="getting-things-right.de.html">Alles richtig machen</a></li>
+    </ul></li>
+    <li class="toc_current"><a id="toc-Ein-Programm-bauen" href="building-software.de.html">1.4 Ein Programm bauen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Die-Darstellung-der-Musik" href="music-representation.de.html">Die Darstellung der Musik</a></li>
+      <li><a id="toc-Welche-Symbole_003f" href="what-symbols-to-engrave_003f.de.html">Welche Symbole?</a></li>
+      <li><a id="toc-Flexible-Architektur" href="flexible-architecture.de.html">Flexible Architektur</a></li>
+    </ul></li>
+    <li><a id="toc-LilyPond-die-Arbeit-uberlassen" href="putting-lilypond-to-work.de.html">1.5 LilyPond die Arbeit überlassen</a></li>
+    <li><a id="toc-Notensatzbeispiele-_0028BWV-861_0029" href="engraved-examples-_0028bwv-861_0029.de.html">1.6 Notensatzbeispiele (BWV 861)</a></li>
+  </ul></li>
+  <li><a id="toc-Literatur" href="literature-list.de.html">2 Literatur</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Kurze-Literaturliste" href="short-literature-list.de.html">2.1 Kurze Literaturliste</a></li>
+    <li><a id="toc-Lange-Literaturliste" href="long-literature-list.de.html">2.2 Lange Literaturliste</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.de.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Register" href="index-of-commands-and-concepts.de.html" rel="index">Appendix B Register</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: ebe492ca408fb0d9abf80b94c56197eef8dc2f09
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Mit Google suchen">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Suche">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2004-2026 por los autores.
+
+La traducción de la siguiente nota de copyright se ofrece como
+cortesía para las personas de habla no inglesa, pero únicamente la
+nota en inglés tiene validez legal.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+Se otorga permiso para copiar, distribuir y/o modificar este documento
+bajo los términos de la Licencia de Documentación Libre de GNU, versión 1.1
+o cualquier versión posterior publicada por la Free Software Foundation;
+sin ninguna de las secciones invariantes.
+Se incluye una copia de esta licencia dentro de la sección titulada "Licencia
+de Documentación Libre de GNU".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>Valores de retorno (Extender LilyPond)</title>
+
+<meta name="description" content="Valores de retorno (Extender LilyPond)">
+<meta name="keywords" content="Valores de retorno (Extender LilyPond)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.es.html" rel="start" title="LilyPond &mdash; Extender">
+<link href="index-of-commands-and-concepts.es.html" rel="index" title="Appendix E Índice">
+<link href="extending_toc.es.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="scheme-procedures.es.html" rel="up" title="A.1.6 Procedimientos de Scheme">
+<link href="predicates.es.html" rel="prev" title="Predicados">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="es" class="extending">
+<div id="main">
+<div class="unnumberedsubsubsec" id="return-values">
+<table class="nav_table">
+<tr><td align="left">[<a href="scheme-tutorial.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Tutorial de Scheme </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="extending_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.es.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="interfaces-for-programmers.es.html" title="Next chapter"> Interfaces para programadores &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="predicates.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Predicados </a>]</td><td align="center">[<a href="scheme-procedures.es.html" title="Up section" accesskey="u" rel="up">  Up: Procedimientos de Scheme </a>]</td><td align="right">[<a href="scheme-conditionals.es.html" title="Next section in reading order" accesskey="n" rel="next"> Condicionales de Scheme &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Valores-de-retorno"></span><h4 class="unnumberedsubsubsec">Valores de retorno</h4>
+
+<p>Los procedimientos de Scheme siempre devuelven un valor de
+retorno, que es el valor de la última expresión ejecutada en el
+procedimiento.  El valor de retorno puede ser cualquier valor de
+Scheme válido, incluso una estructura de datos compleja o un
+procedimiento.
+</p>
+<p>A veces, el usuario quiere tener varias expresiones de Scheme
+dentro de un procedimiento.  Existen dos formas en que se pueden
+combinar distintas expresiones.  La primera es el procedimiento
+<code>begin</code>, que permite evaluar varias expresiones, y devuelve
+el valor de la última expresión.
+</p>
+<div class="example lisp">
+<pre class="lisp">guile&gt; (begin (+ 1 2) (- 5 8) (* 2 2))
+4
+</pre></div>
+
+<p>La segunda forma de combinar varias expresiones es dentro de un
+bloque <code>let</code>.  Dentro de un bloque let, se crean una serie de
+ligaduras o asignaciones, y después se evalúa una secuencia de
+expresiones que pueden incluir esas ligaduras o asignaciones.  El
+valor de retorno del bloque let es el valor de retorno de la
+última sentencia del bloque let:
+</p>
+<div class="example lisp">
+<pre class="lisp">guile&gt; (let ((x 2) (y 3) (z 4)) (display (+ x y)) (display (- z 4))
+&hellip; (+ (* x y) (/ z x)))
+508
+</pre></div>
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="scheme-tutorial.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Tutorial de Scheme </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="extending_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.es.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="interfaces-for-programmers.es.html" title="Next chapter"> Interfaces para programadores &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="predicates.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Predicados </a>]</td><td align="center">[<a href="scheme-procedures.es.html" title="Up section" accesskey="u" rel="up">  Up: Procedimientos de Scheme </a>]</td><td align="right">[<a href="scheme-conditionals.es.html" title="Next section in reading order" accesskey="n" rel="next"> Condicionales de Scheme &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="return-values.html">English</a>, <a href="return-values.ca.html">Català</a>, <a href="return-values.fr.html">Français</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.es.html" title="Documentation Index">
+    &lt;&lt; Volver al índice de la documentación
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.es.html#top" title="Cover (top) of document">
+    Extender LilyPond  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li class="toc_current"><a id="toc-Tutorial-de-Scheme" href="scheme-tutorial.es.html">Appendix A Tutorial de Scheme</a>
+  <ul class="no-bullet">
+    <li class="toc_current"><a id="toc-Introduccion-a-Scheme" href="introduction-to-scheme.es.html">A.1 Introducción a Scheme</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Cajon-de-arena-de-Scheme" href="scheme-sandbox.es.html">A.1.1 Cajón de arena de Scheme</a></li>
+      <li><a id="toc-Variables-de-Scheme" href="scheme-variables.es.html">A.1.2 Variables de Scheme</a></li>
+      <li><a id="toc-Tipos-de-datos-simples-de-Scheme" href="scheme-simple-data-types.es.html">A.1.3 Tipos de datos simples de Scheme</a></li>
+      <li><a id="toc-Tipos-de-datos-compuestos-de-Scheme" href="scheme-compound-data-types.es.html">A.1.4 Tipos de datos compuestos de Scheme</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Parejas" href="pairs.es.html">Parejas</a></li>
+        <li><a id="toc-Listas" href="lists.es.html">Listas</a></li>
+        <li><a id="toc-Listas-asociativas-_0028listas_002dA_0029" href="association-lists-_0028alists_0029.es.html">Listas asociativas (listas-A)</a></li>
+        <li><a id="toc-Tablas-de-hash" href="hash-tables.es.html">Tablas de hash</a></li>
+      </ul></li>
+      <li><a id="toc-Calculos-en-Scheme" href="calculations-in-scheme.es.html">A.1.5 Cálculos en Scheme</a></li>
+      <li class="toc_current"><a id="toc-Procedimientos-de-Scheme" href="scheme-procedures.es.html">A.1.6 Procedimientos de Scheme</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Definir-procedimientos" href="defining-procedures.es.html">Definir procedimientos</a></li>
+        <li><a id="toc-Predicados" href="predicates.es.html">Predicados</a></li>
+        <li class="toc_current"><a id="toc-Valores-de-retorno" href="return-values.es.html">Valores de retorno</a></li>
+      </ul></li>
+      <li><a id="toc-Condicionales-de-Scheme" href="scheme-conditionals.es.html">A.1.7 Condicionales de Scheme</a>
+      <ul class="no-bullet">
+        <li><a id="toc-if-1" href="if.es.html">if</a></li>
+        <li><a id="toc-cond-1" href="cond.es.html">cond</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Scheme-dentro-de-LilyPond" href="scheme-in-lilypond.es.html">A.2 Scheme dentro de LilyPond</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Sintaxis-del-Scheme-de-LilyPond" href="lilypond-scheme-syntax.es.html">A.2.1 Sintaxis del Scheme de LilyPond</a></li>
+      <li><a id="toc-Variables-de-LilyPond" href="lilypond-variables.es.html">A.2.2 Variables de LilyPond</a></li>
+      <li><a id="toc-Depuracion-del-codigo-de-Scheme" href="debugging-scheme-code.es.html">A.2.3 Depuración del código de Scheme</a></li>
+      <li><a id="toc-Variables-de-entrada-y-Scheme" href="input-variables-and-scheme.es.html">A.2.4 Variables de entrada y Scheme</a></li>
+      <li><a id="toc-Importacion-de-Scheme-dentro-de-LilyPond" href="importing-scheme-in-lilypond.es.html">A.2.5 Importación de Scheme dentro de LilyPond</a></li>
+      <li><a id="toc-Propiedades-de-los-objetos" href="object-properties.es.html">A.2.6 Propiedades de los objetos</a></li>
+      <li><a id="toc-Variables-de-LilyPond-compuestas" href="lilypond-compound-variables.es.html">A.2.7 Variables de LilyPond compuestas</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Desplazamientos" href="offsets.es.html">Desplazamientos</a></li>
+        <li><a id="toc-Fracciones" href="fractions.es.html">Fracciones</a></li>
+        <li><a id="toc-Dimensiones" href="extents.es.html">Dimensiones</a></li>
+        <li><a id="toc-Listas_002dA-de-propiedades" href="property-alists.es.html">Listas-A de propiedades</a></li>
+        <li><a id="toc-Cadenas-de-listas_002dA" href="alist-chains.es.html">Cadenas de listas-A</a></li>
+      </ul></li>
+      <li><a id="toc-El-modelo-de-caja-de-LilyPond" href="lilypond_0027s-box-model.es.html">A.2.8 El modelo de caja de LilyPond</a></li>
+      <li><a id="toc-Representacion-interna-de-la-musica" href="internal-music-representation.es.html">A.2.9 Representación interna de la música</a></li>
+    </ul></li>
+    <li><a id="toc-Construir-funciones-complicadas" href="building-complicated-functions.es.html">A.3 Construir funciones complicadas</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Una-primera-aproximacion-_0028ejemplo_0029" href="a-first-approach-_0028example_0029.es.html">A.3.1 Una primera aproximación (ejemplo)</a></li>
+      <li><a id="toc-Presentacion-de-las-expresiones-musicales" href="displaying-music-expressions.es.html">A.3.2 Presentación de las expresiones musicales</a></li>
+      <li><a id="toc-Propiedades-musicales" href="music-properties.es.html">A.3.3 Propiedades musicales</a></li>
+      <li><a id="toc-Duplicar-una-nota-con-ligaduras-_0028ejemplo_0029" href="doubling-a-note-with-slurs-_0028example_0029.es.html">A.3.4 Duplicar una nota con ligaduras (ejemplo)</a></li>
+      <li><a id="toc-Anadir-articulaciones-a-las-notas-_0028ejemplo_0029" href="adding-articulation-to-notes-_0028example_0029.es.html">A.3.5 Añadir articulaciones a las notas (ejemplo)</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Interfaces-para-programadores" href="interfaces-for-programmers.es.html">B Interfaces para programadores</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Bloques-de-codigo-de-LilyPond" href="lilypond-code-blocks.es.html">B.1 Bloques de código de LilyPond</a></li>
+    <li><a id="toc-Funciones-de-Scheme" href="scheme-functions.es.html">B.2 Funciones de Scheme</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Definicion-de-funciones-de-Scheme" href="scheme-function-definitions.es.html">B.2.1 Definición de funciones de Scheme</a></li>
+      <li><a id="toc-Uso-de-las-funciones-de-Scheme" href="scheme-function-usage.es.html">B.2.2 Uso de las funciones de Scheme</a></li>
+      <li><a id="toc-Funciones-de-Scheme-vacias" href="void-scheme-functions.es.html">B.2.3 Funciones de Scheme vacías</a></li>
+    </ul></li>
+    <li><a id="toc-Funciones-musicales" href="music-functions.es.html">B.3 Funciones musicales</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Definiciones-de-funciones-musicales" href="music-function-definitions.es.html">B.3.1 Definiciones de funciones musicales</a></li>
+      <li><a id="toc-Uso-de-las-funciones-musicales" href="music-function-usage.es.html">B.3.2 Uso de las funciones musicales</a></li>
+      <li><a id="toc-Funciones-de-sustitucion-sencillas" href="simple-substitution-functions.es.html">B.3.3 Funciones de sustitución sencillas</a></li>
+      <li><a id="toc-Funciones-de-sustitucion-intermedias" href="intermediate-substitution-functions.es.html">B.3.4 Funciones de sustitución intermedias</a></li>
+      <li><a id="toc-Matematicas-dentro-de-las-funciones" href="mathematics-in-functions.es.html">B.3.5 Matemáticas dentro de las funciones</a></li>
+      <li><a id="toc-Funciones-sin-argumentos" href="functions-without-arguments.es.html">B.3.6 Funciones sin argumentos</a></li>
+      <li><a id="toc-Funciones-musicales-vacias" href="void-music-functions.es.html">B.3.7 Funciones musicales vacías</a></li>
+    </ul></li>
+    <li><a id="toc-Funciones-de-eventos" href="event-functions.es.html">B.4 Funciones de eventos</a></li>
+    <li><a id="toc-Funciones-de-marcado" href="markup-functions.es.html">B.5 Funciones de marcado</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Construccion-de-elementos-de-marcado-en-Scheme" href="markup-construction-in-scheme.es.html">B.5.1 Construcción de elementos de marcado en Scheme</a></li>
+      <li><a id="toc-Como-funcionan-internamente-los-elementos-de-marcado" href="how-markups-work-internally.es.html">B.5.2 Cómo funcionan internamente los elementos de marcado</a></li>
+      <li><a id="toc-Definicion-de-una-instruccion-de-marcado-nueva" href="new-markup-command-definition.es.html">B.5.3 Definición de una instrucción de marcado nueva</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Sintaxis-de-la-definicion-de-instrucciones-de-marcado" href="markup-command-definition-syntax.es.html">Sintaxis de la definición de instrucciones de marcado</a></li>
+        <li><a id="toc-Acerca-de-las-propiedades" href="on-properties.es.html">Acerca de las propiedades</a></li>
+        <li><a id="toc-Un-ejemplo-completo" href="a-complete-example.es.html">Un ejemplo completo</a></li>
+        <li><a id="toc-Adaptacion-de-instrucciones-incorporadas" href="adapting-builtin-commands.es.html">Adaptación de instrucciones incorporadas</a></li>
+        <li><a id="toc-Convertir-elementos-de-marcado-en-cadenas" href="converting-markups-to-strings.es.html">Convertir elementos de marcado en cadenas</a></li>
+      </ul></li>
+      <li><a id="toc-Definicion-de-nuevas-instrucciones-de-lista-de-marcado" href="new-markup-list-command-definition.es.html">B.5.4 Definición de nuevas instrucciones de lista de marcado</a></li>
+    </ul></li>
+    <li><a id="toc-Contextos-para-programadores" href="contexts-for-programmers.es.html">B.6 Contextos para programadores</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Evaluacion-de-contextos" href="context-evaluation.es.html">B.6.1 Evaluación de contextos</a></li>
+      <li><a id="toc-Ejecutar-una-funcion-sobre-todos-los-objetos-de-la-presentacion" href="running-a-function-on-all-layout-objects.es.html">B.6.2 Ejecutar una función sobre todos los objetos de la presentación</a></li>
+    </ul></li>
+    <li><a id="toc-Funciones-de-callback" href="callback-functions.es.html">B.7 Funciones de callback</a></li>
+    <li><a id="toc-Contenedores-Unpure_002dpure" href="unpure_002dpure-containers.es.html">B.8 Contenedores Unpure-pure</a></li>
+    <li><a id="toc-Trucos-dificiles" href="difficult-tweaks.es.html">B.9 Trucos difíciles</a></li>
+  </ul></li>
+  <li><a id="toc-Interfaces-de-Scheme-de-LilyPond" href="lilypond-scheme-interfaces.es.html">C Interfaces de Scheme de LilyPond</a></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.es.html">Appendix D GNU Free Documentation License</a></li>
+  <li><a id="toc-Indice" href="index-of-commands-and-concepts.es.html" rel="index">Appendix E Índice</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Búsqueda de Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

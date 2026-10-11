@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2002-2026 degli autori.
+
+La traduzione della seguente nota di copyright è gentilmente
+offerta alle persone che non parlano inglese, ma solo
+la nota in inglese ha valore legale.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+È garantito il permesso di copiare, distribuire e/o modificare questo
+documento seguendo i termini della GNU Free Documentation License,
+versione 1.1 o ogni versione successiva pubblicata dalla
+Free Software Foundation; senza alcuna sezione non modificabile.
+Una copia della licenza si trova nella sezione intitolata
+"GNU Free Documentation License".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>Mettere le cose a posto (Saggio sull&rsquo;incisione musicale automatizzata)</title>
+
+<meta name="description" content="Mettere le cose a posto (Saggio sull&rsquo;incisione musicale automatizzata)">
+<meta name="keywords" content="Mettere le cose a posto (Saggio sull&rsquo;incisione musicale automatizzata)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.it.html" rel="start" title="LilyPond &mdash; Saggio sull&rsquo;incisione musicale automatizzata">
+<link href="index-of-commands-and-concepts.it.html" rel="index" title="Appendix B Indice">
+<link href="essay_toc.it.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="automated-engraving.it.html" rel="up" title="1.3 Incisione automatizzata">
+<link href="improvement-by-benchmarking.it.html" rel="prev" title="Miglioramento per analisi comparativa">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="it" class="essay">
+<div id="main">
+<div class="unnumberedsubsec" id="getting-things-right">
+<table class="nav_table">
+<tr><td align="left">[<a href="music-engraving.it.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="index.it.html" title="Cover (top) of document" rel="start">Top</a>][<a href="essay_toc.it.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.it.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="literature-list.it.html" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="improvement-by-benchmarking.it.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Miglioramento per analisi comparativa </a>]</td><td align="center">[<a href="automated-engraving.it.html" title="Up section" accesskey="u" rel="up">  Up: Incisione automatizzata </a>]</td><td align="right">[<a href="building-software.it.html" title="Next section in reading order" accesskey="n" rel="next"> Costruzione del software &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Mettere-le-cose-a-posto"></span><h4 class="unnumberedsubsec">Mettere le cose a posto</h4>
+
+<p>Siamo in grado di misurare l&rsquo;abilità di LilyPond nel prendere decisioni
+sull&rsquo;incisione della musica anche confrontando il suo prodotto con
+quello di un software commerciale.  In questo caso abbiamo
+scelto Finale 2008, uno dei programmi di notazione musicale
+a pagamento più diffusi, in particolare nel Nord America.  Sibelius è il
+suo più acerrimo rivale e sembra andare particolarmente bene nel mercato
+europeo.
+</p>
+<p>Per il nostro confronto, abbiamo selezionato la Fuga in sol minore dal
+Libro I del <em>Clavicembalo ben temperato</em> BWV 861 di Bach, il cui
+soggetto d&rsquo;apertura è
+</p>
+
+<a href="../77/lily-84b0de4f.ly">
+  <img align="middle"
+       border="0"
+       src="../77/lily-84b0de4f.png"
+       alt="[image of music]"></a>
+
+
+<p>Abbiamo inciso le ultime sette misure del brano (n. 28&ndash;34) con Finale e
+con LilyPond.  In questo punto della composizione, il soggetto ritorna
+in uno stretto a tre parti e conduce alla sezione finale.  Abbiamo
+resistito alla tentazione di apportare qualunque modifica al prodotto
+predefinito di Finale, perché stiamo cercando di mostrare che cosa
+ciascun software riesce a fare da solo, senza interventi umani.  Le
+uniche modifiche di rilievo introdotte sono state aggiustare le
+dimensioni della pagina per adattarla a quelle di questo saggio e
+forzare la musica in due soli sistemi per rendere più agevole il
+confronto. Per impostazione predefinita, invece, Finale avrebbe inciso
+due sistemi di tre misure ciascuno e un terzo sistema contenente la sola
+misura finale larga tutta la riga.
+</p>
+<p>Molte delle differenze tra le due versioni si concentrano nelle misure
+28&ndash;29, come mostriamo qui di seguito (Finale sta sopra):
+</p>
+<img src="../pictures/bwv861mm28-29.png" alt="bwv861mm28-29">
+
+
+<a href="../b7/lily-b179776a.ly">
+  <img align="middle"
+       border="0"
+       src="../b7/lily-b179776a.png"
+       alt="[image of music]"></a>
+
+
+<p>Tra le carenze nell&rsquo;output non modificato di Finale segnaliamo quanto segue.
+</p><ul>
+<li> La maggior parte delle travature è troppo lontana dal rigo.  Una
+travatura che punta verso il centro del rigo dovrebbe essere lunga circa
+un&rsquo;ottava, ma gli incisori la abbreviano quando nella musica a più voci
+punta in senso contrario.  Il sistema di travature di
+Finale può essere facilmente migliorato con il suo plug-in Patterson
+Beam, ma qui abbiamo scelto di omettere questa funzionalità.
+</li><li> Finale non regola le posizioni delle teste delle note quando queste
+vengono a trovarsi troppo vicine, il che rende la musica estremamente
+difficile da leggere se voce superiore e inferiore invertono
+temporaneamente la posizione:
+
+
+<a href="../9f/lily-ca218ddd.ly">
+  <img align="middle"
+       border="0"
+       src="../9f/lily-ca218ddd.png"
+       alt="[image of music]"></a>
+
+
+</li><li> Finale ha messo tutte le pause alla stessa altezza sul rigo.
+L&rsquo;utente è libero di regolarle secondo la propria necessità, ma in
+nessun modo il programma tenta di prendere in considerazione il contenuto
+dell&rsquo;altra voce.  Il caso ha voluto che in quest&rsquo;esempio non si verificassero
+vere e proprie collisioni tra note e pause, ma la cosa ha a che fare
+più con la posizione delle note che con quella delle pause.  In altre
+parole, Bach merita più considerazione per evitare una collisione
+completa di quanta non gliene riservi Finale.
+</li></ul>
+
+<p>Con il confronto appena operato non intendiamo affatto suggerire che
+Finale non possa essere adoperato per produrre spartiti di qualità
+editoriale.  Tutto il contrario: nelle mani di un utente esperto può farlo e
+in effetti lo fa, ma richiede abilità e tempo.  Una delle differenze
+fondamentali tra LilyPond e i programmi di notazione musicale
+commerciali è che il primo spera di ridurre gli interventi umani al
+minimo, mentre gli altri puntano a fornire un&rsquo;interfaccia attraente in
+cui operare questo tipo di modifiche.
+</p>
+<p>Particolarmente eclatante è l&rsquo;omissione da parte di Finale di un un bemolle
+a misura 33:
+</p>
+<blockquote>
+<img src="../pictures/bwv861mm33-34-annotate.png" alt="bwv861mm33-34-annotate">
+</blockquote>
+
+<p>Il bemolle è richiesto per annullare il bequadro presente poco prima
+nella stessa misura, ma Finale l&rsquo;ha tralasciato perché appartenente a
+un&rsquo;altra voce. Così, oltre ad attivare il plug-in per le travature e a
+controllare la spaziatura delle teste delle note e delle pause, l&rsquo;utente
+deve controllare anche gli accidenti nelle voci che si incrociano per
+scongiurare che errori di questo tipo facciano interrompere una prova.
+</p>
+<p>Se vi interessa esaminare questi esempi più nel dettaglio, alla fine del
+saggio potete trovare l&rsquo;estratto completo di sette misure insieme ad
+altre quattro incisioni pubblicate.  Un attento esame dei
+frammenti rivela che tra le incisioni manuali esiste una certo
+intervallo di variazione tollerabile, ma anche che LilyPond regge il
+confronto abbastanza bene.  L&rsquo;output di LilyPond non è ancora privo
+di difetti, per esempio appare un po&rsquo; troppo aggressivo
+nell&rsquo;accorciare i gambi, il che permette ancora un certo margine di
+manovra per sviluppi e messe a punto successive.
+</p>
+<p>Naturalmente, la tipografia si basa sul giudizio di una forma da parte
+dell&rsquo;uomo, il che rende le persone ancora insostituibili.  Tuttavia si
+può automatizzare gran parte del lavoro noioso, e se LilyPond
+riesce a risolvere correttamente la maggior parte delle situazioni
+frequenti, il miglioramento rispetto al software in circolazione sarà
+enorme.  Via via che gli anni passano, il programma può essere
+perfezionato per eseguire automaticamente un numero sempre più elevato
+di operazioni, così da rendere le sovrascritture manuali sempre meno
+indispensabili.  Dove queste si rivelassero indispensabili, la struttura di
+LilyPond è stata progettata avendo in mente la flessibilità.
+</p>
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="music-engraving.it.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="index.it.html" title="Cover (top) of document" rel="start">Top</a>][<a href="essay_toc.it.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.it.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="literature-list.it.html" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="improvement-by-benchmarking.it.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Miglioramento per analisi comparativa </a>]</td><td align="center">[<a href="automated-engraving.it.html" title="Up section" accesskey="u" rel="up">  Up: Incisione automatizzata </a>]</td><td align="right">[<a href="building-software.it.html" title="Next section in reading order" accesskey="n" rel="next"> Costruzione del software &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="getting-things-right.html">English</a>, <a href="getting-things-right.ca.html">Català</a>, <a href="getting-things-right.de.html">Deutsch</a>, <a href="getting-things-right.es.html">Español</a>, <a href="getting-things-right.fr.html">Français</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.it.html" title="Documentation Index">
+    &lt;&lt; Torna all'indice della documentazione
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.it.html#top" title="Cover (top) of document">
+    Saggio sull&rsquo;incisione musicale automatizzata  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li class="toc_current"><a id="toc-Incisione-musicale" href="music-engraving.it.html">1 Incisione musicale</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Storia-di-LilyPond" href="the-lilypond-story.it.html">1.1 Storia di LilyPond</a></li>
+    <li><a id="toc-Incisione-in-dettaglio" href="engraving-details.it.html">1.2 Incisione in dettaglio</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Font-musicali" href="music-fonts.it.html">Font musicali</a></li>
+      <li><a id="toc-Spaziatura-ottica" href="optical-spacing.it.html">Spaziatura ottica</a></li>
+      <li><a id="toc-Tagli-addizionali" href="ledger-lines.it.html">Tagli addizionali</a></li>
+      <li><a id="toc-Dimensionamento-ottico" href="optical-sizing.it.html">Dimensionamento ottico</a></li>
+      <li><a id="toc-Perche-lavorare-cosi-duramente_003f" href="why-work-so-hard_003f.it.html">Perché lavorare così duramente?</a></li>
+    </ul></li>
+    <li class="toc_current"><a id="toc-Incisione-automatizzata" href="automated-engraving.it.html">1.3 Incisione automatizzata</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Concorsi-di-bellezza" href="beauty-contests.it.html">Concorsi di bellezza</a></li>
+      <li><a id="toc-Miglioramento-per-analisi-comparativa" href="improvement-by-benchmarking.it.html">Miglioramento per analisi comparativa</a></li>
+      <li class="toc_current"><a id="toc-Mettere-le-cose-a-posto" href="getting-things-right.it.html">Mettere le cose a posto</a></li>
+    </ul></li>
+    <li><a id="toc-Costruzione-del-software" href="building-software.it.html">1.4 Costruzione del software</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Rappresentazione-della-musica" href="music-representation.it.html">Rappresentazione della musica</a></li>
+      <li><a id="toc-Quali-simboli-incidere_003f" href="what-symbols-to-engrave_003f.it.html">Quali simboli incidere?</a></li>
+      <li><a id="toc-Architettura-flessibile" href="flexible-architecture.it.html">Architettura flessibile</a></li>
+    </ul></li>
+    <li><a id="toc-Mettere-LilyPond-al-lavoro" href="putting-lilypond-to-work.it.html">1.5 Mettere LilyPond al lavoro</a></li>
+    <li><a id="toc-Esempi-di-incisione-_0028BWV-861_0029" href="engraved-examples-_0028bwv-861_0029.it.html">1.6 Esempi di incisione (BWV 861)</a></li>
+  </ul></li>
+  <li><a id="toc-Bibliografia" href="literature-list.it.html">2 Bibliografia</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Bibliografia-breve" href="short-literature-list.it.html">2.1 Bibliografia breve</a></li>
+    <li><a id="toc-Bibliografia-lunga" href="long-literature-list.it.html">2.2 Bibliografia lunga</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.it.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Indice" href="index-of-commands-and-concepts.it.html" rel="index">Appendix B Indice</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca con Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Cerca">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,878 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1998-2026 by the authors.
+
+在由自由软件基金会发布的 GNU 自由文档许可证，1.1
+版及以后版本的条款内，允许复制，分发和/或修改本文档和没有不变的部分。这个许可证的复本在标题为《GNU 自由文档许可证》的章节里。
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>4.2.1 I&rsquo;m hearing voices (LilyPond 学习手册)</title>
+
+<meta name="description" content="4.2.1 I&rsquo;m hearing voices (LilyPond 学习手册)">
+<meta name="keywords" content="4.2.1 I&rsquo;m hearing voices (LilyPond 学习手册)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.zh.html" rel="start" title="LilyPond &mdash; 学习手册">
+<link href="index-of-commands-and-concepts.zh.html" rel="index" title="Appendix C Index">
+<link href="learning_toc.zh.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="voices-contain-music.zh.html" rel="up" title="4.2 Voices contain music">
+<link href="explicitly-instantiating-voices.zh.html" rel="next" title="4.2.2 Explicitly instantiating voices">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="zh" class="learning">
+<div id="main">
+<div class="subsection" id="i_0027m-hearing-voices">
+<table class="nav_table">
+<tr><td align="left">[<a href="fundamental-concepts.zh.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Fundamental concepts </a>]</td><td align="center">[<a href="index.zh.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.zh.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.zh.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="tweaking-output.zh.html" title="Next chapter"> Tweaking output &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="voices-contain-music.zh.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Voices contain music </a>]</td><td align="center">[<a href="voices-contain-music.zh.html" title="Up section" accesskey="u" rel="up">  Up: Voices contain music </a>]</td><td align="right">[<a href="explicitly-instantiating-voices.zh.html" title="Next section in reading order" accesskey="n" rel="next"> Explicitly instantiating voices &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="I_0027m-hearing-voices"></span><h4 class="subsection">4.2.1 I&rsquo;m hearing voices</h4>
+
+<span id="index-polyphony-2"></span>
+<span id="index-layers"></span>
+<span id="index-multiple-voices-1"></span>
+<span id="index-voice_002c-multiple"></span>
+<span id="index-Voice-context-1"></span>
+<span id="index-context_002c-Voice"></span>
+<span id="index-simultaneous-music"></span>
+<span id="index-music_002c-simultaneous"></span>
+<span id="index-concurrent-music"></span>
+<span id="index-music_002c-concurrent"></span>
+<span id="index-voice_002c-vs_002e-chord"></span>
+<span id="index-chord_002c-vs_002e-voice"></span>
+
+<p>The lowest, most fundamental or innermost layers in a LilyPond
+score are called <em>voice contexts</em> or just &lsquo;voices&rsquo; for
+short.  Voices are sometimes called &lsquo;layers&rsquo; in other notation
+packages.
+</p>
+<p>In fact, a voice layer or context is the only one that can contain
+music.  If a <code>Voice</code> context is not explicitly declared one
+is created automatically, as we saw at the beginning of this
+chapter.  Some instruments such as an Oboe can play only one note
+at a time.  Music written for such instruments requires just a
+single voice.  Instruments that can play more than one note at a
+time like the piano will often require multiple voices to encode
+the different concurrent notes and rhythms they are capable of
+playing.
+</p>
+<p>A single voice can contain many notes in a chord, of course, so
+when exactly are multiple voices needed?  Look first at this
+example of four chords:
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class="nb nb-Scale">\major</span>
+<span class="w">  </span><span class="p">&lt;</span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class=" -Pitch">g</span><span class="p">&gt;</span><span class="m">4</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">fis</span><span class="p">&gt;</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">a&#39;</span><span class="p">&gt;</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">g</span><span class="p">&gt;</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../57/lily-34e301d7.ly">
+  <img align="middle"
+       border="0"
+       src="../57/lily-34e301d7.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>This can be expressed using just the single angle bracket chord
+symbols, <code>&lt;&nbsp;&hellip;&nbsp;&gt;</code>, and for this just a single
+voice is needed.  But suppose the F-sharp was actually an
+eighth-note followed by an eighth-note&nbsp;G, a passing note on
+the way to the&nbsp;A?  Now we have two notes which start at the
+same time but have different durations: the quarter-note&nbsp;D
+and the eighth-note F-sharp.  How are these to be coded?  They
+cannot be written as a chord because all the notes in a chord must
+have the same duration.  And they cannot be written as two
+sequential notes as they need to start at the same time.  This is
+when two voices are required.
+</p>
+<p>Let us see how this is done in LilyPond input syntax.
+</p>
+<span id="index-_003c_003c-_002e_002e_002e-_005c_005c-_002e_002e_002e-_003e_003e-1"></span>
+<span id="index-_005c_005c_005c_005c-1"></span>
+
+<p>The easiest way to enter fragments with more than one voice on a
+staff is to enter each voice as a sequence (with
+<code>{&nbsp;&hellip;&nbsp;}</code>), and combine them simultaneously
+with angle brackets, <code>&lt;&lt; &hellip; &gt;&gt;</code>.  The fragments must
+also be separated with double backward slashes, <code>\\</code>, to
+place them in separate voices.  Without these, the notes would be
+entered into a single voice, which would usually cause errors.
+This technique is particularly suited to pieces of music which are
+largely homophonic with occasional short sections of polyphony.
+</p>
+<p>Here&rsquo;s how we split the chords above into two voices and add both
+the passing note and a slur:
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class="nb nb-Scale">\major</span>
+<span class="w">  </span><span class="c1">%    Voice = &quot;1&quot;              Voice = &quot;2&quot;</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">fis</span><span class="m">8</span><span class="nb nb-Articulation">(</span><span class="w"> </span><span class=" -Pitch">g</span><span class="nb nb-Articulation">)</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">&gt;&gt;</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../e1/lily-48e2a0cf.ly">
+  <img align="middle"
+       border="0"
+       src="../e1/lily-48e2a0cf.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Notice how the stems of the second voice now point down.
+</p>
+<p>Here&rsquo;s another simple example:
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="nb nb-Scale">\minor</span>
+<span class="w">  </span><span class="c1">%    Voice = &quot;1&quot;           Voice = &quot;2&quot;</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">r</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">4.</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">8</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="p">\\</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d,</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class="p">}</span><span class="w">       </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">bes</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">bes</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">bes</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">8</span><span class="nb nb-Articulation">(</span><span class="w"> </span><span class=" -Pitch">a</span><span class="nb nb-Articulation">)</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">2.</span><span class="w"> </span><span class=" -Pitch">r</span><span class="m">4</span><span class="w"> </span><span class="p">}</span><span class="w">         </span><span class="p">\\</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">fis</span><span class="m">2.</span><span class="w"> </span><span class=" -Pitch">r</span><span class="m">4</span><span class="w"> </span><span class="p">}</span><span class="w">       </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../e1/lily-135bdbaa.ly">
+  <img align="middle"
+       border="0"
+       src="../e1/lily-135bdbaa.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>It is not necessary to use a separate <code>&lt;&lt; \\ &gt;&gt;</code> construct
+for each bar.  For music with few notes in each bar this layout
+can help improve the legibility of the code, but if there are many
+notes in each bar it may be better to split out each voice
+separately, like this:
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="p">&lt;&lt;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="nb nb-Scale">\minor</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">% Voice = &quot;1&quot;</span>
+<span class="w">    </span><span class=" -Pitch">r</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">4.</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">8</span><span class="w"> </span><span class="p">|</span>
+<span class="w">    </span><span class=" -Pitch">bes</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">bes</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">bes</span><span class="w"> </span><span class="p">|</span>
+<span class="w">    </span><span class=" -Pitch">a</span><span class="m">2.</span><span class="w"> </span><span class=" -Pitch">r</span><span class="m">4</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="p">\\</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">% Voice = &quot;2&quot;</span>
+<span class="w">    </span><span class=" -Pitch">d&#39;</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class="p">|</span>
+<span class="w">    </span><span class=" -Pitch">g</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">8</span><span class="nb nb-Articulation">(</span><span class="w"> </span><span class=" -Pitch">a</span><span class="nb nb-Articulation">)</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">4</span><span class="w"> </span><span class="p">|</span>
+<span class="w">    </span><span class=" -Pitch">fis</span><span class="m">2.</span><span class="w"> </span><span class=" -Pitch">r</span><span class="m">4</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">&gt;&gt;</span>
+</pre>
+
+<a href="../dc/lily-7f2b266b.ly">
+  <img align="middle"
+       border="0"
+       src="../dc/lily-7f2b266b.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="index-voice_002c-naming"></span>
+
+<p>This example has just two voices, but the same construct may be
+used to encode three or more voices by adding more back-slash
+separators.
+</p>
+<p>The <code>Voice</code> contexts implicitly created by <code>&lt;&lt; \\ &gt;&gt;</code>
+bear the names <code>&quot;1&quot;</code>, <code>&quot;2&quot;</code>, etc.  The first contexts
+set the <em>outer</em> voices, the highest voice in context
+<code>&quot;1&quot;</code> and the lowest voice in context <code>&quot;2&quot;</code>.  The inner
+voices go in contexts <code>&quot;3&quot;</code> and <code>&quot;4&quot;</code>.  In each of these
+contexts, the vertical direction of slurs, stems, ties, dynamics,
+etc., is set appropriately.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">% Main voice</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span><span class="m">16</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">f</span>
+<span class="w">  </span><span class="c1">%  Voice = &quot;1&quot;   Voice = &quot;2&quot;             Voice = &quot;3&quot;</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">r</span><span class="m">8</span><span class="w"> </span><span class=" -Pitch">e</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">8</span><span class="nb nb-Articulation">~</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="p">\\</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">8</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">16</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">8</span><span class="w"> </span><span class=" -Pitch">g</span><span class="nb nb-Articulation">~</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>s<span class="m">4</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../61/lily-7cceab5f.ly">
+  <img align="middle"
+       border="0"
+       src="../61/lily-7cceab5f.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Note the use of <code>s4</code> to insert an invisible spacer rest, thus
+delaying the (visible) start of voice <code>&quot;3&quot;</code>.
+</p>
+<span id="index-_005cvoices"></span>
+<p>If you prefer entering the voices in a different order, like top
+to bottom, you can specify the respective voice numbers in front
+of one <code>&lt;&lt; &hellip; &gt;&gt;</code> construct using the <code>\voices</code>
+command, like
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">% Main voice</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span><span class="m">16</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">f</span>
+<span class="w">  </span><span class="c1">%  Voice = &quot;1&quot;   Voice = &quot;2&quot;</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">r</span><span class="m">8</span><span class="w"> </span><span class=" -Pitch">e</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">8</span><span class="nb nb-Articulation">~</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\voices</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">2</span>
+<span class="w">  </span><span class="c1">%  Voice = &quot;1&quot;   Voice = &quot;3&quot;    Voice = &quot;2&quot;</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class="p">}</span><span class="w">   </span><span class="p">\\</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>s<span class="m">4</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">8</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">16</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">8</span><span class="w"> </span><span class=" -Pitch">g</span><span class="nb nb-Articulation">~</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../36/lily-8e1e0d07.ly">
+  <img align="middle"
+       border="0"
+       src="../36/lily-8e1e0d07.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>These voices are all separate from the main voice that contains
+the notes just outside the <code>&lt;&lt; &hellip; &gt;&gt;</code> construct.  Let&rsquo;s
+call this the <em>simultaneous construct</em>.  Slurs and ties may
+only connect notes within the same voice, so slurs and ties cannot
+go into or out of a simultaneous construct.  Conversely, parallel
+voices from separate simultaneous constructs on the same staff are
+the same voice.  Other voice-related properties also carry across
+simultaneous constructs.  Here is the same example, with different
+colors and note heads for each voice.  Note that changes in one
+voice do not affect other voices, but they do persist in the same
+voice later.  Note also that tied notes may be split across the
+same voices in two constructs, shown here in the blue triangle
+voice.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">% Main voice</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span><span class="m">16</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">f</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span><span class="w">  </span><span class="c1">% Bar 1</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicCommand">\voiceOneStyle</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">\\</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicCommand">\voiceTwoStyle</span><span class="w"> </span><span class=" -Pitch">r</span><span class="m">8</span><span class="w"> </span><span class=" -Pitch">e</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">8</span><span class="nb nb-Articulation">~</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span><span class="w">  </span><span class="c1">% Bar 2</span>
+<span class="w">    </span><span class="c1">% Voice 1 continues</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">\\</span>
+<span class="w">    </span><span class="c1">% Voice 2 continues</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">8</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">16</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">8</span><span class="w"> </span><span class=" -Pitch">g</span><span class="nb nb-Articulation">~</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">\\</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicCommand">\voiceThreeStyle</span><span class="w"> </span>s<span class="m">4</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">2</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../ef/lily-714f656e.ly">
+  <img align="middle"
+       border="0"
+       src="../ef/lily-714f656e.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="index-_005cvoiceOneStyle"></span>
+<span id="index-_005cvoiceTwoStyle"></span>
+<span id="index-_005cvoiceThreeStyle"></span>
+<span id="index-_005cvoiceFourStyle"></span>
+<span id="index-_005cvoiceNeutralStyle"></span>
+
+<p>The commands <code>\voice<var>XXX</var>Style</code> are mainly intended for
+use in educational documents such as this one.  They modify the
+color of the note head, the stem and the beams, and the style of
+the note head, so that the voices may be easily distinguished.
+Voice one is set to red diamonds, voice two to blue triangles,
+voice three to green crossed circles, and voice four (not used
+here) to magenta crosses; <code>\voiceNeutralStyle</code> (also not used
+here) reverts the style back to the default.  We shall see later
+how commands like these may be created by the user.
+See <a href="visibility-and-color-of-objects.zh.html">Visibility and color of objects</a> and <a href="using-variables-for-layout-adjustments.zh.html">Using variables for layout adjustments</a>.
+</p>
+<span id="index-polyphony_002c-and-relative-note-entry"></span>
+<span id="index-relative-notes_002c-entry-and-polyphony"></span>
+
+<p>Polyphony does not change the relationship of notes within a
+<code>\relative</code> block.  Each note is still calculated relative to
+the note immediately preceding it, or to the first note of the
+preceding chord.  So in
+</p>
+<div class="example">
+<pre class="example">\relative { noteA &lt;&lt; &lt;noteB noteC&gt; \\ noteD &gt;&gt; noteE }
+</pre></div>
+
+<ul>
+<li> <code>noteB</code> is relative to <code>noteA</code>;
+</li><li> <code>noteC</code> is relative to <code>noteB</code>, not <code>noteA</code>;
+</li><li> <code>noteD</code> is relative to <code>noteB</code>, not <code>noteA</code> or
+<code>noteC</code>;
+</li><li> <code>noteE</code> is relative to <code>noteD</code>, not <code>noteA</code>.
+</li></ul>
+
+<p>An alternative way, which may be clearer if the notes in the
+voices are widely separated, is to place a <code>\relative</code>
+command at the start of each voice:
+</p>
+<div class="example">
+<pre class="example">\relative { noteA &hellip; }
+&lt;&lt;
+  \relative { &lt;noteB noteC&gt; &hellip; }
+\\
+  \relative { noteD &hellip; }
+&gt;&gt;
+\relative { noteE &hellip; }
+</pre></div>
+
+<p>Let us finally analyze the voices in a more complex piece of
+music.  Here are the notes from the first two bars of the second
+of Chopin&rsquo;s <em>Deux Nocturnes</em>, Op.&nbsp;32.  This example will
+be used at later stages in this and the next chapter to illustrate
+several techniques for producing notation, so please ignore for
+now anything in the underlying code that looks mysterious and
+concentrate just on the music and the voices &ndash; the complications
+will all be explained in later sections.
+</p>
+
+<blockquote>
+<a href="../36/lily-3258c92c.ly">
+  <img align="middle"
+       border="0"
+       src="../36/lily-3258c92c.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>The direction of the stems is often used to indicate the
+continuity of two simultaneous melodic lines.  Here the stems of
+the highest notes are all pointing up and the stems of the lower
+notes are all pointing down.  This is the first indication that
+more than one voice is required.
+</p>
+<p>But the real need for multiple voices arises when notes starting
+at the same time have different durations.  Look at the notes that
+start at beat three in the first bar.  The A-flat is a dotted
+quarter note, the F is a quarter note and the D-flat is a half
+note.  These cannot be written as a chord as all the notes in a
+chord must have the same duration.  Neither can they be written as
+sequential notes, as they must start at the same time.  This
+section of the bar requires three voices, and the normal practice
+would be to write the whole bar as three voices, as shown below,
+where we have used different note heads and colors for the three
+voices.  Again, the code behind this example will be explained
+later, so ignore anything you do not understand.
+</p>
+
+<blockquote>
+<a href="../12/lily-af4127c7.ly">
+  <img align="middle"
+       border="0"
+       src="../12/lily-af4127c7.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Let us try to encode this music from scratch.  As we shall see,
+this encounters some difficulties.  We begin as we have learnt,
+using the <code>&lt;&lt; \\ &gt;&gt;</code> construct to enter the music of the
+first bar in three voices:
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">aes</span><span class="w"> </span><span class="nb nb-Scale">\major</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">aes</span><span class="m">4.</span><span class="w"> </span><span class=" -Pitch">bes</span><span class="m">8</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">ees,</span><span class="w"> </span><span class=" -Pitch">c</span><span class="p">&gt;</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">des</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">\\</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">aes&#39;</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">f</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">fes</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="p">&lt;</span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">ees</span><span class="w"> </span><span class=" -Pitch">aes</span><span class="w"> </span><span class=" -Pitch">c</span><span class="p">&gt;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../f1/lily-ea16ef4b.ly">
+  <img align="middle"
+       border="0"
+       src="../f1/lily-ea16ef4b.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="index-stem-down"></span>
+<span id="index-voice_002c-and-stem-directions"></span>
+<span id="index-stem-direction_002c-and-voices"></span>
+<span id="index-stem-up"></span>
+
+<p>The stem directions are automatically assigned with the
+odd-numbered voices taking upward stems and the even-numbered
+voices downward ones.  The stems for voices 1 and&nbsp;2 are
+right, but the stems in voice&nbsp;3 should go down in this
+particular piece of music.  We can correct this by skipping voice
+three and placing the music in voice four.  This could be done by
+simply adding another pair of <code>\\</code>, but we use the
+<code>\voices</code> command instead (which would also allow us to enter
+the voices in different order if we preferred doing that):
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">aes</span><span class="w"> </span><span class="nb nb-Scale">\major</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\voices</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="w">   </span><span class="c1">% Omit voice three</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span><span class="w">  </span><span class="c1">% Voice one</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">aes</span><span class="m">4.</span><span class="w"> </span><span class=" -Pitch">bes</span><span class="m">8</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">\\</span><span class="w">  </span><span class="c1">% Voice two</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">ees,</span><span class="w"> </span><span class=" -Pitch">c</span><span class="p">&gt;</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">des</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">\\</span><span class="w">  </span><span class="c1">% Voice four</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">aes&#39;</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">f</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">fes</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="p">&lt;</span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">ees</span><span class="w"> </span><span class=" -Pitch">aes</span><span class="w"> </span><span class=" -Pitch">c</span><span class="p">&gt;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../90/lily-c62af17f.ly">
+  <img align="middle"
+       border="0"
+       src="../90/lily-c62af17f.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>We see that this fixes the stem direction, but the horizontal
+placement of notes is not what we want.  LilyPond shifts the inner
+notes when they or their stems would collide with outer voices,
+but this is not always appropriate for piano music.  In other
+situations, the shifts LilyPond applies might fail to clear the
+collisions.  LilyPond provides several ways to adjust the
+horizontal placing of notes.  We are not quite ready yet to see
+how to correct this, so we shall leave this problem until a later
+section &ndash; see the <code>force-hshift</code> property in <a href="fixing-overlapping-notation.zh.html">Fixing overlapping notation</a>.
+</p>
+<div class="warning">
+<p><strong>注意：</strong>Lyrics, spanners (such as slurs, ties, hairpins, etc.)
+cannot be created &lsquo;across&rsquo; voices.
+</p>
+</div>
+
+<span id="Can-Jian--17"></span><h4 class="subsubheading">参见</h4>
+<p>Notation Reference:
+<a href="../notation/multiple-voices.html">Multiple voices</a>.
+</p>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="fundamental-concepts.zh.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Fundamental concepts </a>]</td><td align="center">[<a href="index.zh.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.zh.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.zh.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="tweaking-output.zh.html" title="Next chapter"> Tweaking output &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="voices-contain-music.zh.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Voices contain music </a>]</td><td align="center">[<a href="voices-contain-music.zh.html" title="Up section" accesskey="u" rel="up">  Up: Voices contain music </a>]</td><td align="right">[<a href="explicitly-instantiating-voices.zh.html" title="Next section in reading order" accesskey="n" rel="next"> Explicitly instantiating voices &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="i_0027m-hearing-voices.html">English</a>, <a href="i_0027m-hearing-voices.ca.html">Català</a>, <a href="i_0027m-hearing-voices.de.html">Deutsch</a>, <a href="i_0027m-hearing-voices.es.html">Español</a>, <a href="i_0027m-hearing-voices.fr.html">Français</a>, <a href="i_0027m-hearing-voices.it.html">Italiano</a>, <a href="i_0027m-hearing-voices.ja.html">日本語</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.zh.html" title="Documentation Index">
+    &lt;&lt; 回到文档索引
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.zh.html#top" title="Cover (top) of document">
+    LilyPond 学习手册  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Installing" href="installing.zh.html">1 Installing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Graphical-setup" href="graphical-setup.zh.html">1.1 Graphical setup</a></li>
+    <li><a id="toc-Command-line-setup" href="command-line-setup.zh.html">1.2 Command line setup</a></li>
+  </ul></li>
+  <li><a id="toc-Jiao-Cheng-" href="tutorial.zh.html">2 教程</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Bian-Yi-WenJian-" href="compiling-a-file.zh.html">2.1 编译文件</a></li>
+    <li><a id="toc-Ru-He-Xie-Shu-Ru-WenJian-" href="how-to-write-input-files.zh.html">2.2 如何写输入文件</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Jian-Dan-Ji-Pu-Fa-" href="simple-notation.zh.html">2.2.1 简单记谱法</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Yin-Gao-" href="pitches.zh.html">音高</a></li>
+        <li><a id="toc-Shi-Zhi--_0028Jie-Zou-_0029" href="durations-_0028rhythms_0029.zh.html">时值 (节奏)</a></li>
+        <li><a id="toc-Xiu-Zhi-Fu-" href="rests.zh.html">休止符</a></li>
+        <li><a id="toc-Pai-Zi-Ji-Hao-" href="time-signature.zh.html">拍子记号</a></li>
+        <li><a id="toc-Su-Du-Ji-Hao-" href="tempo-marks.zh.html">速度记号</a></li>
+        <li><a id="toc-Pu-Hao-_0028Yin-Bu-Ji-Hao-_0029" href="clef.zh.html">谱号（音部记号）</a></li>
+        <li><a id="toc-Suo-You-De-Du-Fang-Zai-YiQi-" href="all-together.zh.html">所有的都放在一起</a></li>
+      </ul></li>
+      <li><a id="toc-Chu-Li-Shu-Ru-WenJian-" href="working-on-input-files.zh.html">2.2.2 处理输入文件</a></li>
+    </ul></li>
+    <li><a id="toc-Chu-Li-Bao-Cuo-" href="dealing-with-errors.zh.html">2.3 处理报错</a>
+    <ul class="no-bullet">
+      <li><a id="toc-YiBan-Jie-Jue-Wen-Ti-De-Fang-Fa-" href="general-troubleshooting-tips.zh.html">2.3.1 一般解决问题的方法</a></li>
+      <li><a id="toc-Chang-Jian-De-Cuo-Wu-" href="some-common-errors.zh.html">2.3.2 常见的错误</a></li>
+    </ul></li>
+    <li><a id="toc-Ru-He-Yue-Du-Jiao-Cheng-" href="how-to-read-the-manuals.zh.html">2.4 如何阅读教程</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Hu-Lue-Diao-De-Nei-Rong-" href="omitted-material.zh.html">2.4.1 忽略掉的内容</a></li>
+      <li><a id="toc-Ke-Yi-Dian-Kai-De-LiZi-" href="clickable-examples.zh.html">2.4.2 可以点开的例子</a></li>
+      <li><a id="toc-Shou-Ce-Gai-Lan-" href="overview-of-manuals.zh.html">2.4.3 手册概览</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Common-notation" href="common-notation.zh.html">3 Common notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Single_002dstaff-notation" href="single_002dstaff-notation.zh.html">3.1 Single-staff notation</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Bar-lines-and-bar-checks" href="bar-lines-and-bar-checks.zh.html">3.1.1 Bar lines and bar checks</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Bar-lines" href="bar-lines.zh.html">Bar lines</a></li>
+        <li><a id="toc-Bar-checks" href="bar-checks.zh.html">Bar checks</a></li>
+      </ul></li>
+      <li><a id="toc-Pitches-and-key-signatures" href="pitches-and-key-signatures.zh.html">3.1.2 Pitches and key signatures</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Pitch-alterations" href="pitch-alterations.zh.html">Pitch alterations</a></li>
+        <li><a id="toc-Key-signatures" href="key-signatures.zh.html">Key signatures</a></li>
+        <li><a id="toc-Warning_003a-key-signatures-and-pitches" href="warning-key-signatures-and-pitches.zh.html">Warning: key signatures and pitches</a></li>
+      </ul></li>
+      <li><a id="toc-Ties-and-slurs" href="ties-and-slurs.zh.html">3.1.3 Ties and slurs</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Ties" href="ties.zh.html">Ties</a></li>
+        <li><a id="toc-Slurs" href="slurs.zh.html">Slurs</a></li>
+        <li><a id="toc-Phrasing-slurs" href="phrasing-slurs.zh.html">Phrasing slurs</a></li>
+        <li><a id="toc-Warnings_003a-slurs-vs_002e-ties" href="warnings-slurs-vs-ties.zh.html">Warnings: slurs vs. ties</a></li>
+      </ul></li>
+      <li><a id="toc-Articulations-and-dynamics" href="articulations-and-dynamics.zh.html">3.1.4 Articulations and dynamics</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Articulations" href="articulations.zh.html">Articulations</a></li>
+        <li><a id="toc-Fingerings" href="fingerings.zh.html">Fingerings</a></li>
+        <li><a id="toc-Dynamics" href="dynamics.zh.html">Dynamics</a></li>
+      </ul></li>
+      <li><a id="toc-Adding-text" href="adding-text.zh.html">3.1.5 Adding text</a></li>
+      <li><a id="toc-Automatic-and-manual-beams" href="automatic-and-manual-beams.zh.html">3.1.6 Automatic and manual beams</a></li>
+      <li><a id="toc-Advanced-rhythmic-commands" href="advanced-rhythmic-commands.zh.html">3.1.7 Advanced rhythmic commands</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Partial-measure" href="partial-measure.zh.html">Partial measure</a></li>
+        <li><a id="toc-Tuplets" href="tuplets.zh.html">Tuplets</a></li>
+        <li><a id="toc-Grace-notes" href="grace-notes.zh.html">Grace notes</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Multiple-notes-at-once" href="multiple-notes-at-once.zh.html">3.2 Multiple notes at once</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Music-expressions-explained" href="music-expressions-explained.zh.html">3.2.1 Music expressions explained</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Analogy_003a-mathematical-expressions" href="analogy-mathematical-expressions.zh.html">Analogy: mathematical expressions</a></li>
+        <li><a id="toc-Simultaneous-music-expressions_003a-multiple-staves" href="simultaneous-music-expressions-multiple-staves.zh.html">Simultaneous music expressions: multiple staves</a></li>
+        <li><a id="toc-Simultaneous-music-expressions_003a-single_002dstaff" href="simultaneous-music-expressions-single_002dstaff.zh.html">Simultaneous music expressions: single-staff</a></li>
+      </ul></li>
+      <li><a id="toc-Multiple-staves" href="multiple-staves.zh.html">3.2.2 Multiple staves</a></li>
+      <li><a id="toc-Staff-groups" href="staff-groups.zh.html">3.2.3 Staff groups</a></li>
+      <li><a id="toc-Combining-notes-into-chords" href="combining-notes-into-chords.zh.html">3.2.4 Combining notes into chords</a></li>
+      <li><a id="toc-Single_002dstaff-polyphony" href="single_002dstaff-polyphony.zh.html">3.2.5 Single-staff polyphony</a></li>
+    </ul></li>
+    <li><a id="toc-Songs" href="songs.zh.html">3.3 Songs</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Setting-simple-songs" href="setting-simple-songs.zh.html">3.3.1 Setting simple songs</a></li>
+      <li><a id="toc-Aligning-lyrics-to-a-melody" href="aligning-lyrics-to-a-melody.zh.html">3.3.2 Aligning lyrics to a melody</a></li>
+      <li><a id="toc-Lyrics-to-multiple-staves" href="lyrics-to-multiple-staves.zh.html">3.3.3 Lyrics to multiple staves</a></li>
+    </ul></li>
+    <li><a id="toc-Final-touches" href="final-touches.zh.html">3.4 Final touches</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Organizing-pieces-with-variables" href="organizing-pieces-with-variables.zh.html">3.4.1 Organizing pieces with variables</a></li>
+      <li><a id="toc-Adding-titles" href="adding-titles.zh.html">3.4.2 Adding titles</a></li>
+      <li><a id="toc-Absolute-note-names" href="absolute-note-names.zh.html">3.4.3 Absolute note names</a></li>
+      <li><a id="toc-After-the-tutorial" href="after-the-tutorial.zh.html">3.4.4 After the tutorial</a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Fundamental-concepts" href="fundamental-concepts.zh.html">4 Fundamental concepts</a>
+  <ul class="no-bullet">
+    <li><a id="toc-How-LilyPond-input-files-work" href="how-lilypond-input-files-work.zh.html">4.1 How LilyPond input files work</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Introduction-to-the-LilyPond-file-structure" href="introduction-to-the-lilypond-file-structure.zh.html">4.1.1 Introduction to the LilyPond file structure</a></li>
+      <li><a id="toc-A-score-is-a-_0028single_0029-compound-musical-expression" href="a-score-is-a-_0028single_0029-compound-musical-expression.zh.html">4.1.2 A score is a (single) compound musical expression</a></li>
+      <li><a id="toc-Nesting-music-expressions" href="nesting-music-expressions.zh.html">4.1.3 Nesting music expressions</a></li>
+      <li><a id="toc-Structure-of-a-note-entry" href="structure-of-a-note-entry.zh.html">4.1.4 Structure of a note entry</a></li>
+      <li><a id="toc-On-the-un_002dnestedness-of-brackets-and-ties" href="on-the-un_002dnestedness-of-brackets-and-ties.zh.html">4.1.5 On the un-nestedness of brackets and ties</a></li>
+    </ul></li>
+    <li class="toc_current"><a id="toc-Voices-contain-music" href="voices-contain-music.zh.html">4.2 Voices contain music</a>
+    <ul class="no-bullet">
+      <li class="toc_current"><a id="toc-I_0027m-hearing-voices" href="i_0027m-hearing-voices.zh.html">4.2.1 I&rsquo;m hearing voices</a></li>
+      <li><a id="toc-Explicitly-instantiating-voices" href="explicitly-instantiating-voices.zh.html">4.2.2 Explicitly instantiating voices</a></li>
+      <li><a id="toc-Voices-and-vocals" href="voices-and-vocals.zh.html">4.2.3 Voices and vocals</a></li>
+    </ul></li>
+    <li><a id="toc-Contexts-and-engravers" href="contexts-and-engravers.zh.html">4.3 Contexts and engravers</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Contexts-explained" href="contexts-explained.zh.html">4.3.1 Contexts explained</a></li>
+      <li><a id="toc-Creating-contexts" href="creating-contexts.zh.html">4.3.2 Creating contexts</a></li>
+      <li><a id="toc-Engravers-explained" href="engravers-explained.zh.html">4.3.3 Engravers explained</a></li>
+      <li><a id="toc-Modifying-context-properties" href="modifying-context-properties.zh.html">4.3.4 Modifying context properties</a></li>
+      <li><a id="toc-Adding-and-removing-engravers" href="adding-and-removing-engravers.zh.html">4.3.5 Adding and removing engravers</a></li>
+    </ul></li>
+    <li><a id="toc-Extending-the-templates" href="extending-the-templates.zh.html">4.4 Extending the templates</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Soprano-and-cello" href="soprano-and-cello.zh.html">4.4.1 Soprano and cello</a></li>
+      <li><a id="toc-Four_002dpart-SATB-vocal-score" href="four_002dpart-satb-vocal-score.zh.html">4.4.2 Four-part SATB vocal score</a></li>
+      <li><a id="toc-Building-a-score-from-scratch" href="building-a-score-from-scratch.zh.html">4.4.3 Building a score from scratch</a></li>
+      <li><a id="toc-Saving-typing-with-variables-and-functions" href="saving-typing-with-variables-and-functions.zh.html">4.4.4 Saving typing with variables and functions</a></li>
+      <li><a id="toc-Scores-and-parts" href="scores-and-parts.zh.html">4.4.5 Scores and parts</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Tweaking-output" href="tweaking-output.zh.html">5 Tweaking output</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Tweaking-basics" href="tweaking-basics.zh.html">5.1 Tweaking basics</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Objects-and-interfaces" href="objects-and-interfaces.zh.html">5.1.1 Objects and interfaces</a></li>
+      <li><a id="toc-Naming-conventions-of-objects-and-properties" href="naming-conventions-of-objects-and-properties.zh.html">5.1.2 Naming conventions of objects and properties</a></li>
+      <li><a id="toc-Tweaking-methods" href="tweaking-methods.zh.html">5.1.3 Tweaking methods</a>
+      <ul class="no-bullet">
+        <li><a id="toc-The-_005coverride-command" href="the-override-command.zh.html">The <code>\override</code> command</a></li>
+        <li><a id="toc-The-_005crevert-command" href="the-revert-command.zh.html">The <code>\revert</code> command</a></li>
+        <li><a id="toc-The-_005conce-prefix" href="the-once-prefix.zh.html">The <code>\once</code> prefix</a></li>
+        <li><a id="toc-The-_005ctweak-and-_005coffset-commands" href="the-tweak-and-offset-commands.zh.html">The <code>\tweak</code> and <code>\offset</code> commands</a></li>
+        <li><a id="toc-The-_005csingle-prefix" href="the-single-prefix.zh.html">The <code>\single</code> prefix</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-The-Internals-Reference-manual" href="the-internals-reference-manual.zh.html">5.2 The Internals Reference manual</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Properties-of-layout-objects" href="properties-of-layout-objects.zh.html">5.2.1 Properties of layout objects</a></li>
+      <li><a id="toc-Properties-found-in-interfaces" href="properties-found-in-interfaces.zh.html">5.2.2 Properties found in interfaces</a></li>
+      <li><a id="toc-Types-of-properties" href="types-of-properties.zh.html">5.2.3 Types of properties</a></li>
+    </ul></li>
+    <li><a id="toc-Appearance-of-objects" href="appearance-of-objects.zh.html">5.3 Appearance of objects</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Visibility-and-color-of-objects" href="visibility-and-color-of-objects.zh.html">5.3.1 Visibility and color of objects</a>
+      <ul class="no-bullet">
+        <li><a id="toc-The-stencil-property" href="the-stencil-property.zh.html">The <code>stencil</code> property</a></li>
+        <li><a id="toc-The-break_002dvisibility-property" href="the-break_002dvisibility-property.zh.html">The <code>break-visibility</code> property</a></li>
+        <li><a id="toc-The-transparent-property" href="the-transparent-property.zh.html">The <code>transparent</code> property</a></li>
+        <li><a id="toc-The-color-property" href="the-color-property.zh.html">The <code>color</code> property</a></li>
+      </ul></li>
+      <li><a id="toc-Size-of-objects" href="size-of-objects.zh.html">5.3.2 Size of objects</a></li>
+      <li><a id="toc-Length-and-thickness-of-objects" href="length-and-thickness-of-objects.zh.html">5.3.3 Length and thickness of objects</a></li>
+    </ul></li>
+    <li><a id="toc-Offsets-and-alignments" href="offsets-and-alignments.zh.html">5.4 Offsets and alignments</a></li>
+    <li><a id="toc-Placement-of-objects" href="placement-of-objects.zh.html">5.5 Placement of objects</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Automatic-behavior" href="automatic-behavior.zh.html">5.5.1 Automatic behavior</a></li>
+      <li><a id="toc-Within_002dstaff-objects" href="within_002dstaff-objects.zh.html">5.5.2 Within-staff objects</a>
+      <ul class="no-bullet">
+        <li><a id="toc-The-direction-property" href="the-direction-property.zh.html">The <code>direction</code> property</a></li>
+        <li><a id="toc-Fingering" href="fingering.zh.html">Fingering</a></li>
+      </ul></li>
+      <li><a id="toc-Outside_002dstaff-objects" href="outside_002dstaff-objects.zh.html">5.5.3 Outside-staff objects</a>
+      <ul class="no-bullet">
+        <li><a id="toc-The-outside_002dstaff_002dpriority-property" href="the-outside_002dstaff_002dpriority-property.zh.html">The <code>outside-staff-priority</code> property</a></li>
+        <li><a id="toc-The-_005ctextLengthOn-command" href="the-textlengthon-command.zh.html">The <code>\textLengthOn</code> command</a></li>
+        <li><a id="toc-Dynamics-placement" href="dynamics-placement.zh.html">Dynamics placement</a></li>
+        <li><a id="toc-Grob-sizing" href="grob-sizing.zh.html">Grob sizing</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Vertical-spacing" href="vertical-spacing.zh.html">5.6 Vertical spacing</a></li>
+    <li><a id="toc-Collisions-of-objects" href="collisions-of-objects.zh.html">5.7 Collisions of objects</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Moving-objects" href="moving-objects.zh.html">5.7.1 Moving objects</a></li>
+      <li><a id="toc-Fixing-overlapping-notation" href="fixing-overlapping-notation.zh.html">5.7.2 Fixing overlapping notation</a>
+      <ul class="no-bullet">
+        <li><a id="toc-The-padding-property" href="the-padding-property.zh.html">The <code>padding</code> property</a></li>
+        <li><a id="toc-The-right_002dpadding-property" href="the-right_002dpadding-property.zh.html">The <code>right-padding</code> property</a></li>
+        <li><a id="toc-The-staff_002dpadding-property" href="the-staff_002dpadding-property.zh.html">The <code>staff-padding</code> property</a></li>
+        <li><a id="toc-The-self_002dalignment_002dX-property" href="the-self_002dalignment_002dx-property.zh.html">The <code>self-alignment-X</code> property</a></li>
+        <li><a id="toc-The-staff_002dposition-property" href="the-staff_002dposition-property.zh.html">The <code>staff-position</code> property</a></li>
+        <li><a id="toc-The-extra_002doffset-property" href="the-extra_002doffset-property.zh.html">The <code>extra-offset</code> property</a></li>
+        <li><a id="toc-The-positions-property" href="the-positions-property.zh.html">The <code>positions</code> property</a></li>
+        <li><a id="toc-The-force_002dhshift-property" href="the-force_002dhshift-property.zh.html">The <code>force-hshift</code> property</a></li>
+      </ul></li>
+      <li><a id="toc-Real-music-example" href="real-music-example.zh.html">5.7.3 Real music example</a></li>
+    </ul></li>
+    <li><a id="toc-Further-tweaking" href="further-tweaking.zh.html">5.8 Further tweaking</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Other-uses-for-tweaks" href="other-uses-for-tweaks.zh.html">5.8.1 Other uses for tweaks</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Tying-notes-across-voices" href="tying-notes-across-voices.zh.html">Tying notes across voices</a></li>
+        <li><a id="toc-Simulating-a-fermata-in-MIDI" href="simulating-a-fermata-in-midi.zh.html">Simulating a fermata in MIDI</a></li>
+      </ul></li>
+      <li><a id="toc-Using-variables-for-layout-adjustments" href="using-variables-for-layout-adjustments.zh.html">5.8.2 Using variables for layout adjustments</a></li>
+      <li><a id="toc-Style-sheets" href="style-sheets.zh.html">5.8.3 Style sheets</a></li>
+      <li><a id="toc-Other-sources-of-information" href="other-sources-of-information.zh.html">5.8.4 Other sources of information</a></li>
+      <li><a id="toc-Advanced-tweaks-with-Scheme" href="advanced-tweaks-with-scheme.zh.html">5.8.5 Advanced tweaks with Scheme</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Templates" href="templates.zh.html">Appendix A Templates</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Built_002din-templates" href="built_002din-templates.zh.html">A.1 Built-in templates</a>
+    <ul class="no-bullet">
+      <li><a id="toc-SATB-template" href="satb-template.zh.html">A.1.1 SATB template</a></li>
+      <li><a id="toc-SSAATTBB-template" href="ssaattbb-template.zh.html">A.1.2 SSAATTBB template</a></li>
+    </ul></li>
+    <li><a id="toc-Single-staff-templates" href="single-staff-templates.zh.html">A.2 Single staff templates</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Notes-only" href="notes-only.zh.html">A.2.1 Notes only</a></li>
+      <li><a id="toc-Notes-and-lyrics" href="notes-and-lyrics.zh.html">A.2.2 Notes and lyrics</a></li>
+      <li><a id="toc-Notes-and-chords" href="notes-and-chords.zh.html">A.2.3 Notes and chords</a></li>
+      <li><a id="toc-Notes_002c-lyrics_002c-and-chords" href="notes-lyrics-and-chords.zh.html">A.2.4 Notes, lyrics, and chords</a></li>
+    </ul></li>
+    <li><a id="toc-Piano-templates" href="piano-templates.zh.html">A.3 Piano templates</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Solo-piano" href="solo-piano.zh.html">A.3.1 Solo piano</a></li>
+      <li><a id="toc-Piano-and-melody-with-lyrics" href="piano-and-melody-with-lyrics.zh.html">A.3.2 Piano and melody with lyrics</a></li>
+      <li><a id="toc-Piano_002dcentered-lyrics" href="piano_002dcentered-lyrics.zh.html">A.3.3 Piano-centered lyrics</a></li>
+    </ul></li>
+    <li><a id="toc-String-quartet-templates" href="string-quartet-templates.zh.html">A.4 String quartet templates</a>
+    <ul class="no-bullet">
+      <li><a id="toc-String-quartet" href="string-quartet.zh.html">A.4.1 String quartet</a></li>
+      <li><a id="toc-String-quartet-parts" href="string-quartet-parts.zh.html">A.4.2 String quartet parts</a></li>
+    </ul></li>
+    <li><a id="toc-Vocal-ensembles-templates" href="vocal-ensembles-templates.zh.html">A.5 Vocal ensembles templates</a>
+    <ul class="no-bullet">
+      <li><a id="toc-SATB-vocal-score" href="satb-vocal-score.zh.html">A.5.1 SATB vocal score</a></li>
+      <li><a id="toc-SATB-vocal-score-and-automatic-piano-reduction" href="satb-vocal-score-and-automatic-piano-reduction.zh.html">A.5.2 SATB vocal score and automatic piano reduction</a></li>
+      <li><a id="toc-SATB-with-aligned-contexts" href="satb-with-aligned-contexts.zh.html">A.5.3 SATB with aligned contexts</a></li>
+      <li><a id="toc-SATB-on-four-staves" href="satb-on-four-staves.zh.html">A.5.4 SATB on four staves</a></li>
+      <li><a id="toc-Solo-verse-and-two_002dpart-refrain" href="solo-verse-and-two_002dpart-refrain.zh.html">A.5.5 Solo verse and two-part refrain</a></li>
+      <li><a id="toc-Hymn-tunes" href="hymn-tunes.zh.html">A.5.6 Hymn tunes</a></li>
+      <li><a id="toc-Psalms" href="psalms.zh.html">A.5.7 Psalms</a></li>
+    </ul></li>
+    <li><a id="toc-Orchestral-templates" href="orchestral-templates.zh.html">A.6 Orchestral templates</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Orchestra_002c-choir-and-piano" href="orchestra-choir-and-piano.zh.html">A.6.1 Orchestra, choir and piano</a></li>
+    </ul></li>
+    <li><a id="toc-Ancient-notation-templates" href="ancient-notation-templates.zh.html">A.7 Ancient notation templates</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Transcription-of-mensural-music" href="transcription-of-mensural-music.zh.html">A.7.1 Transcription of mensural music</a></li>
+      <li><a id="toc-Gregorian-transcription-template" href="gregorian-transcription-template.zh.html">A.7.2 Gregorian transcription template</a></li>
+    </ul></li>
+    <li><a id="toc-Other-templates" href="other-templates.zh.html">A.8 Other templates</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Jazz-combo" href="jazz-combo.zh.html">A.8.1 Jazz combo</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.zh.html">Appendix B GNU Free Documentation License</a></li>
+  <li><a id="toc-Index" href="index-of-commands-and-concepts.zh.html" rel="index">Appendix C Index</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: ebe492ca408fb0d9abf80b94c56197eef8dc2f09
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google 搜索">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="搜索">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

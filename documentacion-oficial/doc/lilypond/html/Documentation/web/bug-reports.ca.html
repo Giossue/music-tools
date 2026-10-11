@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2009-2026 pels autors
+
+This file documents the LilyPond website.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>Informes de fallades (LilyPond: notació musical per a tots)</title>
+
+<meta name="description" content="Informes de fallades (LilyPond: notació musical per a tots)">
+<meta name="keywords" content="Informes de fallades (LilyPond: notació musical per a tots)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ca.html#top" rel="start" title="LilyPond: notació musical per a tots">
+<link href="web_toc.ca.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="community.ca.html" rel="up" title="Comunitat">
+<link href="help-us.ca.html" rel="next" title="Presteu la vostra ajuda">
+<link href="tiny-examples.ca.html" rel="prev" title="Exemples mínims">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-website.css">
+
+
+</head>
+
+<body lang="ca" class="web">
+<div id="main">
+<div class="unnumberedsec" id="bug-reports">
+<hr>
+<span id="Informes-de-fallades"></span><h3 class="unnumberedsec">Informes de fallades</h3>
+
+<div class="heading-center">
+<p>Si té un codi d&rsquo;entrada que produeix una terminació abrupta o una
+sortida defectuosa, això és una fallada.
+</p>
+</div>
+
+<div class="column-center-top">
+<span id="Pas-1_003a-fallades-conegudes"></span><h4 class="subheading">Pas 1: fallades conegudes</h4>
+
+<p>Probablement ja coneixem aquesta fallada.  Comproveu-ho aquí:
+</p>
+<div class="example">
+<pre class="example"><a href="https://gitlab.com/lilypond/lilypond/-/issues">https://gitlab.com/lilypond/lilypond/-/issues</a>
+</pre></div>
+
+<div class="warning">
+<p><strong>Nota:</strong> Us preguem que <strong>NO</strong> afegeixi informes de fallades
+directament al sistema de seguiment.  Un cop que un problema s&rsquo;ha
+afegit al sistema, ja podeu afegir lliurement més informació a
+aquest informe.
+</p>
+</div>
+
+
+</div>
+
+
+<div class="column-left-bottom">
+<span id="Pas-2_003a-creacio-d_0027un-informe-de-fallada"></span><h4 class="subheading">Pas 2: creació d&rsquo;un informe de fallada</h4>
+
+<p>Si heu descobert una fallada que no estigui a la llista,
+ajudeu-nos elaborant un informe de fallada.
+</p>
+<div class="warning">
+<p><strong>Nota:</strong> Sols acceptem informes en forma de <a href="tiny-examples.ca.html">Exemples mínims</a>.
+Disposem de recursos molt limitats, per la qual cosa qualsevol
+exemple que no sigui mínim serà rebutjats.  Gairebé totes les
+fallades es poden demostrar amb quatre notes o menys!
+</p>
+</div>
+
+<p>Vet ací un exemple d&rsquo;un bon informe de fallada:
+</p>
+<div class="example">
+<pre class="example">% Accidentals should be printed for only
+% the first note in a tie, but this version
+% prints flats on both notes.
+\version &quot;2.10.1&quot;
+
+\relative c'' {
+ bes1 ~
+ bes1
+}
+</pre></div>
+
+
+</div>
+
+<div class="column-right-bottom">
+<span id="Pas-3_003a-enviar-l_0027informe-de-fallada"></span><h4 class="subheading">Pas 3: enviar l&rsquo;informe de fallada</h4>
+
+<p>Un copo que heu verificat que el problema no és conegut ja, i heu
+creat l&rsquo;informe, podeu enviar-nos-el!
+</p>
+<div class="keep-bullets">
+<ul>
+<li> Si esteu subscrit a la llista de correu
+<a href="mailto:bug-lilypond@gnu.org">bug-lilypond@gnu.org</a>,
+envieu un missatge de la forma habitual.
+
+</li></ul>
+
+</div>
+
+</div>
+
+<div class="column-center-bottom">
+<span id="Pas-4_003a-Esperar-resposta"></span><h4 class="subheading">Pas 4: Esperar resposta</h4>
+
+<p>Un cop que el vostre informe de fallada s&rsquo;ha enviat a la llista,
+el nostre esquadró de fallades l&rsquo;examinarà. Potser us demanin més
+informació.  Se us avisarà quen l&rsquo;informe s&rsquo;afegeixi al sistema de
+seguiment de fallades.  Doneu-los un temps de uns 4 dies, ja que
+disposem d&rsquo;un nombre limitat de voluntaris per a aquesta tasca.
+</p>
+<p>Un cop que la fallada s&rsquo;ha afegit al sistema de seguiment, podeu
+comentar-lo per afegir-li més informació.  Podeu marcar la fallada
+amb una estrella de forma que rebeu missatges automàticament quan
+es produeix cap activitat sobre ella.  Això requereix que disposeu
+un compte del Google.
+</p>
+</div>
+
+<div class="column-center-bottom">
+<span id="Ajuda-opcional_003a-mostrar-el-resultat-desitjat"></span><h4 class="subheading">Ajuda opcional: mostrar el resultat desitjat</h4>
+
+<p>Un cop que el problema s&rsquo;ha afegit al sistema de seguiment, pot
+ser de molta ajuda que veiem la sortida desitjada. Amb tota
+llibertat afegiu codi d&rsquo;entrada i/o imatges (creades possiblement
+amb altres eines) que mostrin l&rsquo;aspecte que creieu que ha de tenir!
+</p>
+
+</div>
+
+
+</div>
+<hr>
+
+<div id="footer">
+<p id="languages">
+Other languages: <a href="bug-reports.html">English</a>, <a href="bug-reports.de.html">Deutsch</a>, <a href="bug-reports.es.html">Español</a>, <a href="bug-reports.fr.html">Français</a>, <a href="bug-reports.it.html">Italiano</a>, <a href="bug-reports.ja.html">日本語</a>, <a href="bug-reports.tr.html">Türkçe</a>, <a href="bug-reports.zh.html">中文</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-LilyPond" href="index.ca.html">LilyPond</a></li>
+  <li><a id="toc-Introduccio" href="introduction.ca.html">Introducció</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Possibilitats" href="features.ca.html">Possibilitats</a></li>
+    <li><a id="toc-Exemples" href="examples.ca.html">Exemples</a></li>
+    <li><a id="toc-Llibertat" href="freedom.ca.html">Llibertat</a></li>
+    <li><a id="toc-Rerefons" href="background.ca.html">Rerefons</a></li>
+    <li><a id="toc-Produccions" href="productions.ca.html">Produccions</a></li>
+    <li><a id="toc-Ressenyes" href="reviews.ca.html">Ressenyes</a></li>
+    <li><a id="toc-Entrada-de-text" href="text-input.ca.html">Entrada de text</a></li>
+    <li><a id="toc-Entorns-millorats" href="easier-editing.ca.html">Entorns millorats</a></li>
+  </ul></li>
+  <li><a id="toc-Descarregues" href="download.ca.html">Descàrregues</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Font" href="source.ca.html">Font</a></li>
+    <li><a id="toc-Descarregues-de-versions-antigues" href="old-downloads.ca.html">Descàrregues de versions antigues</a></li>
+    <li><a id="toc-GPL" href="gpl.ca.html">GPL</a></li>
+  </ul></li>
+  <li><a id="toc-Manuals" href="manuals.ca.html">Manuals</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Aprenentage" href="learning.ca.html">Aprenentage</a></li>
+    <li><a id="toc-Glossari" href="glossary.ca.html">Glossari</a></li>
+    <li><a id="toc-Monografia" href="essay.ca.html">Monografia</a></li>
+    <li><a id="toc-Notacio" href="notation.ca.html">Notació</a></li>
+    <li><a id="toc-Utilitzacio" href="usage.ca.html">Utilització</a></li>
+    <li><a id="toc-Fragments" href="snippets.ca.html">Fragments</a></li>
+    <li><a id="toc-FAQ" href="faq.ca.html">FAQ</a></li>
+    <li><a id="toc-Web" href="web.ca.html">Web</a></li>
+    <li><a id="toc-Canvis" href="changes.ca.html">Canvis</a></li>
+    <li><a id="toc-Extensio" href="extending.ca.html">Extensió</a></li>
+    <li><a id="toc-Funcionament-intern" href="internals.ca.html">Funcionament intern</a></li>
+    <li><a id="toc-Tots" href="all.ca.html">Tots</a></li>
+    <li><a id="toc-FDL" href="fdl.ca.html">FDL</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Comunitat" href="community.ca.html">Comunitat</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Contacte" href="contact.ca.html">Contacte</a></li>
+    <li><a id="toc-Exemples-minims" href="tiny-examples.ca.html">Exemples mínims</a></li>
+    <li class="toc_current"><a id="toc-Informes-de-fallades" href="bug-reports.ca.html">Informes de fallades</a></li>
+    <li><a id="toc-Presteu-la-vostra-ajuda" href="help-us.ca.html">Presteu la vostra ajuda</a></li>
+    <li><a id="toc-Patrocini" href="sponsoring.ca.html">Patrocini</a></li>
+    <li><a id="toc-Desenvolupament" href="development.ca.html">Desenvolupament</a></li>
+    <li><a id="toc-GSoC-2012" href="gsoc-2012.ca.html">GSoC 2012</a></li>
+    <li><a id="toc-Autors" href="authors.ca.html">Autors</a></li>
+    <li><a id="toc-Publicacions" href="publications.ca.html">Publicacions</a></li>
+    <li><a id="toc-Noticies-antigues" href="news.ca.html">Notícies antigues</a></li>
+    <li><a id="toc-Golfes" href="attic.ca.html">Golfes</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 9d074d78d7c25852afa87005e21c118630f4f83b
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca a Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

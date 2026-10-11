@@ -1,0 +1,1138 @@
+INSTALL - compiling and installing GNU LilyPond
+***********************************************
+
+
+1 Compilation
+  1.1 Overview of compiling
+  1.2 Requirements
+    1.2.1 Requirements for running LilyPond
+    1.2.2 Requirements for compiling LilyPond
+      Fedora
+      Linux Mint
+      OpenSUSE
+      Ubuntu
+      Other
+    1.2.3 Requirements for building documentation
+  1.3 Getting the source code
+  1.4 Configuring ‘make’
+    1.4.1 Build modes
+    1.4.2 Running ‘autogen.sh’
+    1.4.3 Running ‘configure’
+      Configuration options
+      Checking build dependencies
+      Configuring target directories
+  1.5 Compiling LilyPond
+    1.5.1 Using ‘make’
+    1.5.2 Saving time with the ‘-j’ option
+    1.5.3 Useful ‘make’ variables
+  1.6 Post-compilation options
+    1.6.1 Installing LilyPond from a local build
+    1.6.2 Generating documentation
+      Documentation editor’s edit/compile cycle
+      Building documentation
+      Building a single document
+      Saving time with ‘CPU_COUNT’
+      Installing documentation
+      Building documentation without compiling
+    1.6.3 Testing LilyPond binary
+  1.7 Problems
+  1.8 Concurrent stable and development versions
+    1.8.1 Replacing the notation fonts in development versions
+  1.9 Build system
+1 Compilation
+*************
+
+1.1 Overview of compiling
+=========================
+
+Compiling LilyPond from source is an involved process, and is only
+recommended for developers and packagers.  Typical program users are
+instead encouraged to obtain the program from a package manager (on
+Unix) or by downloading a precompiled binary configured for a specific
+operating system.  Pre-compiled binaries are available on the *note
+(lilypond-web)Download:: page.
+
+   Compiling LilyPond from source is necessary if you want to build,
+install, or test your own version of the program.
+
+   A successful compile can also be used to generate and install the
+documentation, incorporating any changes you may have made.  However, a
+successful compile is not a requirement for generating the
+documentation.  The documentation can be built using a Git repository in
+conjunction with a locally installed copy of the program.  For more
+information, *note Building documentation without compiling::.
+
+   Attempts to compile LilyPond natively on Windows have been
+unsuccessful, though a workaround is available (see *note
+(lilypond-contributor)LilyDev::).
+
+1.2 Requirements
+================
+
+1.2.1 Requirements for running LilyPond
+---------------------------------------
+
+This section contains the list of software packages that are required to
+run LilyPond (this is, to successfully execute the ‘lilypond’ binary and
+its subprograms to output a PDF, and to execute other programs like
+‘lilypond-book’ that are installed, too).
+
+   Additional software packages are necessary to compile LilyPond from
+its sources; this gets handled in a later section.
+
+   • Cairo (https://www.cairographics.org)
+     Use version 1.16 or newer.
+
+   • FontConfig (https://www.fontconfig.org)
+     Use at least version 2.13; however, we recommend version 2.15 or
+     newer so that LilyPond can better reject Font Variations (see *note
+     (lilypond-notation)Unsupported font formats:: and *note this
+     warning: Noto Serif CJK warning.).
+
+   • FreeType (https://www.freetype.org)
+     Use version 2.10 or newer.
+
+   • Ghostscript (https://www.ghostscript.com)
+     Use version 9.03 or newer.
+
+   • GLib (https://gitlab.gnome.org/GNOME/glib/) (also required for
+     Pango)
+     Use version 2.64 or newer.  Please note that LilyPond requires
+     ‘GRegex’ support in GLib.  In turn, this implies that PCRE, the
+     library GLib utilizes for regular expressions, must be built with
+     Unicode support.  In PCRE1, the flags ‘--enable-utf
+     --enable-unicode-properties’ must have been passed to the
+     ‘configure’ script when compiling PCRE; this is the case in most
+     GNU/Linux distributions.  In PCRE2, Unicode support is enabled by
+     default.
+
+   • Guile (https://www.gnu.org/software/guile/guile.html)
+     Use version 3.0.7 or later point releases.
+
+   • libpng (http://www.libpng.org/pub/png/libpng.html)
+     Use version 1.6 or newer.
+
+   • Pango (https://www.pango.org)
+     Use version 1.44.5 or newer.
+
+   • Python (https://www.python.org)
+     Use version 3.10 or newer.
+
+   • Text fonts
+     By default, LilyPond uses the families C059, Nimbus Mono PS, and
+     Nimbus Sans of the URW++ package.
+
+     Some distributions do not provide these fonts’ OTF files.  If they
+     are missing, download and manually extract the OTF files to your
+     local ‘~/.fonts/’ directory.
+
+     Some languages, such as Vietnamese, do not have glyphs in the URW++
+     fonts.  When a glyph is not found in those fonts, LilyPond attempts
+     to fall back to the families Cursor, Heros, and Schola of the TeX
+     Gyre package.  Note for downstream packagers: while packaging the
+     URW++ fonts is important in order to make (most) LilyPond files
+     render the same across environments, packaging the TeX Gyre fonts
+     is optional; you can make them an optional dependency, for example.
+
+     For more details on text fonts, please see *note
+     (lilypond-notation)Fonts::.
+
+1.2.2 Requirements for compiling LilyPond
+-----------------------------------------
+
+This section contains instructions on how to quickly and easily get all
+the software packages required to build LilyPond.
+
+   Most of the more popular Linux distributions only require a few
+simple commands to download all the software needed.  For others, there
+is an explicit list of all the individual packages (as well as where to
+get them from) for those that are not already included in your
+distributions’ own repositories.
+
+   Additional software packages are necessary to compile LilyPond’s
+documentation from its sources; this gets handled in a later section.
+
+Fedora
+......
+
+The following instructions were tested on ‘Fedora’ versions 22 & 23 and
+will download all the software required to both compile LilyPond and
+build the documentation.
+
+   • Download and install all the LilyPond build-dependencies
+     (approximately 700MB);
+
+          sudo dnf builddep lilypond --nogpgcheck
+
+   • Download and install additional ‘build’ tools required for
+     compiling;
+
+          sudo dnf install autoconf gcc-c++
+
+   • Although not ‘required’ to compile LilyPond, if you intend to
+     contribute to LilyPond (codebase or help improve the documentation)
+     then it is recommended that you also need to install ‘git’.
+
+          sudo dnf install git
+
+     Also see *note (lilypond-contributor)Working with source code::.
+
+          Note: By default, when building LilyPond’s documentation,
+          pdfTeX is used.  However, ligatures (fi, fl, ff, etc.) may not
+          be printed in the PDF output.  In this case XeTeX can be used
+          instead.  Download and install the ‘texlive-xetex’ package.
+
+               sudo dnf install texlive-xetex
+
+          The scripts used to build the LilyPond documentation will use
+          XeTeX instead of pdfTeX to generate the PDF documents if it is
+          available.  No additional configuration is required.
+
+Linux Mint
+..........
+
+The following instructions were tested on ‘Linux Mint 17.1’ and ‘LMDE -
+Betsy’ and will download all the software required to both compile
+LilyPond and build the documentation.
+
+   • Enable the _sources_ repository;
+
+       1. Using the _Software Sources_ GUI (located under
+          _Administration_).
+
+       2. Select _Official Repositories_.
+
+       3. Check the _Enable source code repositories_ box under the
+          _Source Code_ section.
+
+       4. Click the _Update the cache_ button and when it has completed,
+          close the _Software Sources_ GUI.
+
+   • Download and install all the LilyPond build-dependencies
+     (approximately 200MB);
+
+          sudo apt-get build-dep lilypond
+
+   • Download and install additional ‘build’ tools required for
+     compiling;
+
+          sudo apt-get install autoconf fonts-texgyre texlive-lang-cyrillic
+
+   • Although not ‘required’ to compile LilyPond, if you intend to
+     contribute to LilyPond (codebase or help improve the documentation)
+     then it is recommended that you also need to install ‘git’.
+
+          sudo apt-get install git
+
+     Also see *note (lilypond-contributor)Working with source code::.
+
+          Note: By default, when building LilyPond’s documentation,
+          pdfTeX is used.  However, ligatures (fi, fl, ff, etc.) may not
+          be printed in the PDF output.  In this case XeTeX can be used
+          instead.  Download and install the ‘texlive-xetex’ package.
+
+               sudo apt-get install texlive-xetex
+
+          The scripts used to build the LilyPond documentation will use
+          XeTeX instead of pdfTeX to generate the PDF documents if it is
+          available.  No additional configuration is required.
+
+OpenSUSE
+........
+
+The following instructions were tested on ‘OpenSUSE 13.2’ and will
+download all the software required to both compile LilyPond and build
+the documentation.
+
+   • Add the _sources_ repository;
+
+          sudo zypper addrepo -f \
+          "http://download.opensuse.org/source/distribution/13.2/repo/oss/" sources
+
+   • Download and install all the LilyPond build-dependencies
+     (approximately 680MB);
+
+          sudo zypper source-install lilypond
+
+   • Download and install additional ‘build’ tools required for
+     compiling;
+
+          sudo zypper install make
+
+   • Although not ‘required’ to compile LilyPond, if you intend to
+     contribute to LilyPond (codebase or help improve the documentation)
+     then it is recommended that you also need to install ‘git’.
+
+          sudo zypper install git
+
+     Also see *note (lilypond-contributor)Working with source code::.
+
+          Note: By default, when building LilyPond’s documentation,
+          pdfTeX is used.  However, ligatures (fi, fl, ff, etc.) may not
+          be printed in the PDF output.  In this case XeTeX can be used
+          instead.  Download and install the ‘texlive-xetex’ package.
+
+               sudo zypper install texlive-xetex
+
+          The scripts used to build the LilyPond documentation will use
+          XeTeX instead of pdfTeX to generate the PDF documents if it is
+          available.  No additional configuration is required.
+
+Ubuntu
+......
+
+The following commands were tested on Ubuntu versions ‘14.04 LTS’,
+‘14.10’ and ‘15.04’ and will download all the software required to both
+compile LilyPond and build the documentation.
+
+   • Download and install all the LilyPond build-dependencies
+     (approximately 200MB);
+
+          sudo apt-get build-dep lilypond
+
+   • Download and install additional ‘build’ tools required for
+     compiling;
+
+          sudo apt-get install autoconf fonts-texgyre texlive-lang-cyrillic
+
+   • Although not ‘required’ to compile LilyPond, if you intend to
+     contribute to LilyPond (codebase or help improve the documentation)
+     then it is recommended that you also need to install ‘git’.
+
+          sudo apt-get install git
+
+     Also see *note (lilypond-contributor)Working with source code::.
+
+          Note: By default, when building LilyPond’s documentation,
+          pdfTeX is used.  However, ligatures (fi, fl, ff, etc.) may not
+          be printed in the PDF output.  In this case XeTeX can be used
+          instead.  Download and install the ‘texlive-xetex’ package.
+
+               sudo apt-get install texlive-xetex
+
+          The scripts used to build the LilyPond documentation will use
+          XeTeX instead of pdfTeX to generate the PDF documents if it is
+          available.  No additional configuration is required.
+
+Other
+.....
+
+The following software packages are required to compile LilyPond, in
+addition to the run-time packages (*note Requirements for running
+LilyPond::).
+
+   • GNU Autoconf (https://www.gnu.org/software/autoconf)
+
+   • pkg-config (https://www.freedesktop.org/wiki/Software/pkg-config)
+
+   • GNU Bison (https://www.gnu.org/software/bison)
+     Use version 2.4.1 or newer.
+
+   • Compiler with support for C++17
+     Version 8 or newer of the GNU Compiler Collection
+     (https://gcc.gnu.org) and version 8 or newer of Clang
+     (https://clang.llvm.org) should work.  Your mileage may vary with
+     older versions.
+
+   • Flex (https://github.com/westes/flex)
+     Use version 2.5.29 or newer.
+
+   • FontForge (https://fontforge.org)
+     Use version 20200314 or newer with enabled Python 3 scripting; it
+     must also be compiled with the ‘--enable-double’ switch, else this
+     can lead to inaccurate intersection calculations, which in turn
+     cause poorly-rendered glyphs in the output.
+
+   • GNU gettext (https://www.gnu.org/software/gettext/gettext.html)
+     Use version 0.17 or newer.
+
+   • GNU Make (https://www.gnu.org/software/make)
+     Use version 4.2 or newer.
+
+   • MetaFont (http://metafont.tutorial.free.fr)
+     The MetaFont binary (usually called ‘mf-nowin’, ‘mf’, ‘mfw’, or
+     ‘mfont’) and its support files are normally packaged along with
+     TeX.  Most GNU/Linux and other free software distributions already
+     provide packages for TeX Live (https://tug.org/texlive), see above.
+     TeX Live can can also be installed separately; it contains
+     stand-alone binaries for most platforms.
+
+   • MetaPost (https://www.tug.org/metapost.html)
+     The ‘mpost’ binary is also usually packaged with TeX
+     (https://tug.org/texlive).  Use version 2.0 or newer.
+
+   • Perl (https://www.perl.org)
+     Use version 5.6.1 or newer.
+
+   • Texinfo (https://www.gnu.org/software/texinfo)
+     Use version 6.8 or newer.
+
+   • Type 1 utilities (https://www.lcdf.org/~eddietwo/type/#t1utils)
+     We need ‘t1asm’.  Use version 1.33 or newer.
+
+1.2.3 Requirements for building documentation
+---------------------------------------------
+
+The entire set of documentation for the most current build of LilyPond
+is available online at
+<https://lilypond.org/doc/latest/Documentation/web/development>, but you
+can also build them locally from the source code.  This process requires
+the following tools and packages, in addition to the build and run-time
+packages (*note Requirements for compiling LilyPond::, and *note
+Requirements for running LilyPond::).
+
+          Note: If the instructions for one of the GNU/Linux
+          distributions listed earlier (*note Requirements for compiling
+          LilyPond::) have been used, the following can be ignored, as
+          the necessary software packages should already be installed.
+
+   • ImageMagick (https://www.imagemagick.org)
+     We need the ‘convert’ tool.
+
+   • gzip (https://gzip.org)
+
+   • rsync (https://rsync.samba.org)
+
+   • To get reproducible documentation builds (this is, PDF
+     documentation files contain the same fonts regardless of the build
+     platform), the following font families should be installed.
+
+          URW++ and TeX Gyre, as described before
+          Bitstream Vera Sans
+          Bitstream Charter
+          DejaVu Sans
+          DejaVu Serif
+          DejaVu Sans Mono
+          Linux Libertine O
+          Noto Serif CJK JP/Noto Serif JP
+
+     It is recommended to install the standard Roman (or Regular),
+     Italic, Bold, and Bold Italic styles for all listed families; for
+     the large Japanese fonts of the ‘Noto Serif CJK JP’ or ‘Noto Serif
+     JP’ family, Regular and Bold styles are sufficient.
+
+               Note: Be careful to install a version of ‘Noto Serif CJK
+               JP’ that works with LilyPond!  For technical reasons,
+               neither the CFF2 font format nor Font Variations (VF) are
+               supported, and many GNU/Linux distributions use exactly
+               that for the Noto CJK family as a fallback.  While Font
+               Variations are filtered out by LilyPond’s
+               ‘99-lilypond-fonts.conf’ configuration file for
+               FontConfig, this cannot be done for CFF2.  If you
+               encounter errors during ‘make doc’ related to Noto Serif
+               CJK, consider to download fitting fonts directly from
+               their repository(1)(2) and to install them into your
+               local fonts directory (for example, ‘~/.fonts’) so that
+               FontConfig finds them first.
+
+   • extractpdfmark (https://github.com/trueroad/extractpdfmark)
+     This is an optional component.  However, it is highly recommended
+     due to the large number of included PDF snippets.  While making the
+     compilation process much slower, it helps reduce the PDF output
+     size by large amounts: for example, the size of the Notation
+     Reference shrinks from approx. 30MB to 7MB.
+
+   • Finally, to convert LilyPond’s documentation (in Texinfo format) to
+     PDF files, including more than a thousand PDF snippets generated by
+     LilyPond, XeTeX (https://tug.org/xetex/) is used by default.  If
+     not available, pdfTeX
+     (https://tug.org/applications/pdftex/index.html) is tried instead.
+
+     Not surprisingly, both XeTeX and pdfTeX are also part of TeX Live.
+     Most GNU/Linux and other free software distributions already
+     provide packages for TeX Live (https://tug.org/texlive), see above.
+     TeX Live can can also be installed separately; it contains
+     stand-alone binaries for most platforms.
+
+     To support syntax highlighting of LilyPond source code in the PDF
+     manuals (using the ‘pygments’ Python package), typewriter shapes of
+     the Computer Modern font family are replaced with the extended set
+     of shapes provided by Latin Modern.  For this reason, two more TeX
+     Live packages are necessary in case they are not already installed:
+     ‘fontinst’ (a macro package for plain TeX) and ‘lmodern’ (we need
+     some ‘.pfb’ and ‘.afm’ files).  Additionally, the utility program
+     ‘pltotf’ must be available.
+
+   ---------- Footnotes ----------
+
+   (1) 
+<https://github.com/notofonts/noto-cjk/blob/main/Serif/OTF/Japanese/NotoSerifCJKjp-Regular.otf>
+
+   (2) 
+<https://github.com/notofonts/noto-cjk/blob/main/Serif/OTF/Japanese/NotoSerifCJKjp-Bold.otf>
+
+1.3 Getting the source code
+===========================
+
+Downloading the Git repository
+------------------------------
+
+In general, developers compile LilyPond from within a local Git
+repository.  Setting up a local Git repository is explained in *note
+(lilypond-contributor)Setting up::.
+
+Downloading a source tarball
+----------------------------
+
+Packagers are encouraged to use source tarballs for compiling.
+
+   The tarball for the latest stable release is available on the *note
+(lilypond-web)Source:: page.
+
+The latest source code snapshot
+(http://git.savannah.gnu.org/gitweb/?p=lilypond.git;a=snapshot) is also
+available as a tarball from the GNU Savannah Git server.
+
+All tagged releases (including legacy stable versions and the most
+recent development release) are available here:
+
+     <https://lilypond.org/download/source/>
+
+   Download the tarball to your ‘~/src/’ directory, or some other
+appropriate place.
+
+          Note: Be careful where you unpack the tarball!  Any
+          subdirectories of the current folder named ‘lilypond-2.26.0/’
+          are overwritten if there is a name clash with the tarball.
+
+   Unpack the tarball with this command:
+
+     tar -xzf lilypond-2.26.0.tar.gz
+
+   This creates a subdirectory within the current directory called
+‘lilypond-2.26.0/’.  Once unpacked, the source files occupy about 66MB
+of disk space.
+
+   Windows users wanting to look at the source code may have to download
+and install the free-software 7zip archiver (https://www.7-zip.org) to
+extract the tarball.
+
+1.4 Configuring ‘make’
+======================
+
+1.4.1 Build modes
+-----------------
+
+LilyPond supports two build modes to prepare the execution of the ‘make’
+command.
+
+   • ‘In-tree’ compilation.  This is the classical build mode of
+     projects that use a ‘configure’ script.  The main disadvantage,
+     however, is cluttering the source directory with generated files.
+     We thus don’t recommend it except for special purposes(1) that we
+     don’t cover here.
+
+   • Compilation using a build directory.  A common name and location is
+     a directory called ‘build/’ in the top-level source directory; the
+     following instructions expect exactly that.
+
+   ---------- Footnotes ----------
+
+   (1) For example, translators are required to build LilyPond in-tree,
+otherwise the translation helper scripts won’t work.
+
+1.4.2 Running ‘autogen.sh’
+--------------------------
+
+(If you use a tarball, follow the instructions in this subsection but
+don’t actually run the ‘autogen.sh’ script – the tarball already comes
+with a ‘configure’ script.)
+
+   After cloning the Git repository or downloading and unpacking a Git
+snapshot, the contents of your top source directory should be similar to
+the current source tree listed at
+<https://git.sv.gnu.org/gitweb/?p=lilypond.git;a=tree>.
+
+   Note that the top-level source directory is called ‘lilypond-2.26.0/’
+if you use the tarball.  It is called ‘lilypond-HEAD-ID/’ if you use a
+Git snapshot, with ID being a hexadecimal, seven-digit number (for
+example, ‘lilypond-HEAD-80113f7/’).  It is simply called ‘lilypond/’ if
+you directly use the Git clone, and we use this in the following
+instructions.
+
+   Start with changing to the source directory, creating a build
+directory, and changing into it.
+
+     cd lilypond/
+     mkdir build/
+     cd build/
+
+   Because there are no generated files in the repository, you have to
+generate the ‘configure’ script first.  There are two possibilities to
+do that.
+
+   • Generate the ‘configure’ script in the top-level source directory.
+     This is what the instructions below do.
+
+   • Using ‘autogen.sh’’s ‘--currdir’ option it is possible to generate
+     the ‘configure’ script in the build directory.  We don’t cover this
+     slightly more complicated setup here.
+
+   (If you omit the ‘--noconfigure’ option, ‘autogen.sh’ not only
+creates the ‘configure’ script but also executes it, forwarding all
+given command-line options.  This is a convenient shorthand for
+experienced users.  For clarity, however, we explain the process in two
+separate steps.)
+
+   Execute the ‘autogen.sh’ script now.
+
+     ../autogen.sh --noconfigure
+
+1.4.3 Running ‘configure’
+-------------------------
+
+Configuration options
+.....................
+
+          Note: make sure that you are in the ‘build/’ subdirectory of
+          your source tree.
+
+   The ‘../configure’ command (generated by ‘../autogen.sh’) provides
+many options for configuring ‘make’.  To see them all, run
+
+     ../configure --help
+
+Checking build dependencies
+...........................
+
+          Note: make sure that you are in the ‘build/’ subdirectory of
+          your source tree.
+
+   When ‘../configure’ is run without any arguments, it checks whether
+your system has everything required for compilation.
+
+     ../configure
+
+   If any build dependency is missing, ‘../configure’ returns with
+
+     ERROR: Please install required programs:  FOO
+
+   The following message is issued if you are missing programs that are
+only needed for building the documentation.
+
+     WARNING: Please consider installing optional programs:  BAR
+
+   If you intend to build the documentation locally, you need to install
+or update these programs accordingly.
+
+          Note: ‘../configure’ may fail to issue warnings for certain
+          documentation build requirements that are not met.  If you
+          experience problems when building the documentation, you may
+          need to do a manual check; *note Requirements for building
+          documentation::.
+
+Configuring target directories
+..............................
+
+          Note: make sure that you are in the ‘build/’ subdirectory of
+          your source tree.
+
+   If you intend to use your local build to install a local copy of the
+program, you probably want to configure the installation directory.
+Here are the relevant lines taken from the output of ‘../configure
+--help’:
+
+     By default, ‘make install’ will install all the files in
+     ‘/usr/local/bin’, ‘/usr/local/lib’ etc.  You can specify an
+     installation prefix other than ‘/usr/local’ using ‘--prefix’, for
+     instance ‘--prefix=$HOME’.
+
+   A typical installation prefix is ‘$HOME/usr’.
+
+     ../configure --prefix=$HOME/usr
+
+   Note that if you plan to install a local build on a system where you
+do not have root privileges, you need to do something like this anyway –
+‘make install’ only succeeds if the installation prefix points to a
+directory where you have write permission (such as your home directory).
+The installation directory is automatically created if necessary.
+
+   The location of the ‘lilypond’ command installed by this process is
+‘PREFIX/bin/lilypond’; you may want to add ‘PREFIX/bin/’ to your ‘$PATH’
+if it is not already included.
+
+   It is also possible to specify separate installation directories for
+different types of program files.  See the full output of ‘../configure
+--help’ for more information.
+
+   *Note Problems::, if you encounter any problems.
+
+1.5 Compiling LilyPond
+======================
+
+1.5.1 Using ‘make’
+------------------
+
+          Note: make sure that you are in the ‘build/’ subdirectory of
+          your source tree.
+
+   LilyPond is compiled with the ‘make’ command.  Assuming ‘make’ is
+configured properly, you can simply run:
+
+     make
+
+   ‘make’ is short for ‘make all’.  To view a list of ‘make’ targets,
+run:
+
+     make help
+
+   By default, ‘.scm’ files are byte-compiled.  If you don’t want to do
+that for whatever reason, add ‘BYTECODE=no’ as an argument to ‘make’.(1)
+
+   TODO: Describe what ‘make’ actually does.
+
+See also
+--------
+
+*note Generating documentation:: provides more info on the ‘make’
+targets used to build the LilyPond documentation.
+
+   ---------- Footnotes ----------
+
+   (1) Byte compilation of Scheme code is disabled while cross-compiling
+since Guile must bootstrap itself to do that, which is not possible in
+general.
+
+1.5.2 Saving time with the ‘-j’ option
+--------------------------------------
+
+If your system has multiple CPUs, you can speed up compilation by adding
+‘-jX’ to the ‘make’ command, where ‘X’ is one more than the number of
+cores you have.  For example, a typical Core2Duo machine would use:
+
+     make -j3
+
+   If you get errors using the ‘-j’ option, and ‘make’ succeeds without
+it, try lowering the ‘X’ value.
+
+   Because multiple jobs run in parallel when ‘-j’ is used, it can be
+difficult to determine the source of an error when one occurs.  In that
+case, running ‘make’ without the ‘-j’ is advised.
+
+1.5.3 Useful ‘make’ variables
+-----------------------------
+
+‘make’ normally echoes each command, but LilyPond makefiles suppress
+this behavior by default.  The goal is to show progress without hiding
+warnings and errors in the noise of long commands.
+
+   To enable echoing commands, and to increase the verbosity of some of
+the commands, set ‘VERBOSE=1’ on the command line or in ‘local.make’ at
+the top of the build tree.
+
+   Similarly, to reduce the verbosity, set ‘SILENT=1’.  Because of the
+way these options are implemented, ‘make -s’ does not serve this
+purpose.
+
+1.6 Post-compilation options
+============================
+
+1.6.1 Installing LilyPond from a local build
+--------------------------------------------
+
+If you configured ‘make’ to install your local build in a directory
+where you normally have write permission (such as your home directory),
+and you have compiled LilyPond by running ‘make’, you can install the
+program in your target directory by running:
+
+     make install
+
+   If instead your installation directory is not one that you can
+normally write to (such as the default ‘/usr/local/’, which typically is
+only writeable by the superuser), you will need to temporarily become
+the superuser when running ‘make install’:
+
+     sudo make install
+
+or...
+
+     su -c 'make install'
+
+   If you don’t have superuser privileges, then you need to configure
+the installation directory to one that you can write to, and then
+re-install.  See *note Configuring target directories::.
+
+   If you have added ‘BYTECODE=no’ as an argument to ‘make all’, you
+should do the same for ‘make install’.
+
+1.6.2 Generating documentation
+------------------------------
+
+Three levels of documentation are available for installation.  The
+following table lists them in order of increasing complexity, along with
+the command sequence to install each.
+
+     Level          Images     Web     Command
+     -----------------------------------------------------------------------------
+     Reduced Info   no         no      ‘make && make install’
+     Full Info      Yes        no      ‘make && make info && make install-info’
+     Web            yes        yes     ‘make && make doc && make install-doc’
+
+   The web documentation includes all info files, images, and web
+documents.  The reduced info option omits images and info files that are
+either highly dependent upon images, or discuss technical program
+details.
+
+Documentation editor’s edit/compile cycle
+.........................................
+
+To work on a manual, do the following
+
+   • Build lilypond itself
+
+          make [-jX]
+
+   • Then build the specific manual to work on, and inspect:
+
+          _## edit source files, then..._
+          make CPU_COUNT=X -C Documentation out=www out-www/LANGUAGE/MYMANUAL.pdf
+
+          _## if you prefer checking HTML files_
+          make CPU_COUNT=X -C Documentation out=www out-www/LANGUAGE/MYMANUAL/index.html
+
+   • To remove compiled documentation from your system, use
+     ‘make doc-clean’ in the toplevel build directory.
+
+Building documentation
+......................
+
+After a successful compile (using ‘make’), the documentation can be
+built by issuing:
+
+     make doc
+
+   or, to build only the PDF documentation and not the HTML version,
+
+     make -C Documentation out=www pdf
+
+          Note: The first time you run ‘make doc’, the process can
+          easily take a very long time with not much output on the
+          command line.
+
+   After this initial build, ‘make doc’ only makes changes to the
+documentation where needed, so it may only take a minute or two to test
+changes if the documentation is already built.
+
+   If ‘make doc’ succeeds, the HTML documentation tree is available in
+‘out-www/offline-root/’, and can be browsed locally.  The documentation
+can also be inspected in the ‘Documentation/out-www’ subdirectory.
+
+   ‘make doc’ sends the output from most of the compilation to logfiles.
+If the build fails for any reason, it should print the name of a
+logfile, explaining what failed.
+
+   ‘make doc’ compiles the documents for all languages.  To save some
+compile time, the English language documents can be compiled on their
+own with:
+
+     make LANGS='en' doc
+
+Similarly, it is possible to compile a subset of the translated
+documentation by specifying their language codes on the command line.
+For example, the French and German translations are compiled with:
+
+     make LANGS='de fr' doc
+
+   To get correct word hyphenation in the non-English PDF documentation
+files you should install proper TeX Live packages for your platform, for
+example, ‘texlive-hyphen-german’ or ‘texlive-hyphen-french’.  If you
+have enough disk space you might simply install ‘texlive-full’ instead
+to get everything in one rush.
+
+Compilation of documentation in Info format with images can be done
+separately by issuing:
+
+     make info
+
+An issue when switching branches between master and translation is the
+appearance/disappearance of translated versions of some manuals.  If you
+see such a warning from make:
+
+     No rule to make target 'X', needed by 'Y'
+
+Your best bet is to delete the file Y.dep and to try again.
+
+Building a single document
+..........................
+
+It’s possible to build a single document.  For example, to rebuild only
+‘contributor.pdf’, do the following:
+
+     cd build/
+     cd Documentation/
+     touch ../../Documentation/en/contributor.texi
+     make out=www out-www/en/contributor.pdf
+
+   If you are only working on a single document, test-building it in
+this way can give substantial time savings - recreating
+‘contributor.pdf’, for example, takes a matter of seconds.
+
+Saving time with ‘CPU_COUNT’
+............................
+
+The most time consuming task for building the documentation is running
+LilyPond to build images of music, and there cannot be several
+simultaneously running ‘lilypond-book’ instances, so the ‘-j’ ‘make’
+option does not significantly speed up the build process.  To help speed
+it up, the makefile variable ‘CPU_COUNT’ may be set in ‘local.make’ or
+on the command line to the number of ‘.ly’ files that LilyPond should
+process simultaneously, e.g., on a dual core machine:
+
+     make -j2 CPU_COUNT=2 doc
+
+The recommended value of ‘CPU_COUNT’ is the number of cores.  If the
+build runs into out-of-memory problems, use a lower number.
+
+Installing documentation
+........................
+
+The HTML, PDF and if available Info files can be installed into the
+standard documentation path by issuing
+
+     make install-doc
+
+This also installs Info documentation with images.  The final
+installation of Info documentation (integrating it into the
+documentation directory) is printed on standard output.
+
+   To install the Info documentation separately, run:
+
+     make install-info
+
+Note that to get the images in Info documentation, ‘install-doc’ target
+creates symbolic links to HTML and PDF installed documentation tree in
+‘PREFIX/share/info’, in order to save disk space, whereas ‘install-info’
+copies images in ‘PREFIX/share/info’ subdirectories.
+
+   It is possible to build a documentation tree in
+‘out-www/online-root/’, with special processing, so it can be used on a
+website with content negotiation for automatic language selection; this
+can be achieved by issuing
+
+     make WEB_TARGETS=online doc
+
+and both ‘offline’ and ‘online’ targets can be generated by issuing
+
+     make WEB_TARGETS="offline online" doc
+
+   Several targets are available to clean the documentation build and
+help with maintaining documentation; an overview of these targets is
+available with
+
+     make help
+
+from every directory in the build tree.  Most targets for documentation
+maintenance are available from ‘Documentation/’; for more information,
+see *note (lilypond-contributor)Documentation work::.
+
+   The makefile variable ‘QUIET_BUILD’ may be set to ‘1’ for a less
+verbose build output, just like for building the programs.
+
+Building documentation without compiling
+........................................
+
+The documentation can be built locally without compiling LilyPond
+binary, if LilyPond is already installed on your system.
+
+   From a fresh Git checkout, do
+
+     ./autogen.sh   # ignore any warning messages
+     cp GNUmakefile.in GNUmakefile
+     make -C scripts && make -C python
+     nice make LILYPOND_EXTERNAL_BINARY=/path/to/bin/lilypond doc
+
+   This may break: if a new feature is added with a test file in
+input/regression, even the latest development release of LilyPond will
+fail to build the docs.
+
+   You may build the manual without building all the ‘input/*’ stuff
+(i.e., mostly regression tests): change directory, for example to
+‘Documentation/’, issue ‘make doc’, which will build documentation in a
+subdirectory ‘out-www’ from the source files in current directory.  In
+this case, if you also want to browse the documentation in its
+post-processed form, change back to top directory and issue
+
+     make out=www WWW-post
+
+1.6.3 Testing LilyPond binary
+-----------------------------
+
+LilyPond comes with an extensive suite that exercises the entire
+program.  This suite can be used to test that the binary has been built
+correctly.
+
+   The test suite can be executed with:
+
+make test
+
+   If the test suite completes successfully, the LilyPond binary has
+been verified.
+
+   More information on the regression test suite is found at *note
+(lilypond-contributor)Regression tests::.
+
+1.7 Problems
+============
+
+For help and questions use <lilypond-user@gnu.org>.  Send bug reports to
+<bug-lilypond@gnu.org>.
+
+   Bugs that are not fault of LilyPond are documented here.
+
+Compiling on macOS
+------------------
+
+Here are special instructions for compiling under macOS. These
+instructions assume that dependencies are installed using MacPorts.
+(https://www.macports.org/) The instructions have been tested using
+Mac~OS~X 10.5 (Leopard).
+
+   First, install the relevant dependencies using MacPorts.
+
+   Next, add the following to your relevant shell initialization files.
+This is ‘~/.profile’ by default.  You should create this file if it does
+not exist.
+
+     export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+     export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib:$DYLD_FALLBACK_LIBRARY_PATH
+
+   At this point, you should verify that you have the appropriate fonts
+installed with your Ghostscript installation.  Check ‘ls
+/opt/local/share/ghostscript/fonts’ for: ’c0590*’ files (.pfb, .pfb and
+.afm).  If you don’t have them, run the following commands to grab them
+from the Ghostscript SVN server and install them in the appropriate
+location:
+
+     svn export http://svn.ghostscript.com/ghostscript/tags/urw-fonts-1.0.7pre44/
+     sudo mv urw-fonts-1.0.7pre44/* /opt/local/share/ghostscript/fonts/
+     rm -rf urw-fonts-1.07pre44
+
+   Now run the ‘./configure’ script.  To avoid complications with
+automatic font detection, add
+
+     --with-fonts-dir=/opt/local/share/ghostscript/fonts
+
+FreeBSD
+-------
+
+To use system fonts, dejaview must be installed.  With the default port,
+the fonts are installed in ‘usr/X11R6/lib/X11/fonts/dejavu’.
+
+   Open the file ‘$LILYPONDBASE/usr/etc/fonts/local.conf’ and add the
+following line just after the ‘<fontconfig>’ line.  (Adjust as necessary
+for your hierarchy.)
+
+     <dir>/usr/X11R6/lib/X11/fonts</dir>
+
+International fonts
+-------------------
+
+On macOS, all fonts are installed by default.  However, finding all
+system fonts requires a bit of configuration; see this post
+(https://lists.gnu.org/archive/html/lilypond-user/2007-03/msg00472.html)
+on the ‘lilypond-user’ mailing list.
+
+   On Linux, international fonts are installed by different means on
+every distribution.  We cannot list the exact commands or packages that
+are necessary, as each distribution is different, and the exact package
+names within each distribution changes.  Here are some hints, though:
+
+Red Hat Fedora
+
+    taipeifonts fonts-xorg-truetype ttfonts-ja fonts-arabic \
+         ttfonts-zh_CN fonts-ja fonts-hebrew
+
+Debian GNU/Linux
+
+   apt-get install emacs-intl-fonts xfonts-intl-.* \
+        fonts-ipafont-gothic  fonts-ipafont-mincho \
+        xfonts-bolkhov-75dpi xfonts-cronyx-100dpi xfonts-cronyx-75dpi
+
+Using LilyPond Python libraries
+-------------------------------
+
+If you want to use LilyPond’s Python libraries (either running certain
+build scripts manually, or using them in other programs), add the path
+to the ‘python’ subdirectory in your LilyPond source code (or git) tree
+to ‘PYTHONPATH’.  Alternatively, add
+‘PREFIX/share/lilypond/2.26.0/python’ if LilyPond is installed in
+‘PREFIX’ (for example, ‘/usr/local’).
+
+1.8 Concurrent stable and development versions
+==============================================
+
+It can be useful to have both the stable and the development versions of
+LilyPond available at once.  One way to do this on GNU/Linux is to
+install the stable version using the precompiled binary, and run the
+development version from the source tree.  After running ‘make all’ from
+the top directory of the LilyPond source files, there will be a binary
+called ‘lilypond’ in the ‘out’ directory:
+
+     <PATH TO>/lilypond/out/bin/lilypond
+
+   This binary can be run without actually doing the ‘make install’
+command.  The advantage to this is that you can have all of the latest
+changes available after pulling from git and running ‘make all’, without
+having to uninstall the old version and reinstall the new.
+
+   So, to use the stable version, install it as usual and use the normal
+commands:
+
+     lilypond foobar.ly
+
+   To use the development version, create a link to the binary in the
+source tree by saving the following line in a file somewhere in your
+‘$PATH’:
+
+     exec <PATH TO>/lilypond/out/bin/lilypond "$@"
+
+   Save it as ‘Lilypond’ (with a capital L to distinguish it from the
+stable ‘lilypond’), and make it executable:
+
+     chmod +x Lilypond
+
+   Then you can invoke the development version this way:
+
+     Lilypond foobar.ly
+
+   TODO: ADD
+
+   - other compilation tricks for developers
+
+1.8.1 Replacing the notation fonts in development versions
+----------------------------------------------------------
+
+The instructions to install other notation fonts (see *note
+(lilypond-notation)Replacing the notation font::) are slightly different
+if you call the ‘lilypond’ binary directly from the build directory:
+instead of using a version directory name ‘X.Y.Z’ in the path, you have
+to use ‘current’ – LilyPond supports this special case to avoid
+re-installation in case you are updating the git repository, or if you
+are testing patches.
+
+   Assuming that you have compiled LilyPond in directory ‘~/lilybuild/’,
+additional font files should go into
+‘~/lilybuild/out/share/lilypond/current/fonts/otf/’ (this is usually a
+soft link to directory ‘~/lilybuild/mf/out/’).  Note, however, that you
+have to repeat the installation of additional notation fonts after
+calling ‘make clean’ (and a subsequent ‘make’), since this operation
+removes all ‘out/’ subdirectories.
+
+1.9 Build system
+================
+
+Version-specific Texinfo macros
+-------------------------------
+
+   • made with ‘scripts/build/create-version-itexi.py’ and
+     ‘scripts/build/create-weblinks-itexi.py’
+
+   • used extensively in the ‘WEBSITE_ONLY_BUILD’ version of the website
+     (made with ‘website.make’, used on lilypond.org)
+
+   • not (?)  used in the main docs?
+
+   • the numbers in VERSION file: MINOR_VERSION should be 1 more than
+     the last release, VERSION_DEVEL should be the last *online*
+     release.  Yes, VERSION_DEVEL is less than VERSION.
+

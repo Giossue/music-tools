@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2009-2026 by the authors.
+
+LilyPond 网站由本文件归档。
+
+Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License,
+Version 1.1 or any later version published by the Free Software
+Foundation; with no Invariant Sections.  A copy of the license is
+included in the section entitled "GNU Free Documentation
+License". -->
+<title>小例子 (LilyPond &ndash; 人人的乐谱软件)</title>
+
+<meta name="description" content="小例子 (LilyPond &ndash; 人人的乐谱软件)">
+<meta name="keywords" content="小例子 (LilyPond &ndash; 人人的乐谱软件)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.zh.html#top" rel="start" title="LilyPond &ndash; 人人的乐谱软件">
+<link href="web_toc.zh.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="community.zh.html" rel="up" title="社区">
+<link href="bug-reports.zh.html" rel="next" title="错误报告">
+<link href="contact.zh.html" rel="prev" title="联系">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-website.css">
+
+
+</head>
+
+<body lang="zh" class="web">
+<div id="main">
+<div class="unnumberedsec" id="tiny-examples">
+<hr>
+<span id="Xiao-LiZi-"></span><h3 class="unnumberedsec">小例子</h3>
+
+<div class="column-center-top">
+<span id="Shi-Yao-Shi--_201cXiao-LiZi-_201d_003f"></span><h4 class="subheading">什么是 &ldquo;小例子&rdquo;?</h4>
+
+<p>一个小例子 (tiny example) 是一个 <strong>任何</strong> 内容都不再能移除的例子。
+</p>
+</div>
+
+<div class="column-left-bottom">
+<span id="Wei-Shi-Yao-Yao-Chuang-Jian-Xiao-LiZi-_003f"></span><h4 class="subheading">为什么要创建小例子？</h4>
+
+<div class="keep-bullets">
+<ul>
+<li> 例子越小，越能快速地让那些潜在的帮助者明白你的意图并帮助你。
+
+</li><li> 一个小例子演示了你如何自己尝试努力解决这个问题。如果人们
+发送大量的输入，那看上去我们是否帮助他们并不那么重要。
+
+</li><li> 创建小例子可以帮助你理解当前发生了什么。在创建小例子时，
+可以避免创建许多“假”的问题报告；如果你在小例子中不能复现 
+&ldquo;bug&rdquo; ，则问题可能是对 LilyPond 的不充分理解导致的，
+而非一个真正的错误！
+
+</li></ul>
+
+</div>
+
+
+</div>
+
+
+<div class="column-right-bottom">
+<span id="Ru-He-Chuang-Jian-Xiao-LiZi-_003f"></span><h4 class="subheading">如何创建小例子？</h4>
+
+<div class="keep-bullets">
+<ul>
+<li> 包含 <code>\version</code> 号。
+
+</li><li> 让它尽可能地小！关于空白（spacing）或页面布局的例子可能需要大量
+小节的音乐，但更多的问题可以在一个小节内复现。
+
+</li><li> 当尝试创建小例子时，尝试将你文件中 (<code>%</code>&nbsp;或者&nbsp;<code>%{&nbsp;&hellip;&nbsp;%}</code>)<!-- /@w --> 的部分注释掉。如果注释掉这些内容后，
+你仍然能够演示你的核心意图，则将这些内容从文件中移除。
+
+</li><li> 避免使用复杂的音符、调号或者拍号，除非错误是关于它们的外观的。
+
+</li><li> 不要使用 <code>\override</code> 或 <code>\set</code> 指令，除非错误时关于这些指令的
+
+</li><li> 可选地，附加一份图片来展示你期望的图形输出。
+
+</li></ul>
+
+</div>
+
+
+</div>
+
+<div class="column-center-bottom">
+<span id="LiZi-Ying-Dang-You-Duo-Xiao-_003f"></span><h4 class="subheading">例子应当有多小？</h4>
+
+<p>下面代码展示的是一个小例子吗？
+</p>
+<div class="example">
+<pre class="example">\version &quot;2.14.1&quot;
+\include &quot;english.ly&quot;
+
+\score {
+  \new Staff {
+    \key d \major
+    \numericTimeSignature
+    \time 2/4
+    &lt;cs' d'' b''&gt;16 &lt;cs' d'' b''&gt;8.
+    %% Here: the tie on the D's looks funny
+    %% Too tall? Left-hand endpoint is not aligned with the B tie?
+    ~
+    &lt;cs' d'' b''&gt;8 [ &lt;b d'' a''&gt; ]
+  }
+}
+</pre></div>
+
+<p>显然，它并不是特别大，但真正的最小例子是这样的：
+</p>
+<div class="example">
+<pre class="example">\version &quot;2.14.1&quot;
+{
+  % middle tie looks funny here:
+  &lt;c' d'' b''&gt;8. ~ &lt;c' d'' b''&gt;8
+}
+</pre></div>
+
+<p>极少数的小例子会超过 10 行代码——
+大部分情形下， 4 行代码就足以演示问题！
+</p>
+
+</div>
+
+
+</div>
+<hr>
+
+<div id="footer">
+<p id="languages">
+Other languages: <a href="tiny-examples.html">English</a>, <a href="tiny-examples.ca.html">Català</a>, <a href="tiny-examples.de.html">Deutsch</a>, <a href="tiny-examples.es.html">Español</a>, <a href="tiny-examples.fr.html">Français</a>, <a href="tiny-examples.it.html">Italiano</a>, <a href="tiny-examples.ja.html">日本語</a>, <a href="tiny-examples.tr.html">Türkçe</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-LilyPond" href="index.zh.html">LilyPond</a></li>
+  <li><a id="toc-Jian-Jie-" href="introduction.zh.html">简介</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Te-Se-" href="features.zh.html">特色</a></li>
+    <li><a id="toc-LiZi-" href="examples.zh.html">例子</a></li>
+    <li><a id="toc-Zi-You-" href="freedom.zh.html">自由</a></li>
+    <li><a id="toc-Bei-Jing-" href="background.zh.html">背景</a></li>
+    <li><a id="toc-Zhi-Zuo-" href="productions.zh.html">制作</a></li>
+    <li><a id="toc-Ping-Jie-" href="reviews.zh.html">评价</a></li>
+    <li><a id="toc-WenBen-Shu-Ru-" href="text-input.zh.html">文本输入</a></li>
+    <li><a id="toc-Bian-Ji-Geng-Jian-Dan-" href="easier-editing.zh.html">编辑更简单</a></li>
+  </ul></li>
+  <li><a id="toc-Download" href="download.zh.html">Download</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Source" href="source.zh.html">Source</a></li>
+    <li><a id="toc-Old-downloads" href="old-downloads.zh.html">Old downloads</a></li>
+    <li><a id="toc-GPL" href="gpl.zh.html">GPL</a></li>
+  </ul></li>
+  <li><a id="toc-Shou-Ce-" href="manuals.zh.html">手册</a>
+  <ul class="no-bullet">
+    <li><a id="toc-XueXi-" href="learning.zh.html">学习</a></li>
+    <li><a id="toc-Zhu-Yu-Biao-" href="glossary.zh.html">术语表</a></li>
+    <li><a id="toc-WenZhang" href="essay.zh.html">文章</a></li>
+    <li><a id="toc-Ji-Pu-Fa-" href="notation.zh.html">记谱法</a></li>
+    <li><a id="toc-Shi-Yong-" href="usage.zh.html">使用</a></li>
+    <li><a id="toc-Pian-Duan-" href="snippets.zh.html">片断</a></li>
+    <li><a id="toc-Chang-Jian-Wen-Ti-" href="faq.zh.html">常见问题</a></li>
+    <li><a id="toc-Web" href="web.zh.html">Web</a></li>
+    <li><a id="toc-Bian-Hua-" href="changes.zh.html">变化</a></li>
+    <li><a id="toc-Kuo-Zhan-" href="extending.zh.html">扩展</a></li>
+    <li><a id="toc-Nei-Bu-Ji-Zhi-" href="internals.zh.html">内部机制</a></li>
+    <li><a id="toc-Suo-You-" href="all.zh.html">所有</a></li>
+    <li><a id="toc-FDL" href="fdl.zh.html">FDL</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-She-Qu-" href="community.zh.html">社区</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Lian-Xi-" href="contact.zh.html">联系</a></li>
+    <li class="toc_current"><a id="toc-Xiao-LiZi-" href="tiny-examples.zh.html">小例子</a></li>
+    <li><a id="toc-Cuo-Wu-Bao-Gao-" href="bug-reports.zh.html">错误报告</a></li>
+    <li><a id="toc-Bang-Zhu-Wo-Men-" href="help-us.zh.html">帮助我们</a></li>
+    <li><a id="toc-Zan-Zhu-" href="sponsoring.zh.html">赞助</a></li>
+    <li><a id="toc-Kai-Fa-" href="development.zh.html">开发</a></li>
+    <li><a id="toc-Google-Summer-of-Code" href="google-summer-of-code.zh.html">Google Summer of Code</a></li>
+    <li><a id="toc-Zuo-Zhe-" href="authors.zh.html">作者</a></li>
+    <li><a id="toc-Chu-Ban-Wu-" href="publications.zh.html">出版物</a></li>
+    <li><a id="toc-Xin-Wen-" href="news.zh.html">新闻</a></li>
+    <li><a id="toc-Attic" href="attic.zh.html">Attic</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: ebe492ca408fb0d9abf80b94c56197eef8dc2f09
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google 搜索">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="搜索">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

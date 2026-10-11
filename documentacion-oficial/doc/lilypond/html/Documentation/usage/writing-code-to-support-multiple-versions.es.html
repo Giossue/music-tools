@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1999-2026 por los autores.
+
+La traducción de la siguiente nota de copyright se ofrece como
+cortesía para las personas de habla no inglesa, pero únicamente la
+nota en inglés tiene validez legal.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+Se otorga permiso para copiar, distribuir y/o modificar este documento
+bajo los términos de la Licencia de Documentación Libre de GNU, versión 1.1
+o cualquier versión posterior publicada por la Free Software Foundation;
+sin ninguna de las secciones invariantes.
+Se incluye una copia de esta licencia dentro de la sección titulada "Licencia
+de Documentación Libre de GNU".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>2.7 Escritura de código que contemple varias versiones (LilyPond: manual de utilización del programa)</title>
+
+<meta name="description" content="2.7 Escritura de código que contemple varias versiones (LilyPond: manual de utilización del programa)">
+<meta name="keywords" content="2.7 Escritura de código que contemple varias versiones (LilyPond: manual de utilización del programa)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.es.html" rel="start" title="LilyPond &mdash; Utilización">
+<link href="index-of-commands-and-concepts.es.html" rel="index" title="Appendix B Índice">
+<link href="usage_toc.es.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="updating-files-with-convert_002dly.es.html" rel="up" title="2 Actualizar ficheros con convert-ly">
+<link href="manual-conversions.es.html" rel="prev" title="2.6 Conversiones manuales">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="es" class="usage">
+<div id="main">
+<div class="section" id="writing-code-to-support-multiple-versions">
+<table class="nav_table">
+<tr><td align="left">[<a href="updating-files-with-convert_002dly.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Actualizar ficheros con <code>convert-ly</code> </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.es.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="lilypond_002dbook.es.html" title="Next chapter"> Ejecución de <code>lilypond-book</code> &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="manual-conversions.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Conversiones manuales </a>]</td><td align="center">[<a href="updating-files-with-convert_002dly.es.html" title="Up section" accesskey="u" rel="up">  Up: Actualizar ficheros con <code>convert-ly</code> </a>]</td><td align="right">[<a href="lilypond_002dbook.es.html" title="Next section in reading order" accesskey="n" rel="next"> Ejecución de <code>lilypond-book</code> &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Escritura-de-codigo-que-contemple-varias-versiones"></span><h3 class="section">2.7 Escritura de código que contemple varias versiones</h3>
+
+<p>En ciertos casos, especialmente al escribir código de
+<em>bibliotecas</em>, es deseable dar apoyo a más de una versión de
+LilyPond, por encima de los cambios de sintaxis que rompen con la
+práctica anterior.  Para hacerlo, se pueden envolver porciones de
+código alternativas dentro de expresiones condicionales que
+dependen de la versión de LilyPond que se está ejecutando
+actualmente.  La función de Scheme <code>ly:version?</code>  admite un
+operador de comparación <var>op</var> y una versión de referencia
+<var>ver</var> que se pasa como una lista de enteros con un máximo de
+tres elementos.  Se ignoran los elementos que faltan, de forma que
+<code>'(2 20)</code> equivale a <em>cualquier</em> versión de la línea de
+2.20.  Son posibles construcciones como las siguientes:
+</p>
+<div class="example">
+<pre class="example">#(cond
+  ((ly:version? &gt; '(2 20))
+   (ly:message &quot;Esto es código para LilyPond posterior a 2.20&quot;))
+  ((ly:version? = '(2 19 57))
+   (ly:message &quot;Esto solamente se ejecuta con LilyPond 2.19.57&quot;))
+  (else (ly:message &quot;Esto se ejecuta en cualquier otra versión&quot;)))
+</pre></div>
+
+<p>Por lo general, esto se encontrará integrado dentro de funciones
+de biblioteca que permitan usar más de un tipo de sintaxis
+alternativas, pero también es posible usar la comparación
+directamente dentro de la música como en el ejemplo siguiente:
+</p>
+<div class="example">
+<pre class="example">{
+  c' d' e' f'
+  #(if (ly:version? = '(2 21))
+       #{ \override NoteHead.color = #red #}
+       #{ \override NoteHead.color = #blue #})
+  g' a' b' c''
+}
+</pre></div>
+
+<p><strong>Nota:</strong> Esta función fue introducida en LilyPond 2.21.80,
+por lo que no es posible hacer la comparación con versiones
+anteriores a esa.
+</p>
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="updating-files-with-convert_002dly.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Actualizar ficheros con <code>convert-ly</code> </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.es.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="lilypond_002dbook.es.html" title="Next chapter"> Ejecución de <code>lilypond-book</code> &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="manual-conversions.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Conversiones manuales </a>]</td><td align="center">[<a href="updating-files-with-convert_002dly.es.html" title="Up section" accesskey="u" rel="up">  Up: Actualizar ficheros con <code>convert-ly</code> </a>]</td><td align="right">[<a href="lilypond_002dbook.es.html" title="Next section in reading order" accesskey="n" rel="next"> Ejecución de <code>lilypond-book</code> &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="writing-code-to-support-multiple-versions.html">English</a>, <a href="writing-code-to-support-multiple-versions.fr.html">Français</a>, <a href="writing-code-to-support-multiple-versions.it.html">Italiano</a>, <a href="writing-code-to-support-multiple-versions.ja.html">日本語</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.es.html" title="Documentation Index">
+    &lt;&lt; Volver al índice de la documentación
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.es.html#top" title="Cover (top) of document">
+    LilyPond: manual de utilización del programa  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Ejecutar-LilyPond" href="running-lilypond.es.html">1 Ejecutar LilyPond</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Utilizacion-normal" href="normal-usage.es.html">1.1 Utilización normal</a></li>
+    <li><a id="toc-Utilizacion-desde-la-linea-de-ordenes" href="command_002dline-usage.es.html">1.2 Utilización desde la línea de órdenes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-La-variable-de-entorno-PATH" href="the-path-environment-variable.es.html">La variable de entorno <code>PATH</code></a></li>
+      <li><a id="toc-Invocar-lilypond" href="invoking-lilypond.es.html">Invocar <code>lilypond</code></a></li>
+      <li><a id="toc-Opciones-basicas-de-la-linea-de-ordenes-para-LilyPond" href="basic-command_002dline-options-for-lilypond.es.html">Opciones básicas de la línea de órdenes para LilyPond</a></li>
+      <li><a id="toc-Opciones-avanzadas-de-linea-de-ordenes-para-LilyPond" href="advanced-command_002dline-options-for-lilypond.es.html">Opciones avanzadas de línea de órdenes para LilyPond</a></li>
+      <li><a id="toc-Variables-de-entorno" href="environment-variables.es.html">Variables de entorno</a></li>
+      <li><a id="toc-Reubicacion-del-programa" href="relocation.es.html">Reubicación del programa</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Archivos-de-reubicacion" href="relocation-files.es.html">Archivos de reubicación</a></li>
+        <li><a id="toc-Algoritmo-de-la-reubicacion" href="relocation-algorithm.es.html">Algoritmo de la reubicación</a></li>
+      </ul></li>
+      <li><a id="toc-LilyPond-en-una-jaula-de-chroot" href="lilypond-in-chroot-jail.es.html">LilyPond en una jaula de chroot</a></li>
+    </ul></li>
+    <li><a id="toc-Mensajes-de-error" href="error-messages.es.html">1.3 Mensajes de error</a></li>
+    <li><a id="toc-Errores-comunes" href="common-errors.es.html">1.4 Errores comunes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-La-musica-se-sale-de-la-pagina" href="music-runs-off-the-page.es.html">La música se sale de la página</a></li>
+      <li><a id="toc-Aparece-un-pentagrama-de-mas" href="an-extra-staff-appears.es.html">Aparece un pentagrama de más</a></li>
+      <li><a id="toc-Mensaje-de-error-Unbound-variable-_0025" href="error-message-unbound-variable-_0025.es.html">Mensaje de error Unbound variable %</a></li>
+      <li><a id="toc-Mensaje-de-error-FT_005fGet_005fGlyph_005fName" href="error-message-ft_005fget_005fglyph_005fname.es.html">Mensaje de error FT_Get_Glyph_Name</a></li>
+      <li><a id="toc-Advertencia-sobre-que-las-afinidades-del-pentagrama-solo-deben-decrecer" href="warning-staff-affinities-should-only-decrease.es.html">Advertencia sobre que las afinidades del pentagrama sólo deben decrecer</a></li>
+      <li><a id="toc-Mensaje-de-error-Unexpected-_005cnew" href="error-message-unexpected-new.es.html">Mensaje de error Unexpected <code>\new</code></a></li>
+      <li><a id="toc-Advertencia-de-que-una-voz-requiere-ajustes-_005cvoiceXx-o-_005cshiftXx" href="warning-this-voice-needs-a-voicexx-or-shiftxx-setting.es.html">Advertencia de que una voz requiere ajustes <code>\voiceXx</code> o <code>\shiftXx</code></a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Actualizar-ficheros-con-convert_002dly" href="updating-files-with-convert_002dly.es.html">2 Actualizar ficheros con <code>convert-ly</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-_00bfPor-que-cambia-la-sintaxis_003f" href="why-does-the-syntax-change_003f.es.html">2.1 ¿Por qué cambia la sintaxis?</a></li>
+    <li><a id="toc-Introduccion-a-la-linea-de-ordenes" href="command_002dline-preliminaries.es.html">2.2 Introducción a la línea de órdenes</a></li>
+    <li><a id="toc-Invocacion-de-convert_002dly" href="invoking-convert_002dly.es.html">2.3 Invocación de <code>convert-ly</code></a></li>
+    <li><a id="toc-Opciones-de-la-linea-de-ordenes-para-convert_002dly" href="command-line-options-for-convert_002dly.es.html">2.4 Opciones de la línea de órdenes para <code>convert-ly</code></a></li>
+    <li><a id="toc-Problemas-con-convert_002dly" href="problems-running-convert_002dly.es.html">2.5 Problemas con <code>convert-ly</code></a></li>
+    <li><a id="toc-Conversiones-manuales" href="manual-conversions.es.html">2.6 Conversiones manuales</a></li>
+    <li class="toc_current"><a id="toc-Escritura-de-codigo-que-contemple-varias-versiones" href="writing-code-to-support-multiple-versions.es.html">2.7 Escritura de código que contemple varias versiones</a></li>
+  </ul></li>
+  <li><a id="toc-Ejecucion-de-lilypond_002dbook" href="lilypond_002dbook.es.html">3 Ejecución de <code>lilypond-book</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-Un-ejemplo-de-documento-musicologico" href="an-example-of-a-musicological-document.es.html">3.1 Un ejemplo de documento musicológico</a></li>
+    <li><a id="toc-Integrar-musica-y-texto" href="integrating-music-and-text.es.html">3.2 Integrar música y texto</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LaTeX" href="latex.es.html">3.2.1 LaTeX</a></li>
+      <li><a id="toc-Texinfo" href="texinfo.es.html">3.2.2 Texinfo</a></li>
+      <li><a id="toc-HTML" href="html.es.html">3.2.3 HTML</a></li>
+      <li><a id="toc-DocBook" href="docbook.es.html">3.2.4 DocBook</a></li>
+    </ul></li>
+    <li><a id="toc-Opciones-de-fragmentos-de-musica" href="music-fragment-options.es.html">3.3 Opciones de fragmentos de música</a></li>
+    <li><a id="toc-Invocar-lilypond_002dbook" href="invoking-lilypond_002dbook.es.html">3.4 Invocar <code>lilypond-book</code></a></li>
+    <li><a id="toc-Extensiones-de-nombres-de-archivo" href="filename-extensions.es.html">3.5 Extensiones de nombres de archivo</a></li>
+    <li><a id="toc-Ejecucion-paralela" href="parallel-execution.es.html">3.6 Ejecución paralela</a></li>
+    <li><a id="toc-Plantillas-de-lilypond_002dbook" href="lilypond_002dbook-templates.es.html">3.7 Plantillas de lilypond-book</a></li>
+    <li><a id="toc-Compartir-el-indice-general" href="sharing-the-table-of-contents.es.html">3.8 Compartir el índice general</a></li>
+    <li><a id="toc-Metodos-alternativos-para-mezclar-texto-y-musica" href="alternate-methods-of-mixing-text-and-music.es.html">3.9 Métodos alternativos para mezclar texto y música</a></li>
+  </ul></li>
+  <li><a id="toc-Programas-externos" href="external-programs.es.html">4 Programas externos</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Apuntar-y-pulsar" href="point-and-click.es.html">4.1 Apuntar y pulsar</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Configuracion-del-sistema" href="configuring-the-system-for-point-and-click.es.html">4.1.1 Configuración del sistema</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Uso-de-GNOME-para-apuntar-y-pulsar" href="using-gnome-for-point-and-click.es.html">Uso de GNOME para apuntar y pulsar</a></li>
+        <li><a id="toc-Configuracion-adicional-para-Evince" href="extra-configuration-for-evince.es.html">Configuración adicional para Evince</a></li>
+      </ul></li>
+      <li><a id="toc-Habilitar-la-opcion-de-apuntar-y-pulsar" href="enabling-point-and-click.es.html">Habilitar la opción de apuntar y pulsar</a></li>
+      <li><a id="toc-Apuntar-y-pulsar-selectivo" href="selective-point_002dand_002dclick.es.html">Apuntar y pulsar selectivo</a></li>
+    </ul></li>
+    <li><a id="toc-Apoyo-respecto-de-los-editores-de-texto" href="text-editor-support.es.html">4.2 Apoyo respecto de los editores de texto</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Modo-de-Emacs" href="emacs-mode.es.html">Modo de Emacs</a></li>
+      <li><a id="toc-Modo-de-Vim" href="vim-mode.es.html">Modo de Vim</a></li>
+      <li><a id="toc-Otros-editores" href="other-editors.es.html">Otros editores</a></li>
+    </ul></li>
+    <li><a id="toc-Conversion-desde-otros-formatos" href="converting-from-other-formats.es.html">4.3 Conversión desde otros formatos</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Invocar-midi2ly" href="invoking-midi2ly.es.html">4.3.1 Invocar <code>midi2ly</code></a></li>
+      <li><a id="toc-Invocar-musicxml2ly" href="invoking-musicxml2ly.es.html">4.3.2 Invocar <code>musicxml2ly</code></a></li>
+      <li><a id="toc-Invocar-abc2ly" href="invoking-abc2ly.es.html">4.3.3 Invocar <code>abc2ly</code></a></li>
+      <li><a id="toc-Invocar-etf2ly" href="invoking-etf2ly.es.html">4.3.4 Invocar <code>etf2ly</code></a></li>
+      <li><a id="toc-Otros-formatos" href="other-formats.es.html">4.3.5 Otros formatos</a></li>
+    </ul></li>
+    <li><a id="toc-Salida-de-LilyPond-dentro-de-otros-programas" href="lilypond-output-in-other-programs.es.html">4.4 Salida de LilyPond dentro de otros programas</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LuaTeX" href="luatex.es.html">4.4.1 LuaTeX</a></li>
+      <li><a id="toc-OpenOffice-y-LibreOffice" href="openoffice-and-libreoffice.es.html">4.4.2 OpenOffice y LibreOffice</a></li>
+      <li><a id="toc-ly2video-1" href="ly2video.es.html">4.4.3 <code>ly2video</code></a></li>
+      <li><a id="toc-Otros-programas" href="other-programs.es.html">4.4.4 Otros programas</a></li>
+    </ul></li>
+    <li><a id="toc-Archivos-de-inclusion-independientes" href="independent-includes.es.html">4.5 Archivos de inclusión independientes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Articulacion-MIDI" href="midi-articulation.es.html">4.5.1 Articulación MIDI</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Sugerencias-para-escribir-archivos-de-entrada" href="suggestions-for-writing-files.es.html">5 Sugerencias para escribir archivos de entrada</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Sugerencias-de-tipo-general" href="general-suggestions.es.html">5.1 Sugerencias de tipo general</a></li>
+    <li><a id="toc-Tipografiar-musica-existente" href="typesetting-existing-music.es.html">5.2 Tipografiar música existente</a></li>
+    <li><a id="toc-Proyectos-grandes" href="large-projects.es.html">5.3 Proyectos grandes</a></li>
+    <li><a id="toc-Solucion-de-problemas" href="troubleshooting.es.html">5.4 Solución de problemas</a></li>
+    <li><a id="toc-Make-y-los-Makefiles" href="make-and-makefiles.es.html">5.5 Make y los Makefiles</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.es.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Indice" href="index-of-commands-and-concepts.es.html" rel="index">Appendix B Índice</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Búsqueda de Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

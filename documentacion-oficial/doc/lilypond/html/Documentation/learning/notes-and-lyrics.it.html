@@ -1,0 +1,498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1999-2026 by the authors.
+
+La traduzione della seguente nota di copyright è gentilmente
+offerta alle persone che non parlano inglese, ma solo
+la nota in inglese ha valore legale.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+È garantito il permesso di copiare, distribuire e/o modificare questo
+documento seguendo i termini della GNU Free Documentation License,
+versione 1.1 o ogni versione successiva pubblicata dalla
+Free Software Foundation; senza alcuna sezione non modificabile.
+Una copia della licenza si trova nella sezione intitolata
+"GNU Free Documentation License".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>A.2.2 Note e testo (Manuale di apprendimento di LilyPond)</title>
+
+<meta name="description" content="A.2.2 Note e testo (Manuale di apprendimento di LilyPond)">
+<meta name="keywords" content="A.2.2 Note e testo (Manuale di apprendimento di LilyPond)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.it.html" rel="start" title="LilyPond &mdash; Manuale di apprendimento">
+<link href="index-of-commands-and-concepts.it.html" rel="index" title="Appendix C Indice">
+<link href="learning_toc.it.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="single-staff-templates.it.html" rel="up" title="A.2 Modelli per rigo singolo">
+<link href="notes-and-chords.it.html" rel="next" title="A.2.3 Note e accordi">
+<link href="notes-only.it.html" rel="prev" title="A.2.1 Solo note">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="it" class="learning">
+<div id="main">
+<div class="appendixsubsec" id="notes-and-lyrics">
+<table class="nav_table">
+<tr><td align="left">[<a href="templates.it.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Modelli </a>]</td><td align="center">[<a href="index.it.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.it.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.it.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="gnu-free-documentation-license.it.html" title="Next chapter"> GNU Free Documentation License &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="notes-only.it.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Solo note </a>]</td><td align="center">[<a href="single-staff-templates.it.html" title="Up section" accesskey="u" rel="up">  Up: Modelli per rigo singolo </a>]</td><td align="right">[<a href="notes-and-chords.it.html" title="Next section in reading order" accesskey="n" rel="next"> Note e accordi &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Note-e-testo"></span><h4 class="appendixsubsec">A.2.2 Note e testo</h4>
+
+
+<p>Questo piccolo modello presenta una semplice linea melodica con un testo. Copialo
+e incollalo, aggiungi le note e le parole. Questo esempio disabilita la
+disposizione automatica delle travature, come è consuetudine per le parti
+vocali. Per usare la disposizione automatica delle travature, cambia o
+commenta la relativa linea di codice.
+</p>
+
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">melody</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">treble</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="nb nb-Scale">\major</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\time</span><span class="w"> </span><span class="m m-Fraction">4/4</span>
+
+<span class="w">  </span><span class=" -Pitch">a</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">d</span>
+<span class="p">}</span>
+
+<span class="nb nb-GrobProperty">text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">\lyricmode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>Aaa<span class="w"> </span>Bee<span class="w"> </span>Cee<span class="w"> </span>Dee
+<span class="p">}</span>
+
+<span class="k">\score</span><span class="p">{</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;one&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb nb-MusicCommand">\autoBeamOff</span>
+<span class="w">      </span><span class="n n-BackslashReference">\melody</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="k">\lyricsto</span><span class="w"> </span><span class="s">&quot;one&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\text</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+<span class="w">  </span><span class="k">\layout</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">\midi</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../f3/lily-b81eb35c.ly">
+  <img align="middle"
+       border="0"
+       src="../f3/lily-b81eb35c.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="templates.it.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Modelli </a>]</td><td align="center">[<a href="index.it.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.it.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.it.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="gnu-free-documentation-license.it.html" title="Next chapter"> GNU Free Documentation License &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="notes-only.it.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Solo note </a>]</td><td align="center">[<a href="single-staff-templates.it.html" title="Up section" accesskey="u" rel="up">  Up: Modelli per rigo singolo </a>]</td><td align="right">[<a href="notes-and-chords.it.html" title="Next section in reading order" accesskey="n" rel="next"> Note e accordi &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="notes-and-lyrics.html">English</a>, <a href="notes-and-lyrics.ca.html">Català</a>, <a href="notes-and-lyrics.de.html">Deutsch</a>, <a href="notes-and-lyrics.es.html">Español</a>, <a href="notes-and-lyrics.fr.html">Français</a>, <a href="notes-and-lyrics.ja.html">日本語</a>, <a href="notes-and-lyrics.zh.html">中文</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.it.html" title="Documentation Index">
+    &lt;&lt; Torna all'indice della documentazione
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.it.html#top" title="Cover (top) of document">
+    Manuale di apprendimento di LilyPond  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Installazione" href="installing.it.html">1 Installazione</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Installazione-grafica-in-GNU_002fLinux" href="graphical-setup-under-gnu_002flinux.it.html">1.1 Installazione grafica in GNU/Linux</a></li>
+    <li><a id="toc-Installazione-grafica-in-Windows" href="graphical-setup-under-windows.it.html">1.2 Installazione grafica in Windows</a></li>
+    <li><a id="toc-Installazione-grafica-in-macOS" href="graphical-setup-under-macos.it.html">1.3 Installazione grafica in macOS</a></li>
+    <li><a id="toc-Installazione-da-linea-di-comando" href="command-line-setup.it.html">1.4 Installazione da linea di comando</a></li>
+  </ul></li>
+  <li><a id="toc-Tutorial" href="tutorial.it.html">2 Tutorial</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Compilare-un-file" href="compiling-a-file.it.html">2.1 Compilare un file</a></li>
+    <li><a id="toc-Come-scrivere-i-file-di-input" href="how-to-write-input-files.it.html">2.2 Come scrivere i file di input</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Notazione-semplice" href="simple-notation.it.html">2.2.1 Notazione semplice</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Altezze" href="pitches.it.html">Altezze</a></li>
+        <li><a id="toc-Durate-_0028ritmi_0029" href="duration-_0028rhythms_0029.it.html">Durate (ritmi)</a></li>
+        <li><a id="toc-Pause" href="rests.it.html">Pause</a></li>
+        <li><a id="toc-Indicazione-di-tempo" href="time-signature.it.html">Indicazione di tempo</a></li>
+        <li><a id="toc-Indicazioni-di-tempo" href="tempo-marks.it.html">Indicazioni di tempo</a></li>
+        <li><a id="toc-Chiave" href="clef.it.html">Chiave</a></li>
+        <li><a id="toc-Tutto-insieme" href="all-together.it.html">Tutto insieme</a></li>
+      </ul></li>
+      <li><a id="toc-Lavorare-sui-file-di-input" href="working-on-input-files.it.html">2.2.2 Lavorare sui file di input</a></li>
+    </ul></li>
+    <li><a id="toc-Gestire-gli-errori" href="dealing-with-errors.it.html">2.3 Gestire gli errori</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Consigli-generali-per-la-risoluzione-dei-problemi" href="general-troubleshooting-tips.it.html">2.3.1 Consigli generali per la risoluzione dei problemi</a></li>
+      <li><a id="toc-Alcuni-errori-comuni" href="some-common-errors.it.html">2.3.2 Alcuni errori comuni</a></li>
+    </ul></li>
+    <li><a id="toc-Come-leggere-i-manuali" href="how-to-read-the-manuals.it.html">2.4 Come leggere i manuali</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Materiale-omesso" href="omitted-material.it.html">2.4.1 Materiale omesso</a></li>
+      <li><a id="toc-Esempi-cliccabili" href="clickable-examples.it.html">2.4.2 Esempi cliccabili</a></li>
+      <li><a id="toc-Panoramica-dei-manuali" href="overview-of-manuals.it.html">2.4.3 Panoramica dei manuali</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Notazione-comunemente-utilizzata" href="common-notation.it.html">3 Notazione comunemente utilizzata</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Notazione-su-un-solo-pentagramma" href="single-staff-notation.it.html">3.1 Notazione su un solo pentagramma</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Stanghette-e-controlli-di-battuta" href="bar-lines-and-bar-checks.it.html">3.1.1 Stanghette e controlli di battuta</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Stanghette" href="bar-lines.it.html">Stanghette</a></li>
+        <li><a id="toc-Controlli-di-battuta" href="bar-checks.it.html">Controlli di battuta</a></li>
+      </ul></li>
+      <li><a id="toc-Altezze-e-armature-di-chiave" href="pitches-and-key-signatures.it.html">3.1.2 Altezze e armature di chiave</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Alterazioni-dell_0027altezza" href="pitch-alterations.it.html">Alterazioni dell&rsquo;altezza</a></li>
+        <li><a id="toc-Armature-di-chiave" href="key-signatures.it.html">Armature di chiave</a></li>
+        <li><a id="toc-Attenzione_003a-armature-di-chiave-e-altezze" href="warning-key-signatures-and-pitches.it.html">Attenzione: armature di chiave e altezze</a></li>
+      </ul></li>
+      <li><a id="toc-Legature-di-valore-e-di-portamento" href="ties-and-slurs.it.html">3.1.3 Legature di valore e di portamento</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Legature-di-valore" href="ties.it.html">Legature di valore</a></li>
+        <li><a id="toc-Legature-di-portamento" href="slurs.it.html">Legature di portamento</a></li>
+        <li><a id="toc-Legature-di-frase" href="phrasing-slurs.it.html">Legature di frase</a></li>
+        <li><a id="toc-Attenzione_003a-legature-di-portamento-vs_002e-legature-di-valore" href="warnings-slurs-vs-ties.it.html">Attenzione: legature di portamento vs. legature di valore</a></li>
+      </ul></li>
+      <li><a id="toc-Articolazioni-e-dinamiche" href="articulations-and-dynamics.it.html">3.1.4 Articolazioni e dinamiche</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Articolazioni" href="articulations.it.html">Articolazioni</a></li>
+        <li><a id="toc-Diteggiature" href="fingerings.it.html">Diteggiature</a></li>
+        <li><a id="toc-Dinamiche" href="dynamics.it.html">Dinamiche</a></li>
+      </ul></li>
+      <li><a id="toc-Aggiungere-il-testo" href="adding-text.it.html">3.1.5 Aggiungere il testo</a></li>
+      <li><a id="toc-Code-automatiche-e-manuali" href="automatic-and-manual-beams.it.html">3.1.6 Code automatiche e manuali</a></li>
+      <li><a id="toc-Comandi-di-tempo-avanzati" href="advanced-rhythmic-commands.it.html">3.1.7 Comandi di tempo avanzati</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Battuta-parziale" href="partial-measure.it.html">Battuta parziale</a></li>
+        <li><a id="toc-Gruppi-irregolari" href="tuplets.it.html">Gruppi irregolari</a></li>
+        <li><a id="toc-Abbellimenti" href="grace-notes.it.html">Abbellimenti</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Note-simultanee" href="multiple-notes-at-once.it.html">3.2 Note simultanee</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Espressioni-musicali" href="music-expressions-explained.it.html">3.2.1 Espressioni musicali</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Analogia_003a-le-espressioni-matematiche" href="analogy-mathematic-expressions.it.html">Analogia: le espressioni matematiche</a></li>
+        <li><a id="toc-Espressioni-musicali-simultanee_003a-righi-multipli" href="simultaneous-music-expressions-multiple-staves.it.html">Espressioni musicali simultanee: righi multipli</a></li>
+        <li><a id="toc-Espressioni-musicali-simultanee_003a-rigo-singolo" href="simultaneous-music-expressions-single-staff.it.html">Espressioni musicali simultanee: rigo singolo</a></li>
+      </ul></li>
+      <li><a id="toc-Righi-multipli" href="multiple-staves.it.html">3.2.2 Righi multipli</a></li>
+      <li><a id="toc-Gruppi-di-pentagrammi" href="staff-groups.it.html">3.2.3 Gruppi di pentagrammi</a></li>
+      <li><a id="toc-Combinare-le-note-negli-accordi" href="combining-notes-into-chords.it.html">3.2.4 Combinare le note negli accordi</a></li>
+      <li><a id="toc-Polifonia-su-un-singolo-rigo" href="single-staff-polyphony.it.html">3.2.5 Polifonia su un singolo rigo</a></li>
+    </ul></li>
+    <li><a id="toc-Canzoni" href="songs.it.html">3.3 Canzoni</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Impostare-canzoni-semplici" href="setting-simple-songs.it.html">3.3.1 Impostare canzoni semplici</a></li>
+      <li><a id="toc-Allineare-il-testo-alla-melodia" href="aligning-lyrics-to-a-melody.it.html">3.3.2 Allineare il testo alla melodia</a></li>
+      <li><a id="toc-Testo-su-piu-righi" href="lyrics-to-multiple-staves.it.html">3.3.3 Testo su più righi</a></li>
+    </ul></li>
+    <li><a id="toc-Ritocchi-finali" href="final-touches.it.html">3.4 Ritocchi finali</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Organizzare-i-brani-con-le-variabili" href="organizing-pieces-with-variables.it.html">3.4.1 Organizzare i brani con le variabili</a></li>
+      <li><a id="toc-Aggiungere-i-titoli" href="adding-titles.it.html">3.4.2 Aggiungere i titoli</a></li>
+      <li><a id="toc-Nomi-assoluti-delle-note" href="absolute-note-names.it.html">3.4.3 Nomi assoluti delle note</a></li>
+      <li><a id="toc-Dopo-il-tutorial" href="after-the-tutorial.it.html">3.4.4 Dopo il tutorial</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Concetti-fondamentali" href="fundamental-concepts.it.html">4 Concetti fondamentali</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Come-funzionano-i-file-di-input-di-LilyPond" href="how-lilypond-input-files-work.it.html">4.1 Come funzionano i file di input di LilyPond</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Introduzione-alla-struttura-di-un-file-di-LilyPond" href="introduction-to-the-lilypond-file-structure.it.html">4.1.1 Introduzione alla struttura di un file di LilyPond</a></li>
+      <li><a id="toc-La-partitura-e-una-_0028singola_0029-espressione-musicale-composta" href="score-is-a-_0028single_0029-compound-musical-expression.it.html">4.1.2 La partitura è una (singola) espressione musicale composta</a></li>
+      <li><a id="toc-Annidare-le-espressioni-musicali" href="nesting-music-expressions.it.html">4.1.3 Annidare le espressioni musicali</a></li>
+      <li><a id="toc-Struttura-dell_0027inserimento-note" href="structure-of-a-note-entry.it.html">4.1.4 Struttura dell&rsquo;inserimento note</a></li>
+      <li><a id="toc-Sul-non-annidamento-di-parentesi-e-legature-di-valore" href="on-the-un_002dnestedness-of-brackets-and-ties.it.html">4.1.5 Sul non annidamento di parentesi e legature di valore</a></li>
+    </ul></li>
+    <li><a id="toc-Le-voci-contengono-la-musica" href="voices-contain-music.it.html">4.2 Le voci contengono la musica</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Sento-le-Voci" href="i_0027m-hearing-voices.it.html">4.2.1 Sento le Voci</a></li>
+      <li><a id="toc-Definire-esplicitamente-le-voci" href="explicitly-instantiating-voices.it.html">4.2.2 Definire esplicitamente le voci</a></li>
+      <li><a id="toc-Voci-e-musica-vocale" href="voices-and-vocals.it.html">4.2.3 Voci e musica vocale</a></li>
+    </ul></li>
+    <li><a id="toc-Contesti-e-incisori" href="contexts-and-engravers.it.html">4.3 Contesti e incisori</a>
+    <ul class="no-bullet">
+      <li><a id="toc-I-contesti" href="contexts-explained.it.html">4.3.1 I contesti</a></li>
+      <li><a id="toc-Creare-i-contesti" href="creating-contexts.it.html">4.3.2 Creare i contesti</a></li>
+      <li><a id="toc-Gli-incisori" href="engravers-explained.it.html">4.3.3 Gli incisori</a></li>
+      <li><a id="toc-Modificare-le-proprieta-di-contesto" href="modifying-context-properties.it.html">4.3.4 Modificare le proprietà di contesto</a></li>
+      <li><a id="toc-Aggiungere-e-togliere-gli-incisori" href="adding-and-removing-engravers.it.html">4.3.5 Aggiungere e togliere gli incisori</a></li>
+    </ul></li>
+    <li><a id="toc-Estendere-i-modelli" href="extending-the-templates.it.html">4.4 Estendere i modelli</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Soprano-e-violoncello" href="soprano-and-cello.it.html">4.4.1 Soprano e violoncello</a></li>
+      <li><a id="toc-Partitura-vocale-a-quattro-parti-SATB" href="four_002dpart-satb-vocal-score.it.html">4.4.2 Partitura vocale a quattro parti SATB</a></li>
+      <li><a id="toc-Scrivere-una-partitura-da-zero" href="building-a-score-from-scratch.it.html">4.4.3 Scrivere una partitura da zero</a></li>
+      <li><a id="toc-Ridurre-l_0027input-grazie-a-variabili-e-funzioni" href="saving-typing-with-variables-and-functions.it.html">4.4.4 Ridurre l&rsquo;input grazie a variabili e funzioni</a></li>
+      <li><a id="toc-Partiture-e-parti" href="scores-and-parts.it.html">4.4.5 Partiture e parti</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Modifica-dell_0027output" href="tweaking-output.it.html">5 Modifica dell&rsquo;output</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Modifiche-di-base" href="tweaking-basics.it.html">5.1 Modifiche di base</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Introduzione-alle-modifiche" href="introduction-to-tweaks.it.html">5.1.1 Introduzione alle modifiche</a></li>
+      <li><a id="toc-Oggetti-e-interfacce" href="objects-and-interfaces.it.html">5.1.2 Oggetti e interfacce</a></li>
+      <li><a id="toc-Convenzioni-per-i-nomi-di-oggetti-e-proprieta" href="naming-conventions-of-objects-and-properties.it.html">5.1.3 Convenzioni per i nomi di oggetti e proprietà</a></li>
+      <li><a id="toc-Metodi-di-modifica" href="tweaking-methods.it.html">5.1.4 Metodi di modifica</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Il-comando-_005coverride" href="the-override-command.it.html">Il comando <code>\override</code></a></li>
+        <li><a id="toc-Il-comando-_005crevert" href="the-revert-command.it.html">Il comando <code>\revert</code></a></li>
+        <li><a id="toc-Il-prefisso-_005conce" href="the-once-prefix.it.html">Il prefisso <code>\once</code></a></li>
+        <li><a id="toc-Il-comando-di-ritocco-_005ctweak" href="the-tweak-command.it.html">Il comando di ritocco <code>\tweak</code></a></li>
+        <li><a id="toc-Il-prefisso-_005csingle" href="the-single-prefix.it.html">Il prefisso <code>\single</code></a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Manuale-del-Funzionamento-interno" href="the-internals-reference-manual.it.html">5.2 Manuale del Funzionamento interno</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Proprieta-degli-oggetti-di-formattazione" href="properties-of-layout-objects.it.html">5.2.1 Proprietà degli oggetti di formattazione</a></li>
+      <li><a id="toc-Proprieta-presenti-nelle-interfacce" href="properties-found-in-interfaces.it.html">5.2.2 Proprietà presenti nelle interfacce</a></li>
+      <li><a id="toc-Tipi-di-proprieta" href="types-of-properties.it.html">5.2.3 Tipi di proprietà</a></li>
+    </ul></li>
+    <li><a id="toc-Aspetto-degli-oggetti" href="appearance-of-objects.it.html">5.3 Aspetto degli oggetti</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Visibilita-e-colore-degli-oggetti" href="visibility-and-color-of-objects.it.html">5.3.1 Visibilità e colore degli oggetti</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-proprieta-stencil" href="the-stencil-property.it.html">La proprietà <code>stencil</code></a></li>
+        <li><a id="toc-La-proprieta-break_002dvisibility" href="the-break_002dvisibility-property.it.html">La proprietà <code>break-visibility</code></a></li>
+        <li><a id="toc-La-proprieta-transparent" href="the-transparent-property.it.html">La proprietà <code>transparent</code></a></li>
+        <li><a id="toc-La-proprieta-color" href="the-color-property.it.html">La proprietà <code>color</code></a></li>
+      </ul></li>
+      <li><a id="toc-Dimensione-degli-oggetti" href="size-of-objects.it.html">5.3.2 Dimensione degli oggetti</a></li>
+      <li><a id="toc-Lunghezza-e-spessore-degli-oggetti" href="length-and-thickness-of-objects.it.html">5.3.3 Lunghezza e spessore degli oggetti</a></li>
+    </ul></li>
+    <li><a id="toc-Posizionamento-degli-oggetti" href="placement-of-objects.it.html">5.4 Posizionamento degli oggetti</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Comportamento-automatico" href="automatic-behavior.it.html">5.4.1 Comportamento automatico</a></li>
+      <li><a id="toc-Oggetti-interni-al-rigo" href="within_002dstaff-objects.it.html">5.4.2 Oggetti interni al rigo</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-proprieta-direction" href="the-direction-property.it.html">La proprietà <code>direction</code></a></li>
+        <li><a id="toc-Diteggiatura" href="fingering.it.html">Diteggiatura</a></li>
+      </ul></li>
+      <li><a id="toc-Oggetti-esterni-al-rigo" href="outside_002dstaff-objects.it.html">5.4.3 Oggetti esterni al rigo</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-proprieta-outside_002dstaff_002dpriority" href="the-outside_002dstaff_002dpriority-property.it.html">La proprietà <code>outside-staff-priority</code></a></li>
+        <li><a id="toc-Il-comando-_005ctextLengthOn" href="the-textlengthon-command.it.html">Il comando <code>\textLengthOn</code></a></li>
+        <li><a id="toc-Posizionamento-delle-dinamiche" href="dynamics-placement.it.html">Posizionamento delle dinamiche</a></li>
+        <li><a id="toc-Dimensione-dei-grob" href="grob-sizing.it.html">Dimensione dei grob</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Spaziatura-verticale" href="vertical-spacing.it.html">5.5 Spaziatura verticale</a></li>
+    <li><a id="toc-Collisioni-tra-oggetti" href="collisions-of-objects.it.html">5.6 Collisioni tra oggetti</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Spostare-gli-oggetti" href="moving-objects.it.html">5.6.1 Spostare gli oggetti</a></li>
+      <li><a id="toc-Correggere-elementi-della-notazione-sovrapposti" href="fixing-overlapping-notation.it.html">5.6.2 Correggere elementi della notazione sovrapposti</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-proprieta-padding" href="the-padding-property.it.html">La proprietà <code>padding</code></a></li>
+        <li><a id="toc-La-proprieta-right_002dpadding" href="the-right_002dpadding-property.it.html">La proprietà <code>right-padding</code></a></li>
+        <li><a id="toc-La-proprieta-staff_002dpadding" href="the-staff_002dpadding-property.it.html">La proprietà <code>staff-padding</code></a></li>
+        <li><a id="toc-La-proprieta-self_002dalignment_002dX" href="the-self_002dalignment_002dx-property.it.html">La proprietà <code>self-alignment-X</code></a></li>
+        <li><a id="toc-La-proprieta-staff_002dposition" href="the-staff_002dposition-property.it.html">La proprietà <code>staff-position</code></a></li>
+        <li><a id="toc-La-proprieta-extra_002doffset" href="the-extra_002doffset-property.it.html">La proprietà <code>extra-offset</code></a></li>
+        <li><a id="toc-La-proprieta-positions" href="the-positions-property.it.html">La proprietà <code>positions</code></a></li>
+        <li><a id="toc-La-proprieta-force_002dhshift" href="the-force_002dhshift-property.it.html">La proprietà <code>force-hshift</code></a></li>
+      </ul></li>
+      <li><a id="toc-Esempio-musicale" href="real-music-example.it.html">5.6.3 Esempio musicale</a></li>
+    </ul></li>
+    <li><a id="toc-Altre-modifiche" href="further-tweaking.it.html">5.7 Altre modifiche</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Altri-usi-delle-modifiche-con-_005ctweak" href="other-uses-for-tweaks.it.html">5.7.1 Altri usi delle modifiche con <code>\tweak</code></a>
+      <ul class="no-bullet">
+        <li><a id="toc-Legature-di-valore-tra-note-di-voci-diverse" href="tying-notes-across-voices.it.html">Legature di valore tra note di voci diverse</a></li>
+        <li><a id="toc-Simulare-una-corona-nel-MIDI" href="simulating-a-fermata-in-midi.it.html">Simulare una corona nel MIDI</a></li>
+      </ul></li>
+      <li><a id="toc-Uso-delle-variabili-per-modificare-la-formattazione" href="using-variables-for-layout-adjustments.it.html">5.7.2 Uso delle variabili per modificare la formattazione</a></li>
+      <li><a id="toc-Fogli-di-stile" href="style-sheets.it.html">5.7.3 Fogli di stile</a></li>
+      <li><a id="toc-Altre-fonti-di-informazione" href="other-sources-of-information.it.html">5.7.4 Altre fonti di informazione</a></li>
+      <li><a id="toc-Modifiche-avanzate-con-Scheme" href="advanced-tweaks-with-scheme.it.html">5.7.5 Modifiche avanzate con Scheme</a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Modelli" href="templates.it.html">Appendix A Modelli</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Modelli-integrati" href="built_002din-templates.it.html">A.1 Modelli integrati</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Modello-SATB" href="satb-template.it.html">A.1.1 Modello SATB</a></li>
+      <li><a id="toc-Modello-SSAATTBB" href="ssaattbb-template.it.html">A.1.2 Modello SSAATTBB</a></li>
+    </ul></li>
+    <li class="toc_current"><a id="toc-Modelli-per-rigo-singolo" href="single-staff-templates.it.html">A.2 Modelli per rigo singolo</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Solo-note" href="notes-only.it.html">A.2.1 Solo note</a></li>
+      <li class="toc_current"><a id="toc-Note-e-testo" href="notes-and-lyrics.it.html">A.2.2 Note e testo</a></li>
+      <li><a id="toc-Note-e-accordi" href="notes-and-chords.it.html">A.2.3 Note e accordi</a></li>
+      <li><a id="toc-Note_002c-testo-e-accordi" href="notes-lyrics-and-chords.it.html">A.2.4 Note, testo e accordi</a></li>
+    </ul></li>
+    <li><a id="toc-Modelli-per-pianoforte" href="piano-templates.it.html">A.3 Modelli per pianoforte</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Solo-pianoforte" href="solo-piano.it.html">A.3.1 Solo pianoforte</a></li>
+      <li><a id="toc-Pianoforte-e-melodia-con-testo" href="piano-and-melody-with-lyrics.it.html">A.3.2 Pianoforte e melodia con testo</a></li>
+      <li><a id="toc-Pianoforte-con-testo-al-centro" href="piano-centered-lyrics.it.html">A.3.3 Pianoforte con testo al centro</a></li>
+    </ul></li>
+    <li><a id="toc-Modelli-per-quartetto-d_0027archi" href="string-quartet-templates.it.html">A.4 Modelli per quartetto d&rsquo;archi</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Quartetto-d_0027archi-semplice" href="string-quartet.it.html">A.4.1 Quartetto d&rsquo;archi semplice</a></li>
+      <li><a id="toc-Parti-di-un-quartetto-d_0027archi" href="string-quartet-parts.it.html">A.4.2 Parti di un quartetto d&rsquo;archi</a></li>
+    </ul></li>
+    <li><a id="toc-Modelli-per-gruppi-vocali" href="vocal-ensembles-templates.it.html">A.5 Modelli per gruppi vocali</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Partitura-vocale-SATB" href="satb-vocal-score.it.html">A.5.1 Partitura vocale SATB</a></li>
+      <li><a id="toc-Partitura-vocale-SATB-e-automatica-riduzione-per-pianoforte" href="satb-vocal-score-and-automatic-piano-reduction.it.html">A.5.2 Partitura vocale SATB e automatica riduzione per pianoforte</a></li>
+      <li><a id="toc-SATB-con-contesti-allineati" href="satb-with-aligned-contexts.it.html">A.5.3 SATB con contesti allineati</a></li>
+      <li><a id="toc-SATB-su-quattro-righi" href="satb-on-four-staves.it.html">A.5.4 SATB su quattro righi</a></li>
+      <li><a id="toc-Strofa-sola-e-ritornello-a-due-parti" href="solo-verse-and-two_002dpart-refrain.it.html">A.5.5 Strofa sola e ritornello a due parti</a></li>
+      <li><a id="toc-Inni" href="hymn-tunes.it.html">A.5.6 Inni</a></li>
+      <li><a id="toc-Salmi" href="psalms.it.html">A.5.7 Salmi</a></li>
+    </ul></li>
+    <li><a id="toc-Modelli-per-orchestra" href="orchestral-templates.it.html">A.6 Modelli per orchestra</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Orchestra_002c-coro-e-pianoforte" href="orchestra-choir-and-piano.it.html">A.6.1 Orchestra, coro e pianoforte</a></li>
+    </ul></li>
+    <li><a id="toc-Modelli-per-notazione-antica" href="ancient-notation-templates.it.html">A.7 Modelli per notazione antica</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Trascrizione-di-musica-mensurale" href="transcription-of-mensural-music.it.html">A.7.1 Trascrizione di musica mensurale</a></li>
+      <li><a id="toc-Trascrizione-di-musica-Gregoriana" href="gregorian-transcription-template.it.html">A.7.2 Trascrizione di musica Gregoriana</a></li>
+    </ul></li>
+    <li><a id="toc-Altri-modelli" href="other-templates.it.html">A.8 Altri modelli</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Combo-jazz" href="jazz-combo.it.html">A.8.1 Combo jazz</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.it.html">Appendix B GNU Free Documentation License</a></li>
+  <li><a id="toc-Indice" href="index-of-commands-and-concepts.it.html" rel="index">Appendix C Indice</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca con Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Cerca">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

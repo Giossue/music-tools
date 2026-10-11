@@ -1,0 +1,577 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1998-2026 by the authors.
+
+GNU フリー文書利用許諾契約書バージョン 1.1 またはフリー ソフトウェア財団によって発行されたその後のバージョンの約定に従う限り、このドキュメントを複製、変更する許可を与えます。変更不可部分はありません。この利用許諾契約書のコピーは「GNU フリー文書利用許諾契約書」という章に含まれています。 -->
+<title>5.6.1 オブジェクトを移動させる (GNU LilyPond 学習マニュアル)</title>
+
+<meta name="description" content="5.6.1 オブジェクトを移動させる (GNU LilyPond 学習マニュアル)">
+<meta name="keywords" content="5.6.1 オブジェクトを移動させる (GNU LilyPond 学習マニュアル)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ja.html" rel="start" title="LilyPond &mdash; 学習マニュアル">
+<link href="index-of-commands-and-concepts.ja.html" rel="index" title="Appendix C インデックス">
+<link href="learning_toc.ja.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="collisions-of-objects.ja.html" rel="up" title="5.6 オブジェクトの衝突">
+<link href="fixing-overlapping-notation.ja.html" rel="next" title="5.6.2 表記の重なりを修正する">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="ja" class="learning">
+<div id="main">
+<div class="subsection" id="moving-objects">
+<table class="nav_table">
+<tr><td align="left">[<a href="tweaking-output.ja.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; 出力を調整する </a>]</td><td align="center">[<a href="index.ja.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.ja.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ja.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="templates.ja.html" title="Next chapter"> テンプレート &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="collisions-of-objects.ja.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; オブジェクトの衝突 </a>]</td><td align="center">[<a href="collisions-of-objects.ja.html" title="Up section" accesskey="u" rel="up">  Up: オブジェクトの衝突 </a>]</td><td align="right">[<a href="fixing-overlapping-notation.ja.html" title="Next section in reading order" accesskey="n" rel="next"> 表記の重なりを修正する &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="obuziekutowoYi-Dong-saseru"></span><h4 class="subsection">5.6.1 オブジェクトを移動させる</h4>
+
+<span id="index-moving-overlapping-objects-_0028Zhong-nariHe-tuteiruobuziekutowoYi-Dong-saseru_0029"></span>
+<span id="index-moving-colliding-objects-_0028Chong-Tu-siteiruobuziekutowoYi-Dong-saseru_0029"></span>
+<span id="index-moving-colliding-grobs-_0028Chong-Tu-siteirugurahuikaru-obuziekutowoYi-Dong-saseru_0029"></span>
+<span id="index-objects_002c-moving-colliding-_0028Chong-Tu-siteiruobuziekutowoYi-Dong-saseru_0029"></span>
+<span id="index-grobs_002c-moving-colliding-_0028Chong-Tu-siteirugurahuikaru-obuziekutowoYi-Dong-saseru_0029"></span>
+
+<p>これを聞いて驚くかもしれませんが、LilyPond は完璧ではありません。いくつかの記譜要素が重なりある可能性があります。これは遺憾なことですが、実際にはごく稀です。通常、オブジェクトを移動させる必要性は読みやすさや美しさのためです
+&ndash; オブジェクトの周りにもう少しスペースを多く/少なくとった方がより良くなるといった場合です。
+</p>
+<p>記譜要素の重なりを解決する主要なアプローチが 3 つあります。それらは以下の順番で考慮されるべきです:
+</p>
+<ol>
+<li> 重なり合っているオブジェクトの 1 つの <strong>direction</strong> を
+<a href="within_002dstaff-objects.ja.html">譜内部オブジェクト</a> でリストアップした内部オブジェクトのための定義済みコマンドを用いて変更することになるかもしれません。符幹、スラー、連桁、タイ、強弱記号、テキスト、連符はこの方法で容易に再配置できるかもしれません。この方法の限界は配置の仕方の選択肢が 2 つしかないことであり、どちらも適当でないかもしれません。
+
+</li><li> LilyPond がレイアウト オブジェクトを配置するときに使用する<strong>オブジェクト プロパティ</strong>を <code>\override</code> を用いて変更することになるかもしれません。オブジェクト プロパティに変更を加えることの利点は、(a) スペースをとる必要がある場合に他のいくつかのオブジェクトは自動的に移動させられます、(b) 1 回のオーバライドを同じオブジェクト タイプのインスタンスすべてに適用することができます。変更するプロパティには以下のものが含まれます:
+
+<ul>
+<li> <code>direction</code>
+
+<p>これはすでに詳しくカバーされています &ndash;
+<a href="within_002dstaff-objects.ja.html">譜内部オブジェクト</a> を参照してください。
+</p>
+</li><li> <code>padding</code>, <code>left-padding</code>,
+<code>right-padding</code>, <code>staff-padding</code>
+
+<span id="index-padding-_0028padeingu_0029"></span>
+<span id="index-left_002dpadding-property-_0028left_002dpadding-puropatei_0029"></span>
+<span id="index-padding-property-_0028padding-puropatei_0029"></span>
+<span id="index-right_002dpadding-property-_0028right_002dpadding-puropatei_0029"></span>
+<span id="index-staff_002dpadding-property-_0028staff_002dpadding-puropatei_0029"></span>
+
+<p>あるオブジェクトが配置されるとき、そのオブジェクトの
+<code>padding</code> プロパティが、そのオブジェクトとそのオブジェクトに最も隣接するオブジェクトの端との間に置かれる間隔を指定します。<strong>配置される最中</strong>のオブジェクトの <code>padding</code> 値が使用されるということに注意してください。すでに配置されたオブジェクトの <code>padding</code> 値は無視されます。<code>padding</code> によって指定された間隔は <code>side-position-interface</code> をサポートするオブジェクトすべてに適用することができます。
+</p>
+<p>臨時記号のグループの配置は、<code>padding</code> の代わりに、<code>left-padding</code> と
+<code>right-padding</code> によって制御されます。これらのプロパティは <code>AccidentalPlacement</code> オブジェクトの中にあり、注意すべきことに、そのオブジェクトは
+<strong>Staff</strong> コンテキストの中にあります。譜刻プロセスでは、符頭が最初に譜刻され、臨時記号 (がある場合は) が次に符頭の左側に付け加えられます。このとき、臨時記号と符頭の間隔は
+<code>right-padding</code> プロパティによって指定されます。そのため、<code>AccidentalPlacement</code> オブジェクトの
+<code>right-padding</code> プロパティだけが臨時記号の配置に影響を与えます。
+</p>
+<p><code>staff-padding</code> プロパティは <code>padding</code> プロパティと深い関わりがあります:
+<code>padding</code> プロパティは、<code>side-position-interface</code> をサポートするオブジェクトとそれに最隣接する他のオブジェクト
+(一般には音符や譜線) との間のスペースの最小量を制御します。一方、<code>staff-padding</code> は常に譜の外側に配置されるレイアウト オブジェクトにのみ適用されます &ndash;
+これは譜の外側に配置されるオブジェクトと譜の間に挿入されるべきスペースの最小量を制御します。<code>staff-paddin</code> は譜ではなく音符との相対関係で配置されるオブジェクトには影響を与えないということに注意してください。そのようなオブジェクトに対して <code>staff-padding</code> のオーバライドを行ったとしてもエラーは起きないかもしれませんが、無視されます。
+</p>
+<p>あなたが再配置しようとしているオブジェクトに対して求められる
+<code>padding</code> プロパティはどれなのかを見つけるには、内部リファレンスに戻ってそのオブジェクトのプロパティを調べる必要があります。<code>padding</code> プロパティはあなたが再配置しようとしているオブジェクトの中には無いかもしれないということに注意してください。その場合は、そのオブジェクトに関係があるオブジェクトを調べてください。
+</p>
+<p>すべての <code>padding</code> 値は譜スペースで測られます。たいていのオブジェクトでは、この値はデフォルトで約 1.0 かそれ以下にセットされています (それぞれのオブジェクトで値はさまざまです)。間隔を大きく (あるいは小さく) する必要がある場合、その値はオーバライドされるかもしれません。
+</p>
+</li><li> <code>self-alignment-X</code>
+
+<span id="index-self_002dalignment_002dX-property-_0028self_002dalignment_002dX-puropatei_0029"></span>
+
+<p>このプロパティを使うことで、親オブジェクトの参照ポイントに従って、オブジェクトを左、右、中央に揃えることができます。このプロパティは <code>self-alignment-interface</code> をサポートするオブジェクトすべてに対して使用することができます。一般に、テキストを保持するオブジェクトです。値は <code>Left</code>, <code>RIGHT</code>, <code>CENTER</code> です。代替手段として、<code><span class="nolinebreak">-1</span></code><!-- /@w --> から <code>+1</code> までの数値を指定することもできます。<code>-1</code> は左揃えであり、<code>+1</code> は右揃え、その間の数値は左揃えから右揃えへのテキストを移動させます
+(訳者: <code>-0.5</code> であれば、左揃えと中央揃えの中間ということ)。<code>1</code> よりも大きな数値を指定することでテキストをさらに左へ、<code><span class="nolinebreak">-1</span></code><!-- /@w --> よりも小さな数値を指定することでテキストをさらに右へ移動させることができます。この値を <code>1</code> 増減することによる移動量はそのテキストの長さの半分です。
+</p>
+</li><li> <code>extra-spacing-width</code>
+
+<span id="index-extra_002dspacing_002dwidth-property-_0028extra_002dspacing_002dwidth-puropatei_0029"></span>
+
+<p>このプロパティは <code>item-interface</code> をサポートするオブジェクトすべてで利用可能です。このプロパティは 2 つの数値をとり、最初の数値はオブジェクトの左側に余白を追加し、2 番目の数値はオブジェクトの右側に余白を追加します。負値はオブジェクトの端を左に移動させ、正値は右に移動させます。そのため、オブジェクトを広くするには、最初の数値を負値にして、2 番目の数値を正値にする必要があります。すべてのオブジェクトが両方の数値を遵守するわけではないということに注意してください。例えば、<code>Accidental</code> オブジェクトは最初の数値 (左端) にしか注意を払いません。
+</p>
+</li><li> <code>staff-position</code>
+
+<span id="index-staff_002dposition-property-_0028staff_002dposition-puropatei_0029"></span>
+
+<p><code>staff-position</code> は <code>staff-symbol-referencer-interface</code> のプロパティです。これは、譜との相対関係で配置されるオブジェクトによってサポートされます。このプロパティはオブジェクトの垂直方向の位置を、譜の中央にある譜線から譜スペースの半分を単位として、指定します。このプロパティは複数小節に亘る休符、タイ、異なるボイスの中にある音符といったレイアウト オブジェクトの衝突を解決する場合に有用です。
+</p>
+</li><li> <code>horizontal-shift</code>
+
+<span id="index-horizontal_002dshift-property-_0028horizontal_002dshift-puropatei_0029"></span>
+<span id="index-note-column-_0028Yin-Fu-Lie-_0029-1"></span>
+<span id="index-note-collisions-_0028Yin-Fu-noChong-Tu-_0029-1"></span>
+<span id="index-collisions_002c-notes-_0028Yin-Fu-noChong-Tu-_0029-1"></span>
+<span id="index-shift-commands-_0028sihuto-komando_0029-1"></span>
+<span id="index-_005cshiftOff-1"></span>
+<span id="index-_005cshiftOn-1"></span>
+<span id="index-_005cshiftOnn-1"></span>
+<span id="index-_005cshiftOnnn-1"></span>
+
+<p>ボイスの中で、同じタイミングにある全ての音符は 1 つの音符列にグループ化され、<code>NoteColumn</code> オブジェクトがその音符のグループの水平位置をコントロールするために作成されます (<a href="explicitly-instantiating-voices.ja.html">ボイスを明示的にインスタンス化する</a> の
+&ldquo;Note columns&rdquo; を参照してください)。
+もし 1 つの Staff コンテキストにある 2 つ以上の音符列が、同じタイミングで出現し同じ向きの符幹を持つ場合<em>に限り</em>、それらの <code>horizontal-shift</code>
+プロパティの値が順位を付けるために使用され、高い順位にあるものが優先的に符頭の衝突を避けるために移動します。このプロパティは <code>\voiceXXX</code>
+コマンドによってセットされ、<code>\override</code> コマンドで直接上書きすることができますが、通常は <code>\shiftOn</code> コマンドによって上書きします。注意しなければならないことは、このプロパティは移動の <em>順位</em> を決定するだけだけであり、移動の大きさを決定するものではないということです。
+移動の大きさは、順位ごとに符頭の幅を基にして 1 つずつ大きくなっていきます。1 つ分の幅は通常符頭の幅の半分ですが、それで近い場合には符頭 1 つ分の幅になります。
+</p>
+</li><li> <code>force-hshift</code>
+
+<span id="index-force_002dhshift-property-_0028force_002dhshift-puropatei_0029"></span>
+
+<p><code>force-hshift</code> プロパティは <code>NoteColumn</code> のプロパティです
+(実際には <code>note-column-interface</code> のプロパティです)。このプロパティを変更することで、音符列が重なってしまう場合において音符列を移動させることができます。重ならない音符列には効果が無いということに注意してください。移動の量は音符列特有の単位、すなわち最初のボイスの中にある音符の符頭の幅で指定されます。
+このプロパティは、通常の
+<code>\shiftOn</code> コマンド
+(<a href="explicitly-instantiating-voices.ja.html">ボイスを明示的にインスタンス化する</a> を参照してください)
+が音符の衝突を十分に解決できないような複雑な状況で使用されるべきです。この目的のためには、<code>extra-offset</code> プロパティを用いるよりも
+<code>force-hshift</code> プロパティを用いる方が好ましいです。なぜなら、譜スペースを単位とした距離を算出する必要が無く、<code>NoteColumn</code> の内外に音符を移動させることは符頭のマージといった他のアクションに影響を与えるからです。
+</p>
+</li></ul>
+
+</li><li> 最後に、他の方法がすべて失敗した場合、オブジェクトを手動で譜の中央線からの垂直方向の相対位置に従って、あるいは新たに設定した位置との距離に従って、再配置することになるかもしれません。この方法の欠点は、再配置のための正確な値を算出する必要がある &ndash;
+しばしば、その算出はそれぞれのオブジェクトに対して個々に、トライ＆エラーで行われます &ndash; 必要があるということ、さらに、この方法による移動は
+LilyPond が他のオブジェクトをすべて配置した後に行われるため、ユーザはその結果として起こるかもしれない衝突をすべて回避する責任があるということです。しかし、この方法の最大の問題点は、音楽が後で変更された場合に、再配置用の値を再び算出する必要があるということです。このタイプの手動再配置のために使用されるプロパティは以下のようなものです:
+
+<dl compact="compact">
+<dt><span><code>extra-offset</code></span></dt>
+<dd>
+<span id="index-extra_002doffset-property-_0028extra_002doffset-puropatei_0029"></span>
+
+<p>このプロパティは <code>grob-interface</code> をサポートするレイアウト オブジェクトのいずれかに適用されます。このプロパティはペアになった数値をとり、それぞれの数値は水平方向と垂直方向の移動を指定します。負値はオブジェクトを左または下へ移動させます。単位は譜スペースです。この移動はオブジェクトの譜刻が完了した後に行われるため、あるオブジェクトを任意の位置へ、他のオブジェクトに影響を与えることなく、再配置することができます。
+</p>
+</dd>
+<dt><span><code>positions</code></span></dt>
+<dd>
+<span id="index-positions-property-_0028positions-puropatei_0029"></span>
+
+<p>このプロパティは、連桁、スラー、連符の傾きと高さを手動で調節するために最も有用なプロパティです。このプロパティはペアになった数値をとり、それぞれの数値は連桁、スラーなどの左端と右端の位置を譜の中央線との距離で指定します。単位は譜スペースです。けれども、スラーとフレージング スラーを任意の値で再配置することはできないということに注意してください。LilyPond はまずスラーが取り得る位置のリストを生成し、それからデフォルトでは
+&ldquo;最良に見える&rdquo; スラーを探します。<code>positions</code> がオーバライドされていた場合、そのリストの中からリクエストされた位置に最も近いスラーが選択されます。
+</p></dd>
+</dl>
+
+</li></ol>
+
+<p>あるオブジェクトがこれらのプロパティすべてを持っているわけではありません。内部リファレンスに行き、そのオブジェクトではどのプロパティが利用可能なのかを調べる必要があります。
+</p>
+<p>ここで、衝突に関係しそうなオブジェクトをリスト アップします。内部リファレンスを調べるためのオブジェクト名を付けるので、それらのオブジェクトを移動させるのに使うプロパティを見つけ出すのに使ってください。
+</p>
+<table>
+<thead><tr><th width="50%">オブジェクト タイプ</th><th width="50%">オブジェクト名</th></tr></thead>
+<tr><td width="50%">アーティキュレーション (Articulation)</td><td width="50%"><code>Script</code></td></tr>
+<tr><td width="50%">連桁 (Beam)</td><td width="50%"><code>Beam</code></td></tr>
+<tr><td width="50%">強弱記号 (Dynamic) (垂直方向)</td><td width="50%"><code>DynamicLineSpanner</code></td></tr>
+<tr><td width="50%">強弱記号 (Dynamic) (水平方向)</td><td width="50%"><code>DynamicText</code></td></tr>
+<tr><td width="50%">運指法記号 (Fingering)</td><td width="50%"><code>Fingering</code></td></tr>
+<tr><td width="50%">リハーサル / テキスト記号 (Rehearsal / Text mark)</td><td width="50%"><code>RehearsalMark</code></td></tr>
+<tr><td width="50%">スラー (Slur)</td><td width="50%"><code>Slur</code></td></tr>
+<tr><td width="50%">テキスト &ndash; つまり、<code>^&quot;text&quot;</code> (Text)</td><td width="50%"><code>TextScript</code></td></tr>
+<tr><td width="50%">タイ (Tie)</td><td width="50%"><code>Tie</code></td></tr>
+<tr><td width="50%">連符 (Tuplet)</td><td width="50%"><code>TupletBracket</code></td></tr>
+</table>
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="tweaking-output.ja.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; 出力を調整する </a>]</td><td align="center">[<a href="index.ja.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.ja.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ja.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="templates.ja.html" title="Next chapter"> テンプレート &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="collisions-of-objects.ja.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; オブジェクトの衝突 </a>]</td><td align="center">[<a href="collisions-of-objects.ja.html" title="Up section" accesskey="u" rel="up">  Up: オブジェクトの衝突 </a>]</td><td align="right">[<a href="fixing-overlapping-notation.ja.html" title="Next section in reading order" accesskey="n" rel="next"> 表記の重なりを修正する &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="moving-objects.html">English</a>, <a href="moving-objects.ca.html">Català</a>, <a href="moving-objects.de.html">Deutsch</a>, <a href="moving-objects.es.html">Español</a>, <a href="moving-objects.fr.html">Français</a>, <a href="moving-objects.it.html">Italiano</a>, <a href="moving-objects.zh.html">中文</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.ja.html" title="Documentation Index">
+    &lt;&lt; ドキュメント インデックスに戻る
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.ja.html#top" title="Cover (top) of document">
+    GNU LilyPond 学習マニュアル  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Installing" href="installing.ja.html">1 Installing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Graphical-setup" href="graphical-setup.ja.html">1.1 Graphical setup</a></li>
+    <li><a id="toc-Command-line-setup" href="command-line-setup.ja.html">1.2 Command line setup</a></li>
+  </ul></li>
+  <li><a id="toc-tiyutoriaru" href="tutorial.ja.html">2 チュートリアル</a>
+  <ul class="no-bullet">
+    <li><a id="toc-huairuwokonpairusuru" href="compiling-a-file.ja.html">2.1 ファイルをコンパイルする</a></li>
+    <li><a id="toc-Ru-Li-huairunoShu-kiFang-" href="how-to-write-input-files.ja.html">2.2 入力ファイルの書き方</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Jian-Dan-naJi-Pu-Fa-" href="simple-notation.ja.html">2.2.1 簡単な記譜法</a>
+      <ul class="no-bullet">
+        <li><a id="toc-pituti" href="pitches.ja.html">ピッチ</a></li>
+        <li><a id="toc-Yan-Zou-Shi-Jian--_0028rizumu_0029" href="durations-_0028rhythms_0029.ja.html">演奏時間 (リズム)</a></li>
+        <li><a id="toc-Xiu-Fu-" href="rests.ja.html">休符</a></li>
+        <li><a id="toc-Pai-Zi-Ji-Hao-" href="time-signature.ja.html">拍子記号</a></li>
+        <li><a id="toc-tenpoJi-Hao-" href="tempo-marks.ja.html">テンポ記号</a></li>
+        <li><a id="toc-Yin-Bu-Ji-Hao-" href="clef.ja.html">音部記号</a></li>
+        <li><a id="toc-subetewomatomete" href="all-together.ja.html">すべてをまとめて</a></li>
+      </ul></li>
+      <li><a id="toc-Ru-Li-huairuniQu-riZu-mu" href="working-on-input-files.ja.html">2.2.2 入力ファイルに取り組む</a></li>
+    </ul></li>
+    <li><a id="toc-eraniDui-Chu-suru" href="dealing-with-errors.ja.html">2.3 エラーに対処する</a>
+    <ul class="no-bullet">
+      <li><a id="toc-YiBan-De-natoraburusiyuto-Tips" href="general-troubleshooting-tips.ja.html">2.3.1 一般的なトラブルシュート Tips</a></li>
+      <li><a id="toc-ikutukanoYiBan-De-naera" href="some-common-errors.ja.html">2.3.2 いくつかの一般的なエラー</a></li>
+    </ul></li>
+    <li><a id="toc-konomaniyuarunoDu-miFang-" href="how-to-read-the-manuals.ja.html">2.4 このマニュアルの読み方</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Sheng-Lue-saretaGou-Cheng-Yao-Su-" href="omitted-material.ja.html">2.4.1 省略された構成要素</a></li>
+      <li><a id="toc-kuritukuKe-Neng-naLi" href="clickable-examples.ja.html">2.4.2 クリック可能な例</a></li>
+      <li><a id="toc-maniyuarunoGai-Yao-" href="overview-of-manuals.ja.html">2.4.3 マニュアルの概要</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-YiBan-De-naJi-Pu-Fa-" href="common-notation.ja.html">3 一般的な記譜法</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Dan-YiPu-Biao-Biao-Ji-" href="single-staff-notation.ja.html">3.1 単一譜表表記</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Xiao-Jie-Xian-toXiao-Jie-tietuku" href="bar-lines-and-bar-checks.ja.html">3.1.1 小節線と小節チェック</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Xiao-Jie-Xian-" href="bar-lines.ja.html">小節線</a></li>
+        <li><a id="toc-Xiao-Jie-tietuku" href="bar-checks.ja.html">小節チェック</a></li>
+      </ul></li>
+      <li><a id="toc-pitutitoDiao-Hao-" href="pitches-and-key-signatures.ja.html">3.1.2 ピッチと調号</a>
+      <ul class="no-bullet">
+        <li><a id="toc-pitutiBian-Geng-" href="pitch-alterations.ja.html">ピッチ変更</a></li>
+        <li><a id="toc-Diao-Hao-" href="key-signatures.ja.html">調号</a></li>
+        <li><a id="toc-Jing-Gao-_003a-Diao-Hao-topituti" href="warning-key-signatures-and-pitches.ja.html">警告: 調号とピッチ</a></li>
+      </ul></li>
+      <li><a id="toc-taitosura" href="ties-and-slurs.ja.html">3.1.3 タイとスラー</a>
+      <ul class="no-bullet">
+        <li><a id="toc-tai" href="ties.ja.html">タイ</a></li>
+        <li><a id="toc-sura" href="slurs.ja.html">スラー</a></li>
+        <li><a id="toc-hurezingu-sura" href="phrasing-slurs.ja.html">フレージング スラー</a></li>
+        <li><a id="toc-Jing-Gao-_003a-sura-vs_002e-tai" href="warnings-slurs-vs-ties.ja.html">警告: スラー vs. タイ</a></li>
+      </ul></li>
+      <li><a id="toc-ateikiyuresiyontoQiang-Ruo-Ji-Hao-" href="articulations-and-dynamics.ja.html">3.1.4 アーティキュレーションと強弱記号</a>
+      <ul class="no-bullet">
+        <li><a id="toc-ateikiyuresiyon" href="articulations.ja.html">アーティキュレーション</a></li>
+        <li><a id="toc-Yun-Zhi-Fa-Ji-Hao-" href="fingerings.ja.html">運指法記号</a></li>
+        <li><a id="toc-Qiang-Ruo-Ji-Hao-" href="dynamics.ja.html">強弱記号</a></li>
+      </ul></li>
+      <li><a id="toc-tekisutowoZhui-Jia-suru" href="adding-text.ja.html">3.1.5 テキストを追加する</a></li>
+      <li><a id="toc-Zi-Dong-Lian-Hang-toShou-Dong-Lian-Hang-" href="automatic-and-manual-beams.ja.html">3.1.6 自動連桁と手動連桁</a></li>
+      <li><a id="toc-Gao-Du-narizumu-komando" href="advanced-rhythmic-commands.ja.html">3.1.7 高度なリズム コマンド</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Bu-Fen-Xiao-Jie-" href="partial-measure.ja.html">部分小節</a></li>
+        <li><a id="toc-Lian-Fu-" href="tuplets.ja.html">連符</a></li>
+        <li><a id="toc-Zhuang-Shi-Xiao-Yin-Fu-" href="grace-notes.ja.html">装飾小音符</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Tong-Shi-niYan-Zou-suruFu-Shu-noYin-Fu-" href="multiple-notes-at-once.ja.html">3.2 同時に演奏する複数の音符</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Yin-Le-Biao-Ji-nituitenoShuo-Ming-" href="music-expressions-explained.ja.html">3.2.1 音楽表記についての説明</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Shu-XueDe-Biao-Ji-tonoLei-Si-" href="analogy-mathematical-expressions.ja.html">数学的表記との類似</a></li>
+        <li><a id="toc-Tong-Shi-Jin-Xing-suruYin-Le-Biao-Ji-_003a-Fu-Shu-noPu-" href="simultaneous-music-expressions-multiple-staves.ja.html">同時進行する音楽表記: 複数の譜</a></li>
+        <li><a id="toc-Tong-Shi-Jin-Xing-suruYin-Le-Biao-Ji-_003a-Dan-YinoPu-Biao-" href="simultaneous-music-expressions-single-staff.ja.html">同時進行する音楽表記: 単一の譜表</a></li>
+      </ul></li>
+      <li><a id="toc-Fu-Shu-noPu-" href="multiple-staves.ja.html">3.2.2 複数の譜</a></li>
+      <li><a id="toc-Pu-Biao-gurupu" href="staff-groups.ja.html">3.2.3 譜表グループ</a></li>
+      <li><a id="toc-Yin-Fu-woZu-miHe-waseteHe-Yin-nisuru" href="combining-notes-into-chords.ja.html">3.2.4 音符を組み合わせて和音にする</a></li>
+      <li><a id="toc-Dan-YiPu-Biao-denoDuo-Sheng-" href="single-staff-polyphony.ja.html">3.2.5 単一譜表での多声</a></li>
+    </ul></li>
+    <li><a id="toc-Ge-Qu-" href="songs.ja.html">3.3 歌曲</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Jian-Dan-naGe-Qu-woZuo-Cheng-suru" href="setting-simple-songs.ja.html">3.3.1 簡単な歌曲を作成する</a></li>
+      <li><a id="toc-Ge-Ci-woXuan-Lu-niJian-eru" href="aligning-lyrics-to-a-melody.ja.html">3.3.2 歌詞を旋律に揃える</a></li>
+      <li><a id="toc-Fu-Shu-noPu-henoGe-Ci-" href="lyrics-to-multiple-staves.ja.html">3.3.3 複数の譜への歌詞</a></li>
+    </ul></li>
+    <li><a id="toc-Shi-Shang-ge" href="final-touches.ja.html">3.4 仕上げ</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Bian-Shu-woYong-iteLe-Qu-woBian-Cheng-suru" href="organizing-pieces-with-variables.ja.html">3.4.1 変数を用いて楽曲を編成する</a></li>
+      <li><a id="toc-taitoruwoFu-keJia-eru" href="adding-titles.ja.html">3.4.2 タイトルを付け加える</a></li>
+      <li><a id="toc-Jue-Dui-Yin-Fu-Ming-" href="absolute-note-names.ja.html">3.4.3 絶対音符名</a></li>
+      <li><a id="toc-konotiyutoriarunoHou-nisubekikoto" href="after-the-tutorial.ja.html">3.4.4 このチュートリアルの後にすべきこと</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Ji-Chu-tonarukonseputo" href="fundamental-concepts.ja.html">4 基礎となるコンセプト</a>
+  <ul class="no-bullet">
+    <li><a id="toc-LilyPond-Ru-Li-huairunoShi-Zu-mi" href="how-lilypond-input-files-work.ja.html">4.1 LilyPond 入力ファイルの仕組み</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LilyPond-huairuGou-Zao-noShao-Jie-" href="introduction-to-the-lilypond-file-structure.ja.html">4.1.1 LilyPond ファイル構造の紹介</a></li>
+      <li><a id="toc-Score-ha-_0028Dan-Yino_0029-Fu-He-De-naYin-Le-Biao-Ji-" href="score-is-a-_0028single_0029-compound-musical-expression.ja.html">4.1.2 Score は (単一の) 複合的な音楽表記</a></li>
+      <li><a id="toc-Yin-Le-Biao-Ji-wonesutosuru" href="nesting-music-expressions.ja.html">4.1.3 音楽表記をネストする</a></li>
+      <li><a id="toc-Ru-Li-Yin-Fu-noGou-Zao-" href="structure-of-a-note-entry.ja.html">4.1.4 入力音符の構造</a></li>
+      <li><a id="toc-nesutosarenaiGua-Hu-totai" href="on-the-un_002dnestedness-of-brackets-and-ties.ja.html">4.1.5 ネストされない括弧とタイ</a></li>
+    </ul></li>
+    <li><a id="toc-Yin-Le-woBao-Chi-suruboisu" href="voices-contain-music.ja.html">4.2 音楽を保持するボイス</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Si-haboisuwoTing-iteiru" href="i_0027m-hearing-voices.ja.html">4.2.1 私はボイスを聴いている</a></li>
+      <li><a id="toc-boisuwoMing-ShiDe-niinsutansuHua-suru" href="explicitly-instantiating-voices.ja.html">4.2.2 ボイスを明示的にインスタンス化する</a></li>
+      <li><a id="toc-boisutobokaru" href="voices-and-vocals.ja.html">4.2.3 ボイスとボーカル</a></li>
+    </ul></li>
+    <li><a id="toc-kontekisutotoenguraba" href="contexts-and-engravers.ja.html">4.3 コンテキストとエングラーバ</a>
+    <ul class="no-bullet">
+      <li><a id="toc-kontekisutonoShuo-Ming-" href="contexts-explained.ja.html">4.3.1 コンテキストの説明</a></li>
+      <li><a id="toc-kontekisutowoZuo-Cheng-suru" href="creating-contexts.ja.html">4.3.2 コンテキストを作成する</a></li>
+      <li><a id="toc-engurabanoShuo-Ming-" href="engravers-explained.ja.html">4.3.3 エングラーバの説明</a></li>
+      <li><a id="toc-kontekisuto-puropateiwoBian-Geng-suru" href="modifying-context-properties.ja.html">4.3.4 コンテキスト プロパティを変更する</a></li>
+      <li><a id="toc-engurabawoZhui-Jia--_002f-Xue-Chu-suru" href="adding-and-removing-engravers.ja.html">4.3.5 エングラーバを追加 / 削除する</a></li>
+    </ul></li>
+    <li><a id="toc-tenpuretowoKuo-Zhang-suru" href="extending-the-templates.ja.html">4.4 テンプレートを拡張する</a>
+    <ul class="no-bullet">
+      <li><a id="toc-sopuranototiero" href="soprano-and-cello.ja.html">4.4.1 ソプラノとチェロ</a></li>
+      <li><a id="toc-4-pato-SATB-bokaruPu-" href="four_002dpart-satb-vocal-score.ja.html">4.4.2 4 パート SATB ボーカル譜</a></li>
+      <li><a id="toc-zerokaraLe-Pu-woGou-Zhu-suru" href="building-a-score-from-scratch.ja.html">4.4.3 ゼロから楽譜を構築する</a></li>
+      <li><a id="toc-Bian-Shu-toGuan-Shu-woYong-iteRu-Li-noShou-Jian-woSheng-ku" href="saving-typing-with-variables-and-functions.ja.html">4.4.4 変数と関数を用いて入力の手間を省く</a></li>
+      <li><a id="toc-Le-Pu-topato" href="scores-and-parts.ja.html">4.4.5 楽譜とパート</a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Chu-Li-woDiao-Zheng-suru" href="tweaking-output.ja.html">5 出力を調整する</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Diao-Zheng-noJi-Ben-" href="tweaking-basics.ja.html">5.1 調整の基本</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Diao-Zheng-noShao-Jie-" href="introduction-to-tweaks.ja.html">5.1.1 調整の紹介</a></li>
+      <li><a id="toc-obuziekutotointahueisu" href="objects-and-interfaces.ja.html">5.1.2 オブジェクトとインタフェイス</a></li>
+      <li><a id="toc-obuziekutotopuropateinoMing-Ming-Gui-Ze-" href="naming-conventions-of-objects-and-properties.ja.html">5.1.3 オブジェクトとプロパティの命名規則</a></li>
+      <li><a id="toc-Diao-Zheng-Shou-Duan-" href="tweaking-methods.ja.html">5.1.4 調整手段</a>
+      <ul class="no-bullet">
+        <li><a id="toc-_005coverride-komando" href="the-override-command.ja.html"><code>\override</code> コマンド</a></li>
+        <li><a id="toc-_005crevert-komando" href="the-revert-command.ja.html"><code>\revert</code> コマンド</a></li>
+        <li><a id="toc-_005conce-Jie-Tou-Ci-" href="the-once-prefix.ja.html"><code>\once</code> 接頭辞</a></li>
+        <li><a id="toc-_005coverrideProperty-komando" href="the-overrideproperty-command.ja.html"><code>\overrideProperty</code> コマンド</a></li>
+        <li><a id="toc-_005ctweak-komando" href="the-tweak-command.ja.html"><code>\tweak</code> コマンド</a></li>
+        <li><a id="toc-_005csingle-Jie-Tou-Ci-" href="the-single-prefix.ja.html"><code>\single</code> 接頭辞</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Nei-Bu-rihuarensu-maniyuaru" href="the-internals-reference-manual.ja.html">5.2 内部リファレンス マニュアル</a>
+    <ul class="no-bullet">
+      <li><a id="toc-reiauto-obuziekutonopuropatei" href="properties-of-layout-objects.ja.html">5.2.1 レイアウト オブジェクトのプロパティ</a></li>
+      <li><a id="toc-intahueisunoZhongdeJian-tukarupuropatei" href="properties-found-in-interfaces.ja.html">5.2.2 インタフェイスの中で見つかるプロパティ</a></li>
+      <li><a id="toc-puropateinotaipu" href="types-of-properties.ja.html">5.2.3 プロパティのタイプ</a></li>
+    </ul></li>
+    <li><a id="toc-obuziekutonoJian-taMu-" href="appearance-of-objects.ja.html">5.3 オブジェクトの見た目</a>
+    <ul class="no-bullet">
+      <li><a id="toc-obuziekutonoKe-Shi-Xing-toSe-" href="visibility-and-color-of-objects.ja.html">5.3.1 オブジェクトの可視性と色</a>
+      <ul class="no-bullet">
+        <li><a id="toc-stencil-puropatei" href="the-stencil-property.ja.html"><code>stencil</code> プロパティ</a></li>
+        <li><a id="toc-break_002dvisibility-property" href="the-break_002dvisibility-property.ja.html"><code>break-visibility</code> property</a></li>
+        <li><a id="toc-transparent-puropatei" href="the-transparent-property.ja.html"><code>transparent</code> プロパティ</a></li>
+        <li><a id="toc-color-puropatei" href="the-color-property.ja.html"><code>color</code> プロパティ</a></li>
+      </ul></li>
+      <li><a id="toc-obuziekutonosaizu" href="size-of-objects.ja.html">5.3.2 オブジェクトのサイズ</a></li>
+      <li><a id="toc-obuziekutonoChang-satoTai-sa" href="length-and-thickness-of-objects.ja.html">5.3.3 オブジェクトの長さと太さ</a></li>
+    </ul></li>
+    <li><a id="toc-obuziekutonoPei-Zhi-" href="placement-of-objects.ja.html">5.4 オブジェクトの配置</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Zi-Dong-Pei-Zhi-" href="automatic-behavior.ja.html">5.4.1 自動配置</a></li>
+      <li><a id="toc-Pu-Nei-Bu-obuziekuto" href="within_002dstaff-objects.ja.html">5.4.2 譜内部オブジェクト</a>
+      <ul class="no-bullet">
+        <li><a id="toc-direction-puropatei" href="the-direction-property.ja.html"><code>direction</code> プロパティ</a></li>
+        <li><a id="toc-Yun-Zhi-" href="fingering.ja.html">運指</a></li>
+      </ul></li>
+      <li><a id="toc-Pu-Wai-Bu-obuziekuto" href="outside_002dstaff-objects.ja.html">5.4.3 譜外部オブジェクト</a>
+      <ul class="no-bullet">
+        <li><a id="toc-outside_002dstaff_002dpriority-puropatei" href="the-outside_002dstaff_002dpriority-property.ja.html"><code>outside-staff-priority</code> プロパティ</a></li>
+        <li><a id="toc-_005ctextLengthOn-komando" href="the-textlengthon-command.ja.html"><code>\textLengthOn</code> コマンド</a></li>
+        <li><a id="toc-Qiang-Ruo-Ji-Hao-noPei-Zhi-" href="dynamics-placement.ja.html">強弱記号の配置</a></li>
+        <li><a id="toc-gurahuikaru-obuziekutonosaizu" href="grob-sizing.ja.html">グラフィカル オブジェクトのサイズ</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Chui-Zhi-Fang-Xiang-nosupesu" href="vertical-spacing.ja.html">5.5 垂直方向のスペース</a></li>
+    <li class="toc_current"><a id="toc-obuziekutonoChong-Tu-" href="collisions-of-objects.ja.html">5.6 オブジェクトの衝突</a>
+    <ul class="no-bullet">
+      <li class="toc_current"><a id="toc-obuziekutowoYi-Dong-saseru" href="moving-objects.ja.html">5.6.1 オブジェクトを移動させる</a></li>
+      <li><a id="toc-Biao-Ji-noZhong-nariwoXiu-Zheng-suru" href="fixing-overlapping-notation.ja.html">5.6.2 表記の重なりを修正する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-padding-puropatei" href="the-padding-property.ja.html"><code>padding</code> プロパティ</a></li>
+        <li><a id="toc-right_002dpadding-puropatei" href="the-right_002dpadding-property.ja.html"><code>right-padding</code> プロパティ</a></li>
+        <li><a id="toc-staff_002dpadding-puropatei" href="the-staff_002dpadding-property.ja.html"><code>staff-padding</code> プロパティ</a></li>
+        <li><a id="toc-self_002dalignment_002dX-puropatei" href="the-self_002dalignment_002dx-property.ja.html"><code>self-alignment-X</code> プロパティ</a></li>
+        <li><a id="toc-staff_002dposition-puropatei" href="the-staff_002dposition-property.ja.html"><code>staff-position</code> プロパティ</a></li>
+        <li><a id="toc-extra_002doffset-puropatei" href="the-extra_002doffset-property.ja.html"><code>extra-offset</code> プロパティ</a></li>
+        <li><a id="toc-positions-puropatei" href="the-positions-property.ja.html"><code>positions</code> プロパティ</a></li>
+        <li><a id="toc-force_002dhshift-puropatei" href="the-force_002dhshift-property.ja.html"><code>force-hshift</code> プロパティ</a></li>
+      </ul></li>
+      <li><a id="toc-Shi-Ji-noYin-Le-karanoLi" href="real-music-example.ja.html">5.6.3 実際の音楽からの例</a></li>
+    </ul></li>
+    <li><a id="toc-Geng-naruDiao-Zheng-" href="further-tweaking.ja.html">5.7 更なる調整</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Diao-Zheng-nosonoTa-noShi-Yong-Fang-Fa-" href="other-uses-for-tweaks.ja.html">5.7.1 調整のその他の使用方法</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Yi-naruboisunoZhongniaruYin-Fu-wotaideJie-bu" href="tying-notes-across-voices.ja.html">異なるボイスの中にある音符をタイで結ぶ</a></li>
+        <li><a id="toc-MIDI-dehuerumatawosimiyuretosuru" href="simulating-a-fermata-in-midi.ja.html">MIDI でフェルマータをシミュレートする</a></li>
+      </ul></li>
+      <li><a id="toc-reiautonoDiao-Zheng-notameniBian-Shu-woShi-Yong-suru" href="using-variables-for-layout-adjustments.ja.html">5.7.2 レイアウトの調整のために変数を使用する</a></li>
+      <li><a id="toc-sutairu-sito" href="style-sheets.ja.html">5.7.3 スタイル シート</a></li>
+      <li><a id="toc-sonoTa-noQing-Bao-Yuan-" href="other-sources-of-information.ja.html">5.7.4 その他の情報源</a></li>
+      <li><a id="toc-Scheme-woYong-itaGao-Du-naDiao-Zheng-" href="advanced-tweaks-with-scheme.ja.html">5.7.5 Scheme を用いた高度な調整</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-tenpureto" href="templates.ja.html">Appendix A テンプレート</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Zu-miIp-mareteirutenpureto" href="built_002din-templates.ja.html">A.1 組み込まれているテンプレート</a>
+    <ul class="no-bullet">
+      <li><a id="toc-SATB-tenpureto" href="satb-template.ja.html">A.1.1 SATB テンプレート</a></li>
+      <li><a id="toc-SSAATTBB-tenpureto" href="ssaattbb-template.ja.html">A.1.2 SSAATTBB テンプレート</a></li>
+    </ul></li>
+    <li><a id="toc-Dan-YiPu-tenpureto" href="single-staff-templates.ja.html">A.2 単一譜テンプレート</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Yin-Fu-nomi" href="notes-only.ja.html">A.2.1 音符のみ</a></li>
+      <li><a id="toc-Yin-Fu-toGe-Ci-" href="notes-and-lyrics.ja.html">A.2.2 音符と歌詞</a></li>
+      <li><a id="toc-Yin-Fu-tokodo" href="notes-and-chords.ja.html">A.2.3 音符とコード</a></li>
+      <li><a id="toc-Yin-Fu-_002c-Ge-Ci-sorenikodo" href="notes-lyrics-and-chords.ja.html">A.2.4 音符、歌詞それにコード</a></li>
+    </ul></li>
+    <li><a id="toc-piano-tenpureto" href="piano-templates.ja.html">A.3 ピアノ テンプレート</a>
+    <ul class="no-bullet">
+      <li><a id="toc-soro-piano" href="solo-piano.ja.html">A.3.1 ソロ ピアノ</a></li>
+      <li><a id="toc-pianotoGe-Ci-woChi-tuXuan-Lu-" href="piano-and-melody-with-lyrics.ja.html">A.3.2 ピアノと歌詞を持つ旋律</a></li>
+      <li><a id="toc-Ge-Ci-gaZhongYang-niPei-Zhi-saretapianoPu-" href="piano-centered-lyrics.ja.html">A.3.3 歌詞が中央に配置されたピアノ譜</a></li>
+    </ul></li>
+    <li><a id="toc-Xian-Le-Si-Zhong-Zou-tenpureto" href="string-quartet-templates.ja.html">A.4 弦楽四重奏テンプレート</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Xian-Le-Si-Zhong-Zou-" href="string-quartet.ja.html">A.4.1 弦楽四重奏</a></li>
+      <li><a id="toc-Xian-Le-Si-Zhong-Zou-pato" href="string-quartet-parts.ja.html">A.4.2 弦楽四重奏パート</a></li>
+    </ul></li>
+    <li><a id="toc-He-Chang-tenpureto" href="vocal-ensembles-templates.ja.html">A.5 合唱テンプレート</a>
+    <ul class="no-bullet">
+      <li><a id="toc-SATB-bokaruPu-" href="satb-vocal-score.ja.html">A.5.1 SATB ボーカル譜</a></li>
+      <li><a id="toc-SATB-bokaruPu-toZi-Dong-pianoPu-" href="satb-vocal-score-and-automatic-piano-reduction.ja.html">A.5.2 SATB ボーカル譜と自動ピアノ譜</a></li>
+      <li><a id="toc-Zheng-Lie-saretakontekisutowoChi-tu-SATB" href="satb-with-aligned-contexts.ja.html">A.5.3 整列されたコンテキストを持つ SATB</a></li>
+      <li><a id="toc-4-tunoPu-niPei-Zhi-sareta-SATB" href="satb-on-four-staves.ja.html">A.5.4 4 つの譜に配置された SATB</a></li>
+      <li><a id="toc-soroto-2-patonorihurein" href="solo-verse-and-two_002dpart-refrain.ja.html">A.5.5 ソロと 2 パートのリフレイン</a></li>
+      <li><a id="toc-Zan-Mei-Ge-" href="hymn-tunes.ja.html">A.5.6 賛美歌</a></li>
+      <li><a id="toc-Sheng-Ge-" href="psalms.ja.html">A.5.7 聖歌</a></li>
+    </ul></li>
+    <li><a id="toc-okesutora-tenpureto" href="orchestral-templates.ja.html">A.6 オーケストラ テンプレート</a>
+    <ul class="no-bullet">
+      <li><a id="toc-okesutora_002c-He-Chang-sorenipiano" href="orchestra-choir-and-piano.ja.html">A.6.1 オーケストラ、合唱それにピアノ</a></li>
+    </ul></li>
+    <li><a id="toc-Gu-Dai-noJi-Pu-Fa-tenpureto" href="ancient-notation-templates.ja.html">A.7 古代の記譜法テンプレート</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Ji-Liang-Ji-Pu-Fa-notenpureto" href="transcription-of-mensural-music.ja.html">A.7.1 計量記譜法のテンプレート</a></li>
+      <li><a id="toc-guregoriaSheng-Ge-notenpureto" href="gregorian-transcription-template.ja.html">A.7.2 グレゴリア聖歌のテンプレート</a></li>
+    </ul></li>
+    <li><a id="toc-sonoTa-notenpureto" href="other-templates.ja.html">A.8 その他のテンプレート</a>
+    <ul class="no-bullet">
+      <li><a id="toc-ziyazu-bando" href="jazz-combo.ja.html">A.8.1 ジャズ バンド</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.ja.html">Appendix B GNU Free Documentation License</a></li>
+  <li><a id="toc-indetukusu" href="index-of-commands-and-concepts.ja.html" rel="index">Appendix C インデックス</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 0cc270b871321ae5aa8622cea8d8262aafd16641
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google 検索">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="検索">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

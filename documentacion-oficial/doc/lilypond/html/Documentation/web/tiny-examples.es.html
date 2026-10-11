@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2003-2026 por los autores.
+
+This file documents the LilyPond website.
+
+Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License,
+Version 1.1 or any later version published by the Free Software
+Foundation; with no Invariant Sections.  A copy of the license is
+included in the section entitled "GNU Free Documentation
+License". -->
+<title>Ejemplos mínimos (LilyPond: notación musical para todos)</title>
+
+<meta name="description" content="Ejemplos mínimos (LilyPond: notación musical para todos)">
+<meta name="keywords" content="Ejemplos mínimos (LilyPond: notación musical para todos)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.es.html#top" rel="start" title="LilyPond: notación musical para todos">
+<link href="web_toc.es.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="community.es.html" rel="up" title="Comunidad">
+<link href="bug-reports.es.html" rel="next" title="Informes de fallos">
+<link href="contact.es.html" rel="prev" title="Contacto">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-website.css">
+
+
+</head>
+
+<body lang="es" class="web">
+<div id="main">
+<div class="unnumberedsec" id="tiny-examples">
+<hr>
+<span id="Ejemplos-minimos"></span><h3 class="unnumberedsec">Ejemplos mínimos</h3>
+
+<div class="column-center-top">
+<span id="g_t_00bfQue-son-los-_201cejemplos-minimos_201d_003f"></span><h4 class="subheading">¿Qué son los &ldquo;ejemplos mínimos&rdquo;?</h4>
+
+<p>Un ejemplo mínimo es un ejemplo del que no se puede eliminar
+<strong>nada</strong>.
+</p>
+</div>
+
+<div class="column-left-bottom">
+<span id="g_t_00bfPor-que-crearlos_003f"></span><h4 class="subheading">¿Por qué crearlos?</h4>
+
+<div class="keep-bullets">
+<ul>
+<li> Cuanto más simple es el ejemplo, más rápidamente pueden los
+desarrolladores entenderlo y ayudarle.
+
+</li><li> Un ejemplo mínimo demuestra que se ha esforzado en resolver el
+problema por sí mismo.  Cuando alguien envía bloques grandes de
+código de entrada, da la impresión de que no le importa que le
+ayudemos o que no.
+
+</li><li> La creación de un ejemplo mínimo le ayuda a entender lo que está
+ocurriendo.  Muchos informes falsos de problemas se podrían evitar
+intentando crear un ejemplo mínimo; si no puede reproducir un
+&ldquo;bug&rdquo; en un ejemplo mínimo, probablemente el problema era una
+comprensión insuficiente sobre LilyPond, ¡no un verdadero bug!
+
+</li></ul>
+
+</div>
+
+
+</div>
+
+
+<div class="column-right-bottom">
+<span id="g_t_00bfComo-se-hacen_003f"></span><h4 class="subheading">¿Cómo se hacen?</h4>
+
+<div class="keep-bullets">
+<ul>
+<li> Incluya el número de versión en una instrucción <code>\version</code>.
+
+</li><li> ¡Hágalo muy pequeño!  Los ejemplos relacionados con el espaciado o
+la disposición de las páginas pueden requerir muchos compases,
+pero casi todos los problemas se pueden reproducir mediante un
+solo compás o menos.
+
+</li><li> Cuando trate de crear un ejemplo, pruebe a convertir en
+comentarios (<code>%</code>&nbsp;ó&nbsp;<code>%{&nbsp;&hellip;&nbsp;%}</code>)<!-- /@w --> distintas
+secciones del archivo.  Si puede convertir un bloque en un
+comentario y aún mostrar la idea principal, entonces elimine ese
+bloque.
+
+</li><li> Evite la utilización de notas, tonalidades o compases muy
+complicados, a no ser que el bug esté relacionado con el
+comportamiento de esos elementos.
+
+</li><li> No utilice instrucciones <code>\override</code> ni <code>\set</code> a no ser
+que el bug se refiera a esas instrucciones en concreto.
+
+</li><li> Utilice un adjunto de código cuando lo envíe a la lista de correo:
+muchos programas de correo no son capaces de manejar bien el
+código de LilyPond, alterando el orden de las líneas (lo que hace
+ilegible al código) o insertando caracteres de espacio no
+divisible (lo que hace incompilable al código).
+
+</li><li> Opcionalmente, adjunte una imagen que muestre el resultado gráfico
+que desea.
+
+</li></ul>
+
+</div>
+
+
+</div>
+
+<div class="column-center-bottom">
+<span id="g_t_00bfCuan-pequeno-debe-ser_003f"></span><h4 class="subheading">¿Cuán pequeño debe ser?</h4>
+
+<p>El código que sigue ¿es un ejemplo mínimo?
+</p>
+<div class="example">
+<pre class="example">\version &quot;2.14.1&quot;
+\include &quot;español.ly&quot;
+
+\score {
+  \new Staff {
+    \key re \major
+    \numericTimeSignature
+    \time 2/4
+    &lt;dos' re'' si''&gt;16 &lt;dos' re'' si''&gt;8.
+    %% Aquí: la ligadura de unión sobre los Re tiene un aspecto gracioso
+    %% ¿Demasiado alta? ¿El punto final de la mano izquierda no se alinea
+    %% con la ligadura del Si?
+    ~
+    &lt;dos' re'' si''&gt;8 [ &lt;si re'' la''&gt; ]
+  }
+}
+</pre></div>
+
+<p>Bueno, no es muy grande, pero he aquí un ejemplo verdaderamente mínimo:
+</p>
+<div class="example">
+<pre class="example">\version &quot;2.14.1&quot;
+{
+  % la ligadura intermedia tiene un aspecto gracioso aquí:
+  &lt;c' d'' b''&gt;8. ~ &lt;c' d'' b''&gt;8
+}
+</pre></div>
+
+<p>Muy pocos ejemplos mínimos superan las 10 líneas de código; ¡lo
+más corriente es que basten 4 líneas para mostrar el problema!
+</p>
+
+</div>
+
+
+</div>
+<hr>
+
+<div id="footer">
+<p id="languages">
+Other languages: <a href="tiny-examples.html">English</a>, <a href="tiny-examples.ca.html">Català</a>, <a href="tiny-examples.de.html">Deutsch</a>, <a href="tiny-examples.fr.html">Français</a>, <a href="tiny-examples.it.html">Italiano</a>, <a href="tiny-examples.ja.html">日本語</a>, <a href="tiny-examples.tr.html">Türkçe</a>, <a href="tiny-examples.zh.html">中文</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-LilyPond" href="index.es.html">LilyPond</a></li>
+  <li><a id="toc-Introduccion" href="introduction.es.html">Introducción</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Posibilidades" href="features.es.html">Posibilidades</a></li>
+    <li><a id="toc-Ejemplos" href="examples.es.html">Ejemplos</a></li>
+    <li><a id="toc-Libertad" href="freedom.es.html">Libertad</a></li>
+    <li><a id="toc-Trasfondo" href="background.es.html">Trasfondo</a></li>
+    <li><a id="toc-Producciones" href="productions.es.html">Producciones</a></li>
+    <li><a id="toc-Resenas" href="reviews.es.html">Reseñas</a></li>
+    <li><a id="toc-Entrada-de-texto" href="text-input.es.html">Entrada de texto</a></li>
+    <li><a id="toc-Entornos-mejorados" href="easier-editing.es.html">Entornos mejorados</a></li>
+  </ul></li>
+  <li><a id="toc-Descarga" href="download.es.html">Descarga</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Codigo-fuente" href="source.es.html">Código fuente</a></li>
+    <li><a id="toc-Descargas-antiguas" href="old-downloads.es.html">Descargas antiguas</a></li>
+    <li><a id="toc-GPL" href="gpl.es.html">GPL</a></li>
+  </ul></li>
+  <li><a id="toc-Manuales" href="manuals.es.html">Manuales</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Aprendizaje" href="learning.es.html">Aprendizaje</a></li>
+    <li><a id="toc-Glosario" href="glossary.es.html">Glosario</a></li>
+    <li><a id="toc-Ensayo" href="essay.es.html">Ensayo</a></li>
+    <li><a id="toc-Notacion" href="notation.es.html">Notación</a></li>
+    <li><a id="toc-Utilizacion" href="usage.es.html">Utilización</a></li>
+    <li><a id="toc-Fragmentos" href="snippets.es.html">Fragmentos</a></li>
+    <li><a id="toc-FAQ" href="faq.es.html">FAQ</a></li>
+    <li><a id="toc-Web" href="web.es.html">Web</a></li>
+    <li><a id="toc-Cambios" href="changes.es.html">Cambios</a></li>
+    <li><a id="toc-Extender" href="extending.es.html">Extender</a></li>
+    <li><a id="toc-Funcionamiento-interno" href="internals.es.html">Funcionamiento interno</a></li>
+    <li><a id="toc-Todos" href="all.es.html">Todos</a></li>
+    <li><a id="toc-FDL" href="fdl.es.html">FDL</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Comunidad" href="community.es.html">Comunidad</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Contacto" href="contact.es.html">Contacto</a></li>
+    <li class="toc_current"><a id="toc-Ejemplos-minimos" href="tiny-examples.es.html">Ejemplos mínimos</a></li>
+    <li><a id="toc-Informes-de-fallos" href="bug-reports.es.html">Informes de fallos</a></li>
+    <li><a id="toc-Preste-su-ayuda" href="help-us.es.html">Preste su ayuda</a></li>
+    <li><a id="toc-Patrocinio" href="sponsoring.es.html">Patrocinio</a></li>
+    <li><a id="toc-Desarrollo" href="development.es.html">Desarrollo</a></li>
+    <li><a id="toc-Google-Summer-of-Code" href="google-summer-of-code.es.html">Google Summer of Code</a></li>
+    <li><a id="toc-Autores" href="authors.es.html">Autores</a></li>
+    <li><a id="toc-Publicaciones" href="publications.es.html">Publicaciones</a></li>
+    <li><a id="toc-Noticias" href="news.es.html">Noticias</a></li>
+    <li><a id="toc-Desvan" href="attic.es.html">Desván</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Búsqueda de Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2643 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Ce document a été placé dans le domaine public ; en France, les auteurs
+renoncent à tous leurs droits patrimoniaux. -->
+<title>LilyPond Changes</title>
+
+<meta name="description" content="LilyPond Changes">
+<meta name="keywords" content="LilyPond Changes">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="#top" rel="start" title="LilyPond &mdash; Nouveautés">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="#major-changes-in-lilypond" rel="next" title="Modifications majeures de LilyPond">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="fr" class="changes">
+<div id="main">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="top" id="top">
+<table class="nav_table">
+<tr><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td></tr>
+</table>
+<span id="LilyPond-_002d_002d_002d-Nouveautes"></span><h1 class="top">LilyPond &mdash; Nouveautés</h1>
+
+<table class="cartouche" border="1"><tr><td>
+<p>Ce document recense les modifications et les nouvelles fonctionnalités
+de LilyPond pour la version 2.26.0 (depuis la 2.24).
+</p></td></tr></table>
+
+
+
+
+
+
+
+<div class="warning">
+<p><strong>Note :</strong> Chaque nouvelle version de LilyPond peut comporter des
+changements de syntaxe, ce qui peut exiger de modifier les fichiers que
+vous avez écrits avec des versions précédentes, de telle sorte qu&rsquo;ils
+restent fonctionnels avec les nouvelles versions. Afin de mettre à jour
+vos fichiers, il est <strong>fortement conseillé</strong> d&rsquo;utiliser
+l&rsquo;utilitaire <code>convert-ly</code> distribué avec LilyPond et qui est
+abordé dans <a href="usage-big-page.fr.html#updating-files-with-convert_002dly">Mise à jour
+avec convert-ly</a>. <code>convert-ly</code> est capable de réaliser la
+plupart des modifications de syntaxe automatiquement. Les utilisateurs
+de Frescobaldi peuvent lancer <code>convert-ly</code> directement à partir
+du menu de Frescobaldi en faisant « Outils &gt; Mettre à jour avec
+convert-ly… ». D&rsquo;autres environnements prenant en charge LilyPond sont
+susceptibles de fournir un moyen graphique de lancer
+<code>convert-ly</code>.
+</p>
+</div>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#major-changes-in-lilypond" accesskey="1">Modifications majeures de LilyPond</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Modifications majeures de LilyPond
+</td></tr>
+<tr><td align="left" valign="top"><a href="#new-for-musical-notation" accesskey="2">Nouveautés en matière de notation musicale</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Nouveautés en matière de notation musicale
+</td></tr>
+<tr><td align="left" valign="top"><a href="#new-for-specialist-notation" accesskey="3">Nouveautés en matière de notation spécialisée</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Nouveautés en matière de notation spécialisée
+</td></tr>
+<tr><td align="left" valign="top"><a href="#miscellaneous-improvements" accesskey="4">Autres améliorations diverses</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Autres améliorations diverses
+</td></tr>
+</table>
+
+
+
+
+<hr>
+<div class="unnumbered" id="major-changes-in-lilypond">
+<table class="nav_table">
+<tr><td align="left">[<a href="#top" title="Beginning of this chapter or previous chapter"> &lt;&lt; Top </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#new-for-musical-notation" title="Next chapter"> Nouveautés en matière de notation musicale &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#top" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Top </a>]</td><td align="center">[<a href="#top" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[<a href="#notes-for-source-compilation-and-packagers" title="Next section in reading order" accesskey="n" rel="next"> Notes à propos de la compilation des sources et à l&rsquo;attention des empaqueteurs &gt; </a>]</td></tr>
+</table>
+<span id="Modifications-majeures-de-LilyPond"></span><h2 class="unnumbered">Modifications majeures de LilyPond</h2>
+
+<ul>
+<li> Les marges sont désormais plus larges, suivant ainsi les mises en pages
+de nombreux éditeurs, et conformément aux recommandations d&rsquo;Elaine
+Gould.
+
+<p>Pour retrouver les mêmes réglages que précédemment, notamment dans le
+but de conserver la mise en page après mise à jour d&rsquo;une partition à la
+version 2.26.0, il suffit d&rsquo;ajouter le code suivant :
+</p>
+<div class="example">
+<pre class="example">\paper {
+  top-margin = 5\mm
+  bottom-margin = 6\mm
+  top-system-spacing.basic-distance = 1
+  top-markup-spacing.basic-distance = 0
+  left-margin = 10\mm
+  right-margin = 10\mm
+  inner-margin = 10\mm
+  outer-margin = 20\mm
+  binding-offset = 0\mm
+}
+</pre></div>
+
+
+</li><li> Au lieu de générer des sorties PostScript ou SVG par lui-même, LilyPond
+peut désormais utiliser la bibliothèque Cairo pour produire ses
+résultats. Il est ici fait référence au « moteur Cairo » qui peut être
+activé par l&rsquo;option <code>-dbackend-cairo</code> en ligne de commande. Cette
+fonctionnalité est opérationnelle pour tous les formats de sortie (PDF,
+SVG, PNG, PostScript) et apporte vitesse et amélioration du rendu SVG en
+particulier. Néanmoins, les fonctionnalités des moteurs par défaut ne
+sont pas encore toutes implémentées. Sont entre autre absents le plan
+des PDF, l&rsquo;option <code>-dembed-source-code</code> pour le PDF et la propriété
+<code>output-attributes</code> pour le SVG.
+
+</li><li> Les distances entre la clef et la métrique ainsi qu&rsquo;entre la clef et
+l&rsquo;armure sont désormais calculées différemment. Par voie de conséquence,
+on obtient un meilleur espacement pour des clefs imposantes, comme
+<code>\clef &quot;GG&quot;</code>, ou très fines comme <code>\clef &quot;petrucci-c3&quot;</code>.
+
+<p>L&rsquo;image suivante illustre les modifications apportées aux
+positionnements. Le pourcentage indique la différence d&rsquo;espacement entre
+la clef et la métrique, et entre la clef et l&rsquo;armure.
+</p>
+
+<blockquote>
+<a href="6c/lily-7b6da4f7.ly">
+  <img align="middle"
+       border="0"
+       src="6c/lily-7b6da4f7.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Notez bien que, comme précédemment, c&rsquo;est la clef la plus large d&rsquo;un
+regroupement de portées qui détermine le positionnement horizontal de
+toutes les clefs d&rsquo;un système. Ceci signifie, par exemple, qu&rsquo;une
+partition pour piano comportant une clef de sol et une clef de fa ne
+sera en rien modifiée.
+</p>
+<p>Pour retrouver les valeurs par défaut antérieures, quelle qu&rsquo;en soit la
+raison, il suffit d&rsquo;ajouter
+</p>
+<div class="example">
+<pre class="example">\override Staff.Clef.space-alist.time-signature =
+            #'(minimum-space . 3.5)
+\override Staff.Clef.space-alist.key-cancellation =
+            #'(minimum-space . 3.5)
+\override Staff.Clef.space-alist.key-signature =
+            #'(minimum-space . 4.2)
+</pre></div>
+
+<p>à la partition.
+</p>
+</li><li> Le mode majeur LilyPond de l&rsquo;éditeur de texte GNU Emacs fourni au
+travers du paquetage Emacs Lisp <code>lilypond-mode.el</code> a été renommé de
+<code>LilyPond-mode</code> en <code>lilypond-mode</code>. Le préfixe d&rsquo;espace de
+noms est désormais tout en minuscules, passant de <code>LilyPond-</code> à
+<code>lilypond-</code> et, par conséquent, toutes les fonctions, variables,
+etc. ont toutes leur préfixe en minuscules. Ce changement est apporté
+pour se conformer aux conventions de nommage d&rsquo;Emacs et, plus
+particulièrement, afin que le nom du mode corresponde au paquetage qui
+le fournit. Il en sera ainsi plus facile aux nouveaux utilisateurs
+d&rsquo;utiliser LilyPond au sein d&rsquo;Emacs.
+
+<p>Ceci pourrait perturber certaines configurations d&rsquo;Emacs existantes sans
+une simple adaptation du fichier d&rsquo;initialisation d&rsquo;Emacs. Voici
+comment, par exemple, spécifier l&rsquo;utilisation du <code>lilypond-mode</code> à
+l&rsquo;aide de la macro <code>use-package</code> d&rsquo;Emacs :
+</p>
+<div class="example">
+<pre class="example">(use-package lilypond-mode
+  :ensure nil
+  :mode &quot;\\.\\(ly\\|ily\\)$&quot;)
+</pre></div>
+
+</li></ul>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#notes-for-source-compilation-and-packagers" accesskey="1">Notes à propos de la compilation des sources et à l&rsquo;attention des empaqueteurs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="unnumberedsec" id="notes-for-source-compilation-and-packagers">
+<table class="nav_table">
+<tr><td align="left">[<a href="#major-changes-in-lilypond" title="Beginning of this chapter or previous chapter"> &lt;&lt; Modifications majeures de LilyPond </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#new-for-musical-notation" title="Next chapter"> Nouveautés en matière de notation musicale &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#major-changes-in-lilypond" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Modifications majeures de LilyPond </a>]</td><td align="center">[<a href="#major-changes-in-lilypond" title="Up section" accesskey="u" rel="up">  Up: Modifications majeures de LilyPond </a>]</td><td align="right">[<a href="#new-for-musical-notation" title="Next section in reading order" accesskey="n" rel="next"> Nouveautés en matière de notation musicale &gt; </a>]</td></tr>
+</table>
+<span id="Notes-a-propos-de-la-compilation-des-sources-et-a-l_0027attention-des-empaqueteurs"></span><h3 class="unnumberedsec">Notes à propos de la compilation des sources et à l&rsquo;attention des empaqueteurs</h3>
+
+<p>Cette section est destinée aux enthousiastes qui compilent LilyPond à
+partir des sources et aux empaqueteurs qui préparent LilyPond pour les
+différentes distributions. Si vous ne faites partie d&rsquo;aucun de ces
+groupes, vous pouvez aisément passer ce qui suit.
+</p>
+<ul>
+<li> LilyPond requiert désormais Guile 3.0.7 ou supérieur. Le <em>bytecode</em>
+des fichiers <samp>.scm</samp> est par défaut généré. Si tel n&rsquo;est pas votre
+désir, qu&rsquo;elle qu&rsquo;en soit la raison, ajoutez l&rsquo;option <code>BYTECODE=no</code>
+à la commande <code>make</code>.
+
+</li></ul>
+
+
+<hr>
+</div>
+</div>
+<div class="unnumbered" id="new-for-musical-notation">
+<table class="nav_table">
+<tr><td align="left">[<a href="#major-changes-in-lilypond" title="Beginning of this chapter or previous chapter"> &lt;&lt; Modifications majeures de LilyPond </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#new-for-specialist-notation" title="Next chapter"> Nouveautés en matière de notation spécialisée &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#notes-for-source-compilation-and-packagers" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Notes à propos de la compilation des sources et à l&rsquo;attention des empaqueteurs </a>]</td><td align="center">[<a href="#top" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[<a href="#pitches-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations de la représentation des hauteurs &gt; </a>]</td></tr>
+</table>
+<span id="Nouveautes-en-matiere-de-notation-musicale"></span><h2 class="unnumbered">Nouveautés en matière de notation musicale</h2>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#pitches-improvements" accesskey="1">Améliorations de la représentation des hauteurs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#rhythm-improvements" accesskey="2">Améliorations en matière de rythme</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#expressive-mark-improvements" accesskey="3">Améliorations en matière d&rsquo;expressivité</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#repeat-improvements" accesskey="4">Améliorations en matière de reprises</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#editorial-annotation-improvements" accesskey="5">Améliorations en matière d&rsquo;annotations éditoriales</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#text-and-font-improvements" accesskey="6">Améliorations en matière de fontes et de mise en forme du texte</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="unnumberedsec" id="pitches-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-musical-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#new-for-specialist-notation" title="Next chapter"> Nouveautés en matière de notation spécialisée &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#new-for-musical-notation" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Nouveautés en matière de notation musicale </a>]</td><td align="center">[<a href="#new-for-musical-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation musicale </a>]</td><td align="right">[<a href="#rhythm-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations en matière de rythme &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-de-la-representation-des-hauteurs"></span><h3 class="unnumberedsec">Améliorations de la représentation des hauteurs</h3>
+
+<ul>
+<li> La nouvelle commande <code>\approximatePitch</code> permet de créer des notes
+de hauteur approximative.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">e</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class="n n-BackslashReference">\approximatePitch</span><span class="w"> </span><span class=" -Pitch">c</span>
+<span class="p">}</span>
+</pre>
+
+<a href="08/lily-586384aa.ly">
+  <img align="middle"
+       border="0"
+       src="08/lily-586384aa.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Certains faux changements de clef ont été réglés.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">R</span><span class="m">1</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">treble</span>
+<span class="w">  </span><span class=" -Pitch">R</span><span class="m">1</span>
+<span class="p">}</span>
+</pre>
+
+<a href="18/lily-24b1d8b3.ly">
+  <img align="middle"
+       border="0"
+       src="18/lily-24b1d8b3.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li></ul>
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="rhythm-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-musical-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#new-for-specialist-notation" title="Next chapter"> Nouveautés en matière de notation spécialisée &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#pitches-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations de la représentation des hauteurs </a>]</td><td align="center">[<a href="#new-for-musical-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation musicale </a>]</td><td align="right">[<a href="#expressive-mark-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations en matière d&rsquo;expressivité &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-en-matiere-de-rythme"></span><h3 class="unnumberedsec">Améliorations en matière de rythme</h3>
+
+<ul>
+<li> La commande <code>\time</code> prend désormais en charge les métriques
+complexes qui auparavant nécessitaient <code>\compoundMeter</code>, même si la
+syntaxe est quelque peu différente. La commande <code>\compoundMeter</code> a
+été renommée en <code>\timeAbbrev</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\time</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\repeat</span><span class="w"> </span><span class="nb nb-RepeatType">unfold</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="m">8</span>
+<span class="p">}</span>
+</pre>
+
+<a href="f7/lily-45101575.ly">
+  <img align="middle"
+       border="0"
+       src="f7/lily-45101575.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> La nouvelle commande <code>\submeasureBarsOn</code> permet d&rsquo;afficher
+automatiquement des barres de mesure entre les composants d&rsquo;une métrique
+alternative stricte (non montré ici), ou lorsque spécifié par les
+réglages de la nouvelle propriété de contexte <code>submeasureStructure</code>
+ou par les pulsations de l&rsquo;argument optionnel de la commande
+<code>\time</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\submeasureBarsOn</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\time</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">((</span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="m m-Fraction">25/16</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\repeat</span><span class="w"> </span><span class="nb nb-RepeatType">unfold</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="m">16</span>
+<span class="p">}</span>
+</pre>
+
+<a href="68/lily-d04f8b51.ly">
+  <img align="middle"
+       border="0"
+       src="68/lily-d04f8b51.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> La nouvelle commande <code>\polymetric</code> simplifie la notation d&rsquo;une
+polymétrie dont la longueur des mesures est alignée lorsque sont réglées
+les propriétés d&rsquo;échelonnement de la métrique dans des contextes
+différents de <code>Timing</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">&lt;&lt;</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\scaleDurations</span><span class="w"> </span><span class="m m-Fraction">4/6</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">\context</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="n n-BackslashReference">\polymetric</span><span class="w"> </span><span class="nb nb-MusicFunction">\time</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">6</span><span class="w"> </span><span class="m m-Fraction">18/16</span>
+<span class="w">      </span><span class="nb nb-MusicFunction">\repeat</span><span class="w"> </span><span class="nb nb-RepeatType">unfold</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="m">16</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\time</span><span class="w"> </span><span class="m m-Fraction">3/4</span>
+<span class="w">    </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">&gt;&gt;</span>
+</pre>
+
+<a href="6b/lily-ee49d2cf.ly">
+  <img align="middle"
+       border="0"
+       src="6b/lily-ee49d2cf.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Les ligatures automatiques pour une métrique à 2/8 ont été modifiées de
+sorte à autoriser une ligature sur l&rsquo;entièreté de la mesure.
+
+
+<a href="10/lily-f97a1e68.ly">
+  <img align="middle"
+       border="0"
+       src="10/lily-f97a1e68.png"
+       alt="[image of music]"></a>
+
+
+</li><li> <code>\enablePolymeter</code> a été renommé en <code>\enablePerStaffTiming</code>
+afin d&rsquo;éviter toute confusion puisqu&rsquo;elle n&rsquo;est recommandée que dans
+certains cas particuliers de polymétrie.
+
+</li><li> La propriété <code>TimeSignature.time-signature</code> remplace l&rsquo;ancienne
+propriété <code>fraction</code>. Cette nouvelle propriété est plus généraliste
+et autorise des dérogations, ce qui permet certaines adaptations sans
+devoir toucher la propriété <code>stencil</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\once</span><span class="w"> </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Context">Timing</span><span class="p">.</span><span class="nb nb-Grob">TimeSignature</span><span class="p">.</span><span class="n n-Lvalue">time-signature</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="mi">-1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
+<span class="w">  </span><span class=" -Pitch">R</span><span class="m">1</span>
+<span class="p">}</span>
+</pre>
+
+<a href="27/lily-8146041e.ly">
+  <img align="middle"
+       border="0"
+       src="27/lily-8146041e.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> La commande <code>\time</code> accepte désormais un nombre rationnel au
+numérateur. L&rsquo;objet graphique <code>TimeSignature</code> et la fonction
+<em>markup</em> <code>\compound-meter</code> disposent de nouvelles propriétés
+permettant de contrôler le style de la partie fractionnelle.
+
+
+<blockquote>
+<a href="93/lily-51f224cc.ly">
+  <img align="middle"
+       border="0"
+       src="93/lily-51f224cc.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> La commande <code>\time</code> accepte désormais un nombre rationnel en
+dénominateur afin de prendre en charge des métriques dont le temps est
+supérieur à la ronde.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Context">Timing</span><span class="p">.</span><span class="nb nb-Grob">TimeSignature</span><span class="p">.</span><span class="nb nb-GrobProperty">denominator-style</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;note</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\time</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">1/2</span><span class="p">)</span>
+<span class="w">  </span><span class=" -Pitch">e&#39;</span><span class="m">\breve</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="w"> </span><span class=" -Pitch">a&#39;</span>
+<span class="p">}</span>
+</pre>
+
+<a href="53/lily-8e0f0ed8.ly">
+  <img align="middle"
+       border="0"
+       src="53/lily-8e0f0ed8.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> L&rsquo;objet graphique <code>TimeSignature</code> et la fonction <em>markup</em>
+<code>\compound-meter</code> acceptent désormais des métriques de style
+nombre sur note à l&rsquo;aide de <code>denominator-style</code> et propriétés
+relatives.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Context">Timing</span><span class="p">.</span><span class="nb nb-Grob">TimeSignature</span><span class="p">.</span><span class="nb nb-GrobProperty">style</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;numbered</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Context">Timing</span><span class="p">.</span><span class="nb nb-Grob">TimeSignature</span><span class="p">.</span><span class="nb nb-GrobProperty">denominator-style</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;note</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\once</span><span class="w"> </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Context">Timing</span><span class="p">.</span><span class="nb nb-Grob">TimeSignature</span><span class="p">.</span><span class="n n-Lvalue">time-signature</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">8/3</span><span class="p">)</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\time</span><span class="w"> </span><span class="m m-Fraction">6/8</span>
+<span class="w">  </span><span class=" -Pitch">r</span><span class="m">4.</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="m">8</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">8</span>
+<span class="p">}</span>
+</pre>
+
+<a href="15/lily-9a6a35aa.ly">
+  <img align="middle"
+       border="0"
+       src="15/lily-9a6a35aa.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> <code>\slashedGrace</code> imprime désormais des ligatures barrées.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\slashedGrace</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="m">16</span><span class="w"> </span><span class=" -Pitch">e&#39;</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="m">1</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\slashedGrace</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">16</span><span class="w"> </span><span class=" -Pitch">e&#39;&#39;</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="m">1</span>
+<span class="p">}</span>
+</pre>
+
+<a href="76/lily-966657a4.ly">
+  <img align="middle"
+       border="0"
+       src="76/lily-966657a4.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>L&rsquo;utilisation de <code>beam::slashed-stencil</code> permet de barrer des
+ligatures de façon arbitraire. Définir <code>details.slash-side</code> à
+<code>RIGHT</code> placera la barre sur la droite de la ligature.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">Beam</span><span class="p">.</span><span class="nb nb-GrobProperty">stencil</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="nb nb-SchemeFunction">beam::slashed-stencil</span>
+<span class="w">  </span><span class="nb nb-MusicCommand">\cadenzaOn</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span><span class="m">16</span>^<span class="nb nb-Articulation">[</span><span class="w"> </span><span class=" -Pitch">a&#39;</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="nb nb-Articulation">]</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;&#39;</span>^<span class="nb nb-Articulation">[</span><span class="w"> </span><span class=" -Pitch">a&#39;</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="nb nb-Articulation">]</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span>_<span class="nb nb-Articulation">[</span><span class="w"> </span><span class=" -Pitch">a&#39;</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="nb nb-Articulation">]</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;&#39;</span>_<span class="nb nb-Articulation">[</span><span class="w"> </span><span class=" -Pitch">a&#39;</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="nb nb-Articulation">]</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">Beam</span><span class="p">.</span><span class="nb nb-GrobProperty">details</span><span class="p">.</span><span class="nb nb-GrobProperty">slash-side</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="nv">RIGHT</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span><span class="m">16</span>^<span class="nb nb-Articulation">[</span><span class="w"> </span><span class=" -Pitch">a&#39;</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="nb nb-Articulation">]</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;&#39;</span>^<span class="nb nb-Articulation">[</span><span class="w"> </span><span class=" -Pitch">a&#39;</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="nb nb-Articulation">]</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span>_<span class="nb nb-Articulation">[</span><span class="w"> </span><span class=" -Pitch">a&#39;</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="nb nb-Articulation">]</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;&#39;</span>_<span class="nb nb-Articulation">[</span><span class="w"> </span><span class=" -Pitch">a&#39;</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="nb nb-Articulation">]</span>
+<span class="p">}</span>
+</pre>
+
+<a href="2d/lily-e8772686.ly">
+  <img align="middle"
+       border="0"
+       src="2d/lily-e8772686.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>L&rsquo;apparence de la barre peut se personnaliser par dérogations aux
+sous-propriétés <code>details</code> <code>over-beam-height</code>,
+<code>slash-slope</code>, <code>slash-side</code>, <code>slash-stem-fraction</code>,
+<code>slash-thickness</code> et <code>slash-X-positions</code>.
+</p>
+</li><li> La commande <code>\autoBeamOff</code> interrompt désormais immédiatement la
+ligature automatique. Auparavant, ses effets étaient différés lorsque le
+graveur de ligature automatique était actif.
+
+</li><li> Il est désormais possible d&rsquo;aligner par la droite différents types de
+barre de mesure.
+
+
+<blockquote>
+<pre class="verbatim"><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">StaffGroup</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\textMark</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">1</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">1</span><span class="w"> </span><span class="nb nb-MusicCommand">\section</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">StaffGroup</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\textMark</span><span class="w"> </span><span class="s">&quot;right-aligned&quot;</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">1</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">1</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Context">StaffGroup</span><span class="p">.</span><span class="nb nb-Grob">BarLine</span><span class="p">.</span><span class="nb nb-GrobProperty">right-justified</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="no">#t</span>
+<span class="w">        </span><span class="nb nb-MusicCommand">\section</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+</pre>
+
+<a href="a4/lily-31fdb6f3.ly">
+  <img align="middle"
+       border="0"
+       src="a4/lily-31fdb6f3.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Désormais, les contrôles de mesure (<code>|</code>) créent implicitement des
+contextes. Les développeurs considèrent que cela n&rsquo;aura aucun impact sur
+les partitions courantes. N&rsquo;hésitez pas à signaler tout problème qui ne
+trouverait pas de solution de contournement évidente.
+
+</li><li> La nouvelle option <code>span-all-note-heads</code> permet aux crochets de
+n-olets d&rsquo;embrasser toutes les têtes de notes (pas seulement les hampes)
+comme recommandé par Gould et Ross.
+
+
+<blockquote>
+<a href="7d/lily-bfd64b5a.ly">
+  <img align="middle"
+       border="0"
+       src="7d/lily-bfd64b5a.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> La subdivision des ligatures automatiques a été retravaillée. Jusqu&rsquo;à
+présent, on pouvait constater de nombreuses imperfections dans la
+manière de subdiviser automatiquement des motifs de ligature complexes
+en raison de surestimations de la valeur de <code>beatBase</code>. LilyPond
+est désormais capable de subdiviser correctement la plupart des motifs
+de ligature sans utiliser la valeur de <code>beatBase</code> pour limiter la
+subdivision d&rsquo;une ligature. La simple activation de
+<code>subdivideBeams</code> divise automatiquement tous les intervalles par
+défaut. Trois nouvelles propriétés ont été introduites pour permettre
+d&rsquo;affiner la subdivision automatique des ligatures :
+<code>beamMinimumSubdivision</code>, <code>beamMaximumSubdivision</code> et
+<code>respectIncompleteBeams</code>. <code>beamMinimumSubdivision</code> limite les
+intervalles de subdivision de manière identique à ce que <code>beatBase</code>
+faisait auparavant (réduction de la fréquence des subdivisions de
+ligatures). <code>beamMaximumSubdivision</code> limite globalement le nombre
+de tronçons supprimés aux emplacements de subdivision.
+<code>respectIncompleteBeams</code> limite le nombre de moignons lorsque le
+temps restant ne compléterait pas la métrique de la subdivision. Régler
+<code>beamMinimumSubdivision</code> à la valeur de <code>beatBase</code> dans tous
+les cas, y compris lorsque <code>beatBase</code> varie implicitement, préserve
+le comportement antérieur.
+
+</li><li> Sont désormais disponibles des glyphes de crochets « empilés ». Tous les
+éléments d&rsquo;un glyphe de crochet ont la même largeur, mais sont
+verticalement plus compacts.
+
+<p>Ces glyphes sont accessibles à l&rsquo;aide de <code>\flagStyleStacked</code> ; un
+<code>\flagStyleDefault</code> permet de retrouver le style de crochet
+standard.
+</p>
+
+<blockquote>
+<a href="48/lily-18dd9b09.ly">
+  <img align="middle"
+       border="0"
+       src="48/lily-18dd9b09.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Le style de <code>TimeSignature</code> <code>'single-digit</code> a été renommé en
+<code>'single-number</code>.
+
+</li></ul>
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="expressive-mark-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-musical-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#new-for-specialist-notation" title="Next chapter"> Nouveautés en matière de notation spécialisée &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#rhythm-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations en matière de rythme </a>]</td><td align="center">[<a href="#new-for-musical-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation musicale </a>]</td><td align="right">[<a href="#repeat-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations en matière de reprises &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-en-matiere-d_0027expressivite"></span><h3 class="unnumberedsec">Améliorations en matière d&rsquo;expressivité</h3>
+
+<ul>
+<li> Les nouvelles commandes <code>\chordSlur</code> et <code>\nonArpeggiato</code>
+permettent de créer des liaisons verticales et des crochets sans
+détourner l&rsquo;utilisation de la commande <code>\arpeggio</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="p">&gt;</span><span class="n n-BackslashReference">\nonArpeggiato</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class=" -Pitch">f&#39;&#39;</span><span class="p">&gt;</span><span class="n n-BackslashReference">\chordSlur</span><span class="w"> </span><span class="p">}</span>
+</pre>
+
+<a href="8c/lily-91403e61.ly">
+  <img align="middle"
+       border="0"
+       src="8c/lily-91403e61.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Un nouvel ornement, <code>bachschleifer</code>, est désormais disponible.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span><span class="w"> </span><span class=" -Pitch">b&#39;</span><span class="w"> </span><span class=" -Pitch">g&#39;&#39;</span><span class="nb nb-Articulation">\bachschleifer</span><span class="w"> </span><span class="p">}</span>
+</pre>
+
+<a href="8b/lily-d96b8e7c.ly">
+  <img align="middle"
+       border="0"
+       src="8b/lily-d96b8e7c.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Il est désormais possible de positionner un <code>Script</code> sur la gauche
+ou sur la droite d&rsquo;un <code>NoteHead</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="nb nb-MusicFunction">\atRight</span><span class="w"> </span><span class="nb nb-Articulation">\mordent</span><span class="w"> </span><span class=" -Pitch">e&#39;&#39;</span><span class="p">&gt;</span><span class="m">2</span><span class="w"> </span><span class="p">}</span>
+</pre>
+
+<a href="9e/lily-082a70dd.ly">
+  <img align="middle"
+       border="0"
+       src="9e/lily-082a70dd.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Les soufflets de style Ferneyhough acceptent désormais un cercle
+<em>al niente</em>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">Hairpin</span><span class="p">.</span><span class="nb nb-GrobProperty">circled-tip</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="no">#t</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">Hairpin</span><span class="p">.</span><span class="nb nb-GrobProperty">stencil</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="nb nb-SchemeFunction">flared-hairpin</span>
+<span class="w">  </span><span class=" -Pitch">b</span><span class="m">1</span><span class="nb nb-Dynamic">\&lt;</span><span class="w"> </span><span class=" -Pitch">b</span><span class="nb nb-Dynamic">\&gt;</span><span class="w"> </span><span class=" -Pitch">b</span><span class="nb nb-Dynamic">\&gt;</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">b</span><span class="nb nb-Dynamic">\&lt;</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">b</span><span class="nb nb-Dynamic">\!</span>
+<span class="p">}</span>
+</pre>
+
+<a href="6e/lily-6854be9e.ly">
+  <img align="middle"
+       border="0"
+       src="6e/lily-6854be9e.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Sont désormais disponibles deux variantes du signe de respiration :
+<code>laltcomma</code> et <code>raltcomma</code>. Ces glyphes représentent
+respectivement les anciens galbes de « lcomma » et « rcomma » avant leur
+changement pour un galbe plus courant.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">BreathingSign</span><span class="p">.</span><span class="nb nb-GrobProperty">text</span><span class="w"> </span><span class="p">=</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\musicglyph</span><span class="w"> </span><span class="s">&quot;scripts.raltcomma&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class=" -Pitch">f&#39;</span><span class="m">2</span><span class="w"> </span><span class="nb nb-MusicFunction">\breathe</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+</pre>
+
+<a href="ae/lily-13254891.ly">
+  <img align="middle"
+       border="0"
+       src="ae/lily-13254891.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> L&rsquo;ondulation d&rsquo;un objet <code>TrillSpanner</code> requiert désormais moins
+d&rsquo;espace vertical.
+
+</li></ul>
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="repeat-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-musical-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#new-for-specialist-notation" title="Next chapter"> Nouveautés en matière de notation spécialisée &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#expressive-mark-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations en matière d&rsquo;expressivité </a>]</td><td align="center">[<a href="#new-for-musical-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation musicale </a>]</td><td align="right">[<a href="#editorial-annotation-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations en matière d&rsquo;annotations éditoriales &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-en-matiere-de-reprises"></span><h3 class="unnumberedsec">Améliorations en matière de reprises</h3>
+
+<ul>
+<li> Les nouvelles fonctions musicales <code>\%</code> et <code>\*</code> servent de
+raccourci à <code>\repeat percent</code> et <code>\repeat unfolded</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-BackslashReference">\%</span><span class="m">3</span><span class="w"> </span><span class="n n-BackslashReference">\*</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">cis&#39;&#39;</span><span class="m">4</span>
+</pre>
+
+<a href="43/lily-463a166e.ly">
+  <img align="middle"
+       border="0"
+       src="43/lily-463a166e.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Les fins alternatives d&rsquo;un <code>\repeat volta</code> ne créent plus de barre
+de mesure invisible. Ceci peut affecter le saut de ligne, l&rsquo;espacement
+horizontal et la longueur d&rsquo;un <code>VoltaBracket</code> lorsqu&rsquo;une
+alternative débute ou se termine en l&rsquo;absence de barre de mesure. Dans
+le cas d&rsquo;un changement non désiré, il est possible d&rsquo;ajouter un
+<code>\bar &quot;&quot;</code> ou toute autre commande créant un objet <code>BarLine</code>
+précisément à ce point.
+
+</li><li> Grâce à la propriété <code>printInitialRepeatBar</code>, il est désormais
+possible d&rsquo;afficher automatiquement une barre de reprise même
+lorsqu&rsquo;elle intervient en début de pièce.
+
+
+<blockquote>
+<a href="23/lily-68929dc1.ly">
+  <img align="middle"
+       border="0"
+       src="23/lily-68929dc1.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Le positionnement du numéro de <em>volta</em> relativement au crochet de
+reprise peut désormais s&rsquo;ajuster à l&rsquo;aide de la propriété
+<code>volta-number-offset</code> du <code>VoltaBracket</code>.
+
+</li></ul>
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="editorial-annotation-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-musical-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#new-for-specialist-notation" title="Next chapter"> Nouveautés en matière de notation spécialisée &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#repeat-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations en matière de reprises </a>]</td><td align="center">[<a href="#new-for-musical-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation musicale </a>]</td><td align="right">[<a href="#text-and-font-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations en matière de fontes et de mise en forme du texte &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-en-matiere-d_0027annotations-editoriales"></span><h3 class="unnumberedsec">Améliorations en matière d&rsquo;annotations éditoriales</h3>
+
+<ul>
+<li> Les <em>incipits</em> peuvent désormais adopter différents types de
+contexte. Ils acceptent aussi un argument optionnel destiné à les
+décaler sur la gauche
+
+
+<blockquote>
+<pre class="verbatim"><span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;MensuralStaff&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\incipit</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class=" -Pitch">e&#39;</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="m">1</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;KievanStaff&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\incipit</span><span class="w"> </span><span class="p">#</span><span class="mi">2</span><span class="w"> </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">KievanStaff</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class=" -Pitch">e&#39;</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="m">1</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span>
+<span class="w">      </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;TabStaff&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\incipit</span>
+<span class="w">          </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">TabStaff</span>
+<span class="w">            </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\magnifyStaff</span><span class="w"> </span><span class="mf">0.5</span>
+<span class="w">                    </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">InstrumentName</span><span class="p">.</span><span class="nb nb-GrobProperty">font-size</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="w"> </span><span class=" -Pitch">e&#39;</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="m">1</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+<span class="w">  </span><span class="k">\layout</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb nb-PaperVariable">indent</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">5\cm</span>
+<span class="w">    </span><span class="nb nb-PaperVariable">incipit-width</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">2\cm</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="05/lily-169ff8b3.ly">
+  <img align="middle"
+       border="0"
+       src="05/lily-169ff8b3.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Du matériau optionnel peut être indiqué par des crochets englobant la
+portée à l&rsquo;aide de <code>\startOptionalMaterial</code> et
+<code>\stopOptionalMaterial</code>.
+
+
+<blockquote>
+<a href="5a/lily-66b7aaab.ly">
+  <img align="middle"
+       border="0"
+       src="5a/lily-66b7aaab.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Le <code>FingerGlideSpanner</code> permet maintenant de connecter des objets
+<code>StringNumber</code> et <code>StrokeFinger</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-ContextProperty">strokeFingerOrientations</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="nv">down</span><span class="p">)</span>
+<span class="w">  </span><span class=" -Pitch">b</span><span class="m">2</span><span class="w"> </span><span class="nb nb-Articulation">\glide</span><span class="w"> </span><span class="nb nb-MusicFunction">-\rightHandFinger</span><span class="w"> </span><span class="p">#</span><span class="mi">1</span><span class="w"> </span><span class="nb nb-Articulation">\glide</span><span class="w"> </span><span class="m">-2</span><span class="w"> </span><span class="nb nb-Articulation">\glide</span><span class="w"> </span><span class="nb nb-Articulation">\5</span>
+<span class="w">  </span><span class=" -Pitch">e&#39;</span><span class="nb nb-MusicFunction">-\rightHandFinger</span><span class="w"> </span><span class="p">#</span><span class="mi">1</span><span class="w"> </span><span class="m">-2</span><span class="w"> </span><span class="nb nb-Articulation">\5</span>
+<span class="p">}</span>
+</pre>
+
+<a href="4d/lily-1970039f.ly">
+  <img align="middle"
+       border="0"
+       src="4d/lily-1970039f.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Un nouveau graveur, le <code>Toe_heel_engraver</code> (activé par défaut),
+écoute la variable de contexte <code>toeHeelStyle</code> pour fournir les
+options stylistiques des commandes <code>\rtoe</code>, <code>\ltoe</code>,
+<code>\rheel</code> et <code>\lheel</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="nb nb-Articulation">\rtoe</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="nb nb-Articulation">\rheel</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="nb nb-Articulation">\ltoe</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="nb nb-Articulation">\lheel</span><span class="w"> </span><span class="nb nb-MusicFunction">\bar</span><span class="w"> </span><span class="s">&quot;||&quot;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\music</span><span class="w">            </span><span class="c1">% #&#39;default</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;standard</span><span class="w">    </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;reversed</span><span class="w">    </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;below</span><span class="w">       </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;circleheels</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="70/lily-9f66cc7b.ly">
+  <img align="middle"
+       border="0"
+       src="70/lily-9f66cc7b.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Lorsque le graveur est activé, ces commandes ne se comportent plus comme
+les objets <code>Script</code> habituels puisqu&rsquo;ils ne tiennent pas compte des
+changements de positionnement, autrement dit les &lsquo;<samp>^</samp>&rsquo;, &lsquo;<samp>_</samp>&rsquo; et
+<code>\tweak direction</code> sont ignorés. En cas de nécessité de positionner
+individuellement une indication de pédalier, les nouvelles commandes
+standard d&rsquo;articulation <code>\toe</code>, <code>\vartoe</code>, <code>\heel</code>,
+<code>\varheel</code> et <code>\heelcircle</code> (qui accède au nouveau glyphe
+<code>scripts.pedalheelcircle</code>) peuvent s&rsquo;utiliser.
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">f&#39;</span><span class="m">2</span><span class="n n-BackslashReference">\toe</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">2</span><span class="n n-BackslashReference">\vartoe</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class=" -Pitch">f&#39;</span><span class="m">2</span><span class="n n-BackslashReference">\heel</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">2</span><span class="n n-BackslashReference">\varheel</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class=" -Pitch">f&#39;</span><span class="m">1</span><span class="n n-BackslashReference">\heelcircle</span>
+<span class="p">}</span>
+</pre>
+
+<a href="5a/lily-6e3ff290.ly">
+  <img align="middle"
+       border="0"
+       src="5a/lily-6e3ff290.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Désactiver le graveur fait adopter à <code>\rtoe</code> et ses semblables le
+comportement qu&rsquo;ils avaient dans les versions précédentes de LilyPond.
+</p>
+</li><li> En liaison directe avec le point précédent, quatre nouvelles commandes
+de type articulation <code>\ltoeheel</code>, <code>\rtoeheel</code>,
+<code>\lheeltoe</code> et <code>\rheeltoe</code>, permettent d&rsquo;indiquer des
+substitutions pointe-talon ou talon-pointe. Elles sont influencées par
+le <code>Toe_heel_engraver</code> de la même manière qu&rsquo;un <code>\rtoe</code> et ses
+semblables. Les glyphes de talon et de pointe ont été harmonisés quant à
+leur taille de façon à obtenir un meilleur rendu pour les substitutions.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="n n-BackslashReference">\rtoeheel</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="n n-BackslashReference">\rheeltoe</span>
+<span class="w">          </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="n n-BackslashReference">\ltoeheel</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">4</span><span class="n n-BackslashReference">\lheeltoe</span><span class="w"> </span><span class="nb nb-MusicFunction">\bar</span><span class="w"> </span><span class="s">&quot;||&quot;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\music</span><span class="w">            </span><span class="c1">% #&#39;default</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;standard</span><span class="w">    </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;reversed</span><span class="w">    </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;below</span><span class="w">       </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="n n-Lvalue">toeHeelStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;circleheels</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+</pre>
+
+<a href="6a/lily-27802303.ly">
+  <img align="middle"
+       border="0"
+       src="6a/lily-27802303.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Les objets graphiques <code>NoteName</code> sont désormais centrés
+horizontalement par défaut.
+
+</li></ul>
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="text-and-font-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-musical-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#new-for-specialist-notation" title="Next chapter"> Nouveautés en matière de notation spécialisée &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#editorial-annotation-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations en matière d&rsquo;annotations éditoriales </a>]</td><td align="center">[<a href="#new-for-musical-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation musicale </a>]</td><td align="right">[<a href="#new-for-specialist-notation" title="Next section in reading order" accesskey="n" rel="next"> Nouveautés en matière de notation spécialisée &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-en-matiere-de-fontes-et-de-mise-en-forme-du-texte"></span><h3 class="unnumberedsec">Améliorations en matière de fontes et de mise en forme du texte</h3>
+
+<ul>
+<li> Des têtes de note de forme triangulaire ont été ajoutées à la fonte
+Emmentaler. Elles sont utilisables en réglant <code>NoteHead.style</code> à
+<code>arrow</code>.
+
+
+<a href="66/lily-7d234004.ly">
+  <img align="middle"
+       border="0"
+       src="66/lily-7d234004.png"
+       alt="[image of music]"></a>
+
+
+</li><li> La nouvelle commande de <em>markup</em> <code>\bar-line</code> permet d&rsquo;imprimer
+une barre de mesure dans du texte.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="nv">word-space</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\line</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span>Exemples
+<span class="w">      </span><span class="nb nb-MarkupCommand">\fontsize</span><span class="w"> </span><span class="p">#</span><span class="mi">-5</span><span class="w"> </span><span class="nb nb-MarkupCommand">\translate-scaled</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb nb-MarkupCommand">\bar-line</span><span class="w"> </span><span class="s">&quot;:|.&quot;</span>
+<span class="w">        </span><span class="nb nb-MarkupCommand">\bar-line</span><span class="w"> </span><span class="s">&quot;.|:&quot;</span>
+<span class="w">        </span><span class="nb nb-MarkupCommand">\bar-line</span><span class="w"> </span><span class="s">&quot;;!S!;&quot;</span>
+<span class="w">        </span><span class="nb nb-MarkupCommand">\bar-line</span><span class="w"> </span><span class="s">&quot;]{|}[&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="86/lily-9b12387a.ly">
+  <img align="middle"
+       border="0"
+       src="86/lily-9b12387a.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> La syntaxe permettant de modifier les fontes musicales et textuelles a
+changé. Au lieu de
+
+<blockquote>
+<pre class="verbatim">\paper {
+  #(define fonts
+     (set-global-fonts
+       #:music &quot;Nom de la fonte musicale&quot;
+       #:brace &quot;Nom de la fonte musicale d'accolades&quot;
+       #:roman &quot;Nom de la fonte à empattements&quot;
+       #:sans &quot;Nom de la fonte sans empattements&quot;
+       #:typewriter &quot;Nom de la fonte monospace&quot;))
+}
+</pre></blockquote>
+
+<p>ou
+</p>
+<blockquote>
+<pre class="verbatim">\paper {
+  #(define fonts
+     (make-pango-font-tree
+       &quot;Nom de la fonte à empattements&quot;
+       &quot;Nom de la fonte sans empattements&quot;
+       &quot;Nom de la fonte monospace&quot;
+       factor))
+}
+</pre></blockquote>
+
+<p>la syntaxe consacrée est dorénavant
+</p>
+<blockquote>
+<pre class="verbatim">\paper {
+  property-defaults.fonts.music = &quot;Nom de la fonte musicale&quot;
+  property-defaults.fonts.serif = &quot;Nom de la fonte à empattements&quot;
+  property-defaults.fonts.sans = &quot;Nom de la fonte sans empattement&quot;
+  property-defaults.fonts.typewriter = &quot;Nom de la fonte monospace&quot;
+}
+</pre></blockquote>
+
+<p>Contrairement aux anciennes pratiques, la nouvelle syntaxe n&rsquo;interfère
+en rien dans la taille des fontes, qui doit se gérer séparément à l&rsquo;aide
+de <code>set-global-staff-size</code> ou <code>layout-set-staff-size</code>.
+</p>
+<p>La liste associative ne comporte pas de clé <code>brace</code> ; les glyphes
+d&rsquo;accolade sont désormais toujours pris dans la fonte musicale. Il est
+néanmoins possible d&rsquo;y déroger en utilisant une famille de fontes
+supplémentaire, comme dans l&rsquo;exemple suivant (la fonte LilyJAZZ doit
+alors être disponible) :
+</p>
+<blockquote>
+<pre class="verbatim">\layout {
+  \context {
+    \Score
+    \override SystemStartBrace.font.music = &quot;lilyjazz&quot;
+  }
+}
+
+\new PianoStaff &lt;&lt;
+  \new Staff { c' }
+  \new Staff { c' }
+&gt;&gt;
+
+\markup \override #'(fonts . ((music . &quot;lilyjazz&quot;))) \left-brace #20
+</pre></blockquote>
+
+<p>Dans la mesure où <code>fonts</code> est une simple propriété, il est possible
+de lui porter dérogation sur la base d&rsquo;un objet graphique, comme par
+exemple
+</p>
+<blockquote>
+<pre class="verbatim">\layout {
+  \override Score.SectionLabel.fonts.roman = &quot;Custom font&quot;
+}
+</pre></blockquote>
+
+<p>Ceci s&rsquo;avère préférable à l&rsquo;utilisation de la propriété
+<code>font-name</code>, cette dernière rendant ineffectives les commandes
+telles que <code>\bold</code> et requérant d&rsquo;inclure « Bold » dans la chaîne
+de <code>font-name</code>. L&rsquo;utilisation de <code>fonts</code> ne provoque pas de
+tels effets.
+</p>
+
+</li><li> La commande de <em>markup</em> <code>\lookup</code> n&rsquo;est désormais disponible
+que pour les accolades ; pour les autres glyphes, c&rsquo;est la commande
+<code>\musicglyph</code> qu&rsquo;il faut utiliser. Au lieu de <code>\lookup</code>, il
+vaut d&rsquo;ailleurs mieux lui préférer <code>\left-brace</code>.
+
+
+</li><li> Lorsqu&rsquo;une fonte musicale est utilisée dans un <em>markup</em> &ndash;
+typiquement pour une indication de nuance &ndash; et qu&rsquo;un glyphe en était
+absent, celui-ci était rendu dans une fonte textuelle normale. Ceci
+n&rsquo;est plus le cas, et un avertissement est alors émis quant au glyphe
+manquant. Afin d&rsquo;utiliser une fonte textuelle, il faut utiliser l&rsquo;une
+des commande de <em>markup</em> <code>\serif</code>, <code>\sans</code> ou
+<code>\typewriter</code>, comme ici par exemple.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">dolceP</span><span class="w"> </span><span class="p">=</span>
+<span class="p">#(</span><span class="nv">make-dynamic-script</span>
+<span class="w">  </span><span class="p">#{</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb nb-MarkupCommand">\serif</span><span class="w"> </span><span class="nb nb-MarkupCommand">\normal-weight</span><span class="w"> </span>dolce
+<span class="w">      </span>p
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">#})</span>
+
+<span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="n n-BackslashReference">\dolceP</span><span class="w"> </span><span class="p">}</span>
+</pre>
+
+<a href="b7/lily-ef389a3a.ly">
+  <img align="middle"
+       border="0"
+       src="b7/lily-ef389a3a.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+
+</li><li> Les petites capitales s&rsquo;obtiennent désormais en réglant
+<code>font-variant</code> sur <code>small-caps</code>, plutôt qu&rsquo;en fixant
+<code>font-shape</code> à <code>caps</code>. Dans la mesure où la raison d&rsquo;être de
+<code>font-shape</code> est de pouvoir accéder à l&rsquo;italique, ce changement
+rend possible l&rsquo;utilisation conjointe de petites capitales et de
+l&rsquo;italique.
+
+
+</li><li> La propriété <code>font-series</code> est désormais plus flexible et accepte
+des valeurs telles que <code>semibold</code> et <code>light</code> en plus des seules
+<code>normal</code> et <code>bold</code>.
+
+<p>La valeur <code>medium</code> est désormais une valeur intermédiaire entre
+<code>normal</code> et <code>bold</code> plutôt qu&rsquo;un équivalent de <code>normal</code>.
+Par conséquent, la commande de <em>markup</em> <code>\medium</code> a été
+renommée en <code>\normal-weight</code>.
+</p>
+
+</li><li> La nouvelle propriété <code>font-stretch</code> permet de sélectionner une
+fonte resserrée ou expansée.
+
+
+</li><li> Le texte d&rsquo;un objet <code>VoltaBracket</code> tel que défini par un
+<code>\override Score.VoltaBracket.text = &hellip;</code> ou <code>\set
+Score.repeatCommands = &hellip;</code> n&rsquo;est plus automatiquement rendu dans
+une fonte musicale ; il faut pour cela utiliser la commande de
+<em>markup</em> <code>\volta-number</code> sur les parties qui le nécessitent.
+Il faudra donc, par exemple, convertir
+
+<blockquote>
+<pre class="verbatim">\set Score.repeatCommands = #'((volta &quot;2, 5&quot;))
+</pre></blockquote>
+
+<p>en
+</p>
+<blockquote>
+<pre class="verbatim">\set Score.repeatCommands =
+  #`((volta ,#{ \markup {
+                  \concat { \volta-number 2 , }
+                  \volta-number 5 }
+            #}))
+</pre></blockquote>
+
+
+</li><li> Dans un <em>markup</em>, les doigtés (<code>\markup \finger</code>) et
+chiffrages d&rsquo;accord (<code>\markup \figured-bass</code>) sont désormais
+adaptés à la taille du texte normal en présence d&rsquo;un <code>\fontsize</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">myText</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>The<span class="w"> </span>fingering<span class="w"> </span><span class="nb nb-MusicFunction">\finger</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">5</span><span class="nb nb-Articulation">-4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>for<span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="nb nb-MarkupCommand">\figured-bass</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="s">&quot;6</span><span class="se">\\</span><span class="s">&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>…
+<span class="p">}</span>
+
+<span class="n n-BackslashReference">\myText</span>
+<span class="nb nb-MarkupCommand">\markup\fontsize</span><span class="w"> </span><span class="p">#</span><span class="mi">6</span><span class="w"> </span><span class="n n-BackslashReference">\myText</span>
+</pre>
+
+<a href="97/lily-1761db17.ly">
+  <img align="middle"
+       border="0"
+       src="97/lily-1761db17.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Le comportement antérieur peut être retrouvé en activant les variables
+globales <code>legacy-figured-bass-markup-fontsize</code> et
+<code>legacy-finger-markup-fontsize</code>, soit :
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="p">#(</span><span class="k">set!</span><span class="w"> </span><span class="nv">legacy-figured-bass-markup-fontsize</span><span class="w"> </span><span class="no">#t</span><span class="p">)</span>
+<span class="p">#(</span><span class="k">set!</span><span class="w"> </span><span class="nv">legacy-finger-markup-fontsize</span><span class="w"> </span><span class="no">#t</span><span class="p">)</span>
+
+<span class="n n-Lvalue">myText</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>The<span class="w"> </span>fingering<span class="w"> </span><span class="nb nb-MusicFunction">\finger</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">4</span><span class="nb nb-Articulation">-5</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>for<span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="nb nb-MarkupCommand">\figured-bass</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">5</span>+<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>…
+<span class="p">}</span>
+
+<span class="n n-BackslashReference">\myText</span>
+<span class="nb nb-MarkupCommand">\markup\fontsize</span><span class="w"> </span><span class="p">#</span><span class="mi">6</span><span class="w"> </span><span class="n n-BackslashReference">\myText</span>
+</pre>
+
+<a href="bc/lily-68759a9b.ly">
+  <img align="middle"
+       border="0"
+       src="bc/lily-68759a9b.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+
+</li><li> Pour plus de clarté, la commande de <em>markup</em> <code>\roman</code> a été
+renommée en <code>\serif</code>. Aussi, pour modifier une propriété
+<code>font-family</code> réglée à <code>sans</code> ou <code>typewriter</code>, il faut
+la définir à <code>serif</code>, non plus à <code>roman</code>.
+
+
+</li><li> La commande de <em>markup</em> <code>\text</code> a été supprimée. Doivent être
+utilisées en remplacement les commandes <code>\serif</code>, <code>\sans</code> ou
+<code>\typewriter</code>. Si ces commandes permettaient de définir le style de
+fonte <em>uniquement lorsqu&rsquo;une fonte textuelle était utilisée</em> (non
+une fonte musicale comme pour les nuances), elles déterminent désormais
+<em>à la fois</em> le style de fonte et l&rsquo;utilisation d&rsquo;une fonte
+textuelle.
+
+</li><li> La taille de la police utilisée par la commande de <em>markup</em>
+<code>\volta-number</code> a été réduite afin de mieux s&rsquo;harmoniser avec le
+texte environnant. Par la même occasion, la taille du crochet de reprise
+(qui utilise <code>\volta-number</code> pour son formatage par défaut) a été
+augmentée en proportion inverse afin de compenser dans les cas habituels.
+
+</li><li> Certains glyphes, tels que « one » ou « accidentals.hufnagelM1 », de la
+fonte Emmentaler avaient une boîte englobante excessivement large en
+raison d&rsquo;un bogue dans la chaîne de production des fontes. Ceci est
+désormais corrigé, mais certaines différences pourraient apparaître dans
+la typographie puisque des boîtes englobantes plus étroites peuvent
+entraîner une typographie plus resserrée.
+
+</li><li> De nouvelles commandes pour imprimer une représentation textuelle des
+altérations ont été ajoutées : <code>\text-doubleflat</code>,
+<code>\text-flat</code>, <code>\text-natural</code>, <code>\text-sharp</code>,
+<code>\text-doublesharp</code> ainsi que de manière plus générale
+<code>\text-accidental</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markuplist</span><span class="w"> </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="nv">padding</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nb nb-MarkupCommand">\table</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="mi">-1</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s">&quot;Altérations pour du texte :&quot;</span>
+<span class="w">   </span><span class="nb nb-MarkupCommand">\text-doubleflat</span><span class="w"> </span><span class="nb nb-MarkupCommand">\text-flat</span><span class="w"> </span><span class="nb nb-MarkupCommand">\text-natural</span><span class="w"> </span><span class="nb nb-MarkupCommand">\text-sharp</span>
+<span class="w">   </span><span class="nb nb-MarkupCommand">\text-doublesharp</span>
+<span class="w">  </span><span class="s">&quot;Altérations dans la musique :&quot;</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\doubleflat</span><span class="w"> </span><span class="nb nb-MarkupCommand">\flat</span><span class="w"> </span><span class="nb nb-MarkupCommand">\natural</span><span class="w"> </span><span class="nb nb-MarkupCommand">\sharp</span><span class="w"> </span><span class="nb nb-MarkupCommand">\doublesharp</span>
+<span class="p">}</span>
+</pre>
+
+<a href="28/lily-e0dcf1ff.ly">
+  <img align="middle"
+       border="0"
+       src="28/lily-e0dcf1ff.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> La commande de <em>markup</em> <code>\circle</code> accepte désormais une
+propriété <code>bbox</code>. Lorsque cette propriété est activée, la boîte
+englobant ses argument est utilisée pour définir le diamètre du cercle.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\circle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\center-column</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;court&quot;</span><span class="w"> </span><span class="s">&quot;court&quot;</span><span class="w"> </span><span class="s">&quot;très très long&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="nv">bbox</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="no">#t</span><span class="p">)</span><span class="w"> </span><span class="nb nb-MarkupCommand">\circle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\center-column</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;court&quot;</span><span class="w"> </span><span class="s">&quot;court&quot;</span><span class="w"> </span><span class="s">&quot;très très long&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="9e/lily-86bf0ec0.ly">
+  <img align="middle"
+       border="0"
+       src="9e/lily-86bf0ec0.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+
+</li><li> La commande <code>\tag</code> est désormais fonctionnelle dans les
+environnements <code>\markup</code>. De nouvelles commandes de <em>markup</em>
+sont ajoutées pour filtrer (<code>\keep-with-tag</code> et
+<code>\remove-with-tag</code>) et insérer des <em>makups</em> dans un contexte
+de <em>markup</em> (<code>\push-to-tag</code>, <code>\append-to-tag</code> et
+<code>\replace-with-tag</code>) ou dans un contexte musical
+(<code>\pushToTagMarkup</code>, <code>\appendToTagMarkup</code> et
+<code>\replaceWithMarkup</code>).
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">test</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span><span class=" -Pitch">a</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;b</span><span class="w"> </span><span class=" -Pitch">b</span>
+<span class="w">  </span><span class=" -Pitch">c</span>
+<span class="p">}</span>
+
+<span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span><span class="n n-BackslashReference">^\test</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span>
+<span class="p">}</span>
+
+<span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="nb nb-MusicFunction">\removeWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="nb nb-MusicFunction">\pushToTagMarkup</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span>push<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="nb nb-MusicFunction">\appendToTagMarkup</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span>append<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="n n-BackslashReference">\replaceWithTagMarkup</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span>replacement<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\keep-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\remove-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\push-to-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span>push<span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\append-to-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span>append<span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n n-BackslashReference">\replace-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span>replacement<span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\keep-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span><span class="k">\score</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n n-BackslashReference">\music</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre>
+
+<a href="5a/lily-02719c7c.ly">
+  <img align="middle"
+       border="0"
+       src="5a/lily-02719c7c.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Les deux nouvelles commandes <code>\pad-x-left</code> et <code>\pad-x-right</code>
+se comportent comme <code>\pad-x</code>, à ceci près qu&rsquo;elles appliquent un
+décalage horizontal sur un seul des côtés du <em>markup</em>.
+
+</li></ul>
+
+
+<hr>
+</div>
+</div>
+<div class="unnumbered" id="new-for-specialist-notation">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-musical-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#miscellaneous-improvements" title="Next chapter"> Autres améliorations diverses &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#text-and-font-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations en matière de fontes et de mise en forme du texte </a>]</td><td align="center">[<a href="#top" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[<a href="#vocal-music-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations pour la musique vocale &gt; </a>]</td></tr>
+</table>
+<span id="Nouveautes-en-matiere-de-notation-specialisee"></span><h2 class="unnumbered">Nouveautés en matière de notation spécialisée</h2>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#vocal-music-improvements" accesskey="1">Améliorations pour la musique vocale</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#keyboard-and-multi_002dstaff-music-improvements" accesskey="2">Améliorations pour instruments à portées multiples</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#unfretted-string-instrument-improvements" accesskey="3">Améliorations pour les cordes non frettées</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#fretted-string-instrument-improvements" accesskey="4">Améliorations pour les cordes frettées</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#chord-notation-improvements" accesskey="5">Améliorations pour la notation des accords</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#ancient-notation-improvements" accesskey="6">Améliorations pour les notations anciennes</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#world-music-improvements" accesskey="7">Améliorations pour les musiques du monde</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="unnumberedsec" id="vocal-music-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-specialist-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation spécialisée </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#miscellaneous-improvements" title="Next chapter"> Autres améliorations diverses &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#new-for-specialist-notation" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Nouveautés en matière de notation spécialisée </a>]</td><td align="center">[<a href="#new-for-specialist-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation spécialisée </a>]</td><td align="right">[<a href="#keyboard-and-multi_002dstaff-music-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations pour instruments à portées multiples &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-pour-la-musique-vocale"></span><h3 class="unnumberedsec">Améliorations pour la musique vocale</h3>
+
+<ul>
+<li> Lorsque des paroles s&rsquo;alignent sur une mélodie, des lignes d&rsquo;extension
+peuvent s&rsquo;ajouter automatiquement à la syllabe se terminant sur un
+mélisme.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">d&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">f</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">8</span><span class="nb nb-Articulation">(</span><span class="w"> </span><span class=" -Pitch">f</span>
+<span class="w">  </span><span class=" -Pitch">e</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">2</span><span class="nb nb-Articulation">)</span>
+<span class="p">}</span>
+<span class="k">\addlyrics</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-ContextProperty">autoExtenders</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="no">#t</span>
+<span class="w">  </span>A<span class="w"> </span>me<span class="w"> </span><span class="p">--</span><span class="w"> </span>lis<span class="w"> </span><span class="p">--</span><span class="w"> </span>ma<span class="p">.</span>
+<span class="p">}</span>
+</pre>
+
+<a href="a3/lily-7737a95d.ly">
+  <img align="middle"
+       border="0"
+       src="a3/lily-7737a95d.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li></ul>
+
+<hr>
+</div>
+<div class="unnumberedsec" id="keyboard-and-multi_002dstaff-music-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-specialist-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation spécialisée </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#miscellaneous-improvements" title="Next chapter"> Autres améliorations diverses &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#vocal-music-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations pour la musique vocale </a>]</td><td align="center">[<a href="#new-for-specialist-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation spécialisée </a>]</td><td align="right">[<a href="#unfretted-string-instrument-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations pour les cordes non frettées &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-pour-instruments-a-portees-multiples"></span><h3 class="unnumberedsec">Améliorations pour instruments à portées multiples</h3>
+
+<ul>
+<li> Il n&rsquo;est désormais plus nécessaire de désactiver les ligatures
+automatiques dans le cadre d&rsquo;un <code>\crossStaff</code>.
+
+</li></ul>
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="unfretted-string-instrument-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-specialist-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation spécialisée </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#miscellaneous-improvements" title="Next chapter"> Autres améliorations diverses &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#keyboard-and-multi_002dstaff-music-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations pour instruments à portées multiples </a>]</td><td align="center">[<a href="#new-for-specialist-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation spécialisée </a>]</td><td align="right">[<a href="#fretted-string-instrument-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations pour les cordes frettées &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-pour-les-cordes-non-frettees"></span><h3 class="unnumberedsec">Améliorations pour les cordes non frettées</h3>
+
+<ul>
+<li> Les indications <code>\upbow</code> et <code>\downbow</code> sont désormais
+correctement inversées lorsque placées sous la portée. En conséquence,
+les glyphes <code>scripts.upbow</code> et <code>scripts.downbow</code> ont été
+respectivement renommés en <code>script.uupbow</code> et
+<code>scripts.udownbow</code>, et les glyphes inversés nommés
+<code>scripts.dupbow</code> et <code>scripts.ddownbow</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">f</span><span class="m">4</span><span class="nb nb-Articulation">^\downbow</span><span class="w"> </span><span class=" -Pitch">f</span><span class="nb nb-Articulation">^\upbow</span><span class="w"> </span><span class=" -Pitch">f</span><span class="nb nb-Articulation">_\downbow</span><span class="w"> </span><span class=" -Pitch">f</span><span class="nb nb-Articulation">_\upbow</span>
+<span class="p">}</span>
+</pre>
+
+<a href="1c/lily-d66aef31.ly">
+  <img align="middle"
+       border="0"
+       src="1c/lily-d66aef31.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li></ul>
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="fretted-string-instrument-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-specialist-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation spécialisée </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#miscellaneous-improvements" title="Next chapter"> Autres améliorations diverses &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#unfretted-string-instrument-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations pour les cordes non frettées </a>]</td><td align="center">[<a href="#new-for-specialist-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation spécialisée </a>]</td><td align="right">[<a href="#chord-notation-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations pour la notation des accords &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-pour-les-cordes-frettees"></span><h3 class="unnumberedsec">Améliorations pour les cordes frettées</h3>
+
+<ul>
+<li> Les réglages par défaut des étiquettes de diagramme de fret ont changé.
+
+<ul class="no-bullet">
+<li>− La valeur par défaut de <code>fret-label-vertical-offset</code> est fixée
+à <span class="nolinebreak">-0.5</span><!-- /@w -->, ce qui a pour effet de centrer l&rsquo;étiquette dans l&rsquo;espace du
+fret.
+
+</li><li>− Le format numérique par défaut est désormais <code>'custom</code>, avec un
+format de chaîne <code>&quot;~dfr&quot;</code> (résultant en &lsquo;3fr&rsquo; par exemple), au
+lieu de <code>'roman-lower</code>.
+</li></ul>
+
+</li><li> Deux nouvelles options sont disponibles pour les
+<code>fret-diagram-details</code> :
+
+<ul class="no-bullet">
+<li>− <code>string-overhang</code> permet de définir l&rsquo;extension des lignes de
+corde au-delà de la ligne de dernier fret, en  multiples de
+<code>fret-distance</code>. La valeur par défaut est de 1.
+
+</li><li>− <code>barre-thickness</code> définit l&rsquo;épaisseur de la ligne du barré, en
+multiples de <code>dot-radius</code>. Elle n&rsquo;est définit que pour
+<code>barre-type=straight</code>, avec une valeur par défaut de 1.
+
+</li></ul>
+
+</li></ul>
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="chord-notation-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-specialist-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation spécialisée </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#miscellaneous-improvements" title="Next chapter"> Autres améliorations diverses &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#fretted-string-instrument-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations pour les cordes frettées </a>]</td><td align="center">[<a href="#new-for-specialist-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation spécialisée </a>]</td><td align="right">[<a href="#ancient-notation-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations pour les notations anciennes &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-pour-la-notation-des-accords"></span><h3 class="unnumberedsec">Améliorations pour la notation des accords</h3>
+
+<ul>
+<li> Désormais, les noms d&rsquo;accord sont par défaut toujours affichés en
+anglais et ne dépendent plus de <code>\language</code>. De la même manière,
+les commandes telles que <code>\germanChords</code> ne dépendent plus de
+<code>\language</code>.
+
+<p>Ceci pourrait causer des différences dans l&rsquo;affichage des noms d&rsquo;accord.
+</p>
+</li><li> La nouvelle commande <code>\englishChords</code> permet de revenir aux noms
+d&rsquo;accord en anglais.
+
+</li><li> Certaines fonctions Scheme en lien avec les noms d&rsquo;accord ont été
+renommées.
+
+<blockquote class="indentedblock">
+<table>
+<thead><tr><th width="50%">ancien</th><th width="50%">nouveau</th></tr></thead>
+<tr><td width="50%"><code>note-name-&gt;string</code></td><td width="50%"><code>pitch-&gt;name</code></td></tr>
+<tr><td width="50%"><code>alteration-&gt;text-accidental-markup</code></td><td width="50%"><code>accidental-&gt;text-markup</code></td></tr>
+<tr><td width="50%"><code>note-name-&gt;markup</code></td><td width="50%"><code>chord-name:markup</code></td></tr>
+<tr><td width="50%"><code>chord-name-&gt;german-markup</code></td><td width="50%"><code>chord-name:german-markup</code></td></tr>
+<tr><td width="50%"><code>note-name-&gt;german-markup</code></td><td width="50%"><code>chord-name:german-lowercase-name-markup</code></td></tr>
+<tr><td width="50%"><code>chord-name-&gt;italian-markup</code></td><td width="50%"><code>chord-name:italian-markup</code></td></tr>
+</table>
+</blockquote>
+
+<p><code>convert-ly</code> gère ceci automatiquement.
+</p>
+</li><li> Two new Scheme functions related to chord names are now available:
+<code>pitch-&gt;alteration</code> returns the accidental for a given pitch
+and language; <code>chord-name:name-markup</code> returns note name
+markup for a given pitch and language.
+
+</li><li> LilyPond suit désormais plus rigoureusement la nomenclature de
+nommage des accords par Ignatzek. Ceci annule des modifications
+intervenues fin 2011 avec la version 2.15.21, et que l&rsquo;on pourrait
+maintenant qualifier incorrects ou ambigus.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">oldException</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">fis&#39;</span><span class="p">&gt;</span><span class="nb nb-MarkupCommand">-\markup</span><span class="w"> </span><span class="nb nb-MarkupCommand">\super</span><span class="w"> </span><span class="s">&quot;lyd&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="n n-Lvalue">chExceptions</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#(</span><span class="nb nb-SchemeBuiltin">append</span><span class="w"> </span><span class="p">(</span><span class="nb nb-SchemeFunction">sequential-music-to-chord-exceptions</span>
+<span class="w">                         </span><span class="nv">oldException</span><span class="w"> </span><span class="no">#t</span><span class="p">)</span>
+<span class="w">                        </span><span class="nv">ignatzekExceptions</span><span class="p">)</span>
+
+<span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">d&#39;</span><span class="p">&gt;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">es</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="p">&gt;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">fis&#39;</span><span class="p">&gt;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">StaffGroup</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;old:&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">&lt;&lt;</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">ChordNames</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb nb-ContextProperty">chordNameExceptions</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="nv">chExceptions</span>
+<span class="w">    </span><span class="nb nb-ContextProperty">additionalPitchPrefix</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="nb nb-MusicFunction">\transpose</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">&gt;&gt;</span>
+
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">StaffGroup</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;new:&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">&lt;&lt;</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">ChordNames</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="nb nb-MusicFunction">\transpose</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="p">&gt;&gt;</span>
+
+<span class="k">\layout</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-PaperVariable">indent</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">1\cm</span>
+<span class="w">  </span><span class="nb nb-PaperVariable">line-width</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">9\cm</span>
+<span class="w">  </span><span class="nb nb-PaperVariable">ragged-right</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="no">#f</span>
+<span class="p">}</span>
+</pre>
+
+<a href="08/lily-1f81ca9f.ly">
+  <img align="middle"
+       border="0"
+       src="08/lily-1f81ca9f.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li></ul>
+
+
+<hr>
+</div>
+<div class="unnumberedsec" id="ancient-notation-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-specialist-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation spécialisée </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#miscellaneous-improvements" title="Next chapter"> Autres améliorations diverses &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#chord-notation-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations pour la notation des accords </a>]</td><td align="center">[<a href="#new-for-specialist-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation spécialisée </a>]</td><td align="right">[<a href="#world-music-improvements" title="Next section in reading order" accesskey="n" rel="next"> Améliorations pour les musiques du monde &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-pour-les-notations-anciennes"></span><h3 class="unnumberedsec">Améliorations pour les notations anciennes</h3>
+
+<ul>
+<li> Pour plus de cohérence avec les clefs anciennes, cinq nouvelles clefs
+mensurales sont disponibles : <code>&quot;mensural-f2&quot;</code>,
+<code>&quot;mensural-f3&quot;</code>, <code>&quot;mensural-f4&quot;</code> (identique à
+<code>&quot;mensural-f&quot;</code>), <code>&quot;mensural-f5&quot;</code>, <code>&quot;mensural-g1&quot;</code> et
+<code>&quot;mensural-g2&quot;</code> (identique à <code>&quot;mensural-g&quot;</code>).
+
+
+</li><li> La métrique et le style d&rsquo;altération à l&rsquo;armure d&rsquo;un contexte
+<code>PetrucciStaff</code> sont désormais identiques à ceux d&rsquo;un
+<code>MensuralStaff</code>.
+
+
+</li><li> Les ligatures mensurales blanches prennent désormais en charge quelques
+cas rares (semi-brève isolée ou non), et autorisent des affinages
+permettant d&rsquo;indiquer quelque hampe non nécessaire.
+
+
+<blockquote>
+<pre class="verbatim"><span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-Context">Score</span><span class="p">.</span><span class="nb nb-ContextProperty">timing</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="no">#f</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-Context">Score</span><span class="p">.</span><span class="nb nb-ContextProperty">measureBarType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">()</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">NoteHead</span><span class="p">.</span><span class="nb nb-GrobProperty">style</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;petrucci</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-Grob">TimeSignature</span><span class="p">.</span><span class="nb nb-GrobProperty">style</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;mensural</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="s">&quot;petrucci-c4&quot;</span>
+<span class="w">    </span><span class="nb nb-Articulation">\[</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">1</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class="nb nb-Articulation">\]</span>
+<span class="w">    </span><span class="nb nb-Articulation">\[</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">1</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">\longa</span><span class="w"> </span><span class="nb nb-Articulation">\]</span>
+<span class="w">    </span><span class="nb nb-Articulation">\[</span><span class="w"> </span><span class="nb nb-MusicFunction">\tweak</span><span class="w"> </span><span class="nb nb-GrobProperty">left-down-stem</span><span class="w"> </span><span class="p">#</span><span class="no">#t</span><span class="w"> </span><span class=" -Pitch">a</span><span class="m">\breve</span><span class="w"> </span><span class=" -Pitch">b</span>
+<span class="w">       </span><span class="nb nb-MusicFunction">\tweak</span><span class="w"> </span><span class="nb nb-GrobProperty">right-down-stem</span><span class="w"> </span><span class="p">#</span><span class="no">#t</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">\longa</span><span class="w"> </span><span class="nb nb-Articulation">\]</span>
+<span class="w">    </span><span class="nb nb-Articulation">\[</span><span class="w"> </span><span class="nb nb-MusicFunction">\tweak</span><span class="w"> </span><span class="nb nb-GrobProperty">right-down-stem</span><span class="w"> </span><span class="p">#</span><span class="no">#t</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">\maxima</span>
+<span class="w">       </span><span class="nb nb-MusicFunction">\tweak</span><span class="w"> </span><span class="nb nb-GrobProperty">right-up-stem</span><span class="w"> </span><span class="p">#</span><span class="no">#t</span><span class="w"> </span><span class=" -Pitch">g</span><span class="m">\longa</span><span class="w"> </span><span class="nb nb-Articulation">\]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">\layout</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">\context</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb nb-Context">\Voice</span>
+<span class="w">      </span><span class="k">\remove</span><span class="w"> </span><span class="nb nb-Translator">Ligature_bracket_engraver</span>
+<span class="w">      </span><span class="k">\consists</span><span class="w"> </span><span class="nb nb-Translator">Mensural_ligature_engraver</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="49/lily-8d1e12ca.ly">
+  <img align="middle"
+       border="0"
+       src="49/lily-8d1e12ca.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+
+</li><li> L&rsquo;utilisation du fichier <samp>gregorian.ly</samp> est désuète. Bien que
+toujours distribué pour raison de compatibilité ascendante, son
+inclusion devrait être remplacée par l&rsquo;utilisation d&rsquo;un contexte
+<code>VaticanaScore</code>, avec si besoin des adaptations manuelles dans le
+bloc <code>\layout</code>. Un code tel que
+
+<blockquote>
+<pre class="verbatim">\include &quot;gregorian.ly&quot;
+
+\score {
+  \new VaticanaStaff { ... }
+}
+</pre></blockquote>
+
+<p>devrait devenir
+</p>
+<blockquote>
+<pre class="verbatim">\new VaticanaScore {
+  \new VaticanaStaff { ... }
+}
+
+\layout {
+  indent = 0
+  ragged-last = ##t
+}
+</pre></blockquote>
+
+</li></ul>
+
+<hr>
+</div>
+<div class="unnumberedsec" id="world-music-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-specialist-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation spécialisée </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="#miscellaneous-improvements" title="Next chapter"> Autres améliorations diverses &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#ancient-notation-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations pour les notations anciennes </a>]</td><td align="center">[<a href="#new-for-specialist-notation" title="Up section" accesskey="u" rel="up">  Up: Nouveautés en matière de notation spécialisée </a>]</td><td align="right">[<a href="#miscellaneous-improvements" title="Next section in reading order" accesskey="n" rel="next"> Autres améliorations diverses &gt; </a>]</td></tr>
+</table>
+<span id="Ameliorations-pour-les-musiques-du-monde"></span><h3 class="unnumberedsec">Améliorations pour les musiques du monde</h3>
+
+<ul>
+<li> La langue de saisie « arabic » est dépréciée. Bien que toujours
+fonctionnelle pour des raisons de rétrocompatibilité &ndash; si l&rsquo;on charge
+<samp>hel-arabic</samp> &ndash;, il est recommandé d&rsquo;utiliser « english »,
+« italiano » ou votre langue de saisie préférée.
+
+</li></ul>
+
+
+<hr>
+</div>
+</div>
+<div class="unnumbered" id="miscellaneous-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="#new-for-specialist-notation" title="Beginning of this chapter or previous chapter"> &lt;&lt; Nouveautés en matière de notation spécialisée </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#world-music-improvements" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Améliorations pour les musiques du monde </a>]</td><td align="center">[<a href="#top" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[  &gt; ]</td></tr>
+</table>
+<span id="Autres-ameliorations-diverses"></span><h2 class="unnumbered">Autres améliorations diverses</h2>
+
+<ul>
+<li> La commande <code>\tempo</code> accepte désormais des valeurs rationnelles
+exactes. Le formateur par défaut arrondi au quart le plus proche ; la
+propriété de contexte <code>tempoCountPrecision</code> permet de le contrôler.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MusicFunction">\fixed</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\once</span><span class="w"> </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-Context">Timing</span><span class="p">.</span><span class="n n-Lvalue">tempoCountPrecision</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="mi">1/1000000</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tempo</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="mi">200/3</span>
+<span class="w">  </span><span class=" -Pitch">g</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">e</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">f</span><span class="m">4</span>
+<span class="p">}</span>
+</pre>
+
+<a href="ea/lily-774bcc32.ly">
+  <img align="middle"
+       border="0"
+       src="ea/lily-774bcc32.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> La nouvelle fonction Scheme <code>ly:parser-define-once!</code> définit une
+variable qui ne l&rsquo;aurait pas déjà été.
+
+</li><li> La propriété de contexte <code>timeSignatureFraction</code> est déclarée
+obsolète, au profit de <code>timeSignature</code>. La nouvelle propriété
+accepte des métriques subdivisées ou alternatives, en plus des simples
+fractions jusqu&rsquo;à présent prises en charge. Accéder à l&rsquo;ancienne
+propriété résultera pour la nouvelle en une simple fraction et
+déclenchera un avertissement.
+
+</li><li> <code>(make-music 'Music)</code> et <code>(make-music 'Event)</code> créent
+désormais des expressions musicales dont la propriété <code>void</code> est
+définie par défaut à <code>#t</code>. La fonction <code>empty-music</code> a été
+supprimée au profit de <code>(make-music 'Music)</code>. Le nouveau prédicat
+<code>unspecified-music?</code> reconnaît toute expression musicale affublée
+d&rsquo;un <code>void</code>.
+
+</li><li> La nouvelle fonction Scheme <code>ly:number-&gt;duration</code> convertit une
+durée exprimée en unité relative de ronde en <code>ly:duration</code>. Le log,
+le nombre de points et le facteur d&rsquo;échelonnement sont déterminés
+automatiquement.
+
+</li><li> Les commandes de <em>markup</em> <code>\hspace</code> et <code>\vspace</code>
+permettent d&rsquo;insérer de l&rsquo;espace, qui peut être négatif. Les autres
+objets sont déplacées en conséquence. Ce déplacement peut s&rsquo;indiquer par
+une flèche qui s&rsquo;imprimera à l&rsquo;aide de la nouvelle commande
+<code>annotate-moving</code>. Il est à noter que ces flèches ne reflètent pas
+l&rsquo;étendue réelle des objets créés par <code>\vspace</code> et <code>\hspace</code> ;
+on pourrait utiliser <code>\box</code> à cette fin.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>left<span class="w"> </span><span class="nb nb-MarkupCommand">\annotate-moving</span><span class="w"> </span><span class="nb nb-MarkupCommand">\hspace</span><span class="w"> </span><span class="p">#</span><span class="mi">4</span><span class="w"> </span>right
+<span class="w">  </span><span class="nb nb-MarkupCommand">\column</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>top<span class="w"> </span><span class="nb nb-MarkupCommand">\annotate-moving</span><span class="w"> </span><span class="nb nb-MarkupCommand">\vspace</span><span class="w"> </span><span class="p">#</span><span class="mi">-4/3</span><span class="w"> </span>bottom<span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="dd/lily-c62f16fc.ly">
+  <img align="middle"
+       border="0"
+       src="dd/lily-c62f16fc.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> La nouvelle commande <code>\contextPropertyCheck</code> vérifie qu&rsquo;une
+propriété est définie à une valeur attendue ou n&rsquo;est pas définie
+dans un contexte spécifique.
+
+</li><li> Un certain nombre de propriétés de contexte qui jusqu&rsquo;à présent
+reposaient sur <code>ly:moment</code> prennent dorénavant des nombres
+rationnels. Afin de faciliter cette transition, chaque propriété
+numérique est appairée avec une propriété de secours <code>ly:moment</code>.
+L&rsquo;utilisation d&rsquo;une propriété de secours accède de manière transparente
+à la propriété numérique et déclenche un avertissement.
+
+<blockquote class="indentedblock">
+<table>
+<tr><td width="50%"><b>Propriété de contexte obsolète</b></td><td width="50%"><b>Nouvelle propriété de contexte</b></td></tr>
+<tr><td width="50%"><code>baseMoment</code></td><td width="50%"><code>beatBase</code></td></tr>
+<tr><td width="50%"><code>completionUnitAsMoment</code></td><td width="50%"><code>completionUnit</code></td></tr>
+<tr><td width="50%"><code>gridIntervalAsMoment</code></td><td width="50%"><code>gridInterval</code></td></tr>
+<tr><td width="50%"><code>measureLengthAsMoment</code></td><td width="50%"><code>measureLength</code></td></tr>
+<tr><td width="50%"><code>minimumPageTurnLength</code></td><td width="50%"><code>pageTurnMinimumRestLength</code></td></tr>
+<tr><td width="50%"><code>minimumRepeatLengthForPageTurn</code></td><td width="50%"><code>pageTurnMinimumRepeatLength</code></td></tr>
+<tr><td width="50%"><code>proportionalNotationDurationAsMoment</code></td><td width="50%"><code>proportionalNotationDuration</code></td></tr>
+<tr><td width="50%"><code>tempoWholesPerMinuteAsMoment</code></td><td width="50%"><code>tempoWholesPerMinute</code></td></tr>
+<tr><td width="50%"><code>tupletSpannerDurationAsMoment</code></td><td width="50%"><code>tupletSpannerDuration</code></td></tr>
+<tr><td width="50%"><code>voltaSpannerDurationAsMoment</code></td><td width="50%"><code>voltaSpannerDuration</code></td></tr>
+</table>
+</blockquote>
+
+</li><li> <code>\tempo <var>dur</var> = <var>min</var> - <var>max</var></code> déterminait la propriété
+de contexte <code>tempoWholesPerMinute</code> après arrondi à l&rsquo;entier le plus
+proche. Ceci n&rsquo;est plus le cas. Par voie de conséquence, le tempo MIDI
+peut être modifié dans certains cas.
+
+</li><li> Les fonctions Scheme <code>duration-length</code> et <code>ly:duration-length</code>
+ont été respectivement renommées en <code>ly:duration-&gt;number</code> et
+<code>ly:duration-&gt;moment</code>.
+
+</li><li> La nouvelle fonction Scheme <code>ly:parser-append-to-include-path</code>
+ajoute son argument au chemin de recherche courant de l&rsquo;analyseur.
+
+</li><li> La valeur de la propriété de contexte <code>timeSignatureSettings</code>
+utilise désormais le symbole <code>beatBase</code> en remplacement de
+<code>baseMoment</code>. <code>convert-ly</code> n&rsquo;est pas en mesure de traiter
+ce changement.
+
+</li><li> L&rsquo;inclusion d&rsquo;images PNG est désormais possible à l&rsquo;aide de la commande
+de <em>markup</em> <code>\image</code>. Ceci vient en supplément de la commande
+<code>\epsfile</code> pour les images EPS.
+
+<p>La commande <code>\image</code> traite aussi bien les images PNG que EPS, à
+ceci près que la commande <code>\image</code> insère un fond blanc,
+contrairement à <code>\epsfile</code>.
+</p>
+</li><li> La nouvelle commande de <em>markup</em> <code>\qr-code</code> permet d&rsquo;insérer
+un QR-code de la taille spécifiée pour l&rsquo;URL correspondante. Ceci peut
+servir à fournir un lien vers le site du compositeur ou de l&rsquo;éditeur, ou
+bien vers les sources LilyPond ou des enregistrements, etc.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="nb nb-MarkupCommand">\qr-code</span><span class="w"> </span><span class="p">#</span><span class="mi">10</span><span class="w"> </span><span class="s">&quot;https://lilypond.org&quot;</span>
+</pre>
+
+<a href="9d/lily-7878c139.ly">
+  <img align="middle"
+       border="0"
+       src="9d/lily-7878c139.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Des parenthèses pour texte de <em>markup</em> ont été ajoutées aux fontes
+Emmentaler, pour s&rsquo;harmoniser avec les nombres (contrairement à celles
+déjà disponibles pour les altérations).
+
+</li><li> Ont été ajoutés à la fonte Emmentaler les glyphes figure-dash (U+2012),
+en-dash (U+2013) (quart de catradin) et slash (U+002F).
+
+</li><li> Une espace pour nombres (U+2007), une espace fine (U+2009) et une espace
+ultrafine (U+200A) ont été ajoutées à la fonte Emmentaler.
+
+</li><li> L&rsquo;option <code>-dinclude-settings</code> peut désormais apparaître à
+plusieurs reprises, afin de pouvoir inclure différentes feuilles de
+style.
+
+</li><li> Dans l&rsquo;utilisation conjointe de LaTeX et <code>lilypond-book</code>, les
+images au fil du texte sont désormais décalées verticalement. Ce
+décalage peut se contrôler en ligne de commande à l&rsquo;aide de l&rsquo;option
+<samp>--inline-vshift</samp> et, localement, en ajoutant <code>inline</code> en
+argument aux options de l&rsquo;extrait.
+
+</li><li> Il est possible d&rsquo;utiliser en ligne de commande les diverses options de
+<code>musicxml2ly</code> en tant qu&rsquo;options de la commande
+<code>musicxmlfile</code> de <code>lilypond-book</code>. Bien que disponible
+depuis la version 2.15.9 publiée en 2011, ceci n&rsquo;était jusqu&rsquo;alors pas
+documenté.
+
+</li><li> Deux nouvelles options en ligne de commande font leur apparition :
+<samp>-dfirst</samp> and <samp>-dlast</samp>. Elles sont équivalentes aux
+réglages respectifs de <code>showFirstLength</code> et <code>showLastLength</code>
+dans un fichier LilyPond. Par exemple, taper
+
+<div class="example">
+<pre class="example">lilypond -dlast=R1*5 ...
+</pre></div>
+
+<p>aura pour résultat que LilyPond générera seulement les cinq dernières
+mesure (partant du principe d&rsquo;une métrique à 4/4).
+</p>
+</li><li> Est désormais disponible un nouveau manuel constituant un index de tous
+les objets graphiques (<em>grobs</em>) de LilyPond. Il est basé sur le
+<a href="https://github.com/joram-berger/visualindex">travail de Joram Berger pour LilyPond 2.19</a>.
+
+</li><li> LilyPond prend en charge les annotations au fil du texte, autrement dit
+des sortes de notes de bas de page entre les systèmes. Bien que ce ne
+soit pas nouveau, puisque disponible depuis la version 2.15.17 publiée
+en 2011, cette possibilité n&rsquo;était pas si stable et manquait de
+documentation jusqu&rsquo;à présent.
+
+</li><li> Le script <code>lilysong</code> a été supprimé. En dehors du fait qu&rsquo;il ne
+disposait d&rsquo;aucune documentation, il n&rsquo;était plus maintenu depuis fort
+longtemps. De plus, il reposait sur un programme externe de synthèse
+vocale &ndash; <code>festival</code> &ndash; laissé à l&rsquo;abandon.
+
+</li><li> Deux nouveaux styles sont disponibles pour la propriété d&rsquo;objet
+graphique <code>space-alist</code> : <code>shrink-space</code> et
+<code>semi-shrink-space</code>. Ils contractent les espaces au lieu de les
+étendre. Ils sont aussi directement utilisés par LilyPond afin
+d&rsquo;améliorer le formatage des portées resserrées.
+
+</li><li> Le binaire <code>lilypond</code> dispose d&rsquo;une nouvelle option en ligne de
+commande, <samp>-dstaff-size</samp>, pour régler la taille globale des
+portées. Elle est équivalente à la présence d&rsquo;un
+<code>set-global-staff-size</code> dans un fichier LilyPond.
+
+</li><li> En remplacement des fonctions <code>\bookOutputName</code> et
+<code>\bookOutputSuffix</code>, nous recommandons dorénavant l&rsquo;utilisation des
+variables de papier <code>output-filename</code> et <code>output-suffix</code>. Bien
+que les premières restent pleinement fonctionnelles, ces dernières sont
+plus cohérentes et facilement compréhensibles, notamment si elles sont
+combinées avec des variables de papier prédéfinies.
+
+</li><li> La propriété <code>Stem.details.lengths</code> accepte maintenant des paires
+en tant qu&rsquo;éléments de liste. Ceci permet de définir séparément les
+longueurs de hampe ascendante ou descendante.
+
+</li><li> La fonction <code>ly:self-alignment-interface::aligned-on-x-parent</code>
+&ndash; utilisée par de nombreux objets graphiques pour calculer leur
+x-offset &ndash; écoute désormais la nouvelle propriété
+<code>X-alignment-extent</code> de <code>PaperColumn</code>. Activée par défaut,
+elle fournit une largeur de secours au <em>grob</em> <code>PaperColumn</code>
+dans le cas où il ne contiendrait pas de tête de note. Ceci permet
+d&rsquo;aider à l&rsquo;alignement des scripts de nuance attachés à des silences
+invisibles, entre autres.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="m">2</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span>s<span class="m">4</span><span class="nb nb-Dynamic">\f</span><span class="w"> </span>s<span class="nb nb-Dynamic">\f</span><span class="w"> </span>s<span class="nb nb-Dynamic">\f</span><span class="w"> </span>s<span class="nb nb-Dynamic">\f</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+
+<span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+
+<span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\music</span>
+
+<span class="w">  </span><span class="k">\layout</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">\context</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb nb-Context">\Score</span>
+<span class="w">      </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">PaperColumn</span><span class="p">.</span><span class="nb nb-GrobProperty">X-alignment-extent</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="no">#f</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="0b/lily-56eaf92c.ly">
+  <img align="middle"
+       border="0"
+       src="0b/lily-56eaf92c.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Les objets <code>BassFigureContinuation</code> prennent désormais en charge la
+<code>horizontal-line-spanner-interface</code>. La propriété <code>padding</code> a
+été remplacée par des sous-propriétés correspondantes dans
+<code>bound-details</code>.
+
+</li><li> La commande de <em>markup</em> <code>\align-on-other</code> accepte désormais la
+valeur <code>#f</code> pour l&rsquo;alignement, indiquant le point de référence d&rsquo;un
+<em>markup</em>.
+
+</li><li> Une nouvelle fonction <code>\withRelativeDir</code> est désormais disponible
+pour les commandes de <em>markup</em> qui incluent des fichiers lorsque
+ces fichiers devraient se trouver relativement au fichier source. Par
+exemple :
+
+<div class="example">
+<pre class="example">\markup { \image #X #3 \withRelativeDir &quot;test.png&quot; }
+</pre></div>
+
+</li><li> Le positionnement des crochets horizontaux d&rsquo;analyse a été amélioré.
+En particulier, l&rsquo;objet <code>HorizontalBracket</code> a désormais une valeur
+de <code>outside-staff-priority</code> fixée à 800. Par conséquent, il se
+pourrait que des crochets imbriqués voient leur positionnement modifié.
+Ceci peut se corriger en ajustant les valeurs de
+<code>outside-staff-priority</code> par un <code>\tweak</code>, tout en sachant que
+le crochet externe doit garder une valeur de priorité supérieure.
+
+</li><li> La nouvelle fonction Scheme <code>to-staff-space</code> permet de convertir
+des dimensions absolues (exprimées en diverses unités) en unités
+d&rsquo;espace de portée. Par exemple :
+
+<div class="example">
+<pre class="example">top-markup-spacing.basic-distance = #(to-staff-space 2 'cm)
+
+% l'unité par défaut est le point (pt)
+\markup
+  \override #`(baseline-skip . ,(to-staff-space 20))
+  \column {
+    foo
+    bar
+  }
+</pre></div>
+
+</li><li> Les deux nouvelles fonctions de <em>markup</em> <code>\abs-hspace</code> et
+<code>\abs-vspace</code> permettent de déterminer des dimensions absolues
+qui subsistent quelle que soit la taille de portée en cours.
+
+</li><li> Les données émises par l&rsquo;option en ligne de commande
+<samp>-dshow-available-fonts</samp> sont désormais envoyées sur la sortie
+standard.
+
+</li><li> La fonction <code>ly:font-config-display-fonts</code> accepte désormais un
+argument optionnel pour sélectionner le port de sortie.
+
+</li><li> La gestion des options Scheme en ligne de commande gagne en
+robustesse. Quelques changements mineurs ont été rendus nécessaires par
+cette nouvelle implémentation.
+
+<ul class="no-bullet">
+<li>− Sur la ligne de commande, l&rsquo;argument à l&rsquo;option <samp>-dpaper-size</samp> ne
+nécessite plus d&rsquo;être mis entre guillemets. En d&rsquo;autres termes,
+mentionner <code>-dpaper-size=a3</code> est tout à fait valide.
+
+</li><li>− L&rsquo;option <samp>pixmap-format</samp> requiert désormais une valeur sous forme
+de chaîne, non plus un symbole. Rien ne change pour la ligne de
+commande, mais un appel tel que
+
+<div class="example">
+<pre class="example">#(ly:set-option 'pixmap-format 'pngalpha)
+</pre></div>
+
+<p>devra être changé en
+</p>
+<div class="example">
+<pre class="example">#(ly:set-option 'pixmap-format &quot;pngalpha&quot;)
+</pre></div>
+
+<p>Il en va de même pour les options <samp>separate-page-formats</samp> et
+<samp>tall-page-formats</samp>. Notez que <code>convert-ly</code> se charge
+d&rsquo;effectuer la modification automatiquement.
+</p></li></ul>
+
+</li><li> La <code>side-position-interface</code> dispose de deux nouvelles propriétés,
+<code>X-padding</code> et <code>minimum-X-space</code>, aux fins de contrôler le
+décalage horizontal et la distance minimale d&rsquo;un <em>grob</em> avec son
+objet parent, indépendamment du décalage vertical et de la distance
+minimale. Ceci se révèle utile pour des objets tels que <code>Fingering</code>
+qui peuvent avoir un attachement à une tête de note tant dans la
+verticalité que l&rsquo;horizontalité, et dont le décalage dans chacun des
+axes peut requérir des valeurs différentes.
+
+</li><li> <code>\pushContextProperty</code> et <code>\popContextProperty</code> sont deux
+nouvelles commandes permettant de manipuler les propriétés de contexte.
+La première insère la valeur courante dans une pile, alors que la
+seconde supprime cette valeur de la pile et restaure la valeur initiale.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\pushContextProperty</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">fontSize</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">fontSize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">3</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\pushContextProperty</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">fontSize</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">fontSize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">6</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\popContextProperty</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">fontSize</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\popContextProperty</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">fontSize</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span>
+<span class="p">}</span>
+</pre>
+
+<a href="1d/lily-f312dbf7.ly">
+  <img align="middle"
+       border="0"
+       src="1d/lily-f312dbf7.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> La nouvelle propriété d&rsquo;objet graphique <code>whiteout-color</code> permet de
+définir la couleur de mise en surbrillance. Dans la même veine, la
+commande de <em>markup</em> <code>\whiteout</code> attend une propriété
+<code>color</code> pour faire de même.
+
+</li><li> Le script <code>musicxml2ly</code> a été complètement remanié afin de mieux
+convertir les fichiers MusicXML en LilyPond. Il prend désormais en
+charge plus de fonctionnalités et éléments MusicXML et tente d&rsquo;être plus
+fiable dans la conversion afin de respecter au mieux l&rsquo;apparence
+originelle.
+
+<p>Voici une liste des quelques changements notables, exception faite des
+corrections de bogue.
+</p>
+<ul class="no-bullet">
+<li>− Le script est beaucoup plus rapide.
+
+</li><li>− Le chevauchement et l&rsquo;imbrication des liaisons fonctionnent comme
+on est en droit de s&rsquo;y attendre.
+
+</li><li>− Meilleure prise en charge automatique pour contrecarrer l&rsquo;infâme
+ticket 34 de LilyPond (problème de synchronisation avec une appoggiature
+en début de pièce avec plusieurs portées).
+
+</li><li>− Prise en charge des trémolos sur deux hampes et n-olets imbriqués.
+
+</li><li>− Prise en charge de la couleur et de la taille de fonte pour la
+plupart des éléments MusicXML. Une nouvelle option en ligne de commande
+<samp>--dynamics-scale</samp> aide à compenser les différences de taille des
+glyphes de nuance pour diverses fontes musicales.
+
+</li><li>− Prise en charge correcte des fins d&rsquo;octaviation pour les fichiers
+MusicXML créés par Finale. Le script vérifie l&rsquo;élément <code>&lt;software&gt;</code>
+pour déterminer le logiciel de notation utilisé. On peut y déroger si
+nécessaire à l&rsquo;aide de l&rsquo;option en ligne de commande
+<samp>--ottavas-end-early</samp>.
+
+</li><li>− L&rsquo;option <samp>--shift-meter</samp> a été remplacée par l&rsquo;option
+<samp>--shift-durations</samp> qui utilise une syntaxe plus simple.
+
+</li><li>− La nouvelle option en ligne de commande <samp>--no-tagline</samp>
+supprime la génération de la <em>tagline</em> de LilyPond.
+
+</li><li>− La nouvelle option en ligne de commande <samp>--book</samp> encapsule
+la partition de premier niveau dans un <code>\book</code>.
+
+</li><li>− Lorsque des éléments <code>&lt;credit&gt;</code> sont présents, ils alimentent
+les champs du bloc <code>\header</code> de LilyPond au lieu des métadonnées
+telles que <code>&lt;work-title&gt;</code> ou <code>&lt;creator&gt;</code>.
+
+</li><li>− La nouvelle option en ligne de commande <samp>--credit-page</samp>
+spécifie la page où LilyPond devra récupérer les données
+<code>&lt;credit&gt;</code> pour alimenter le bloc <code>\header</code>.
+
+</li><li>− Tous les éléments de métadonnée qui n&rsquo;ont pas de correspondant
+dans les champs standards de <code>\header</code> (et qui ne sont pas ignorés
+comme le type « page number ») sont rendus dans des champs au nom plus
+cohérent : le préfixe &lsquo;<samp>id:&nbsp;</samp>&rsquo; est ajouté pour les éléments de
+<code>&lt;identification&gt;</code>, &lsquo;<samp>credit:&nbsp;</samp>&rsquo; pour les éléments de
+<code>&lt;credit&gt;</code>, et le nom de l&rsquo;élément MusicXML (sans préfixe) dans
+tous les autres cas. Par conséquent, certains champs (non utilisés)
+prennent un nouveau nom.
+
+<blockquote class="indentedblock">
+<table>
+<thead><tr><th width="30%">ancien</th><th width="40%">nouveau</th></tr></thead>
+<tr><td width="30%"><code>movementnumber</code></td><td width="40%"><code>movement-number</code></td></tr>
+<tr><td width="30%"><code>encodingsoftware</code></td><td width="40%"><code>id: software</code></td></tr>
+<tr><td width="30%"><code>encodingdate</code></td><td width="40%"><code>id: encoding-date</code></td></tr>
+<tr><td width="30%"><code>encoder</code></td><td width="40%"><code>id: encoder</code></td></tr>
+<tr><td width="30%"><code>encodingdescription</code></td><td width="40%"><code>id: encoding-description</code></td></tr>
+<tr><td width="30%"><code>source</code></td><td width="40%"><code>id: source</code></td></tr>
+</table>
+</blockquote>
+
+</li><li>− Les numéros de mesure insérés en commentaire dans le fichier
+LilyPond créé sont conformes, leur valeur indiquant la mesure
+précédente.
+
+</li></ul>
+
+</li><li> La commande de <em>markup</em> <code>\page-ref</code> dispose d&rsquo;une nouvelle
+propriété <code>x-align</code> destinée à contrôler l&rsquo;alignement horizontal de
+la jauge de remplacement.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\box</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\page-ref</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;foo</span><span class="w"> </span><span class="s">&quot;???&quot;</span><span class="w"> </span><span class="s">&quot;?&quot;</span><span class="w"> </span><span class="s">&quot; aligné à droite (par défaut)&quot;</span>
+<span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\box</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="p">#</span><span class="o">`</span><span class="p">(</span><span class="nf">x-align</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="o">,</span><span class="nv">LEFT</span><span class="p">)</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\page-ref</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;foo</span><span class="w"> </span><span class="s">&quot;???&quot;</span><span class="w"> </span><span class="s">&quot;?&quot;</span><span class="w"> </span><span class="s">&quot; aligné à gauche&quot;</span>
+<span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\box</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="nv">x-align</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mf">-2.5</span><span class="p">)</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\page-ref</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;foo</span><span class="w"> </span><span class="s">&quot;???&quot;</span><span class="w"> </span><span class="s">&quot;?&quot;</span><span class="w"> </span><span class="s">&quot; repoussé sur la gauche&quot;</span>
+<span class="p">}</span>
+</pre>
+
+<a href="e1/lily-599c7020.ly">
+  <img align="middle"
+       border="0"
+       src="e1/lily-599c7020.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> La propriété <code>ledger-extra</code> peut désormais se régler aussi à partir
+de l&rsquo;objet <code>NoteHead</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class=" -Pitch">c&#39;&#39;&#39;</span><span class="m">1</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\tweak</span><span class="w"> </span><span class="nb nb-GrobProperty">ledger-extra</span><span class="w"> </span><span class="p">#</span><span class="mi">4</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;&#39;</span><span class="m">1</span>
+<span class="w">    </span><span class=" -Pitch">c&#39;&#39;&#39;</span><span class="m">1</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="27/lily-7851e4ac.ly">
+  <img align="middle"
+       border="0"
+       src="27/lily-7851e4ac.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Pour les objets graphiques <code>NonMusicalPaperColumn</code>, la
+sous-propriété <code>bottom-space</code> de <code>line-break-system-details</code> a
+été renommée en <code>bottom-padding</code>. Alors qu&rsquo;elle existait depuis la
+version 2.13.4 sortie en 2009, cette sous-propriété n&rsquo;était pour
+l&rsquo;instant pas documentée.
+
+</li><li> Il est désormais possible de modifier des regroupements de balises créés
+par <code>\tagGroup</code> ou <code>\tagGroupRef</code>, à l&rsquo;aide des commandes
+<code>\resetTagGroups</code>, <code>\resetTagGroup</code>, <code>\addToTagGroup</code> et
+<code>\removeFromTagGroup</code>.
+
+</li><li> La langue de saisie &ndash; telle que définie par <code>\language</code> &ndash; est
+accessible au travers de la la nouvelle variable Scheme
+<code>input-language</code>, en tant que symbole.
+
+</li><li> La nouvelle fonction <code>\breakAlignInsert</code> facilite la modification
+de l&rsquo;ordre des éléments de notation tels que clefs, métriques, barres de
+mesure, etc. Jusqu&rsquo;à présent, ceci demandait de redéfinir le vecteur
+<code>Score.BreakAlignment.break-align-orders</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">g&#39;</span><span class="m">1</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class="nb nb-Scale">\major</span>
+<span class="w">  </span><span class=" -Pitch">g&#39;</span>
+<span class="w">  </span><span class="n n-BackslashReference">\breakAlignInsert</span><span class="w"> </span>staff-bar<span class="w"> </span>after<span class="w"> </span>key-signature
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class="nb nb-Scale">\minor</span>
+<span class="w">  </span><span class=" -Pitch">g&#39;</span>
+<span class="p">}</span>
+</pre>
+
+<a href="67/lily-49b933a1.ly">
+  <img align="middle"
+       border="0"
+       src="67/lily-49b933a1.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> L&rsquo;option de sortie <samp>-dcrop</samp> tient désormais compte de tous les
+stencils pour déterminer la boîte englobante. Ceci peut modifier la
+taille des sorties rognées.
+
+</li><li> Les fonctions suivantes, qui étaient dépréciées depuis la version
+2.13.19, ont été supprimées : <code>\deprecatedcresc</code>,
+<code>\deprecatedendcresc</code>, <code>\deprecateddim</code> et
+<code>\deprecatedenddim</code>.
+
+</li></ul>
+
+
+<p>Pour des annonces plus anciennes, rendez-vouz aux pages
+<a href="https://lilypond.org/doc/v2.22/Documentation/changes/">https://lilypond.org/doc/v2.22/Documentation/changes/</a>,
+ou <a href="../">remontez</a> à l&rsquo;index de la documentation.
+</p>
+<hr>
+</div>
+</div>
+<div class="Contents_element" id="SEC_Contents">
+<table class="nav_table">
+<tr><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td></tr>
+</table>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Modifications-majeures-de-LilyPond" href="#major-changes-in-lilypond">Modifications majeures de LilyPond</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Notes-a-propos-de-la-compilation-des-sources-et-a-l_0027attention-des-empaqueteurs" href="#notes-for-source-compilation-and-packagers">Notes à propos de la compilation des sources et à l&rsquo;attention des empaqueteurs</a></li>
+  </ul></li>
+  <li><a id="toc-Nouveautes-en-matiere-de-notation-musicale" href="#new-for-musical-notation">Nouveautés en matière de notation musicale</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Ameliorations-de-la-representation-des-hauteurs" href="#pitches-improvements">Améliorations de la représentation des hauteurs</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-de-rythme" href="#rhythm-improvements">Améliorations en matière de rythme</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-d_0027expressivite" href="#expressive-mark-improvements">Améliorations en matière d&rsquo;expressivité</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-de-reprises" href="#repeat-improvements">Améliorations en matière de reprises</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-d_0027annotations-editoriales" href="#editorial-annotation-improvements">Améliorations en matière d&rsquo;annotations éditoriales</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-de-fontes-et-de-mise-en-forme-du-texte" href="#text-and-font-improvements">Améliorations en matière de fontes et de mise en forme du texte</a></li>
+  </ul></li>
+  <li><a id="toc-Nouveautes-en-matiere-de-notation-specialisee" href="#new-for-specialist-notation">Nouveautés en matière de notation spécialisée</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Ameliorations-pour-la-musique-vocale" href="#vocal-music-improvements">Améliorations pour la musique vocale</a></li>
+    <li><a id="toc-Ameliorations-pour-instruments-a-portees-multiples" href="#keyboard-and-multi_002dstaff-music-improvements">Améliorations pour instruments à portées multiples</a></li>
+    <li><a id="toc-Ameliorations-pour-les-cordes-non-frettees" href="#unfretted-string-instrument-improvements">Améliorations pour les cordes non frettées</a></li>
+    <li><a id="toc-Ameliorations-pour-les-cordes-frettees" href="#fretted-string-instrument-improvements">Améliorations pour les cordes frettées</a></li>
+    <li><a id="toc-Ameliorations-pour-la-notation-des-accords" href="#chord-notation-improvements">Améliorations pour la notation des accords</a></li>
+    <li><a id="toc-Ameliorations-pour-les-notations-anciennes" href="#ancient-notation-improvements">Améliorations pour les notations anciennes</a></li>
+    <li><a id="toc-Ameliorations-pour-les-musiques-du-monde" href="#world-music-improvements">Améliorations pour les musiques du monde</a></li>
+  </ul></li>
+  <li><a id="toc-Autres-ameliorations-diverses" href="#miscellaneous-improvements">Autres améliorations diverses</a></li>
+</ul>
+</div>
+</div>
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="changes-big-page.html">English</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="web/manuals.fr.html" title="Documentation Index">
+    &lt;&lt; Retour à l'accueil de la documentation
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="changes-big-page.fr.html#top" title="Cover (top) of document">
+    LilyPond Changes  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Modifications-majeures-de-LilyPond" href="changes-big-page.fr.html#major-changes-in-lilypond">Modifications majeures de LilyPond</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Notes-a-propos-de-la-compilation-des-sources-et-a-l_0027attention-des-empaqueteurs" href="changes-big-page.fr.html#notes-for-source-compilation-and-packagers">Notes à propos de la compilation des sources et à l&rsquo;attention des empaqueteurs</a></li>
+  </ul></li>
+  <li><a id="toc-Nouveautes-en-matiere-de-notation-musicale" href="changes-big-page.fr.html#new-for-musical-notation">Nouveautés en matière de notation musicale</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Ameliorations-de-la-representation-des-hauteurs" href="changes-big-page.fr.html#pitches-improvements">Améliorations de la représentation des hauteurs</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-de-rythme" href="changes-big-page.fr.html#rhythm-improvements">Améliorations en matière de rythme</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-d_0027expressivite" href="changes-big-page.fr.html#expressive-mark-improvements">Améliorations en matière d&rsquo;expressivité</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-de-reprises" href="changes-big-page.fr.html#repeat-improvements">Améliorations en matière de reprises</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-d_0027annotations-editoriales" href="changes-big-page.fr.html#editorial-annotation-improvements">Améliorations en matière d&rsquo;annotations éditoriales</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-de-fontes-et-de-mise-en-forme-du-texte" href="changes-big-page.fr.html#text-and-font-improvements">Améliorations en matière de fontes et de mise en forme du texte</a></li>
+  </ul></li>
+  <li><a id="toc-Nouveautes-en-matiere-de-notation-specialisee" href="changes-big-page.fr.html#new-for-specialist-notation">Nouveautés en matière de notation spécialisée</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Ameliorations-pour-la-musique-vocale" href="changes-big-page.fr.html#vocal-music-improvements">Améliorations pour la musique vocale</a></li>
+    <li><a id="toc-Ameliorations-pour-instruments-a-portees-multiples" href="changes-big-page.fr.html#keyboard-and-multi_002dstaff-music-improvements">Améliorations pour instruments à portées multiples</a></li>
+    <li><a id="toc-Ameliorations-pour-les-cordes-non-frettees" href="changes-big-page.fr.html#unfretted-string-instrument-improvements">Améliorations pour les cordes non frettées</a></li>
+    <li><a id="toc-Ameliorations-pour-les-cordes-frettees" href="changes-big-page.fr.html#fretted-string-instrument-improvements">Améliorations pour les cordes frettées</a></li>
+    <li><a id="toc-Ameliorations-pour-la-notation-des-accords" href="changes-big-page.fr.html#chord-notation-improvements">Améliorations pour la notation des accords</a></li>
+    <li><a id="toc-Ameliorations-pour-les-notations-anciennes" href="changes-big-page.fr.html#ancient-notation-improvements">Améliorations pour les notations anciennes</a></li>
+    <li><a id="toc-Ameliorations-pour-les-musiques-du-monde" href="changes-big-page.fr.html#world-music-improvements">Améliorations pour les musiques du monde</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Autres-ameliorations-diverses" href="changes-big-page.fr.html#miscellaneous-improvements">Autres améliorations diverses</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 5b32cd8c0c41b63b0a07ea8bbf2060496397a368
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Recherche sur Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Rechercher">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

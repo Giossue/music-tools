@@ -1,0 +1,567 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2009-2026 pels autors
+
+This file documents the LilyPond website.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>Entorns millorats (LilyPond: notació musical per a tots)</title>
+
+<meta name="description" content="Entorns millorats (LilyPond: notació musical per a tots)">
+<meta name="keywords" content="Entorns millorats (LilyPond: notació musical per a tots)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ca.html#top" rel="start" title="LilyPond: notació musical per a tots">
+<link href="web_toc.ca.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="introduction.ca.html" rel="up" title="Introducció">
+<link href="text-input.ca.html" rel="prev" title="Entrada de text">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-website.css">
+
+
+</head>
+
+<body lang="ca" class="web">
+<div id="main">
+<div class="unnumberedsec" id="easier-editing">
+<hr>
+<span id="Entorns-millorats"></span><h3 class="unnumberedsec">Entorns millorats</h3>
+
+
+<div class="warning">
+<p><strong>Nota:</strong> Els següents programes i paquets es desenvolupen fora del
+nucli del LilyPond, per part d&rsquo;usuaris entusiastes que han cregut
+necessari o han trobat una manera d&rsquo;afegir el LilyPond al seu
+propi flux de treball.  Això vol dir que aquests paquets poden no
+reflectir la sintaxi actual del LilyPond, tot i que la seva
+sortida es pot actualitzar usant <code>convert-ly</code>.
+</p>
+</div>
+
+<div class="column-center-top">
+<span id="Aplicacions-amb-interficie-grafica"></span><h4 class="subheading">Aplicacions amb interfície gràfica</h4>
+<span id="Frescobaldi"></span><h4 class="subsubheading">Frescobaldi</h4>
+
+<div class="float-right">
+  <a class="clickable" href="../pictures/frescobaldi-lilypond-editor.png">
+    <img src="../pictures/frescobaldi-lilypond-editor-small.png" alt="frescobaldi-lilypond-editor-small">
+  </a>
+  <p style="text-align: center">
+    (cliqueu
+per veure una imatge més gran)
+  </p>
+</div>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-freebsd.png" alt="logo-freebsd">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<p><a href="https://www.frescobaldi.org">https://www.frescobaldi.org</a>
+El Frescobaldi és un editor de música i text lleuger tot i que
+potent, amb moltes funcions creades especialment per al LilyPond.
+Entre les seves principals possibilitats estan els enllaços per
+d&rsquo;apuntar i clicar amb el ratolí entre el codi i la vista prèvia
+de la música, detallats assistents de partitura, un navegador
+incorporat per a la documentació del Lilypond, sintaxi amb colors
+i completat automàtic de les paraules clau.  El Frescobaldi està
+escrit amb Python amb el PyQt5 per a la interfície d&rsquo;usuari, i
+funciona als principals sistemes operatius (GNU/Linux, Mac OS X i
+Windows).
+</p>
+<span id="Denemo"></span><h4 class="subsubheading">Denemo</h4>
+
+<div class="float-right">
+  <a class="clickable" href="../pictures/screenshot-denemo.png">
+    <img src="../pictures/screenshot-denemo-small.png" alt="screenshot-denemo-small">
+  </a>
+  <p style="text-align: center">
+      (cliqueu per veure una imatge més gran)
+  </p>
+</div>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<p><a href="http://denemo.org">http://denemo.org</a>
+</p>
+<p>El Denemo és un editor gràfic que genera codi font del LilyPond,
+i també permet la reproducció sonora de la
+música.  Permet els usuaris veure el codi d&rsquo;entrada de LilyPond en
+paral·lel amb la visualització gràfica.  Es poden aplicar a les
+notes, acords, etc., ajustament addicionals del LilyPond i es desen amb
+el document del Denemo, de forma que els usuaris poden continuar
+editant-lo de manera gràfica.
+</p>
+<p>En moure el cursor pel text del LilyPond es mou també a la
+presentació gràfica, i els errors de sintaxi dels ajustaments al
+LilyPond es destaquen a la finestra de text quan s&rsquo;imprimeixen des
+del programa.
+</p>
+<span id="Spontini_002dEditor"></span><h4 class="subsubheading">Spontini-Editor</h4>
+
+<div class="float-right">
+  <a class="clickable" href="../pictures/screenshot-spontini.png">
+    <img src="../pictures/screenshot-spontini-small.png" alt="screenshot-spontini-small">
+  </a>
+  <p style="text-align: center">
+      (click to enlarge)
+  </p>
+</div>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<p><a href="https://github.com/paopre/Spontini">https://github.com/paopre/Spontini</a>
+</p>
+<p>Spontini-Editor és un editor de música que combina text i gràfics
+i permet agilitzar la creació i ajustament gràfic precís de
+partitures complexes editades amb el Lilypond mitjançant dues
+característiques bàsiques:
+</p>
+<p>is a text-combined-with-graphic music editor that
+speeds up the creation and fine graphic tuning of complex scores edited
+with LilyPond through two main features:
+</p>
+<ol>
+<li> Permet el posicionament d&rsquo;objectes musicals (articulacions,
+textos, pedals, corbes, parèntesis, etc.) amb el ratolí.  Un cop
+es fa el posicionament de  manera gràfica, l&rsquo;editor de text
+informa sobre el canvis corresponents al fitxer d&rsquo;entrada.
+
+</li><li> Dóna ajuda a la creació de música de piano mitjançant la inserció
+de notes en forma tabular i formatada i proveeix eines ràpides per
+a la notació entre pentagrames.
+
+</li></ol>
+
+<p>Funciona tant com una aplicació separada o com un servidor de web
+més un sistema multi-client.
+</p>
+
+</div>
+
+<div class="column-center-top">
+<span id="Editors-basats-en-navegador-web"></span><h4 class="subheading">Editors basats en navegador web</h4>
+
+<span id="Hacklily"></span><h4 class="subsubheading">Hacklily</h4>
+<p><a href="https://www.hacklily.org/">https://www.hacklily.org/</a>
+</p>
+<div class="float-right">
+  <a class="clickable" href="../pictures/screenshot-hacklily.png">
+    <img src="../pictures/screenshot-hacklily-small.png" alt="screenshot-hacklily-small">
+  </a>
+  <p style="text-align: center">
+      (feu clic per ampliar)
+  </p>
+</div>
+
+<p>Un editor i eina de publicació en línia de partitures impulsat pel
+LilyPond, amb funcionalitats addicionals com ara la compleció
+automàtica i l&rsquo;ajuda contextual.  El codi font d&rsquo;allotjament web
+està disponible sota la llicència AGPL, a la seva pròpia
+ <a href="https://github.com/hacklily/hacklily">pàgina de desenvolupament</a>.
+EL Hacklify fa servir el LilyPond 2.18.2, i tot que hi ha una
+incidència oberta per actualizar-ho a la versió 2.24, no s&rsquo;ha
+actualitzat des del 2022.
+</p>
+<span id="www_002eomet_002eca"></span><h4 class="subsubheading">www.omet.ca</h4>
+<p><a href="http://www.omet.ca/">http://www.omet.ca/</a>
+</p>
+<div class="float-right">
+  <a class="clickable" href="../pictures/screenshot-omet.png">
+    <img src="../pictures/screenshot-omet-small.png" alt="screenshot-omet-small">
+  </a>
+  <p style="text-align: center">
+      (cliqueu per ampliar)
+  </p>
+</div>
+
+<p>Des de 2010, Online Music Editing Tools (OMET) ofereix un servei
+LilyPond disponible per usar amb una interfície web ajustada específicament.
+Es requereix registrar-se però és gratuït.
+</p>
+
+</div>
+
+<div class="column-center-top">
+<span id="Connector-per-a-processadors-de-text"></span><h4 class="subheading">Connector per a processadors de text</h4>
+
+<span id="OOoLilyPond"></span><h4 class="subsubheading">OOoLilyPond</h4>
+
+<p><a href="https://extensions.services.openoffice.org/en/project/OOoLilyPond">https://extensions.services.openoffice.org/en/project/OOoLilyPond</a>
+</p>
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-freebsd.png" alt="logo-freebsd">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<p>Una extensió de l&rsquo;OpenOffice.org que converteix fitxers LilyPond
+en imatges dins de documents OpenOffice.org.
+</p>
+
+</div>
+
+
+<div class="column-center-top">
+<span id="Complements-d_0027IDE"></span><h4 class="subheading">Complements d&rsquo;IDE</h4>
+
+<span id="Elysium"></span><h4 class="subsubheading">Elysium</h4>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-freebsd.png" alt="logo-freebsd">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<p><a href="https://github.com/thSoft/elysium">https://github.com/thSoft/elysium</a>
+</p>
+<p>Un entorn complet per editar partitures per al LilyPond amb
+Eclipse, oferint una caixa amb moltes eines per a una gestió
+convenient del Lilypond.
+</p>
+<div class="column-center-top">
+<span id="Editors-de-text"></span><h4 class="subheading">Editors de text</h4>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-freebsd.png" alt="logo-freebsd">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<span id="Emacs"></span><h4 class="subsubheading">Emacs</h4>
+<p><a href="https://www.gnu.org/software/emacs/">https://www.gnu.org/software/emacs/</a>
+L&rsquo;Emacs és un editor de text amb funcionalitats avançades per a
+molts llenguatges de programació.  L&rsquo;Emacs és un editor que es pot
+expandir àmpliament i es pot usar com un entorn integrat de
+desenvolupament.  Hi ha un &lsquo;mode del LilyPond&rsquo; que ofereix les
+definicions del llenguatge per treballar amb fitxers font del
+LilyPond. Un desenvolupador ha escrit
+<a href="https://github.com/nsceaux/lyqi">lyqi</a>, un mode principal de
+l&rsquo;Emacs.
+</p>
+<p>Si no esteu familiaritzat prèviament amb l&rsquo;Emacs, potser
+preferireu usar un editor diferent per a l&rsquo;escriptura de fitxers
+del LilyPond.
+</p>
+<p>Hi ha més informació sobre la configuració de l&rsquo;Emacs a
+<a href="../usage/text-editor-support.ca.html">Text editor support</a>.
+</p>
+<span id="Vim"></span><h4 class="subsubheading">Vim</h4>
+<p><a href="https://www.vim.org">https://www.vim.org</a> El Vim és un editor de text minimalista
+que és una estensió de l&rsquo;antic editor <code>vi</code> de l&rsquo;Unix.
+També és es pot expandir i configurar.
+</p>
+<p>Si no esteu familiaritzat prèviament amb
+el Vim, probablement preferireu utilitzar un editor
+diferent per escriure fitxers d&rsquo;entrada del LilyPond.
+</p>
+<p>Hi ha més informació sobre la configuració de l&rsquo;Emacs i del Vim a
+<a href="../usage/text-editor-support.ca.html">Text editor support</a>.
+</p>
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<span id="TeXShop"></span><h4 class="subsubheading">TeXShop</h4>
+<p><a href="http://www.uoregon.edu/~koch/texshop">http://www.uoregon.edu/~koch/texshop</a>
+</p>
+<p>L&rsquo;editor TeXShop per a MacOS&nbsp;X es pot estendre perquè executi
+el LilyPond <code>lilypond-book</code> i <code>convert-ly</code> des de
+dins de l&rsquo;editor, utilitzant les extensions que estan disponibles a:
+</p>
+<div class="example">
+<pre class="example"><a href="http://users.dimi.uniud.it/~nicola.vitacolonna/home/content/lilypond-scripts">http://users.dimi.uniud.it/~nicola.vitacolonna/home/content/lilypond-scripts</a>
+</pre></div>
+
+
+</div>
+
+<div class="column-center-top">
+<span id="Altres-programes-capacos-d_0027exportar-codi-del-LilyPond"></span><h4 class="subheading">Altres programes capaços d&rsquo;exportar codi del LilyPond</h4>
+
+<span id="Editors-de-partitura_002c-tablatura-i-MIDI_003a"></span><h4 class="subsubheading">Editors de partitura, tablatura i MIDI:</h4>
+
+<ul>
+<li> <a href="http://www.jezra.net/projects/bwwtolily">bwwtolily</a> intenta
+convertir un fixer <code>.bww</code> o <code>.bmw</code> al LilyPond.  Tot i
+que no tots els ornaments es converteixen adequadament (el que és
+cert especialment amb piobaireachd), el programa imprimeix una
+llista d&rsquo;ells.
+
+</li><li> <a href="http://www.canorus.org">Canorus</a>, un editor de partitures,
+també pot exportar al LilyPond, però encara és un programa en fase
+beta, s&rsquo;agraeixen les provatures per part dels usuaris.
+
+</li><li> <a href="http://enc2ly.sourceforge.net/en/">Enc2ly</a> és un programa per
+a GNU/Linux que converteix una partitura musical
+d&rsquo;<a href="http://www.gvox.com/">Encore</a> en una del LilyPond.
+
+</li><li> <a href="https://github.com/hanwen/go-enc2ly">go-enc2ly</a> és una eina
+de GO que converteix fitxers de
+Encore al LilyPond. Es va crear
+utilitzant la recerca i la enginyeria inversa per mitjà de la
+modificació puntual de fitxers .enc i carregant-los a la versió de
+demostració 4.55.
+
+</li><li> <a href="http://www.holmessoft.co.uk/homepage/software/NWC2LY/index.htm">NW2LY</a>
+és un programa en C# que converteix una cançó del NoteWorthy
+Composer al LilyPond.
+
+</li><li> <a href="https://github.com/ciconia/ripple/blob/master/README.markdown">Ripple</a>
+és un programa que ajuda en la creació de partitures i
+particel·les, i que inclou un mode per barrejar diferents obres
+musicals a una sola partitura o particel·la.
+
+</li><li> <a href="https://www.rosegardenmusic.com">Rosegarden</a>, un seqüenciador
+MIDI i d&rsquo;àudio, que  té també un editor de partitura per a edició
+d&rsquo;un sol pentagrama.
+
+</li></ul>
+
+<span id="Generadors-de-codi-algoritmics"></span><h4 class="subsubheading">Generadors de codi algorítmics</h4>
+
+<ul>
+<li> <a href="http://www.projectabjad.org/">Abjad</a>, una API de
+<a href="https://www.python.org/">Python</a> per al control formalitzat de
+partitures, dissenyat per ajudar als compositors a construir
+fragments complexos de notació del LilyPond d&rsquo;una forma iterativa i incremental.
+
+</li><li> <a href="https://common-lisp.net/project/fomus/">FOMUS</a>, (FOrmat MUSic)
+és una eina de notació musical per a compositors de música per
+ordinador.  Està escrit en al llenguatge Lisp, i s&rsquo;ha provat amb
+diversos intèrprets.  També hi ha  disponible una versió traduïda
+al llenguatge C++.
+
+</li><li> <a href="http://strasheela.sourceforge.net/strasheela/doc/index.html">Strasheela</a>,
+un entorn construït sobre el llenguatge de restriccions
+<a href="http://www.mozart-oz.org/">Mozart/Oz</a>.
+
+
+</li></ul>
+
+</div>
+
+<div class="column-center-top">
+
+<span id="Altres-programes-sense-desenvolupament-actiu-actualment"></span><h4 class="subheading">Altres programes sense desenvolupament actiu actualment</h4>
+
+<ul>
+<li> <a href="https://sourceforge.net/projects/lily4jedit">LilyPondTool</a>
+va ser creat amb una extensió per a l&rsquo;editor de text
+<a href="http://www.jedit.org">jEdit</a>.
+
+</li><li> <a href="https://lilykde.googlecode.com/">LilyKDE</a> s&rsquo;ha substituït per
+<a href="https://www.frescobaldi.org/">Frescobaldi</a>, i existeix com a
+LilyKDE3 per a  KDE 3.5 i com a lilypond-KDE4 per a KDE 4.1
+solament.
+
+</li><li> <a href="https://lilycomp.sourceforge.net">LilyComp</a> és un programa
+gràfic d&rsquo;introducció de notes, que actua com un teclat numèric que
+produeix notes del LilyPond.
+
+</li><li> <a href="https://www.musescore.org">MuseScore</a>, un editor de
+partitures.  L&rsquo;exportació de codi del LilyPond es va descartar en
+la versió 2.0, però encara estan disponible versions més antigues
+per a descarregar a
+<a href="https://sourceforge.net/projects/mscore/files/mscore/">Sourceforge</a>.
+
+</li><li> <a href="https://sourceforge.net/projects/noteedit.berlios/">NoteEdit</a>, que importava
+<a href="https://www.makemusic.com/musicxml">MusicXML</a>, s&rsquo;ha escindit a
+<a href="https://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml">NtEd</a>
+i <a href="https://canorus.org">Canorus</a>.
+
+</li><li> <a href="https://extensions.services.openoffice.org/en/project/OOoLilyPond">OOoLilyPond</a>,
+una extensió de l&rsquo;OpenOffice.org que converteix fitxers del
+LilyPond a imatge dins de documents de l&rsquo;OpenOffice .org.  Tot i
+que ja no s&rsquo;està desenvolupant de forma activa, encara sembla
+funciona amb la versió 4.
+
+</li><li> <a href="https://launchpad.net/rumor/">Rumor</a>, un convertidor
+monofònic de MIDI al LilyPond en temps real.
+
+</li><li> <a href="https://sourceforge.net/projects/tuxguitar/">TuxGuitar</a>, un
+editor i reproductor multipista de tabulatura, que inclou un visor
+de partitura i pot exportar al LilyPond.
+
+</li></ul>
+
+
+</div>
+
+
+<div class="column-center-bottom">
+<span id="I-ara-que_003f-4"></span><h4 class="subheading">I ara què?</h4>
+
+<p>Ja teniu la preparació per <a href="download.ca.html">Descarregar el LilyPond</a>.
+</p>
+<p>Encara no us convenç? Molts compositors, músics i directors
+d&rsquo;orquestra han après a escriure música en el nostre format
+d&rsquo;entrada.  Els usuaris amb experiència fins i tot que poden
+introduir una partitura completa al LilyPond més ràpid que amb un
+teclat de piano o amb el ratolí i un GUI! Possiblement us agradi
+donar una ullada a les <a href="features.ca.html">Possibilitats</a>, <a href="examples.ca.html">Exemples</a> o a la
+<a href="freedom.ca.html">Llibertat</a> i <a href="reviews.ca.html">Ressenyes</a> dels nostres usuaris. A més a
+més, el nostre enfoc de l&rsquo;estètica computacional del gravat
+musical clàssic ve explicat en el nostre tractat sobre el
+<a href="background.ca.html">Rerefons</a>.
+</p>
+
+</div>
+
+<div class="column-center-bottom">
+<span id="Formalitats-legals"></span><h4 class="subheading">Formalitats legals</h4>
+
+<div class="legal">
+
+<p>Es reconeix el copyright de tots els logotips i imatges de marca
+de productes.
+</p>
+<p>Tux, el pingüí del Linux, és obra de
+<a href="mailto:lewing@isc.tamu.edu">lewing@isc.tamu.edu</a> feta amb
+<a href="http://www.isc.tamu.edu/~lewing/gimp/">el Programa de
+Manipulació de Imatges del GNU</a>.
+</p>
+
+<p>El logotip del FreeBSD és una marca registrada de
+<a href="https://www.freebsd.org/">The FreeBSD Foundation</a>.
+</p>
+
+<p>La &ldquo;imatge de la X&rdquo; no és una marca registrada.   És obra de
+<a href="https://en.wikipedia.org/wiki/User:Nihonjoe">Nihonjoe</a> i
+<a href="https://en.wikipedia.org/wiki/User:CyberSkull">CyberSkull</a>, i es
+va posar sota la llicència de Documentació Lliure del GNU versió
+1.2 o posterior.  Trobem aquesta imatge a
+<a href="https://commons.wikimedia.org/wiki/File:Mac_OS_X_Userbox_X.png">aquesta pàgina de la Wikimedia Commons</a>.
+</p>
+
+<p>La &ldquo;imatge dels quatre rectangles de colors&rdquo; no és una marca
+registrada.  És obra de
+<a href="https://en.wikipedia.org/wiki/User:Rohitbd">Rohitbd</a> i està
+posada sota la llicència de Documentació Lliure del GNU, versió 1.2.
+Trobem aquesta imatge a
+<a href="https://commons.wikimedia.org/wiki/Category:Microsoft_Windows_logos">aquesta pàgina de la Wikimedia Commons</a>.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+<hr>
+
+<div id="footer">
+<p id="languages">
+Other languages: <a href="easier-editing.html">English</a>, <a href="easier-editing.de.html">Deutsch</a>, <a href="easier-editing.es.html">Español</a>, <a href="easier-editing.fr.html">Français</a>, <a href="easier-editing.it.html">Italiano</a>, <a href="easier-editing.ja.html">日本語</a>, <a href="easier-editing.tr.html">Türkçe</a>, <a href="easier-editing.zh.html">中文</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-LilyPond" href="index.ca.html">LilyPond</a></li>
+  <li class="toc_current"><a id="toc-Introduccio" href="introduction.ca.html">Introducció</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Possibilitats" href="features.ca.html">Possibilitats</a></li>
+    <li><a id="toc-Exemples" href="examples.ca.html">Exemples</a></li>
+    <li><a id="toc-Llibertat" href="freedom.ca.html">Llibertat</a></li>
+    <li><a id="toc-Rerefons" href="background.ca.html">Rerefons</a></li>
+    <li><a id="toc-Produccions" href="productions.ca.html">Produccions</a></li>
+    <li><a id="toc-Ressenyes" href="reviews.ca.html">Ressenyes</a></li>
+    <li><a id="toc-Entrada-de-text" href="text-input.ca.html">Entrada de text</a></li>
+    <li class="toc_current"><a id="toc-Entorns-millorats" href="easier-editing.ca.html">Entorns millorats</a></li>
+  </ul></li>
+  <li><a id="toc-Descarregues" href="download.ca.html">Descàrregues</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Font" href="source.ca.html">Font</a></li>
+    <li><a id="toc-Descarregues-de-versions-antigues" href="old-downloads.ca.html">Descàrregues de versions antigues</a></li>
+    <li><a id="toc-GPL" href="gpl.ca.html">GPL</a></li>
+  </ul></li>
+  <li><a id="toc-Manuals" href="manuals.ca.html">Manuals</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Aprenentage" href="learning.ca.html">Aprenentage</a></li>
+    <li><a id="toc-Glossari" href="glossary.ca.html">Glossari</a></li>
+    <li><a id="toc-Monografia" href="essay.ca.html">Monografia</a></li>
+    <li><a id="toc-Notacio" href="notation.ca.html">Notació</a></li>
+    <li><a id="toc-Utilitzacio" href="usage.ca.html">Utilització</a></li>
+    <li><a id="toc-Fragments" href="snippets.ca.html">Fragments</a></li>
+    <li><a id="toc-FAQ" href="faq.ca.html">FAQ</a></li>
+    <li><a id="toc-Web" href="web.ca.html">Web</a></li>
+    <li><a id="toc-Canvis" href="changes.ca.html">Canvis</a></li>
+    <li><a id="toc-Extensio" href="extending.ca.html">Extensió</a></li>
+    <li><a id="toc-Funcionament-intern" href="internals.ca.html">Funcionament intern</a></li>
+    <li><a id="toc-Tots" href="all.ca.html">Tots</a></li>
+    <li><a id="toc-FDL" href="fdl.ca.html">FDL</a></li>
+  </ul></li>
+  <li><a id="toc-Comunitat" href="community.ca.html">Comunitat</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Contacte" href="contact.ca.html">Contacte</a></li>
+    <li><a id="toc-Exemples-minims" href="tiny-examples.ca.html">Exemples mínims</a></li>
+    <li><a id="toc-Informes-de-fallades" href="bug-reports.ca.html">Informes de fallades</a></li>
+    <li><a id="toc-Presteu-la-vostra-ajuda" href="help-us.ca.html">Presteu la vostra ajuda</a></li>
+    <li><a id="toc-Patrocini" href="sponsoring.ca.html">Patrocini</a></li>
+    <li><a id="toc-Desenvolupament" href="development.ca.html">Desenvolupament</a></li>
+    <li><a id="toc-GSoC-2012" href="gsoc-2012.ca.html">GSoC 2012</a></li>
+    <li><a id="toc-Autors" href="authors.ca.html">Autors</a></li>
+    <li><a id="toc-Publicacions" href="publications.ca.html">Publicacions</a></li>
+    <li><a id="toc-Noticies-antigues" href="news.ca.html">Notícies antigues</a></li>
+    <li><a id="toc-Golfes" href="attic.ca.html">Golfes</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 9d074d78d7c25852afa87005e21c118630f4f83b
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca a Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

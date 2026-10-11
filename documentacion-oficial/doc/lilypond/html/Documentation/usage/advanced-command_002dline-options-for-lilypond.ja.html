@@ -1,0 +1,579 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1999-2026 by the authors.
+
+GNU フリー文書利用許諾契約書バージョン 1.1 またはフリー ソフトウェア財団によって発行されたその後のバージョンの約定に従う限り、このドキュメントを複製、変更する許可を与えます。変更不可部分はありません。この利用許諾契約書のコピーは「GNU フリー文書利用許諾契約書」という章に含まれています。 -->
+<title>LilyPond の高度なコマンド ライン オプション (GNU LilyPond &ndash; アプリケーション使用方法)</title>
+
+<meta name="description" content="LilyPond の高度なコマンド ライン オプション (GNU LilyPond &ndash; アプリケーション使用方法)">
+<meta name="keywords" content="LilyPond の高度なコマンド ライン オプション (GNU LilyPond &ndash; アプリケーション使用方法)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ja.html" rel="start" title="LilyPond &mdash; 使用方法">
+<link href="index-of-commands-and-concepts.ja.html" rel="index" title="Appendix B インデックス">
+<link href="usage_toc.ja.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="command_002dline-usage.ja.html" rel="up" title="1.2 コマンド ラインの使用方法">
+<link href="environment-variables.ja.html" rel="next" title="環境変数">
+<link href="basic-command_002dline-options-for-lilypond.ja.html" rel="prev" title="LilyPond の基本的なコマンド ライン オプション">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="ja" class="usage">
+<div id="main">
+<div class="unnumberedsubsec" id="advanced-command_002dline-options-for-lilypond">
+<table class="nav_table">
+<tr><td align="left">[<a href="running-lilypond.ja.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; <code>lilypond</code> を実行する </a>]</td><td align="center">[<a href="index.ja.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.ja.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ja.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="updating-files-with-convert_002dly.ja.html" title="Next chapter"> <code>convert-ly</code> を使ってファイルを更新する &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="basic-command_002dline-options-for-lilypond.ja.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; LilyPond の基本的なコマンド ライン オプション </a>]</td><td align="center">[<a href="command_002dline-usage.ja.html" title="Up section" accesskey="u" rel="up">  Up: コマンド ラインの使用方法 </a>]</td><td align="right">[<a href="environment-variables.ja.html" title="Next section in reading order" accesskey="n" rel="next"> 環境変数 &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="LilyPond-noGao-Du-nakomando-rain-opusiyon"></span><h4 class="unnumberedsubsec">LilyPond の高度なコマンド ライン オプション</h4>
+
+<p>オプション <samp>-d</samp> は LilyPond の Scheme 関数 <code>ly:set-option</code>
+のコマンドラインインタフェースです。つまり、ここで示しているすべてのオプションは <samp>.ly</samp> ファイルの中で設定することが可能です。
+</p>
+<dl compact="compact">
+<dt><span><code>-d</code>, <code>--define-default=</code><var>option-name</var>[<code>=</code><var>value</var>]</span></dt>
+<dt><span><code>-d</code>, <code>--define-default=no-</code><var>option-name</var></span></dt>
+<dd><p>内部 Scheme シンボル <var>option-name</var> に <var>value</var>
+を設定するのと同じです。例えば、コマンドラインオプション
+</p>
+<div class="example">
+<pre class="example">-dbackend=svg
+</pre></div>
+
+<p>は LilyPond 入力ファイルに
+</p>
+<div class="example">
+<pre class="example">#(ly:set-option 'backend 'svg)
+</pre></div>
+
+<p>を書くことと同じです。
+</p>
+<p><var>value</var> が指定されない場合、 <code>#t</code>
+（真偽値以外を取る場合は、おかしな結果になるかもしれません）が使われます。<var>option-name</var> に接頭辞 <code>no-</code> を付けると、そのオプションは
+&lsquo;off&rsquo; つまり <code>#f</code> が使われます。例えば、
+</p>
+<span id="index-point-and-click_002c-command-line-_0028komando-raindepointo_0026kuritukuwoZhi-Ding-suru_0029"></span>
+
+<div class="example">
+<pre class="example">-dpoint-and-click='#f'
+</pre></div>
+
+<p>は
+</p><div class="example">
+<pre class="example">-dno-point-and-click
+</pre></div>
+<p>と同じです。
+</p></dd>
+</dl>
+
+<p>[&lsquo;<samp>#</samp>&rsquo;
+文字は多くのシェルでコメントの開始を意味することに注意してください。そのため、それを含む式は常にクォートすることをお勧めします。]
+</p>
+<p>次の表に、サポートされているすべてのオプション名と値を示します。Scheme コード内では、オプション値は関数 <code>ly:get-option</code> で読み取ることができます。
+</p>
+<dl compact="compact">
+<dt><span><code>anti-alias-factor</code> <var>num</var></span></dt>
+<dd><p>(与えられた因数 <var>num</var> を用いて) 高解像度で描画して、その結果をスケールダウンすることにより、<code>PNG</code> 画像の輪郭がギザギザになることを防ぎます。デフォルト: <code>1.0</code>。
+</p>
+</dd>
+<dt><span><code>aux-files</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> ならば、
+<code>eps</code> バックエンドオプションを使っているときに
+<samp>.tex</samp>, <samp>.texi</samp>, と <samp>.count</samp> ファイルを生成します。デフォルト: <code>#t</code>。
+</p>
+</dd>
+<dt><span><code>backend</code> <var>symbol</var></span></dt>
+<dd><p><var>symbol</var> を LilyPond 出力のバックエンドとして使用します。
+選択肢は：
+</p>
+<dl compact="compact">
+<dt><span><code>ps</code></span></dt>
+<dd><p>こればデフォルトです。
+Postscript ファイルは<code>TTF</code>, <code>Type1</code>, それに <code>OTF</code> フォントを埋め込みます。フォントのサブセットは作成されません。日本語のような &lsquo;東洋&rsquo; の文字セットを用いるとファイルが非常に大きくなる可能性があることに注意してください。
+</p>
+<p>PDF 出力には <code>ps</code> バックエンドが使われます。出力された PS データは Ghostscript の <code>ps2pdf</code> で後処理され、デフォルトでフォントのサブセットが作成されます。
+</p>
+</dd>
+<dt><span><code>eps</code></span></dt>
+<dd><p><code>lilypond-book</code> コマンドのデフォルトです。これは、1 つのファイルにすべてのページとフォントを埋め込んだものと、ページ毎に分離しフォントを埋め込まない eps ファイルの、両方を吐き出します。
+</p>
+</dd>
+<dt><span><code>svg</code></span></dt>
+<dd><p>ページ毎の SVG (Scalable Vector Graphics) ファイルが全ページ分作られます。音楽グリフはベクタ画像に変換されますが、文字フォントは SVG ファイルには<em>埋め込まれません</em>。
+そのため、テキストや歌詞の最適な描画を得るためには、SVG ビュアーに関連するテキストフォントが必要となります。SVG ビュアーが対応していないことがあるので、&lsquo;フォントリスト&rsquo; や &lsquo;フォントエイリアス&rsquo; を使用しないことをお勧めします。<em>Web Open Font Format</em> (WOFF) ファイルを使うときには、追加の <code>-dsvg-woff</code> スイッチが必要となります。
+</p>
+</dd>
+</dl>
+
+</dd>
+<dt><span><code>clip-systems</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、楽譜から断片を取り出します。これを使用するには、
+<code>\layout</code> ブロックに <code>clip-regions</code> 関数が定義されている必要があります。<a href="../notation/extracting-fragments-of-music.ja.html">音楽の断片を抽出する</a>を参照してください。
+<samp>-dno-print-pages</samp> と一緒に用いられた場合、断片は全く出力されません。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>crop</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、すべての楽譜とヘッダをマージンなしの &lsquo;単一ページ&rsquo; 出力に合わせます。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>datadir</code></span></dt>
+<dd><p>データファイル パスの接頭辞です。読み取り専用で、設定しても効果がありません。
+</p>
+</dd>
+<dt><span><code>debug-skylines</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、スカイライン (訳注: 行ごとのオブジェクトの最高位置と最低位置を線で表示するもの) を表示します。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>delete-intermediate-files</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、コンパイルの途中で作成される使用しない中間ファイル <samp>.ps</samp> を削除します。デフォルト: <code>#t</code>。
+</p>
+</dd>
+<dt><span><code>embed-source-code</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、出力される PDF ドキュメントに LilyPond ソースファイルを埋め込みます。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>eps-box-padding</code> <var>num</var></span></dt>
+<dd><p>出力される EPS の左端に <var>num</var> mm の余白を追加します。デフォルト: <code>#f</code> （余白追加しないことを意味します）。
+</p>
+</dd>
+<dt><span><code>font-export-dir</code> <var>string</var></span></dt>
+<dd><p>PostScript ファイルとしてフォントをエクスポートするディレクトリを
+<var>string</var> に指定します。デフォルト: <code>#f</code> （カレントディレクトリを意味します）。
+これは、次に示すように、フォントを埋め込まずに PDF を作成し、後でフォントを Ghostscript で埋め込む場合に便利です。
+</p>
+<div class="example">
+<pre class="example">$ lilypond -dfont-export-dir=fontdir -dgs-never-embed-fonts foo.ly
+$ gs -q -dBATCH -dNOPAUSE -sDEVICE=pdfwrite \
+     -sOutputFile=foo.embedded.pdf foo.pdf fontdir/*.font.ps
+</pre></div>
+
+<p>注: <code>font-ps-resdir</code> とは異なり、このメソッドは Ghostscript 9.26 以降で CID フォントを埋め込むことはできません。
+</p>
+<p>注: <code>font-ps-resdir</code> と同様に、
+TrueType フォントを埋め込むと文字化けが発生するため、このオプションは TrueType フォントをスキップします。文字化けしないようにするには、<code>gs-never-embed-fonts</code> を使用します。これは、TrueType フォントをその名前に関係なく埋め込みます。
+</p>
+<p>デフォルト: <code>#f</code> (エクスポートしないことを意味します)。
+</p>
+</dd>
+<dt><span><code>font-ps-resdir</code> <var>string</var></span></dt>
+<dd><p>(<var>string</var> として) ディレクトリを設定して、後でフォントを埋め込むために使用する
+PostScript リソース ディレクトリのサブセットをビルドします。これは、次に示すように、フォントを埋め込まずに PDF を作成し、後でフォントを Ghostscript で埋め込む場合に便利です。
+</p>
+<div class="example">
+<pre class="example">$ lilypond -dfont-ps-resdir=resdir -dgs-never-embed-fonts foo.ly
+$ gs -q -dBATCH -dNOPAUSE -sDEVICE=pdfwrite \
+     -I resdir -I resdir/Font \
+     -sOutputFile=foo.embedded.pdf foo.pdf
+</pre></div>
+
+<p>注: Ghostscript の <code>-I</code> オプションで指定した場合、特別な意味があるため、
+<samp>Resource</samp> という名前を含むディレクトリは指定しない方がよいでしょう。
+</p>
+<p>注: <code>font-export-dir</code> とは異なり、このメソッドは Ghostscript 9.26 以降で CID フォントを埋め込むことができます。
+</p>
+<p>注: <code>font-export-dir</code> と同様に、
+TrueType フォントを埋め込むと文字化けが発生するため、このオプションは TrueType フォントをスキップします。文字化けしないようにするには、<code>gs-never-embed-fonts</code> を使用します。これは、TrueType フォントをその名前に関係なく埋め込みます。
+</p>
+<p>デフォルト: <code>#f</code> (ビルドしないことを意味します)。
+</p>
+</dd>
+<dt><span><code>gs-load-fonts</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、Ghostscript 経由でフォントを読み込みます。LilyPond 出力ファイルのフォントはすべて参照のみが含まれるようになり、
+Ghostscript による後処理で実際のフォントに解決する必要があります。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>gs-load-lily-fonts</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、LilyPond のフォントを Ghostscript 経由で読み込みます。LilyPond 出力ファイルの音楽フォントはすべて参照のみが含まれるようになり、
+Ghostscript による後処理で実際のフォントに解決する必要があります。他のすべてのフォントは通常通り出力されます。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>gs-never-embed-fonts</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、Ghostscript が TrueType フォントのみを埋め込むようになり、他のフォーマットのフォントは埋め込まれません。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>help</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、このヘルプを表示します。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>include-book-title-preview</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、プレビュー画像にブック タイトルを含めます。デフォルト: <code>#t</code>。
+</p>
+</dd>
+<dt><span><code>include-eps-fonts</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、システム毎の EPS ファイルにフォントを含めます。デフォルト: <code>#t</code>。
+</p>
+</dd>
+<dt><span><code>include-settings</code> <var>string</var></span></dt>
+<dd><p>グローバル設定のファイルとして <var>string</var>
+をインクルードします。このファイルは楽譜の処理が開始する前にインクルードされます。デフォルト: <code>#f</code> （グローバル設定ファイル無しを意味します）。
+</p>
+</dd>
+<dt><span><code>job-count</code> <var>num</var></span></dt>
+<dd><p><var>num</var> ジョブで、並列処理します。デフォルト: <code>#f</code> （並列処理無しを意味します）。
+</p>
+</dd>
+<dt><span><code>log-file</code> <var>string</var></span></dt>
+<dd><p>出力をログファイル <samp><var>string</var>.log</samp> にリダイレクトします。デフォルト: <code>#f</code> （ログファイル無しを意味します）。
+</p>
+</dd>
+<dt><span><code>max-markup-depth</code> <var>num</var></span></dt>
+<dd><p>マークアップ ツリーの階層の最大値を <var>num</var> に設定します。それよりも深い階層を持つマークアップがある場合、そのマークアップは終了していないと見なされて、警告が表示され、null マークアップが返されます。デフォルト: <code>1024</code>。
+</p>
+</dd>
+<dt><span><code>midi-extension</code> <var>string</var></span></dt>
+<dd><p>MIDI 出力ファイルのデフォルトのファイル拡張子を <samp>.<var>string</var></samp> に設定します。デフォルト: <code>&quot;midi&quot;</code>。
+</p>
+</dd>
+<dt><span><code>music-strings-to-paths</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、記譜フォントを用いるテキストをパスに変換します。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>paper-size</code> <var>extra-quoted-string</var></span></dt>
+<dd><p>デフォルトの紙面サイズを <var>extra-quoted-string</var> に設定します。文字列をエスケープ記号付の 2 重引用符で囲む必要があることに注意してください。デフォルト: <code>&quot;\&quot;a4\&quot;&quot;</code>。
+</p>
+</dd>
+<dt><span><code>pixmap-format</code> <var>symbol</var></span></dt>
+<dd><p>画像出力のための GhostScript の出力フォーマットを <var>symbol</var>
+に設定します。デフォルト: <code>png16m</code>。
+</p>
+</dd>
+<dt><span><code>point-and-click</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、PDF と SVG 出力に &lsquo;ポイント＆クリック&rsquo; リンクを付け加えます。<a href="point-and-click.ja.html">ポイント＆クリック</a> を参照してください。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>preview</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、通常の出力に加えてプレビュー画像を作成します。デフォルト: <code>#f</code>。
+</p>
+<p>このオプションはすべてのバックエンド
+(<code>pdf</code>, <code>png</code>, <code>ps</code>, <code>eps</code>, それに <code>svg</code>)
+でサポートされますが、<code>scm</code> ではサポートされません。入力ファイル名 <var>file</var> でバックエンド <var>format</var> を使った場合、出力ファイル名は <samp><var>file</var><code>.preview.</code><var>format</var></samp> で、タイトルと楽譜の最初の段を含みます。
+<code>\book</code> ブロックや <code>\bookpart</code> ブロックが使われている場合、<code>\book</code>, <code>\bookpart</code>, それに <code>\score</code> のタイトルが出力に譜刻され、<code>\paper</code> 変数 <code>print-all-headers</code> が <code>#t</code> にセットされている場合は各 <code>\score</code> ブロックの最初の段も譜刻されます。
+</p>
+<p>通常の出力を抑制するには、必要に応じて <samp>-dprint-pages</samp> オプションまたは <samp>-dno-print-pages</samp> オプションを使ってください。
+</p>
+</dd>
+<dt><span><code>print-pages</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、すべてのページを生成します。デフォルト: <code>#t</code>。
+</p>
+<p><samp>-dpreview</samp> や <samp>-dcrop</samp>
+を使う場合は <samp>-dno-print-pages</samp> を組み合わせると有用です。
+</p>
+</dd>
+<dt><span><code>protected-scheme-parsing</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、パーサでインライン Scheme のエラーが発生しても処理を続けます。<code>#f</code> に設定されている場合、エラー終了して、スタック トレースを表示します。デフォルト: <code>#t</code>。
+</p>
+</dd>
+<dt><span><code>relative-includes</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、<code>\include</code> コマンドを処理するとき、インクルードするファイルをカレント ファイルからの相対位置で検索します。<code>#f</code> なら、ルート ファイルからからの相対位置で検索します。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>resolution</code> <var>num</var></span></dt>
+<dd><p>生成する <code>PNG</code> 画像の解像度を <var>num</var> dpi に設定します。デフォルト: <code>101</code>。
+</p>
+</dd>
+<dt><span><code>safe</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、<samp>.ly</samp> 入力ファイルを信用しません。デフォルト: <code>#f</code>。
+</p>
+<p>Web サーバ経由で LilyPond 譜刻が利用可能な場合、<samp>--dsafe</samp>
+オプションか <samp>--jail</samp> オプションのどちらかを
+<b>指定する必要があります</b>。<samp>--dsafe</samp> オプションはインライン Scheme コードが無茶をする
+&ndash; 例えば、以下のような &ndash; ことを防ぎます。
+</p>
+<div class="example">
+<pre class="example">% 正しく書くのはあまりにも危険
+#(s ystem &quot;rm -rf /&quot;)
+% 破壊的ではないが悪意がある
+{ c4^$(ly:gulp-file &quot;/etc/passwd&quot;) }
+</pre></div>
+
+<p><samp>-dsafe</samp> オプションはインライン Scheme 表記を特別なセーフ
+モジュールの中で評価します。これは Guile の <samp>safe-r5rs</samp> モジュールに由来しますが、<samp>scm/safe-lily.scm</samp> でリスト アップされている LilyPond API 関数のいくつかも追加されています。
+</p>
+<p>さらに、セーフ モードでは <code>\include</code> は許可されず、TeX 文字列の中でバックスラッシュを使うこともできません。また、セーフ モードでは LilyPond 変数を Scheme にインポートすることもできません。
+</p>
+<p><samp>-dsafe</samp> はリソースの過使用を検出 <em>しません</em> ので、このオプションを指定してもプログラムをハングさせられる可能性があります
+&ndash; 例えば、サイクリック (巡回) データ構造をバックエンドに埋め込むことによってです。
+そのため、LilyPond を一般公開する Web サーバで使用する場合、プロセスのCPU とメモリ使用を制限すべきです。
+</p>
+<p>セーフ モードは多くの有用な LilyPond 楽譜断片がコンパイルされることを妨げます。
+</p>
+<p><samp>--jail</samp> はさらに安全な代替手段ですが、セットアップにかかる手間も増えます。<a href="basic-command_002dline-options-for-lilypond.ja.html">LilyPond の基本的なコマンド ライン オプション</a> を参照してください。
+</p>
+</dd>
+<dt><span><code>separate-log-files</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、入力ファイル <samp>file1.ly</samp>, <samp>file2.ly</samp>, &hellip; に対するログをファイル <samp>file1.log</samp>, <samp>file2.log</samp>, &hellip; に出力します。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>show-available-fonts</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、使用可能なフォント名をリスト アップします。加えて LilyPond は fontconfig の設定そのものを表示します。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>strip-output-dir</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、出力ファイル名を構築する時に入力ファイルのディレクトリを使用しません。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>strokeadjust</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、PostScript に線幅補正 (stroke adjustment) を強制します。このオプションは普通、PDF ファイルが PostScript 出力から生成されている場合に意味があります
+(線幅補正は、低解像度のビットマップ デバイスに対して自動的に有効になります)。このオプションを指定しない場合、PDF ビューアは典型的な解像度のスクリーンにおいて、一貫性の無い符幹の幅を出力しようとします。このオプションは印刷結果の品質には目立って影響せず、PDF のファイル サイズを大きく増加させます。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>svg-woff</code> <var>bool</var></span></dt>
+<dd><p>このオプションは <code>svg</code> バックエンドで Web Open Format (WOFF)
+フォントを使うために必要となります。<var>bool</var> が <code>#t</code> なら、ページ毎の SVG ファイルが全ページ分作られます。LilyPond 自身の音楽グリフを除き、フォントは埋め込まれません。そのため、テキストや歌詞の最適な描画を得るためには、SVG ビュアーにフォントが必要となります。SVG ビュアーが対応していないことがあるので、&lsquo;フォントエイリアス&rsquo; や &lsquo;フォントリスト&rsquo; を使用しないことをお勧めします。デフォルト: <code>#f</code>。
+</p>
+</dd>
+<dt><span><code>verbose</code></span></dt>
+<dd><p>饒舌レベル。これは読み込み専用のオプションで、設定しても効果はありません。
+</p>
+</dd>
+<dt><span><code>warning-as-error</code> <var>bool</var></span></dt>
+<dd><p><var>bool</var> が <code>#t</code> なら、すべての警告と &lsquo;プログラミング エラー&rsquo; をエラーに変更します。デフォルト: <code>#f</code>。
+</p>
+</dd>
+</dl>
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="running-lilypond.ja.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; <code>lilypond</code> を実行する </a>]</td><td align="center">[<a href="index.ja.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.ja.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ja.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="updating-files-with-convert_002dly.ja.html" title="Next chapter"> <code>convert-ly</code> を使ってファイルを更新する &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="basic-command_002dline-options-for-lilypond.ja.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; LilyPond の基本的なコマンド ライン オプション </a>]</td><td align="center">[<a href="command_002dline-usage.ja.html" title="Up section" accesskey="u" rel="up">  Up: コマンド ラインの使用方法 </a>]</td><td align="right">[<a href="environment-variables.ja.html" title="Next section in reading order" accesskey="n" rel="next"> 環境変数 &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="advanced-command_002dline-options-for-lilypond.html">English</a>, <a href="advanced-command_002dline-options-for-lilypond.ca.html">Català</a>, <a href="advanced-command_002dline-options-for-lilypond.de.html">Deutsch</a>, <a href="advanced-command_002dline-options-for-lilypond.es.html">Español</a>, <a href="advanced-command_002dline-options-for-lilypond.fr.html">Français</a>, <a href="advanced-command_002dline-options-for-lilypond.it.html">Italiano</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.ja.html" title="Documentation Index">
+    &lt;&lt; ドキュメント インデックスに戻る
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.ja.html#top" title="Cover (top) of document">
+    GNU LilyPond &ndash; アプリケーション使用方法  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li class="toc_current"><a id="toc-lilypond-woShi-Xing-suru" href="running-lilypond.ja.html">1 <code>lilypond</code> を実行する</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Tong-Chang-noShi-Yong-Fang-Fa-" href="normal-usage.ja.html">1.1 通常の使用方法</a></li>
+    <li class="toc_current"><a id="toc-komando-rainnoShi-Yong-Fang-Fa-" href="command_002dline-usage.ja.html">1.2 コマンド ラインの使用方法</a>
+    <ul class="no-bullet">
+      <li><a id="toc-lilypond-woHu-biChu-su" href="invoking-lilypond.ja.html"><code>lilypond</code> を呼び出す</a></li>
+      <li><a id="toc-LilyPond-noJi-Ben-De-nakomando-rain-opusiyon" href="basic-command_002dline-options-for-lilypond.ja.html">LilyPond の基本的なコマンド ライン オプション</a></li>
+      <li class="toc_current"><a id="toc-LilyPond-noGao-Du-nakomando-rain-opusiyon" href="advanced-command_002dline-options-for-lilypond.ja.html">LilyPond の高度なコマンド ライン オプション</a></li>
+      <li><a id="toc-Huan-Jing-Bian-Shu-" href="environment-variables.ja.html">環境変数</a></li>
+      <li><a id="toc-Zai-Pei-Zhi-" href="relocation.ja.html">再配置</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Zai-Pei-Zhi-huairu" href="relocation-files.ja.html">再配置ファイル</a></li>
+        <li><a id="toc-Zai-Pei-Zhi-arugorizumu" href="relocation-algorithm.ja.html">再配置アルゴリズム</a></li>
+      </ul></li>
+      <li><a id="toc-chroot-jail-Huan-Jing-de-LilyPond-woShi-Xing-suru" href="lilypond-in-chroot-jail.ja.html">chroot jail 環境で LilyPond を実行する</a></li>
+    </ul></li>
+    <li><a id="toc-era-metusezi" href="error-messages.ja.html">1.3 エラー メッセージ</a></li>
+    <li><a id="toc-YiBan-De-naera" href="common-errors.ja.html">1.4 一般的なエラー</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Le-Pu-gapezikarahamiChu-ru" href="music-runs-off-the-page.ja.html">楽譜がページからはみ出る</a></li>
+      <li><a id="toc-Yu-Ji-naPu-gaBiao-Shisareru" href="an-extra-staff-appears.ja.html">余計な譜が表示される</a></li>
+      <li><a id="toc-era-metusezi-Unbound-variable-_0025" href="error-message-unbound-variable-_0025.ja.html">エラー メッセージ Unbound variable %</a></li>
+      <li><a id="toc-era-metusezi-FT_005fGet_005fGlyph_005fName" href="error-message-ft_005fget_005fglyph_005fname.ja.html">エラー メッセージ FT_Get_Glyph_Name</a></li>
+      <li><a id="toc-Jing-Gao--staff-affinities-should-only-decrease" href="warning-staff-affinities-should-only-decrease.ja.html">警告 staff affinities should only decrease</a></li>
+      <li><a id="toc-era-metusezi-unexpected-_005cnew" href="error-message-unexpected-new.ja.html">エラー メッセージ unexpected <code>\new</code></a></li>
+      <li><a id="toc-Jing-Gao--this-voice-needs-a-_005cvoiceXx-or-_005cshiftXx-setting" href="warning-this-voice-needs-a-voicexx-or-shiftxx-setting.ja.html">警告 this voice needs a <code>\voiceXx</code> or <code>\shiftXx</code> setting</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-convert_002dly-woShi-tutehuairuwoGeng-Xin-suru" href="updating-files-with-convert_002dly.ja.html">2 <code>convert-ly</code> を使ってファイルを更新する</a>
+  <ul class="no-bullet">
+    <li><a id="toc-He-Gu-Gou-WenhaBian-Geng-sarerunoka_003f" href="why-does-the-syntax-change_003f.ja.html">2.1 何故構文は変更されるのか？</a></li>
+    <li><a id="toc-convert_002dly-woHu-biChu-su" href="invoking-convert_002dly.ja.html">2.2 <code>convert-ly</code> を呼び出す</a></li>
+    <li><a id="toc-convert_002dly-nokomando-rain-opusiyon" href="command-line-options-for-convert_002dly.ja.html">2.3 <code>convert-ly</code> のコマンド ライン オプション</a></li>
+    <li><a id="toc-convert_002dly-noWen-Ti-Dian-" href="problems-running-convert_002dly.ja.html">2.4 <code>convert-ly</code> の問題点</a></li>
+    <li><a id="toc-Shou-Dong-Bian-Huan-" href="manual-conversions.ja.html">2.5 手動変換</a></li>
+    <li><a id="toc-Fu-Shu-nobaziyonniDui-Ying-surukodowoShu-ku" href="writing-code-to-support-multiple-versions.ja.html">2.6 複数のバージョンに対応するコードを書く</a></li>
+  </ul></li>
+  <li><a id="toc-lilypond_002dbook-woShi-Xing-suru" href="lilypond_002dbook.ja.html">3 <code>lilypond-book</code> を実行する</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Yin-Le-XuenodokiyumentonoLi" href="an-example-of-a-musicological-document.ja.html">3.1 音楽学のドキュメントの例</a></li>
+    <li><a id="toc-Le-Pu-totekisutowoTong-He-suru" href="integrating-music-and-text.ja.html">3.2 楽譜とテキストを統合する</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LaTeX" href="latex.ja.html">3.2.1 LaTeX</a></li>
+      <li><a id="toc-Texinfo" href="texinfo.ja.html">3.2.2 Texinfo</a></li>
+      <li><a id="toc-HTML" href="html.ja.html">3.2.3 HTML</a></li>
+      <li><a id="toc-DocBook" href="docbook.ja.html">3.2.4 DocBook</a></li>
+    </ul></li>
+    <li><a id="toc-Le-Pu-Duan-Pian-opusiyon" href="music-fragment-options.ja.html">3.3 楽譜断片オプション</a></li>
+    <li><a id="toc-lilypond_002dbook-woHu-biChu-su" href="invoking-lilypond_002dbook.ja.html">3.4 <code>lilypond-book</code> を呼び出す</a></li>
+    <li><a id="toc-huairuKuo-Zhang-Zi-" href="filename-extensions.ja.html">3.5 ファイル拡張子</a></li>
+    <li><a id="toc-lilypond_002dbook-tenpureto" href="lilypond_002dbook-templates.ja.html">3.6 lilypond-book テンプレート</a></li>
+    <li><a id="toc-Mu-Ci-woGong-You-suru" href="sharing-the-table-of-contents.ja.html">3.7 目次を共有する</a></li>
+    <li><a id="toc-tekisutotoLe-Pu-woZu-miHe-waseruTa-noFang-Fa-" href="alternative-methods-of-mixing-text-and-music.ja.html">3.8 テキストと楽譜を組み合わせる他の方法</a></li>
+  </ul></li>
+  <li><a id="toc-Wai-Bu-puroguramu" href="external-programs.ja.html">4 外部プログラム</a>
+  <ul class="no-bullet">
+    <li><a id="toc-pointo_0026kurituku" href="point-and-click.ja.html">4.1 ポイント＆クリック</a>
+    <ul class="no-bullet">
+      <li><a id="toc-sisutemuwoShe-Ding-suru" href="configuring-the-system-for-point-and-click.ja.html">4.1.1 システムを設定する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Xpdf-woShi-Yong-suru" href="using-xpdf-for-point-and-click.ja.html">Xpdf を使用する</a></li>
+        <li><a id="toc-GNOME-2-woShi-Yong-suru" href="using-gnome-2-for-point-and-click.ja.html">GNOME 2 を使用する</a></li>
+        <li><a id="toc-GNOME-3-woShi-Yong-suru" href="using-gnome-3-for-point-and-click.ja.html">GNOME 3 を使用する</a></li>
+        <li><a id="toc-Evince-notamenoZhui-Jia-noShe-Ding-" href="extra-configuration-for-evince.ja.html">Evince のための追加の設定</a></li>
+      </ul></li>
+      <li><a id="toc-pointo_0026kuritukuwoYou-Xiao-nisuru" href="enabling-point-and-click.ja.html">ポイント＆クリックを有効にする</a></li>
+      <li><a id="toc-Xuan-Ze-De-napointo_0026kurituku" href="selective-point_002dand_002dclick.ja.html">選択的なポイント＆クリック</a></li>
+    </ul></li>
+    <li><a id="toc-tekisuto-edeita-sapoto" href="text-editor-support.ja.html">4.2 テキスト エディタ サポート</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Emacs-modo" href="emacs-mode.ja.html">Emacs モード</a></li>
+      <li><a id="toc-Vim-modo" href="vim-mode.ja.html">Vim モード</a></li>
+      <li><a id="toc-sonoTa-noedeita" href="other-editors.ja.html">その他のエディタ</a></li>
+    </ul></li>
+    <li><a id="toc-Ta-nohuomatutokaraBian-Huan-suru" href="converting-from-other-formats.ja.html">4.3 他のフォーマットから変換する</a>
+    <ul class="no-bullet">
+      <li><a id="toc-midi2ly-woHu-biChu-su" href="invoking-midi2ly.ja.html">4.3.1 <code>midi2ly</code> を呼び出す</a></li>
+      <li><a id="toc-musicxml2ly-woHu-biChu-su" href="invoking-musicxml2ly.ja.html">4.3.2 <code>musicxml2ly</code> を呼び出す</a></li>
+      <li><a id="toc-abc2ly-woHu-biChu-su" href="invoking-abc2ly.ja.html">4.3.3 <code>abc2ly</code> を呼び出す</a></li>
+      <li><a id="toc-etf2ly-woHu-biChu-su" href="invoking-etf2ly.ja.html">4.3.4 <code>etf2ly</code> を呼び出す</a></li>
+      <li><a id="toc-sonoTa-nohuomatuto" href="other-formats.ja.html">4.3.5 その他のフォーマット</a></li>
+    </ul></li>
+    <li><a id="toc-LilyPond-Chu-Li-woTa-nopuroguramudeShi-Yong-suru" href="lilypond-output-in-other-programs.ja.html">4.4 LilyPond 出力を他のプログラムで使用する</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LuaTeX" href="luatex.ja.html">4.4.1 LuaTeX</a></li>
+      <li><a id="toc-OpenOffice-to-LibreOffice" href="openoffice-and-libreoffice.ja.html">4.4.2 OpenOffice と LibreOffice</a></li>
+      <li><a id="toc-Ta-nopuroguramu" href="other-programs.ja.html">4.4.3 他のプログラム</a></li>
+    </ul></li>
+    <li><a id="toc-Du-Li-sita-include" href="independent-includes.ja.html">4.5 独立した <code>include</code></a>
+    <ul class="no-bullet">
+      <li><a id="toc-MIDI-ateikiyuresiyon" href="midi-articulation.ja.html">4.5.1 MIDI アーティキュレーション</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-LilyPond-Ru-Li-huairunoJi-Shu-niDui-suruTi-An-" href="suggestions-for-writing-files.ja.html">5 LilyPond 入力ファイルの記述に対する提案</a>
+  <ul class="no-bullet">
+    <li><a id="toc-YiBan-De-naTi-An-" href="general-suggestions.ja.html">5.1 一般的な提案</a></li>
+    <li><a id="toc-Ji-Cun-noYin-Le-woPu-Ke-suru" href="typesetting-existing-music.ja.html">5.2 既存の音楽を譜刻する</a></li>
+    <li><a id="toc-Da-kinapuroziekuto" href="large-projects.ja.html">5.3 大きなプロジェクト</a></li>
+    <li><a id="toc-toraburusiyuto" href="troubleshooting.ja.html">5.4 トラブルシュート</a></li>
+    <li><a id="toc-Make-to-Makefile" href="make-and-makefiles.ja.html">5.5 Make と Makefile</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.ja.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-indetukusu" href="index-of-commands-and-concepts.ja.html" rel="index">Appendix B インデックス</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 0cc270b871321ae5aa8622cea8d8262aafd16641
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google 検索">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="検索">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

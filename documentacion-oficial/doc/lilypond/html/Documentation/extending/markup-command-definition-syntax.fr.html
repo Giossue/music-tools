@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2004-2026 by par les auteurs.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+La traduction de la notice de droits d'auteur ci-dessous vise à
+faciliter sa compréhension par le lecteur non anglophone, mais seule la
+notice en anglais a valeur légale.
+
+Vous avez le droit de copier, distribuer et/ou modifier ce document
+selon les termes de la Licence GNU de documentation libre, version 1.1
+ou tout autre version ultérieure publiée par la Free Software
+Foundation, "sans aucune section invariante".
+
+Une copie de la licence est fournie à la section "Licence GNU de
+documentation libre".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>Syntaxe d&rsquo;une commande markup (GNU LilyPond &ndash; Extension des fonctionnalités)</title>
+
+<meta name="description" content="Syntaxe d&rsquo;une commande markup (GNU LilyPond &ndash; Extension des fonctionnalités)">
+<meta name="keywords" content="Syntaxe d&rsquo;une commande markup (GNU LilyPond &ndash; Extension des fonctionnalités)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.fr.html" rel="start" title="LilyPond &mdash; Extension des fonctionnalités">
+<link href="index-of-commands-and-concepts.fr.html" rel="index" title="Appendix B Index">
+<link href="extending_toc.fr.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="new-markup-command-definition.fr.html" rel="up" title="2.5.3 Définition d&rsquo;une nouvelle commande de markup">
+<link href="on-properties.fr.html" rel="next" title="Attribution de propriétés">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="fr" class="extending">
+<div id="main">
+<div class="unnumberedsubsubsec" id="markup-command-definition-syntax">
+<table class="nav_table">
+<tr><td align="left">[<a href="interfaces-for-programmers.fr.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Interfaces pour programmeurs </a>]</td><td align="center">[<a href="index.fr.html" title="Cover (top) of document" rel="start">Top</a>][<a href="extending_toc.fr.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.fr.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="lilypond-scheme-interfaces.fr.html" title="Next chapter"> Interfaces LilyPond Scheme &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="new-markup-command-definition.fr.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Définition d&rsquo;une nouvelle commande de <em>markup</em> </a>]</td><td align="center">[<a href="new-markup-command-definition.fr.html" title="Up section" accesskey="u" rel="up">  Up: Définition d&rsquo;une nouvelle commande de <em>markup</em> </a>]</td><td align="right">[<a href="on-properties.fr.html" title="Next section in reading order" accesskey="n" rel="next"> Attribution de propriétés &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Syntaxe-d_0027une-commande-markup"></span><h4 class="unnumberedsubsubsec">Syntaxe d&rsquo;une commande <em>markup</em></h4>
+
+<p>Une commande de <em>markup</em> personnalisée se définit à l&rsquo;aide de la
+macro Scheme <code>define-markup-command</code>, placée en tête de fichier.
+</p>
+<div class="example lisp">
+<pre class="lisp">(define-markup-command (<var>nom-commande</var> <var>layout</var> <var>props</var> <var>arg1</var> <var>arg2</var>&hellip;)
+    (<var>arg1-type?</var> <var>arg2-type?</var>&hellip;)
+    [ #:properties ((<var>propriété1</var> <var>valeur-par-défaut1</var>)
+                    &hellip;) ]
+    [ #:as-string <var>expression</var> ]
+  &hellip;corps de la commande&hellip;)
+</pre></div>
+
+<p>Quelques commentaires sur les arguments :
+</p>
+<dl compact="compact">
+<dt><span><code><var>nom-commande</var></code></span></dt>
+<dd><p>le nom que vous attribuez à votre commande de <em>markup</em>.
+</p></dd>
+<dt><span><code>layout</code></span></dt>
+<dd><p>la définition du « layout » &ndash; son formatage.
+</p></dd>
+<dt><span><code>props</code></span></dt>
+<dd><p>une liste de listes associatives, comprenant toutes les propriétés actives.
+</p></dd>
+<dt><span><code><var>argi</var></code></span></dt>
+<dd><p>le <var>ième</var> argument de la commande.
+</p></dd>
+<dt><span><code><var>argi-type?</var></code></span></dt>
+<dd><p>un type de prédicat pour le <var>ième</var> argument.
+</p></dd>
+</dl>
+
+<p>Si la commande utilise des propriétés à partir des arguments
+<code>props</code>, le mot-clé <code>#:properties</code> permet de spécifier ces
+différentes propriétés ainsi que leur valeur par défaut.
+</p>
+<p>Les arguments se distinguent selon leur type :
+</p><ul>
+<li> un <em>markup</em>, correspondant au type de prédicat
+<code>markup?</code> ;
+</li><li> une liste de <em>markups</em>, correspondant au type de prédicat
+<code>markup-list?</code> ;
+</li><li> tout autre objet Scheme, correspondant au types de prédicat tels
+que <code>list?</code>, <code>number?</code>, <code>boolean?</code>, etc.
+</li></ul>
+
+<p>Il n&rsquo;existe aucune restriction quant à l&rsquo;ordre des arguments fournis à
+la suite des arguments <code>layout</code> et <code>props</code>. Néanmoins, les
+fonctions <em>markup</em> qui ont en dernier argument un <em>markup</em> ont
+ceci de particulier qu&rsquo;elles peuvent s&rsquo;appliquer à des listes de
+<em>markups</em> ; ceci résultera en une liste de <em>markups</em> où tous
+les éléments de la liste originelle se verront appliquer cette fonction
+<em>markup</em> avec ses arguments de tête.
+</p>
+<p>La réplication des arguments de tête dans le but d&rsquo;appliquer une
+fonction <em>markup</em> à une liste de markups est économique,
+principalement lorsqu&rsquo;il s&rsquo;agit d&rsquo;arguments Scheme. Vous éviterez ainsi
+d&rsquo;éventuelles pertes de performance en utilisant des arguments Scheme en
+tant qu&rsquo;arguments principaux d&rsquo;une fonction <em>markup</em> dont le
+dernier argument est un <em>markup</em>.
+</p>
+<span id="index-markup-macro"></span>
+<span id="index-macro-de-markup"></span>
+<span id="index-_005cmarkup"></span>
+<span id="index-interpret_002dmarkup"></span>
+
+<p>Les commandes de <em>markup</em> ont un cycle de vie relativement
+complexe. Le corps de la définition d&rsquo;une commande de <em>markup</em> est
+chargé de convertir les arguments de la commande en expression stencil
+qui sera alors renvoyée. Bien souvent, ceci s&rsquo;accomplit par un appel à
+la fonction <code>interpret-markup</code>, en lui passant les arguments
+<var>layout</var> et <var>props</var>. Ces arguments ne seront en principe connus
+que bien plus tardivement dans le processus typographique. Lors de
+l&rsquo;expansion d&rsquo;une expression LilyPond <code>\markup</code> ou d&rsquo;une macro
+Scheme <code>markup</code>, les expressions <em>markup</em> auront déjà vu leurs
+composants assemblés en expressions <em>markup</em>. L&rsquo;évaluation et le
+contrôle du type des arguments à une commande de <em>markup</em>
+n&rsquo;interviennent qu&rsquo;au moment de l&rsquo;interprétation de <code>\markup</code> ou
+<code>markup</code>.
+</p>
+<p>Seule l&rsquo;application de <code>interpret-markup</code> sur une expression
+<em>markup</em> réalisera effectivement la conversion des expressions
+<em>markup</em> en stencil, au travers de l&rsquo;exécution du corps des
+fonctions <em>markup</em>.
+</p>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="interfaces-for-programmers.fr.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Interfaces pour programmeurs </a>]</td><td align="center">[<a href="index.fr.html" title="Cover (top) of document" rel="start">Top</a>][<a href="extending_toc.fr.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.fr.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="lilypond-scheme-interfaces.fr.html" title="Next chapter"> Interfaces LilyPond Scheme &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="new-markup-command-definition.fr.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Définition d&rsquo;une nouvelle commande de <em>markup</em> </a>]</td><td align="center">[<a href="new-markup-command-definition.fr.html" title="Up section" accesskey="u" rel="up">  Up: Définition d&rsquo;une nouvelle commande de <em>markup</em> </a>]</td><td align="right">[<a href="on-properties.fr.html" title="Next section in reading order" accesskey="n" rel="next"> Attribution de propriétés &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="markup-command-definition-syntax.html">English</a>, <a href="markup-command-definition-syntax.ca.html">Català</a>, <a href="markup-command-definition-syntax.de.html">Deutsch</a>, <a href="markup-command-definition-syntax.es.html">Español</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.fr.html" title="Documentation Index">
+    &lt;&lt; Retour à l'accueil de la documentation
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.fr.html#top" title="Cover (top) of document">
+    GNU LilyPond &ndash; Extension des fonctionnalités  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Tutoriel-Scheme" href="scheme-tutorial.fr.html">1 Tutoriel Scheme</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Introduction-a-Scheme" href="introduction-to-scheme.fr.html">1.1 Introduction à Scheme</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Le-bac-a-sable-de-Scheme" href="scheme-sandbox.fr.html">1.1.1 Le bac à sable de Scheme</a></li>
+      <li><a id="toc-Scheme-et-les-variables" href="scheme-variables.fr.html">1.1.2 Scheme et les variables</a></li>
+      <li><a id="toc-Types-de-donnees-Scheme-simples" href="scheme-simple-data-types.fr.html">1.1.3 Types de données Scheme simples</a></li>
+      <li><a id="toc-Types-de-donnees-Scheme-composites" href="scheme-compound-data-types.fr.html">1.1.4 Types de données Scheme composites</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Paires" href="pairs.fr.html">Paires</a></li>
+        <li><a id="toc-Listes" href="lists.fr.html">Listes</a></li>
+        <li><a id="toc-Listes-associatives-_0028alists_0029" href="association-lists-_0028alists_0029.fr.html">Listes associatives (alists)</a></li>
+        <li><a id="toc-Tables-de-hachage" href="hash-tables.fr.html">Tables de hachage</a></li>
+      </ul></li>
+      <li><a id="toc-Scheme-et-les-calculs" href="calculations-in-scheme.fr.html">1.1.5 Scheme et les calculs</a></li>
+      <li><a id="toc-Scheme-et-les-procedures" href="scheme-procedures.fr.html">1.1.6 Scheme et les procédures</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Definition-de-procedures" href="defining-procedures.fr.html">Définition de procédures</a></li>
+        <li><a id="toc-Predicats" href="predicates.fr.html">Prédicats</a></li>
+        <li><a id="toc-Valeurs-de-retour" href="return-values.fr.html">Valeurs de retour</a></li>
+      </ul></li>
+      <li><a id="toc-Scheme-et-les-conditions" href="scheme-conditionals.fr.html">1.1.7 Scheme et les conditions</a>
+      <ul class="no-bullet">
+        <li><a id="toc-if-1" href="if.fr.html">if</a></li>
+        <li><a id="toc-cond-1" href="cond.fr.html">cond</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Scheme-et-LilyPond" href="scheme-in-lilypond.fr.html">1.2 Scheme et LilyPond</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Syntaxe-Scheme-dans-LilyPond" href="lilypond-scheme-syntax.fr.html">1.2.1 Syntaxe Scheme dans LilyPond</a></li>
+      <li><a id="toc-Variables-LilyPond" href="lilypond-variables.fr.html">1.2.2 Variables LilyPond</a></li>
+      <li><a id="toc-Debogage-de-code-Scheme" href="debugging-scheme-code.fr.html">1.2.3 Débogage de code Scheme</a></li>
+      <li><a id="toc-Saisie-de-variables-et-Scheme" href="input-variables-and-scheme.fr.html">1.2.4 Saisie de variables et Scheme</a></li>
+      <li><a id="toc-Import-de-code-Scheme-dans-LilyPond" href="importing-scheme-in-lilypond.fr.html">1.2.5 Import de code Scheme dans LilyPond</a></li>
+      <li><a id="toc-Proprietes-des-objets" href="object-properties.fr.html">1.2.6 Propriétés des objets</a></li>
+      <li><a id="toc-Variables-LilyPond-composites" href="lilypond-compound-variables.fr.html">1.2.7 Variables LilyPond composites</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Decalages-_0028offsets_0029" href="offsets.fr.html">Décalages (<em>offsets</em>)</a></li>
+        <li><a id="toc-Fractions" href="fractions.fr.html">Fractions</a></li>
+        <li><a id="toc-Etendues-_0028extents_0029" href="extents.fr.html">Étendues (<em>extents</em>)</a></li>
+        <li><a id="toc-Propriete-en-alist" href="property-alists.fr.html">Propriété en <em>alist</em></a></li>
+        <li><a id="toc-Chaines-d_0027alist" href="alist-chains.fr.html">Chaînes d&rsquo;<em>alist</em></a></li>
+      </ul></li>
+      <li><a id="toc-Le-modele-de-boite-de-LilyPond" href="lilypond_0027s-box-model.fr.html">1.2.8 Le modèle de boîte de LilyPond</a></li>
+      <li><a id="toc-Representation-interne-de-la-musique" href="internal-music-representation.fr.html">1.2.9 Représentation interne de la musique</a></li>
+    </ul></li>
+    <li><a id="toc-Construction-de-fonctions-complexes" href="building-complicated-functions.fr.html">1.3 Construction de fonctions complexes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Premiere-approche-_0028exemple_0029" href="a-first-approach-_0028example_0029.fr.html">1.3.1 Première approche (exemple)</a></li>
+      <li><a id="toc-Affichage-d_0027expressions-musicales" href="displaying-music-expressions.fr.html">1.3.2 Affichage d&rsquo;expressions musicales</a></li>
+      <li><a id="toc-Proprietes-musicales" href="music-properties.fr.html">1.3.3 Propriétés musicales</a></li>
+      <li><a id="toc-Doublement-d_0027une-note-avec-liaison-_0028exemple_0029" href="doubling-a-note-with-slurs-_0028example_0029.fr.html">1.3.4 Doublement d&rsquo;une note avec liaison (exemple)</a></li>
+      <li><a id="toc-Ajout-d_0027articulation-a-des-notes-_0028exemple_0029" href="adding-articulation-to-notes-_0028example_0029.fr.html">1.3.5 Ajout d&rsquo;articulation à des notes (exemple)</a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Interfaces-pour-programmeurs" href="interfaces-for-programmers.fr.html">2 Interfaces pour programmeurs</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Blocs-de-code-LilyPond" href="lilypond-code-blocks.fr.html">2.1 Blocs de code LilyPond</a></li>
+    <li><a id="toc-Fonctions-Scheme" href="scheme-functions.fr.html">2.2 Fonctions Scheme</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Definition-de-fonctions-Scheme" href="scheme-function-definitions.fr.html">2.2.1 Définition de fonctions Scheme</a></li>
+      <li><a id="toc-Utilisation-de-fonctions-Scheme" href="scheme-function-usage.fr.html">2.2.2 Utilisation de fonctions Scheme</a></li>
+      <li><a id="toc-Fonctions-Scheme-fantomes" href="void-scheme-functions.fr.html">2.2.3 Fonctions Scheme fantômes</a></li>
+    </ul></li>
+    <li><a id="toc-Fonctions-musicales" href="music-functions.fr.html">2.3 Fonctions musicales</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Definition-de-fonctions-musicales" href="music-function-definitions.fr.html">2.3.1 Définition de fonctions musicales</a></li>
+      <li><a id="toc-Utilisation-de-fonctions-musicales" href="music-function-usage.fr.html">2.3.2 Utilisation de fonctions musicales</a></li>
+      <li><a id="toc-Fonctions-de-substitution-simple" href="simple-substitution-functions.fr.html">2.3.3 Fonctions de substitution simple</a></li>
+      <li><a id="toc-Fonctions-de-substitution-intermediaires" href="intermediate-substitution-functions.fr.html">2.3.4 Fonctions de substitution intermédiaires</a></li>
+      <li><a id="toc-De-l_0027usage-des-mathematiques-dans-les-fonctions" href="mathematics-in-functions.fr.html">2.3.5 De l&rsquo;usage des mathématiques dans les fonctions</a></li>
+      <li><a id="toc-Fonctions-depourvues-d_0027argument" href="functions-without-arguments.fr.html">2.3.6 Fonctions dépourvues d&rsquo;argument</a></li>
+      <li><a id="toc-Fonctions-musicales-fantomes" href="void-music-functions.fr.html">2.3.7 Fonctions musicales fantômes</a></li>
+    </ul></li>
+    <li><a id="toc-Fonctions-evenementielles" href="event-functions.fr.html">2.4 Fonctions événementielles</a></li>
+    <li class="toc_current"><a id="toc-Fonctions-pour-markups" href="markup-functions.fr.html">2.5 Fonctions pour <em>markups</em></a>
+    <ul class="no-bullet">
+      <li><a id="toc-Construction-d_0027un-markup-en-Scheme" href="markup-construction-in-scheme.fr.html">2.5.1 Construction d&rsquo;un <em>markup</em> en Scheme</a></li>
+      <li><a id="toc-Fonctionnement-interne-des-markups" href="how-markups-work-internally.fr.html">2.5.2 Fonctionnement interne des <em>markups</em></a></li>
+      <li class="toc_current"><a id="toc-Definition-d_0027une-nouvelle-commande-de-markup" href="new-markup-command-definition.fr.html">2.5.3 Définition d&rsquo;une nouvelle commande de <em>markup</em></a>
+      <ul class="no-bullet">
+        <li class="toc_current"><a id="toc-Syntaxe-d_0027une-commande-markup" href="markup-command-definition-syntax.fr.html">Syntaxe d&rsquo;une commande <em>markup</em></a></li>
+        <li><a id="toc-Attribution-de-proprietes" href="on-properties.fr.html">Attribution de propriétés</a></li>
+        <li><a id="toc-Exemple-commente" href="a-complete-example.fr.html">Exemple commenté</a></li>
+        <li><a id="toc-Adaptation-d_0027une-commande-incorporee" href="adapting-builtin-commands.fr.html">Adaptation d&rsquo;une commande incorporée</a></li>
+        <li><a id="toc-Conversion-de-markups-en-chaines" href="converting-markups-to-strings.fr.html">Conversion de <em>markups</em> en chaînes</a></li>
+      </ul></li>
+      <li><a id="toc-Definition-d_0027une-nouvelle-commande-de-liste-de-markups" href="new-markup-list-command-definition.fr.html">2.5.4 Définition d&rsquo;une nouvelle commande de liste de <em>markups</em></a></li>
+    </ul></li>
+    <li><a id="toc-Contextes-pour-programmeurs" href="contexts-for-programmers.fr.html">2.6 Contextes pour programmeurs</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Evaluation-d_0027un-contexte" href="context-evaluation.fr.html">2.6.1 Évaluation d&rsquo;un contexte</a></li>
+      <li><a id="toc-Application-d_0027une-fonction-a-tous-les-objets-de-mise-en-forme" href="running-a-function-on-all-layout-objects.fr.html">2.6.2 Application d&rsquo;une fonction à tous les objets de mise en forme</a></li>
+    </ul></li>
+    <li><a id="toc-Fonctions-de-rappel" href="callback-functions.fr.html">2.7 Fonctions de rappel</a></li>
+    <li><a id="toc-Conteneurs-requalifiants" href="unpure_002dpure-containers.fr.html">2.8 Conteneurs requalifiants</a></li>
+    <li><a id="toc-Retouches-complexes" href="difficult-tweaks.fr.html">2.9 Retouches complexes</a></li>
+  </ul></li>
+  <li><a id="toc-Interfaces-LilyPond-Scheme" href="lilypond-scheme-interfaces.fr.html">3 Interfaces LilyPond Scheme</a></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.fr.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Index" href="index-of-commands-and-concepts.fr.html" rel="index">Appendix B Index</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 5b32cd8c0c41b63b0a07ea8bbf2060496397a368
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Recherche sur Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Rechercher">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

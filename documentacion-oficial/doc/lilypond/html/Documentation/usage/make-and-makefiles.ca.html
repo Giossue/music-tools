@@ -1,0 +1,650 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1999-2026 pels autors.
+
+La traducció de la següent nota de copyright s'ofereix com a
+cortesia per a les persones de parla no anglesa, però únicament la
+nota en anglès té validesa legal.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+S'atorga permís per copiar, distribuir i/o modificar aquest
+document sota els termes de la Llicència de Documentació Lliure de
+GNU, versió 1.1 o qualsevol posterior publicada per la Free
+Software Foundation; sense cap de les seccions invariants.
+S'inclou una còpia d'aquesta llicència dins de la secció titulada
+"Llicència de Documentació Lliure de GNU".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>5.5 Make i els Makefiles (LilyPond: manual d&rsquo;utilització del programa)</title>
+
+<meta name="description" content="5.5 Make i els Makefiles (LilyPond: manual d&rsquo;utilització del programa)">
+<meta name="keywords" content="5.5 Make i els Makefiles (LilyPond: manual d&rsquo;utilització del programa)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ca.html" rel="start" title="LilyPond &mdash; Utilització">
+<link href="index-of-commands-and-concepts.ca.html" rel="index" title="Appendix B Índex">
+<link href="usage_toc.ca.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="suggestions-for-writing-files.ca.html" rel="up" title="5 Suggeriments per escriure fitxers d&rsquo;entrada">
+<link href="troubleshooting.ca.html" rel="prev" title="5.4 Solució de problemes">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="ca" class="usage">
+<div id="main">
+<div class="section" id="make-and-makefiles">
+<table class="nav_table">
+<tr><td align="left">[<a href="suggestions-for-writing-files.ca.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Suggeriments per escriure fitxers d&rsquo;entrada </a>]</td><td align="center">[<a href="index.ca.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.ca.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ca.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="gnu-free-documentation-license.ca.html" title="Next chapter"> GNU Free Documentation License &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="troubleshooting.ca.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Solució de problemes </a>]</td><td align="center">[<a href="suggestions-for-writing-files.ca.html" title="Up section" accesskey="u" rel="up">  Up: Suggeriments per escriure fitxers d&rsquo;entrada </a>]</td><td align="right">[<a href="gnu-free-documentation-license.ca.html" title="Next section in reading order" accesskey="n" rel="next"> GNU Free Documentation License &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Make-i-els-Makefiles"></span><h3 class="section">5.5 Make i els Makefiles</h3>
+
+<span id="index-make_002c-fitxers-de"></span>
+<span id="index-make"></span>
+
+<p>Possiblement totes les plataformes on pot executar-se el LilyPond
+contemplen una possibilitat de programari anomenada <code>make</code>.
+Aquest programa llegeix un fitxer especial anomenat
+<code>Makefile</code> que defineix les relacions de dependència entre
+els fitxers i quines instruccions necessitem donar al sistema
+operatiu per produir un fitxer a partir d&rsquo;un altre.  Per exemple,
+el fitxer de make detallaria com obtenir
+<samp>balada.pdf</samp> i <samp>balada.midi</samp> a partir de <samp>balada.ly</samp>
+mitjançant l&rsquo;execució del LilyPond.
+</p>
+<p>Hi ha ocasions en les quals és una bona idea crear un
+<code>Makefile</code> per al nostre projecte, bé sigui per la nostra
+pròpia comoditat o com a cortesia per a altres que possiblement
+tinguin accés als nostres fitxers font.  Això és cert per a
+projectes molt grans amb molts fitxers d&rsquo;inclusió i diferents
+opcions de sortida (per exemple partitura completa, particel·les,
+partitura del director, reducció per a piano, etc.), o per a
+projectes que requereixen ordres difícils per muntar-los (com els
+projectes de <code>lilypond-book</code>). La complexitat i flexibilitat
+dels Mekfiles varia enormement segons les necessitats i
+l&rsquo;habilitat dels autors.  El programa GNU Make ve instal·lat a les
+distribucions del GNU/Linux i al MacOS X, i també existeix per al
+Windows.
+</p>
+<p>Consulteu el <strong>Manual de GNU Make</strong> per veure tots els
+detalls sobre l&rsquo;ús de <code>make</code>, atès que el segueix a
+continuació ofereix sols una pinzellada de tot els és capaç de fer.
+</p>
+<p>Les instruccions que defineixen les regles a un fitxer de make
+difereixen en funció de la plataforma; per exemple, les diferents
+formes del GNU/Linux i del MacOS usen <code>bash</code>, mentre que el Windows
+usa <code>cmd</code>.  Observeu que al MacOS C, hem de configurar el
+sistema perquè faci servir l&rsquo;interpret d&rsquo;ordres.  A continuació
+presentem alguns makefiles d&rsquo;exemple, amb versions tant per al
+GNU/Linux/MacOS com per al Windows.
+</p>
+<p>El primer exemple és per a una obra orquestral en quatre moviments
+amb l&rsquo;estructura de directoris següent:
+</p>
+<div class="example">
+<pre class="example">Sinfonia/
+|-- MIDI/
+|-- Makefile
+|-- Notes/
+|   |-- cello.ily
+|   |-- xifres.ily
+|   |-- trompa.ily
+|   |-- oboe.ily
+|   |-- trioCordes.ily
+|   |-- viola.ily
+|   |-- violiU.ily
+|   `-- violiDos.ily
+|-- PDF/
+|-- Particelles/
+|   |-- sinfonia-cello.ly
+|   |-- sinfonia-trompa.ly
+|   |-- sinfonia-oboes.ly
+|   |-- sinfonia-viola.ly
+|   |-- sinfonia-violiU.ly
+|   `-- sinfonia-violiDos.ly
+|-- Partitures/
+|   |-- sinfonia.ly
+|   |-- sinfoniaI.ly
+|   |-- sinfoniaII.ly
+|   |-- sinfoniaIII.ly
+|   `-- sinfoniaIV.ly
+`-- sinfoniaDefs.ily
+</pre></div>
+
+<p>Els fitxers <samp>.ly</samp> dels directoris <code>Partitures</code> i
+<code>Particelles</code> obtenen les notes de fitxers <samp>.ily</samp> que estan al
+directori <code>Notes</code>:
+</p>
+<div class="example">
+<pre class="example">%%% principi del fitxer &quot;sinfonia-cello.ly&quot;
+\include ../definicionsSinf.ily
+\include ../Notes/cello.ily
+</pre></div>
+
+<p>El makefile tindrà els objectius de <code>partitura</code> (la peça
+completa en tot el seu esplendor), <code>moviments</code> (partitura
+completa dels moviments individuals) i <code>particel·les</code> (parts
+individuals per als faristols). També hi ha un objectiu
+<code>fitxer</code> que produeix un fitxer tar de distribució (tarball)
+dels fitxers font, adequat per compartir-lo a través de la web o
+per correu electrònic.   A continuació presentem el makefile per a
+GNU/Linux o MacOS C.  S&rsquo;ha de desar amb el nom exacte
+<code>Makefile</code> al directori superior del projecte:
+</p>
+<div class="warning">
+<p><strong>Nota:</strong> Quan es defineix un objectiu o una regla de patró, les
+línies següents han de començar amb tabuladors, no amb espais.
+</p>
+</div>
+
+<div class="example">
+<pre class="example"># nom principal dels fitxers de sortida
+nom = sinfonia
+# determinació del nombre de processadors
+CPU_CORES=`cat /proc/cpuinfo | grep -m1 &quot;cpu cores&quot; | sed s/&quot;.*: &quot;//`
+# L'ordre per executar el LilyPond
+LILY_CMD = lilypond -ddelete-intermediate-files \
+                    -dno-point-and-click -djob-count=$(CPU_CORES)
+
+# Els sufixos utilitzats a aquest Makefile.
+.SUFFIXES: .ly .ily .pdf .midi
+
+# Els fitxers d'entrada i de sortida es busquen dins dels directoris relacionats a
+# la variable VPATH.  Tots ells són subdirectoris del directori
+# en curs (donat per la variable de GNU make `CURDIR').
+VPATH = \
+  $(CURDIR)/Partitures \
+  $(CURDIR)/PDF \
+  $(CURDIR)/Particelles \
+  $(CURDIR)/Notes
+
+# La regla de patró per crear fitxers PDF i MIDI a partir fitxers d'entrada LY
+# Els fitxers de sortida .pdf es col·loquen al subdirectori `PDF', i els fitxers
+# .midi van al subdirectori `MIDI'.
+%.pdf %.midi: %.ly
+        $(LILY_CMD) $&lt;; \           # Aquesta línia comença amb un salt de tabulació
+        if test -f &quot;$*.pdf&quot;; then \
+            mv &quot;$*.pdf&quot; PDF/; \
+        fi; \
+        if test -f &quot;$*.midi&quot;; then \
+            mv &quot;$*.midi&quot; MIDI/; \
+        fi
+
+notes = \
+  cello.ily \
+  trompa.ily \
+  oboe.ily \
+  viola.ily \
+  violiU.ily \
+  violiDos.ily
+
+# Dependències dels moviments
+$(nom)I.pdf: $(nom)I.ly $(notes)
+$(nom)II.pdf: $(nom)II.ly $(notes)
+$(nom)III.pdf: $(nom)III.ly $(notes)
+$(nom)IV.pdf: $(nom)IV.ly $(notes)
+
+# Dependències de la partitura completa.
+$(nom).pdf: $(nom).ly $(notes)
+
+# Dependències de les particel·les.
+$(nom)-cello.pdf: $(nom)-cello.ly cello.ily
+$(nom)-trompa.pdf: $(nom)-trompa.ly trompa.ily
+$(nom)-oboes.pdf: $(nom)-oboes.ly oboe.ily
+$(nom)-viola.pdf: $(nom)-viola.ly viola.ily
+$(nom)-violiU.pdf: $(nom)-violiU.ly violiU.ily
+$(nom)-violiDos.pdf: $(nom)-violiDos.ly violiDos.ily
+
+# Teclegeu `make partitura' per generar la partitura completa dels quatre
+# moviments com un fitxer únic.
+.PHONY: partitura
+partitura: $(nom).pdf
+
+# Teclegeu `make particelles' per generar totes les particel·les
+# Teclegeu `make pepet.pdf' per generar la particel·la de
+# l'instrument `pepet'.
+
+# Exemple: `make sinfonia-cello.pdf'.
+.PHONY: particellas
+particellas: $(nom)-cello.pdf \
+       $(nom)-violinUno.pdf \
+       $(nom)-violinDos.pdf \
+       $(nom)-viola.pdf \
+       $(nom)-oboes.pdf \
+       $(nom)-trompa.pdf
+
+# Teclegeu `make moviments' per generar els fitxers dels
+# quatre moviments de forma separada.
+.PHONY: moviments
+moviments: $(nom)I.pdf \
+           $(nom)II.pdf \
+           $(nom)III.pdf \
+           $(nom)IV.pdf
+
+all: partitura particelles moviments
+
+fitxer:
+        tar -cvvf stamitz.tar \       # aquesta línia comença amb un salt de tabulació
+        --exclude=*pdf --exclude=*~ \
+        --exclude=*midi --exclude=*.tar \
+        ../Stamitz/*
+</pre></div>
+
+<p>A la plataforma Windows hi ha certes complicacions.  Després de
+descarregar i instal·lar el programa GNU Make per al Windows,
+haurem de configurar la ruta adequada a las variables d&rsquo;entorn del
+sistema de que l&rsquo;intèrpret d&rsquo;ordres del DOS pugui trobar el
+programa Make.  Per fer-lo, polseu amb el botó dret sobre &quot;El meu
+ordinador&quot;, escolliu <code>Propietats</code> i <code>Avançades</code>. Polseu
+sobre <code>Variables d'entorn</code>, i després a la pestanya
+<code>Variables del sistema</code>, seleccioneu <code>Ruta</code>, polseu
+sobre <code>edita</code>  i afegiu la ruta al fitxer executable de GNU
+Make, amb la qual cosa quedarà quelcom semblant al següent:
+</p>
+<div class="example">
+<pre class="example">C:\Fitxers de programa\GnuWin32\bin
+</pre></div>
+
+<p>El makefile en si s&rsquo;ha de modificar perquè gestioni diverses
+instruccions de l&rsquo;intèrpret d&rsquo;ordres i perquè pugui tractar amb
+els espais que apareixen al nom d&rsquo;alguns directoris del sistema
+predeterminats.  L&rsquo;objectiu <code>fitxer</code> s&rsquo;elimina perquè el
+Windows no té l&rsquo;ordre <code>tar</code>, i el Windows a més té una
+extensió predeterminada diferent per als fitxers MIDI.
+</p>
+<div class="example">
+<pre class="example">## VERSIÓ PER AL WINDOWS
+##
+nom = sinfonia
+LILY_CMD = lilypond -ddelete-intermediate-files \
+                    -dno-point-and-click \
+                    -djob-count=$(NUMBER_OF_PROCESSORS)
+
+#obtenció del nom 8.3 de CURDIR (truc per als espais a PATH)
+workdir = $(shell for /f &quot;tokens=*&quot; %%b in (&quot;$(CURDIR)&quot;) \
+          do @echo %%~sb)
+
+.SUFFIXES: .ly .ily .pdf .mid
+
+VPATH = \
+  $(workdir)/Partitures \
+  $(workdir)/PDF \
+  $(workdir)/Particelles \
+  $(workdir)/Notes
+
+%.pdf %.mid: %.ly
+        $(LILY_CMD) $&lt;      # aquesta línia comença amb un salt de tabulació
+        if exist &quot;$*.pdf&quot;  move /Y &quot;$*.pdf&quot;  PDF/ # començament amb tab
+        if exist &quot;$*.mid&quot; move /Y &quot;$*.mid&quot; MIDI/  # començament amb tab
+
+notes = \
+  cello.ily \
+  xifres.ily \
+  trompa.ily \
+  oboe.ily \
+  trioCordes.ily \
+  viola.ily \
+  violiU.ily \
+  violiDos.ily
+
+$(nom)I.pdf: $(nom)I.ly $(notes)
+$(nom)II.pdf: $(nom)II.ly $(notes)
+$(nom)III.pdf: $(nom)III.ly $(notes)
+$(nom)IV.pdf: $(nom)IV.ly $(notes)
+
+$(nom).pdf: $(nom).ly $(notes)
+
+$(nom)-cello.pdf: $(nom)-cello.ly cello.ily
+$(nom)-trompa.pdf: $(nom)-trompa.ly trompa.ily
+$(nom)-oboes.pdf: $(nom)-oboes.ly oboe.ily
+$(nom)-viola.pdf: $(nom)-viola.ly viola.ily
+$(nom)-violiU.pdf: $(nom)-violiU.ly violiU.ily
+$(nom)-violiDos.pdf: $(nom)-violiDos.ly violiDos.ily
+
+.PHONY: partitura
+partitura: $(nom).pdf
+
+.PHONY: particelles
+particelles: $(nom)-cello.pdf \
+       $(nom)-violiU.pdf \
+       $(nom)-violiDos.pdf \
+       $(nom)-viola.pdf \
+       $(nom)-oboes.pdf \
+       $(nom)-trompa.pdf
+
+.PHONY: moviments
+moviments: $(nom)I.pdf \
+           $(nom)II.pdf \
+           $(nom)III.pdf \
+           $(nom)IV.pdf
+
+all: partitura particelles moviments
+</pre></div>
+
+<p>El Makefile següent és per a un document de
+<code>lilypond-book</code> fet en LaTeX.  Aquest projecte té un
+índex, que requereix executar l&rsquo;ordre <code>latex</code> dues vegades
+per actualitzar els enllaços.  Tots els fitxers de sortida
+s&rsquo;emmagatzemen al directori <code>sortida</code> per als documents .pdf
+i al directori <code>sortidahtml</code> per a la sortida en format html.
+</p>
+<div class="example">
+<pre class="example">SHELL=/bin/sh
+NOM=elmeuprojecte
+DIR_SORTIDA=sortida
+DIR_WEB=sortidahtml
+VISUALITZADOR=acroread
+NAVEGADOR=firefox
+LILYBOOK_PDF=lilypond-book --output=$(DIR_SORTIDA) --pdf $(NOM).lytex
+LILYBOOK_HTML=lilypond-book --output=$(DIR_WEB) $(NOM).lytex
+PDF=cd $(DIR_SORTIDA) &amp;&amp; pdflatex $(NOM)
+HTML=cd $(DIR_WEB) &amp;&amp; latex2html $(NOM)
+INDEX=cd $(DIR_SORTIDA) &amp;&amp; makeindex $(NOM)
+VISTA_PREVIA=$(VISUALITZADOR) $(DIR_SORTIDA)/$(NOM).pdf &amp;
+
+all: pdf web desar
+
+pdf:
+        $(LILYBOOK_PDF)  # comença amb un tab
+        $(PDF)           # comença amb un tab
+        $(INDEX)        # comença amb un tab
+        $(PDF)           # comença amb un tab
+        $(VISTA_PREVIA)  # comença amb un tab
+
+web:
+        $(LILYBOOK_HTML) # comença amb un tab
+        $(HTML)          # comença amb un tab
+        cp -R $(DIR_WEB)/$(NOM)/ ./  #
+        $(NAVEGADOR) $(NOM)/$(NOM).html &amp;  # comença amb un tab
+
+desar: pdf
+        cp $(DIR_SORTIDA)/$(NOM).pdf $(NOM).pdf  # comença amb un tab
+
+clean:
+        rm -rf $(DIR_SORTIDA) # comença amb un tab
+
+web-clean:
+        rm -rf $(DIR_WEB) # comença amb un tab
+
+fitxer:
+        tar -cvvf elmeuprojecte.tar \ # comença amb un tab
+        --exclude=sortida/* \
+        --exclude=sortidahtml/* \
+        --exclude=elmeuprojecte/* \
+        --exclude=*midi \
+        --exclude=*pdf \
+        --exclude=*~ \
+        ../ElMeuProjecte/*
+</pre></div>
+
+<p>PERFER: aconseguir que funcioni a windows
+</p>
+<p>El makefile anterior no funciona al Windows.  Una alternativa per
+als usuaris del Windows seria crear un fitxer de lots senzill que
+contingui les ordres de muntatge.  Això no segueix les
+dependències com ho fa un makefile, però almenys redueix el procés
+de construcció a una sola instrucció.  Deseu el codi següent com
+<code>muntatge.bat</code> o <code>muntatge.cmd</code>. El fitxer de lots
+es pot executar en la línia d&rsquo;ordres del DOS o simplement fent
+doble clic sobre la seva icona.
+</p>
+<div class="example">
+<pre class="example">lilypond-book --output=sortida --pdf elmeuprojecte.lytex
+cd sortida
+pdflatex elmeuprojecte
+makeindex elmeuprojecte
+pdflatex elmeuprojecte
+cd ..
+copy sortida\elmeuprojecte.pdf ElMeuProjecte.pdf
+</pre></div>
+
+
+<span id="Vegeu-tambe-1"></span><h4 class="subsubheading">Vegeu també</h4>
+<p>Manual d&rsquo;utilització del programa:
+<a href="command_002dline-usage.ca.html">Utilització des de la línia d&rsquo;ordres</a>,
+<a href="lilypond_002dbook.ca.html">Execució de <code>lilypond-book</code></a>
+</p>
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="suggestions-for-writing-files.ca.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Suggeriments per escriure fitxers d&rsquo;entrada </a>]</td><td align="center">[<a href="index.ca.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.ca.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ca.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="gnu-free-documentation-license.ca.html" title="Next chapter"> GNU Free Documentation License &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="troubleshooting.ca.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Solució de problemes </a>]</td><td align="center">[<a href="suggestions-for-writing-files.ca.html" title="Up section" accesskey="u" rel="up">  Up: Suggeriments per escriure fitxers d&rsquo;entrada </a>]</td><td align="right">[<a href="gnu-free-documentation-license.ca.html" title="Next section in reading order" accesskey="n" rel="next"> GNU Free Documentation License &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="make-and-makefiles.html">English</a>, <a href="make-and-makefiles.de.html">Deutsch</a>, <a href="make-and-makefiles.es.html">Español</a>, <a href="make-and-makefiles.fr.html">Français</a>, <a href="make-and-makefiles.it.html">Italiano</a>, <a href="make-and-makefiles.ja.html">日本語</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.ca.html" title="Documentation Index">
+    &lt;&lt; Torna a l'índex de la documentació
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.ca.html#top" title="Cover (top) of document">
+    LilyPond: manual d&rsquo;utilització del programa  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Execucio-del-LilyPond" href="running-lilypond.ca.html">1 Execució del LilyPond</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Utilitzacio-normal" href="normal-usage.ca.html">1.1 Utilització normal</a></li>
+    <li><a id="toc-Utilitzacio-des-de-la-linia-d_0027ordres" href="command_002dline-usage.ca.html">1.2 Utilització des de la línia d&rsquo;ordres</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Invocacio-del-lilypond" href="invoking-lilypond.ca.html">Invocació del <code>lilypond</code></a></li>
+      <li><a id="toc-Opcions-basiques-de-la-linia-d_0027ordres-per-al-LilyPond" href="basic-command_002dline-options-for-lilypond.ca.html">Opcions bàsiques de la línia d&rsquo;ordres per al LilyPond</a></li>
+      <li><a id="toc-Opcions-avancades-de-la-linia-d_0027ordres-per-al-LilyPond" href="advanced-command_002dline-options-for-lilypond.ca.html">Opcions avançades de la línia d&rsquo;ordres per al LilyPond</a></li>
+      <li><a id="toc-Variables-d_0027entorn" href="environment-variables.ca.html">Variables d&rsquo;entorn</a></li>
+      <li><a id="toc-El-LilyPond-a-una-gabia-de-chroot" href="lilypond-in-chroot-jail.ca.html">El LilyPond a una gàbia de chroot</a></li>
+    </ul></li>
+    <li><a id="toc-Missatges-d_0027error" href="error-messages.ca.html">1.3 Missatges d&rsquo;error</a></li>
+    <li><a id="toc-Errors-comuns" href="common-errors.ca.html">1.4 Errors comuns</a>
+    <ul class="no-bullet">
+      <li><a id="toc-La-musica-se-surt-de-la-pagina" href="music-runs-off-the-page.ca.html">La música se surt de la pàgina</a></li>
+      <li><a id="toc-Apareix-un-pentagrama-de-mes" href="an-extra-staff-appears.ca.html">Apareix un pentagrama de més</a></li>
+      <li><a id="toc-Missatge-d_0027error-Unbound-variable-_0025" href="error-message-unbound-variable-_0025.ca.html">Missatge d&rsquo;error Unbound variable %</a></li>
+      <li><a id="toc-Missatge-d_0027error-FT_005fGet_005fGlyph_005fName" href="error-message-ft_005fget_005fglyph_005fname.ca.html">Missatge d&rsquo;error FT_Get_Glyph_Name</a></li>
+      <li><a id="toc-Advertiment-sobre-que-les-afinitats-del-pentagrama-sols-han-de-decreixer" href="warning-staff-affinities-should-only-decrease.ca.html">Advertiment sobre que les afinitats del pentagrama sols han de decrèixer</a></li>
+      <li><a id="toc-Missatge-d_0027error-Unexpected-new-_005cnew" href="error-message-unexpected-new.ca.html">Missatge d&rsquo;error Unexpected new <code>\new</code></a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Actualitzacio-de-fitxers-amb-convert_002dly" href="updating-files-with-convert_002dly.ca.html">2 Actualització de fitxers amb <code>convert-ly</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-Perque-canvia-la-sintaxi_003f" href="why-does-the-syntax-change_003f.ca.html">2.1 Perquè canvia la sintaxi?</a></li>
+    <li><a id="toc-Invocacio-de-convert_002dly" href="invoking-convert_002dly.ca.html">2.2 Invocació de <code>convert-ly</code></a></li>
+    <li><a id="toc-Opcions-de-la-linia-d_0027ordres-per-a-convert_002dly" href="command-line-options-for-convert_002dly.ca.html">2.3 Opcions de la línia d&rsquo;ordres per a <code>convert-ly</code></a></li>
+    <li><a id="toc-Problemes-amb-convert_002dly" href="problems-running-convert_002dly.ca.html">2.4 Problemes amb <code>convert-ly</code></a></li>
+    <li><a id="toc-Conversions-manuals" href="manual-conversions.ca.html">2.5 Conversions manuals</a></li>
+  </ul></li>
+  <li><a id="toc-Execucio-de-lilypond_002dbook" href="lilypond_002dbook.ca.html">3 Execució de <code>lilypond-book</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-Un-exemple-de-document-musicologic" href="an-example-of-a-musicological-document.ca.html">3.1 Un exemple de document musicològic</a></li>
+    <li><a id="toc-Integracio-de-musica-i-text" href="integrating-music-and-text.ca.html">3.2 Integració de música i text</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LaTeX" href="latex.ca.html">3.2.1 LaTeX</a></li>
+      <li><a id="toc-Texinfo" href="texinfo.ca.html">3.2.2 Texinfo</a></li>
+      <li><a id="toc-HTML" href="html.ca.html">3.2.3 HTML</a></li>
+      <li><a id="toc-DocBook" href="docbook.ca.html">3.2.4 DocBook</a></li>
+    </ul></li>
+    <li><a id="toc-Opcions-de-fragments-de-musica" href="music-fragment-options.ca.html">3.3 Opcions de fragments de música</a></li>
+    <li><a id="toc-Invocacio-lilypond_002dbook" href="invoking-lilypond_002dbook.ca.html">3.4 Invocació <code>lilypond-book</code></a></li>
+    <li><a id="toc-Extensions-de-noms-de-fitxer" href="filename-extensions.ca.html">3.5 Extensions de noms de fitxer</a></li>
+    <li><a id="toc-Plantilles-de-lilypond_002dbook" href="lilypond_002dbook-templates.ca.html">3.6 Plantilles de lilypond-book</a></li>
+    <li><a id="toc-Compartir-l_0027index-general" href="sharing-the-table-of-contents.ca.html">3.7 Compartir l&rsquo;índex general</a></li>
+    <li><a id="toc-Metodes-alternatius-per-barrejar-text-i-musica" href="alternate-methods-of-mixing-text-and-music.ca.html">3.8 Mètodes alternatius per barrejar text i música</a></li>
+  </ul></li>
+  <li><a id="toc-Programes-externs" href="external-programs.ca.html">4 Programes externs</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Apunteu-i-feu-clic" href="point-and-click.ca.html">4.1 Apunteu i feu clic</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Configuracio-del-sistema-per-Apunteu-i-feu-clic" href="configuring-the-system-for-point-and-click.ca.html">4.1.1 Configuració del sistema per Apunteu i feu clic</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Us-del-Xpdf-per-Apunteu-i-feu-clic" href="using-xpdf-for-point-and-click.ca.html">Ús del Xpdf per Apunteu i feu clic</a></li>
+        <li><a id="toc-Us-del-GNOME-2-per-Apunteu-i-feu-clic" href="using-gnome-2-for-point-and-click.ca.html">Ús del GNOME 2 per Apunteu i feu clic</a></li>
+        <li><a id="toc-Us-del-GNOME-3-per-Apunteu-i-feu-clic" href="using-gnome-3-for-point-and-click.ca.html">Ús del GNOME 3 per Apunteu i feu clic</a></li>
+        <li><a id="toc-Configuracio-addicional-per-a-l_0027Evince" href="extra-configuration-for-evince.ca.html">Configuració addicional per a l&rsquo;Evince</a></li>
+      </ul></li>
+      <li><a id="toc-Habilitacio-de-l_0027opcio-d_0027apunteu-i-feu-clic" href="enabling-point-and-click.ca.html">Habilitació de l&rsquo;opció d&rsquo;apunteu i feu clic</a></li>
+      <li><a id="toc-Apunteu-i-feu-clic-selectiu" href="selective-point_002dand_002dclick.ca.html">Apunteu i feu clic selectiu</a></li>
+    </ul></li>
+    <li><a id="toc-Suport-per-als-editors-de-text" href="text-editor-support.ca.html">4.2 Suport per als editors de text</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Mode-de-l_0027Emacs" href="emacs-mode.ca.html">Mode de l&rsquo;Emacs</a></li>
+      <li><a id="toc-Mode-del-Vim" href="vim-mode.ca.html">Mode del Vim</a></li>
+      <li><a id="toc-Altres-editors" href="other-editors.ca.html">Altres editors</a></li>
+    </ul></li>
+    <li><a id="toc-Conversio-des-d_0027altres-formats" href="converting-from-other-formats.ca.html">4.3 Conversió des d&rsquo;altres formats</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Invocacio-de-midi2ly" href="invoking-midi2ly.ca.html">4.3.1 Invocació de <code>midi2ly</code></a></li>
+      <li><a id="toc-Invocacio-de-musicxml2ly" href="invoking-musicxml2ly.ca.html">4.3.2 Invocació de <code>musicxml2ly</code></a></li>
+      <li><a id="toc-Invocacio-d_0027abc2ly" href="invoking-abc2ly.ca.html">4.3.3 Invocació d&rsquo;<code>abc2ly</code></a></li>
+      <li><a id="toc-Invocacio-d_0027etf2ly" href="invoking-etf2ly.ca.html">4.3.4 Invocació d&rsquo;<code>etf2ly</code></a></li>
+      <li><a id="toc-Altres-formats" href="other-formats.ca.html">4.3.5 Altres formats</a></li>
+    </ul></li>
+    <li><a id="toc-Sortida-del-LilyPond-dins-d_0027altres-programes" href="lilypond-output-in-other-programs.ca.html">4.4 Sortida del LilyPond dins d&rsquo;altres programes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LuaTeX" href="luatex.ca.html">4.4.1 LuaTeX</a></li>
+      <li><a id="toc-OpenOffice-i-LibreOffice" href="openoffice-and-libreoffice.ca.html">4.4.2 OpenOffice i LibreOffice</a></li>
+      <li><a id="toc-Altres-programes" href="other-programs.ca.html">4.4.3 Altres programes</a></li>
+    </ul></li>
+    <li><a id="toc-Fitxers-d_0027inclusio-independents" href="independent-includes.ca.html">4.5 Fitxers d&rsquo;inclusió independents</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Articulacio-MIDI" href="midi-articulation.ca.html">4.5.1 Articulació MIDI</a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Suggeriments-per-escriure-fitxers-d_0027entrada" href="suggestions-for-writing-files.ca.html">5 Suggeriments per escriure fitxers d&rsquo;entrada</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Suggeriments-de-tipus-general" href="general-suggestions.ca.html">5.1 Suggeriments de tipus general</a></li>
+    <li><a id="toc-Gravacio-de-musica-existent" href="typesetting-existing-music.ca.html">5.2 Gravació de música existent</a></li>
+    <li><a id="toc-Projectes-grans" href="large-projects.ca.html">5.3 Projectes grans</a></li>
+    <li><a id="toc-Solucio-de-problemes" href="troubleshooting.ca.html">5.4 Solució de problemes</a></li>
+    <li class="toc_current"><a id="toc-Make-i-els-Makefiles" href="make-and-makefiles.ca.html">5.5 Make i els Makefiles</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.ca.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Index" href="index-of-commands-and-concepts.ca.html" rel="index">Appendix B Índex</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 9d074d78d7c25852afa87005e21c118630f4f83b
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca a Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

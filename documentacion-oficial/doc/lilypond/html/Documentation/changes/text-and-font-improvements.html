@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This document has been placed in the public domain. -->
+<title>Text and font improvements (LilyPond Changes)</title>
+
+<meta name="description" content="Text and font improvements (LilyPond Changes)">
+<meta name="keywords" content="Text and font improvements (LilyPond Changes)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="LilyPond &mdash; Changes">
+<link href="changes_toc.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="new-for-musical-notation.html" rel="up" title="New for musical notation">
+<link href="editorial-annotation-improvements.html" rel="prev" title="Editorial annotation improvements">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="en" class="changes">
+<div id="main">
+<div class="unnumberedsec" id="text-and-font-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="new-for-musical-notation.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; New for musical notation </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="changes_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="new-for-specialist-notation.html" title="Next chapter"> New for specialist notation &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="editorial-annotation-improvements.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Editorial annotation improvements </a>]</td><td align="center">[<a href="new-for-musical-notation.html" title="Up section" accesskey="u" rel="up">  Up: New for musical notation </a>]</td><td align="right">[<a href="new-for-specialist-notation.html" title="Next section in reading order" accesskey="n" rel="next"> New for specialist notation &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Text-and-font-improvements"></span><h3 class="unnumberedsec">Text and font improvements</h3>
+
+<ul>
+<li> Triangular note heads have been added to the Emmentaler font.
+They can be used by overriding <code>NoteHead.style</code> to
+<code>arrow</code>.
+
+
+<a href="../66/lily-7d234004.ly">
+  <img align="middle"
+       border="0"
+       src="../66/lily-7d234004.png"
+       alt="[image of music]"></a>
+
+
+</li><li> A new <code>\bar-line</code> markup command to print bar lines in text is now
+available.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="nv">word-space</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\line</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span>Examples
+<span class="w">      </span><span class="nb nb-MarkupCommand">\fontsize</span><span class="w"> </span><span class="p">#</span><span class="mi">-5</span><span class="w"> </span><span class="nb nb-MarkupCommand">\translate-scaled</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb nb-MarkupCommand">\bar-line</span><span class="w"> </span><span class="s">&quot;:|.&quot;</span>
+<span class="w">        </span><span class="nb nb-MarkupCommand">\bar-line</span><span class="w"> </span><span class="s">&quot;.|:&quot;</span>
+<span class="w">        </span><span class="nb nb-MarkupCommand">\bar-line</span><span class="w"> </span><span class="s">&quot;;!S!;&quot;</span>
+<span class="w">        </span><span class="nb nb-MarkupCommand">\bar-line</span><span class="w"> </span><span class="s">&quot;]{|}[&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../4d/lily-7ef8f66e.ly">
+  <img align="middle"
+       border="0"
+       src="../4d/lily-7ef8f66e.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+
+</li><li> The syntax for customizing text and music fonts has been changed.
+Instead of
+
+<blockquote>
+<pre class="verbatim">\paper {
+  #(define fonts
+     (set-global-fonts
+       #:music &quot;Name of music font&quot;
+       #:brace &quot;Name of music brace font&quot;
+       #:roman &quot;Name of serif font&quot;
+       #:sans &quot;Name of sans-serif font&quot;
+       #:typewriter &quot;Name of typewriter font&quot;))
+}
+</pre></blockquote>
+
+<p>or
+</p>
+<blockquote>
+<pre class="verbatim">\paper {
+  #(define fonts
+     (make-pango-font-tree
+       &quot;Name of serif font&quot;
+       &quot;Name of sans-serif font&quot;
+       &quot;Name of typewriter font&quot;
+       factor))
+}
+</pre></blockquote>
+
+<p>the new syntax is
+</p>
+<blockquote>
+<pre class="verbatim">\paper {
+  property-defaults.fonts.music = &quot;Name of music font&quot;
+  property-defaults.fonts.serif = &quot;Name of serif font&quot;
+  property-defaults.fonts.sans = &quot;Name of sans-serif font&quot;
+  property-defaults.fonts.typewriter = &quot;Name of typewriter font&quot;
+}
+</pre></blockquote>
+
+<p>Unlike the previous syntax, the new syntax does not interfere with
+font sizes, which should be set separately using
+<code>set-global-staff-size</code> or <code>layout-set-staff-size</code>.
+</p>
+<p>There is no <code>brace</code> key in the fonts alist; braces glyphs now
+always default to the music font.  However, it is still possible to
+override this by using an extra font family, as shown in this example
+(which requires the LilyJAZZ font):
+</p>
+<blockquote>
+<pre class="verbatim">\layout {
+  \context {
+    \Score
+    \override SystemStartBrace.fonts.music = &quot;lilyjazz&quot;
+  }
+}
+
+\new PianoStaff &lt;&lt;
+  \new Staff { c' }
+  \new Staff { c' }
+&gt;&gt;
+
+\markup \override #'(fonts . ((music . &quot;lilyjazz&quot;))) \left-brace #20
+</pre></blockquote>
+
+<p>Because <code>fonts</code> is simply a property, it is possible to
+override it on a per-grob basis, e.g.,
+</p>
+<blockquote>
+<pre class="verbatim">\layout {
+  \override Score.SectionLabel.fonts.roman = &quot;Custom font&quot;
+}
+</pre></blockquote>
+
+<p>This is preferable over the already existing <code>font-name</code>
+property, since the latter makes commands such as <code>\bold</code>
+ineffective, instead requiring &ldquo;Bold&rdquo; to be included in the
+<code>font-name</code> string.  Using <code>fonts</code> does not have such
+effects.
+</p>
+
+</li><li> The <code>\lookup</code> markup command can now only be used for braces;
+for other glyphs, use the <code>\musicglyph</code> command.  Instead of
+<code>\lookup</code>, it is also generally recommended to use <code>\left-brace</code>.
+
+
+</li><li> In markup, when a music font is used (such as for dynamic markings), a
+glyph absent from the music font was previously rendered in a normal
+text font. This is no longer the case; a warning about the missing glyph
+is output instead.  In order to use a text font, use the <code>\serif</code>,
+<code>\sans</code>, or <code>\typewriter</code> markup commands.  For example:
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">dolceP</span><span class="w"> </span><span class="p">=</span>
+<span class="p">#(</span><span class="nv">make-dynamic-script</span>
+<span class="w">  </span><span class="p">#{</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb nb-MarkupCommand">\serif</span><span class="w"> </span><span class="nb nb-MarkupCommand">\normal-weight</span><span class="w"> </span>dolce
+<span class="w">      </span>p
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">#})</span>
+
+<span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="n n-BackslashReference">\dolceP</span><span class="w"> </span><span class="p">}</span>
+</pre>
+
+<a href="../b7/lily-ef389a3a.ly">
+  <img align="middle"
+       border="0"
+       src="../b7/lily-ef389a3a.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+
+</li><li> Small caps are now achieved by overriding <code>font-variant</code> to
+<code>small-caps</code> instead of overriding <code>font-shape</code> to
+<code>caps</code>.  Since <code>font-shape</code> is primarily for achieving
+italics, this change makes it possible to use small caps and italics
+at the same time.
+
+</li><li> The <code>font-series</code> property is now more flexible and allows
+the specification of values such as <code>semibold</code> and
+<code>light</code> instead of only <code>normal</code> and <code>bold</code>.
+
+<p>The <code>medium</code> value is now an intermediate value between
+<code>normal</code> and <code>bold</code> rather than an equivalent of
+<code>normal</code>.  Accordingly, the <code>\medium</code> markup command has
+been renamed to <code>\normal-weight</code>.
+</p>
+
+</li><li> The new <code>font-stretch</code> property allows the selection of a
+condensed or expanded font.
+
+
+</li><li> The text of a <code>VoltaBracket</code> grob, as set by <code>\override
+Score.VoltaBracket.text = &hellip;</code> or <code>\set
+Score.repeatCommands = &hellip;</code>, is no longer automatically
+typeset in a music font; use the <code>\volta-number</code> markup
+command on those parts that need to be.  For example, convert
+
+<blockquote>
+<pre class="verbatim">\set Score.repeatCommands = #'((volta &quot;2, 5&quot;))
+</pre></blockquote>
+
+<p>to
+</p>
+<blockquote>
+<pre class="verbatim">\set Score.repeatCommands =
+  #`((volta ,#{ \markup {
+                  \concat { \volta-number 2 , }
+                  \volta-number 5 }
+            #}))
+</pre></blockquote>
+
+
+</li><li> In markup, fingerings (<code>\markup \finger</code>) and bass figures
+(<code>\markup \figured-bass</code>) now get scaled along with normal text
+when using <code>\fontsize</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">myText</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>The<span class="w"> </span>fingering<span class="w"> </span><span class="nb nb-MusicFunction">\finger</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">5</span><span class="nb nb-Articulation">-4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>for<span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="nb nb-MarkupCommand">\figured-bass</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="s">&quot;6</span><span class="se">\\</span><span class="s">&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>…
+<span class="p">}</span>
+
+<span class="n n-BackslashReference">\myText</span>
+<span class="nb nb-MarkupCommand">\markup\fontsize</span><span class="w"> </span><span class="p">#</span><span class="mi">6</span><span class="w"> </span><span class="n n-BackslashReference">\myText</span>
+</pre>
+
+<a href="../97/lily-1761db17.ly">
+  <img align="middle"
+       border="0"
+       src="../97/lily-1761db17.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>The previous behavior can be restored by setting the global variables
+<code>legacy-figured-bass-markup-fontsize</code> and <code>legacy-finger-markup-fontsize</code>
+to <code>#t</code>, respectively:
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="p">#(</span><span class="k">set!</span><span class="w"> </span><span class="nv">legacy-figured-bass-markup-fontsize</span><span class="w"> </span><span class="no">#t</span><span class="p">)</span>
+<span class="p">#(</span><span class="k">set!</span><span class="w"> </span><span class="nv">legacy-finger-markup-fontsize</span><span class="w"> </span><span class="no">#t</span><span class="p">)</span>
+
+<span class="n n-Lvalue">myText</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>The<span class="w"> </span>fingering<span class="w"> </span><span class="nb nb-MusicFunction">\finger</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">4</span><span class="nb nb-Articulation">-5</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>for<span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="nb nb-MarkupCommand">\figured-bass</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="m">5</span>+<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>…
+<span class="p">}</span>
+
+<span class="n n-BackslashReference">\myText</span>
+<span class="nb nb-MarkupCommand">\markup\fontsize</span><span class="w"> </span><span class="p">#</span><span class="mi">6</span><span class="w"> </span><span class="n n-BackslashReference">\myText</span>
+</pre>
+
+<a href="../bc/lily-68759a9b.ly">
+  <img align="middle"
+       border="0"
+       src="../bc/lily-68759a9b.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+
+</li><li> For best clarity, the <code>\roman</code> markup command has been renamed to
+<code>\serif</code>.  Likewise, to cancel a setting of the <code>font-family</code>
+property to <code>sans</code> or <code>typewriter</code>, it should now be set
+to <code>serif</code>, not <code>roman</code>.
+
+
+</li><li> The <code>\text</code> markup command has been removed.  Instead, the
+<code>\serif</code>, <code>\sans</code>, or <code>\typewriter</code> markup commands
+should be used.  These commands used to set the font style
+<em>only if a normal text font was used</em> (not a musical font,
+such as for dynamics), but now they <em>both</em> set the font style
+and make a normal text font used.
+
+
+</li><li> The font size used by the <code>\volta-number</code> markup command has
+been reduced to make it better fit with surrounding text.  At the
+same time, the size for the volta bracket number (which uses
+<code>\volta-number</code> for formatting by default) has been increased
+by the opposite amount, thus compensating for the change in the
+normal use case.
+
+</li><li> Some glyphs like &lsquo;one&rsquo; or &lsquo;accidentals.hufnagelM1&rsquo; in the
+Emmentaler font had overly large glyph bounding boxes due to a bug
+in the font production chain.  This is fixed now; be warned,
+however, that you might experience typesetting differences because
+tighter bounding boxes often lead to tighter typesetting.
+
+</li><li> New markup commands to print the textual representation of accidentals are
+added:
+<code>\text-doubleflat</code>, <code>\text-flat</code>, <code>\text-natural</code>,
+<code>\text-sharp</code>, <code>\text-doublesharp</code> and the general
+<code>\text-accidental</code>.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markuplist</span><span class="w"> </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="nv">padding</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nb nb-MarkupCommand">\table</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="mi">-1</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s">&quot;Accidentals for text:&quot;</span>
+<span class="w">   </span><span class="nb nb-MarkupCommand">\text-doubleflat</span><span class="w"> </span><span class="nb nb-MarkupCommand">\text-flat</span><span class="w"> </span><span class="nb nb-MarkupCommand">\text-natural</span><span class="w"> </span><span class="nb nb-MarkupCommand">\text-sharp</span>
+<span class="w">   </span><span class="nb nb-MarkupCommand">\text-doublesharp</span>
+<span class="w">  </span><span class="s">&quot;Accidentals for music:&quot;</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\doubleflat</span><span class="w"> </span><span class="nb nb-MarkupCommand">\flat</span><span class="w"> </span><span class="nb nb-MarkupCommand">\natural</span><span class="w"> </span><span class="nb nb-MarkupCommand">\sharp</span><span class="w"> </span><span class="nb nb-MarkupCommand">\doublesharp</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../6f/lily-3f3374de.ly">
+  <img align="middle"
+       border="0"
+       src="../6f/lily-3f3374de.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> The <code>\circle</code> markup command now listens to a <code>bbox</code>
+property.  If set to <code>#t</code>, the bounding box of its argument
+is used for the circle&rsquo;s diameter.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\circle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\center-column</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;short&quot;</span><span class="w"> </span><span class="s">&quot;short&quot;</span><span class="w"> </span><span class="s">&quot;very very long&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="nv">bbox</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="no">#t</span><span class="p">)</span><span class="w"> </span><span class="nb nb-MarkupCommand">\circle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\center-column</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;short&quot;</span><span class="w"> </span><span class="s">&quot;short&quot;</span><span class="w"> </span><span class="s">&quot;very very long&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../b0/lily-1ec3bb1c.ly">
+  <img align="middle"
+       border="0"
+       src="../b0/lily-1ec3bb1c.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+
+</li><li> The <code>\tag</code> command is now allowed in markup environments.  New
+markup commands are added for filtering (<code>\keep-with-tag</code>
+and <code>\remove-with-tag</code>) and for inserting markups
+(<code>\push-to-tag</code>, <code>\append-to-tag</code> and <code>\replace-with-tag</code>)
+in markup context or from music context (<code>\pushToTagMarkup</code>,
+<code>\appendToTagMarkup</code> and <code>\replaceWithMarkup</code>).
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">test</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span><span class=" -Pitch">a</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;b</span><span class="w"> </span><span class=" -Pitch">b</span>
+<span class="w">  </span><span class=" -Pitch">c</span>
+<span class="p">}</span>
+
+<span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span><span class="n n-BackslashReference">^\test</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span>
+<span class="p">}</span>
+
+<span class="nb nb-MusicFunction">\keepWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="nb nb-MusicFunction">\removeWithTag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="nb nb-MusicFunction">\pushToTagMarkup</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span>push<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="nb nb-MusicFunction">\appendToTagMarkup</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span>append<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+<span class="n n-BackslashReference">\replaceWithTagMarkup</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span>replacement<span class="w"> </span><span class="n n-BackslashReference">\music</span>
+
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\keep-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\remove-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\push-to-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span>push<span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\append-to-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span>append<span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n n-BackslashReference">\replace-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span>replacement<span class="w"> </span><span class="n n-BackslashReference">\test</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\keep-with-tag</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;a</span><span class="w"> </span><span class="k">\score</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n n-BackslashReference">\music</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre>
+
+<a href="../5a/lily-02719c7c.ly">
+  <img align="middle"
+       border="0"
+       src="../5a/lily-02719c7c.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> The two new markup commands <code>\pad-x-left</code> and
+<code>\pad-x-right</code> behave similar to <code>\pad-x</code> but apply
+horizontal padding on one side of the markup only.
+
+
+</li></ul>
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="new-for-musical-notation.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; New for musical notation </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="changes_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="new-for-specialist-notation.html" title="Next chapter"> New for specialist notation &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="editorial-annotation-improvements.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Editorial annotation improvements </a>]</td><td align="center">[<a href="new-for-musical-notation.html" title="Up section" accesskey="u" rel="up">  Up: New for musical notation </a>]</td><td align="right">[<a href="new-for-specialist-notation.html" title="Next section in reading order" accesskey="n" rel="next"> New for specialist notation &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="text-and-font-improvements.fr.html">Français</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.html" title="Documentation Index">
+    &lt;&lt; Back to Documentation Index
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.html#top" title="Cover (top) of document">
+    LilyPond Changes  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Major-changes-in-LilyPond" href="major-changes-in-lilypond.html">Major changes in LilyPond</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Notes-for-source-compilation-and-packagers" href="notes-for-source-compilation-and-packagers.html">Notes for source compilation and packagers</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-New-for-musical-notation" href="new-for-musical-notation.html">New for musical notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Pitches-improvements" href="pitches-improvements.html">Pitches improvements</a></li>
+    <li><a id="toc-Rhythm-improvements" href="rhythm-improvements.html">Rhythm improvements</a></li>
+    <li><a id="toc-Expressive-mark-improvements" href="expressive-mark-improvements.html">Expressive mark improvements</a></li>
+    <li><a id="toc-Repeat-improvements" href="repeat-improvements.html">Repeat improvements</a></li>
+    <li><a id="toc-Editorial-annotation-improvements" href="editorial-annotation-improvements.html">Editorial annotation improvements</a></li>
+    <li class="toc_current"><a id="toc-Text-and-font-improvements" href="text-and-font-improvements.html">Text and font improvements</a></li>
+  </ul></li>
+  <li><a id="toc-New-for-specialist-notation" href="new-for-specialist-notation.html">New for specialist notation</a></li>
+  <li><a id="toc-Miscellaneous-improvements" href="miscellaneous-improvements.html">Miscellaneous improvements</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: FILL-IN-HEAD-COMMITTISH
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google Search">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Search">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

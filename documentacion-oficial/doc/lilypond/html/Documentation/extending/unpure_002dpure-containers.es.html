@@ -1,0 +1,429 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2004-2026 por los autores.
+
+La traducción de la siguiente nota de copyright se ofrece como
+cortesía para las personas de habla no inglesa, pero únicamente la
+nota en inglés tiene validez legal.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+Se otorga permiso para copiar, distribuir y/o modificar este documento
+bajo los términos de la Licencia de Documentación Libre de GNU, versión 1.1
+o cualquier versión posterior publicada por la Free Software Foundation;
+sin ninguna de las secciones invariantes.
+Se incluye una copia de esta licencia dentro de la sección titulada "Licencia
+de Documentación Libre de GNU".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>B.8 Contenedores Unpure-pure (Extender LilyPond)</title>
+
+<meta name="description" content="B.8 Contenedores Unpure-pure (Extender LilyPond)">
+<meta name="keywords" content="B.8 Contenedores Unpure-pure (Extender LilyPond)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.es.html" rel="start" title="LilyPond &mdash; Extender">
+<link href="index-of-commands-and-concepts.es.html" rel="index" title="Appendix E Índice">
+<link href="extending_toc.es.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="interfaces-for-programmers.es.html" rel="up" title="B Interfaces para programadores">
+<link href="difficult-tweaks.es.html" rel="next" title="B.9 Trucos difíciles">
+<link href="callback-functions.es.html" rel="prev" title="B.7 Funciones de callback">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="es" class="extending">
+<div id="main">
+<div class="section" id="unpure_002dpure-containers">
+<table class="nav_table">
+<tr><td align="left">[<a href="interfaces-for-programmers.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Interfaces para programadores </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="extending_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.es.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="lilypond-scheme-interfaces.es.html" title="Next chapter"> Interfaces de Scheme de LilyPond &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="callback-functions.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Funciones de callback </a>]</td><td align="center">[<a href="interfaces-for-programmers.es.html" title="Up section" accesskey="u" rel="up">  Up: Interfaces para programadores </a>]</td><td align="right">[<a href="difficult-tweaks.es.html" title="Next section in reading order" accesskey="n" rel="next"> Trucos difíciles &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Contenedores-Unpure_002dpure"></span><h3 class="section">B.8 Contenedores Unpure-pure</h3>
+
+<div class="warning">
+<p><strong>Nota:</strong> Si bien esta subsección refleja la situación actual, el
+ejemplo dado es irrelevante y no muestra ningún efecto.
+</p>
+</div>
+
+<span id="index-Scheme_002c-contenedor-pure"></span>
+<span id="index-Scheme_002c-contenedor-unpure"></span>
+<span id="index-pure_002c-contenedor_002c-Scheme"></span>
+<span id="index-unpure_002c-contenedor_002c-Scheme"></span>
+<span id="index-horizontal_002c-espaciado_002c-sobreescritura"></span>
+
+<p>Los contenedores unpure-pure son útiles para sobreescribir los
+cálculos de espaciado en <em>Y-axis</em>, el eje Y (específicamente
+<code>Y-offset</code> y <code>Y-extent</code>) con una función de Scheme en
+lugar de un valor literal, como un número o una pareja de números.
+</p>
+<p>Para determinados objetos gráficos, las dimensiones verticales
+<code>Y-extent</code> están basadas en la propiedad <code>stencil</code>
+(sello): la sobreescritura de la propiedad sello de uno de estos
+objetos necesitaría otra sobreescritura de <code>Y-extent</code> con un
+contenedor unpure-pure.  Cuando una función sobreescribe el
+desplazamiento <code>Y-offset</code> y/o las dimensiones verticales
+<code>Y-extent</code>, se supone que ello dispara los álculos de los
+saltos de línea demasiado pronro durante la compilación.  Por ello
+la función no se evalúa en absoluto (devolviendo por lo general un
+valor de &lsquo;<samp>0</samp>&rsquo; o de &lsquo;<samp>'(0 . 0)</samp>&rsquo;) lo que puede dar
+colisiones como resultado.  Una función &lsquo;pure&rsquo; no afecta a las
+propiedades, los objetos se suicidan y por tanto siempre tendrán
+evaluado correctamente su valor relacionado con el eje Y.
+</p>
+<p>En este momento existen aproximadamente 30 funciones que ya se
+conbsideran &lsquo;pure&rsquo; y los contenedores Unpure-pure son una manera
+de establecer como &lsquo;pure&rsquo; funciones que no están en esta lista.
+La función &lsquo;pure&rsquo; se evalúa <em>antes</em> de cualquier salto de
+línea y así el espaciado horizontal se puede ajustar &lsquo;a tiempo&rsquo;.
+La función &lsquo;unpure&rsquo; se evalúa entonces <em>después</em> del salto
+de línea.
+</p>
+<div class="warning">
+<p><strong>Nota:</strong> Dado que es difícil saber en todo momento qué funciones
+están en esta lista, recomendamos que cualquier función &lsquo;pure&rsquo;
+que usted cree, no utilicen los objetos gráficos <code>Beam</code> ni
+<code>VerticalAlignment</code>.
+</p>
+</div>
+
+<p>Un contenedor unpure-pure se construye como sigue:
+</p>
+<div class="example">
+<pre class="example">(ly:make-unpure-pure-container f0 f1)
+</pre></div>
+
+<p>donde <code>f0</code> es una función que toma <var>n</var> argumentos (<var>n
+&gt;= 1</var>) y el primer argumento debe ser siempre el grob.  Esta es la
+función que da el resultado real.  <var>f1</var> es la función que se
+está etiquetando como &lsquo;pure&rsquo; que toma <var>n + 2</var> argumentos.
+De nuevo, el primer argumento siempre debe ser el grob, pero el
+segundo y el tercero son los argumentos de &lsquo;inicio&rsquo; y &lsquo;fin&rsquo;.
+</p>
+<p><var>inicio</var> y <var>fin</var> son, a todos los efectos, valores mudos
+que solo tienen importancia para los objetos de extensión
+(<code>Spanners</code> como <code>Hairpin</code>, reguladores, o <code>Beam</code>,
+barras), que pueden devolver diferentes estimaciones de altura
+basadas en una columna de inicio y de final.
+</p>
+<p>El resto son los otros argumentos para la primera función (que
+pueden no ser ninguno si <var>n = 1</var>).
+</p>
+<p>Los resultados de la segunda función se usan como aproximación del
+valor requerido cuando se usa después por parte de la primera
+función para obtener el valor real que se usa entonces para el
+ajuste fino mucho tiempo después, durante el proceso de espaciado.
+</p>
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">#(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="nf">square-line-circle-space</span><span class="w"> </span><span class="nv">grob</span><span class="p">)</span>
+<span class="p">(</span><span class="k">let*</span><span class="w"> </span><span class="p">((</span><span class="nf">pitch</span><span class="w"> </span><span class="p">(</span><span class="nb nb-SchemeFunction">ly:event-property</span><span class="w"> </span><span class="p">(</span><span class="nb nb-SchemeFunction">ly:grob-property</span><span class="w"> </span><span class="nv">grob</span><span class="w"> </span><span class="ss">&#39;cause</span><span class="p">)</span>
+<span class="w">                                 </span><span class="ss">&#39;pitch</span><span class="p">))</span>
+<span class="w">      </span><span class="p">(</span><span class="nf">notename</span><span class="w"> </span><span class="p">(</span><span class="nb nb-SchemeFunction">ly:pitch-notename</span><span class="w"> </span><span class="nv">pitch</span><span class="p">)))</span>
+<span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb nb-SchemeBuiltin">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nb nb-SchemeBuiltin">modulo</span><span class="w"> </span><span class="nv">notename</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
+<span class="w">     </span><span class="p">(</span><span class="nb nb-SchemeFunction">make-circle-stencil</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="no">#t</span><span class="p">)</span>
+<span class="w">     </span><span class="p">(</span><span class="nb nb-SchemeFunction">make-filled-box-stencil</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span>
+<span class="w">                              </span><span class="o">&#39;</span><span class="p">(</span><span class="mf">-0.5</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)))))</span>
+
+<span class="n n-Lvalue">squareLineCircleSpace</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">NoteHead</span><span class="p">.</span><span class="nb nb-GrobProperty">stencil</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="nv">square-line-circle-space</span>
+<span class="p">}</span>
+
+<span class="n n-Lvalue">smartSquareLineCircleSpace</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\squareLineCircleSpace</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">NoteHead</span><span class="p">.</span><span class="nb nb-GrobProperty">Y-extent</span><span class="w"> </span><span class="p">=</span>
+<span class="w">   </span><span class="p">#(</span><span class="nb nb-SchemeFunction">ly:make-unpure-pure-container</span>
+<span class="w">      </span><span class="nb nb-SchemeFunction">ly:grob::stencil-height</span>
+<span class="w">      </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="nf">grob</span><span class="w"> </span><span class="nv">start</span><span class="w"> </span><span class="nv">end</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb nb-SchemeFunction">ly:grob::stencil-height</span><span class="w"> </span><span class="nv">grob</span><span class="p">)))</span>
+<span class="p">}</span>
+
+<span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">\remove</span><span class="w"> </span><span class="nb nb-Translator">Stem_engraver</span><span class="w"> </span><span class="p">}</span>
+<span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\squareLineCircleSpace</span>
+<span class="w">  </span><span class=" -Pitch">cis</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">ces</span><span class="w"> </span><span class=" -Pitch">disis</span><span class="w"> </span><span class=" -Pitch">d</span>
+<span class="w">  </span><span class="n n-BackslashReference">\smartSquareLineCircleSpace</span>
+<span class="w">  </span><span class=" -Pitch">cis</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">ces</span><span class="w"> </span><span class=" -Pitch">disis</span><span class="w"> </span><span class=" -Pitch">d</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../0d/lily-fd22adf8.ly">
+  <img align="middle"
+       border="0"
+       src="../0d/lily-fd22adf8.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>En el primer compás, sin un contenedor unpure-pure, el motor de
+espaciado no conoce la anchura de la cabeza de la nota ydeja que
+choque con las alteraciones accidentales.  En el segundo compás,
+con contenedores unpure-pure, el motor de espaciado conoce el
+ancho de las cabezas de nota y evita la colisión alargando la
+línea adecuadamente.
+</p>
+<p>Normalmente, para cálculos sencillos se pueden usar funciones casi
+idénticas para las dos partes &lsquo;unpure&rsquo; y &lsquo;pure&rsquo; , solo
+cambiando el número de los argumentos que se pasan a, y el ámbito
+de, la función.  Este ejemplo de utilización es lo bastante
+frecuente como para que <code>ly:make-unpure-pure-container</code>
+construya una segunda función de forma predeterminada cuando se
+llama con solo un argumento de función.
+</p>
+<div class="warning">
+<p><strong>Nota:</strong> Si una función se etiqueta como &lsquo;pure&rsquo; y después
+resulta que no lo es, los resultados pueden ser inesperados.
+</p>
+</div>
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="interfaces-for-programmers.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Interfaces para programadores </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="extending_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.es.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="lilypond-scheme-interfaces.es.html" title="Next chapter"> Interfaces de Scheme de LilyPond &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="callback-functions.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Funciones de callback </a>]</td><td align="center">[<a href="interfaces-for-programmers.es.html" title="Up section" accesskey="u" rel="up">  Up: Interfaces para programadores </a>]</td><td align="right">[<a href="difficult-tweaks.es.html" title="Next section in reading order" accesskey="n" rel="next"> Trucos difíciles &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="unpure_002dpure-containers.html">English</a>, <a href="unpure_002dpure-containers.fr.html">Français</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.es.html" title="Documentation Index">
+    &lt;&lt; Volver al índice de la documentación
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.es.html#top" title="Cover (top) of document">
+    Extender LilyPond  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Tutorial-de-Scheme" href="scheme-tutorial.es.html">Appendix A Tutorial de Scheme</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Introduccion-a-Scheme" href="introduction-to-scheme.es.html">A.1 Introducción a Scheme</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Cajon-de-arena-de-Scheme" href="scheme-sandbox.es.html">A.1.1 Cajón de arena de Scheme</a></li>
+      <li><a id="toc-Variables-de-Scheme" href="scheme-variables.es.html">A.1.2 Variables de Scheme</a></li>
+      <li><a id="toc-Tipos-de-datos-simples-de-Scheme" href="scheme-simple-data-types.es.html">A.1.3 Tipos de datos simples de Scheme</a></li>
+      <li><a id="toc-Tipos-de-datos-compuestos-de-Scheme" href="scheme-compound-data-types.es.html">A.1.4 Tipos de datos compuestos de Scheme</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Parejas" href="pairs.es.html">Parejas</a></li>
+        <li><a id="toc-Listas" href="lists.es.html">Listas</a></li>
+        <li><a id="toc-Listas-asociativas-_0028listas_002dA_0029" href="association-lists-_0028alists_0029.es.html">Listas asociativas (listas-A)</a></li>
+        <li><a id="toc-Tablas-de-hash" href="hash-tables.es.html">Tablas de hash</a></li>
+      </ul></li>
+      <li><a id="toc-Calculos-en-Scheme" href="calculations-in-scheme.es.html">A.1.5 Cálculos en Scheme</a></li>
+      <li><a id="toc-Procedimientos-de-Scheme" href="scheme-procedures.es.html">A.1.6 Procedimientos de Scheme</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Definir-procedimientos" href="defining-procedures.es.html">Definir procedimientos</a></li>
+        <li><a id="toc-Predicados" href="predicates.es.html">Predicados</a></li>
+        <li><a id="toc-Valores-de-retorno" href="return-values.es.html">Valores de retorno</a></li>
+      </ul></li>
+      <li><a id="toc-Condicionales-de-Scheme" href="scheme-conditionals.es.html">A.1.7 Condicionales de Scheme</a>
+      <ul class="no-bullet">
+        <li><a id="toc-if-1" href="if.es.html">if</a></li>
+        <li><a id="toc-cond-1" href="cond.es.html">cond</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Scheme-dentro-de-LilyPond" href="scheme-in-lilypond.es.html">A.2 Scheme dentro de LilyPond</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Sintaxis-del-Scheme-de-LilyPond" href="lilypond-scheme-syntax.es.html">A.2.1 Sintaxis del Scheme de LilyPond</a></li>
+      <li><a id="toc-Variables-de-LilyPond" href="lilypond-variables.es.html">A.2.2 Variables de LilyPond</a></li>
+      <li><a id="toc-Depuracion-del-codigo-de-Scheme" href="debugging-scheme-code.es.html">A.2.3 Depuración del código de Scheme</a></li>
+      <li><a id="toc-Variables-de-entrada-y-Scheme" href="input-variables-and-scheme.es.html">A.2.4 Variables de entrada y Scheme</a></li>
+      <li><a id="toc-Importacion-de-Scheme-dentro-de-LilyPond" href="importing-scheme-in-lilypond.es.html">A.2.5 Importación de Scheme dentro de LilyPond</a></li>
+      <li><a id="toc-Propiedades-de-los-objetos" href="object-properties.es.html">A.2.6 Propiedades de los objetos</a></li>
+      <li><a id="toc-Variables-de-LilyPond-compuestas" href="lilypond-compound-variables.es.html">A.2.7 Variables de LilyPond compuestas</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Desplazamientos" href="offsets.es.html">Desplazamientos</a></li>
+        <li><a id="toc-Fracciones" href="fractions.es.html">Fracciones</a></li>
+        <li><a id="toc-Dimensiones" href="extents.es.html">Dimensiones</a></li>
+        <li><a id="toc-Listas_002dA-de-propiedades" href="property-alists.es.html">Listas-A de propiedades</a></li>
+        <li><a id="toc-Cadenas-de-listas_002dA" href="alist-chains.es.html">Cadenas de listas-A</a></li>
+      </ul></li>
+      <li><a id="toc-El-modelo-de-caja-de-LilyPond" href="lilypond_0027s-box-model.es.html">A.2.8 El modelo de caja de LilyPond</a></li>
+      <li><a id="toc-Representacion-interna-de-la-musica" href="internal-music-representation.es.html">A.2.9 Representación interna de la música</a></li>
+    </ul></li>
+    <li><a id="toc-Construir-funciones-complicadas" href="building-complicated-functions.es.html">A.3 Construir funciones complicadas</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Una-primera-aproximacion-_0028ejemplo_0029" href="a-first-approach-_0028example_0029.es.html">A.3.1 Una primera aproximación (ejemplo)</a></li>
+      <li><a id="toc-Presentacion-de-las-expresiones-musicales" href="displaying-music-expressions.es.html">A.3.2 Presentación de las expresiones musicales</a></li>
+      <li><a id="toc-Propiedades-musicales" href="music-properties.es.html">A.3.3 Propiedades musicales</a></li>
+      <li><a id="toc-Duplicar-una-nota-con-ligaduras-_0028ejemplo_0029" href="doubling-a-note-with-slurs-_0028example_0029.es.html">A.3.4 Duplicar una nota con ligaduras (ejemplo)</a></li>
+      <li><a id="toc-Anadir-articulaciones-a-las-notas-_0028ejemplo_0029" href="adding-articulation-to-notes-_0028example_0029.es.html">A.3.5 Añadir articulaciones a las notas (ejemplo)</a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Interfaces-para-programadores" href="interfaces-for-programmers.es.html">B Interfaces para programadores</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Bloques-de-codigo-de-LilyPond" href="lilypond-code-blocks.es.html">B.1 Bloques de código de LilyPond</a></li>
+    <li><a id="toc-Funciones-de-Scheme" href="scheme-functions.es.html">B.2 Funciones de Scheme</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Definicion-de-funciones-de-Scheme" href="scheme-function-definitions.es.html">B.2.1 Definición de funciones de Scheme</a></li>
+      <li><a id="toc-Uso-de-las-funciones-de-Scheme" href="scheme-function-usage.es.html">B.2.2 Uso de las funciones de Scheme</a></li>
+      <li><a id="toc-Funciones-de-Scheme-vacias" href="void-scheme-functions.es.html">B.2.3 Funciones de Scheme vacías</a></li>
+    </ul></li>
+    <li><a id="toc-Funciones-musicales" href="music-functions.es.html">B.3 Funciones musicales</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Definiciones-de-funciones-musicales" href="music-function-definitions.es.html">B.3.1 Definiciones de funciones musicales</a></li>
+      <li><a id="toc-Uso-de-las-funciones-musicales" href="music-function-usage.es.html">B.3.2 Uso de las funciones musicales</a></li>
+      <li><a id="toc-Funciones-de-sustitucion-sencillas" href="simple-substitution-functions.es.html">B.3.3 Funciones de sustitución sencillas</a></li>
+      <li><a id="toc-Funciones-de-sustitucion-intermedias" href="intermediate-substitution-functions.es.html">B.3.4 Funciones de sustitución intermedias</a></li>
+      <li><a id="toc-Matematicas-dentro-de-las-funciones" href="mathematics-in-functions.es.html">B.3.5 Matemáticas dentro de las funciones</a></li>
+      <li><a id="toc-Funciones-sin-argumentos" href="functions-without-arguments.es.html">B.3.6 Funciones sin argumentos</a></li>
+      <li><a id="toc-Funciones-musicales-vacias" href="void-music-functions.es.html">B.3.7 Funciones musicales vacías</a></li>
+    </ul></li>
+    <li><a id="toc-Funciones-de-eventos" href="event-functions.es.html">B.4 Funciones de eventos</a></li>
+    <li><a id="toc-Funciones-de-marcado" href="markup-functions.es.html">B.5 Funciones de marcado</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Construccion-de-elementos-de-marcado-en-Scheme" href="markup-construction-in-scheme.es.html">B.5.1 Construcción de elementos de marcado en Scheme</a></li>
+      <li><a id="toc-Como-funcionan-internamente-los-elementos-de-marcado" href="how-markups-work-internally.es.html">B.5.2 Cómo funcionan internamente los elementos de marcado</a></li>
+      <li><a id="toc-Definicion-de-una-instruccion-de-marcado-nueva" href="new-markup-command-definition.es.html">B.5.3 Definición de una instrucción de marcado nueva</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Sintaxis-de-la-definicion-de-instrucciones-de-marcado" href="markup-command-definition-syntax.es.html">Sintaxis de la definición de instrucciones de marcado</a></li>
+        <li><a id="toc-Acerca-de-las-propiedades" href="on-properties.es.html">Acerca de las propiedades</a></li>
+        <li><a id="toc-Un-ejemplo-completo" href="a-complete-example.es.html">Un ejemplo completo</a></li>
+        <li><a id="toc-Adaptacion-de-instrucciones-incorporadas" href="adapting-builtin-commands.es.html">Adaptación de instrucciones incorporadas</a></li>
+        <li><a id="toc-Convertir-elementos-de-marcado-en-cadenas" href="converting-markups-to-strings.es.html">Convertir elementos de marcado en cadenas</a></li>
+      </ul></li>
+      <li><a id="toc-Definicion-de-nuevas-instrucciones-de-lista-de-marcado" href="new-markup-list-command-definition.es.html">B.5.4 Definición de nuevas instrucciones de lista de marcado</a></li>
+    </ul></li>
+    <li><a id="toc-Contextos-para-programadores" href="contexts-for-programmers.es.html">B.6 Contextos para programadores</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Evaluacion-de-contextos" href="context-evaluation.es.html">B.6.1 Evaluación de contextos</a></li>
+      <li><a id="toc-Ejecutar-una-funcion-sobre-todos-los-objetos-de-la-presentacion" href="running-a-function-on-all-layout-objects.es.html">B.6.2 Ejecutar una función sobre todos los objetos de la presentación</a></li>
+    </ul></li>
+    <li><a id="toc-Funciones-de-callback" href="callback-functions.es.html">B.7 Funciones de callback</a></li>
+    <li class="toc_current"><a id="toc-Contenedores-Unpure_002dpure" href="unpure_002dpure-containers.es.html">B.8 Contenedores Unpure-pure</a></li>
+    <li><a id="toc-Trucos-dificiles" href="difficult-tweaks.es.html">B.9 Trucos difíciles</a></li>
+  </ul></li>
+  <li><a id="toc-Interfaces-de-Scheme-de-LilyPond" href="lilypond-scheme-interfaces.es.html">C Interfaces de Scheme de LilyPond</a></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.es.html">Appendix D GNU Free Documentation License</a></li>
+  <li><a id="toc-Indice" href="index-of-commands-and-concepts.es.html" rel="index">Appendix E Índice</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Búsqueda de Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

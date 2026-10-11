@@ -1,0 +1,202 @@
+<!--
+    Translation of GIT Committish: 145a6a5bb7315c0b38e6f7d748d191c113a8f4ae
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  Refer to `UPDATE A TRANSLATION'
+    in README for details.
+!-->
+
+<h1>Benutzung der automatischen Sprachauswahl</h1>
+
+<P>
+  Damit die Sprache automatisch ausgew&auml;hlt wird, muss die
+  Standardsprache vorher im Browser festgelegt werden.
+  Die Einstellung h&auml;ngt vom Browser ab.
+</P>
+
+<!--
+    Instructions taken from http://www.debian.org/intro/cn
+    Do not copy the whole page, we use only about 50 of the 400 lines.
+    !-->
+<DL>
+
+<DT>
+Mozilla/Netscape 4.x und neuer</DT>
+
+<dd>
+<pre>
+    Edit -&gt; Preferences -&gt; Navigator -&gt; Languages
+</pre>
+Beachten Sie: Mit Netscape 4.x m&uuml;ssen Sie sich vergewissern, dass Sie die
+Sprache aus den verf&uuml;gbaren Wahlm&ouml;glichkeiten ausgew&auml;hlt haben. Einige Leute
+haben schon Probleme
+gemeldet, wenn sie die Sprache von Hand eingegeben haben.</dd>
+
+<dt>Mozilla Firefox</dt>
+
+Version 1.5 und neuer:<br>
+Linux:
+<pre>
+     Bearbeiten -&gt; Einstellungen -&gt; Erweitert -&gt; Allgemein -&gt; Sprachen bearbeiten
+</pre>
+
+Windows:
+<pre>
+     Tools -&gt; Options -&gt; Advanced -&gt; General -&gt; Edit Languages
+</pre>
+Bei &auml;lteren Versionen m&uuml;ssen Sie zu <kbd>about:config</kbd> gehen und den Wert von
+
+<kbd>intl.accept_languages</kbd> &auml;ndern.
+</dd>
+
+<dt>Internet Explorer</dt>
+
+<dd>Windows:
+<pre>
+     Tools oder View oder Extras -&gt; Internet Options -&gt; (General) Languages
+</pre></dd>
+
+<dd>MacOS:
+<pre>
+     Edit -&gt; Preferences -&gt; Web Browser -&gt; Language/Fonts
+</pre></dd>
+
+<dt>Opera</dt>
+<dd>Die meisten Versionen:
+<pre>
+     File -&gt; Preferences -&gt; Languages
+
+</pre></dd>
+<dd>Linux/*BSD Versionen 5.x und 6.x:
+<pre>
+     File -&gt; Preferences -&gt; Document -&gt; Languages
+
+</pre></dd>
+
+<dt>Safari</dt>
+<dd>Safari benutzt die Mac OS X Systemeinstellungen, um die bevorzugte
+Sprache zu bestimmen:
+<pre>
+    System preferences -&gt; International -&gt; Language
+
+</pre>
+</dd>
+
+
+<!--
+<DL>
+
+  <DT>Mozilla Firefox Version 0.9 und neuer</DT>
+  <DD>
+    GNU/Linux
+    <PRE>
+      Bearbeiten -&gt; Einstellungen -&gt; Erweitert -&gt; Allgemein -&gt; Sprachen - w&auml;hlen
+    </PRE>
+  </DD>
+  <DD>
+    Microsoft Windows
+    <PRE>
+      Extras -&gt; Einstellungen -&gt; Erweitert -&gt; Allgemein -&gt; Sprachen - w&auml;hlen
+    </PRE>
+    In &auml;lteren Versionen muss in der Adresszeile <KBD>about:config</KBD> aufgrufen werden
+    und der Wert von <KBD>intl.accept_languages</KBD> ver&auml;ndert werden.
+  </DD>
+
+  <DT>Mozilla / Netscape 4.x und neuer</DT>
+  <DD>
+    <PRE>
+      Bearbeiten -&gt; Einstellungen -&gt; Navigator -&gt; Sprachen
+    </PRE>
+    Anmerkung: mit Netscape 4.x muss die Sprache unbedingt aus der
+    vorhandenen Auswahl gew&auml;hlt werden. Es kann Probleme geben,
+    wenn die Sprache selber eingegeben wird.
+  </DD>
+
+  <DT>Microsoft Internet Explorer</DT>
+  <DD>
+    Microsoft Windows
+    <PRE>
+      Extras -&gt; Internetoptionen -&gt; (Allgemein) Sprachen
+    </PRE>
+  </DD>
+  <DD>
+    MacOS
+    <PRE>
+      Safari -&gt; Einstellungen -&gt; Web Browser -&gt; Sprachen/Schriftarten
+
+	<!--can somebody check this, I don't have a Mac !-->
+
+
+   <!-- </PRE>
+  </DD> !-->
+</DL>
+
+<BR>
+Das Original dieser Seite stammt von
+<A HREF="http://www.debian.org/intro/cn">Debian</A>, alle Rechte vorbehalten,
+
+ &copy; 1997-2005
+<A HREF="http://www.spi-inc.org/">SPI</A>; Siehe die <A href="http://www.debian.org/license" rel="copyright">Lizenzbedingungen</A>.
+<BR>
+Debian is a registered trademark of Software in the Public Interest, Inc.
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="browser-language.html">English</a>, <a href="browser-language.ca.html">Català</a>, <a href="browser-language.es.html">Español</a>, <a href="browser-language.fr.html">Français</a>, <a href="browser-language.it.html">Italiano</a>, <a href="browser-language.ja.html">日本語</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>

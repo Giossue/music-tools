@@ -1,0 +1,3798 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2002-2026 degli autori.
+
+La traduzione della seguente nota di copyright è gentilmente
+offerta alle persone che non parlano inglese, ma solo
+la nota in inglese ha valore legale.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+È garantito il permesso di copiare, distribuire e/o modificare questo
+documento seguendo i termini della GNU Free Documentation License,
+versione 1.1 o ogni versione successiva pubblicata dalla
+Free Software Foundation; senza alcuna sezione non modificabile.
+Una copia della licenza si trova nella sezione intitolata
+"GNU Free Documentation License".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>Saggio sull&rsquo;incisione musicale automatizzata</title>
+
+<meta name="description" content="Saggio sull&rsquo;incisione musicale automatizzata">
+<meta name="keywords" content="Saggio sull&rsquo;incisione musicale automatizzata">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="#top" rel="start" title="LilyPond &mdash; Saggio sull&rsquo;incisione musicale automatizzata">
+<link href="#index-of-commands-and-concepts" rel="index" title="Appendix B Indice">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="#music-engraving" rel="next" title="1 Incisione musicale">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="it" class="essay">
+<div id="main">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="top" id="top">
+<table class="nav_table">
+<tr><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td></tr>
+</table>
+<span id="LilyPond-_002d_002d_002d-Saggio-sull_0027incisione-musicale-automatizzata"></span><h1 class="top">LilyPond &mdash; Saggio sull&rsquo;incisione musicale automatizzata</h1>
+
+<table class="cartouche" border="1"><tr><td>
+<p>Questo saggio tratta le funzioni di incisione musicale automatizzata nella
+versione di LilyPond 2.26.0.
+</p></td></tr></table>
+
+
+
+
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#music-engraving" accesskey="1">1 Incisione musicale</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#literature-list" accesskey="2">2 Bibliografia</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#gnu-free-documentation-license" accesskey="3">Appendix A GNU Free Documentation License</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Licenza di questo documento.
+</td></tr>
+<tr><td align="left" valign="top"><a href="#index-of-commands-and-concepts" rel="index" accesskey="4">Appendix B Indice</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<table class="cartouche" border="1"><tr><td>
+<p>Questo manuale è disponibile in altri formati ed è integrato col resto
+della documentazione.  Maggiori informazioni in <a href="web-big-page.it.html#manuals">Manuali</a>.
+</p>
+<p>La documentazione completa si trova all&rsquo;indirizzo
+<a href="https://lilypond.org/">https://lilypond.org/</a><!-- /@w -->.
+</p></td></tr></table>
+
+
+
+
+
+
+
+
+<hr>
+<div class="chapter" id="music-engraving">
+<table class="nav_table">
+<tr><td align="left">[<a href="#top" title="Beginning of this chapter or previous chapter"> &lt;&lt; Top </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#top" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Top </a>]</td><td align="center">[<a href="#top" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[<a href="#the-lilypond-story" title="Next section in reading order" accesskey="n" rel="next"> Storia di LilyPond &gt; </a>]</td></tr>
+</table>
+<span id="Incisione-musicale"></span><h2 class="chapter">1 Incisione musicale</h2>
+
+<p>In questo saggio spieghiamo le ragioni per cui LilyPond è stato creato e
+come fa a produrre spartiti così belli.
+</p>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#the-lilypond-story" accesskey="1">1.1 Storia di LilyPond</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#engraving-details" accesskey="2">1.2 Incisione in dettaglio</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#automated-engraving" accesskey="3">1.3 Incisione automatizzata</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#building-software" accesskey="4">1.4 Costruzione del software</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#putting-lilypond-to-work" accesskey="5">1.5 Mettere LilyPond al lavoro</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#engraved-examples-_0028bwv-861_0029" accesskey="6">1.6 Esempi di incisione (BWV 861)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="section" id="the-lilypond-story">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#music-engraving" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Incisione musicale </a>]</td><td align="center">[<a href="#music-engraving" title="Up section" accesskey="u" rel="up">  Up: Incisione musicale </a>]</td><td align="right">[<a href="#engraving-details" title="Next section in reading order" accesskey="n" rel="next"> Incisione in dettaglio &gt; </a>]</td></tr>
+</table>
+<span id="Storia-di-LilyPond"></span><h3 class="section">1.1 Storia di LilyPond</h3>
+
+<p>Molto tempo prima che LilyPond venisse adoperato per incidere gradevoli
+spartiti da leggere nelle esecuzioni, prima che ci si potessero creare
+dispense per i corsi universitari o perfino semplici melodie, prima ancora che
+esistessero una comunità di utenti sparsa in tutto il mondo o addirittura
+un saggio sull&rsquo;incisione musicale, LilyPond ha preso vita con una domanda:
+</p>
+<blockquote>
+<p>Perché la maggior parte degli spartiti generati da un software non riesce a
+raggiungere la bellezza e l&rsquo;equilibrio di uno spartito inciso a mano?
+</p></blockquote>
+
+<p>Possiamo trovare alcune risposte esaminando i due spartiti
+qui sotto.
+Il primo è un bellissimo spartito inciso a mano nel 1950; il secondo è
+un&rsquo;edizione moderna realizzata al computer.
+</p>
+<blockquote>
+<p>Bärenreiter BA 320, &copy;1950:
+</p>
+<img src="pictures/baer-suite1-fullpage.png" alt="baer-suite1-fullpage">
+</blockquote>
+
+<blockquote>
+<p>Henle no. 666, &copy;2000:
+</p>
+<img src="pictures/henle-suite1-fullpage.png" alt="henle-suite1-fullpage">
+</blockquote>
+
+<p>Le note, prese dalla prima Suite di Bach per violoncello solo,
+sono identiche, ma il loro aspetto sulla pagina è diverso, specialmente
+se le stampate e le guardate da lontano.
+(La versione in PDF di questo manuale contiene immagini ad alta
+risoluzione adatte alla stampa.)
+Provate a leggerle o a suonarle da entrambe le edizioni e vi accorgerete che quella
+incisa a mano è più piacevole da usare.  Possiede linee fluide e un
+certo movimento, e trasmette la sensazione di essere una musica viva e dotata
+di respiro, mentre la versione più recente appare fredda e meccanica.
+</p>
+<p>È difficile accorgersi immediatamente di che cosa rende il secondo
+spartito diverso dal primo.  Tutto sembra pulito e ordinato, forse anche
+&ldquo;migliore&rdquo; perché più computerizzato e uniforme.  In verità, la cosa
+ci ha lasciati perplessi per un bel po&rsquo;.  Volevamo migliorare la
+notazione prodotta al computer, ma prima di tutto dovevamo capire
+che cosa c&rsquo;era di sbagliato.
+</p>
+<p>La risposta sta nell&rsquo;uniformità perfetta, quasi matematica,
+dell&rsquo;edizione moderna.  Trovate le stanghette di battuta a metà di
+ciascun rigo: nello spartito inciso a mano la loro posizione varia
+naturalmente, mentre in quello più nuovo sono incolonnate quasi
+perfettamente.  Lo mostriamo in questi schemi di impaginazione
+semplificati, ricavati dall&rsquo;incisione tradizionale (a sinistra) e
+dall&rsquo;edizione recente (a destra):
+</p>
+<blockquote>
+<img src="pictures/page-layout-comparison.png" alt="page-layout-comparison">
+</blockquote>
+
+<p>Nella seconda sono incolonnate anche le singole teste delle note,
+il che annulla il contorno della melodia, facendolo
+scomparire in una rigida griglia di simboli musicali.
+</p>
+<p>Ci sono anche altre differenze: nell&rsquo;edizione incisa a mano le linee
+verticali sono tutte più spesse, le legature si trovano più vicine alle
+teste delle note e si osserva una maggiore varietà nella pendenza delle travature.
+Anche se dettagli come questi possono sembrare pignoli, il risultato è
+una pagina di musica più facile da leggere.  Nello spartito generato dal
+software, invece, i righi sono quasi identici, e se il musicista
+distoglie lo sguardo dalla pagina per un istante, si perderà.
+</p>
+<p>LilyPond è stato progettato per risolvere i problemi che abbiamo
+riscontrato nei programmi in circolazione e per creare musica bella da
+vedere che imiti i migliori spartiti incisi a mano.
+</p>
+
+<hr>
+</div>
+<div class="section" id="engraving-details">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#the-lilypond-story" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Storia di LilyPond </a>]</td><td align="center">[<a href="#music-engraving" title="Up section" accesskey="u" rel="up">  Up: Incisione musicale </a>]</td><td align="right">[<a href="#music-fonts" title="Next section in reading order" accesskey="n" rel="next"> Font musicali &gt; </a>]</td></tr>
+</table>
+<span id="Incisione-in-dettaglio"></span><h3 class="section">1.2 Incisione in dettaglio</h3>
+
+<span id="index-incisione"></span>
+<span id="index-tipografia_002c-musica"></span>
+<span id="index-tipografia-musicale"></span>
+<span id="index-incisione-di-lastre"></span>
+<span id="index-incisione-musicale"></span>
+
+<p>L&rsquo;arte della tipografia musicale è chiamata
+<em>incisione (su lastra)</em>, un termine che deriva dalla pratica
+della stampa musicale a mano.<a id="DOCF1" href="#FOOT1"><sup>1</sup></a>  Solo pochi decenni fa, gli spartiti erano
+realizzati incidendo e punzonando la musica in modo speculare su una
+lastra di zinco o peltro.  La lastra, poi, veniva inchiostrata e le
+depressioni prodotte da incisioni e punzonature trattenevano
+l&rsquo;inchiostro.  Imprimendo la carta sulla lastra, si produceva l&rsquo;immagine
+della pagina.  Punzonature e incisioni erano realizzate completamente
+a mano e correggere un errore era piuttosto laborioso, perciò
+l&rsquo;incisione doveva essere praticamente perfetta al primo colpo.  Saper
+incidere le lastre era una competenza che richiedeva un alto grado di
+specializzazione; un artigiano doveva sostenere quasi cinque anni di
+formazione prima di acquisire il titolo di maestro incisore, e per
+diventare veramente abile servivano altri cinque anni di esperienza.
+</p>
+<blockquote>
+<img src="pictures/hader-slaan.png" alt="hader-slaan">
+</blockquote>
+
+<p>LilyPond si ispira alle incisioni manuali tradizionali pubblicate
+per tutta la prima metà del XX secolo dalle principali case editrici
+musicali europee, tra cui Bärenreiter, Duhem, Durand, Hofmeister, Peters
+e Schott.  Quei nomi e quel periodo storico sono talvolta considerati il
+culmine della pratica dell&rsquo;incisione musicale artigianale.
+Avendo studiato queste edizioni, abbiamo imparato molto su come stanno
+le cose in uno spartito ben inciso e ne abbiamo individuato gli elementi
+da imitare con LilyPond.
+</p>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#music-fonts" accesskey="1">Font musicali</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#optical-spacing" accesskey="2">Spaziatura ottica</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#ledger-lines" accesskey="3">Tagli addizionali</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#optical-sizing" accesskey="4">Dimensionamento ottico</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#why-work-so-hard_003f" accesskey="5">Perché lavorare così duramente?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="unnumberedsubsec" id="music-fonts">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#engraving-details" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Incisione in dettaglio </a>]</td><td align="center">[<a href="#engraving-details" title="Up section" accesskey="u" rel="up">  Up: Incisione in dettaglio </a>]</td><td align="right">[<a href="#optical-spacing" title="Next section in reading order" accesskey="n" rel="next"> Spaziatura ottica &gt; </a>]</td></tr>
+</table>
+<span id="Font-musicali"></span><h4 class="unnumberedsubsec">Font musicali</h4>
+
+<p>Le immagini qui sotto mostrano alcune differenze tra un&rsquo;incisione
+tradizionale e un tipico spartito prodotto dal computer.  L&rsquo;immagine a
+sinistra riproduce un bemolle preso da un&rsquo;edizione
+Bärenreiter incisa a mano; quella a destra raffigura lo stesso
+segno ma preso da un&rsquo;edizione della stessa musica pubblicata nel 2000.
+Nonostante che le due immagini siano stampate con la stessa tonalità
+d&rsquo;inchiostro, la versione Bärenreiter sembra più scura: le linee del
+rigo sono più grosse e il bemolle appare audacemente arrotondato,
+quasi voluttuoso.  Nell&rsquo;immagine a destra, invece, le linee sono più
+sottili e il segno è piuttosto diritto e con spigoli vivi.
+</p>
+<table>
+<tr><td width="25%"></td><td width="25%"><img src="pictures/baer-flat-gray.png" alt="baer-flat-gray"></td><td width="25%"><img src="pictures/henle-flat-gray.png" alt="henle-flat-gray"></td></tr>
+<tr><td width="25%"></td><td width="25%">Bärenreiter (1950)</td><td width="25%">Henle (2000)</td></tr>
+</table>
+
+<span id="index-simboli-musicali"></span>
+<span id="index-caratteri-musicali"></span>
+<span id="index-nerezza"></span>
+<span id="index-bilanciamento"></span>
+
+<p>Quando abbiamo deciso di scrivere un programma per creare la tipografia
+musicale, non esistevano caratteri liberamente disponibili che
+corrispondessero all&rsquo;eleganza delle nostre edizioni preferite.  Per nulla
+scoraggiati, imperterriti abbiamo creato una collezione di simboli musicali basandoci
+sulle belle stampe degli spartiti incisi a mano.  L&rsquo;esperienza, poi, ha
+contribuito a sviluppare un certo gusto tipografico e ci ha permesso di
+apprezzare anche i sottili dettagli del design.  Senza quest&rsquo;esperienza, non
+avremmo potuto renderci conto di quanto brutti fossero i caratteri che
+avevamo ammirato all&rsquo;inizio.
+</p>
+<p>Di seguito ne esemplifichiamo due: la serie
+superiore è nel font predefinito del programma Sibelius
+(l&rsquo;<em>Opus</em>); la serie inferiore, in quello di LilyPond.
+</p>
+<blockquote>
+<img src="pictures/OpusAndFeta.png" alt="OpusAndFeta">
+</blockquote>
+
+<p>I simboli di LilyPond sono più grossi e il loro peso è più coerente, il
+che li rende più facili da leggere.  I tratti terminali sottili, come
+quelli alle due estremità della pausa di un quarto, non dovrebbero
+finire con punte taglienti, ma piuttosto con forme arrotondate,
+perché gli spigoli vivi delle matrici dei punzoni sono fragili e a forza
+di battere sul metallo si usurano rapidamente.  Considerati insieme, nerezza
+del carattere, spessore delle linee, delle travature e delle legature
+devono essere ben amalgamati insieme per restituire un&rsquo;impressione generale
+forte ma equilibrata.
+</p>
+<p>Inoltre, notate che la testa della nostra semiminima non è ellittica, ma
+leggermente sagomata a diamante.  Il gambo verticale del segno di
+bemolle è lievemente rastremato, allargandosi verso l&rsquo;alto.  I segni di
+diesis e bequadro si distinguono meglio da lontano perché le loro linee
+angolate presentano una pendenza diversa e i tratti verticali sono più
+grossi.
+</p>
+<hr>
+</div>
+<div class="unnumberedsubsec" id="optical-spacing">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#music-fonts" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Font musicali </a>]</td><td align="center">[<a href="#engraving-details" title="Up section" accesskey="u" rel="up">  Up: Incisione in dettaglio </a>]</td><td align="right">[<a href="#ledger-lines" title="Next section in reading order" accesskey="n" rel="next"> Tagli addizionali &gt; </a>]</td></tr>
+</table>
+<span id="Spaziatura-ottica"></span><h4 class="unnumberedsubsec">Spaziatura ottica</h4>
+
+<p>Nella spaziatura della musica, la distribuzione dello spazio dovrebbe
+rispecchiare le durate fra le note.  Tuttavia, come abbiamo visto prima nella
+suite di Bach, molti spartiti moderni aderiscono alle durate con
+precisione matematica, con scarsi risultati.  Nel prossimo
+esempio, lo stesso motivo viene stampato due volte: la prima, usando
+l&rsquo;esatta spaziatura matematica; la seconda, con le correzioni.  Quale
+preferite?
+</p>
+<span id="index-spaziatura-ottica"></span>
+
+
+<a href="9a/lily-aeb8f62a.ly">
+  <img align="middle"
+       border="0"
+       src="9a/lily-aeb8f62a.png"
+       alt="[image of music]"></a>
+
+
+
+<a href="9a/lily-56d084bb.ly">
+  <img align="middle"
+       border="0"
+       src="9a/lily-56d084bb.png"
+       alt="[image of music]"></a>
+
+
+<span id="index-ritmi-regolari"></span>
+<span id="index-spaziatura-regolare"></span>
+<span id="index-spaziatura_002c-regolare"></span>
+
+<p>Ciascuna misura contiene unicamente note da suonare in un ritmo
+costante, e gli spazi interposti dovrebbero riflettere questa situazione.
+Purtroppo, però, l&rsquo;occhio ci inganna un po&rsquo;: non solo esso rileva la distanza
+tra le teste delle note, ma tiene conto anche di quella tra
+gambi consecutivi. Di conseguenza, le note di una combinazione
+gambo in su/gambo in giù dovrebbero essere più distanti tra loro e
+quelle di una combinazione gambo in giù/gambo in su più vicine, il
+tutto a seconda di come si combinano le posizioni verticali delle note.
+Le due misure inferiori sono stampate con questa correzione; quelle
+superiori, tuttavia, contengono ammassi di note
+gambo in giù/gambo in su.  Un maestro incisore avrebbe aggiustato la
+spaziatura come richiesto per compiacere l&rsquo;occhio.
+</p>
+<p>Gli algoritmi di spaziatura di LilyPond prendono in considerazione anche
+le stanghette.  Perciò, l&rsquo;ultimo gambo in su nell&rsquo;esempio
+correttamente spaziato è stato allontanato ulteriormente dalla
+stanghetta finale per evitare troppe linee verticali vicine nella parte finale della
+misura.  Un gambo in giù, invece, non avrebbe richiesto quest&rsquo;accortezza.
+</p>
+<hr>
+</div>
+<div class="unnumberedsubsec" id="ledger-lines">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#optical-spacing" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Spaziatura ottica </a>]</td><td align="center">[<a href="#engraving-details" title="Up section" accesskey="u" rel="up">  Up: Incisione in dettaglio </a>]</td><td align="right">[<a href="#optical-sizing" title="Next section in reading order" accesskey="n" rel="next"> Dimensionamento ottico &gt; </a>]</td></tr>
+</table>
+<span id="Tagli-addizionali"></span><h4 class="unnumberedsubsec">Tagli addizionali</h4>
+
+<span id="index-tagli-addizionali"></span>
+<span id="index-collisioni"></span>
+
+<p>I tagli addizionali presentano una sfida tipografica: rendono più
+difficile inserire il corretto spazio tra simboli musicali vicini e
+debbono essere abbastanza nitidi da permettere di identificare l&rsquo;altezza
+della nota a colpo d&rsquo;occhio.  Nell&rsquo;esempio qui sotto, vediamo come i tagli
+addizionali dovrebbero essere più spessi di una normale linea del rigo e che un
+incisore esperto li accorcerà per permettere di avvicinare le
+alterazioni alla testa della nota.  Nell&rsquo;incisione con LilyPond abbiamo
+incluso anche questa funzionalità.
+</p>
+<table>
+<tr><td width="25%"></td><td width="25%"><img src="pictures/baer-ledger.png" alt="baer-ledger"></td><td width="25%"><img src="pictures/lily-ledger.png" alt="lily-ledger"></td></tr>
+</table>
+
+
+<hr>
+</div>
+<div class="unnumberedsubsec" id="optical-sizing">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#ledger-lines" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Tagli addizionali </a>]</td><td align="center">[<a href="#engraving-details" title="Up section" accesskey="u" rel="up">  Up: Incisione in dettaglio </a>]</td><td align="right">[<a href="#why-work-so-hard_003f" title="Next section in reading order" accesskey="n" rel="next"> Perché lavorare così duramente? &gt; </a>]</td></tr>
+</table>
+<span id="Dimensionamento-ottico"></span><h4 class="unnumberedsubsec">Dimensionamento ottico</h4>
+
+<p>Potrebbe essere necessario stampare la musica in una varietà di
+formati diversi.  All&rsquo;inizio, questo si poteva ottenere creando punzoni
+in ciascuno dei corpi richiesti, il che significa che ogni
+punzone era disegnato per dare il meglio di sé in quel particolare
+corpo.  Con l&rsquo;avvento dei font digitali, invece, una singola struttura
+può essere rimpicciolita o ingrandita in scala a piacimento, il che è
+molto comodo, ma nei corpi più piccoli i caratteri appariranno molto
+‘leggeri’.
+</p>
+<p>In LilyPond, abbiamo creato font in una serie di pesi corrispondenti a
+una gamma di corpi per la musica.  La prossima è un&rsquo;incisione di
+LilyPond in corpo 26:
+</p>
+<blockquote>
+<img src="pictures/size26.png" alt="size26">
+</blockquote>
+
+<p>e questa è la stessa incisione in corpo 11, poi ingrandita del 236% per
+riportarla alle stesse dimensioni dell&rsquo;esempio precedente:
+</p>
+<blockquote>
+<img src="pictures/size11.png" alt="size11">
+</blockquote>
+
+<p>Nei corpi piccoli, LilyPond usa linee proporzionalmente più grosse in
+modo che la musica sia ancora ben leggibile.
+</p>
+<p>Ciò permette anche che righi in corpi diversi coesistano pacificamente
+se usati insieme sulla stessa pagina:
+</p>
+
+<a href="80/lily-fb0282ef.ly">
+  <img align="middle"
+       border="0"
+       src="80/lily-fb0282ef.png"
+       alt="[image of music]"></a>
+
+
+
+<hr>
+</div>
+<div class="unnumberedsubsec" id="why-work-so-hard_003f">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#optical-sizing" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Dimensionamento ottico </a>]</td><td align="center">[<a href="#engraving-details" title="Up section" accesskey="u" rel="up">  Up: Incisione in dettaglio </a>]</td><td align="right">[<a href="#automated-engraving" title="Next section in reading order" accesskey="n" rel="next"> Incisione automatizzata &gt; </a>]</td></tr>
+</table>
+<span id="Perche-lavorare-cosi-duramente_003f"></span><h4 class="unnumberedsubsec">Perché lavorare così duramente?</h4>
+
+<p>Di solito, i musicisti sono presi più dall&rsquo;eseguire la musica
+che dall&rsquo;esaminarla così come appare sulla pagina, perciò i dettagli
+tipografici troppo cavillosi rischiano di passare per accademia.  Ma non è
+così.  Gli spartiti sono materiale da utilizzare praticamente: ogni cosa
+viene fatta per aiutare il musicista a migliorare il proprio rendimento, e
+tutto ciò che si rivela poco chiaro o poco piacevole da leggere diventa
+un ostacolo.
+</p>
+<p>La musica incisa nel modo tradizionale impiega simboli neri su un rigo
+‘pesante’ per creare un aspetto forte, ben bilanciato, chiaramente
+distinguibile quando è molto distante da chi deve leggerla: se messa su
+un leggio, per esempio.  Un&rsquo;attenta distribuzione degli
+spazi bianchi permette di disporre le note in modo molto serrato
+senza però affollare i simboli sul rigo.  Il risultato riduce al minimo il
+numero delle voltate, con grande vantaggio per l&rsquo;esecutore.
+</p>
+<p>Questa è una caratteristica tipica della tipografia.  L&rsquo;aspetto della pagina
+dovrebbe essere bello, e non di per sé, ma soprattutto perché aiuta il
+lettore nel proprio compito.  Per la musica stampata ciò è doppiamente
+importante, perché i musicisti reggono un carico di  attenzione
+limitato: meno ne debbono impiegare per leggere la musica, più ne possono
+concentrare nell&rsquo;eseguirla. In altre parole: migliore è la tipografia,
+migliori saranno le esecuzioni.
+</p>
+<p>Questi esempi dimostrano che la tipografia musicale è un&rsquo;arte raffinata e
+complessa, la cui messa in pratica richiede notevoli competenze di solito
+non possedute dai musicisti.  LilyPond costituisce il nostro sforzo per
+importare l&rsquo;eccellenza grafica della musica incisa a mano nell&rsquo;era
+informatica e renderla disponibile a qualunque musicista.  Abbiamo
+sintonizzato i nostri algoritmi, i disegni dei font e le
+impostazioni del programma per produrre stampe corrispondenti alla
+qualità delle vecchie edizioni che amiamo osservare e suonare.
+</p>
+<hr>
+</div>
+</div>
+<div class="section" id="automated-engraving">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#why-work-so-hard_003f" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Perché lavorare così duramente? </a>]</td><td align="center">[<a href="#music-engraving" title="Up section" accesskey="u" rel="up">  Up: Incisione musicale </a>]</td><td align="right">[<a href="#beauty-contests" title="Next section in reading order" accesskey="n" rel="next"> Concorsi di bellezza &gt; </a>]</td></tr>
+</table>
+<span id="Incisione-automatizzata"></span><h3 class="section">1.3 Incisione automatizzata</h3>
+
+<span id="index-incisione_002c-automatizzata"></span>
+<span id="index-incisione-automatizzata"></span>
+
+<p>Qui descriviamo ciò che serve per creare un software in grado di
+simulare l&rsquo;aspetto degli spartiti incisi: un metodo di descrizione della
+buona formattazione al computer e numerosi confronti dettagliati con
+incisioni effettivamente esistenti.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#beauty-contests" accesskey="1">Concorsi di bellezza</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#improvement-by-benchmarking" accesskey="2">Miglioramento per analisi comparativa</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#getting-things-right" accesskey="3">Mettere le cose a posto</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="unnumberedsubsec" id="beauty-contests">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#automated-engraving" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Incisione automatizzata </a>]</td><td align="center">[<a href="#automated-engraving" title="Up section" accesskey="u" rel="up">  Up: Incisione automatizzata </a>]</td><td align="right">[<a href="#improvement-by-benchmarking" title="Next section in reading order" accesskey="n" rel="next"> Miglioramento per analisi comparativa &gt; </a>]</td></tr>
+</table>
+<span id="Concorsi-di-bellezza"></span><h4 class="unnumberedsubsec">Concorsi di bellezza</h4>
+
+<p>In che modo noi decidiamo veramente sulla formattazione?  In
+altre parole: quale delle tre configurazioni seguenti dovremmo
+scegliere per avere la legatura migliore?
+</p>
+
+<a href="3f/lily-ac354203.ly">
+  <img align="middle"
+       border="0"
+       src="3f/lily-ac354203.png"
+       alt="[image of music]"></a>
+
+
+<p>Esistono pochi libri sull&rsquo;arte di incidere la musica, i quali, purtroppo,
+si limitano a fornire alcune semplici regole generali e qualche esempio.
+Da esse si può imparare qualcosa, ma sempre troppo poco per mettere a
+punto un algoritmo implementabile senza troppa fatica in un computer:
+seguendole, le eccezioni da codificare a mano sarebbero ancora troppe.
+Analizzare tutti questi casi è un lavoro enorme, e spesso nemmeno tutti
+vengono contemplati:
+</p>
+<blockquote>
+<img src="pictures/ross-beam-scan.jpg" alt="ross-beam-scan">
+</blockquote>
+
+<p>(Fonte: Ted Ross, <em>The Art of Music Engraving</em>)
+</p>
+<p>Anziché cercare di scrivere regole di formattazione dettagliate
+per ogni situazione possibile, dobbiamo solo descrivere gli
+obiettivi in modo sufficientemente completo da permettere a LilyPond di
+giudicare da solo l&rsquo;attrattiva delle diverse possibilità.  Poi, per ogni
+configurazione calcoliamo un punteggio di  bruttezza e scegliamo quella
+meno brutta.
+</p>
+<p>Per esempio, qui sotto mostriamo tre possibilità per una legatura,
+a ciascuna delle quali LilyPond ha assegnato un punteggio in &lsquo;punti di
+bruttezza&rsquo;.  Il primo esempio ottiene 15,39 punti perché la legatura
+attraversa una delle teste delle note:
+</p>
+
+<a href="a6/lily-891b625e.ly">
+  <img align="middle"
+       border="0"
+       src="a6/lily-891b625e.png"
+       alt="[image of music]"></a>
+
+
+<p>Il secondo è più bello, ma la legatura non comincia o finisce sulle
+teste delle note. Ottiene 1,71 punti a sinistra e 9,37 punti a destra,
+più altri 2 punti a causa del fatto che la legatura ascende mentre la
+melodia discende, per un totale di 13,08 punti di bruttezza:
+</p>
+
+<a href="43/lily-f0f2135c.ly">
+  <img align="middle"
+       border="0"
+       src="43/lily-f0f2135c.png"
+       alt="[image of music]"></a>
+
+
+<p>La legatura finale ottiene 10,04 punti per il vuoto a destra e 2 punti
+per la pendenza verso l&rsquo;alto, ma è la più attraente delle tre
+configurazioni, e così LilyPond sceglie questa:
+</p>
+
+<a href="a4/lily-8ec4148f.ly">
+  <img align="middle"
+       border="0"
+       src="a4/lily-8ec4148f.png"
+       alt="[image of music]"></a>
+
+
+<p>Questa tecnica è del tutto generale e viene adoperata per prendere
+decisioni ottimali in merito alla configurazione dei gambi delle note,
+delle legature di valore e dei punti negli accordi, nelle interruzioni
+di rigo e di pagina.  Si può giudicare la bontà di queste decisioni
+confrontandole con incisioni effettivamente esistenti.
+</p>
+<hr>
+</div>
+<div class="unnumberedsubsec" id="improvement-by-benchmarking">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#beauty-contests" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Concorsi di bellezza </a>]</td><td align="center">[<a href="#automated-engraving" title="Up section" accesskey="u" rel="up">  Up: Incisione automatizzata </a>]</td><td align="right">[<a href="#getting-things-right" title="Next section in reading order" accesskey="n" rel="next"> Mettere le cose a posto &gt; </a>]</td></tr>
+</table>
+<span id="Miglioramento-per-analisi-comparativa"></span><h4 class="unnumberedsubsec">Miglioramento per analisi comparativa</h4>
+
+<p>Gli spartiti generati da LilyPond sono migliorati gradualmente nel tempo e
+continuano a migliorare grazie al confronto con quelli incisi a mano.
+</p>
+<p>Per esempio, qui sotto si vede una riga di un brano di riferimento preso
+da un&rsquo;edizione incisa (Bärenreiter BA320):
+</p>
+<img src="pictures/baer-sarabande.png" alt="baer-sarabande">
+
+<p>e qui la stessa citazione realizzata con una vecchissima versione di LilyPond
+(versione 1.4, maggio 2001):
+</p>
+<img src="pictures/lily14-sarabande.png" alt="lily14-sarabande">
+
+<p>La musica prodotta da LilyPond 1.4 è senza dubbio leggibile, ma un
+confronto serrato con lo spartito precedente ha mostrato numerosi
+errori nei dettagli di formattazione:
+</p>
+<img src="pictures/lily14-sarabande-annotated.png" alt="lily14-sarabande-annotated">
+
+<ul>
+<li> c&rsquo;è troppo spazio prima dell&rsquo;indicazione di tempo
+</li><li> i gambi delle note con travature sono troppo lunghi
+</li><li> la seconda e la quarta misura sono troppo strette
+</li><li> la legatura ha un aspetto imbarazzante
+</li><li> le indicazioni di trillo sono troppo grandi
+</li><li> i gambi sono troppo sottili
+</li></ul>
+
+<p>(Mancavano anche due teste di note, alcune indicazioni editoriali e
+c&rsquo;era un&rsquo;altezza errata!)
+</p>
+<p>Aggiustando le regole di formattazione e il disegno del font, lo
+spartito è notevolmente migliorato.  Confrontate lo stesso spartito di
+riferimento e quello prodotto con la versione corrente di LilyPond
+(2.26.0):
+</p>
+<img src="pictures/baer-sarabande.png" alt="baer-sarabande">
+
+
+<a href="ae/lily-c104c9b2.ly">
+  <img align="middle"
+       border="0"
+       src="ae/lily-c104c9b2.png"
+       alt="[image of music]"></a>
+
+
+<p>Non è certo un clone dell&rsquo;edizione di riferimento, ma è comunque molto
+più vicino a una qualità editoriale rispetto alla versione precedente.
+</p>
+<hr>
+</div>
+<div class="unnumberedsubsec" id="getting-things-right">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#improvement-by-benchmarking" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Miglioramento per analisi comparativa </a>]</td><td align="center">[<a href="#automated-engraving" title="Up section" accesskey="u" rel="up">  Up: Incisione automatizzata </a>]</td><td align="right">[<a href="#building-software" title="Next section in reading order" accesskey="n" rel="next"> Costruzione del software &gt; </a>]</td></tr>
+</table>
+<span id="Mettere-le-cose-a-posto"></span><h4 class="unnumberedsubsec">Mettere le cose a posto</h4>
+
+<p>Siamo in grado di misurare l&rsquo;abilità di LilyPond nel prendere decisioni
+sull&rsquo;incisione della musica anche confrontando il suo prodotto con
+quello di un software commerciale.  In questo caso abbiamo
+scelto Finale 2008, uno dei programmi di notazione musicale
+a pagamento più diffusi, in particolare nel Nord America.  Sibelius è il
+suo più acerrimo rivale e sembra andare particolarmente bene nel mercato
+europeo.
+</p>
+<p>Per il nostro confronto, abbiamo selezionato la Fuga in sol minore dal
+Libro I del <em>Clavicembalo ben temperato</em> BWV 861 di Bach, il cui
+soggetto d&rsquo;apertura è
+</p>
+
+<a href="77/lily-84b0de4f.ly">
+  <img align="middle"
+       border="0"
+       src="77/lily-84b0de4f.png"
+       alt="[image of music]"></a>
+
+
+<p>Abbiamo inciso le ultime sette misure del brano (n. 28&ndash;34) con Finale e
+con LilyPond.  In questo punto della composizione, il soggetto ritorna
+in uno stretto a tre parti e conduce alla sezione finale.  Abbiamo
+resistito alla tentazione di apportare qualunque modifica al prodotto
+predefinito di Finale, perché stiamo cercando di mostrare che cosa
+ciascun software riesce a fare da solo, senza interventi umani.  Le
+uniche modifiche di rilievo introdotte sono state aggiustare le
+dimensioni della pagina per adattarla a quelle di questo saggio e
+forzare la musica in due soli sistemi per rendere più agevole il
+confronto. Per impostazione predefinita, invece, Finale avrebbe inciso
+due sistemi di tre misure ciascuno e un terzo sistema contenente la sola
+misura finale larga tutta la riga.
+</p>
+<p>Molte delle differenze tra le due versioni si concentrano nelle misure
+28&ndash;29, come mostriamo qui di seguito (Finale sta sopra):
+</p>
+<img src="pictures/bwv861mm28-29.png" alt="bwv861mm28-29">
+
+
+<a href="b7/lily-b179776a.ly">
+  <img align="middle"
+       border="0"
+       src="b7/lily-b179776a.png"
+       alt="[image of music]"></a>
+
+
+<p>Tra le carenze nell&rsquo;output non modificato di Finale segnaliamo quanto segue.
+</p><ul>
+<li> La maggior parte delle travature è troppo lontana dal rigo.  Una
+travatura che punta verso il centro del rigo dovrebbe essere lunga circa
+un&rsquo;ottava, ma gli incisori la abbreviano quando nella musica a più voci
+punta in senso contrario.  Il sistema di travature di
+Finale può essere facilmente migliorato con il suo plug-in Patterson
+Beam, ma qui abbiamo scelto di omettere questa funzionalità.
+</li><li> Finale non regola le posizioni delle teste delle note quando queste
+vengono a trovarsi troppo vicine, il che rende la musica estremamente
+difficile da leggere se voce superiore e inferiore invertono
+temporaneamente la posizione:
+
+
+<a href="9f/lily-ca218ddd.ly">
+  <img align="middle"
+       border="0"
+       src="9f/lily-ca218ddd.png"
+       alt="[image of music]"></a>
+
+
+</li><li> Finale ha messo tutte le pause alla stessa altezza sul rigo.
+L&rsquo;utente è libero di regolarle secondo la propria necessità, ma in
+nessun modo il programma tenta di prendere in considerazione il contenuto
+dell&rsquo;altra voce.  Il caso ha voluto che in quest&rsquo;esempio non si verificassero
+vere e proprie collisioni tra note e pause, ma la cosa ha a che fare
+più con la posizione delle note che con quella delle pause.  In altre
+parole, Bach merita più considerazione per evitare una collisione
+completa di quanta non gliene riservi Finale.
+</li></ul>
+
+<p>Con il confronto appena operato non intendiamo affatto suggerire che
+Finale non possa essere adoperato per produrre spartiti di qualità
+editoriale.  Tutto il contrario: nelle mani di un utente esperto può farlo e
+in effetti lo fa, ma richiede abilità e tempo.  Una delle differenze
+fondamentali tra LilyPond e i programmi di notazione musicale
+commerciali è che il primo spera di ridurre gli interventi umani al
+minimo, mentre gli altri puntano a fornire un&rsquo;interfaccia attraente in
+cui operare questo tipo di modifiche.
+</p>
+<p>Particolarmente eclatante è l&rsquo;omissione da parte di Finale di un un bemolle
+a misura 33:
+</p>
+<blockquote>
+<img src="pictures/bwv861mm33-34-annotate.png" alt="bwv861mm33-34-annotate">
+</blockquote>
+
+<p>Il bemolle è richiesto per annullare il bequadro presente poco prima
+nella stessa misura, ma Finale l&rsquo;ha tralasciato perché appartenente a
+un&rsquo;altra voce. Così, oltre ad attivare il plug-in per le travature e a
+controllare la spaziatura delle teste delle note e delle pause, l&rsquo;utente
+deve controllare anche gli accidenti nelle voci che si incrociano per
+scongiurare che errori di questo tipo facciano interrompere una prova.
+</p>
+<p>Se vi interessa esaminare questi esempi più nel dettaglio, alla fine del
+saggio potete trovare l&rsquo;estratto completo di sette misure insieme ad
+altre quattro incisioni pubblicate.  Un attento esame dei
+frammenti rivela che tra le incisioni manuali esiste una certo
+intervallo di variazione tollerabile, ma anche che LilyPond regge il
+confronto abbastanza bene.  L&rsquo;output di LilyPond non è ancora privo
+di difetti, per esempio appare un po&rsquo; troppo aggressivo
+nell&rsquo;accorciare i gambi, il che permette ancora un certo margine di
+manovra per sviluppi e messe a punto successive.
+</p>
+<p>Naturalmente, la tipografia si basa sul giudizio di una forma da parte
+dell&rsquo;uomo, il che rende le persone ancora insostituibili.  Tuttavia si
+può automatizzare gran parte del lavoro noioso, e se LilyPond
+riesce a risolvere correttamente la maggior parte delle situazioni
+frequenti, il miglioramento rispetto al software in circolazione sarà
+enorme.  Via via che gli anni passano, il programma può essere
+perfezionato per eseguire automaticamente un numero sempre più elevato
+di operazioni, così da rendere le sovrascritture manuali sempre meno
+indispensabili.  Dove queste si rivelassero indispensabili, la struttura di
+LilyPond è stata progettata avendo in mente la flessibilità.
+</p>
+<hr>
+</div>
+</div>
+<div class="section" id="building-software">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#getting-things-right" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Mettere le cose a posto </a>]</td><td align="center">[<a href="#music-engraving" title="Up section" accesskey="u" rel="up">  Up: Incisione musicale </a>]</td><td align="right">[<a href="#music-representation" title="Next section in reading order" accesskey="n" rel="next"> Rappresentazione della musica &gt; </a>]</td></tr>
+</table>
+<span id="Costruzione-del-software"></span><h3 class="section">1.4 Costruzione del software</h3>
+
+<p>Questa sezione descrive alcune decisioni di programmazione prese
+durante la progettazione di LilyPond.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#music-representation" accesskey="1">Rappresentazione della musica</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#what-symbols-to-engrave_003f" accesskey="2">Quali simboli incidere?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#flexible-architecture" accesskey="3">Architettura flessibile</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="unnumberedsubsec" id="music-representation">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#building-software" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Costruzione del software </a>]</td><td align="center">[<a href="#building-software" title="Up section" accesskey="u" rel="up">  Up: Costruzione del software </a>]</td><td align="right">[<a href="#what-symbols-to-engrave_003f" title="Next section in reading order" accesskey="n" rel="next"> Quali simboli incidere? &gt; </a>]</td></tr>
+</table>
+<span id="Rappresentazione-della-musica"></span><h4 class="unnumberedsubsec">Rappresentazione della musica</h4>
+
+<span id="index-sintassi"></span>
+<span id="index-strutture-ricorsive"></span>
+
+<p>Idealmente, il formato di input per qualsiasi sistema di formattazione ad
+alto livello consiste in una descrizione astratta del contenuto da formattare,
+che nel nostro caso è la musica stessa.  La questione solleva un problema
+formidabile: in che modo possiamo definire che cos&rsquo;è davvero la musica?
+Anziché tentare di trovare una risposta, abbiamo rovesciato la domanda.
+Scriviamo un programma in grado di produrre spartiti e rendiamone il
+formato il più snello possibile: quando non potremo ridurlo
+ulteriormente, ci ritroveremo per definizione
+con il contenuto in sé.  Il nostro programma, dunque, serve a definire
+la forma di un contenuto musicale.
+</p>
+<p>Anche la sintassi è un aspetto dell&rsquo;interfaccia utente di LilyPond, quindi è semplice
+da scrivere:
+</p>
+<div class="example">
+<pre class="example">{
+  c'4 d'8
+}
+</pre></div>
+
+<p>crea un do centrale da un quarto (C1) e un re da un&rsquo;ottavo
+immediatamente sopra il do centrale (D1).
+</p>
+
+<blockquote>
+<a href="07/lily-861277bc.ly">
+  <img align="middle"
+       border="0"
+       src="07/lily-861277bc.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>A scala microscopica, una sintassi simile si adopera facilmente.  A una
+scala più larga, però, anche la sintassi ha bisogno di una struttura.  In
+quale altro modo, altrimenti, sarebbe possibile scrivere brani complessi come
+sinfonie e opere liriche?  La struttura è formata dal concetto di
+espressioni musicali: combinando minuscoli frammenti di musica in
+frammenti più consistenti, possiamo esprimere musica più complessa.  Per
+esempio
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class=" -Pitch">f&#39;</span><span class="m">4</span>
+</pre>
+
+<a href="d7/lily-c5077621.ly">
+  <img align="middle"
+       border="0"
+       src="d7/lily-c5077621.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Possiamo costruire note simultanee racchiudendole tra
+<code>&lt;&lt;</code> e <code>&gt;&gt;</code>:
+</p>
+<div class="example">
+<pre class="example">&lt;&lt;c4 d4 e4&gt;&gt;
+</pre></div>
+
+
+<blockquote>
+<a href="b9/lily-aca2fd36.ly">
+  <img align="middle"
+       border="0"
+       src="b9/lily-aca2fd36.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Possiamo mettere in sequenza queste due espressioni racchiudendole tra
+parentesi graffe <code>{&nbsp;&hellip;&nbsp;}</code>:
+</p>
+<div class="example">
+<pre class="example">{ f4 &lt;&lt;c4 d4 e4&gt;&gt; }
+</pre></div>
+
+
+<blockquote>
+<a href="90/lily-ca28e028.ly">
+  <img align="middle"
+       border="0"
+       src="90/lily-ca28e028.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Anche quella qui sopra è un&rsquo;espressione, perciò può essere ulteriormente
+combinata con un&rsquo;altra espressione simultanea (una minima, in questo
+caso):
+<code>&lt;&lt;</code>, <code>\\</code>, e <code>&gt;&gt;</code>:
+</p>
+<div class="example">
+<pre class="example">&lt;&lt; g2 \\ { f4 &lt;&lt;c4 d4 e4&gt;&gt; } &gt;&gt;
+</pre></div>
+
+
+<blockquote>
+<a href="9f/lily-7541c0be.ly">
+  <img align="middle"
+       border="0"
+       src="9f/lily-7541c0be.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Strutture ricorsive come quelle appena esaminate possono essere
+specificate in modo pulito e formale in una grammatica indipendente dal
+contesto, la quale genera anche il codice di analisi.  In altre parole, la
+sintassi di LilyPond è definita in modo chiaro e privo di ambiguità
+</p>
+<p>Interfacce utente e sintassi sono gli elementi immediatamente visibili
+agli utenti e quelli con cui essi hanno più a che fare.  Un po&rsquo; sono una
+questione di gusto, un po&rsquo; l&rsquo;argomento di molte discussioni: non troppo
+produttive, però, nonostante qualche pregio ce l&rsquo;abbiano.  Nel quadro più
+ampio di LilyPond, la sintassi di input non è molto importante:
+inventare una sintassi pulita è facile; molto più difficile, invece, è
+scrivere un codice di formattazione decente.  Contiamo le righe di
+codice destinate ai due componenti e troveremo la conferma di quanto abbiamo
+appena affermato: analisi e rappresentazione occupano meno del 10% del
+codice sorgente.
+</p>
+<p>Nel progettare le strutture usate in LilyPond, abbiamo preso decisioni
+diverse da quelle che appaiono in altri programmi.  Considerate la
+natura gerarchica della notazione musicale:
+</p>
+
+<blockquote>
+<a href="25/lily-ae398361.ly">
+  <img align="middle"
+       border="0"
+       src="25/lily-ae398361.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>In questo caso, abbiamo altezze raggruppate in accordi che appartengono
+alle misure, le quali appartengono ai righi.  La cosa assomiglia a
+una struttura ordinata di scatole annidate:
+</p>
+<blockquote>
+<img src="pictures/nestedboxes.png" alt="nestedboxes">
+</blockquote>
+
+<p>Purtroppo, la struttura è ordinata perché si basa su alcuni presupposti
+troppo restrittivi, il che diventa evidente considerando un esempio
+musicale più complesso:
+</p>
+
+<blockquote>
+<a href="08/lily-b365ee9f.ly">
+  <img align="middle"
+       border="0"
+       src="08/lily-b365ee9f.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>In quest&rsquo;esempio, i righi si interrompono arbitrariamente, le voci
+saltano dall&rsquo;uno all&rsquo;altro e su ciascun pentagramma c&rsquo;è un&rsquo;indicazione
+di tempo diversa.  Molti programmi avrebbero del filo da torcere per
+riprodurlo, proprio perché costruiti con una struttura a scatole
+annidate.  Con LilyPond, d&rsquo;altronde, abbiamo cercato di mantenere
+formato di input e struttura il più possibile flessibili.
+</p>
+<hr>
+</div>
+<div class="unnumberedsubsec" id="what-symbols-to-engrave_003f">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#music-representation" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Rappresentazione della musica </a>]</td><td align="center">[<a href="#building-software" title="Up section" accesskey="u" rel="up">  Up: Costruzione del software </a>]</td><td align="right">[<a href="#flexible-architecture" title="Next section in reading order" accesskey="n" rel="next"> Architettura flessibile &gt; </a>]</td></tr>
+</table>
+<span id="Quali-simboli-incidere_003f"></span><h4 class="unnumberedsubsec">Quali simboli incidere?</h4>
+
+<span id="index-incisione-1"></span>
+<span id="index-tipografia"></span>
+<span id="index-incisore"></span>
+<span id="index-plug_002din"></span>
+
+<p>Il processo di formattazione decide dove mettere i simboli, tuttavia
+ciò può essere fatto solo dopo aver deciso <em>quali</em> simboli vanno
+stampati: in altre parole, dopo aver deciso quale notazione adoperare.
+</p>
+<p>La comune notazione musicale è un sistema di registrazione della musica
+evolutosi nel corso degli ultimi mille anni.  La forma normalmente
+adoperata oggi risale agli inizi del Rinascimento, e anche se nei
+princìpi di base è rimasta praticamente immutata (cioè testa delle note su
+un pentagramma di cinque linee), continua a modificarsi nei dettagli per
+permettere di esprimere le innovazioni introdotte dalla notazione
+contemporanea. Dunque, la comune notazione musicale comprende circa
+cinque secoli di musica, con applicazioni che spaziano dalle melodie
+monofoniche ai mostruosi contrappunti di una grande orchestra.
+</p>
+<p>In che modo possiamo noi imbrigliare un simile mostro a sette teste e
+costringerlo entro i limiti di un programma per computer?  La nostra
+soluzione è stata quella di spezzare il problema della notazione (al
+contrario dell&rsquo;incisione, che riguarda la tipografia) in ‘bocconi’
+digeribili e programmabili: ciascun tipo di simbolo è gestito da un modulo
+a sé, un cosiddetto plug-in, completamente modulare e
+indipendente, così da poter essere sviluppato e migliorato
+separatamente.  Tali plug-in sono chiamati <em>incisori</em> per analogia con
+l&rsquo;artigiano che traduce le idee musicali in simboli grafici.
+</p>
+<p>Nell&rsquo;esempio seguente, cominciamo con il plug-in per le teste delle
+note, il <code>Note_heads_engraver</code>.
+</p>
+
+<blockquote>
+<a href="20/lily-f6238559.ly">
+  <img align="middle"
+       border="0"
+       src="20/lily-f6238559.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Poi il <code>Staff_symbol_engraver</code> aggiunge il rigo,
+</p>
+
+<blockquote>
+<a href="34/lily-59fbb43e.ly">
+  <img align="middle"
+       border="0"
+       src="34/lily-59fbb43e.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>il <code>Clef_engraver</code> definisce un punto di riferimento per il rigo,
+</p>
+
+<blockquote>
+<a href="22/lily-30c70890.ly">
+  <img align="middle"
+       border="0"
+       src="22/lily-30c70890.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>e lo <code>Stem_engraver</code> aggiunge i gambi.
+</p>
+
+<blockquote>
+<a href="2d/lily-9866f91d.ly">
+  <img align="middle"
+       border="0"
+       src="2d/lily-9866f91d.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Ogni volta che il programma incontra una testa di nota (o più d&rsquo;una, se
+si tratta di un accordo) leggendo il file sorgente, avvisa lo
+<code>Stem_engraver</code>, il quale crea un gambo e glielo
+unisce. Aggiungendo gli incisori per travature, legature, accenti,
+accidenti, stanghette di battuta, indicazioni di tempo e armature di
+chiave, otteniamo la notazione completa.
+</p>
+
+<blockquote>
+<a href="b0/lily-bb1310d3.ly">
+  <img align="middle"
+       border="0"
+       src="b0/lily-bb1310d3.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="index-polifonia"></span>
+<span id="index-incisione-di-voci-multiple"></span>
+<span id="index-contesti"></span>
+
+<p>Questo sistema funziona bene per la musica monofonica, ma che succede
+con la polifonia?  Nella notazione polifonica, voci diverse possono
+condividere lo stesso rigo:
+</p>
+
+<blockquote>
+<a href="2b/lily-66f813d0.ly">
+  <img align="middle"
+       border="0"
+       src="2b/lily-66f813d0.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Nell&rsquo;esempio qui sopra, armatura di chiave e rigo sono condivisi, ma gambi,
+legature, travature, eccetera, appartengono in modo esclusivo a ciascuna
+voce, perciò gli incisori devono essere raggruppati.  Quelli per teste
+delle note, gambi, legature, eccetera, vanno in un gruppo chiamato
+&lsquo;contesto Voice&rsquo;, mentre quelli per chiave, accidenti, misure,
+eccetera, in un gruppo chiamato &lsquo;contesto Staff&rsquo;.  Nel caso della
+polifonia, un singolo contesto Staff contiene più di un contesto Voice.
+Analogamente, contesti Staff multipli possono essere messi in un singolo
+contesto Score.  Il contesto Score rappresenta il contesto notazionale di
+livello massimo.
+</p>
+
+<blockquote>
+<a href="c5/lily-6cf130f5.ly">
+  <img align="middle"
+       border="0"
+       src="c5/lily-6cf130f5.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="Vedi-anche"></span><h4 class="subsubheading">Vedi anche</h4>
+<p>Internals Reference:
+<a href="internals-big-page.html#contexts">Contesti</a>.
+</p>
+<hr>
+</div>
+<div class="unnumberedsubsec" id="flexible-architecture">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#what-symbols-to-engrave_003f" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Quali simboli incidere? </a>]</td><td align="center">[<a href="#building-software" title="Up section" accesskey="u" rel="up">  Up: Costruzione del software </a>]</td><td align="right">[<a href="#putting-lilypond-to-work" title="Next section in reading order" accesskey="n" rel="next"> Mettere LilyPond al lavoro &gt; </a>]</td></tr>
+</table>
+<span id="Architettura-flessibile"></span><h4 class="unnumberedsubsec">Architettura flessibile</h4>
+
+<p>Quando abbiamo cominciato, abbiamo scritto LilyPond
+interamente nel linguaggio di programmazione C++, scolpendo nella pietra
+le sue funzionalità.  Per una serie di ragioni, però, la cosa si è
+rivelata insoddisfacente.
+</p>
+<ul>
+<li> Quando LilyPond commette degli errori, gli utenti devono
+sovrascrivere le decisioni di formattazione, il che significa, in altre
+parole, che devono poter accedere al motore di formattazione.  Quindi, regole
+e impostazioni non possono essere stabilite da noi durante la
+composizione, ma devono essere accessibili agli utenti durante
+l&rsquo;esecuzione del programma.
+
+</li><li> La bontà di un&rsquo;incisione viene giudicata dagli occhi, e in ultima
+analisi è questione di gusto.  Per quanto esperti noi siamo, gli utenti
+possono essere in disaccordo con le nostre decisioni personali, perciò devono
+poter accedere anche alle definizioni dello stile tipografico.
+
+</li><li> Infine, gli algoritmi di formattazione vengono rifiniti
+incessantemente da noi, il che ci richiede di dover contare su un approccio
+alle regole flessibile, e il modo con cui C++ impone di raggrupparle
+non può essere applicato facilmente alla formattazione della notazione
+musicale.
+
+</li></ul>
+
+<span id="index-linguaggio-di-programmazione-Scheme"></span>
+
+<p>Abbiamo affrontato questi problemi integrando in LilyPond un interprete del
+linguaggio di programmazione Scheme e riscrivendoci parti del programma.
+Ora l&rsquo;architettura di formattazione è costruita intorno
+alla nozione di oggetti grafici, descritti dalle variabili e dalle
+funzioni di Scheme, e comprende regole di formattazione, stile
+tipografico e decisioni di formattazione individuali.  L&rsquo;utente può
+accedere direttamente alla maggior parte di questi controlli.
+</p>
+<p>Le variabili di Scheme controllano le decisioni in merito all&rsquo;aspetto della
+pagina.  Per esempio, molti oggetti grafici possidono una variabile di
+direzione che codifica la scelta tra su e giù (o tra destra e sinistra).
+Qui sotto vedete due accordi con accenti e arpeggi.  Nel primo, tutti gli
+oggetti grafici hanno direzione giù (o sinistra), nel secondo, hanno
+direzione su (destra).
+</p>
+
+<blockquote>
+<a href="16/lily-14c9be2b.ly">
+  <img align="middle"
+       border="0"
+       src="16/lily-14c9be2b.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="index-formattare-uno-spartito"></span>
+<span id="index-formattazione-di-uno-spartito"></span>
+<span id="index-regole-di-formattazione"></span>
+
+<p>Il processo di formattazione di uno spartito consiste nel leggere e
+scrivere le variabili degli oggetti grafici, alcune delle quali hanno un
+valore predefinito.  Per esempio, lo spessore di molte linee &ndash; una
+caratteristica dello stile tipografico &ndash; è una di queste.  Siete liberi
+di modificare questo valore, donando al vostro spartito un&rsquo;impressione
+tipografica diversa.
+</p>
+
+<blockquote>
+<a href="c0/lily-c0bced13.ly">
+  <img align="middle"
+       border="0"
+       src="c0/lily-c0bced13.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Anche le regole di formattazione sono variabili preimpostate: ogni
+oggetto possiede variabili contenenti procedure.  Sono queste ultime a
+eseguire la formattazione vera e propria, e sostituendone di diverse,
+possiamo modificare l&rsquo;aspetto degli oggetti.  Nell&rsquo;esempio seguente, la
+regola che governa quali oggetti sono adoperati per produrre il
+simbolo della testa di nota è cambiata nel corso del frammento.
+</p>
+
+<blockquote>
+<a href="b4/lily-519c5d5b.ly">
+  <img align="middle"
+       border="0"
+       src="b4/lily-519c5d5b.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<hr>
+</div>
+</div>
+<div class="section" id="putting-lilypond-to-work">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#flexible-architecture" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Architettura flessibile </a>]</td><td align="center">[<a href="#music-engraving" title="Up section" accesskey="u" rel="up">  Up: Incisione musicale </a>]</td><td align="right">[<a href="#engraved-examples-_0028bwv-861_0029" title="Next section in reading order" accesskey="n" rel="next"> Esempi di incisione (BWV 861) &gt; </a>]</td></tr>
+</table>
+<span id="Mettere-LilyPond-al-lavoro"></span><h3 class="section">1.5 Mettere LilyPond al lavoro</h3>
+
+<span id="index-esempi-semplici"></span>
+<span id="index-esempi_002c-semplice"></span>
+
+<p>Abbiamo scritto LilyPond per sperimentare come sia possibile condensare
+l&rsquo;arte dell&rsquo;incisione musicale in un programma per computer.  Grazie a
+tutto questo duro lavoro, ora il programma può essere adoperato per
+eseguire compiti utili.  La sua applicazione più semplice è la stampa
+delle note.
+</p>
+
+<blockquote>
+<a href="c4/lily-06873309.ly">
+  <img align="middle"
+       border="0"
+       src="c4/lily-06873309.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Aggiungendo i nomi degli accordi e le parole, otteniamo una notazione
+da canzoniere.
+</p>
+
+<blockquote>
+<a href="8b/lily-18483b3c.ly">
+  <img align="middle"
+       border="0"
+       src="8b/lily-18483b3c.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Possiamo stampare anche notazione polifonica e musica per pianoforte.
+L&rsquo;esempio seguente combina alcune costruzioni più esotiche.
+</p>
+
+<blockquote>
+<a href="c4/lily-c68bc0f8.ly">
+  <img align="middle"
+       border="0"
+       src="c4/lily-c68bc0f8.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Tutti i frammenti mostrati sopra sono stati scritti a mano, ma ciò non è
+indispensabile.  Dato che il motore di formattazione è in gran parte
+automatico, può servire per generare output per altri
+programmi che gestiscono musica.  Per esempio, può essere adoperato
+anche per convertire database di frammenti musicali in immagini da
+utilizzare in siti Web e presentazioni multimediali.
+</p>
+<p>Anche questo documento ne mostra un&rsquo;applicazione: il formato
+di input è testuale, perciò può essere facilmente integrato in altri
+formati basati sul testo come LaTeX, HTML o, nel caso di questo
+manuale, Texinfo.  Mediante il programma <code>lilypond-book</code>,
+compreso in LilyPond, nei file di output PDF o HTML risultanti i
+frammenti di input possono essere sostituiti dalle corrispondenti
+immagini a contenuto musicale.  Un altro esempio è l&rsquo;estensione di
+terze parti OOoLilyPond per OpenOffice.org o LibreOffice, che rende
+estremamente semplice includere frammenti musicali nei documenti.
+</p>
+<p>Per ulteriori esempi di LilyPond all&rsquo;opera, per la documentazione
+completa e per il programma in sé, visitate il nostro sito Internet
+ufficiale: www.lilypond.org.
+</p>
+<hr>
+</div>
+<div class="section" id="engraved-examples-_0028bwv-861_0029">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#literature-list" title="Next chapter"> Bibliografia &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#putting-lilypond-to-work" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Mettere LilyPond al lavoro </a>]</td><td align="center">[<a href="#music-engraving" title="Up section" accesskey="u" rel="up">  Up: Incisione musicale </a>]</td><td align="right">[<a href="#literature-list" title="Next section in reading order" accesskey="n" rel="next"> Bibliografia &gt; </a>]</td></tr>
+</table>
+<span id="Esempi-di-incisione-_0028BWV-861_0029"></span><h3 class="section">1.6 Esempi di incisione (BWV 861)</h3>
+
+<p>Questa sezione contiene quattro incisioni di riferimento e due versioni
+generate al computer delle ultime sette misure della Fuga in Sol minore
+dal <em>Clavicembalo ben temperato</em>, Libro I, BWV 861, di J.S. Bach.
+</p>
+<p>Bärenreiter BA5070 (Neue Ausgabe Sämtlicher Werke, Serie V, Band 6.1,
+1989):
+</p>
+<img src="pictures/bwv861-baer-small.png" alt="bwv861-baer-small">
+
+<p>Bärenreiter BA5070 (Neue Ausgabe Sämtlicher Werke, Serie V, Band 6.1,
+1989), fonte musicale alternativa.  Differenze testuali a parte, questo
+esempio mostra leggere variazioni d&rsquo;incisione anche nella stessa
+edizione della medesima casa editrice:
+</p>
+<img src="pictures/bwv861-baer-alt-small.png" alt="bwv861-baer-alt-small">
+
+<p>Breitkopf &amp; Härtel, edited by Ferruccio Busoni (Wiesbaden, 1894),
+disponibile anche nella Petrucci Music Library (IMSLP #22081).  Le
+indicazioni editoriali (diteggiature, articolazioni, eccetera) qui sono
+state rimosse per permettere un confronto più agevole con le altre edizioni:
+</p>
+<img src="pictures/bwv861-breitkopf-small.png" alt="bwv861-breitkopf-small">
+
+<p>Bach-Gesellschaft edition (Leipzig, 1866), disponibile nella Petrucci
+Music Library (IMSPL #02221):
+</p>
+<img src="pictures/bwv861-gesellschaft-small.png" alt="bwv861-gesellschaft-small">
+
+<p>Finale 2008:
+</p>
+<img src="pictures/bwv861-finale2008a.png" alt="bwv861-finale2008a">
+
+<br>
+<br>
+<br>
+<br>
+<p>LilyPond, versione 2.26.0:
+</p>
+
+<a href="3d/lily-46584b04.ly">
+  <img align="middle"
+       border="0"
+       src="3d/lily-46584b04.png"
+       alt="[image of music]"></a>
+
+
+
+
+
+<hr>
+</div>
+</div>
+<div class="chapter" id="literature-list">
+<table class="nav_table">
+<tr><td align="left">[<a href="#music-engraving" title="Beginning of this chapter or previous chapter"> &lt;&lt; Incisione musicale </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#gnu-free-documentation-license" title="Next chapter"> GNU Free Documentation License &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#engraved-examples-_0028bwv-861_0029" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Esempi di incisione (BWV 861) </a>]</td><td align="center">[<a href="#top" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[<a href="#short-literature-list" title="Next section in reading order" accesskey="n" rel="next"> Bibliografia breve &gt; </a>]</td></tr>
+</table>
+<span id="Bibliografia"></span><h2 class="chapter">2 Bibliografia</h2>
+
+<p>Di seguito elenchiamo i riferimenti usati per LilyPond.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#short-literature-list" accesskey="1">2.1 Bibliografia breve</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#long-literature-list" accesskey="2">2.2 Bibliografia lunga</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+<hr>
+<div class="section" id="short-literature-list">
+<table class="nav_table">
+<tr><td align="left">[<a href="#literature-list" title="Beginning of this chapter or previous chapter"> &lt;&lt; Bibliografia </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#gnu-free-documentation-license" title="Next chapter"> GNU Free Documentation License &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#literature-list" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Bibliografia </a>]</td><td align="center">[<a href="#literature-list" title="Up section" accesskey="u" rel="up">  Up: Bibliografia </a>]</td><td align="right">[<a href="#long-literature-list" title="Next section in reading order" accesskey="n" rel="next"> Bibliografia lunga &gt; </a>]</td></tr>
+</table>
+<span id="Bibliografia-breve"></span><h3 class="section">2.1 Bibliografia breve</h3>
+
+<p>Se avete bisogno di saperne di più sulla notazione musicale, qui ci sono
+alcuni titoli interessanti da leggere.
+</p>
+<dl compact="compact">
+<dt><span><cite>Ignatzek 1995</cite></span></dt>
+<dd><p>Klaus Ignatzek, Die Jazzmethode für Klavier. Schott&rsquo;s Söhne
+1995. Mainz, Germany ISBN 3-7957-5140-3.
+</p>
+<p>Guida introduttiva alla pratica del jazz sul pianoforte.  Uno dei
+primi capitoli contiene una panoramica sugli accordi adoperati
+comunemente nel jazz.
+</p>
+</dd>
+<dt><span><cite>Gerou 1996</cite></span></dt>
+<dd><p>Tom Gerou and Linda Lusk, Essential Dictionary of Music
+Notation. Alfred Publishing, Van Nuys CA ISBN 0-88284-768-6.
+</p>
+<p>Un elenco conciso e in ordine alfabetico delle questioni riguardanti la
+tipografia e la notazione musicale, comprendente la maggior parte dei
+casi più comuni.
+</p>
+</dd>
+<dt><span><cite>Gould 2011</cite></span></dt>
+<dd><p>Elaine Gould, Behind Bars: the Definitive Guide to Music Notation.
+Faber Music Ltd. ISBN 0-571-51456-1.
+</p>
+<p>Hals über Kopf: Das Handbuch des Notensatzes.
+Edition Peters. ISBN 1843670488.
+</p>
+<p>Una guida completa a regole e convenzioni della notazione musicale.
+Copre tutti gli argomenti dalle nozioni fontamentali alle tecniche più
+complesse e fornisce una preparazione completa sui princìpi della notazione.
+</p>
+</dd>
+<dt><span><cite>Read 1968</cite></span></dt>
+<dd><p>Gardner Read, Music Notation: A Manual of Modern Practice.
+Taplinger Publishing, New York (2nd edition).
+</p>
+<p>Un&rsquo;opera fondamentale sulla notazione musicale.
+</p>
+</dd>
+<dt><span><cite>Ross 1987</cite></span></dt>
+<dd><p>Ted Ross, Teach yourself the art of music engraving and processing.
+Hansen House, Miami, Florida 1987.
+</p>
+<p>Questo libro parla di incisione musicale, cioè di tipocomposizione
+professionale.  Contiene indicazioni sulla punzonatura, sull&rsquo;uso degli
+strumenti di scrittura e sulle convenzioni notazionali.  Interessanti
+anche le sezioni storiche e sulle tecniche di riproduzione.
+</p>
+</dd>
+<dt><span><cite>Schirmer 2001</cite></span></dt>
+<dd><p>The G.Schirmer/AMP Manual of Style and Usage. G.Schirmer/AMP, NY, 2001.
+(Si può ordinare questo libro anche a noleggio.)
+</p>
+<p>Questo manuale si concentra in particolare sulla preparazione della
+stampa per le edizioni Schirmer.  Discute molti dettagli di solito non
+presenti negli altri libri sulla notazione musicale.  Dà anche una buona
+idea di ciò che serve per conferire alle stampe una qualità editoriale.
+</p>
+</dd>
+<dt><span><cite>Stone 1980</cite></span></dt>
+<dd>
+<p>Kurt Stone, Music Notation in the Twentieth Century.
+Norton, New York 1980.
+</p>
+<p>Questo libro descrive la notazione musicale per la musica seria
+contemporanea, ma comincia con una panoramica completa delle pratiche
+notazionali tradizionali esistenti.
+</p>
+</dd>
+</dl>
+
+
+<hr>
+</div>
+<div class="section" id="long-literature-list">
+<table class="nav_table">
+<tr><td align="left">[<a href="#literature-list" title="Beginning of this chapter or previous chapter"> &lt;&lt; Bibliografia </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#gnu-free-documentation-license" title="Next chapter"> GNU Free Documentation License &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#short-literature-list" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Bibliografia breve </a>]</td><td align="center">[<a href="#literature-list" title="Up section" accesskey="u" rel="up">  Up: Bibliografia </a>]</td><td align="right">[<a href="#gnu-free-documentation-license" title="Next section in reading order" accesskey="n" rel="next"> GNU Free Documentation License &gt; </a>]</td></tr>
+</table>
+<span id="Bibliografia-lunga"></span><h3 class="section">2.2 Bibliografia lunga</h3>
+
+<span id="University-of-Colorado-Engraving-music-bibliography"></span><h4 class="subheading">University of Colorado Engraving music bibliography</h4>
+
+<ul>
+<li> Willi Apel.
+<strong>The notation of polyphonic music, 900-1600</strong>.
+Cambridge, Mass, 1953.
+Musical notation.
+
+
+
+
+</li><li> Ernest Austin.
+<strong>The Story of Music Printing</strong>.
+Lowe and Brydone Printers, Ltd., London.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> Anna Maria Busse Berger.
+<strong>Mensuration and proportion signs : origins and evolution</strong>.
+Clarendon Press, Oxford, England, 1993.
+subject: early notation.
+
+
+
+
+</li><li> Roger Bowers.
+<strong>Music &amp; Letters</strong>, volume 73.
+August 1992.
+Some reflection upon notation and proportion in Monteverdi&rsquo;s mass and vespers.
+
+
+
+
+</li><li> Paul Brainard.
+<strong>Current Musicology</strong>.
+Number 50. July-Dec 1992.
+Proportional notation in the music of Schutz and his contemporaries in the 17th
+  Century.
+
+
+
+
+</li><li> Carl Brandt and Clinton Roemer.
+<strong>Standardized Chord Symbol Notation</strong>.
+Roerick Music Co., Sherman Oaks, CA.
+subject: musical notation.
+
+
+
+
+</li><li> Earle Brown.
+<strong>Musical Quarterly</strong>, volume 72.
+Spring 1986.
+The notation and performance of new music.
+
+
+
+
+</li><li> John Cage.
+<strong>Notations</strong>.
+Something Else Press, New York, 1969.
+Music, Manuscripts, Facsimiles. Facsimiles of holographs from the Foundation
+  for Contemporary Performance Arts, with text by 269 composers, but rearranged
+  using chance operations.,V).
+
+
+
+
+</li><li> J Carter.
+<strong>New Paths in Book Collecting</strong>.
+London, 1934.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> F. Chrsander.
+<strong>A Sketch of the HIstory of Music printing, from the 15th to the 16th
+  century</strong>.
+18??.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> Henry Cowell.
+<strong>Our Inadequate Notation</strong>.
+<em>Modern Music</em>, 4(3), 1927.
+subject: 20th century notation.
+
+
+
+
+</li><li> Henry Cowell.
+<strong>New Musical Resources</strong>.
+Alfred A. Knopf, Inc., New York, 1930.
+subject: 20th century notation.
+
+
+
+
+</li><li> O.F. Deutsch.
+<strong>Music Publishers&rsquo; Numbers</strong>.
+London, 1946.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> Suzanne Eggleston.
+<strong>Notes</strong>.
+<em>New periodicals</em>, 51(2):657(7), Dec 1994.
+A list of new music periodicals covering the period Jun.-Dec. 1994. Includes
+  aims, formats and a description of the contents of each listed periodical.
+  Includes Music Notation News.
+
+
+
+
+</li><li> Hubert Foss.
+<strong>Music Printing</strong>.
+Practical Printing and Binding. Oldhams Press Ltd., Long Acre, London.
+subject: musical notation.
+
+
+
+
+</li><li> Jean Charles Francois.
+<strong>Writing without representation, and unreadable notation.</strong>.
+<em>Perspectives of New Music</em>, 30(1):6(15), Winter 1992.
+subject: Modern music has outgrown notation. While the computer is used to
+  write down music with accuracy never before achieved, the range of modern
+  sounds has surpassed the relevance of the computer...
+
+
+
+
+</li><li> David Fuller.
+<strong>The Journal of Musicology</strong>, volume 7.
+Winter 1989.
+Notes and inegales unjoined: defending a definition. (written-out inequalities
+  in music notation).
+
+
+
+
+</li><li> Virginia Gaburo.
+<strong>Notation</strong>.
+Lingua Press, La Jolla, California, 1977.
+A Lecture about notation, new ideas about.
+
+
+
+
+</li><li> Keith A Hamel.
+<strong>A design for music editing and printing software based on notational
+  syntax</strong>.
+<em>Perspectives of New Music</em>, 27(1):70(14), Winter 1989.
+
+
+
+
+
+</li><li> Archibald Jacob.
+<strong>Musical handwriting : or, How to put music on paper : A handbook for
+  all musicians, professional and amateur</strong>.
+Oxford University Press, London, 1947.
+subject: Musical notation.
+
+
+
+
+</li><li> Harold M Johnson.
+<strong>How to write music manuscript an exercise-method handbook for the music
+  student, copyist, arranger, composer, teacher</strong>.
+Carl Fischer, Inc., New York, 1946.
+subject: Musical notation &ndash;Handbooks, manuals.
+
+
+
+
+</li><li> David Evan Jones.
+<strong>Perspectives of New Music</strong>.
+1990.
+Speech extrapolated. (includes notation).
+
+
+
+
+</li><li> H King.
+<strong>Four Hundred Years of Music Printing</strong>.
+London, 1964.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> A.H King.
+<strong>The 50th Anniversary of Music Printing</strong>.
+1973.
+
+
+
+
+
+</li><li> O Kinkeldey.
+<strong>Music And Music Printing in Incunabula</strong>.
+<em>Papers of the Bibliographical Society of America</em>, xxvi:89-118, 1932.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> D.W. Krummel.
+<strong>Graphic Analysis in Application to Early American Engraved Music</strong>.
+<em>Notes</em>, xvi:213, 9 1958.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> D.W Krummel.
+<strong>Oblong Format in Early Music Books</strong>.
+<em>The Library</em>, 5th ser., xxvi:312, 1971.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> Jeffrey Lependorf.
+<strong>?</strong>.
+<em>Perspectives of New Music</em>, 27(2):232(20), Summer 1989.
+Contemporary notation for the shakuhachi: a primer for composers. (Tradition
+  and Renewal in the Music of Japan).
+
+
+
+
+</li><li> G.A Marco.
+<strong>The Earliest Music Printers of Continental Europe: a Checklist of
+  Facsimiles Illustrating Their Work</strong>.
+Charlottesville, Virginia, 1962.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> K. Meyer and J O&rsquo;Meara.
+<strong>The Printing of Music, 1473-1934</strong>.
+<em>The Dolphin</em>, ii:171&ndash;207, 1935.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> Raymond Monelle.
+<strong>Comparative Literature</strong>, volume 41.
+Summer 1989.
+Music notation and the poetic foot.
+
+
+
+
+</li><li> A Novello.
+<strong>Some Account of the Methods of Musick Printing, with Specimens of the
+  Various Sizes of Moveable Types and of Other Matters</strong>.
+London, 1847.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> C.B Oldman.
+<strong>Collecting Musical First Editions</strong>.
+London, 1934.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> Carl Parrish.
+<strong>The Notation of Medieval Music</strong>.
+Carl Fischer, Inc., New York, 1946.
+subject: early notation.
+
+
+
+
+</li><li> Carl Parrish.
+<strong>The notation of medieval music</strong>.
+Norton, New York, 1957.
+Musical notation.
+
+
+
+
+</li><li> Harry Patch.
+<strong>Genesis of a Music</strong>.
+University of Wisconsin Press, Madison, 1949.
+subject: early notation.
+
+
+
+
+</li><li> B Pattison.
+<strong>Notes on Early Music Printing</strong>.
+<em>The Library</em>, xix:389-421, 1939.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> Sandra Pinegar.
+<strong>Current Musicology</strong>.
+Number 53. July 1993.
+The seeds of notation and music paleography.
+
+
+
+
+</li><li> Richard Rastall.
+<strong>The notation of Western music : an introduction</strong>.
+St. Martin&rsquo;s Press, New York, N.Y., 1982.
+Musical notation.
+
+
+
+
+</li><li> Richard Rastall.
+<strong>Music &amp; Letters</strong>, volume 74.
+November 1993.
+Equal Temperament Music Notation: The Ailler-Brennink Chromatic Notation.
+  Results and Conclusions of the Music Notation Refor by the Chroma Foundation
+  (book reviews).
+
+
+
+
+</li><li> Howard Risatti.
+<strong>New Music Vocabulary</strong>.
+University of Illinois Press, Urbana, Illinois, 1975.
+A Guide to Notational Signs for Contemporary Music.
+
+
+
+
+</li><li> Donald W. Krummel \&amp; Stanley Sadie.
+<strong>Music Printing &amp; Publishing</strong>.
+Macmillan Press, 1990.
+subject: musical notation.
+
+
+
+
+</li><li> Norman E Smith.
+<strong>Current Musicology</strong>.
+Number 45-47. Jan-Dec 1990.
+The notation of fractio modi.
+
+
+
+
+</li><li> W Squire.
+<strong>Notes on Early Music Printing</strong>.
+<em>Bibliographica</em>, iii(99), 1897.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> Robert Steele.
+<strong>The Earliest English Music Printing</strong>.
+London, 1903.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> Willy Tappolet.
+<strong>La Notation Musicale</strong>.
+Neuchâtel, Paris, 1947.
+subject: general notation.
+
+
+
+
+</li><li> Leo Treitler.
+<strong>The Journal of Musicology</strong>, volume 10.
+Spring 1992.
+The unwritten and written transmission, of medieval chant and the start-up of
+  musical notation. Notational practice developed in medieval music to address
+  the written tradition for chant which interacted with the unwritten vocal
+  tradition.
+
+
+
+
+</li><li> unknown author.
+<strong>Pictorial History of Music Printing</strong>.
+H. and A. Selmer, Inc., Elhardt, Indiana.
+subject: history of music printing and engraving.
+
+
+
+
+</li><li> M.L West.
+<strong>Music &amp; Letters</strong>, volume 75.
+May 1994.
+The Babylonian musical notation and the Hurrian melodic texts. A new way of
+  deciphering the ancient Babylonian musical notation.
+
+
+
+
+</li><li> C.F. Abdy Williams.
+<strong>The Story of Notation</strong>.
+Charles Scribner&rsquo;s Sons, New York, 1903.
+subject: general notation.
+
+
+
+
+</li><li> Emmanuel Wintermitz.
+<strong>Musical Autographs from Monteverdi to Hindemith</strong>.
+Princeton University Press, Princeton, 1955.
+subject: history of music printing and engraving.
+
+
+
+
+</li></ul>
+
+<span id="Computer-notation-bibliography"></span><h4 class="subheading">Computer notation bibliography</h4>
+
+<ul>
+<li> G. Assayaag and D. Timis.
+<strong>A Toolbox for music notation</strong>.
+In <em>Proceedings of the 1986 International Computer Music Conference</em>,
+  1986.
+
+
+
+
+
+</li><li> M. Balaban.
+<strong>A Music Workstation Based on Multiple Hierarchical Views of Music</strong>.
+San Francisco, In <em>Proceedings of the 1988 International Computer Music
+  Conference</em>, 1988.
+
+
+
+
+
+</li><li> Alan Belkin.
+<strong>Macintosh Notation Software: Present and Future</strong>.
+<em>Computer Music Journal</em>, 18(1), 1994.
+Some music notation systems are analysed for ease of use, MIDI handling. The
+  article ends with a plea for a standard notation format. HWN.
+
+
+
+
+</li><li> Herbert Bielawa.
+<strong>Review of Sibelius 7</strong>.
+<em>Computer Music Journal</em>, 1993?.
+A raving review/tutorial of Sibelius 7 for Acorn. (And did they seriously
+  program a RISC chip in ... assembler ?!) HWN.
+
+
+
+
+</li><li> Dorothea Blostein and Lippold Haken.
+<strong>Justification of Printed Music</strong>.
+<em>Communications of the ACM</em>, J34(3):88-99, March 1991.
+This paper provides an overview of the algorithm used in LIME for spacing
+  individual lines. HWN.
+
+
+
+
+</li><li> Dorothea Blostein and Lippold Haken.
+<strong>The Lime Music Editor: A Diagram Editor Involving Complex
+  Translations</strong>.
+<em>Software Practice and Experience</em>, 24(3):289&ndash;306, march 1994.
+A description of various conversions, decisions and issues relating to this
+  interactive editor HWN.
+
+
+
+
+</li><li> Nabil Bouzaiene, Loïc Le Gall, and Emmanuel Saint-James.
+<strong>Une bibliothèque pour la notation musicale baroque</strong>.
+LNCS. In <em>EP &rsquo;98</em>, 1998.
+Describes ATYS, an extension to Berlioz, that can mimick handwritten baroque
+  style beams.
+
+
+
+
+</li><li> Donald Byrd.
+<strong>A System for Music Printing by Computer</strong>.
+<em>Computers and the Humanities</em>, 8:161-72, 1974.
+
+
+
+
+
+</li><li> Donald Byrd.
+<strong>Music Notation by Computer</strong>.
+PhD thesis, Indiana University, 1985.
+Describes the SMUT (sic) system for automated music printout.
+
+
+
+
+</li><li> Donald Byrd.
+<strong>Music Notation Software and Intelligence</strong>.
+<em>Computer Music Journal</em>, 18(1):17&ndash;20, 1994.
+Byrd (author of Nightingale) shows four problematic fragments of notation, and
+  rants about notation programs that try to exhibit intelligent behaviour. HWN.
+
+
+
+
+</li><li> Walter B Hewlett and Eleanor Selfridge-Field.
+<strong>Directory of Computer Assisted Research in Musicology</strong>.
+.
+Annual editions since 1985, many containing surveys of music typesetting
+  technology. SP.
+
+
+
+
+</li><li> Alyssa Lamb.
+<strong>The University of Colorado Music Engraving page</strong>.
+1996.
+Webpages about engraving (designed with finale users in mind) (sic) HWN.
+
+
+
+
+</li><li> Roger B. Dannenberg.
+<strong>Music Representation: Issues, Techniques, and Systems</strong>.
+<em>Computer Music Journal</em>, 17(3), 1993.
+This article points to some problems and solutions with music representation.
+  HWN.
+
+
+
+
+</li><li> Michael Droettboom.
+<strong>Study of music Notation Description Languages</strong>.
+Technical Report, 2000.
+GUIDO and lilypond compared. LilyPond wins on practical issues as usability and
+  availability of tools, GUIDO wins on implementation simplicity.
+
+
+
+
+</li><li> R. F. Ericson.
+<strong>The DARMS Project: A status report</strong>.
+<em>Computing in the humanities</em>, 9(6):291&ndash;298, 1975.
+Gourlay [gourlay86] writes: A discussion of the design and potential uses of
+  the DARMS music-description language.
+
+
+
+
+</li><li> H.S. Field-Richards.
+<strong>Cadenza: A Music Description Language</strong>.
+<em>Computer Music Journal</em>, 17(4), 1993.
+A description through examples of a music entry language. Apparently it has no
+  formal semantics. There is also no implementation of notation convertor. HWN.
+
+
+
+
+</li><li> Miguel Filgueiras.
+<strong>Some Music Typesetting Algorithms</strong>.
+.
+
+
+
+
+
+</li><li> Miguel Filgueiras and José Paulo Leal.
+<strong>Representation and manipulation of music documents in SceX</strong>.
+<em>Electronic Publishing</em>, 6(4):507&ndash;518, 1993.
+
+
+
+
+
+</li><li> Miguel Filgueiras.
+<strong>Implementing a Symbolic Music Processing System</strong>.
+1996.
+
+
+
+
+
+</li><li> Eric Foxley.
+<strong>Music &mdash; A language for typesetting music scores</strong>.
+<em>Software &mdash; Practice and Experience</em>, 17(8):485-502, 1987.
+A paper on a simple TROFF preprocessor to typeset music.
+
+
+
+
+</li><li> Loïc Le Gall.
+<strong>Création d&rsquo;une police adaptée à la notation musicale baroque</strong>.
+Master&rsquo;s thesis, École Estienne, 1997.
+
+
+
+
+
+</li><li> Martin Gieseking.
+<strong>Code-basierte Generierung interaktiver Notengraphik</strong>.
+PhD thesis, Universität Osnabrück, 2001.
+
+
+
+
+
+</li><li> David A. Gomberg.
+<strong>A Computer-Oriented System for Music Printing</strong>.
+PhD thesis, Washington University, 1975.
+
+
+
+
+
+</li><li> David A. Gomberg.
+<strong>A Computer-oriented System for Music Printing</strong>.
+<em>Computing and the Humanities</em>, 11:63-80, march 1977.
+Gourlay [gourlay86] writes: &quot;A discussion of the problems of representing the
+  conventions of musical notation in computer algorithms.&quot;.
+
+
+
+
+</li><li> John. S. Gourlay.
+<strong>A language for music printing</strong>.
+<em>Communications of the ACM</em>, 29(5):388&ndash;401, 1986.
+This paper describes the MusiCopy musicsetting system and an input language to
+  go with it.
+
+
+
+
+</li><li> John S. Gourlay, A. Parrish, D. Roush, F. Sola, and Y. Tien.
+<strong>Computer Formatting of Music</strong>.
+Technical Report OSU-CISRC-2/87-TR3, Department of Computer and Information
+  Science, The Ohio State University, 1987.
+This paper discusses the development of algorithms for the formatting of
+  musical scores (from abstract). It also appeared at PROTEXT III, Ireland
+  1986.
+
+
+
+
+</li><li> John S. Gourlay.
+<strong>Spacing a Line of Music,</strong>.
+Technical Report OSU-CISRC-10/87-TR35, Department of Computer and Information
+  Science, The Ohio State University, 1987.
+
+
+
+
+
+</li><li> John Grøver.
+<strong>A computer-oriented description of Music Notation. Part III: Accidental
+  Positioning</strong>.
+Technical Report 135, Department of informatics, University of Oslo, 1989.
+Placement of accidentals crystallised in an enormous set of rules. Same remarks
+  as for [grover89-twovoices] applies.
+
+
+
+
+</li><li> John Grøver.
+<strong>A computer-oriented description of Music Notation. Part I. The Symbol
+  Inventory</strong>.
+Technical Report 133, Department of informatics, University of Oslo, 1989.
+The goal of this series of reports is a full description of music formatting.
+  As these largely depend on parameters of fonts, it starts with a verbose
+  description of music symbols. The subject is treated backwards: from general
+  rules of typesetting the author tries to extract dimensions for characters,
+  whereas the rules of typesetting (in a particular font) follow from the
+  dimensions of the symbols. His symbols do not match (the stringent)
+  constraints formulated by eg. [wanske].
+
+
+
+
+</li><li> John Grøver.
+<strong>A computer-oriented description of Music Notation. Part II: Two Voice
+  Sharing a Staff, Leger Line Rules, Dot Positioning</strong>.
+Technical Report 134, Department of informatics, University of Oslo, 1989.
+A lot rules for what is in the title are formulated. The descriptions are long
+  and verbose. The verbosity shows that formulating specific rules is not the
+  proper way to approach the problem. Instead, the formulated rules should
+  follow from more general rules, similar to [parrish87-simultaneities].
+
+
+
+
+</li><li> Lippold Haken and Dorothea Blostein.
+<strong>The Tilia Music Representation: Extensibility, Abstraction, and
+  Notation Contexts for the Lime Music Editor</strong>.
+<em>Computer Music Journal</em>, 17(3):43&ndash;58, 1993.
+
+
+
+
+
+</li><li> Lippold Haken and Dorothea Blostein.
+<strong>A New Algorithm for Horizontal Spacing of Printed Music</strong>.
+Banff, In <em>International Computer Music Conference</em>, pages 118-119, Sept
+  1995.
+This describes an algorithm which uses springs between adjacent columns.
+
+
+
+
+</li><li> Wael A. Hegazy.
+<strong>On the Implementation of the MusiCopy Language Processor,</strong>.
+Technical Report OSU-CISRC-10/87-TR34, Department of Computer and Information
+  Science, The Ohio State University, 1987.
+Describes the &quot;parser&quot; which converts MusiCopy MDL to MusiCopy Simultaneities
+  and columns. MDL is short for Music Description Language [gourlay86]. It
+  accepts music descriptions that are organised into measures filled with
+  voices, which are filled with notes. The measures can be arranged
+  simultaneously or sequentially. To address the 2-dimensionality, almost all
+  constructs in MDL must be labeled. MDL uses begin/end markers for attribute
+  values and spanners. Rightfully the author concludes that MusiCopy must
+  administrate a &quot;state&quot; variable containing both properties and current
+  spanning symbols. MusiCopy attaches graphic information to the objects
+  constructed in the input: the elements of the input are partially complete
+  graphic objects.
+
+
+
+
+</li><li> Wael A. Hegazy and John S. Gourlay.
+<strong>Optimal line breaking in music</strong>.
+Technical Report OSU-CISRC-8/87-TR33, Department of Computer and Information
+  Science, The Ohio State University,, 1987.
+
+
+
+
+
+</li><li> Wael A. Hegazy and John S. Gourlay. (J. C. van Vliet, editor).
+<strong>Optimal line breaking in music</strong>.
+Cambridge University Press, In <em>Proceedings of the International
+  Conference on Electronic Publishing, Document Manipulation and Typography.
+  Nice (France)</em>, April 1988.
+
+
+
+
+
+</li><li> Walter B. Hewlett and Eleanor Selfridge-Field, editors.
+<strong>The Virtual Score; representation, retrieval and restoration</strong>.
+Computing in Musicology. MIT Press, 2001.
+
+
+
+
+
+</li><li> H. H. Hoos, K. A. Hamel, K. Renz, and J. Kilian.
+<strong>The GUIDO Music Notation Format&mdash;A Novel Approach for Adequately
+  Representing Score-level Music</strong>.
+In <em>Proceedings of International Computer Music Conference</em>, pages
+  451&ndash;454, 1998.
+
+
+
+
+
+</li><li> Peter S. Langston.
+<strong>Unix music tools at Bellcore</strong>.
+<em>Software &mdash; Practice and Experience</em>, 20(S1):47&ndash;61, 1990.
+This paper deals with some command-line tools for music editing and playback.
+
+
+
+
+</li><li> Dominique Montel.
+<strong>La gravure de la musique, lisibilité esthétique, respect de l&rsquo;oevre</strong>.
+Lyon, In <em>Musique \&amp; Notations</em>, 1997.
+
+
+
+
+
+</li><li> Giovanni Müller.
+<strong>Interaktive Bearbeitung konventioneller Musiknotation</strong>.
+PhD thesis, Eidgenössische Technische Hochschule Zürich, 1990.
+This is about engraver-quality typesetting with computers. It accepts the axiom
+  that notation is too difficult to generate automatically. The result is that
+  a notation program should be a WYSIWYG editor that allows one to tweak
+  everything.
+
+
+
+
+</li><li> Han Wen Nienhuys and Jan Nieuwenhuizen.
+<strong>LilyPond, a system for automated music engraving</strong>.
+Firenze, In <em>XIV Colloquium on Musical Informatics</em>, pages 167&ndash;172, May
+  2003.
+
+
+
+
+
+</li><li> Cindy Grande.
+<strong>NIFF6a Notation Interchange File Format</strong>.
+Grande Software Inc., 1995.
+Specs for NIFF, a reasonably comprehensive but binary format for notation HWN.
+
+
+
+
+</li><li> Severo M. Ornstein and John Turner Maxwell III.
+<strong>Mockingbird: A Composer&rsquo;s Amanuensis</strong>.
+Technical Report CSL-83-2, Xerox Palo Alto Research Center, 3333 Coyote Hill
+  Road, Palo Alto, CA, 94304, January 1983.
+
+
+
+
+
+</li><li> Severo M. Ornstein and John Turner Maxwell III.
+<strong>Mockingbird: A Composer&rsquo;s Amanuensis</strong>.
+<em>Byte</em>, 9, January 1984.
+A discussion of an interactive and graphical computer system for music
+  composition.
+
+
+
+
+</li><li> Stephen Dowland Page.
+<strong>Computer Tools for Music Information Retrieval</strong>.
+PhD thesis, Dissertation University of Oxford, 1988.
+Don&rsquo;t ask Stephen for a copy. Write to the Bodleian Library, Oxford, or to the
+  British Library, instead. SP.
+
+
+
+
+</li><li> Allen Parish, Wael A. Hegazy, John S. Gourlay, Dean K. Roush, and F. Javier
+  Sola.
+<strong>MusiCopy: An automated Music Formatting System</strong>.
+Technical Report, 1987.
+
+
+
+
+
+</li><li> A. Parrish and John S. Gourlay.
+<strong>Computer Formatting of Musical Simultaneities,</strong>.
+Technical Report OSU-CISRC-10/87-TR28, Department of Computer and Information
+  Science, The Ohio State University, 1987.
+This note discusses placement of balls, stems, dots which occur at the same
+  moment (&quot;Simultaneity&quot;).
+
+
+
+
+</li><li> Steven Powell.
+<strong>Music engraving today</strong>.
+Brichtmark, 2002.
+A &quot;How Steven uses Finale&quot; manual.
+
+
+
+
+</li><li> Gary M. Rader.
+<strong>Creating Printed Music Automatically</strong>.
+<em>Computer</em>, 29(6):61&ndash;69, June 1996.
+Describes a system called MusicEase, and explains that it uses &quot;constraints&quot;
+  (which go unexplained) to automatically position various elements.
+
+
+
+
+</li><li> Kai Renz.
+<strong>Algorithms and data structures for a music notation system based on
+  GUIDO music notation</strong>.
+PhD thesis, Universität Darmstadt, 2002.
+
+
+
+
+
+</li><li> René Roelofs.
+<strong>Een Geautomatiseerd Systeem voor het Afdrukken van Muziek</strong>.
+Number 45327. Master&rsquo;s thesis, Erasmus Universiteit Rotterdam, 1991.
+This dutch thesis describes a monophonic typesetting system, and focuses on the
+  breaking algorithm, which is taken from Hegazy &amp; Gourlay.
+
+
+
+
+</li><li> Joseph Rothstein.
+<strong>Review of Passport Designs&rsquo; Encore Music Notation Software</strong>.
+<em>Computer Music Journal</em>, ?.
+
+
+
+
+
+</li><li> Dean K. Roush.
+<strong>Using MusiCopy</strong>.
+Technical Report OSU-CISRC-18/87-TR31, Department of Computer and Information
+  Science, The Ohio State University, 1987.
+User manual of MusiCopy.
+
+
+
+
+</li><li> D. Roush.
+<strong>Music Formatting Guidelines</strong>.
+Technical Report OSU-CISRC-3/88-TR10, Department of Computer and Information
+  Science, The Ohio State University, 1988.
+Rules on formatting music formulated for use in computers. Mainly distilled
+  from [Ross] HWN.
+
+
+
+
+</li><li> Eleanor Selfridge-Field, editor.
+<strong>Beyond MIDI: the handbook of musical codes</strong>.
+MIT Press, 1997.
+A description of various music interchange formats.
+
+
+
+
+</li><li> Donald Sloan.
+<strong>Aspects of Music Representation in HyTime/SMDL</strong>.
+<em>Computer Music Journal</em>, 17(4), 1993.
+An introduction into HyTime and its score description variant SMDL. With a
+  short example that is quite lengthy in SMDL.
+
+
+
+
+</li><li> International Organization for Standardization~(ISO).
+<strong>Information Technology - Document Description and Processing Languages
+  - Standard Music Description Language (SMDL)</strong>.
+Number ISO/IEC DIS 10743. 1992.
+
+
+
+
+
+</li><li> Leland Smith.
+<strong>Editing and Printing Music by Computer</strong>, volume 17.
+1973.
+Gourlay [gourlay86] writes: A discussion of Smith&rsquo;s music-printing system
+  SCORE.
+
+
+
+
+</li><li> F. Sola.
+<strong>Computer Design of Musical Slurs, Ties and Phrase Marks,</strong>.
+Technical Report OSU-CISRC-10/87-TR32, Department of Computer and Information
+  Science, The Ohio State University, 1987.
+Overview of a procedure for generating slurs.
+
+
+
+
+</li><li> F. Sola and D. Roush.
+<strong>Design of Musical Beams,</strong>.
+Technical Report OSU-CISRC-10/87-TR30, Department of Computer and Information
+  Science, The Ohio State University, 1987.
+Calculating beam slopes HWN.
+
+
+
+
+</li><li> Howard Wright.
+<strong>how to read and write tab: a guide to tab notation</strong>.
+.
+FAQ (with answers) about TAB, the ASCII variant of Tablature. HWN.
+
+
+
+
+</li><li> Geraint Wiggins, Eduardo Miranda, Alaaaan Smaill, and Mitch Harris.
+<strong>A Framework for the evaluation of music representation systems</strong>.
+<em>Computer Music Journal</em>, 17(3), 1993.
+A categorisation of music representation systems (languages, OO systems etc)
+  split into high level and low level expressiveness. The discussion of Charm
+  and parallel processing for music representation is rather vague. HWN.
+
+
+
+
+</li></ul>
+
+<span id="Engraving-bibliography"></span><h4 class="subheading">Engraving bibliography</h4>
+
+<ul>
+<li> Harald Banter.
+<strong>Akkord Lexikon</strong>.
+Schott&rsquo;s Söhne, Mainz, Germany, 1987.
+Comprehensive overview of commonly used chords. Suggests (and uses) a
+  unification for all different kinds of chord names.
+
+
+
+
+</li><li> A Barksdale.
+<strong>The Printed Note: 500 Years of Music Printing and Engraving</strong>.
+The Toledo Museum of Art, Toledo, Ohio, January 1957.
+&lsquo;The exhibition &quot;The Printed Note&quot; attempts to show the various processes used
+  since the second of the 15th century for reproducing music mechanically ...
+  &rsquo;. The illustration mostly feature ancient music.
+
+
+
+
+</li><li> Laszlo Boehm.
+<strong>Modern Music Notation</strong>.
+G. Schirmer, Inc., New York, 1961.
+Heussenstamm writes: A handy compact reference book in basic notation.
+
+
+
+
+</li><li> H. Elliot Button.
+<strong>System in Musical Notation</strong>.
+Novello and co., London, 1920.
+
+
+
+
+
+</li><li> Herbert Chlapik.
+<strong>Die Praxis des Notengraphikers</strong>.
+Doblinger, 1987.
+An clearly written book for the casually interested reader. It shows some of
+  the conventions and difficulties in printing music HWN.
+
+
+
+
+</li><li> Anthony Donato.
+<strong>Preparing Music Manuscript</strong>.
+Prentice-Hall, Englewood Cliffs, NJ, 1963.
+
+
+
+
+
+</li><li> Donemus.
+<strong>Uitgeven van muziek</strong>.
+Donemus Amsterdam, 1982.
+Manual on copying for composers and copyists at the Dutch publishing house
+  Donemus. Besides general comments on copying, it also contains a lot of
+  hands-on advice for making performance material for modern pieces.
+
+
+
+
+</li><li> William Gamble.
+<strong>Music Engraving and printing. Historical and Technical Treatise</strong>.
+Sir Isaac Pitman &amp; Sons, ltd., 1923.
+This patriotic book was an attempt to promote and help British music engravers.
+  It is somewhat similar to Hader&rsquo;s book [hader48] in scope and style, but
+  Gamble focuses more on technical details (Which French punch cutters are
+  worth buying from, etc.), and does not treat typographical details, such as
+  optical illusions. It is available as reprint from Da Capo Press, New York
+  (1971).
+
+
+
+
+</li><li> Tom Gerou and Linda Lusk.
+<strong>Essential Dictionary of Music Notation</strong>.
+Alfred Publishing, Van Nuys CA, 1996.
+A cheap, concise, alphabetically ordered list of typesetting and music
+  (notation) issues with a rather simplistic attitude but in most cases
+  &quot;good-enough&quot; answers JCN.
+
+
+
+
+</li><li> Elaine Gould.
+<strong>Behind Bars</strong>.
+Faber Music Ltd., 2011.
+A comprehensive guide to the rules and conventions of music notation. Covering
+  everything from basic themes to complex techniques and providing a
+  comprehensive grounding in notational principles.
+
+
+
+
+</li><li> Elaine Gould.
+<strong>Hals über Kopf</strong>.
+Edition Peters, 2014.
+Ein vollständiges Regelwerk für den Modernen Notensatz auf höchstem Niveau,
+  ein Meilenstein der Notationskunde und ein Leitfaden für jeden Musiker, der
+  sich auf diesem Gebiet umfassende Kenntnisse aneignen möchte.
+
+
+
+
+</li><li> Karl Hader.
+<strong>Aus der Werkstatt eines Notenstechers</strong>.
+Waldheim&ndash;Eberle Verlag, Vienna, 1948.
+Hader was a chief-engraver in a Viennese engraving workshop. This beautiful
+  booklet was intended as an introduction for laymen on the art of engraving.
+  It contains a step by step, in-depth explanation of how to cut and stamp
+  music into zinc plates. It also contains a few compactly formulated rules on
+  musical orthography. Out of print.
+
+
+
+
+</li><li> George Heussenstamm.
+<strong>The Norton Manual of Music Notation</strong>.
+Norton, New York, 1987.
+Hands-on instruction book for copying (ie. handwriting) music. Fairly complete.
+  HWN.
+
+
+
+
+</li><li> Klaus Ignatzek.
+<strong>Die Jazzmethode für Klavier 1</strong>.
+Schott, 1995.
+This book contains a system for denoting chords that is used in LilyPond.
+
+
+
+
+</li><li> Andreas Jaschinski, editor.
+<strong>Notation</strong>.
+Number BVK1625. Bärenreiter Verlag, 2000.
+
+
+
+
+
+</li><li> Harold Johnson.
+<strong>How to write music manuscript</strong>.
+Carl Fischer, Inc., New York, 1946.
+
+
+
+
+
+</li><li> Erdhard Karkoshka.
+<strong>Notation in New Music; a critical guide to interpretation and
+  realisation</strong>.
+Praeger Publishers, New York, 1972.
+(Out of print).
+
+
+
+
+</li><li> Mark Mc Grain.
+<strong>Music notation</strong>.
+Hal Leonard Publishing Corporation, 1991.
+HWN writes: &lsquo;Book&rsquo; edition of lecture notes from XXX school of music. The book
+  looks like it is xeroxed from bad printouts. The content has nothing you
+  won&rsquo;t find in other books like [read] or [heussenstamm].
+
+
+
+
+</li><li> mpa.
+<strong>Standard music notation specifications for computer programming.</strong>.
+MPA, December 1996.
+Pamphlet explaining a few fine points in music font design HWN.
+
+
+
+
+</li><li> Richard Rastall.
+<strong>The Notation of Western Music: an Introduction</strong>.
+J. M. Dent \&amp; Sons London, 1983.
+Interesting account of the evolution and origin of common notation starting
+  from neumes, and ending with modern innovations HWN.
+
+
+
+
+</li><li> Gardner Read.
+<strong>Modern Rhythmic Notation</strong>.
+Indiana University Press, 1978.
+Sound (boring) review of the various hairy rhythmic notations used by
+  avant-garde composers HWN.
+
+
+
+
+</li><li> Gardner Read.
+<strong>Music Notation: a Manual of Modern Practice</strong>.
+Taplinger Publishing, New York, 1979.
+This is as close to the &ldquo;standard&rdquo; reference work for music notation issues
+  as one is likely to get.
+
+
+
+
+</li><li> Clinton Roemer.
+<strong>The Art of Music Copying</strong>.
+Roerick music co., Sherman Oaks (CA), 2nd edition, 1984.
+Out of print. Heussenstamm writes: an instructional manual which specializes in
+  methods used in the commercial field.
+
+
+
+
+</li><li> Glen Rosecrans.
+<strong>Music Notation Primer</strong>.
+Passantino, New York, 1979.
+Heussenstamm writes: Limited in scope, similar to [Roemer84].
+
+
+
+
+</li><li> Carl A Rosenthal.
+<strong>A Practical Guide to Music Notation</strong>.
+MCA Music, New York, 1967.
+Heussenstamm writes: Informative in terms of traditional notation. Does not
+  concern score preparation.
+
+
+
+
+</li><li> Ted Ross.
+<strong>Teach yourself the art of music engraving and processing</strong>.
+Hansen House, Miami, Florida, 1987.
+
+
+
+
+
+</li><li> Schirmer.
+<strong>The G. Schirmer Manual of Style and Usage</strong>.
+The G. Schirmer Publications Department, New York, 2001.
+This is the style guide for Schirmer publications. This manual specifically
+  focuses on preparing print for publication by Schirmer. It discusses many
+  details that are not in other, normal notation books. It also gives a good
+  idea of what is necessary to bring printouts to publication quality. It can
+  be ordered from the rental department.
+
+
+
+
+</li><li> Kurt Stone.
+<strong>Music Notation in the Twentieth Century</strong>.
+Norton, New York, 1980.
+Heussenstamm writes: The most important book on notation in recent years.
+
+
+
+
+</li><li> Börje Tyboni.
+<strong>Noter Handbok I Traditionell Notering</strong>.
+Gehrmans Musikförlag, Stockholm, 1994.
+Swedish book on music notation.
+
+
+
+
+</li><li> Albert C. Vinci.
+<strong>Fundamentals of Traditional Music Notation</strong>.
+Kent State University Press, 1989.
+
+
+
+
+
+</li><li> Helene Wanske.
+<strong>Musiknotation &mdash; Von der Syntax des Notenstichs zum EDV-gesteuerten
+  Notensatz</strong>.
+Schott-Verlag, Mainz, 1988.
+
+
+
+
+
+</li><li> Maxwell Weaner and Walter Boelke.
+<strong>Standard Music Notation Practice</strong>.
+Music Publisher&rsquo;s Association of the United States Inc, New York, 1993.
+
+
+
+
+
+</li><li> Johannes Wolf.
+<strong>Handbuch der Notationskunde</strong>.
+Breitkopf &amp; Hartel, Leipzig, 1919.
+Very thorough treatment (in two volumes) of the history of music notation.
+
+
+
+
+</li></ul>
+
+<hr>
+</div>
+</div>
+<div class="appendix" id="gnu-free-documentation-license">
+<table class="nav_table">
+<tr><td align="left">[<a href="#literature-list" title="Beginning of this chapter or previous chapter"> &lt;&lt; Bibliografia </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="#index-of-commands-and-concepts" title="Next chapter"> Indice &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="#long-literature-list" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Bibliografia lunga </a>]</td><td align="center">[<a href="#top" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[<a href="#index-of-commands-and-concepts" title="Next section in reading order" accesskey="n" rel="next"> Indice &gt; </a>]</td></tr>
+</table>
+<span id="GNU-Free-Documentation-License"></span><h2 class="appendix">Appendix A GNU Free Documentation License</h2>
+
+<div align="center">Version 1.3, 3 November 2008
+</div>
+
+<div class="display">
+<pre class="display">Copyright &copy; 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+<a href="https://fsf.org/">https://fsf.org/</a>
+
+Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
+</pre></div>
+
+<ol start="0">
+<li> PREAMBLE
+
+<p>The purpose of this License is to make a manual, textbook, or other
+functional and useful document <em>free</em> in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially.
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.
+</p>
+<p>This License is a kind of &ldquo;copyleft&rdquo;, which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the GNU General Public License, which is a copyleft
+license designed for free software.
+</p>
+<p>We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+</p>
+</li><li> APPLICABILITY AND DEFINITIONS
+
+<p>This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The &ldquo;Document&rdquo;, below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as &ldquo;you&rdquo;.  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.
+</p>
+<p>A &ldquo;Modified Version&rdquo; of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+</p>
+<p>A &ldquo;Secondary Section&rdquo; is a named appendix or a front-matter section
+of the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document&rsquo;s overall
+subject (or to related matters) and contains nothing that could fall
+directly within that overall subject.  (Thus, if the Document is in
+part a textbook of mathematics, a Secondary Section may not explain
+any mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+</p>
+<p>The &ldquo;Invariant Sections&rdquo; are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.
+</p>
+<p>The &ldquo;Cover Texts&rdquo; are certain short passages of text that are listed,
+as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+the Document is released under this License.  A Front-Cover Text may
+be at most 5 words, and a Back-Cover Text may be at most 25 words.
+</p>
+<p>A &ldquo;Transparent&rdquo; copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent.
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not &ldquo;Transparent&rdquo; is called &ldquo;Opaque&rdquo;.
+</p>
+<p>Examples of suitable formats for Transparent copies include plain
+ASCII without markup, Texinfo input format, LaTeX input
+format, SGML or XML using a publicly available
+DTD, and standard-conforming simple HTML,
+PostScript or PDF designed for human modification.  Examples
+of transparent image formats include PNG, XCF and
+JPG.  Opaque formats include proprietary formats that can be
+read and edited only by proprietary word processors, SGML or
+XML for which the DTD and/or processing tools are
+not generally available, and the machine-generated HTML,
+PostScript or PDF produced by some word processors for
+output purposes only.
+</p>
+<p>The &ldquo;Title Page&rdquo; means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, &ldquo;Title Page&rdquo; means
+the text near the most prominent appearance of the work&rsquo;s title,
+preceding the beginning of the body of the text.
+</p>
+<p>The &ldquo;publisher&rdquo; means any person or entity that distributes copies
+of the Document to the public.
+</p>
+<p>A section &ldquo;Entitled XYZ&rdquo; means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, &ldquo;Endorsements&rdquo;, or &ldquo;History&rdquo;.)  To &ldquo;Preserve the Title&rdquo;
+of such a section when you modify the Document means that it remains a
+section &ldquo;Entitled XYZ&rdquo; according to this definition.
+</p>
+<p>The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.
+</p>
+</li><li> VERBATIM COPYING
+
+<p>You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no other
+conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+</p>
+<p>You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+</p>
+</li><li> COPYING IN QUANTITY
+
+<p>If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document&rsquo;s license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition.
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+</p>
+<p>If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+</p>
+<p>If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material.
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+</p>
+<p>It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to give
+them a chance to provide you with an updated version of the Document.
+</p>
+</li><li> MODIFICATIONS
+
+<p>You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+</p>
+<ol type="A" start="1">
+<li> Use in the Title Page (and on the covers, if any) a title distinct
+from that of the Document, and from those of previous versions
+(which should, if there were any, be listed in the History section
+of the Document).  You may use the same title as a previous version
+if the original publisher of that version gives permission.
+
+</li><li> List on the Title Page, as authors, one or more persons or entities
+responsible for authorship of the modifications in the Modified
+Version, together with at least five of the principal authors of the
+Document (all of its principal authors, if it has fewer than five),
+unless they release you from this requirement.
+
+</li><li> State on the Title page the name of the publisher of the
+Modified Version, as the publisher.
+
+</li><li> Preserve all the copyright notices of the Document.
+
+</li><li> Add an appropriate copyright notice for your modifications
+adjacent to the other copyright notices.
+
+</li><li> Include, immediately after the copyright notices, a license notice
+giving the public permission to use the Modified Version under the
+terms of this License, in the form shown in the Addendum below.
+
+</li><li> Preserve in that license notice the full lists of Invariant Sections
+and required Cover Texts given in the Document&rsquo;s license notice.
+
+</li><li> Include an unaltered copy of this License.
+
+</li><li> Preserve the section Entitled &ldquo;History&rdquo;, Preserve its Title, and add
+to it an item stating at least the title, year, new authors, and
+publisher of the Modified Version as given on the Title Page.  If
+there is no section Entitled &ldquo;History&rdquo; in the Document, create one
+stating the title, year, authors, and publisher of the Document as
+given on its Title Page, then add an item describing the Modified
+Version as stated in the previous sentence.
+
+</li><li> Preserve the network location, if any, given in the Document for
+public access to a Transparent copy of the Document, and likewise
+the network locations given in the Document for previous versions
+it was based on.  These may be placed in the &ldquo;History&rdquo; section.
+You may omit a network location for a work that was published at
+least four years before the Document itself, or if the original
+publisher of the version it refers to gives permission.
+
+</li><li> For any section Entitled &ldquo;Acknowledgements&rdquo; or &ldquo;Dedications&rdquo;, Preserve
+the Title of the section, and preserve in the section all the
+substance and tone of each of the contributor acknowledgements and/or
+dedications given therein.
+
+</li><li> Preserve all the Invariant Sections of the Document,
+unaltered in their text and in their titles.  Section numbers
+or the equivalent are not considered part of the section titles.
+
+</li><li> Delete any section Entitled &ldquo;Endorsements&rdquo;.  Such a section
+may not be included in the Modified Version.
+
+</li><li> Do not retitle any existing section to be Entitled &ldquo;Endorsements&rdquo; or
+to conflict in title with any Invariant Section.
+
+</li><li> Preserve any Warranty Disclaimers.
+</li></ol>
+
+<p>If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version&rsquo;s license notice.
+These titles must be distinct from any other section titles.
+</p>
+<p>You may add a section Entitled &ldquo;Endorsements&rdquo;, provided it contains
+nothing but endorsements of your Modified Version by various
+parties&mdash;for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+</p>
+<p>You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+</p>
+<p>The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+</p>
+</li><li> COMBINING DOCUMENTS
+
+<p>You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.
+</p>
+<p>The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number.
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+</p>
+<p>In the combination, you must combine any sections Entitled &ldquo;History&rdquo;
+in the various original documents, forming one section Entitled
+&ldquo;History&rdquo;; likewise combine any sections Entitled &ldquo;Acknowledgements&rdquo;,
+and any sections Entitled &ldquo;Dedications&rdquo;.  You must delete all
+sections Entitled &ldquo;Endorsements.&rdquo;
+</p>
+</li><li> COLLECTIONS OF DOCUMENTS
+
+<p>You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of this
+License in the various documents with a single copy that is included in
+the collection, provided that you follow the rules of this License for
+verbatim copying of each of the documents in all other respects.
+</p>
+<p>You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of this
+License into the extracted document, and follow this License in all
+other respects regarding verbatim copying of that document.
+</p>
+</li><li> AGGREGATION WITH INDEPENDENT WORKS
+
+<p>A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an &ldquo;aggregate&rdquo; if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation&rsquo;s users beyond what the individual works permit.
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+</p>
+<p>If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document&rsquo;s Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form.
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.
+</p>
+</li><li> TRANSLATION
+
+<p>Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4.
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.
+</p>
+<p>If a section in the Document is Entitled &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, or &ldquo;History&rdquo;, the requirement (section 4) to Preserve
+its Title (section 1) will typically require changing the actual
+title.
+</p>
+</li><li> TERMINATION
+
+<p>You may not copy, modify, sublicense, or distribute the Document
+except as expressly provided under this License.  Any attempt
+otherwise to copy, modify, sublicense, or distribute it is void, and
+will automatically terminate your rights under this License.
+</p>
+<p>However, if you cease all violation of this License, then your license
+from a particular copyright holder is reinstated (a) provisionally,
+unless and until the copyright holder explicitly and finally
+terminates your license, and (b) permanently, if the copyright holder
+fails to notify you of the violation by some reasonable means prior to
+60 days after the cessation.
+</p>
+<p>Moreover, your license from a particular copyright holder is
+reinstated permanently if the copyright holder notifies you of the
+violation by some reasonable means, this is the first time you have
+received notice of violation of this License (for any work) from that
+copyright holder, and you cure the violation prior to 30 days after
+your receipt of the notice.
+</p>
+<p>Termination of your rights under this section does not terminate the
+licenses of parties who have received copies or rights from you under
+this License.  If your rights have been terminated and not permanently
+reinstated, receipt of a copy of some or all of the same material does
+not give you any rights to use it.
+</p>
+</li><li> FUTURE REVISIONS OF THIS LICENSE
+
+<p>The Free Software Foundation may publish new, revised versions
+of the GNU Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+<a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.
+</p>
+<p>Each version of the License is given a distinguishing version number.
+If the Document specifies that a particular numbered version of this
+License &ldquo;or any later version&rdquo; applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.  If the Document
+specifies that a proxy can decide which future versions of this
+License can be used, that proxy&rsquo;s public statement of acceptance of a
+version permanently authorizes you to choose that version for the
+Document.
+</p>
+</li><li> RELICENSING
+
+<p>&ldquo;Massive Multiauthor Collaboration Site&rdquo; (or &ldquo;MMC Site&rdquo;) means any
+World Wide Web server that publishes copyrightable works and also
+provides prominent facilities for anybody to edit those works.  A
+public wiki that anybody can edit is an example of such a server.  A
+&ldquo;Massive Multiauthor Collaboration&rdquo; (or &ldquo;MMC&rdquo;) contained in the
+site means any set of copyrightable works thus published on the MMC
+site.
+</p>
+<p>&ldquo;CC-BY-SA&rdquo; means the Creative Commons Attribution-Share Alike 3.0
+license published by Creative Commons Corporation, a not-for-profit
+corporation with a principal place of business in San Francisco,
+California, as well as future copyleft versions of that license
+published by that same organization.
+</p>
+<p>&ldquo;Incorporate&rdquo; means to publish or republish a Document, in whole or
+in part, as part of another Document.
+</p>
+<p>An MMC is &ldquo;eligible for relicensing&rdquo; if it is licensed under this
+License, and if all works that were first published under this License
+somewhere other than this MMC, and subsequently incorporated in whole
+or in part into the MMC, (1) had no cover texts or invariant sections,
+and (2) were thus incorporated prior to November 1, 2008.
+</p>
+<p>The operator of an MMC Site may republish an MMC contained in the site
+under CC-BY-SA on the same site at any time before August 1, 2009,
+provided the MMC is eligible for relicensing.
+</p>
+</li></ol>
+
+<span id="ADDENDUM_003a-How-to-use-this-License-for-your-documents"></span><h3 class="heading">ADDENDUM: How to use this License for your documents</h3>
+
+<p>To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and
+license notices just after the title page:
+</p>
+<div class="example">
+<pre class="example">  Copyright (C)  <var>year</var>  <var>your name</var>.
+  Permission is granted to copy, distribute and/or modify this document
+  under the terms of the GNU Free Documentation License, Version 1.3
+  or any later version published by the Free Software Foundation;
+  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+  Texts.  A copy of the license is included in the section entitled ``GNU
+  Free Documentation License''.
+</pre></div>
+
+<p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the &ldquo;with&hellip;Texts.&rdquo; line with this:
+</p>
+<div class="example">
+<pre class="example">    with the Invariant Sections being <var>list their titles</var>, with
+    the Front-Cover Texts being <var>list</var>, and with the Back-Cover Texts
+    being <var>list</var>.
+</pre></div>
+
+<p>If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+</p>
+<p>If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License,
+to permit their use in free software.
+</p>
+
+<hr>
+</div>
+<div class="appendix" id="index-of-commands-and-concepts">
+<table class="nav_table">
+<tr><td align="left">[<a href="#gnu-free-documentation-license" title="Beginning of this chapter or previous chapter"> &lt;&lt; GNU Free Documentation License </a>]</td><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="#gnu-free-documentation-license" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; GNU Free Documentation License </a>]</td><td align="center">[<a href="#top" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[  &gt; ]</td></tr>
+</table>
+<span id="Indice"></span><h2 class="appendix">Appendix B Indice</h2>
+
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Indice_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-T"><b>T</b></a>
+ &nbsp; 
+</td></tr></table>
+<table class="index-cp" border="0">
+<tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Indice_cp_letter-B">B</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-bilanciamento">bilanciamento</a></td><td>&nbsp;</td><td valign="top"><a href="#music-fonts">Font musicali</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Indice_cp_letter-C">C</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-caratteri-musicali">caratteri musicali</a></td><td>&nbsp;</td><td valign="top"><a href="#music-fonts">Font musicali</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-collisioni">collisioni</a></td><td>&nbsp;</td><td valign="top"><a href="#ledger-lines">Tagli addizionali</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-contesti">contesti</a></td><td>&nbsp;</td><td valign="top"><a href="#what-symbols-to-engrave_003f">Quali simboli incidere?</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Indice_cp_letter-E">E</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-esempi-semplici">esempi semplici</a></td><td>&nbsp;</td><td valign="top"><a href="#putting-lilypond-to-work">1.5 Mettere LilyPond al lavoro</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-esempi_002c-semplice">esempi, semplice</a></td><td>&nbsp;</td><td valign="top"><a href="#putting-lilypond-to-work">1.5 Mettere LilyPond al lavoro</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Indice_cp_letter-F">F</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-formattare-uno-spartito">formattare uno spartito</a></td><td>&nbsp;</td><td valign="top"><a href="#flexible-architecture">Architettura flessibile</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-formattazione-di-uno-spartito">formattazione di uno spartito</a></td><td>&nbsp;</td><td valign="top"><a href="#flexible-architecture">Architettura flessibile</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Indice_cp_letter-I">I</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-incisione">incisione</a></td><td>&nbsp;</td><td valign="top"><a href="#engraving-details">1.2 Incisione in dettaglio</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-incisione-1">incisione</a></td><td>&nbsp;</td><td valign="top"><a href="#what-symbols-to-engrave_003f">Quali simboli incidere?</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-incisione-automatizzata">incisione automatizzata</a></td><td>&nbsp;</td><td valign="top"><a href="#automated-engraving">1.3 Incisione automatizzata</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-incisione-di-lastre">incisione di lastre</a></td><td>&nbsp;</td><td valign="top"><a href="#engraving-details">1.2 Incisione in dettaglio</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-incisione-di-voci-multiple">incisione di voci multiple</a></td><td>&nbsp;</td><td valign="top"><a href="#what-symbols-to-engrave_003f">Quali simboli incidere?</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-incisione-musicale">incisione musicale</a></td><td>&nbsp;</td><td valign="top"><a href="#engraving-details">1.2 Incisione in dettaglio</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-incisione_002c-automatizzata">incisione, automatizzata</a></td><td>&nbsp;</td><td valign="top"><a href="#automated-engraving">1.3 Incisione automatizzata</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-incisore">incisore</a></td><td>&nbsp;</td><td valign="top"><a href="#what-symbols-to-engrave_003f">Quali simboli incidere?</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Indice_cp_letter-L">L</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-linguaggio-di-programmazione-Scheme">linguaggio di programmazione Scheme</a></td><td>&nbsp;</td><td valign="top"><a href="#flexible-architecture">Architettura flessibile</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Indice_cp_letter-N">N</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-nerezza">nerezza</a></td><td>&nbsp;</td><td valign="top"><a href="#music-fonts">Font musicali</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Indice_cp_letter-P">P</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-plug_002din">plug-in</a></td><td>&nbsp;</td><td valign="top"><a href="#what-symbols-to-engrave_003f">Quali simboli incidere?</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-polifonia">polifonia</a></td><td>&nbsp;</td><td valign="top"><a href="#what-symbols-to-engrave_003f">Quali simboli incidere?</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Indice_cp_letter-R">R</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-regole-di-formattazione">regole di formattazione</a></td><td>&nbsp;</td><td valign="top"><a href="#flexible-architecture">Architettura flessibile</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-ritmi-regolari">ritmi regolari</a></td><td>&nbsp;</td><td valign="top"><a href="#optical-spacing">Spaziatura ottica</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Indice_cp_letter-S">S</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-simboli-musicali">simboli musicali</a></td><td>&nbsp;</td><td valign="top"><a href="#music-fonts">Font musicali</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-sintassi">sintassi</a></td><td>&nbsp;</td><td valign="top"><a href="#music-representation">Rappresentazione della musica</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-spaziatura-ottica">spaziatura ottica</a></td><td>&nbsp;</td><td valign="top"><a href="#optical-spacing">Spaziatura ottica</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-spaziatura-regolare">spaziatura regolare</a></td><td>&nbsp;</td><td valign="top"><a href="#optical-spacing">Spaziatura ottica</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-spaziatura_002c-regolare">spaziatura, regolare</a></td><td>&nbsp;</td><td valign="top"><a href="#optical-spacing">Spaziatura ottica</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-strutture-ricorsive">strutture ricorsive</a></td><td>&nbsp;</td><td valign="top"><a href="#music-representation">Rappresentazione della musica</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+<tr><th id="Indice_cp_letter-T">T</th><td></td><td></td></tr>
+<tr><td></td><td valign="top"><a href="#index-tagli-addizionali">tagli addizionali</a></td><td>&nbsp;</td><td valign="top"><a href="#ledger-lines">Tagli addizionali</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-tipografia">tipografia</a></td><td>&nbsp;</td><td valign="top"><a href="#what-symbols-to-engrave_003f">Quali simboli incidere?</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-tipografia-musicale">tipografia musicale</a></td><td>&nbsp;</td><td valign="top"><a href="#engraving-details">1.2 Incisione in dettaglio</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-tipografia_002c-musica">tipografia, musica</a></td><td>&nbsp;</td><td valign="top"><a href="#engraving-details">1.2 Incisione in dettaglio</a></td></tr>
+<tr><td colspan="4"> <hr></td></tr>
+</table>
+<table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Indice_cp_letter-B"><b>B</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-C"><b>C</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-E"><b>E</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-F"><b>F</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-I"><b>I</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-L"><b>L</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-N"><b>N</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-P"><b>P</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-R"><b>R</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-S"><b>S</b></a>
+ &nbsp; 
+<a class="summary-letter" href="#Indice_cp_letter-T"><b>T</b></a>
+ &nbsp; 
+</td></tr></table>
+
+<hr>
+</div>
+</div>
+<div class="Contents_element" id="SEC_Contents">
+<table class="nav_table">
+<tr><td align="center">[<a href="#top" title="Cover (top) of document" rel="start">Top</a>][<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#index-of-commands-and-concepts" title="Index" rel="index">Index</a>]</td></tr>
+</table>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Incisione-musicale" href="#music-engraving">1 Incisione musicale</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Storia-di-LilyPond" href="#the-lilypond-story">1.1 Storia di LilyPond</a></li>
+    <li><a id="toc-Incisione-in-dettaglio" href="#engraving-details">1.2 Incisione in dettaglio</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Font-musicali" href="#music-fonts">Font musicali</a></li>
+      <li><a id="toc-Spaziatura-ottica" href="#optical-spacing">Spaziatura ottica</a></li>
+      <li><a id="toc-Tagli-addizionali" href="#ledger-lines">Tagli addizionali</a></li>
+      <li><a id="toc-Dimensionamento-ottico" href="#optical-sizing">Dimensionamento ottico</a></li>
+      <li><a id="toc-Perche-lavorare-cosi-duramente_003f" href="#why-work-so-hard_003f">Perché lavorare così duramente?</a></li>
+    </ul></li>
+    <li><a id="toc-Incisione-automatizzata" href="#automated-engraving">1.3 Incisione automatizzata</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Concorsi-di-bellezza" href="#beauty-contests">Concorsi di bellezza</a></li>
+      <li><a id="toc-Miglioramento-per-analisi-comparativa" href="#improvement-by-benchmarking">Miglioramento per analisi comparativa</a></li>
+      <li><a id="toc-Mettere-le-cose-a-posto" href="#getting-things-right">Mettere le cose a posto</a></li>
+    </ul></li>
+    <li><a id="toc-Costruzione-del-software" href="#building-software">1.4 Costruzione del software</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Rappresentazione-della-musica" href="#music-representation">Rappresentazione della musica</a></li>
+      <li><a id="toc-Quali-simboli-incidere_003f" href="#what-symbols-to-engrave_003f">Quali simboli incidere?</a></li>
+      <li><a id="toc-Architettura-flessibile" href="#flexible-architecture">Architettura flessibile</a></li>
+    </ul></li>
+    <li><a id="toc-Mettere-LilyPond-al-lavoro" href="#putting-lilypond-to-work">1.5 Mettere LilyPond al lavoro</a></li>
+    <li><a id="toc-Esempi-di-incisione-_0028BWV-861_0029" href="#engraved-examples-_0028bwv-861_0029">1.6 Esempi di incisione (BWV 861)</a></li>
+  </ul></li>
+  <li><a id="toc-Bibliografia" href="#literature-list">2 Bibliografia</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Bibliografia-breve" href="#short-literature-list">2.1 Bibliografia breve</a></li>
+    <li><a id="toc-Bibliografia-lunga" href="#long-literature-list">2.2 Bibliografia lunga</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="#gnu-free-documentation-license">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Indice" href="#index-of-commands-and-concepts" rel="index">Appendix B Indice</a></li>
+</ul>
+</div>
+</div><div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
+<p>I primi stampatori europei
+esplorarono diversi procedimenti, tra cui blocchi di legno intagliati
+a mano, caratteri mobili e sottili lastre metalliche incise.
+La tipocomposizione presentava il vantaggio di poter essere corretta
+più facilmente e di semplificare l&rsquo;inserimento di testo e parole, ma solo
+l&rsquo;incisione permetteva di impaginare la musica senza
+ostacoli e di inserire notazioni impreviste.  Alla fine, gli spartiti
+incisi a mano divennero lo standard per tutta la musica stampata,
+con l&rsquo;eccezione di alcuni inni e canzonieri per i quali la
+tipocomposizione era giustificata per il fatto di essere più semplice ed economica,
+anche nel XX secolo.</p>
+</div>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="essay-big-page.html">English</a>, <a href="essay-big-page.ca.html">Català</a>, <a href="essay-big-page.de.html">Deutsch</a>, <a href="essay-big-page.es.html">Español</a>, <a href="essay-big-page.fr.html">Français</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="web/manuals.it.html" title="Documentation Index">
+    &lt;&lt; Torna all'indice della documentazione
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="essay-big-page.it.html#top" title="Cover (top) of document">
+    Saggio sull&rsquo;incisione musicale automatizzata  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Incisione-musicale" href="essay-big-page.it.html#music-engraving">1 Incisione musicale</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Storia-di-LilyPond" href="essay-big-page.it.html#the-lilypond-story">1.1 Storia di LilyPond</a></li>
+    <li><a id="toc-Incisione-in-dettaglio" href="essay-big-page.it.html#engraving-details">1.2 Incisione in dettaglio</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Font-musicali" href="essay-big-page.it.html#music-fonts">Font musicali</a></li>
+      <li><a id="toc-Spaziatura-ottica" href="essay-big-page.it.html#optical-spacing">Spaziatura ottica</a></li>
+      <li><a id="toc-Tagli-addizionali" href="essay-big-page.it.html#ledger-lines">Tagli addizionali</a></li>
+      <li><a id="toc-Dimensionamento-ottico" href="essay-big-page.it.html#optical-sizing">Dimensionamento ottico</a></li>
+      <li><a id="toc-Perche-lavorare-cosi-duramente_003f" href="essay-big-page.it.html#why-work-so-hard_003f">Perché lavorare così duramente?</a></li>
+    </ul></li>
+    <li><a id="toc-Incisione-automatizzata" href="essay-big-page.it.html#automated-engraving">1.3 Incisione automatizzata</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Concorsi-di-bellezza" href="essay-big-page.it.html#beauty-contests">Concorsi di bellezza</a></li>
+      <li><a id="toc-Miglioramento-per-analisi-comparativa" href="essay-big-page.it.html#improvement-by-benchmarking">Miglioramento per analisi comparativa</a></li>
+      <li><a id="toc-Mettere-le-cose-a-posto" href="essay-big-page.it.html#getting-things-right">Mettere le cose a posto</a></li>
+    </ul></li>
+    <li><a id="toc-Costruzione-del-software" href="essay-big-page.it.html#building-software">1.4 Costruzione del software</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Rappresentazione-della-musica" href="essay-big-page.it.html#music-representation">Rappresentazione della musica</a></li>
+      <li><a id="toc-Quali-simboli-incidere_003f" href="essay-big-page.it.html#what-symbols-to-engrave_003f">Quali simboli incidere?</a></li>
+      <li><a id="toc-Architettura-flessibile" href="essay-big-page.it.html#flexible-architecture">Architettura flessibile</a></li>
+    </ul></li>
+    <li><a id="toc-Mettere-LilyPond-al-lavoro" href="essay-big-page.it.html#putting-lilypond-to-work">1.5 Mettere LilyPond al lavoro</a></li>
+    <li><a id="toc-Esempi-di-incisione-_0028BWV-861_0029" href="essay-big-page.it.html#engraved-examples-_0028bwv-861_0029">1.6 Esempi di incisione (BWV 861)</a></li>
+  </ul></li>
+  <li><a id="toc-Bibliografia" href="essay-big-page.it.html#literature-list">2 Bibliografia</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Bibliografia-breve" href="essay-big-page.it.html#short-literature-list">2.1 Bibliografia breve</a></li>
+    <li><a id="toc-Bibliografia-lunga" href="essay-big-page.it.html#long-literature-list">2.2 Bibliografia lunga</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="essay-big-page.it.html#gnu-free-documentation-license">Appendix A GNU Free Documentation License</a></li>
+  <li class="toc_current"><a id="toc-Indice" href="essay-big-page.it.html#index-of-commands-and-concepts" rel="index">Appendix B Indice</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca con Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Cerca">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

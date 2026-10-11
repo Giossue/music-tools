@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1999-2026 by the authors.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>2 Updating files with convert-ly (LilyPond Application Usage)</title>
+
+<meta name="description" content="2 Updating files with convert-ly (LilyPond Application Usage)">
+<meta name="keywords" content="2 Updating files with convert-ly (LilyPond Application Usage)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="LilyPond &mdash; Usage">
+<link href="index-of-commands-and-concepts.html" rel="index" title="Appendix B Index">
+<link href="usage_toc.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="LilyPond &mdash; Usage">
+<link href="lilypond_002dbook.html" rel="next" title="3 Running lilypond-book">
+<link href="running-lilypond.html" rel="prev" title="1 Running lilypond">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="en" class="usage">
+<div id="main">
+<div class="chapter" id="updating-files-with-convert_002dly">
+<table class="nav_table">
+<tr><td align="left">[<a href="running-lilypond.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Running <code>lilypond</code> </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="lilypond_002dbook.html" title="Next chapter"> Running <code>lilypond-book</code> &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="warning-this-voice-needs-a-voicexx-or-shiftxx-setting.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Warning this voice needs a <code>\voiceXx</code> or <code>\shiftXx</code> setting </a>]</td><td align="center">[<a href="index.html" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[<a href="why-does-the-syntax-change_003f.html" title="Next section in reading order" accesskey="n" rel="next"> Why does the syntax change? &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Updating-files-with-convert_002dly"></span><h2 class="chapter">2 Updating files with <code>convert-ly</code></h2>
+
+<span id="index-Updating-a-LilyPond-file"></span>
+<span id="index-convert_002dly"></span>
+
+<p>As LilyPond is improved, the syntax (input language) of some
+commands and functions can change.  This usually results in
+unexpected errors, warnings, or even wrong output when input
+files, previously created for older versions of LilyPond, are then
+used with later versions.
+</p>
+<p>To help with this, the <code>convert-ly</code> command can be used to
+upgrade older input files to the newer syntax.
+</p>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="why-does-the-syntax-change_003f.html" accesskey="1">2.1 Why does the syntax change?</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="command_002dline-preliminaries.html" accesskey="2">2.2 Command-line preliminaries</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="invoking-convert_002dly.html" accesskey="3">2.3 Invoking <code>convert-ly</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="command_002dline-options-for-convert_002dly.html" accesskey="4">2.4 Command-line options for <code>convert-ly</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="problems-running-convert_002dly.html" accesskey="5">2.5 Problems running <code>convert-ly</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="manual-conversions.html" accesskey="6">2.6 Manual conversions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="writing-code-to-support-multiple-versions.html" accesskey="7">2.7 Writing code to support multiple versions</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="running-lilypond.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Running <code>lilypond</code> </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="lilypond_002dbook.html" title="Next chapter"> Running <code>lilypond-book</code> &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="warning-this-voice-needs-a-voicexx-or-shiftxx-setting.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Warning this voice needs a <code>\voiceXx</code> or <code>\shiftXx</code> setting </a>]</td><td align="center">[<a href="index.html" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[<a href="why-does-the-syntax-change_003f.html" title="Next section in reading order" accesskey="n" rel="next"> Why does the syntax change? &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="updating-files-with-convert_002dly.ca.html">Català</a>, <a href="updating-files-with-convert_002dly.de.html">Deutsch</a>, <a href="updating-files-with-convert_002dly.es.html">Español</a>, <a href="updating-files-with-convert_002dly.fr.html">Français</a>, <a href="updating-files-with-convert_002dly.it.html">Italiano</a>, <a href="updating-files-with-convert_002dly.ja.html">日本語</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.html" title="Documentation Index">
+    &lt;&lt; Back to Documentation Index
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.html#top" title="Cover (top) of document">
+    LilyPond Application Usage  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Running-lilypond" href="running-lilypond.html">1 Running <code>lilypond</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-Normal-usage" href="normal-usage.html">1.1 Normal usage</a></li>
+    <li><a id="toc-Command_002dline-usage" href="command_002dline-usage.html">1.2 Command-line usage</a>
+    <ul class="no-bullet">
+      <li><a id="toc-The-PATH-environment-variable" href="the-path-environment-variable.html">The <code>PATH</code> environment variable</a></li>
+      <li><a id="toc-Invoking-lilypond" href="invoking-lilypond.html">Invoking <code>lilypond</code></a></li>
+      <li><a id="toc-Basic-command_002dline-options-for-LilyPond" href="basic-command_002dline-options-for-lilypond.html">Basic command-line options for LilyPond</a></li>
+      <li><a id="toc-Advanced-command_002dline-options-for-LilyPond" href="advanced-command_002dline-options-for-lilypond.html">Advanced command-line options for LilyPond</a></li>
+      <li><a id="toc-Environment-variables" href="environment-variables.html">Environment variables</a></li>
+      <li><a id="toc-Relocation" href="relocation.html">Relocation</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Relocation-files" href="relocation-files.html">Relocation files</a></li>
+        <li><a id="toc-Relocation-algorithm" href="relocation-algorithm.html">Relocation algorithm</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Error-messages" href="error-messages.html">1.3 Error messages</a></li>
+    <li><a id="toc-Common-errors" href="common-errors.html">1.4 Common errors</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Music-runs-off-the-page" href="music-runs-off-the-page.html">Music runs off the page</a></li>
+      <li><a id="toc-An-extra-staff-appears" href="an-extra-staff-appears.html">An extra staff appears</a></li>
+      <li><a id="toc-Error-message-Unbound-variable-_0025" href="error-message-unbound-variable-_0025.html">Error message Unbound variable %</a></li>
+      <li><a id="toc-Error-message-FT_005fGet_005fGlyph_005fName" href="error-message-ft_005fget_005fglyph_005fname.html">Error message FT_Get_Glyph_Name</a></li>
+      <li><a id="toc-Warning-staff-affinities-should-only-decrease" href="warning-staff-affinities-should-only-decrease.html">Warning staff affinities should only decrease</a></li>
+      <li><a id="toc-Error-message-unexpected-_005cnew" href="error-message-unexpected-new.html">Error message unexpected <code>\new</code></a></li>
+      <li><a id="toc-Warning-this-voice-needs-a-_005cvoiceXx-or-_005cshiftXx-setting" href="warning-this-voice-needs-a-voicexx-or-shiftxx-setting.html">Warning this voice needs a <code>\voiceXx</code> or <code>\shiftXx</code> setting</a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Updating-files-with-convert_002dly" href="updating-files-with-convert_002dly.html">2 Updating files with <code>convert-ly</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-Why-does-the-syntax-change_003f" href="why-does-the-syntax-change_003f.html">2.1 Why does the syntax change?</a></li>
+    <li><a id="toc-Command_002dline-preliminaries" href="command_002dline-preliminaries.html">2.2 Command-line preliminaries</a></li>
+    <li><a id="toc-Invoking-convert_002dly" href="invoking-convert_002dly.html">2.3 Invoking <code>convert-ly</code></a></li>
+    <li><a id="toc-Command_002dline-options-for-convert_002dly" href="command_002dline-options-for-convert_002dly.html">2.4 Command-line options for <code>convert-ly</code></a></li>
+    <li><a id="toc-Problems-running-convert_002dly" href="problems-running-convert_002dly.html">2.5 Problems running <code>convert-ly</code></a></li>
+    <li><a id="toc-Manual-conversions" href="manual-conversions.html">2.6 Manual conversions</a></li>
+    <li><a id="toc-Writing-code-to-support-multiple-versions" href="writing-code-to-support-multiple-versions.html">2.7 Writing code to support multiple versions</a></li>
+  </ul></li>
+  <li><a id="toc-Running-lilypond_002dbook" href="lilypond_002dbook.html">3 Running <code>lilypond-book</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-An-example-of-a-musicological-document" href="an-example-of-a-musicological-document.html">3.1 An example of a musicological document</a></li>
+    <li><a id="toc-Integrating-music-and-text" href="integrating-music-and-text.html">3.2 Integrating music and text</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LaTeX" href="latex.html">3.2.1 LaTeX</a></li>
+      <li><a id="toc-Texinfo" href="texinfo.html">3.2.2 Texinfo</a></li>
+      <li><a id="toc-HTML" href="html.html">3.2.3 HTML</a></li>
+      <li><a id="toc-DocBook" href="docbook.html">3.2.4 DocBook</a></li>
+    </ul></li>
+    <li><a id="toc-Music-fragment-options" href="music-fragment-options.html">3.3 Music fragment options</a></li>
+    <li><a id="toc-Invoking-lilypond_002dbook" href="invoking-lilypond_002dbook.html">3.4 Invoking <code>lilypond-book</code></a></li>
+    <li><a id="toc-Filename-extensions" href="filename-extensions.html">3.5 Filename extensions</a></li>
+    <li><a id="toc-Parallel-execution" href="parallel-execution.html">3.6 Parallel execution</a></li>
+    <li><a id="toc-lilypond_002dbook-templates-1" href="lilypond_002dbook-templates.html">3.7 lilypond-book templates</a></li>
+    <li><a id="toc-Sharing-the-table-of-contents" href="sharing-the-table-of-contents.html">3.8 Sharing the table of contents</a></li>
+    <li><a id="toc-Alternative-methods-of-mixing-text-and-music" href="alternate-methods-of-mixing-text-and-music.html">3.9 Alternative methods of mixing text and music</a></li>
+  </ul></li>
+  <li><a id="toc-External-programs" href="external-programs.html">4 External programs</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Point-and-click" href="point-and-click.html">4.1 Point and click</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Configuring-the-system" href="configuring-the-system-for-point-and-click.html">4.1.1 Configuring the system</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Using-GNOME" href="using-gnome-for-point-and-click.html">Using GNOME</a></li>
+        <li><a id="toc-Extra-configuration-for-Evince" href="extra-configuration-for-evince.html">Extra configuration for Evince</a></li>
+      </ul></li>
+      <li><a id="toc-Enabling-point-and-click" href="enabling-point-and-click.html">Enabling point and click</a></li>
+      <li><a id="toc-Selective-point_002dand_002dclick" href="selective-point_002dand_002dclick.html">Selective point-and-click</a></li>
+    </ul></li>
+    <li><a id="toc-Text-editor-support" href="text-editor-support.html">4.2 Text editor support</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Emacs-mode" href="emacs-mode.html">Emacs mode</a></li>
+      <li><a id="toc-Vim-mode" href="vim-mode.html">Vim mode</a></li>
+      <li><a id="toc-Other-editors" href="other-editors.html">Other editors</a></li>
+    </ul></li>
+    <li><a id="toc-Converting-from-other-formats" href="converting-from-other-formats.html">4.3 Converting from other formats</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Invoking-midi2ly" href="invoking-midi2ly.html">4.3.1 Invoking <code>midi2ly</code></a></li>
+      <li><a id="toc-Invoking-musicxml2ly" href="invoking-musicxml2ly.html">4.3.2 Invoking <code>musicxml2ly</code></a></li>
+      <li><a id="toc-Invoking-abc2ly" href="invoking-abc2ly.html">4.3.3 Invoking <code>abc2ly</code></a></li>
+      <li><a id="toc-Invoking-etf2ly" href="invoking-etf2ly.html">4.3.4 Invoking <code>etf2ly</code></a></li>
+      <li><a id="toc-Other-formats" href="other-formats.html">4.3.5 Other formats</a></li>
+    </ul></li>
+    <li><a id="toc-LilyPond-output-in-other-programs" href="lilypond-output-in-other-programs.html">4.4 LilyPond output in other programs</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LuaTeX" href="luatex.html">4.4.1 LuaTeX</a></li>
+      <li><a id="toc-OpenOffice-and-LibreOffice" href="openoffice-and-libreoffice.html">4.4.2 OpenOffice and LibreOffice</a></li>
+      <li><a id="toc-ly2video-1" href="ly2video.html">4.4.3 <code>ly2video</code></a></li>
+      <li><a id="toc-Other-programs" href="other-programs.html">4.4.4 Other programs</a></li>
+    </ul></li>
+    <li><a id="toc-Independent-includes" href="independent-includes.html">4.5 Independent <code>include</code>s</a>
+    <ul class="no-bullet">
+      <li><a id="toc-MIDI-articulation" href="midi-articulation.html">4.5.1 MIDI articulation</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Suggestions-for-writing-files" href="suggestions-for-writing-files.html">5 Suggestions for writing files</a>
+  <ul class="no-bullet">
+    <li><a id="toc-General-suggestions" href="general-suggestions.html">5.1 General suggestions</a></li>
+    <li><a id="toc-Typesetting-existing-music" href="typesetting-existing-music.html">5.2 Typesetting existing music</a></li>
+    <li><a id="toc-Large-projects" href="large-projects.html">5.3 Large projects</a></li>
+    <li><a id="toc-Troubleshooting" href="troubleshooting.html">5.4 Troubleshooting</a></li>
+    <li><a id="toc-Make-and-Makefiles" href="make-and-makefiles.html">5.5 Make and Makefiles</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Index" href="index-of-commands-and-concepts.html" rel="index">Appendix B Index</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: FILL-IN-HEAD-COMMITTISH
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google Search">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Search">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

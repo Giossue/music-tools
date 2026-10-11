@@ -1,0 +1,512 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1999-2026 pels autors.
+
+La traducció de la següent nota de copyright s'ofereix com a
+cortesia per a les persones de parla no anglesa, però únicament la
+nota en anglès té validesa legal.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+S'atorga permís per copiar, distribuir i/o modificar aquest
+document sota els termes de la Llicència de Documentació Lliure de
+GNU, versió 1.1 o qualsevol posterior publicada per la Free
+Software Foundation; sense cap de les seccions invariants.
+S'inclou una còpia d'aquesta llicència dins de la secció titulada
+"Llicència de Documentació Lliure de GNU".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>El prefix \once (Manual d&rsquo;aprenentatge del GNU LilyPond)</title>
+
+<meta name="description" content="El prefix \once (Manual d&rsquo;aprenentatge del GNU LilyPond)">
+<meta name="keywords" content="El prefix \once (Manual d&rsquo;aprenentatge del GNU LilyPond)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ca.html" rel="start" title="LilyPond &mdash; Manual d&rsquo;aprenentatge">
+<link href="index-of-commands-and-concepts.ca.html" rel="index" title="Appendix C Índex">
+<link href="learning_toc.ca.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="tweaking-methods.ca.html" rel="up" title="5.1.4 Mètodes d&rsquo;ajustament">
+<link href="the-overrideproperty-command.ca.html" rel="next" title="L&rsquo;ordre \overrideProperty">
+<link href="the-revert-command.ca.html" rel="prev" title="L&rsquo;ordre \revert">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="ca" class="learning">
+<div id="main">
+<div class="unnumberedsubsubsec" id="the-once-prefix">
+<table class="nav_table">
+<tr><td align="left">[<a href="tweaking-output.ca.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Ajustament de la sortida </a>]</td><td align="center">[<a href="index.ca.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.ca.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ca.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="templates.ca.html" title="Next chapter"> Plantilles &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="the-revert-command.ca.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; L&rsquo;ordre <code>\revert</code> </a>]</td><td align="center">[<a href="tweaking-methods.ca.html" title="Up section" accesskey="u" rel="up">  Up: Mètodes d&rsquo;ajustament </a>]</td><td align="right">[<a href="the-overrideproperty-command.ca.html" title="Next section in reading order" accesskey="n" rel="next"> L&rsquo;ordre <code>\overrideProperty</code> &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="El-prefix-_005conce"></span><h4 class="unnumberedsubsubsec">El prefix <code>\once</code></h4>
+
+<span id="index-_005conce"></span>
+
+<p><code>\override</code>, <code>\revert</code>, <code>\set</code> i <code>\unset</code> es
+poden fer precedir per <code>\once</code>.  Això fa que l&rsquo;ordre sigui
+efectiva sols durant el temps musical en curs i abans que la
+propietat torni a tenir un altre cop el seu valor anterior (que
+pot ser diferent al seu valor predeterminat i encara s&rsquo;està
+aplicant una altra ordre <code>\override</code> de
+sobreescriptura). Utilitzant el mateix exemple, podem canviar el
+color d&rsquo;una sola nota de la manera següent:
+</p>
+<span id="index-color_002c-propietat_002c-exemple-2"></span>
+<span id="index-NoteHead_002c-exemple-de-sobreescriptura-2"></span>
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">NoteHead</span><span class="p">.</span><span class="nb nb-GrobProperty">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="nv">red</span>
+<span class="w">  </span><span class=" -Pitch">e</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\once</span><span class="w"> </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">NoteHead</span><span class="p">.</span><span class="nb nb-GrobProperty">color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="nv">green</span>
+<span class="w">  </span><span class=" -Pitch">g</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">a</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\once</span><span class="w"> </span><span class="nb nb-MusicFunction">\revert</span><span class="w"> </span><span class="nb nb-Grob">NoteHead</span><span class="p">.</span><span class="nb nb-GrobProperty">color</span>
+<span class="w">  </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\revert</span><span class="w"> </span><span class="nb nb-Grob">NoteHead</span><span class="p">.</span><span class="nb nb-GrobProperty">color</span>
+<span class="w">  </span><span class=" -Pitch">f</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../14/lily-b8c3e591.ly">
+  <img align="middle"
+       border="0"
+       src="../14/lily-b8c3e591.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>El prefix <code>\once</code> també es pot usar davant de moltes ordres
+predefinides per limitar el seu efecte a un sol moment musical:
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span><span class="m">4</span><span class="nb nb-Articulation">(</span><span class="w"> </span><span class=" -Pitch">d</span><span class="nb nb-Articulation">)</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\once</span><span class="w"> </span><span class="nb nb-MusicCommand">\slurDashed</span>
+<span class="w">  </span><span class=" -Pitch">e</span><span class="m">4</span><span class="nb nb-Articulation">(</span><span class="w"> </span><span class=" -Pitch">f</span><span class="nb nb-Articulation">)</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class=" -Pitch">g</span><span class="m">4</span><span class="nb nb-Articulation">(</span><span class="w"> </span><span class=" -Pitch">a</span><span class="nb nb-Articulation">)</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\once</span><span class="w"> </span><span class="nb nb-MusicCommand">\hideNotes</span>
+<span class="w">  </span><span class=" -Pitch">b</span><span class="nb nb-Articulation">(</span><span class="w"> </span><span class=" -Pitch">c</span><span class="nb nb-Articulation">)</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../0c/lily-ee40499e.ly">
+  <img align="middle"
+       border="0"
+       src="../0c/lily-ee40499e.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="tweaking-output.ca.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Ajustament de la sortida </a>]</td><td align="center">[<a href="index.ca.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.ca.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ca.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="templates.ca.html" title="Next chapter"> Plantilles &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="the-revert-command.ca.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; L&rsquo;ordre <code>\revert</code> </a>]</td><td align="center">[<a href="tweaking-methods.ca.html" title="Up section" accesskey="u" rel="up">  Up: Mètodes d&rsquo;ajustament </a>]</td><td align="right">[<a href="the-overrideproperty-command.ca.html" title="Next section in reading order" accesskey="n" rel="next"> L&rsquo;ordre <code>\overrideProperty</code> &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="the-once-prefix.html">English</a>, <a href="the-once-prefix.de.html">Deutsch</a>, <a href="the-once-prefix.es.html">Español</a>, <a href="the-once-prefix.fr.html">Français</a>, <a href="the-once-prefix.it.html">Italiano</a>, <a href="the-once-prefix.ja.html">日本語</a>, <a href="the-once-prefix.zh.html">中文</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.ca.html" title="Documentation Index">
+    &lt;&lt; Torna a l'índex de la documentació
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.ca.html#top" title="Cover (top) of document">
+    Manual d&rsquo;aprenentatge del GNU LilyPond  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Installing" href="installing.ca.html">1 Installing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Graphical-setup" href="graphical-setup.ca.html">1.1 Graphical setup</a></li>
+    <li><a id="toc-Command-line-setup" href="command-line-setup.ca.html">1.2 Command line setup</a></li>
+  </ul></li>
+  <li><a id="toc-Tutorial" href="tutorial.ca.html">2 Tutorial</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Compilacio-d_0027un-fitxer" href="compiling-a-file.ca.html">2.1 Compilació d&rsquo;un fitxer</a></li>
+    <li><a id="toc-Com-escriure-fitxers-d_0027entrada" href="how-to-write-input-files.ca.html">2.2 Com escriure fitxers d&rsquo;entrada</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Notacio-senzilla" href="simple-notation.ca.html">2.2.1 Notació senzilla</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Altures" href="pitches.ca.html">Altures</a></li>
+        <li><a id="toc-Duracions-_0028valors-ritmics_0029" href="durations-_0028rhythms_0029.ca.html">Duracions (valors rítmics)</a></li>
+        <li><a id="toc-Silencis" href="rests.ca.html">Silencis</a></li>
+        <li><a id="toc-Indicacio-de-compas" href="time-signature.ca.html">Indicació de compàs</a></li>
+        <li><a id="toc-Indicacions-de-tempo" href="tempo-marks.ca.html">Indicacions de tempo</a></li>
+        <li><a id="toc-Clau" href="clef.ca.html">Clau</a></li>
+        <li><a id="toc-Tot-a-l_0027hora" href="all-together.ca.html">Tot a l&rsquo;hora</a></li>
+      </ul></li>
+      <li><a id="toc-Treball-sobre-els-fitxers-d_0027entrada" href="working-on-input-files.ca.html">2.2.2 Treball sobre els fitxers d&rsquo;entrada</a></li>
+    </ul></li>
+    <li><a id="toc-Gestio-dels-errors" href="dealing-with-errors.ca.html">2.3 Gestió dels errors</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Consells-generals-de-solucio-de-problemes" href="general-troubleshooting-tips.ca.html">2.3.1 Consells generals de solució de problemes</a></li>
+      <li><a id="toc-Alguns-errors-comuns" href="some-common-errors.ca.html">2.3.2 Alguns errors comuns</a></li>
+    </ul></li>
+    <li><a id="toc-Com-llegir-els-manuals" href="how-to-read-the-manuals.ca.html">2.4 Com llegir els manuals</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Material-omes" href="omitted-material.ca.html">2.4.1 Material omès</a></li>
+      <li><a id="toc-Exemples-amb-enllac" href="clickable-examples.ca.html">2.4.2 Exemples amb enllaç</a></li>
+      <li><a id="toc-Panoramica-dels-manuals" href="overview-of-manuals.ca.html">2.4.3 Panoràmica dels manuals</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Notacio-corrent" href="common-notation.ca.html">3 Notació corrent</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Notacio-en-un-sol-pentagrama" href="single-staff-notation.ca.html">3.1 Notació en un sol pentagrama</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Linies-divisories-i-comprovacions-de-compas" href="bar-lines-and-bar-checks.ca.html">3.1.1 Línies divisòries i comprovacions de compàs</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Linies-divisories" href="bar-lines.ca.html">Línies divisòries</a></li>
+        <li><a id="toc-Comprovacions-de-compas" href="bar-checks.ca.html">Comprovacions de compàs</a></li>
+      </ul></li>
+      <li><a id="toc-Alteracions-accidentals-i-armadures" href="pitches-and-key-signatures.ca.html">3.1.2 Alteracions accidentals i armadures</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Alteracions-accidentals" href="accidentals.ca.html">Alteracions accidentals</a></li>
+        <li><a id="toc-Armadures" href="key-signatures.ca.html">Armadures</a></li>
+        <li><a id="toc-Advertiment_003a-armadures-i-altures" href="warning-key-signatures-and-pitches.ca.html">Advertiment: armadures i altures</a></li>
+      </ul></li>
+      <li><a id="toc-Lligadures-d_0027unio-i-d_0027expressio" href="ties-and-slurs.ca.html">3.1.3 Lligadures d&rsquo;unió i d&rsquo;expressió</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Lligadures-d_0027unio" href="ties.ca.html">Lligadures d&rsquo;unió</a></li>
+        <li><a id="toc-Lligadures-d_0027expressio" href="slurs.ca.html">Lligadures d&rsquo;expressió</a></li>
+        <li><a id="toc-Lligadures-de-fraseig" href="phrasing-slurs.ca.html">Lligadures de fraseig</a></li>
+        <li><a id="toc-Advertiments_003a-lligadures-d_0027expressio-en-front-a-lligadures-d_0027unio" href="warnings-slurs-vs-ties.ca.html">Advertiments: lligadures d&rsquo;expressió en front a lligadures d&rsquo;unió</a></li>
+      </ul></li>
+      <li><a id="toc-Articulacions-i-matisos-dinamics" href="articulation-and-dynamics.ca.html">3.1.4 Articulacions i matisos dinàmics</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Articulacions" href="articulations.ca.html">Articulacions</a></li>
+        <li><a id="toc-Indicacions-de-digitacio" href="fingerings.ca.html">Indicacions de digitació</a></li>
+        <li><a id="toc-Matisos-dinamics" href="dynamics.ca.html">Matisos dinàmics</a></li>
+      </ul></li>
+      <li><a id="toc-Addicio-de-text" href="adding-text.ca.html">3.1.5 Addició de  text</a></li>
+      <li><a id="toc-Barres-automatiques-i-manuals" href="automatic-and-manual-beams.ca.html">3.1.6 Barres automàtiques i manuals</a></li>
+      <li><a id="toc-Instruccions-ritmiques-avancades" href="advanced-rhythmic-commands.ca.html">3.1.7 Instruccions rítmiques avançades</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Compas-parcial" href="partial-measure.ca.html">Compàs parcial</a></li>
+        <li><a id="toc-Grups-especials" href="tuplets.ca.html">Grups especials</a></li>
+        <li><a id="toc-Notes-d_0027adorn" href="grace-notes.ca.html">Notes d&rsquo;adorn</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Diverses-notes-a-l_0027hora" href="multiple-notes-at-once.ca.html">3.2 Diverses notes a l&rsquo;hora</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Explicacio-de-les-expressions-musicals" href="music-expressions-explained.ca.html">3.2.1 Explicació de les expressions musicals</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Analogia_003a-expressions-matematiques" href="analogy-mathematical-expressions.ca.html">Analogia: expressions matemàtiques</a></li>
+        <li><a id="toc-Expressions-musicals-simultanies_003a-diversos-pentagrames" href="simultaneous-music-expressions-multiple-staves.ca.html">Expressions musicals simultànies: diversos pentagrames</a></li>
+        <li><a id="toc-Expressions-musicals-simultanies_003a-un-sol-pentagrama" href="simultaneous-music-expressions-single-staff.ca.html">Expressions musicals simultànies: un sol pentagrama</a></li>
+      </ul></li>
+      <li><a id="toc-Diversos-pentagrames" href="multiple-staves.ca.html">3.2.2 Diversos pentagrames</a></li>
+      <li><a id="toc-Grups-de-pentagrames" href="staff-groups.ca.html">3.2.3 Grups de pentagrames</a></li>
+      <li><a id="toc-Combinar-notes-per-formar-acords" href="combining-notes-into-chords.ca.html">3.2.4 Combinar notes per formar acords</a></li>
+      <li><a id="toc-Polifonia-a-un-sol-pentagrama" href="single-staff-polyphony.ca.html">3.2.5 Polifonia a un sol pentagrama</a></li>
+    </ul></li>
+    <li><a id="toc-Cancons" href="songs.ca.html">3.3 Cançons</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Elaborar-cancons-senzilles" href="setting-simple-songs.ca.html">3.3.1 Elaborar cançons senzilles</a></li>
+      <li><a id="toc-Alineacio-de-la-lletra-a-una-melodia" href="aligning-lyrics-to-a-melody.ca.html">3.3.2 Alineació de la lletra a una melodia</a></li>
+      <li><a id="toc-Lletra-en-diversos-pentagrames" href="lyrics-to-multiple-staves.ca.html">3.3.3 Lletra en diversos pentagrames</a></li>
+    </ul></li>
+    <li><a id="toc-Retocs-finals" href="final-touches.ca.html">3.4 Retocs finals</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Organitzar-les-peces-mitjancant-variables" href="organizing-pieces-with-variables.ca.html">3.4.1 Organitzar les peces mitjançant variables</a></li>
+      <li><a id="toc-Afegir-titols" href="adding-titles.ca.html">3.4.2 Afegir títols</a></li>
+      <li><a id="toc-Noms-de-nota-absoluts" href="absolute-note-names.ca.html">3.4.3 Noms de nota absoluts</a></li>
+      <li><a id="toc-Mes-enlla-del-tutorial" href="after-the-tutorial.ca.html">3.4.4 Més enllà del tutorial</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Conceptes-fonamentals" href="fundamental-concepts.ca.html">4 Conceptes fonamentals</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Com-funcionen-els-fitxers-d_0027entrada-del-LilyPond" href="how-lilypond-input-files-work.ca.html">4.1 Com funcionen els fitxers d&rsquo;entrada del LilyPond</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Introduccio-a-l_0027estructura-dels-fitxers-del-LilyPond" href="introduction-to-the-lilypond-file-structure.ca.html">4.1.1 Introducció a l&rsquo;estructura dels fitxers del LilyPond</a></li>
+      <li><a id="toc-La-partitura-es-una-_0028unica_0029-expressio-musical-composta" href="score-is-a-_0028single_0029-compound-musical-expression.ca.html">4.1.2 La partitura és una (única) expressió musical composta</a></li>
+      <li><a id="toc-Niuat-d_0027expressions-musicals" href="nesting-music-expressions.ca.html">4.1.3 Niuat d&rsquo;expressions musicals</a></li>
+      <li><a id="toc-Quant-a-la-impossibilitat-de-niuar-claus-i-lligadures" href="on-the-un_002dnestedness-of-brackets-and-ties.ca.html">4.1.4 Quant a la impossibilitat de niuar claus i lligadures</a></li>
+    </ul></li>
+    <li><a id="toc-Les-veus-contenen-musica" href="voices-contain-music.ca.html">4.2 Les veus contenen música</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Sento-veus" href="i_0027m-hearing-voices.ca.html">4.2.1 Sento veus</a></li>
+      <li><a id="toc-Veus-explicites" href="explicitly-instantiating-voices.ca.html">4.2.2 Veus explícites</a></li>
+      <li><a id="toc-Veus-i-musica-vocal" href="voices-and-vocals.ca.html">4.2.3 Veus i música vocal</a></li>
+    </ul></li>
+    <li><a id="toc-Contextos-i-gravadors" href="contexts-and-engravers.ca.html">4.3 Contextos i gravadors</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Explicacio-dels-contextos" href="contexts-explained.ca.html">4.3.1 Explicació dels contextos</a></li>
+      <li><a id="toc-Creacio-de-contextos" href="creating-contexts.ca.html">4.3.2 Creació de contextos</a></li>
+      <li><a id="toc-Explicacio-dels-gravadors" href="engravers-explained.ca.html">4.3.3 Explicació dels gravadors</a></li>
+      <li><a id="toc-Modificar-les-propietats-dels-contextos" href="modifying-context-properties.ca.html">4.3.4 Modificar les propietats dels contextos</a></li>
+      <li><a id="toc-Afegir-i-eliminar-gravadors" href="adding-and-removing-engravers.ca.html">4.3.5 Afegir i eliminar gravadors</a></li>
+    </ul></li>
+    <li><a id="toc-Extensio-de-les-plantilles" href="extending-the-templates.ca.html">4.4 Extensió de les plantilles</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Soprano-i-violoncel" href="soprano-and-cello.ca.html">4.4.1 Soprano i violoncel</a></li>
+      <li><a id="toc-Partitura-vocal-a-quatre-veus-SATB" href="four_002dpart-satb-vocal-score.ca.html">4.4.2 Partitura vocal a quatre veus SATB</a></li>
+      <li><a id="toc-Crear-una-partitura-partint-de-zero" href="building-a-score-from-scratch.ca.html">4.4.3 Crear una partitura partint de zero</a></li>
+      <li><a id="toc-Estalvi-de-tecleig-mitjancant-variables-i-funcions" href="saving-typing-with-variables-and-functions.ca.html">4.4.4 Estalvi de tecleig mitjançant variables i funcions</a></li>
+      <li><a id="toc-Partitures-i-particel_002ales" href="scores-and-parts.ca.html">4.4.5 Partitures i particel·les</a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Ajustament-de-la-sortida" href="tweaking-output.ca.html">5 Ajustament de la sortida</a>
+  <ul class="no-bullet">
+    <li class="toc_current"><a id="toc-Elements-d_0027ajustament" href="tweaking-basics.ca.html">5.1 Elements d&rsquo;ajustament</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Introduccio-a-l_0027ajustament" href="introduction-to-tweaks.ca.html">5.1.1 Introducció a l&rsquo;ajustament</a></li>
+      <li><a id="toc-Objectes-i-interficies" href="objects-and-interfaces.ca.html">5.1.2 Objectes i interfícies</a></li>
+      <li><a id="toc-Convencions-de-noms-d_0027objectes-i-propietats" href="naming-conventions-of-objects-and-properties.ca.html">5.1.3 Convencions de noms d&rsquo;objectes i propietats</a></li>
+      <li class="toc_current"><a id="toc-Metodes-d_0027ajustament" href="tweaking-methods.ca.html">5.1.4 Mètodes d&rsquo;ajustament</a>
+      <ul class="no-bullet">
+        <li><a id="toc-L_0027ordre-_005coverride" href="the-override-command.ca.html">L&rsquo;ordre <code>\override</code></a></li>
+        <li><a id="toc-L_0027ordre-_005crevert" href="the-revert-command.ca.html">L&rsquo;ordre <code>\revert</code></a></li>
+        <li class="toc_current"><a id="toc-El-prefix-_005conce" href="the-once-prefix.ca.html">El prefix <code>\once</code></a></li>
+        <li><a id="toc-L_0027ordre-_005coverrideProperty" href="the-overrideproperty-command.ca.html">L&rsquo;ordre <code>\overrideProperty</code></a></li>
+        <li><a id="toc-L_0027ordre-_005ctweak" href="the-tweak-command.ca.html">L&rsquo;ordre <code>\tweak</code></a></li>
+        <li><a id="toc-El-prefix-_005csingle" href="the-single-prefix.ca.html">El prefix <code>\single</code></a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Manual-de-referencia-de-funcionament-intern" href="the-internals-reference-manual.ca.html">5.2 Manual de referència de funcionament intern</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Propietats-dels-objectes-de-presentacio" href="properties-of-layout-objects.ca.html">5.2.1 Propietats dels objectes de presentació</a></li>
+      <li><a id="toc-Propietats-de-les-interficies" href="properties-found-in-interfaces.ca.html">5.2.2 Propietats de les interfícies</a></li>
+      <li><a id="toc-Tipus-de-propietats" href="types-of-properties.ca.html">5.2.3 Tipus de propietats</a></li>
+    </ul></li>
+    <li><a id="toc-Aparenca-dels-objectes" href="appearance-of-objects.ca.html">5.3 Aparença dels objectes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Visibilitat-i-color-dels-objectes" href="visibility-and-color-of-objects.ca.html">5.3.1 Visibilitat i color dels objectes</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-propietat-stencil-_0028segell_0029" href="the-stencil-property.ca.html">La propietat <code>stencil</code> (segell)</a></li>
+        <li><a id="toc-La-propietat-break_002dvisibility-_0028visibilitat-del-salt_0029" href="the-break_002dvisibility-property.ca.html">La propietat <code>break-visibility</code> (visibilitat del salt)</a></li>
+        <li><a id="toc-La-propietat-transparent-_0028transparent_0029" href="the-transparent-property.ca.html">La propietat <code>transparent</code> (transparent)</a></li>
+        <li><a id="toc-La-propietat-color" href="the-color-property.ca.html">La propietat <code>color</code></a></li>
+      </ul></li>
+      <li><a id="toc-Mida-dels-objectes" href="size-of-objects.ca.html">5.3.2 Mida dels objectes</a></li>
+      <li><a id="toc-Longitud-i-gruix-dels-objectes" href="length-and-thickness-of-objects.ca.html">5.3.3 Longitud i gruix dels objectes</a></li>
+    </ul></li>
+    <li><a id="toc-Col_002alocacio-dels-objectes" href="placement-of-objects.ca.html">5.4 Col·locació dels objectes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Comportament-automatic" href="automatic-behavior.ca.html">5.4.1 Comportament automàtic</a></li>
+      <li><a id="toc-Objectes-interiors-al-pentagrama" href="within_002dstaff-objects.ca.html">5.4.2 Objectes interiors al pentagrama</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-propietat-direction-_0028direccio_0029" href="the-direction-property.ca.html">La propietat <code>direction</code> (direcció)</a></li>
+        <li><a id="toc-Digitacions" href="fingering.ca.html">Digitacions</a></li>
+      </ul></li>
+      <li><a id="toc-Objectes-fora-del-pentagrama" href="outside_002dstaff-objects.ca.html">5.4.3 Objectes fora del pentagrama</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-propietat-outside_002dstaff_002dpriority-_0028prioritat-fora-del-pentagrama_0029" href="the-outside_002dstaff_002dpriority-property.ca.html">La propietat <code>outside-staff-priority</code> (prioritat fora del pentagrama)</a></li>
+        <li><a id="toc-L_0027ordre-_005ctextLengthOn" href="the-textlengthon-command.ca.html">L&rsquo;ordre <code>\textLengthOn</code></a></li>
+        <li><a id="toc-Posicionament-dels-matisos-dinamics" href="dynamics-placement.ca.html">Posicionament dels matisos dinàmics</a></li>
+        <li><a id="toc-Escalat-d_0027un-_00abGrob_00bb" href="grob-sizing.ca.html">Escalat d&rsquo;un «Grob»</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Espaiat-vertical" href="vertical-spacing.ca.html">5.5 Espaiat vertical</a></li>
+    <li><a id="toc-Col_002alisions-d_0027objectes" href="collisions-of-objects.ca.html">5.6 Col·lisions d&rsquo;objectes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Moviment-d_0027objectes" href="moving-objects.ca.html">5.6.1 Moviment d&rsquo;objectes</a></li>
+      <li><a id="toc-Ajustament-de-la-notacio-amb-superposicions" href="fixing-overlapping-notation.ca.html">5.6.2 Ajustament de la notació amb superposicions</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-propietat-padding-_0028farciment_0029_0029" href="the-padding-property.ca.html">La propietat <code>padding</code> (farciment))</a></li>
+        <li><a id="toc-La-propietat-right_002dpadding-_0028farciment-per-la-dreta_0029" href="the-right_002dpadding-property.ca.html">La propietat <code>right-padding</code> (farciment per la dreta)</a></li>
+        <li><a id="toc-La-propietat-staff_002dpadding-_0028farciment-de-pentagrama_0029" href="the-staff_002dpadding-property.ca.html">La propietat <code>staff-padding</code> (farciment de pentagrama)</a></li>
+        <li><a id="toc-La-propietat-self_002dalignment_002dX-_0028auto_002dalineacio-en-X_0029" href="the-self_002dalignment_002dx-property.ca.html">La propietat <code>self-alignment-X</code> (auto-alineació en X)</a></li>
+        <li><a id="toc-La-propietat-staff_002dposition-_0028posicio-al-pentagrama_0029" href="the-staff_002dposition-property.ca.html">La propietat <code>staff-position</code> (posició al pentagrama)</a></li>
+        <li><a id="toc-La-propietat-extra_002doffset-_0028desplacament-addicional_0029" href="the-extra_002doffset-property.ca.html">La propietat <code>extra-offset</code> (desplaçament addicional)</a></li>
+        <li><a id="toc-La-propietat-positions-_0028posicions_0029" href="the-positions-property.ca.html">La propietat <code>positions</code> (posicions)</a></li>
+        <li><a id="toc-La-propietat-force_002dhshift-_0028forcar-desplacament-horitzontal_0029" href="the-force_002dhshift-property.ca.html">La propietat <code>force-hshift</code> (forçar desplaçament horitzontal)</a></li>
+      </ul></li>
+      <li><a id="toc-Exemple-real-de-musica" href="real-music-example.ca.html">5.6.3 Exemple real de música</a></li>
+    </ul></li>
+    <li><a id="toc-Ajustaments-addicionals" href="further-tweaking.ca.html">5.7 Ajustaments addicionals</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Altres-aplicacions-dels-ajustaments" href="other-uses-for-tweaks.ca.html">5.7.1 Altres aplicacions dels ajustaments</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Unio-de-notes-entre-veus-diferents" href="tying-notes-across-voices.ca.html">Unió de notes entre veus diferents</a></li>
+        <li><a id="toc-Simulacio-de-un-caldero-al-MIDI" href="simulating-a-fermata-in-midi.ca.html">Simulació de un calderó al MIDI</a></li>
+      </ul></li>
+      <li><a id="toc-Us-de-variables-per-als-ajustaments-de-disposicio" href="using-variables-for-layout-adjustments.ca.html">5.7.2 Ús de variables per als ajustaments de disposició</a></li>
+      <li><a id="toc-Fulls-d_0027estil" href="style-sheets.ca.html">5.7.3 Fulls d&rsquo;estil</a></li>
+      <li><a id="toc-Altres-fonts-d_0027informacio" href="other-sources-of-information.ca.html">5.7.4 Altres fonts d&rsquo;informació</a></li>
+      <li><a id="toc-Ajustaments-avancats-amb-l_0027Scheme" href="advanced-tweaks-with-scheme.ca.html">5.7.5 Ajustaments avançats amb l&rsquo;Scheme</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Plantilles" href="templates.ca.html">Appendix A Plantilles</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Plantilles-incorporades" href="built_002din-templates.ca.html">A.1 Plantilles incorporades</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Plantilla-coral-SATB" href="satb-template.ca.html">A.1.1 Plantilla coral SATB</a></li>
+      <li><a id="toc-Plantilla-coral-SSAATTBB" href="ssaattbb-template.ca.html">A.1.2 Plantilla coral SSAATTBB</a></li>
+    </ul></li>
+    <li><a id="toc-Plantilles-de-pentagrama-unic" href="single-staff-templates.ca.html">A.2 Plantilles de pentagrama únic</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Sols-notes" href="notes-only.ca.html">A.2.1 Sols notes</a></li>
+      <li><a id="toc-Notes-i-lletra" href="notes-and-lyrics.ca.html">A.2.2 Notes i lletra</a></li>
+      <li><a id="toc-Notes-i-acords" href="notes-and-chords.ca.html">A.2.3 Notes i acords</a></li>
+      <li><a id="toc-Notes_002c-lletra-i-acords" href="notes-lyrics-and-chords.ca.html">A.2.4 Notes, lletra i acords</a></li>
+    </ul></li>
+    <li><a id="toc-Plantilles-de-piano" href="piano-templates.ca.html">A.3 Plantilles de piano</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Piano-sol" href="solo-piano.ca.html">A.3.1 Piano sol</a></li>
+      <li><a id="toc-Piano-i-melodia-amb-lletra" href="piano-and-melody-with-lyrics.ca.html">A.3.2 Piano i melodia amb lletra</a></li>
+      <li><a id="toc-Piano-amb-lletra-centrada" href="piano-centered-lyrics.ca.html">A.3.3 Piano amb lletra centrada</a></li>
+    </ul></li>
+    <li><a id="toc-Plantilles-de-quartet-de-corda" href="string-quartet-templates.ca.html">A.4 Plantilles de quartet de corda</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Quartet-de-corda-simple" href="string-quartet.ca.html">A.4.1 Quartet de corda simple</a></li>
+      <li><a id="toc-Particel_002ales-de-quartet-de-corda" href="string-quartet-parts.ca.html">A.4.2 Particel·les de quartet de corda</a></li>
+    </ul></li>
+    <li><a id="toc-Plantilles-de-conjunts-vocals" href="vocal-ensembles-templates.ca.html">A.5 Plantilles de conjunts vocals</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Partitura-vocal-SATB" href="satb-vocal-score.ca.html">A.5.1 Partitura vocal SATB</a></li>
+      <li><a id="toc-Partitura-vocal-SATB-i-reduccio-per-a-piano-automatica" href="satb-vocal-score-and-automatic-piano-reduction.ca.html">A.5.2 Partitura vocal SATB i reducció per a piano automàtica</a></li>
+      <li><a id="toc-SATB-amb-contextos-alineats" href="satb-with-aligned-contexts.ca.html">A.5.3 SATB amb contextos alineats</a></li>
+      <li><a id="toc-SATB-sobre-quatre-pentagrames" href="satb-on-four-staves.ca.html">A.5.4 SATB sobre quatre pentagrames</a></li>
+      <li><a id="toc-Estrofes-a-sol-y-tornada-a-dues-veus" href="solo-verse-and-two_002dpart-refrain.ca.html">A.5.5 Estrofes a sol y tornada a dues veus</a></li>
+      <li><a id="toc-Melodies-d_0027himnes" href="hymn-tunes.ca.html">A.5.6 Melodies d&rsquo;himnes</a></li>
+      <li><a id="toc-Salms" href="psalms.ca.html">A.5.7 Salms</a></li>
+    </ul></li>
+    <li><a id="toc-Plantilles-orquestrals" href="orchestral-templates.ca.html">A.6 Plantilles orquestrals</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Orquestra_002c-cor-i-piano" href="orchestra-choir-and-piano.ca.html">A.6.1 Orquestra, cor i piano</a></li>
+    </ul></li>
+    <li><a id="toc-Plantilles-per-a-notacio-antiga" href="ancient-notation-templates.ca.html">A.7 Plantilles per a notació antiga</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Transcripcio-dfe-musica-mensural" href="transcription-of-mensural-music.ca.html">A.7.1 Transcripció dfe música mensural</a></li>
+      <li><a id="toc-Plantilla-per-a-transcripcio-de-cant-gregoria" href="gregorian-transcription-template.ca.html">A.7.2 Plantilla per a transcripció de cant gregorià</a></li>
+    </ul></li>
+    <li><a id="toc-Altres-plantilles" href="other-templates.ca.html">A.8 Altres plantilles</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Combo-de-jazz" href="jazz-combo.ca.html">A.8.1 Combo de jazz</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.ca.html">Appendix B GNU Free Documentation License</a></li>
+  <li><a id="toc-Index" href="index-of-commands-and-concepts.ca.html" rel="index">Appendix C Índex</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 9d074d78d7c25852afa87005e21c118630f4f83b
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca a Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,561 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1999-2026 pels autors.
+
+La traducció de la següent nota de copyright s'ofereix com a
+cortesia per a les persones de parla no anglesa, però únicament la
+nota en anglès té validesa legal.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+S'atorga permís per copiar, distribuir i/o modificar aquest
+document sota els termes de la Llicència de Documentació Lliure de
+GNU, versió 1.1 o qualsevol posterior publicada per la Free
+Software Foundation; sense cap de les seccions invariants.
+S'inclou una còpia d'aquesta llicència dins de la secció titulada
+"Llicència de Documentació Lliure de GNU".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>3.4 Invocació lilypond-book (LilyPond: manual d&rsquo;utilització del programa)</title>
+
+<meta name="description" content="3.4 Invocació lilypond-book (LilyPond: manual d&rsquo;utilització del programa)">
+<meta name="keywords" content="3.4 Invocació lilypond-book (LilyPond: manual d&rsquo;utilització del programa)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ca.html" rel="start" title="LilyPond &mdash; Utilització">
+<link href="index-of-commands-and-concepts.ca.html" rel="index" title="Appendix B Índex">
+<link href="usage_toc.ca.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="lilypond_002dbook.ca.html" rel="up" title="3 Execució de lilypond-book">
+<link href="filename-extensions.ca.html" rel="next" title="3.5 Extensions de noms de fitxer">
+<link href="music-fragment-options.ca.html" rel="prev" title="3.3 Opcions de fragments de música">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="ca" class="usage">
+<div id="main">
+<div class="section" id="invoking-lilypond_002dbook">
+<table class="nav_table">
+<tr><td align="left">[<a href="lilypond_002dbook.ca.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Execució de <code>lilypond-book</code> </a>]</td><td align="center">[<a href="index.ca.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.ca.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ca.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="external-programs.ca.html" title="Next chapter"> Programes externs &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="music-fragment-options.ca.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Opcions de fragments de música </a>]</td><td align="center">[<a href="lilypond_002dbook.ca.html" title="Up section" accesskey="u" rel="up">  Up: Execució de <code>lilypond-book</code> </a>]</td><td align="right">[<a href="filename-extensions.ca.html" title="Next section in reading order" accesskey="n" rel="next"> Extensions de noms de fitxer &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Invocacio-lilypond_002dbook"></span><h3 class="section">3.4 Invocació <code>lilypond-book</code></h3>
+
+<p><code>lilypond-book</code> produeix un fitxer amb una de les
+extensions següents: <samp>.tex</samp>, <samp>.texi</samp>, <samp>.html</samp> o
+<samp>.xml</samp>, depenent del format de sortida.  A tots els fitxers
+<samp>.tex</samp>, <samp>.texi</samp> i <samp>.xml</samp> els cal un processat
+posterior.
+</p>
+<span id="Instruccions-especifiques-de-format"></span><h4 class="subheading">Instruccions específiques de format</h4>
+
+<span id="LaTeX-1"></span><h4 class="subsubheading">LaTeX</h4>
+
+<p>Hi ha dues formes de processar el document en LaTeX per a la
+seva impressió o publicació: fer un fitxer PDF directament amb
+PDFLaTeX, o generar un fitxer PostScript amb LaTeX
+mitjançant un traductor de DVI a Postscript com <code>dvips</code>.
+La primera forma és senzilla i és la que es
+recomana<a id="DOCF4" href="#FOOT4"><sup>4</sup></a>, i qualsevol que sigui el mètode que
+utilitzeu, podreu convertir fàcilment entre PostScript i PDF amb
+eines com <code>ps2pdf</code> i <code>pdf2ps</code> que venen incloses
+amb Ghostscript.
+</p>
+<p>Per produir un fitxer PDF mitjançant PDFLaTeX, utilitzeu:
+</p>
+<div class="example">
+<pre class="example">lilypond-book --pdf elmeufitxer.pdftex
+pdflatex elmeufitxer.tex
+</pre></div>
+
+<span id="index-tipus-de-lletra-de-outline"></span>
+<span id="index-type1_002c-tipus-de-lletra"></span>
+<span id="index-dvips"></span>
+<span id="index-invocacio-de-dvips"></span>
+
+<p>Per produir una sortida PDF per mitjà de
+LaTeX/<code>dvips</code>/<code>ps2pdf</code>:
+</p>
+<div class="example">
+<pre class="example">lilypond-book elmefitxer.lytex
+latex elmeufitxer.tex
+dvips -Ppdf elmeufitxer.dvi
+ps2pdf elmeufitxer.ps
+</pre></div>
+
+<p>El fitxer <samp>.dvi</samp> creat per aquest procés no conté els caps de
+les notes.  Això és normal; si segueix les instruccions, els caps
+apareixeran als fitxers <samp>.ps</samp> i <samp>.pdf</samp>.
+</p>
+<p>El fitxer <samp>.dvi</samp> creat per aquest procés no conté els caps de
+les notes.  Això és normal; si seguiu les instruccions, els caps
+apareixeran als fitxers <samp>.ps</samp> i <samp>.pdf</samp>.
+</p>
+<p>L&rsquo;execució de <code>dvips</code> pot donar com a resultat alguns
+advertiments sobre els tipus de lletra; són innocus i es poden
+ignorar. Si esteu executant <code>latex</code> en mode de dos
+columnes, recordeu afegir <samp>-t landscape</samp> a les opcions de
+<code>dvips</code>.
+</p>
+<p>Entorns como ara:
+</p>
+<div class="example">
+<pre class="example">\begin{lilypond} &hellip; \end{lilypond}
+</pre></div>
+
+<p>no s&rsquo;interpreten per part de LaTeX.  En canvi, el programa
+<code>lilypond-book</code> extrau aquests &lsquo;entorns&rsquo; com fitxers
+independents i executa el LilyPond sobre ells.  Després, agafa les
+imatges resultants i crea un fitxer <samp>.tex</samp> en el qual les
+macros <code>\begin{lilypond}</code>&hellip;<code>\end{lilypond}</code> se
+substitueixen per ordres de &lsquo;inserció de gràfics&rsquo;.  A
+continuació, s&rsquo;executa LaTeX (tot i que LaTeX se ha executat
+anteriorment, ho haurà fet sobre un fitxer &lsquo;buit&rsquo; per calcular
+coses com ara el <code>\linewidth</code>).
+</p>
+<span id="Advertiments-i-problemes-coneguts"></span><h4 class="subsubheading">Advertiments i problemes coneguts</h4>
+
+<p>L&rsquo;ordre <code>\pageBreak</code> no funciona dins d&rsquo;un entorn
+<code>\begin{lilypond} &hellip; \end{lilypond}</code>.
+</p>
+<p>Moltes variables del bloc <code>\paper</code> tampoc funcionen dins d&rsquo;un
+entorn <code>\begin{lilypond} &hellip; \end{lilypond}</code>.
+Useu <code>\newcommand</code> amb <code>\betweenLilyPondSystem</code> al
+preàmbul:
+</p>
+<div class="example">
+<pre class="example">\newcommand{\betweenLilyPondSystem}[1]{\vspace{36mm}\linebreak}
+</pre></div>
+
+
+<span id="Texinfo-1"></span><h4 class="subsubheading">Texinfo</h4>
+
+<p>Per produir un document de Texinfo (en qualsevol format de
+sortida), seguiu el procediment normal per a Texinfo, això és: o
+bé crideu a <code>texi2pdf</code> o a <code>texi2dvi</code> o a
+<code>texi2any</code>, segons el format de la sortida que voleu
+crear.
+Consulteu la documentació de Texinfo per veure més detalls.
+</p>
+
+<span id="Opcions-de-la-linia-d_0027ordres"></span><h4 class="subheading">Opcions de la línia d&rsquo;ordres</h4>
+
+<p><code>lilypond-book</code> accepta les opcions següents de la línia
+d&rsquo;ordres:
+</p>
+<dl compact="compact">
+<dt><span><code>-f <var>formato</var></code></span></dt>
+<dt><span><code>--format=<var>formato</var></code></span></dt>
+<dd><p>Especificació del tipus de document que es processarà:
+<code>html</code>, <code>latex</code>, <code>texi</code> (predeterminat) o
+<code>docbook</code>.  Si falta aquesta opció, <code>lilypond-book</code>
+intentarà detectar el format automàticament, vegeu
+<a href="filename-extensions.ca.html">Extensions de noms de fitxer</a>. Per ara,
+<code>texi</code> és el mateix que <code>texi-html</code>.
+</p>
+
+</dd>
+<dt><span><code>-F <var>filtro</var></code></span></dt>
+<dt><span><code>--filter=<var>filtro</var></code></span></dt>
+<dd><p>Conducció de fragments a través de <var>filter</var> per mitjà d&rsquo;una
+canonada.  <code>lilypond-book</code> no obeirà &ndash;filter i &ndash;process
+al mateix temps.  Per exemple,
+</p>
+<div class="example">
+<pre class="example">lilypond-book --filter='convert-ly --from=2.0.0 -' el-meu-llibre.tely
+</pre></div>
+
+</dd>
+<dt><span><code>-h</code></span></dt>
+<dt><span><code>--help</code></span></dt>
+<dd><p>Impressió d&rsquo;un breu missatge d&rsquo;ajuda.
+</p>
+</dd>
+<dt><span><code>-I <var>directori</var></code></span></dt>
+<dt><span><code>--include=<var>directori</var></code></span></dt>
+<dd><p>Afegir <var>directori</var> a la ruta d&rsquo;inclusió.
+<code>lilypond-book</code> busca també els fragments compilats a la
+ruta d&rsquo;inclusió, i no els torna a escriure al directori de
+sortida, de manera que en certs casos cal invocar ordres de
+processat posteriors com ara <code>texi2any</code> o <code>latex</code>
+amb les mateixes opcions <samp>-I <var>directori</var></samp>.
+</p>
+</dd>
+<dt><span><code>-l <var>nivell_de_registre</var></code></span></dt>
+<dt><span><code>--loglevel=<var>nivel_de_registre</var></code></span></dt>
+<dd><p>Fixació del nivell en el qual la sortida és neta, al valor
+<var>nivell_de_registre</var>. Els valors possibles són 
+<code>NONE</code> (res), <code>ERROR</code> (errors), <code>WARN</code> (advertiments),
+<code>PROGRESS</code> (avanç; predeterminat) y <code>DEBUG</code>
+(depuració). Si aquesta opció no es fa servir, i està establerta la variable
+d&rsquo;entorn <code>LILYPOND_BOOK_LOGLEVEL</code>, s&rsquo;usa el seu valor com a
+nivell de registre.
+</p>
+</dd>
+<dt><span><code>-o <var>directori</var></code></span></dt>
+<dt><span><code>--output=<var>directori</var></code></span></dt>
+<dd><p>Col·locació dels fitxers generats al <var>directori</var>.  L&rsquo;execució
+de <code>lilypond-book</code> genera un munt de petits fitxers que
+després processarà el Lilypond. Per evitar tots aquests fitxers al
+mateix directori que el codi font, feu servir l&rsquo;opció
+<samp>--output</samp>, i canvieu a aquest directori abans d&rsquo;executar
+<code>latex</code> o <code>texi2any</code>.
+</p>
+<div class="example">
+<pre class="example">lilypond-book --output=out elmeufitxer.lytex
+cd out
+&hellip;
+</pre></div>
+
+</dd>
+<dt><span><code>--skip-lily-check</code></span></dt>
+<dd><p>Obviar la fallada si no es troba cap sortida del lilypond. Es fa
+servir per a la documentació del Lilypond en format info sense
+imatges.
+</p>
+</dd>
+<dt><span><code>--skip-png-check</code></span></dt>
+<dd><p>Obviar la fallada si no es troben les imatges PNG dels fitxers
+EPS.  S&rsquo;usa per a la documentació del Liypond en format info sense
+imatges.
+</p>
+</dd>
+<dt><span><code>--lily-output-dir=<var>directorio</var></code></span></dt>
+<dd><p>Escriptura de fitxers lily-XXX al directori <var>directori</var>,
+enllaç al directori de <samp>--output</samp>.  Useu aquesta opció per
+estalviar temps de construcció per a documents de diferents
+directoris que comparteixen molts fragments idèntics de codi.
+</p>
+</dd>
+<dt><span><code>--lily-loglevel=<var>nivell de registre</var></code></span></dt>
+<dd><p>Establiment del nivell en el qual la sortida és neta per a les
+crides de l&rsquo;ordre invocat <code>lilypond</code>, al valor
+<var>nivell _de_registre</var>.  Els valors possibles són<code>NONE</code>
+(res), <code>ERROR</code> (errors), <code>WARN</code> (advertiments),
+<code>BASIC</code> (avanç bàsic), <code>PROGRESS</code> (avanç),
+<code>INFO</code> (informació; predeterminat) i <code>DEBUG</code>
+(depuració). Si no es fa servi aquesta opció i la variable d&rsquo;entorn
+<code>LILYPOND_LOGLEVEL</code> està establerta, el seu valor es fa
+servir com a nivell de registre.
+</p>
+</dd>
+<dt><span><code>--info-images-dir=<var>directori</var></code></span></dt>
+<dd><p>Formatat de la sortida del Texinfo de manera que info busqui les
+imatges de música a <var>directorio</var>.
+</p>
+</dd>
+<dt><span><code>--latex-program=<var>prog</var></code></span></dt>
+<dd><p>Execució del programa <code>prog</code> en comptes de <code>latex</code>.
+Això és útil si el nostre document es processa amb
+<code>xelatex</code>, per exemple.
+</p>
+</dd>
+<dt><span><code>--left-padding=<var>quantitat</var></code></span></dt>
+<dd><p>Ompliment el voltant de les caixes EPS per la quantitat donada. 
+<var>quantitat</var> es mesura en mil·límetres, amb 3.0 com a valor
+predeterminat. Aquesta opció s&rsquo;ha d&rsquo;usar si les línies de música
+estan massa pegades al marge dret.
+</p>
+<p>L&rsquo;amplada d&rsquo;un sistema que està molt ajustat dins del seu
+rectangle pot variar, a causa dels elements de notació que estan
+pegats al marge esquerre, com ara els nombres de compàs i el nom
+de l&rsquo;instrument.  Aquesta opció fa més curts totes les línies i
+les mou a la dreta en la mateixa mesura.
+</p>
+</dd>
+<dt><span><code>-P <var>instrucció</var></code></span></dt>
+<dt><span><code>--process=<var>instrucció</var></code></span></dt>
+<dd><p>Processament dels fragments del Lilypond utilitzant <var>ordre</var>.
+L&rsquo;ordre predeterminada és <code>lilypond</code>.
+<code>lilypond-book</code> no obeirà a <samp>--filter</samp> i a
+<samp>--process</samp> al mateix temps.
+</p>
+</dd>
+<dt><span><code>--pdf</code></span></dt>
+<dd><p>Creació de fitxers PDF per al seu ús amb PDFLaTeX.
+</p>
+</dd>
+<dt><span><code>--redirect-lilypond-output</code></span></dt>
+<dd><p>De forma predeterminada, la sortida s&rsquo;imprimeix per la consola.
+Aquesta opció redirigeix tota la sortida cap a fitxers de registre
+ubicats al  mateix directori que els fitxers font.
+</p>
+</dd>
+<dt><span><code>--use-source-file-names</code></span></dt>
+<dd><p>Escriptura dels fitxers de sortida dels fragments de música amb el
+mateix nom de base que el seu fitxer font.  Aquesta opció sols
+funciona per a fragments inclosos amb <code>lilypondfile</code> i sols
+si els directoris determinats per les opcions
+<samp>--output-dir</samp> i <samp>--lily-output-dir</samp> són diferents.
+</p>
+</dd>
+<dt><span><code>-V</code></span></dt>
+<dt><span><code>--verbose</code></span></dt>
+<dd><p>Sigues net.  Qeuival a <code>--loglevel=DEBUG</code>.
+</p>
+</dd>
+<dt><span><code>-v</code></span></dt>
+<dt><span><code>--version</code></span></dt>
+<dd><p>Impressió de la informació de la versió.
+</p></dd>
+</dl>
+
+<span id="Advertiments-i-problemes-coneguts-1"></span><h4 class="subsubheading">Advertiments i problemes coneguts</h4>
+<p>L&rsquo;ordre del Texinfo <code>@pagesizes</code> no s&rsquo;interpreta.  De
+manera semblant, s&rsquo;ignoren les ordre del LaTeX que canvien els
+marges i amplades de línia després del preàmbul.
+</p>
+<p>Sols es processa el primer <code>\score</code> d&rsquo;un bloc Lilypond.
+</p>
+</div>
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5><a id="FOOT4" href="#DOCF4">(4)</a></h5>
+<p>Observeu que PDFLaTeX i LaTeX podrien no
+poder-se usar per compilar algun document LaTeX, i per això
+expliquem les dues formes.</p>
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="lilypond_002dbook.ca.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Execució de <code>lilypond-book</code> </a>]</td><td align="center">[<a href="index.ca.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.ca.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ca.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="external-programs.ca.html" title="Next chapter"> Programes externs &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="music-fragment-options.ca.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Opcions de fragments de música </a>]</td><td align="center">[<a href="lilypond_002dbook.ca.html" title="Up section" accesskey="u" rel="up">  Up: Execució de <code>lilypond-book</code> </a>]</td><td align="right">[<a href="filename-extensions.ca.html" title="Next section in reading order" accesskey="n" rel="next"> Extensions de noms de fitxer &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="invoking-lilypond_002dbook.html">English</a>, <a href="invoking-lilypond_002dbook.de.html">Deutsch</a>, <a href="invoking-lilypond_002dbook.es.html">Español</a>, <a href="invoking-lilypond_002dbook.fr.html">Français</a>, <a href="invoking-lilypond_002dbook.it.html">Italiano</a>, <a href="invoking-lilypond_002dbook.ja.html">日本語</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.ca.html" title="Documentation Index">
+    &lt;&lt; Torna a l'índex de la documentació
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.ca.html#top" title="Cover (top) of document">
+    LilyPond: manual d&rsquo;utilització del programa  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Execucio-del-LilyPond" href="running-lilypond.ca.html">1 Execució del LilyPond</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Utilitzacio-normal" href="normal-usage.ca.html">1.1 Utilització normal</a></li>
+    <li><a id="toc-Utilitzacio-des-de-la-linia-d_0027ordres" href="command_002dline-usage.ca.html">1.2 Utilització des de la línia d&rsquo;ordres</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Invocacio-del-lilypond" href="invoking-lilypond.ca.html">Invocació del <code>lilypond</code></a></li>
+      <li><a id="toc-Opcions-basiques-de-la-linia-d_0027ordres-per-al-LilyPond" href="basic-command_002dline-options-for-lilypond.ca.html">Opcions bàsiques de la línia d&rsquo;ordres per al LilyPond</a></li>
+      <li><a id="toc-Opcions-avancades-de-la-linia-d_0027ordres-per-al-LilyPond" href="advanced-command_002dline-options-for-lilypond.ca.html">Opcions avançades de la línia d&rsquo;ordres per al LilyPond</a></li>
+      <li><a id="toc-Variables-d_0027entorn" href="environment-variables.ca.html">Variables d&rsquo;entorn</a></li>
+      <li><a id="toc-El-LilyPond-a-una-gabia-de-chroot" href="lilypond-in-chroot-jail.ca.html">El LilyPond a una gàbia de chroot</a></li>
+    </ul></li>
+    <li><a id="toc-Missatges-d_0027error" href="error-messages.ca.html">1.3 Missatges d&rsquo;error</a></li>
+    <li><a id="toc-Errors-comuns" href="common-errors.ca.html">1.4 Errors comuns</a>
+    <ul class="no-bullet">
+      <li><a id="toc-La-musica-se-surt-de-la-pagina" href="music-runs-off-the-page.ca.html">La música se surt de la pàgina</a></li>
+      <li><a id="toc-Apareix-un-pentagrama-de-mes" href="an-extra-staff-appears.ca.html">Apareix un pentagrama de més</a></li>
+      <li><a id="toc-Missatge-d_0027error-Unbound-variable-_0025" href="error-message-unbound-variable-_0025.ca.html">Missatge d&rsquo;error Unbound variable %</a></li>
+      <li><a id="toc-Missatge-d_0027error-FT_005fGet_005fGlyph_005fName" href="error-message-ft_005fget_005fglyph_005fname.ca.html">Missatge d&rsquo;error FT_Get_Glyph_Name</a></li>
+      <li><a id="toc-Advertiment-sobre-que-les-afinitats-del-pentagrama-sols-han-de-decreixer" href="warning-staff-affinities-should-only-decrease.ca.html">Advertiment sobre que les afinitats del pentagrama sols han de decrèixer</a></li>
+      <li><a id="toc-Missatge-d_0027error-Unexpected-new-_005cnew" href="error-message-unexpected-new.ca.html">Missatge d&rsquo;error Unexpected new <code>\new</code></a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Actualitzacio-de-fitxers-amb-convert_002dly" href="updating-files-with-convert_002dly.ca.html">2 Actualització de fitxers amb <code>convert-ly</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-Perque-canvia-la-sintaxi_003f" href="why-does-the-syntax-change_003f.ca.html">2.1 Perquè canvia la sintaxi?</a></li>
+    <li><a id="toc-Invocacio-de-convert_002dly" href="invoking-convert_002dly.ca.html">2.2 Invocació de <code>convert-ly</code></a></li>
+    <li><a id="toc-Opcions-de-la-linia-d_0027ordres-per-a-convert_002dly" href="command-line-options-for-convert_002dly.ca.html">2.3 Opcions de la línia d&rsquo;ordres per a <code>convert-ly</code></a></li>
+    <li><a id="toc-Problemes-amb-convert_002dly" href="problems-running-convert_002dly.ca.html">2.4 Problemes amb <code>convert-ly</code></a></li>
+    <li><a id="toc-Conversions-manuals" href="manual-conversions.ca.html">2.5 Conversions manuals</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Execucio-de-lilypond_002dbook" href="lilypond_002dbook.ca.html">3 Execució de <code>lilypond-book</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-Un-exemple-de-document-musicologic" href="an-example-of-a-musicological-document.ca.html">3.1 Un exemple de document musicològic</a></li>
+    <li><a id="toc-Integracio-de-musica-i-text" href="integrating-music-and-text.ca.html">3.2 Integració de música i text</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LaTeX" href="latex.ca.html">3.2.1 LaTeX</a></li>
+      <li><a id="toc-Texinfo" href="texinfo.ca.html">3.2.2 Texinfo</a></li>
+      <li><a id="toc-HTML" href="html.ca.html">3.2.3 HTML</a></li>
+      <li><a id="toc-DocBook" href="docbook.ca.html">3.2.4 DocBook</a></li>
+    </ul></li>
+    <li><a id="toc-Opcions-de-fragments-de-musica" href="music-fragment-options.ca.html">3.3 Opcions de fragments de música</a></li>
+    <li class="toc_current"><a id="toc-Invocacio-lilypond_002dbook" href="invoking-lilypond_002dbook.ca.html">3.4 Invocació <code>lilypond-book</code></a></li>
+    <li><a id="toc-Extensions-de-noms-de-fitxer" href="filename-extensions.ca.html">3.5 Extensions de noms de fitxer</a></li>
+    <li><a id="toc-Plantilles-de-lilypond_002dbook" href="lilypond_002dbook-templates.ca.html">3.6 Plantilles de lilypond-book</a></li>
+    <li><a id="toc-Compartir-l_0027index-general" href="sharing-the-table-of-contents.ca.html">3.7 Compartir l&rsquo;índex general</a></li>
+    <li><a id="toc-Metodes-alternatius-per-barrejar-text-i-musica" href="alternate-methods-of-mixing-text-and-music.ca.html">3.8 Mètodes alternatius per barrejar text i música</a></li>
+  </ul></li>
+  <li><a id="toc-Programes-externs" href="external-programs.ca.html">4 Programes externs</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Apunteu-i-feu-clic" href="point-and-click.ca.html">4.1 Apunteu i feu clic</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Configuracio-del-sistema-per-Apunteu-i-feu-clic" href="configuring-the-system-for-point-and-click.ca.html">4.1.1 Configuració del sistema per Apunteu i feu clic</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Us-del-Xpdf-per-Apunteu-i-feu-clic" href="using-xpdf-for-point-and-click.ca.html">Ús del Xpdf per Apunteu i feu clic</a></li>
+        <li><a id="toc-Us-del-GNOME-2-per-Apunteu-i-feu-clic" href="using-gnome-2-for-point-and-click.ca.html">Ús del GNOME 2 per Apunteu i feu clic</a></li>
+        <li><a id="toc-Us-del-GNOME-3-per-Apunteu-i-feu-clic" href="using-gnome-3-for-point-and-click.ca.html">Ús del GNOME 3 per Apunteu i feu clic</a></li>
+        <li><a id="toc-Configuracio-addicional-per-a-l_0027Evince" href="extra-configuration-for-evince.ca.html">Configuració addicional per a l&rsquo;Evince</a></li>
+      </ul></li>
+      <li><a id="toc-Habilitacio-de-l_0027opcio-d_0027apunteu-i-feu-clic" href="enabling-point-and-click.ca.html">Habilitació de l&rsquo;opció d&rsquo;apunteu i feu clic</a></li>
+      <li><a id="toc-Apunteu-i-feu-clic-selectiu" href="selective-point_002dand_002dclick.ca.html">Apunteu i feu clic selectiu</a></li>
+    </ul></li>
+    <li><a id="toc-Suport-per-als-editors-de-text" href="text-editor-support.ca.html">4.2 Suport per als editors de text</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Mode-de-l_0027Emacs" href="emacs-mode.ca.html">Mode de l&rsquo;Emacs</a></li>
+      <li><a id="toc-Mode-del-Vim" href="vim-mode.ca.html">Mode del Vim</a></li>
+      <li><a id="toc-Altres-editors" href="other-editors.ca.html">Altres editors</a></li>
+    </ul></li>
+    <li><a id="toc-Conversio-des-d_0027altres-formats" href="converting-from-other-formats.ca.html">4.3 Conversió des d&rsquo;altres formats</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Invocacio-de-midi2ly" href="invoking-midi2ly.ca.html">4.3.1 Invocació de <code>midi2ly</code></a></li>
+      <li><a id="toc-Invocacio-de-musicxml2ly" href="invoking-musicxml2ly.ca.html">4.3.2 Invocació de <code>musicxml2ly</code></a></li>
+      <li><a id="toc-Invocacio-d_0027abc2ly" href="invoking-abc2ly.ca.html">4.3.3 Invocació d&rsquo;<code>abc2ly</code></a></li>
+      <li><a id="toc-Invocacio-d_0027etf2ly" href="invoking-etf2ly.ca.html">4.3.4 Invocació d&rsquo;<code>etf2ly</code></a></li>
+      <li><a id="toc-Altres-formats" href="other-formats.ca.html">4.3.5 Altres formats</a></li>
+    </ul></li>
+    <li><a id="toc-Sortida-del-LilyPond-dins-d_0027altres-programes" href="lilypond-output-in-other-programs.ca.html">4.4 Sortida del LilyPond dins d&rsquo;altres programes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LuaTeX" href="luatex.ca.html">4.4.1 LuaTeX</a></li>
+      <li><a id="toc-OpenOffice-i-LibreOffice" href="openoffice-and-libreoffice.ca.html">4.4.2 OpenOffice i LibreOffice</a></li>
+      <li><a id="toc-Altres-programes" href="other-programs.ca.html">4.4.3 Altres programes</a></li>
+    </ul></li>
+    <li><a id="toc-Fitxers-d_0027inclusio-independents" href="independent-includes.ca.html">4.5 Fitxers d&rsquo;inclusió independents</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Articulacio-MIDI" href="midi-articulation.ca.html">4.5.1 Articulació MIDI</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Suggeriments-per-escriure-fitxers-d_0027entrada" href="suggestions-for-writing-files.ca.html">5 Suggeriments per escriure fitxers d&rsquo;entrada</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Suggeriments-de-tipus-general" href="general-suggestions.ca.html">5.1 Suggeriments de tipus general</a></li>
+    <li><a id="toc-Gravacio-de-musica-existent" href="typesetting-existing-music.ca.html">5.2 Gravació de música existent</a></li>
+    <li><a id="toc-Projectes-grans" href="large-projects.ca.html">5.3 Projectes grans</a></li>
+    <li><a id="toc-Solucio-de-problemes" href="troubleshooting.ca.html">5.4 Solució de problemes</a></li>
+    <li><a id="toc-Make-i-els-Makefiles" href="make-and-makefiles.ca.html">5.5 Make i els Makefiles</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.ca.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Index" href="index-of-commands-and-concepts.ca.html" rel="index">Appendix B Índex</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 9d074d78d7c25852afa87005e21c118630f4f83b
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca a Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

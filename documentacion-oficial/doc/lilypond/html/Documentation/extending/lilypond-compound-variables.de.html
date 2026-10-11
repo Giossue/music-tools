@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2003-2026 bei den Autoren.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+Die Übersetzung der folgenden Lizenzanmerkung ist zur Orientierung
+für Leser, die nicht Englisch sprechen. Im rechtlichen Sinne ist aber
+nur die englische Version gültig.
+
+Es ist erlaubt, dieses Dokument unter den Bedingungen der
+GNU Free Documentation Lizenz (Version 1.1 oder
+spätere, von der Free Software Foundation publizierte Versionen, ohne
+invariante Abschnitte),
+zu kopieren, zu verbreiten und/oder
+zu verändern. Eine Kopie der Lizenz ist im Abschnitt "GNU
+Free Documentation License" angefügt.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>1.2.6 Zusammengesetzte LilyPond-Variablen (LilyPond erweitern)</title>
+
+<meta name="description" content="1.2.6 Zusammengesetzte LilyPond-Variablen (LilyPond erweitern)">
+<meta name="keywords" content="1.2.6 Zusammengesetzte LilyPond-Variablen (LilyPond erweitern)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.de.html" rel="start" title="LilyPond &ndash; Extending">
+<link href="index-of-commands-and-concepts.de.html" rel="index" title="Appendix B Register">
+<link href="extending_toc.de.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="scheme-in-lilypond.de.html" rel="up" title="1.2 Scheme in LilyPond">
+<link href="internal-music-representation.de.html" rel="next" title="1.2.7 Interne musikalische Repräsentation">
+<link href="object-properties.de.html" rel="prev" title="1.2.5 Objekteigenschaften">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="de" class="extending">
+<div id="main">
+<div class="subsection" id="lilypond-compound-variables">
+<table class="nav_table">
+<tr><td align="left">[<a href="scheme-tutorial.de.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Scheme-Tutorium </a>]</td><td align="center">[<a href="index.de.html" title="Cover (top) of document" rel="start">Top</a>][<a href="extending_toc.de.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.de.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="interfaces-for-programmers.de.html" title="Next chapter"> Schnittstellen für Programmierer &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="object-properties.de.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Objekteigenschaften </a>]</td><td align="center">[<a href="scheme-in-lilypond.de.html" title="Up section" accesskey="u" rel="up">  Up: Scheme in LilyPond </a>]</td><td align="right">[<a href="internal-music-representation.de.html" title="Next section in reading order" accesskey="n" rel="next"> Interne musikalische Repräsentation &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Zusammengesetzte-LilyPond_002dVariablen"></span><h4 class="subsection">1.2.6 Zusammengesetzte LilyPond-Variablen</h4>
+
+<span id="Abstande-_0028offset_0029"></span><h4 class="subheading">Abstände (offset)</h4>
+
+<p>Zweidimensionale Abstände (X- und Y-Koordinaten) werden
+als <em>pairs</em> (Paare) gespeichert. Der <code>car</code>-Wert des
+Abstands ist die X-Koordinate und der <code>cdr</code>-Wert die
+Y-Koordinate.
+</p>
+<div class="example">
+<pre class="example">\override TextScript.extra-offset = #'(1 . 2)
+</pre></div>
+
+<p>Hierdurch wird das Paar <code>(1 . 2)</code> mit der Eigenschaft <code>extra-offset</code>
+des TextScript-Objektes verknüpft. Diese Zahlen werden in
+Systembreiten  gemessen, so dass der Befehl das Objekt eine Systembreite
+nach rechts verschiebt und zwei Breiten nach oben.
+</p>
+<p>Prozeduren, um mit Abständen zu arbeiten, finden sich in <samp>scm/lily-library.scm</samp>.
+</p>
+<span id="Bruche-_0028fractions_0029"></span><h4 class="subheading">Brüche (fractions)</h4>
+
+<p>Brüche, wie sie LilyPond benutzt, werden wiederum als Paare gespeichert,
+dieses Mal als unbezeichnete ganze Zahlen.  Während Scheme rationale Zahlen
+als einen negativen Typ darstellen kann, sind musikalische gesehen
+&lsquo;<samp>2/4</samp>&rsquo; und &lsquo;<samp>1/2</samp>&rsquo; nicht das selbe, sodass man zwischen beiden unterscheiden
+können muss.  Ähnlich gibt es auch keine negativen Brüche in LilyPonds Sinn.
+Somit bedeutet <code>2/4</code> in LilyPond  <code>(2 . 4)</code> in Scheme, und <code>#2/4</code> in
+LilyPond bedeutet <code>1/2</code> in Scheme.
+</p>
+<span id="Bereiche-_0028extend_0029"></span><h4 class="subheading">Bereiche (extend)</h4>
+
+<p>Paare werden auch benutzt, um Intervalle zu speichern, die einen Zahlenbereich
+vom Minimum (dem <code>car</code>) bis zum Maximum (dem <code>cdr</code>) darstellen.
+Intervalle werden benutzt, um die X- und Y-Ausdehnung von druckbaren
+Objekten zu speichern.  Bei X-Ausdehnungen ist <code>car</code> die linke
+X-Koordinate und <code>cdr</code> die rechte X-Koordinate.  Für Y-Ausdehnungen
+ist <code>car</code> die untere Koordinate und <code>cdr</code> die obere Koordinate.
+</p>
+<p>Prozeduren, um mit Intervallen zu arbeiten, finden sich in
+<samp>scm/lily-library.scm</samp>.  Diese Prozeduren sollten benutzt, wenn es möglich
+ist, um den Code konsistent zu halten.
+</p>
+<span id="Eigenschafts_002dAlisten-_0028property-alist_0029"></span><h4 class="subheading">Eigenschafts-Alisten (property alist)</h4>
+
+<p>Eine Eigenschafts-Aliste ist eine LilyPond-Datenstruktur, die eine Aliste
+darstellt, deren Schlüssel Eigenschaften sind und deren Werte
+Scheme-Ausdrücke sind, die den erwünschen Wert der Eigenschaft ausgeben.
+</p>
+<p>LilyPond-Eigenschaften sind Scheme-Symbole, wie etwa <code>'thickness</code>
+(Dicke).
+</p>
+<span id="Alisten_002dKetten-_0028alist-chains_0029"></span><h4 class="subheading">Alisten-Ketten (alist chains)</h4>
+
+<p>Eine Alisten-Kette ist eine Liste, die Eigenschafts-Alisten enthält.
+</p>
+<p>Die Menge aller Eigenschaften, die sich auf einen Grob auswirken, wird
+typischerweise in einer Alisten-Kette gespeichert.  Um den Wert einer
+bestimmten Eigenschaft zu finden, die ein Grob haben soll, wird jede
+Liste in der Kette nach einander durchsucht, wobei nach einem Eintrag
+geschaut wird, der den Eigenschaftsschlüssel enthält.  Der erste
+gefundene Alisten-Eintrag wird benutzt und dessen Wert ist der
+Wert der Eigenschaft.
+</p>
+<p>Die Scheme-Prozedur <code>chain-assoc-get</code> wird normalerweise benutzt,
+um Grob-Eigenschaftenwerte zu erhalten.
+</p>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="scheme-tutorial.de.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Scheme-Tutorium </a>]</td><td align="center">[<a href="index.de.html" title="Cover (top) of document" rel="start">Top</a>][<a href="extending_toc.de.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.de.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="interfaces-for-programmers.de.html" title="Next chapter"> Schnittstellen für Programmierer &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="object-properties.de.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Objekteigenschaften </a>]</td><td align="center">[<a href="scheme-in-lilypond.de.html" title="Up section" accesskey="u" rel="up">  Up: Scheme in LilyPond </a>]</td><td align="right">[<a href="internal-music-representation.de.html" title="Next section in reading order" accesskey="n" rel="next"> Interne musikalische Repräsentation &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="lilypond-compound-variables.html">English</a>, <a href="lilypond-compound-variables.ca.html">Català</a>, <a href="lilypond-compound-variables.es.html">Español</a>, <a href="lilypond-compound-variables.fr.html">Français</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.de.html" title="Documentation Index">
+    &lt;&lt; Zur Dokumentationsübersicht
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.de.html#top" title="Cover (top) of document">
+    LilyPond erweitern  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li class="toc_current"><a id="toc-Scheme_002dTutorium" href="scheme-tutorial.de.html">1 Scheme-Tutorium</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Einleitung-in-Scheme" href="introduction-to-scheme.de.html">1.1 Einleitung in Scheme</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Scheme_002dSandkasten" href="scheme-sandbox.de.html">1.1.1 Scheme-Sandkasten</a></li>
+      <li><a id="toc-Scheme_002dVariablen" href="scheme-variables.de.html">1.1.2 Scheme-Variablen</a></li>
+      <li><a id="toc-Einfache-Scheme_002dDatentypen" href="scheme-simple-data-types.de.html">1.1.3 Einfache Scheme-Datentypen</a></li>
+      <li><a id="toc-Zusammengesetzte-Scheme_002dDatentypen" href="scheme-compound-data-types.de.html">1.1.4 Zusammengesetzte Scheme-Datentypen</a></li>
+      <li><a id="toc-Berechnungen-in-Scheme" href="calculations-in-scheme.de.html">1.1.5 Berechnungen in Scheme</a></li>
+      <li><a id="toc-Scheme_002dProzeduren" href="scheme-procedures.de.html">1.1.6 Scheme-Prozeduren</a></li>
+      <li><a id="toc-Scheme_002dKonditionale" href="scheme-conditionals.de.html">1.1.7 Scheme-Konditionale</a></li>
+    </ul></li>
+    <li class="toc_current"><a id="toc-Scheme-in-LilyPond" href="scheme-in-lilypond.de.html">1.2 Scheme in LilyPond</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LilyPond-Scheme_002dSyntax" href="lilypond-scheme-syntax.de.html">1.2.1 LilyPond Scheme-Syntax</a></li>
+      <li><a id="toc-LilyPond_002dVariablen" href="lilypond-variables.de.html">1.2.2 LilyPond-Variablen</a></li>
+      <li><a id="toc-Eingabe_002dVariablen-und-Scheme" href="input-variables-and-scheme.de.html">1.2.3 Eingabe-Variablen und Scheme</a></li>
+      <li><a id="toc-Scheme-in-LilyPond-importieren" href="importing-scheme-in-lilypond.de.html">1.2.4 Scheme in LilyPond importieren</a></li>
+      <li><a id="toc-Objekteigenschaften" href="object-properties.de.html">1.2.5 Objekteigenschaften</a></li>
+      <li class="toc_current"><a id="toc-Zusammengesetzte-LilyPond_002dVariablen" href="lilypond-compound-variables.de.html">1.2.6 Zusammengesetzte LilyPond-Variablen</a></li>
+      <li><a id="toc-Interne-musikalische-Reprasentation" href="internal-music-representation.de.html">1.2.7 Interne musikalische Repräsentation</a></li>
+    </ul></li>
+    <li><a id="toc-Komplizierte-Funktionen-erstellen" href="building-complicated-functions.de.html">1.3 Komplizierte Funktionen erstellen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Musikalische-Funktionen-darstellen" href="displaying-music-expressions.de.html">1.3.1 Musikalische Funktionen darstellen</a></li>
+      <li><a id="toc-Eigenschaften-von-Musikobjekten" href="music-properties.de.html">1.3.2 Eigenschaften von Musikobjekten</a></li>
+      <li><a id="toc-Verdoppelung-einer-Note-mit-Bindebogen-_0028Beispiel_0029" href="doubling-a-note-with-slurs-_0028example_0029.de.html">1.3.3 Verdoppelung einer Note mit Bindebögen (Beispiel)</a></li>
+      <li><a id="toc-Artikulationszeichen-zu-Noten-hinzufugen-_0028Beispiel_0029" href="adding-articulation-to-notes-_0028example_0029.de.html">1.3.4 Artikulationszeichen zu Noten hinzufügen (Beispiel)</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Schnittstellen-fur-Programmierer" href="interfaces-for-programmers.de.html">2 Schnittstellen für Programmierer</a>
+  <ul class="no-bullet">
+    <li><a id="toc-LilyPond_002dCodeabschnitte" href="lilypond-code-blocks.de.html">2.1 LilyPond-Codeabschnitte</a></li>
+    <li><a id="toc-Scheme_002dFunktionen" href="scheme-functions.de.html">2.2 Scheme-Funktionen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Definition-von-Scheme_002dFunktionen" href="scheme-function-definitions.de.html">2.2.1 Definition von Scheme-Funktionen</a></li>
+      <li><a id="toc-Benutzung-von-Scheme_002dFunktionen" href="scheme-function-usage.de.html">2.2.2 Benutzung von Scheme-Funktionen</a></li>
+      <li><a id="toc-Leere-Scheme_002dFunktionen" href="void-scheme-functions.de.html">2.2.3 Leere Scheme-Funktionen</a></li>
+    </ul></li>
+    <li><a id="toc-Musikalische-Funktionen" href="music-functions.de.html">2.3 Musikalische Funktionen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Definition-der-musikalischen-Funktionen" href="music-function-definitions.de.html">2.3.1 Definition der musikalischen Funktionen</a></li>
+      <li><a id="toc-Benutzung-von-musikalischen-Funktionen" href="music-function-usage.de.html">2.3.2 Benutzung von musikalischen Funktionen</a></li>
+      <li><a id="toc-Einfache-Ersetzungsfunktionen" href="simple-substitution-functions.de.html">2.3.3 Einfache Ersetzungsfunktionen</a></li>
+      <li><a id="toc-Mittlere-Ersetzungsfunktionen" href="intermediate-substitution-functions.de.html">2.3.4 Mittlere Ersetzungsfunktionen</a></li>
+      <li><a id="toc-Mathematik-in-Funktionen" href="mathematics-in-functions.de.html">2.3.5 Mathematik in Funktionen</a></li>
+      <li><a id="toc-Funktionen-ohne-Argumente" href="functions-without-arguments.de.html">2.3.6 Funktionen ohne Argumente</a></li>
+      <li><a id="toc-Leere-musikalische-Funktionen" href="void-music-functions.de.html">2.3.7 Leere musikalische Funktionen</a></li>
+    </ul></li>
+    <li><a id="toc-Ereignisfunktionen" href="event-functions.de.html">2.4 Ereignisfunktionen</a></li>
+    <li><a id="toc-Textbeschriftungsfunktionen" href="markup-functions.de.html">2.5 Textbeschriftungsfunktionen</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Beschriftungskonstruktionen-in-Scheme" href="markup-construction-in-scheme.de.html">2.5.1 Beschriftungskonstruktionen in Scheme</a></li>
+      <li><a id="toc-Wie-Beschriftungen-intern-funktionieren" href="how-markups-work-internally.de.html">2.5.2 Wie Beschriftungen intern funktionieren</a></li>
+      <li><a id="toc-Neue-Definitionen-von-Beschriftungsbefehlen" href="new-markup-command-definition.de.html">2.5.3 Neue Definitionen von Beschriftungsbefehlen</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Syntax-der-Definition-von-Textbeschriftungsbefehlen" href="markup-command-definition-syntax.de.html">Syntax der Definition von Textbeschriftungsbefehlen</a></li>
+        <li><a id="toc-Uber-Eigenschaften" href="on-properties.de.html">Über Eigenschaften</a></li>
+        <li><a id="toc-Ein-vollstandiges-Bespiel" href="a-complete-example.de.html">Ein vollständiges Bespiel</a></li>
+        <li><a id="toc-Eingebaute-Befehle-anpassen" href="adapting-builtin-commands.de.html">Eingebaute Befehle anpassen</a></li>
+      </ul></li>
+      <li><a id="toc-Neue-Definitionen-von-Beschriftungslistenbefehlen" href="new-markup-list-command-definition.de.html">2.5.4 Neue Definitionen von Beschriftungslistenbefehlen</a></li>
+    </ul></li>
+    <li><a id="toc-Kontexte-fur-Programmierer" href="contexts-for-programmers.de.html">2.6 Kontexte für Programmierer</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Kontextauswertung" href="context-evaluation.de.html">2.6.1 Kontextauswertung</a></li>
+      <li><a id="toc-Eine-Funktion-auf-alle-Layout_002dObjekte-anwenden" href="running-a-function-on-all-layout-objects.de.html">2.6.2 Eine Funktion auf alle Layout-Objekte anwenden</a></li>
+    </ul></li>
+    <li><a id="toc-Callback_002dFunktionen" href="callback-functions.de.html">2.7 Callback-Funktionen</a></li>
+    <li><a id="toc-Scheme_002dCode-innerhalb-LilyPonds" href="inline-scheme-code.de.html">2.8 Scheme-Code innerhalb LilyPonds</a></li>
+    <li><a id="toc-Schwierige-Korrekturen" href="difficult-tweaks.de.html">2.9 Schwierige Korrekturen</a></li>
+  </ul></li>
+  <li><a id="toc-LilyPond-Scheme_002dSchnittstellen" href="lilypond-scheme-interfaces.de.html">3 LilyPond Scheme-Schnittstellen</a></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.de.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Register" href="index-of-commands-and-concepts.de.html" rel="index">Appendix B Register</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: ebe492ca408fb0d9abf80b94c56197eef8dc2f09
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Mit Google suchen">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Suche">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

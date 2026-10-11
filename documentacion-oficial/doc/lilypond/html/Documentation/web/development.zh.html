@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2009-2026 by the authors.
+
+LilyPond 网站由本文件归档。
+
+Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License,
+Version 1.1 or any later version published by the Free Software
+Foundation; with no Invariant Sections.  A copy of the license is
+included in the section entitled "GNU Free Documentation
+License". -->
+<title>开发 (LilyPond &ndash; 人人的乐谱软件)</title>
+
+<meta name="description" content="开发 (LilyPond &ndash; 人人的乐谱软件)">
+<meta name="keywords" content="开发 (LilyPond &ndash; 人人的乐谱软件)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.zh.html#top" rel="start" title="LilyPond &ndash; 人人的乐谱软件">
+<link href="web_toc.zh.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="community.zh.html" rel="up" title="社区">
+<link href="google-summer-of-code.zh.html" rel="next" title="Google Summer of Code">
+<link href="sponsoring.zh.html" rel="prev" title="赞助">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-website.css">
+
+
+</head>
+
+<body lang="zh" class="web">
+<div id="main">
+<div class="unnumberedsec" id="development">
+<hr>
+<span id="Kai-Fa-"></span><h3 class="unnumberedsec">开发</h3>
+
+<div class="heading-center">
+<span id="LilyPond-2_002e25_002e81-De-Kai-Fa-"></span><h3 class="heading">LilyPond 2.25.81 的开发</h3>
+
+
+<div class="warning">
+<p><strong>注意：</strong>这是 <em>不稳定的开发</em> 版本.  如果你
+如果您对如何使用或安装 LilyPond 有丝毫的疑问，我们
+敦促您使用 <a href="download.zh.html">稳定版下载</a>，并阅读
+<a href="manuals.zh.html">稳定版手册</a>。
+</p>
+</div>
+
+
+</div>
+
+<div class="column-center-top">
+<span id="Release-numbers-Fa-Xing-Hao-"></span><h4 class="subheading">Release numbers 发行号</h4>
+
+<p>有两套 LilyPond 的发行版集合：稳定版和不稳定的开发版。
+稳定版的 &lsquo;次&rsquo; 版本号是偶数（如 2.8、2.10、2.12），
+开发版的 &lsquo;次&rsquo; 版本号是奇数（如 2.15、2.17、2.19）。
+</p>
+
+</div>
+
+
+<div class="column-left-top">
+<span id="Xia-Zai-"></span><h4 class="subheading">下载</h4>
+
+<p>关于 git 和编译方法，参见贡献者指南。
+</p>
+<blockquote>
+<p><a href="https://git.sv.gnu.org/gitweb/?p=lilypond.git">LilyPond git 仓库</a>
+</p></blockquote>
+
+<p>文档编写者和测试人员可能想要下载最新的二进制文件：
+</p>
+<blockquote>
+
+<p><a href="https://gitlab.com/lilypond/lilypond/-/releases/v2.25.81/downloads/lilypond-2.25.81-linux-x86_64.tar.gz">GNU/Linux x86_64: LilyPond 2.25.81</a>
+</p>
+<p><a href="https://gitlab.com/lilypond/lilypond/-/releases/v2.25.81/downloads/lilypond-2.25.81-darwin-arm64.tar.gz">macOS arm64: LilyPond 2.25.81</a>
+</p>
+<p><a href="https://gitlab.com/lilypond/lilypond/-/releases/v2.25.81/downloads/lilypond-2.25.81-darwin-x86_64.tar.gz">macOS x86_64: LilyPond 2.25.81</a>
+</p>
+<p><a href="https://ports.macports.org/port/lilypond-devel/summary">MacPorts package</a>
+</p>
+<p><a href="https://gitlab.com/lilypond/lilypond/-/releases/v2.25.81/downloads/lilypond-2.25.81-mingw-x86_64.zip">Windows x86_64: LilyPond 2.25.81</a>
+</p>
+<p><a href="https://lilypond.org/download/sources/v2.25/lilypond-2.25.81.tar.gz">源码: lilypond-2.25.81.tar.gz</a>
+</p>
+</blockquote>
+
+
+</div>
+
+
+<div class="column-right-top">
+<span id="Gong-Xian-Zhe-Zhi-Nan-"></span><h4 class="subheading">贡献者指南</h4>
+
+<p>LilyPond 的开发是一个相当复杂的问题。为了帮助新的贡献者，
+且同时保持整个系统（近乎）稳定，我们编纂了开发任务手册。
+</p>
+
+<div class="keep-bullets">
+<ul>
+<li> <a href="../contributor/index.html">Contributor&rsquo;s Guide (分开的 HTML)</a> −
+  本手册分解了许多 HTML 页面。
+  <br>&nbsp;&nbsp;<em>(每个页面有一小的下载)</em>
+
+</li><li> <a href="../contributor-big-page.html">Contributor&rsquo;s Guide (大的 HTML)</a> −
+  以单一大 HTML 页面的方式阅读本手册。
+  <br>&nbsp;&nbsp;<em>(大的单一下载, 740K)</em>
+
+</li><li> <a href="../contributor.pdf">contributor.pdf</a> −
+  以 PDF 文件的方式下载。
+  <br>&nbsp;&nbsp;<em>(大的单一下载, 832K)</em>
+
+</li></ul>
+
+
+</div>
+
+
+
+</div>
+
+
+<div class="column-center-top">
+<span id="Hui-Gui-Ce-Shi-"></span><h4 class="subheading">回归测试</h4>
+
+<div class="keep-bullets">
+
+
+<ul>
+<li> <a href="../../input/regression/collated-files.html">Regression tests</a>:
+This release&rsquo;s regtests.
+(<a href="../../input/regression/collated-files.pdf">pdf version</a>)
+
+</li><li> <a href="../../input/regression/musicxml/collated-files.html">MusicXML tests</a>:
+This release&rsquo;s musicXML tests.
+(<a href="../../input/regression/musicxml/collated-files.pdf">pdf version</a>)
+
+</li><li> <a href="../../input/regression/abc2ly/collated-files.html">abc2ly tests</a>:
+This release&rsquo;s abc2ly tests.
+(<a href="../../input/regression/abc2ly/collated-files.pdf">pdf version</a>)
+</li></ul>
+
+
+
+
+</div>
+
+</div>
+
+
+
+<div class="column-center-bottom">
+<span id="Shou-Ce--1"></span><h4 class="subheading">手册</h4>
+
+<div class="warning">
+<p><strong>注意：</strong>这些手册是为 LilyPond 2.26.0 编写的。最新
+的手册可在 <a href="https://lilypond.org">https://lilypond.org</a> 找到
+</p>
+</div>
+
+<div class="normal-table">
+<table>
+<thead><tr><th width="30%">Introduction</th></tr></thead>
+<tr><td width="30%"><a href="../learning/index.zh.html">Learning (分开的 HTML)</a></td><td width="30%"><a href="../learning-big-page.zh.html">Learning (大的 HTML)</a></td><td width="30%"><a href="../learning.pdf">learning.pdf</a></td></tr>
+<tr><td width="30%"><a href="../music-glossary/index.html">Glossary (分开的 HTML)</a></td><td width="30%"><a href="../music-glossary-big-page.html">Glossary (大的 HTML)</a></td><td width="30%"><a href="../music-glossary.pdf">music-glossary.pdf</a></td></tr>
+<tr><td width="30%"><a href="../essay/index.html">Essay (分开的 HTML)</a></td><td width="30%"><a href="../essay-big-page.html">Essay (大的 HTML)</a></td><td width="30%"><a href="../essay.pdf">essay.pdf</a></td></tr>
+</table>
+
+<table>
+<thead><tr><th width="30%">Regular</th></tr></thead>
+<tr><td width="30%"><a href="../notation/index.html">Notation (分开的 HTML)</a></td><td width="30%"><a href="../notation-big-page.html">Notation (大的 HTML)</a></td><td width="30%"><a href="../notation.pdf">notation.pdf</a></td></tr>
+<tr><td width="30%"><a href="../usage/index.html">Usage (分开的 HTML)</a></td><td width="30%"><a href="../usage-big-page.html">Usage (大的 HTML)</a></td><td width="30%"><a href="../usage.pdf">usage.pdf</a></td></tr>
+<tr><td width="30%"><a href="../snippets/index.html">Snippets (分开的 HTML)</a></td><td width="30%"><a href="../snippets-big-page.html">Snippets (大的 HTML)</a></td><td width="30%"><a href="../snippets.pdf">snippets.pdf</a></td></tr>
+</table>
+
+<table>
+<thead><tr><th width="30%">Infrequent</th></tr></thead>
+<tr><td width="30%"><a href="../web/index.zh.html">Web (分开的 HTML)</a></td><td width="30%"><a href="../web-big-page.zh.html">Web (大的 HTML)</a></td><td width="30%"><a href="../web.pdf">web.pdf</a></td></tr>
+<tr><td width="30%"><a href="../changes/index.html">Changes (分开的 HTML)</a></td><td width="30%"><a href="../changes-big-page.html">Changes (大的 HTML)</a></td><td width="30%"><a href="../changes.pdf">changes.pdf</a></td></tr>
+<tr><td width="30%"><a href="../extending/index.html">Extending (分开的 HTML)</a></td><td width="30%"><a href="../extending-big-page.html">Extending (大的 HTML)</a></td><td width="30%"><a href="../extending.pdf">extending.pdf</a></td></tr>
+<tr><td width="30%"><a href="../internals/index.html">Internals (分开的 HTML)</a></td><td width="30%"><a href="../internals-big-page.html">Internals (大的 HTML)</a></td><td width="30%"><a href="../internals.pdf">internals.pdf</a></td></tr>
+</table>
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+</div>
+<hr>
+
+<div id="footer">
+<p id="languages">
+Other languages: <a href="development.html">English</a>, <a href="development.ca.html">Català</a>, <a href="development.de.html">Deutsch</a>, <a href="development.es.html">Español</a>, <a href="development.fr.html">Français</a>, <a href="development.it.html">Italiano</a>, <a href="development.ja.html">日本語</a>, <a href="development.tr.html">Türkçe</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-LilyPond" href="index.zh.html">LilyPond</a></li>
+  <li><a id="toc-Jian-Jie-" href="introduction.zh.html">简介</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Te-Se-" href="features.zh.html">特色</a></li>
+    <li><a id="toc-LiZi-" href="examples.zh.html">例子</a></li>
+    <li><a id="toc-Zi-You-" href="freedom.zh.html">自由</a></li>
+    <li><a id="toc-Bei-Jing-" href="background.zh.html">背景</a></li>
+    <li><a id="toc-Zhi-Zuo-" href="productions.zh.html">制作</a></li>
+    <li><a id="toc-Ping-Jie-" href="reviews.zh.html">评价</a></li>
+    <li><a id="toc-WenBen-Shu-Ru-" href="text-input.zh.html">文本输入</a></li>
+    <li><a id="toc-Bian-Ji-Geng-Jian-Dan-" href="easier-editing.zh.html">编辑更简单</a></li>
+  </ul></li>
+  <li><a id="toc-Download" href="download.zh.html">Download</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Source" href="source.zh.html">Source</a></li>
+    <li><a id="toc-Old-downloads" href="old-downloads.zh.html">Old downloads</a></li>
+    <li><a id="toc-GPL" href="gpl.zh.html">GPL</a></li>
+  </ul></li>
+  <li><a id="toc-Shou-Ce-" href="manuals.zh.html">手册</a>
+  <ul class="no-bullet">
+    <li><a id="toc-XueXi-" href="learning.zh.html">学习</a></li>
+    <li><a id="toc-Zhu-Yu-Biao-" href="glossary.zh.html">术语表</a></li>
+    <li><a id="toc-WenZhang" href="essay.zh.html">文章</a></li>
+    <li><a id="toc-Ji-Pu-Fa-" href="notation.zh.html">记谱法</a></li>
+    <li><a id="toc-Shi-Yong-" href="usage.zh.html">使用</a></li>
+    <li><a id="toc-Pian-Duan-" href="snippets.zh.html">片断</a></li>
+    <li><a id="toc-Chang-Jian-Wen-Ti-" href="faq.zh.html">常见问题</a></li>
+    <li><a id="toc-Web" href="web.zh.html">Web</a></li>
+    <li><a id="toc-Bian-Hua-" href="changes.zh.html">变化</a></li>
+    <li><a id="toc-Kuo-Zhan-" href="extending.zh.html">扩展</a></li>
+    <li><a id="toc-Nei-Bu-Ji-Zhi-" href="internals.zh.html">内部机制</a></li>
+    <li><a id="toc-Suo-You-" href="all.zh.html">所有</a></li>
+    <li><a id="toc-FDL" href="fdl.zh.html">FDL</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-She-Qu-" href="community.zh.html">社区</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Lian-Xi-" href="contact.zh.html">联系</a></li>
+    <li><a id="toc-Xiao-LiZi-" href="tiny-examples.zh.html">小例子</a></li>
+    <li><a id="toc-Cuo-Wu-Bao-Gao-" href="bug-reports.zh.html">错误报告</a></li>
+    <li><a id="toc-Bang-Zhu-Wo-Men-" href="help-us.zh.html">帮助我们</a></li>
+    <li><a id="toc-Zan-Zhu-" href="sponsoring.zh.html">赞助</a></li>
+    <li class="toc_current"><a id="toc-Kai-Fa-" href="development.zh.html">开发</a></li>
+    <li><a id="toc-Google-Summer-of-Code" href="google-summer-of-code.zh.html">Google Summer of Code</a></li>
+    <li><a id="toc-Zuo-Zhe-" href="authors.zh.html">作者</a></li>
+    <li><a id="toc-Chu-Ban-Wu-" href="publications.zh.html">出版物</a></li>
+    <li><a id="toc-Xin-Wen-" href="news.zh.html">新闻</a></li>
+    <li><a id="toc-Attic" href="attic.zh.html">Attic</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: ebe492ca408fb0d9abf80b94c56197eef8dc2f09
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google 搜索">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="搜索">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

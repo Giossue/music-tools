@@ -1,0 +1,476 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2007-2026 by the authors.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>10.5.6 Code comments (LilyPond Contributor&rsquo;s Guide)</title>
+
+<meta name="description" content="10.5.6 Code comments (LilyPond Contributor&rsquo;s Guide)">
+<meta name="keywords" content="10.5.6 Code comments (LilyPond Contributor&rsquo;s Guide)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="LilyPond &mdash; Contributor&rsquo;s Guide">
+<link href="contributor_toc.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="code-style.html" rel="up" title="10.5 Code style">
+<link href="handling-errors.html" rel="next" title="10.5.7 Handling errors">
+<link href="broken-code.html" rel="prev" title="10.5.5 Broken code">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="en" class="contributor">
+<div id="main">
+<div class="subsection" id="code-comments">
+<table class="nav_table">
+<tr><td align="left">[<a href="programming-work.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Programming work </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="contributor_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="release-work.html" title="Next chapter"> Release work &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="broken-code.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Broken code </a>]</td><td align="center">[<a href="code-style.html" title="Up section" accesskey="u" rel="up">  Up: Code style </a>]</td><td align="right">[<a href="handling-errors.html" title="Next section in reading order" accesskey="n" rel="next"> Handling errors &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Code-comments"></span><h4 class="subsection">10.5.6 Code comments</h4>
+
+<p>Comments may not be needed if descriptive variable names are used
+in the code and the logic is straightforward.  However, if the
+logic is difficult to follow, and particularly if non-obvious
+code has been included to resolve a bug, a comment describing
+the logic and/or the need for the non-obvious code should be included.
+</p>
+<p>There are instances where the current code could be commented better.
+If significant time is required to understand the code as part of
+preparing a patch, it would be wise to add comments reflecting your
+understanding to make future work easier.
+</p>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="programming-work.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Programming work </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="contributor_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="release-work.html" title="Next chapter"> Release work &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="broken-code.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Broken code </a>]</td><td align="center">[<a href="code-style.html" title="Up section" accesskey="u" rel="up">  Up: Code style </a>]</td><td align="right">[<a href="handling-errors.html" title="Next section in reading order" accesskey="n" rel="next"> Handling errors &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.html" title="Documentation Index">
+    &lt;&lt; Back to Documentation Index
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.html#top" title="Cover (top) of document">
+    LilyPond Contributor&rsquo;s Guide  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Introduction-to-contributing" href="introduction-to-contributing.html">1 Introduction to contributing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Help-us" href="help-us.html">1.1 Help us</a></li>
+    <li><a id="toc-Overview-of-work-flow" href="overview-of-work-flow.html">1.2 Overview of work flow</a></li>
+    <li><a id="toc-Summary-for-experienced-developers" href="summary-for-experienced-developers.html">1.3 Summary for experienced developers</a></li>
+    <li><a id="toc-Mentors" href="mentors.html">1.4 Mentors</a></li>
+  </ul></li>
+  <li><a id="toc-Quick-start" href="quick-start.html">2 Quick start</a>
+  <ul class="no-bullet">
+    <li><a id="toc-LilyDev" href="lilydev.html">2.1 LilyDev</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Installing-LilyDev-in-VirtualBox" href="installing-lilydev-in-virtualbox.html">Installing LilyDev in VirtualBox</a></li>
+      <li><a id="toc-Configuring-LilyDev-in-VirtualBox" href="configuring-lilydev-in-virtualbox.html">Configuring LilyDev in VirtualBox</a></li>
+    </ul></li>
+    <li><a id="toc-Compiling-with-LilyDev" href="compiling-with-lilydev.html">2.2 Compiling with LilyDev</a></li>
+    <li><a id="toc-Now-start-work_0021" href="now-start-work_0021.html">2.3 Now start work!</a></li>
+  </ul></li>
+  <li><a id="toc-Working-with-source-code" href="working-with-source-code.html">3 Working with source code</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Setting-up" href="setting-up.html">3.1 Setting up</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Installing-Git" href="installing-git.html">3.1.1 Installing Git</a></li>
+      <li><a id="toc-Creating-a-GitLab-account-and-setting-up-SSH" href="creating-a-gitlab-account-and-setting-up-ssh.html">3.1.2 Creating a GitLab account and setting up SSH</a></li>
+      <li><a id="toc-Cloning-and-forking-the-repository" href="cloning-and-forking-the-repository.html">3.1.3 Cloning and forking the repository</a></li>
+      <li><a id="toc-Configuring-Git" href="configuring-git.html">3.1.4 Configuring Git</a></li>
+    </ul></li>
+    <li><a id="toc-Git-cheat-sheet" href="git-cheat-sheet.html">3.2 Git cheat sheet</a></li>
+    <li><a id="toc-Lifecycle-of-a-merge-request" href="lifecycle-of-a-merge-request.html">3.3 Lifecycle of a merge request</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Uploading-a-patch-for-review" href="uploading-a-patch-for-review.html">3.3.1 Uploading a patch for review</a></li>
+      <li><a id="toc-Automated-testing" href="automated-testing.html">3.3.2 Automated testing</a></li>
+      <li><a id="toc-Patch-countdown" href="patch-countdown.html">3.3.3 Patch countdown</a></li>
+      <li><a id="toc-Merging-to-master" href="merging-to-master.html">3.3.4 Merging to master</a></li>
+      <li><a id="toc-Abandoned-patches" href="abandoned-patches.html">3.3.5 Abandoned patches</a></li>
+    </ul></li>
+    <li><a id="toc-Writing-good-commit-messages" href="writing-good-commit-messages.html">3.4 Writing good commit messages</a></li>
+    <li><a id="toc-Commit-access" href="commit-access.html">3.5 Commit access</a></li>
+    <li><a id="toc-Further-Git-documentation-resources" href="further-git-documentation-resources.html">3.6 Further Git documentation resources</a></li>
+    <li><a id="toc-Repository-directory-structure" href="repository-directory-structure.html">3.7 Repository directory structure</a></li>
+  </ul></li>
+  <li><a id="toc-Compiling" href="compiling.html">4 Compiling</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Overview-of-compiling" href="overview-of-compiling.html">4.1 Overview of compiling</a></li>
+    <li><a id="toc-Requirements" href="requirements.html">4.2 Requirements</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Requirements-for-running-LilyPond" href="requirements-for-running-lilypond.html">4.2.1 Requirements for running LilyPond</a></li>
+      <li><a id="toc-Requirements-for-compiling-LilyPond" href="requirements-for-compiling-lilypond.html">4.2.2 Requirements for compiling LilyPond</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Fedora" href="fedora.html">Fedora</a></li>
+        <li><a id="toc-Linux-Mint" href="linux-mint.html">Linux Mint</a></li>
+        <li><a id="toc-OpenSUSE" href="opensuse.html">OpenSUSE</a></li>
+        <li><a id="toc-Ubuntu" href="ubuntu.html">Ubuntu</a></li>
+        <li><a id="toc-Other" href="other.html">Other</a></li>
+      </ul></li>
+      <li><a id="toc-Requirements-for-building-documentation" href="requirements-for-building-documentation.html">4.2.3 Requirements for building documentation</a></li>
+    </ul></li>
+    <li><a id="toc-Getting-the-source-code" href="getting-the-source-code.html">4.3 Getting the source code</a></li>
+    <li><a id="toc-Configuring-make" href="configuring-make.html">4.4 Configuring <code>make</code></a>
+    <ul class="no-bullet">
+      <li><a id="toc-Build-modes" href="build-modes.html">4.4.1 Build modes</a></li>
+      <li><a id="toc-Running-autogen_002esh" href="running-autogen.html">4.4.2 Running <code>autogen.sh</code></a></li>
+      <li><a id="toc-Running-configure" href="running-configure.html">4.4.3 Running <code>configure</code></a>
+      <ul class="no-bullet">
+        <li><a id="toc-Configuration-options" href="configuration-options.html">Configuration options</a></li>
+        <li><a id="toc-Checking-build-dependencies" href="checking-build-dependencies.html">Checking build dependencies</a></li>
+        <li><a id="toc-Configuring-target-directories" href="configuring-target-directories.html">Configuring target directories</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Compiling-LilyPond" href="compiling-lilypond.html">4.5 Compiling LilyPond</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Using-make" href="using-make.html">4.5.1 Using <code>make</code></a></li>
+      <li><a id="toc-Saving-time-with-the-_002dj-option" href="saving-time-with-the-_002dj-option.html">4.5.2 Saving time with the <samp>-j</samp> option</a></li>
+      <li><a id="toc-Useful-make-variables" href="useful-make-variables.html">4.5.3 Useful <code>make</code> variables</a></li>
+    </ul></li>
+    <li><a id="toc-Post_002dcompilation-options" href="post_002dcompilation-options.html">4.6 Post-compilation options</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Installing-LilyPond-from-a-local-build" href="installing-lilypond-from-a-local-build.html">4.6.1 Installing LilyPond from a local build</a></li>
+      <li><a id="toc-Generating-documentation" href="generating-documentation.html">4.6.2 Generating documentation</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Documentation-editor_0027s-edit_002fcompile-cycle" href="documentation-editor_0027s-edit_002fcompile-cycle.html">Documentation editor&rsquo;s edit/compile cycle</a></li>
+        <li><a id="toc-Building-documentation" href="building-documentation.html">Building documentation</a></li>
+        <li><a id="toc-Building-a-single-document" href="building-a-single-document.html">Building a single document</a></li>
+        <li><a id="toc-Saving-time-with-CPU_005fCOUNT" href="saving-time-with-cpu_005fcount.html">Saving time with <code>CPU_COUNT</code></a></li>
+        <li><a id="toc-Installing-documentation" href="installing-documentation.html">Installing documentation</a></li>
+        <li><a id="toc-Building-documentation-without-compiling" href="building-documentation-without-compiling.html">Building documentation without compiling</a></li>
+      </ul></li>
+      <li><a id="toc-Testing-LilyPond-binary" href="testing-lilypond-binary.html">4.6.3 Testing LilyPond binary</a></li>
+    </ul></li>
+    <li><a id="toc-Problems" href="problems.html">4.7 Problems</a></li>
+    <li><a id="toc-Concurrent-stable-and-development-versions" href="concurrent-stable-and-development-versions.html">4.8 Concurrent stable and development versions</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Replacing-the-notation-fonts-in-development-versions" href="replacing-the-notation-fonts-in-development-versions.html">4.8.1 Replacing the notation fonts in development versions</a></li>
+    </ul></li>
+    <li><a id="toc-Build-system" href="build-system.html">4.9 Build system</a></li>
+  </ul></li>
+  <li><a id="toc-Documentation-work" href="documentation-work.html">5 Documentation work</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Introduction-to-documentation-work" href="introduction-to-documentation-work.html">5.1 Introduction to documentation work</a></li>
+    <li><a id="toc-_005cversion-in-documentation-files" href="version-in-documentation-files.html">5.2 <code>\version</code> in documentation files</a></li>
+    <li><a id="toc-Documentation-suggestions" href="documentation-suggestions.html">5.3 Documentation suggestions</a></li>
+    <li><a id="toc-Texinfo-introduction-and-usage-policy" href="texinfo-introduction-and-usage-policy.html">5.4 Texinfo introduction and usage policy</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Texinfo-introduction" href="texinfo-introduction.html">5.4.1 Texinfo introduction</a></li>
+      <li><a id="toc-Documentation-files" href="documentation-files.html">5.4.2 Documentation files</a></li>
+      <li><a id="toc-Sectioning-commands" href="sectioning-commands.html">5.4.3 Sectioning commands</a></li>
+      <li><a id="toc-Menus" href="menus.html">5.4.4 Menus</a></li>
+      <li><a id="toc-LilyPond-formatting" href="lilypond-formatting.html">5.4.5 LilyPond formatting</a></li>
+      <li><a id="toc-Text-formatting" href="text-formatting.html">5.4.6 Text formatting</a></li>
+      <li><a id="toc-Syntax-survey" href="syntax-survey.html">5.4.7 Syntax survey</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Comments" href="comments.html">Comments</a></li>
+        <li><a id="toc-Cross_002dreferences" href="cross_002dreferences.html">Cross-references</a></li>
+        <li><a id="toc-External-links" href="external-links.html">External links</a></li>
+        <li><a id="toc-Fixed_002dwidth-font" href="fixed_002dwidth-font.html">Fixed-width font</a></li>
+        <li><a id="toc-Indexing" href="indexing.html">Indexing</a></li>
+        <li><a id="toc-Lists" href="lists.html">Lists</a></li>
+        <li><a id="toc-Special-characters" href="special-characters.html">Special characters</a></li>
+        <li><a id="toc-Miscellany" href="miscellany.html">Miscellany</a></li>
+      </ul></li>
+      <li><a id="toc-Other-text-concerns" href="other-text-concerns.html">5.4.8 Other text concerns</a></li>
+    </ul></li>
+    <li><a id="toc-Documentation-policy" href="documentation-policy.html">5.5 Documentation policy</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Books" href="books.html">5.5.1 Books</a></li>
+      <li><a id="toc-Section-organization" href="section-organization.html">5.5.2 Section organization</a></li>
+      <li><a id="toc-Checking-cross_002dreferences" href="checking-cross_002dreferences.html">5.5.3 Checking cross-references</a></li>
+      <li><a id="toc-General-writing" href="general-writing.html">5.5.4 General writing</a></li>
+      <li><a id="toc-Technical-writing-style" href="technical-writing-style.html">5.5.5 Technical writing style</a></li>
+    </ul></li>
+    <li><a id="toc-Tips-for-writing-documentation" href="tips-for-writing-documentation.html">5.6 Tips for writing documentation</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Working-on-subsections" href="working-on-subsections.html">5.6.1 Working on subsections</a></li>
+      <li><a id="toc-Searching" href="searching.html">5.6.2 Searching</a></li>
+    </ul></li>
+    <li><a id="toc-Scripts-to-ease-documentation-work" href="scripts-to-ease-documentation-work.html">5.7 Scripts to ease documentation work</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Building-only-one-section-of-the-documentation" href="building-only-one-section-of-the-documentation.html">5.7.1 Building only one section of the documentation</a></li>
+      <li><a id="toc-Updating-documentation-with-convert_002dly" href="updating-documentation-with-convert_002dly.html">5.7.2 Updating documentation with <code>convert-ly</code></a></li>
+    </ul></li>
+    <li><a id="toc-Documentation-strings-in-the-Internals-Reference" href="documentation-strings-in-the-internals-reference.html">5.8 Documentation strings in the Internals Reference</a></li>
+    <li><a id="toc-Translating-the-documentation" href="translating-the-documentation.html">5.9 Translating the documentation</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Getting-started-with-documentation-translation" href="getting-started-with-documentation-translation.html">5.9.1 Getting started with documentation translation</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Translation-requirements" href="translation-requirements.html">Translation requirements</a></li>
+        <li><a id="toc-Which-documentation-can-be-translated" href="which-documentation-can-be-translated.html">Which documentation can be translated</a></li>
+        <li><a id="toc-Starting-translation-in-a-new-language" href="starting-translation-in-a-new-language.html">Starting translation in a new language</a></li>
+      </ul></li>
+      <li><a id="toc-Documentation-translation-details" href="documentation-translation-details.html">5.9.2 Documentation translation details</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Files-to-be-translated" href="files-to-be-translated.html">Files to be translated</a></li>
+        <li><a id="toc-Translating-the-website-and-other-Texinfo-documentation" href="translating-the-website-and-other-texinfo-documentation.html">Translating the website and other Texinfo documentation</a></li>
+        <li><a id="toc-Adding-a-Texinfo-manual" href="adding-a-texinfo-manual.html">Adding a Texinfo manual</a></li>
+      </ul></li>
+      <li><a id="toc-Documentation-translation-maintenance" href="documentation-translation-maintenance.html">5.9.3 Documentation translation maintenance</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Check-state-of-translation" href="check-state-of-translation.html">Check state of translation</a></li>
+        <li><a id="toc-Updating-documentation-translation" href="updating-documentation-translation.html">Updating documentation translation</a></li>
+        <li><a id="toc-Updating-translation-committishes" href="updating-translation-committishes.html">Updating translation committishes</a></li>
+        <li><a id="toc-Maintaining-without-updating-translations" href="maintaining-without-updating-translations.html">Maintaining without updating translations</a></li>
+      </ul></li>
+      <li><a id="toc-Technical-background" href="technical-background.html">5.9.4 Technical background</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Website-work" href="website-work.html">6 Website work</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Introduction-to-website-work" href="introduction-to-website-work.html">6.1 Introduction to website work</a></li>
+    <li><a id="toc-Uploading-website" href="uploading-website.html">6.2 Uploading website</a></li>
+    <li><a id="toc-Debugging-website-and-docs-locally" href="debugging-website-and-docs-locally.html">6.3 Debugging website and docs locally</a></li>
+    <li><a id="toc-Translating-the-website" href="translating-the-website.html">6.4 Translating the website</a></li>
+  </ul></li>
+  <li><a id="toc-LilyPond-Wiki-work" href="lilypond-wiki-work.html">7 LilyPond Wiki work</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Introduction-to-the-LilyPond-Wiki" href="introduction-to-the-lilypond-wiki.html">7.1 Introduction to the LilyPond Wiki</a></li>
+    <li><a id="toc-Adding-and-editing-snippets" href="adding-and-editing-snippets.html">7.2 Adding and editing snippets</a></li>
+    <li><a id="toc-Snippet-administration" href="snippet-administration.html">7.3 Snippet administration</a></li>
+    <li><a id="toc-The-makelsr_002epl-script" href="the-makelsr-script.html">7.4 The <code>makelsr.pl</code> script</a></li>
+    <li><a id="toc-LilyPond-Wiki-to-Git" href="lilypond-wiki-to-git.html">7.5 LilyPond Wiki to Git</a></li>
+  </ul></li>
+  <li><a id="toc-Issues" href="issues.html">8 Issues</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Introduction-to-issues" href="introduction-to-issues.html">8.1 Introduction to issues</a></li>
+    <li><a id="toc-Triaging-bugs" href="triaging-bugs.html">8.2 Triaging bugs</a></li>
+    <li><a id="toc-Issue-classification" href="issue-classification.html">8.3 Issue classification</a></li>
+    <li><a id="toc-Adding-issues-to-the-tracker" href="adding-issues-to-the-tracker.html">8.4 Adding issues to the tracker</a></li>
+  </ul></li>
+  <li><a id="toc-Regression-tests" href="regression-tests.html">9 Regression tests</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Introduction-to-regression-tests" href="introduction-to-regression-tests.html">9.1 Introduction to regression tests</a></li>
+    <li><a id="toc-Precompiled-regression-tests" href="precompiled-regression-tests.html">9.2 Precompiled regression tests</a></li>
+    <li><a id="toc-Compiling-regression-tests" href="compiling-regression-tests.html">9.3 Compiling regression tests</a></li>
+    <li><a id="toc-Regtest-comparison" href="regtest-comparison.html">9.4 Regtest comparison</a></li>
+    <li><a id="toc-Pixel_002dbased-regtest-comparison" href="pixel_002dbased-regtest-comparison.html">9.5 Pixel-based regtest comparison</a></li>
+    <li><a id="toc-Finding-the-cause-of-a-regression" href="finding-the-cause-of-a-regression.html">9.6 Finding the cause of a regression</a></li>
+    <li><a id="toc-MusicXML-tests" href="musicxml-tests.html">9.7 MusicXML tests</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Programming-work" href="programming-work.html">10 Programming work</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Overview-of-LilyPond-architecture" href="overview-of-lilypond-architecture.html">10.1 Overview of LilyPond architecture</a></li>
+    <li><a id="toc-LilyPond-programming-languages" href="lilypond-programming-languages.html">10.2 LilyPond programming languages</a></li>
+    <li><a id="toc-Programming-without-compiling" href="programming-without-compiling.html">10.3 Programming without compiling</a></li>
+    <li><a id="toc-Finding-functions" href="finding-functions.html">10.4 Finding functions</a></li>
+    <li class="toc_current"><a id="toc-Code-style" href="code-style.html">10.5 Code style</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Languages" href="languages.html">10.5.1 Languages</a></li>
+      <li><a id="toc-Filenames" href="filenames.html">10.5.2 Filenames</a></li>
+      <li><a id="toc-Code-formatting" href="code-formatting.html">10.5.3 Code formatting</a></li>
+      <li><a id="toc-Naming-Conventions" href="naming-conventions.html">10.5.4 Naming Conventions</a></li>
+      <li><a id="toc-Broken-code" href="broken-code.html">10.5.5 Broken code</a></li>
+      <li class="toc_current"><a id="toc-Code-comments" href="code-comments.html">10.5.6 Code comments</a></li>
+      <li><a id="toc-Handling-errors" href="handling-errors.html">10.5.7 Handling errors</a></li>
+      <li><a id="toc-Localization" href="localization.html">10.5.8 Localization</a></li>
+    </ul></li>
+    <li><a id="toc-Warnings_002c-Errors_002c-Progress-and-Debug-Output" href="warnings-errors-progress-and-debug-output.html">10.6 Warnings, Errors, Progress and Debug Output</a></li>
+    <li><a id="toc-Debugging-LilyPond" href="debugging-lilypond.html">10.7 Debugging LilyPond</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Debugging-overview" href="debugging-overview.html">10.7.1 Debugging overview</a></li>
+      <li><a id="toc-Debugging-C_002b_002b-code" href="debugging-c_002b_002b-code.html">10.7.2 Debugging C++ code</a></li>
+      <li><a id="toc-Debugging-Scheme-code" href="debugging-scheme-code.html">10.7.3 Debugging Scheme code</a></li>
+      <li><a id="toc-Debugging-scoring-algorithms" href="debugging-scoring-algorithms.html">10.7.4 Debugging scoring algorithms</a></li>
+      <li><a id="toc-Debugging-skylines" href="debugging-skylines.html">10.7.5 Debugging skylines</a></li>
+    </ul></li>
+    <li><a id="toc-Tracing-object-relationships" href="tracing-object-relationships.html">10.8 Tracing object relationships</a></li>
+    <li><a id="toc-Tracing-processing-time" href="tracing-processing-time.html">10.9 Tracing processing time</a></li>
+    <li><a id="toc-Adding-or-modifying-features" href="adding-or-modifying-features.html">10.10 Adding or modifying features</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Write-the-code" href="write-the-code.html">10.10.1 Write the code</a></li>
+      <li><a id="toc-Write-regression-tests" href="write-regression-tests.html">10.10.2 Write regression tests</a></li>
+      <li><a id="toc-Write-convert_002dly-rule" href="write-convert_002dly-rule.html">10.10.3 Write convert-ly rule</a></li>
+      <li><a id="toc-Automatically-update-documentation" href="automatically-update-documentation.html">10.10.4 Automatically update documentation</a></li>
+      <li><a id="toc-Manually-update-documentation" href="manually-update-documentation.html">10.10.5 Manually update documentation</a></li>
+      <li><a id="toc-Edit-changes_002etely" href="edit-the-changes-file.html">10.10.6 Edit changes.tely</a></li>
+      <li><a id="toc-Verify-successful-build" href="verify-successful-build.html">10.10.7 Verify successful build</a></li>
+      <li><a id="toc-Verify-regression-tests" href="verify-regression-tests.html">10.10.8 Verify regression tests</a></li>
+      <li><a id="toc-Post-patch-for-comments" href="post-patch-for-comments.html">10.10.9 Post patch for comments</a></li>
+      <li><a id="toc-Push-patch" href="push-patch.html">10.10.10 Push patch</a></li>
+      <li><a id="toc-Closing-the-issues" href="closing-the-issues.html">10.10.11 Closing the issues</a></li>
+    </ul></li>
+    <li><a id="toc-Iterator-tutorial" href="iterator-tutorial.html">10.11 Iterator tutorial</a></li>
+    <li><a id="toc-Engraver-tutorial" href="engraver-tutorial.html">10.12 Engraver tutorial</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Useful-methods-for-information-processing" href="useful-methods-for-information-processing.html">10.12.1 Useful methods for information processing</a></li>
+      <li><a id="toc-Translation-process" href="translation-process.html">10.12.2 Translation process</a></li>
+      <li><a id="toc-Listening-to-music-events" href="listening-to-music-events.html">10.12.3 Listening to music events</a></li>
+      <li><a id="toc-Acknowledging-grobs" href="acknowledging-grobs.html">10.12.4 Acknowledging grobs</a></li>
+      <li><a id="toc-Engraver-declaration_002fdocumentation" href="engraver-declaration_002fdocumentation.html">10.12.5 Engraver declaration/documentation</a></li>
+    </ul></li>
+    <li><a id="toc-Callback-tutorial" href="callback-tutorial.html">10.13 Callback tutorial</a></li>
+    <li><a id="toc-Understanding-pure-properties" href="understanding-pure-properties.html">10.14 Understanding pure properties</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Purity-in-LilyPond" href="purity-in-lilypond.html">10.14.1 Purity in LilyPond</a></li>
+      <li><a id="toc-Writing-a-pure-function" href="writing-a-pure-function.html">10.14.2 Writing a pure function</a></li>
+      <li><a id="toc-How-purity-is-defined-and-stored" href="how-purity-is-defined-and-stored.html">10.14.3 How purity is defined and stored</a></li>
+      <li><a id="toc-Where-purity-is-used" href="where-purity-is-used.html">10.14.4 Where purity is used</a></li>
+      <li><a id="toc-Case-studies" href="case-studies.html">10.14.5 Case studies</a></li>
+      <li><a id="toc-Debugging-tips" href="debugging-tips.html">10.14.6 Debugging tips</a></li>
+    </ul></li>
+    <li><a id="toc-LilyPond-scoping" href="lilypond-scoping.html">10.15 LilyPond scoping</a></li>
+    <li><a id="toc-Regular-expressions" href="regular-expressions.html">10.16 Regular expressions</a></li>
+    <li><a id="toc-Scheme_002d_003eC-interface" href="scheme_002d_003ec-interface.html">10.17 Scheme-&gt;C interface</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Comparison" href="comparison.html">10.17.1 Comparison</a></li>
+      <li><a id="toc-Conversion" href="conversion.html">10.17.2 Conversion</a></li>
+    </ul></li>
+    <li><a id="toc-Garbage-collection-for-dummies" href="garbage-collection-for-dummies.html">10.18 Garbage collection for dummies</a></li>
+    <li><a id="toc-LilyPond-miscellany" href="lilypond-miscellany.html">10.19 LilyPond miscellany</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Spacing-algorithms" href="spacing-algorithms.html">10.19.1 Spacing algorithms</a></li>
+      <li><a id="toc-Info-from-Han_002dWen-email" href="info-from-han_002dwen-email.html">10.19.2 Info from Han-Wen email</a></li>
+      <li><a id="toc-Music-functions-and-Guile-debugging" href="music-functions-and-guile-debugging.html">10.19.3 Music functions and Guile debugging</a></li>
+      <li><a id="toc-Articulations-on-EventChord" href="articulations-on-eventchord.html">10.19.4 Articulations on EventChord</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Release-work" href="release-work.html">11 Release work</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Development-phases" href="development-phases.html">11.1 Development phases</a></li>
+    <li><a id="toc-Release-checklist" href="release-checklist.html">11.2 Release checklist</a></li>
+    <li><a id="toc-Major-release-checklist" href="major-release-checklist.html">11.3 Major release checklist</a></li>
+  </ul></li>
+  <li><a id="toc-Modifying-the-Emmentaler-font" href="modifying-the-emmentaler-font.html">12 Modifying the Emmentaler font</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Overview-of-the-Emmentaler-font" href="overview-of-the-emmentaler-font.html">12.1 Overview of the Emmentaler font</a></li>
+    <li><a id="toc-Font-creation-tools" href="font-creation-tools.html">12.2 Font creation tools</a></li>
+    <li><a id="toc-Adding-a-new-font-section" href="adding-a-new-font-section.html">12.3 Adding a new font section</a></li>
+    <li><a id="toc-Adding-a-new-glyph" href="adding-a-new-glyph.html">12.4 Adding a new glyph</a></li>
+    <li><a id="toc-Building-the-changed-font" href="building-the-changed-font.html">12.5 Building the changed font</a></li>
+    <li><a id="toc-METAFONT-formatting-rules" href="metafont-formatting-rules.html">12.6 METAFONT formatting rules</a></li>
+  </ul></li>
+  <li><a id="toc-Administrative-policies" href="administrative-policies.html">13 Administrative policies</a>
+  <ul class="no-bullet">
+    <li><a id="toc-LilyPond-is-GNU-Software" href="lilypond-is-gnu-software.html">13.1 LilyPond is GNU Software</a></li>
+    <li><a id="toc-Environment-variables" href="environment-variables.html">13.2 Environment variables</a></li>
+    <li><a id="toc-Performing-yearly-copyright-update-_0028_201cgrand_002dreplace_201d_0029" href="performing-yearly-copyright-update-_0028grand_002dreplace_0029.html">13.3 Performing yearly copyright update (&ldquo;grand-replace&rdquo;)</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.html">Appendix A GNU Free Documentation License</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: FILL-IN-HEAD-COMMITTISH
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google Search">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Search">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

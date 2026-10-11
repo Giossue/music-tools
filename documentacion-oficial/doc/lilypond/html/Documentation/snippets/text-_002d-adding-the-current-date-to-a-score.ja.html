@@ -1,0 +1,934 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This document has been placed in the public domain. -->
+<title>楽譜に現在日時を追加する (LilyPond snippets)</title>
+
+<meta name="description" content="楽譜に現在日時を追加する (LilyPond snippets)">
+<meta name="keywords" content="楽譜に現在日時を追加する (LilyPond snippets)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ja.html" rel="start" title="LilyPond &mdash; Snippets">
+<link href="snippets_toc.ja.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="text.ja.html" rel="up" title="8 Text">
+<link href="text-_002d-adjusting-vertical-spacing-of-lyrics.ja.html" rel="next" title="Adjusting vertical spacing of lyrics">
+<link href="text-_002d-adding-markups-in-a-tablature.ja.html" rel="prev" title="タブ譜にマークアップを追加する">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="ja" class="snippets">
+<div id="main">
+<div class="unnumberedsec" id="text-_002d-adding-the-current-date-to-a-score">
+<table class="nav_table">
+<tr><td align="left">[<a href="text.ja.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Text </a>]</td><td align="center">[<a href="index.ja.html" title="Cover (top) of document" rel="start">Top</a>][<a href="snippets_toc.ja.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="vocal-music.ja.html" title="Next chapter"> Vocal music &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="text-_002d-adding-markups-in-a-tablature.ja.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; タブ譜にマークアップを追加する </a>]</td><td align="center">[<a href="text.ja.html" title="Up section" accesskey="u" rel="up">  Up: Text </a>]</td><td align="right">[<a href="text-_002d-adjusting-vertical-spacing-of-lyrics.ja.html" title="Next section in reading order" accesskey="n" rel="next"> Adjusting vertical spacing of lyrics &gt; </a>]</td></tr>
+</table>
+<hr>
+
+<span id="Le-Pu-niXian-Zai-Ri-Shi-woZhui-Jia-suru"></span><h3 class="unnumberedsec">楽譜に現在日時を追加する</h3>
+
+
+<p>少しの Scheme コードで、楽譜に現在日時を追加することができます。
+</p>
+
+
+<pre class="verbatim"><span class="k">\paper</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-PaperVariable">tagline</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="no">#f</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">% first, define a variable to hold the formatted date:</span>
+<span class="n n-Lvalue">date</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#(</span><span class="nb nb-SchemeBuiltin">strftime</span><span class="w"> </span><span class="s">&quot;%d-%m-%Y&quot;</span><span class="w"> </span><span class="p">(</span><span class="nb nb-SchemeBuiltin">localtime</span><span class="w"> </span><span class="p">(</span><span class="nb nb-SchemeBuiltin">current-time</span><span class="p">)))</span>
+
+<span class="c1">% use it in the title block:</span>
+<span class="k">\header</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-HeaderVariable">title</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Including the date!&quot;</span>
+<span class="w">  </span><span class="nb nb-HeaderVariable">subtitle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n n-BackslashReference">\date</span>
+<span class="p">}</span>
+
+<span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class=" -Pitch">c</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">c</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">% and use it in a \markup block:</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\date</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../04/lily-a27ba89e.ly">
+  <img align="middle"
+       border="0"
+       src="../04/lily-a27ba89e.png"
+       alt="[image of music]"></a>
+
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="text.ja.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Text </a>]</td><td align="center">[<a href="index.ja.html" title="Cover (top) of document" rel="start">Top</a>][<a href="snippets_toc.ja.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="vocal-music.ja.html" title="Next chapter"> Vocal music &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="text-_002d-adding-markups-in-a-tablature.ja.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; タブ譜にマークアップを追加する </a>]</td><td align="center">[<a href="text.ja.html" title="Up section" accesskey="u" rel="up">  Up: Text </a>]</td><td align="right">[<a href="text-_002d-adjusting-vertical-spacing-of-lyrics.ja.html" title="Next section in reading order" accesskey="n" rel="next"> Adjusting vertical spacing of lyrics &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="text-_002d-adding-the-current-date-to-a-score.html">English</a>, <a href="text-_002d-adding-the-current-date-to-a-score.ca.html">Català</a>, <a href="text-_002d-adding-the-current-date-to-a-score.de.html">Deutsch</a>, <a href="text-_002d-adding-the-current-date-to-a-score.es.html">Español</a>, <a href="text-_002d-adding-the-current-date-to-a-score.fr.html">Français</a>, <a href="text-_002d-adding-the-current-date-to-a-score.it.html">Italiano</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.ja.html" title="Documentation Index">
+    &lt;&lt; ドキュメント インデックスに戻る
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.ja.html#top" title="Cover (top) of document">
+    LilyPond snippets  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Pitches" href="pitches.ja.html">1 Pitches</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Yin-Yu-woboisugotoniZhui-Jia-suru" href="pitches-_002d-adding-ambitus-per-voice.ja.html">音域をボイスごとに追加する</a></li>
+    <li><a id="toc-otutabawoDan-YinoboisuniDui-siteShi-Yong-suru" href="pitches-_002d-adding-an-ottava-marking-to-a-single-voice.ja.html">オッターバを単一のボイスに対して適用する</a></li>
+    <li><a id="toc-Aiken-head-thin-variant-noteheads" href="pitches-_002d-aiken-head-thin-variant-noteheads.ja.html">Aiken head thin variant noteheads</a></li>
+    <li><a id="toc-Lian-Hang-deXi-garetaYin-Fu-noFu-Gan-noChang-sawoBian-Geng-suru" href="pitches-_002d-altering-the-length-of-beamed-stems.ja.html">連桁で繋がれた音符の符幹の長さを変更する</a></li>
+    <li><a id="toc-Yin-Yu-" href="pitches-_002d-ambitus.ja.html">音域</a></li>
+    <li><a id="toc-Ambitus-after-key-signature" href="pitches-_002d-ambitus-after-key-signature.ja.html">Ambitus after key signature</a></li>
+    <li><a id="toc-Fu-Shu-noboisuwoChi-tuPu-denoYin-Yu-" href="pitches-_002d-ambitus-with-multiple-voices.ja.html">複数のボイスを持つ譜での音域</a></li>
+    <li><a id="toc-Yin-Jie-niYing-ziteYi-naruFu-Tou-nosutairuwoShi-Yong-suru" href="pitches-_002d-applying-note-head-styles-depending-on-the-step-of-the-scale.ja.html">音階に応じて異なる符頭のスタイルを適用する</a></li>
+    <li><a id="toc-merodeiniHe-wasetePu-noZhongYang-niaruYin-Fu-noFu-Gan-noXiang-kiwoZi-Dong-deBian-Geng-suru" href="pitches-_002d-automatically-changing-the-stem-direction-of-the-middle-note-based-on-the-melody.ja.html">メロディに合わせて譜の中央にある音符の符幹の向きを自動で変更する</a></li>
+    <li><a id="toc-otutabaWei-minotekisutowoBian-Geng-suru" href="pitches-_002d-changing-ottava-text.ja.html">オッターバ囲みのテキストを変更する</a></li>
+    <li><a id="toc-Yin-Yu-noXi-Jian-woBian-Geng-suru" href="pitches-_002d-changing-the-ambitus-gap.ja.html">音域の隙間を変更する</a></li>
+    <li><a id="toc-Pu-Xian-noYin-Cheng-woBian-Geng-suru" href="pitches-_002d-changing-the-interval-of-lines-on-the-stave.ja.html">譜線の音程を変更する</a></li>
+    <li><a id="toc-Yin-Bu-Ji-Hao-woYi-Dong-suru" href="pitches-_002d-clefs-can-be-transposed-by-arbitrary-amounts.ja.html">音部記号を移動する</a></li>
+    <li><a id="toc-pitutiniYing-ziteFu-Tou-noSe-woBian-Geng-suru" href="pitches-_002d-coloring-notes-depending-on-their-pitch.ja.html">ピッチに応じて符頭の色を変更する</a></li>
+    <li><a id="toc-Yi-narupitutinoYin-Fu-Lie-woZuo-Cheng-suru" href="pitches-_002d-creating-a-sequence-of-notes-on-various-pitches.ja.html">異なるピッチの音符列を作成する</a></li>
+    <li><a id="toc-kasutamaizusaretaDiao-Hao-woZuo-Cheng-suru" href="pitches-_002d-creating-custom-key-signatures.ja.html">カスタマイズされた調号を作成する</a></li>
+    <li><a id="toc-Direction-of-merged-_2018fa_2019-shape-note-heads" href="pitches-_002d-direction-of-merged-_2018fa_2019-shape-note-heads.ja.html">Direction of merged &lsquo;fa&rsquo; shape note heads</a></li>
+    <li><a id="toc-Force-a-cancellation-natural-before-accidentals" href="pitches-_002d-force-a-cancellation-natural-before-accidentals.ja.html">Force a cancellation natural before accidentals</a></li>
+    <li><a id="toc-Yin-Bu-Ji-Hao-woQiang-Zhi-De-niBiao-Shisuru" href="pitches-_002d-forcing-a-clef-symbol-to-be-displayed.ja.html">音部記号を強制的に表示する</a></li>
+    <li><a id="toc-randamunaYin-Fu-woSheng-Cheng-suru" href="pitches-_002d-generating-random-notes.ja.html">ランダムな音符を生成する</a></li>
+    <li><a id="toc-taideXi-garetaYin-Fu-gaGai-Xing-sitaJi-noLin-Shi-Ji-Hao-woYin-su" href="pitches-_002d-hiding-accidentals-on-tied-notes-at-the-start-of-a-new-system.ja.html">タイで繋がれた音符が改行した際の臨時記号を隠す</a></li>
+    <li><a id="toc-Yin-Bu-Ji-Hao-noBian-Geng-woDa-kikuBiao-Shisuru" href="pitches-_002d-keep-change-clefs-full_002dsized.ja.html">音部記号の変更を大きく表示する</a></li>
+    <li><a id="toc-makamunoLi" href="pitches-_002d-makam-example.ja.html">マカームの例</a></li>
+    <li><a id="toc-otutavuanosupananoQing-kiwoBian-Geng-suru" href="pitches-_002d-modifying-the-ottava-spanner-slope.ja.html">オッターヴァのスパナの傾きを変更する</a></li>
+    <li><a id="toc-Fei-Chuan-Tong-De-naDiao-Hao-" href="pitches-_002d-non_002dtraditional-key-signatures.ja.html">非伝統的な調号</a></li>
+    <li><a id="toc-Yan-Zou-woRong-Yi-nisuruJi-Pu-Fa-deShu-Zi-woShi-Yong-suru" href="pitches-_002d-numbers-as-easy-note-heads.ja.html">演奏を容易にする記譜法で数字を使用する</a></li>
+    <li><a id="toc-okesutora_002c-korasu_002c-pianonotenpureto" href="pitches-_002d-orchestra_002c-choir-and-piano-template.ja.html">オーケストラ、コーラス、ピアノのテンプレート</a></li>
+    <li><a id="toc-Zhui-Jia-nonatiyuraruJi-Hao-gaZi-Dong-deZhui-Jia-sarenaiyounisuru" href="pitches-_002d-preventing-extra-naturals-from-being-automatically-added.ja.html">追加のナチュラル記号が自動で追加されないようにする</a></li>
+    <li><a id="toc-Diao-Hao-gaBian-Hua-suruJi-ninatiyuraruJi-Hao-gaBiao-Shisarenaiyounisuru" href="pitches-_002d-preventing-natural-signs-from-being-printed-when-the-key-signature-changes.ja.html">調号が変化する際にナチュラル記号が表示されないようにする</a></li>
+    <li><a id="toc-Yi-Diao-woHan-muTa-noboisunoYin-Yong-" href="pitches-_002d-quoting-another-voice-with-transposition.ja.html">移調を含む他のボイスの引用</a></li>
+    <li><a id="toc-Diao-Hao-noQu-riXiao-siBiao-ShiwoXin-tanaDiao-Hao-karaLi-su" href="pitches-_002d-separating-key-cancellations-from-key-signature-changes.ja.html">調号の取り消し表示を新たな調号から離す</a></li>
+    <li><a id="toc-Transposing-pitches-with-minimum-accidentals-_0028_201csmart_201d-transpose_0029" href="pitches-_002d-transposing-pitches-with-minimum-accidentals-_0028_201csmart_201d-transpose_0029.ja.html">Transposing pitches with minimum accidentals (&ldquo;smart&rdquo; transpose)</a></li>
+    <li><a id="toc-Turkish-Makam-example" href="pitches-_002d-turkish-makam-example.ja.html">Turkish Makam example</a></li>
+    <li><a id="toc-Yin-Bu-Ji-Hao-nopuropateiwoDiao-Zheng-suru" href="pitches-_002d-tweaking-clef-properties.ja.html">音部記号のプロパティを調整する</a></li>
+    <li><a id="toc-Using-_005cautoChange-with-more-than-one-voice" href="pitches-_002d-using-_005cautochange-with-more-than-one-voice.ja.html">Using \autoChange with more than one voice</a></li>
+  </ul></li>
+  <li><a id="toc-Rhythms" href="rhythms.ja.html">2 Rhythms</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Adding-beams_002c-slurs_002c-ties_002c-etc_002e_002c-when-using-tuplet-and-non_002dtuplet-rhythms" href="rhythms-_002d-adding-beams_002c-slurs_002c-ties_002c-etc_002e_002c-when-using-tuplet-and-non_002dtuplet-rhythms.ja.html">Adding beams, slurs, ties, etc., when using tuplet and non-tuplet rhythms</a></li>
+    <li><a id="toc-doramu-patowoZhui-Jia-suru" href="rhythms-_002d-adding-drum-parts.ja.html">ドラム パートを追加する</a></li>
+    <li><a id="toc-Zhuang-Shi-Yin-Fu-nosupesuwoDiao-Zheng-suru" href="rhythms-_002d-adjusting-grace-note-spacing.ja.html">装飾音符のスペースを調整する</a></li>
+    <li><a id="toc-Xiao-Jie-Fan-Hao-woJian-eru" href="rhythms-_002d-aligning-bar-numbers.ja.html">小節番号を揃える</a></li>
+    <li><a id="toc-Er-Quan-Yin-Fu-woBian-Geng-suru" href="rhythms-_002d-alternative-breve-notes.ja.html">二全音符を変更する</a></li>
+    <li><a id="toc-Appoggiatura-or-grace-note-before-a-bar-line" href="rhythms-_002d-appoggiatura-or-grace-note-before-a-bar-line.ja.html">Appoggiatura or grace note before a bar line</a></li>
+    <li><a id="toc-Zi-Dong-De-naLian-Hang-Xi-Fen-" href="rhythms-_002d-automatic-beam-subdivisions.ja.html">自動的な連桁細分</a></li>
+    <li><a id="toc-Zi-Dong-deYin-Jia-woBian-Geng-suru" href="rhythms-_002d-automatically-change-durations.ja.html">自動で音価を変更する</a></li>
+    <li><a id="toc-Score-kontekisutodenoZi-Dong-Lian-Hang-" href="rhythms-_002d-beam-endings-in-score-context.ja.html">Score コンテキストでの自動連桁</a></li>
+    <li><a id="toc-Beam-nibs" href="rhythms-_002d-beam-nibs.ja.html">Beam nibs</a></li>
+    <li><a id="toc-Gai-Xing-niKua-ruLian-Hang-" href="rhythms-_002d-beams-across-line-breaks.ja.html">改行に跨る連桁</a></li>
+    <li><a id="toc-Xiang-kinoBian-waruLian-Hang-gaZuo-rareruFu-Tou-Jian-noJu-Li-woBian-Geng-suru" href="rhythms-_002d-changing-beam-knee-gap.ja.html">向きの変わる連桁が作られる符頭間の距離を変更する</a></li>
+    <li><a id="toc-Fu-Shu-Xiao-Jie-nimatagaruXiu-Fu-noXing-woBian-Geng-suru" href="rhythms-_002d-changing-form-of-multi_002dmeasure-rests.ja.html">複数小節にまたがる休符の形を変更する</a></li>
+    <li><a id="toc-Yin-Fu-gotoniFu-Dian-noShu-woDu-Li-siteBian-Geng-suru" href="rhythms-_002d-changing-the-number-of-augmentation-dots-per-note.ja.html">音符ごとに付点の数を独立して変更する</a></li>
+    <li><a id="toc-metoronomuJi-Hao-woBiao-ShisezunitenpowoBian-Geng-suru" href="rhythms-_002d-changing-the-tempo-without-a-metronome-mark.ja.html">メトロノーム記号を表示せずにテンポを変更する</a></li>
+    <li><a id="toc-Lian-Fu-noShu-Zi-woBian-Geng-suru" href="rhythms-_002d-changing-the-tuplet-number.ja.html">連符の数字を変更する</a></li>
+    <li><a id="toc-_005cscaleDurations-woShi-Yong-sitaDuo-Pai-Zi-noBu-Fen-dePai-Zi-Ji-Hao-woBian-Geng-suru" href="rhythms-_002d-changing-time-signatures-inside-a-polymetric-section-using-_005cscaledurations.ja.html">\scaleDurations を使用した多拍子の部分で拍子記号を変更する</a></li>
+    <li><a id="toc-Chant-or-psalm-notation" href="rhythms-_002d-chant-or-psalm-notation.ja.html">Chant or psalm notation</a></li>
+    <li><a id="toc-Complex-time-signatures" href="rhythms-_002d-complex-time-signatures.ja.html">Complex time signatures</a></li>
+    <li><a id="toc-Xiao-Jie-nogurupuHua-Ji-Hao-" href="rhythms-_002d-conducting-signs_002c-measure-grouping-signs.ja.html">小節のグループ化記号</a></li>
+    <li><a id="toc-Lian-Fu-noGua-Hu-noKe-Shi-Xing-wokontororusuru" href="rhythms-_002d-controlling-tuplet-bracket-visibility.ja.html">連符の括弧の可視性をコントロールする</a></li>
+    <li><a id="toc-Cow-and-ride-bell-example" href="rhythms-_002d-cow-and-ride-bell-example.ja.html">Cow and ride bell example</a></li>
+    <li><a id="toc-makuatupu-mododemetoronomuJi-Hao-woZuo-Cheng-suru" href="rhythms-_002d-creating-metronome-marks-in-markup-mode.ja.html">マークアップ モードでメトロノーム記号を作成する</a></li>
+    <li><a id="toc-taiwoShou-Dong-dePu-Ke-suru" href="rhythms-_002d-engraving-ties-manually.ja.html">タイを手動で譜刻する</a></li>
+    <li><a id="toc-toremorowoFu-Gan-niJie-Hong-sezuniPu-Ke-suru" href="rhythms-_002d-engraving-tremolos-with-floating-beams.ja.html">トレモロを符幹に接触せずに譜刻する</a></li>
+    <li><a id="toc-Yituno-_005ctuplet-komandodeFu-Shu-noLian-Fu-woRu-Li-suru" href="rhythms-_002d-entering-several-tuplets-using-only-one-_005ctuplet-command.ja.html">一つの \tuplet コマンドで複数の連符を入力する</a></li>
+    <li><a id="toc-rihasaruJi-Hao-woZhi-Ding-sitaFan-Hao-yaWenZi-karaShi-meru" href="rhythms-_002d-forcing-rehearsal-marks-to-start-from-a-given-letter-or-number.ja.html">リハーサル記号を指定した番号や文字から始める</a></li>
+    <li><a id="toc-Fu-Wei-wokasutamaizusuru" href="rhythms-_002d-generating-custom-flags.ja.html">符尾をカスタマイズする</a></li>
+    <li><a id="toc-gita-sutorokunorizumu" href="rhythms-_002d-guitar-strum-rhythms.ja.html">ギター ストロークのリズム</a></li>
+    <li><a id="toc-Duo-Pai-Zi-Ji-Hao-woDa-kikukasutamaizusuru" href="rhythms-_002d-heavily-customized-polymetric-time-signatures.ja.html">多拍子記号を大きくカスタマイズする</a></li>
+    <li><a id="toc-High-and-low-woodblock-example" href="rhythms-_002d-high-and-low-woodblock-example.ja.html">High and low woodblock example</a></li>
+    <li><a id="toc-Making-an-object-invisible-using-_005chide" href="rhythms-_002d-making-an-object-invisible-using-_005chide.ja.html">Making an object invisible using \hide</a></li>
+    <li><a id="toc-Fu-Za-naPo-Xian-nosurawoZuo-Cheng-suru" href="rhythms-_002d-making-slurs-with-complex-dash-structure.ja.html">複雑な破線のスラーを作成する</a></li>
+    <li><a id="toc-Lian-Hang-noWei-Zhi-woShou-Dong-dekontororusuru" href="rhythms-_002d-manually-controlling-beam-positions.ja.html">連桁の位置を手動でコントロールする</a></li>
+    <li><a id="toc-Duo-Sheng-noBu-Fen-deFu-Shu-Xiao-Jie-nimatagaruXiu-Fu-woTong-He-suru" href="rhythms-_002d-merging-multi_002dmeasure-rests-in-a-polyphonic-part.ja.html">多声の部分で複数小節にまたがる休符を統合する</a></li>
+    <li><a id="toc-Lian-Fu-noburaketutonoChang-sawoBian-Geng-suru" href="rhythms-_002d-modifying-tuplet-bracket-length.ja.html">連符のブラケットの長さを変更する</a></li>
+    <li><a id="toc-Duo-Sheng-noYin-Le-deFu-Dian-Fu-kinoYin-Fu-woYi-Dong-suru" href="rhythms-_002d-moving-dotted-notes-in-polyphony.ja.html">多声の音楽で付点付きの音符を移動する</a></li>
+    <li><a id="toc-Fu-Shu-Xiao-Jie-nimatagaruXiu-Fu-noChang-sawokontororusuru" href="rhythms-_002d-multi_002dmeasure-rest-length-control.ja.html">複数小節にまたがる休符の長さをコントロールする</a></li>
+    <li><a id="toc-Fu-Shu-Xiao-Jie-nimatagaruXiu-Fu-nimakuatupuwoFu-Jia-suru" href="rhythms-_002d-multi_002dmeasure-rest-markup.ja.html">複数小節にまたがる休符にマークアップを付加する</a></li>
+    <li><a id="toc-dehuorutodenaiLian-Fu-noShu-Zi-" href="rhythms-_002d-non_002ddefault-tuplet-numbers.ja.html">デフォルトでない連符の数字</a></li>
+    <li><a id="toc-Dan-YinoXiao-Jie-noXiu-Fu-niShu-Zi-woFu-keru" href="rhythms-_002d-numbering-single-measure-rests.ja.html">単一の小節の休符に数字を付ける</a></li>
+    <li><a id="toc-Partcombine-and-_005cautoBeamOff" href="rhythms-_002d-partcombine-and-_005cautobeamoff.ja.html">Partcombine and \autoBeamOff</a></li>
+    <li><a id="toc-Percussion-example" href="rhythms-_002d-percussion-example.ja.html">Percussion example</a></li>
+    <li><a id="toc-Lian-Hang-deXi-garetaLian-Fu-noTu-ZhongdeGai-Xing-suru" href="rhythms-_002d-permitting-line-breaks-within-beamed-tuplets.ja.html">連桁で繋がれた連符の途中で改行する</a></li>
+    <li><a id="toc-Zhuang-Shi-Yin-Fu-noLian-Hang-woTong-Chang-noLian-Hang-noGao-satoTong-zininaruyouPei-Zhi-suru" href="rhythms-_002d-positioning-grace-note-beams-at-the-height-of-normal-note-beams.ja.html">装飾音符の連桁を通常の連桁の高さと同じになるよう配置する</a></li>
+    <li><a id="toc-Zhuang-Shi-Yin-Fu-woFu-itasupesuniPei-Zhi-suru" href="rhythms-_002d-positioning-grace-notes-with-floating-space.ja.html">装飾音符を浮いたスペースに配置する</a></li>
+    <li><a id="toc-Fu-Shu-Xiao-Jie-nimatagaruXiu-Fu-noWei-Zhi-woBian-Geng-suru" href="rhythms-_002d-positioning-multi_002dmeasure-rests.ja.html">複数小節にまたがる休符の位置を変更する</a></li>
+    <li><a id="toc-Positioning-opposing-fermatas-on-a-bar-line" href="rhythms-_002d-positioning-opposing-fermatas-on-a-bar-line.ja.html">Positioning opposing fermatas on a bar line</a></li>
+    <li><a id="toc-Zui-Hou-nirihasaruJi-Hao-woPei-Zhi-sitaJi-niLian-Fu-gaXue-Chu-sarenaiyounisuru" href="rhythms-_002d-preventing-final-mark-from-removing-final-tuplet.ja.html">最後にリハーサル記号を配置した際に連符が削除されないようにする</a></li>
+    <li><a id="toc-YiDing-Jian-Ge-deXiao-Jie-Fan-Hao-woBiao-Shisuru" href="rhythms-_002d-printing-bar-numbers-at-regular-intervals.ja.html">一定間隔で小節番号を表示する</a></li>
+    <li><a id="toc-Printing-bar-numbers-for-broken-measures" href="rhythms-_002d-printing-bar-numbers-for-broken-measures.ja.html">Printing bar numbers for broken measures</a></li>
+    <li><a id="toc-Xiao-Jie-Fan-Hao-woSi-Jiao-yaWan-noZhongniBiao-Shisuru" href="rhythms-_002d-printing-bar-numbers-inside-boxes-or-circles.ja.html">小節番号を四角や丸の中に表示する</a></li>
+    <li><a id="toc-Printing-bar-numbers-using-modulo_002dbar_002dnumber_002dvisible" href="rhythms-_002d-printing-bar-numbers-using-modulo_002dbar_002dnumber_002dvisible.ja.html">Printing bar numbers using modulo-bar-number-visible</a></li>
+    <li><a id="toc-Xiao-Jie-Fan-Hao-gaBiao-ShisareruJian-Ge-woBian-Geng-suru" href="rhythms-_002d-printing-bar-numbers-with-changing-regular-intervals.ja.html">小節番号が表示される間隔を変更する</a></li>
+    <li><a id="toc-metoronomuJi-Hao-yarihasaruJi-Hao-woPu-noXia-niBiao-Shisuru" href="rhythms-_002d-printing-metronome-and-rehearsal-marks-below-the-staff.ja.html">メトロノーム記号やリハーサル記号を譜の下に表示する</a></li>
+    <li><a id="toc-Yin-Le-woYi-naruPai-Zi-Ji-Hao-deBiao-Shisuru" href="rhythms-_002d-printing-music-with-different-time-signatures.ja.html">音楽を異なる拍子記号で表示する</a></li>
+    <li><a id="toc-Zui-Chu-noXiao-Jie-niXiao-Jie-Fan-Hao-woBiao-Shisuru" href="rhythms-_002d-printing-the-bar-number-for-the-first-measure.ja.html">最初の小節に小節番号を表示する</a></li>
+    <li><a id="toc-Printing-tuplet-brackets-on-the-note-head-side" href="rhythms-_002d-printing-tuplet-brackets-on-the-note-head-side.ja.html">Printing tuplet brackets on the note head side</a></li>
+    <li><a id="toc-Zhuang-Shi-Yin-Fu-nodehuorutonoJu-Dong-woZai-Ding-Yi-suru" href="rhythms-_002d-redefining-grace-note-global-defaults.ja.html">装飾音符のデフォルトの挙動を再定義する</a></li>
+    <li><a id="toc-Le-Pu-karaXiao-Jie-Fan-Hao-woXue-Chu-suru" href="rhythms-_002d-removing-bar-numbers-from-a-score.ja.html">楽譜から小節番号を削除する</a></li>
+    <li><a id="toc-Xiu-Fu-nosutairu" href="rhythms-_002d-rest-styles.ja.html">休符のスタイル</a></li>
+    <li><a id="toc-dehuorutonoLian-Hang-nogurupuHua-Gui-Ze-woZhi-kiHuan-eru" href="rhythms-_002d-reverting-default-beam-endings.ja.html">デフォルトの連桁のグループ化規則を置き換える</a></li>
+    <li><a id="toc-rizumu-suratusiyu" href="rhythms-_002d-rhythmic-slashes.ja.html">リズム スラッシュ</a></li>
+    <li><a id="toc-Ge-Ci-mododenosukitupu" href="rhythms-_002d-skips-in-lyric-mode.ja.html">歌詞モードでのスキップ</a></li>
+    <li><a id="toc-Ge-Ci-mododenosukitupu-_00282_0029" href="rhythms-_002d-skips-in-lyric-mode-_00282_0029.ja.html">歌詞モードでのスキップ (2)</a></li>
+    <li><a id="toc-Xiao-Fu-Gan--_0028sutemuretuto_0029" href="rhythms-_002d-stemlets.ja.html">小符幹 (ステムレット)</a></li>
+    <li><a id="toc-Yan-Mi-naPai-niJi-dukuLian-Hang-" href="rhythms-_002d-strict-beat-beaming.ja.html">厳密な拍に基づく連桁</a></li>
+    <li><a id="toc-Lian-Hang-woXi-Fen-suru" href="rhythms-_002d-subdividing-beams.ja.html">連桁を細分する</a></li>
+    <li><a id="toc-Tam_002dtam-example" href="rhythms-_002d-tam_002dtam-example.ja.html">Tam-tam example</a></li>
+    <li><a id="toc-Tambourine-example" href="rhythms-_002d-tambourine-example.ja.html">Tambourine example</a></li>
+    <li><a id="toc-3-Fang-Xiang-botukusu" href="rhythms-_002d-three_002dsided-box.ja.html">3 方向ボックス</a></li>
+    <li><a id="toc-Time-signature-in-brackets" href="rhythms-_002d-time-signature-in-brackets.ja.html">Time signature in brackets</a></li>
+    <li><a id="toc-Gua-Hu-niWei-maretaPai-Zi-Ji-Hao-" href="rhythms-_002d-time-signature-in-parentheses.ja.html">括弧に囲まれた拍子記号</a></li>
+    <li><a id="toc-Pai-Zi-Ji-Hao-no-_0028Fen-Shu-dehanaku_0029-Fen-Zi-nomiwoShu-Zi-deBiao-Shisuru" href="rhythms-_002d-time-signature-printing-only-the-numerator-as-a-number-_0028instead-of-the-fraction_0029.ja.html">拍子記号の (分数ではなく) 分子のみを数字で表示する</a></li>
+    <li><a id="toc-Zhuang-Shi-Yin-Fu-nosutairuwoDiao-Zheng-suru" href="rhythms-_002d-tweaking-grace-layout-within-music.ja.html">装飾音符のスタイルを調整する</a></li>
+    <li><a id="toc-yuzaDing-Yi-noPai-Zi-Ji-Hao-" href="rhythms-_002d-user_002ddefined-time-signatures.ja.html">ユーザ定義の拍子記号</a></li>
+    <li><a id="toc-Fu-Wei-nosutairuwoBian-Geng-suru" href="rhythms-_002d-using-alternative-flag-styles.ja.html">符尾のスタイルを変更する</a></li>
+    <li><a id="toc-Tong-Chang-noFu-Tou-deZhuang-Shi-Yin-Fu-nosuratusiyuwoShi-Yong-suru" href="rhythms-_002d-using-grace-note-slashes-with-normal-heads.ja.html">通常の符頭で装飾音符のスラッシュを使用する</a></li>
+    <li><a id="toc-arupezionitaiwoShi-Yong-suru" href="rhythms-_002d-using-ties-with-arpeggios.ja.html">アルペジオにタイを使用する</a></li>
+  </ul></li>
+  <li><a id="toc-Expressive-marks" href="expressive-marks.ja.html">3 Expressive marks</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Fa-Xiang-Ji-Hao-yaHe-Yin-noYin-Fu-niGua-Hu-woZhui-Jia-suru" href="expressive-marks-_002d-adding-parentheses-around-an-expressive-mark-or-chordal-note.ja.html">発想記号や和音の音符に括弧を追加する</a></li>
+    <li><a id="toc-Chang-iguritusandonitaimingu-makuwoZhui-Jia-suru" href="expressive-marks-_002d-adding-timing-marks-to-long-glissandi.ja.html">長いグリッサンドにタイミング マークを追加する</a></li>
+    <li><a id="toc-Adjusting-slur-positions-vertically" href="expressive-marks-_002d-adjusting-slur-positions-vertically.ja.html">Adjusting slur positions vertically</a></li>
+    <li><a id="toc-fall-ya-doit-noXing-woDiao-Zheng-suru" href="expressive-marks-_002d-adjusting-the-shape-of-falls-and-doits.ja.html">fall や doit の形を調整する</a></li>
+    <li><a id="toc-Aligning-the-ends-of-hairpins-to-NoteColumn-directions" href="expressive-marks-_002d-aligning-the-ends-of-hairpins-to-notecolumn-directions.ja.html">Aligning the ends of hairpins to NoteColumn directions</a></li>
+    <li><a id="toc-Er-Quan-Yin-Fu-woBian-Geng-suru-1" href="expressive-marks-_002d-alternative-breve-notes.ja.html">二全音符を変更する</a></li>
+    <li><a id="toc-Fei-Dui-Cheng-nasura" href="expressive-marks-_002d-asymmetric-slurs.ja.html">非対称なスラー</a></li>
+    <li><a id="toc-buresuJi-Hao-" href="expressive-marks-_002d-breathing-signs.ja.html">ブレス記号</a></li>
+    <li><a id="toc-YiBu-gaYin-saretakuretusiendonoheapin" href="expressive-marks-_002d-broken-crescendo-hairpin.ja.html">一部が隠されたクレッシェンドのヘアピン</a></li>
+    <li><a id="toc-Caesura-_0028_201crailtracks_201d_0029-with-fermata" href="expressive-marks-_002d-caesura-_0028_201crailtracks_201d_0029-with-fermata.ja.html">Caesura (&ldquo;railtracks&rdquo;) with fermata</a></li>
+    <li><a id="toc-heapinnoXia-nitekisutowoZhongYang-Jian-esuru" href="expressive-marks-_002d-center-text-below-hairpin-dynamics.ja.html">ヘアピンの下にテキストを中央揃えする</a></li>
+    <li><a id="toc-tekisutoniyoruQiang-Ruo-Ji-Hao-notekisutotosupananosutairuwoBian-Geng-suru" href="expressive-marks-_002d-changing-text-and-spanner-styles-for-text-dynamics.ja.html">テキストによる強弱記号のテキストとスパナのスタイルを変更する</a></li>
+    <li><a id="toc-surawoShi-Xian-karaDian-Xian-yaPo-Xian-niBian-Geng-suru" href="expressive-marks-_002d-changing-the-appearance-of-a-slur-from-solid-to-dotted-or-dashed.ja.html">スラーを実線から点線や破線に変更する</a></li>
+    <li><a id="toc-buresuJi-Hao-woBian-Geng-suru" href="expressive-marks-_002d-changing-the-breath-mark-symbol.ja.html">ブレス記号を変更する</a></li>
+    <li><a id="toc-Yin-Fu-gotoniFu-Dian-noShu-woDu-Li-siteBian-Geng-suru-1" href="expressive-marks-_002d-changing-the-number-of-augmentation-dots-per-note.ja.html">音符ごとに付点の数を独立して変更する</a></li>
+    <li><a id="toc-Qiang-Ruo-Ji-Hao-womakuatupu-tekisutotoJie-He-suru" href="expressive-marks-_002d-combining-dynamics-with-markup-texts.ja.html">強弱記号をマークアップ テキストと結合する</a></li>
+    <li><a id="toc-Combining-dynamics-with-markup-texts-_00282_0029" href="expressive-marks-_002d-combining-dynamics-with-markup-texts-_00282_0029.ja.html">Combining dynamics with markup texts (2)</a></li>
+    <li><a id="toc-Xian-Dai-noguritusando" href="expressive-marks-_002d-contemporary-glissando.ja.html">現代のグリッサンド</a></li>
+    <li><a id="toc-Gai-Xing-Hou-nosupananoKe-Shi-Xing-wokontororusuru" href="expressive-marks-_002d-controlling-spanner-visibility-after-a-line-break.ja.html">改行後のスパナの可視性をコントロールする</a></li>
+    <li><a id="toc-He-Yin-Nei-noYun-Zhi-Ji-Hao-noWei-Zhi-wokontororusuru" href="expressive-marks-_002d-controlling-the-placement-of-chord-fingerings.ja.html">和音内の運指記号の位置をコントロールする</a></li>
+    <li><a id="toc-sukuriputonoZong-Fang-Xiang-noYou-Xian-Shun-Wei-wokontororusuru" href="expressive-marks-_002d-controlling-the-vertical-ordering-of-scripts.ja.html">スクリプトの縦方向の優先順位をコントロールする</a></li>
+    <li><a id="toc-Chi-retanwoZuo-Cheng-suru" href="expressive-marks-_002d-creating-a-delayed-turn.ja.html">遅れターンを作成する</a></li>
+    <li><a id="toc-Yi-naruboisunimatagaruarupeziowoZuo-Cheng-suru" href="expressive-marks-_002d-creating-arpeggios-across-notes-in-different-voices.ja.html">異なるボイスにまたがるアルペジオを作成する</a></li>
+    <li><a id="toc-pianoPu-dePu-womatagaruarupeziowoZuo-Cheng-suru" href="expressive-marks-_002d-creating-cross_002dstaff-arpeggios-in-a-piano-staff.ja.html">ピアノ譜で譜をまたがるアルペジオを作成する</a></li>
+    <li><a id="toc-Ta-nokontekisutodePu-womatagaruarupeziowoZuo-Cheng-suru" href="expressive-marks-_002d-creating-cross_002dstaff-arpeggios-in-other-contexts.ja.html">他のコンテキストで譜をまたがるアルペジオを作成する</a></li>
+    <li><a id="toc-2-Hang-noYun-Zhi-Ji-Hao-woZuo-Cheng-suru" href="expressive-marks-_002d-creating-double_002ddigit-fingerings.ja.html">2 桁の運指記号を作成する</a></li>
+    <li><a id="toc-boisuwomatagarusurawoZuo-Cheng-suru" href="expressive-marks-_002d-creating-slurs-across-voices.ja.html">ボイスをまたがるスラーを作成する</a></li>
+    <li><a id="toc-tekisuto-supanawoZuo-Cheng-suru" href="expressive-marks-_002d-creating-text-spanners.ja.html">テキスト スパナを作成する</a></li>
+    <li><a id="toc-Dynamics-spanner-with-custom-text" href="expressive-marks-_002d-dynamics-spanner-with-custom-text.ja.html">Dynamics spanner with custom text</a></li>
+    <li><a id="toc-Grob-wosukitupusuruguritusando" href="expressive-marks-_002d-glissandi-can-skip-grobs.ja.html">Grob をスキップするグリッサンド</a></li>
+    <li><a id="toc-Yi-narurain-sutairunoheapin" href="expressive-marks-_002d-hairpins-with-different-line-styles.ja.html">異なるライン スタイルのヘアピン</a></li>
+    <li><a id="toc-tekisutoQiang-Ruo-Ji-Hao-noXian-woYin-su" href="expressive-marks-_002d-hiding-the-extender-line-for-text-dynamics.ja.html">テキスト強弱記号の線を隠す</a></li>
+    <li><a id="toc-Horizontally-aligning-custom-dynamics-like-_201cpiu-f_201d" href="expressive-marks-_002d-horizontally-aligning-custom-dynamics-like-_201cpiu-f_201d.ja.html#expressive-marks-_002d-horizontally-aligning-custom-dynamics-like-_201cpi_00f9-f_201d">Horizontally aligning custom dynamics like &ldquo;più f&rdquo;</a></li>
+    <li><a id="toc-kaesurawoCha-Ru-suru" href="expressive-marks-_002d-inserting-a-caesura.ja.html">カエスーラを挿入する</a></li>
+    <li><a id="toc-rese-vuiburenotai" href="expressive-marks-_002d-laissez-vibrer-ties.ja.html">レセ ヴィブレのタイ</a></li>
+    <li><a id="toc-Shi-Yin-" href="expressive-marks-_002d-line-arrows.ja.html">矢印</a></li>
+    <li><a id="toc-Fu-Za-naPo-Xian-nosurawoZuo-Cheng-suru-1" href="expressive-marks-_002d-making-slurs-with-complex-dash-structure.ja.html">複雑な破線のスラーを作成する</a></li>
+    <li><a id="toc-ateikiyuresiyonnoSheng-Lue-Ji-Fa-nodehuorutoZhi-woShu-kiHuan-eru" href="expressive-marks-_002d-modifying-default-values-for-articulation-shorthand-notation.ja.html">アーティキュレーションの省略記法のデフォルト値を書き換える</a></li>
+    <li><a id="toc-suranoZong-Fang-Xiang-noWei-Zhi-woYi-Dong-suru" href="expressive-marks-_002d-moving-slur-positions-vertically.ja.html">スラーの縦方向の位置を移動する</a></li>
+    <li><a id="toc-heapinnoDuan-Dian-woYi-Dong-suru" href="expressive-marks-_002d-moving-the-ends-of-hairpins.ja.html">ヘアピンの端点を移動する</a></li>
+    <li><a id="toc-arupezionoPei-Zhi-" href="expressive-marks-_002d-positioning-arpeggios.ja.html">アルペジオの配置</a></li>
+    <li><a id="toc-tekisuto-makuatupuwosuranoNei-Ce-niPei-Zhi-suru" href="expressive-marks-_002d-positioning-text-markups-inside-slurs.ja.html">テキスト マークアップをスラーの内側に配置する</a></li>
+    <li><a id="toc-heapinwoYang-_0022nasutairudeBiao-Shisuru" href="expressive-marks-_002d-printing-hairpins-in-various-styles.ja.html">ヘアピンを様々なスタイルで表示する</a></li>
+    <li><a id="toc-heapinnoBiao-Shini-al-niente-Ji-Pu-Fa-woYong-iru" href="expressive-marks-_002d-printing-hairpins-using-al-niente-notation.ja.html">ヘアピンの表示に al niente 記譜法を用いる</a></li>
+    <li><a id="toc-metoronomuJi-Hao-yarihasaruJi-Hao-woPu-noXia-niBiao-Shisuru-1" href="expressive-marks-_002d-printing-metronome-and-rehearsal-marks-below-the-staff.ja.html">メトロノーム記号やリハーサル記号を譜の下に表示する</a></li>
+    <li><a id="toc-Xiao-Jie-Xian-nibutukaruheapinnoJu-Dong-woShe-Ding-suru" href="expressive-marks-_002d-setting-hairpin-behavior-at-bar-lines.ja.html">小節線にぶつかるヘアピンの挙動を設定する</a></li>
+    <li><a id="toc-heapinnoZui-Xiao-Chang-sawosetutosuru" href="expressive-marks-_002d-setting-the-minimum-length-of-hairpins.ja.html">ヘアピンの最小長さをセットする</a></li>
+    <li><a id="toc-Tong-ziateikiyuresiyonwoYin-Fu-yaHe-Yin-noShang-toXia-noLiang-Fang-niBiao-Shisuru" href="expressive-marks-_002d-showing-the-same-articulation-above-and-below-a-note-or-chord.ja.html">同じアーティキュレーションを音符や和音の上と下の両方に表示する</a></li>
+    <li><a id="toc-Slanted-parentheses-around-dynamics" href="expressive-marks-_002d-slanted-parentheses-around-dynamics.ja.html">Slanted parentheses around dynamics</a></li>
+    <li><a id="toc-Snap-pizzicato-_0028_201cBartok_201d-pizzicato_0029" href="expressive-marks-_002d-snap-pizzicato-_0028_201cbartok_201d-pizzicato_0029.ja.html">Snap pizzicato (&ldquo;Bartok&rdquo; pizzicato)</a></li>
+    <li><a id="toc-Using-_005carpeggioBracket-to-make-divisi-more-visible" href="expressive-marks-_002d-using-_005carpeggiobracket-to-make-divisi-more-visible.ja.html">Using \arpeggioBracket to make divisi more visible</a></li>
+    <li><a id="toc-Using-a-bracket-to-clarify-divisi" href="expressive-marks-_002d-using-a-bracket-to-clarify-divisi.ja.html">Using a bracket to clarify divisi</a></li>
+    <li><a id="toc-buresuJi-Hao-nitietukuwoShi-Yong-suru" href="expressive-marks-_002d-using-a-tick-as-the-breath-mark-symbol.ja.html">ブレス記号にチェックを使用する</a></li>
+    <li><a id="toc-He-Yin-noregatoni-2-tunosurawoShi-Yong-suru" href="expressive-marks-_002d-using-double-slurs-for-legato-chords.ja.html">和音のレガートに 2 つのスラーを使用する</a></li>
+    <li><a id="toc-whiteout-puropateiwoShi-Yong-suru" href="expressive-marks-_002d-using-the-whiteout-property.ja.html">whiteout プロパティを使用する</a></li>
+    <li><a id="toc-barotukuYin-Le-noZong-Xian-ateikiyuresiyon-maku" href="expressive-marks-_002d-vertical-line-as-a-baroque-articulation-mark.ja.html">バロック音楽の縦線アーティキュレーション マーク</a></li>
+    <li><a id="toc-Fu-Shu-noYin-Fu-nimatagaruQiang-Ruo-Ji-Hao-woZong-Fang-Xiang-niJian-eru" href="expressive-marks-_002d-vertically-aligning-dynamics-across-multiple-notes.ja.html">複数の音符にまたがる強弱記号を縦方向に揃える</a></li>
+  </ul></li>
+  <li><a id="toc-Repeats" href="repeats.ja.html">4 Repeats</a>
+  <ul class="no-bullet">
+    <li><a id="toc-dehuorutonoXiao-Jie-Xian-woBian-Geng-suru" href="repeats-_002d-changing-the-default-bar-lines.ja.html">デフォルトの小節線を変更する</a></li>
+    <li><a id="toc-Controlling-the-appearance-of-tremolo-slashes" href="repeats-_002d-controlling-the-appearance-of-tremolo-slashes.ja.html">Controlling the appearance of tremolo slashes</a></li>
+    <li><a id="toc-Pu-womatagarutoremoro" href="repeats-_002d-cross_002dstaff-tremolos.ja.html">譜をまたがるトレモロ</a></li>
+    <li><a id="toc-toremorowoFu-Gan-niJie-Hong-sezuniPu-Ke-suru-1" href="repeats-_002d-engraving-tremolos-with-floating-beams.ja.html">トレモロを符幹に接触せずに譜刻する</a></li>
+    <li><a id="toc-Du-Li-sitapasentoZao-riFan-si" href="repeats-_002d-isolated-percent-repeats.ja.html">独立したパーセント繰り返し</a></li>
+    <li><a id="toc-Measure-counters" href="repeats-_002d-measure-counters.ja.html">Measure counters</a></li>
+    <li><a id="toc-pasentoZao-riFan-sinokauntanoKe-Shi-Xing-" href="repeats-_002d-percent-repeat-count-visibility.ja.html">パーセント繰り返しのカウンタの可視性</a></li>
+    <li><a id="toc-pasentoZao-riFan-sinokaunta" href="repeats-_002d-percent-repeat-counter.ja.html">パーセント繰り返しのカウンタ</a></li>
+    <li><a id="toc-seniyotokodawo-_0028Gai-Xing-woXie-nde_0029-Pei-Zhi-suru" href="repeats-_002d-positioning-segno-and-coda-_0028with-line-break_0029.ja.html">セーニョとコーダを (改行を挟んで) 配置する</a></li>
+    <li><a id="toc-Ru-reTi-eBu-Fen-gaaruChang-He-noEr-Zhong-Zao-riFan-sinodehuorutowosetutosuru" href="repeats-_002d-setting-the-double-repeat-default-for-volte.ja.html">入れ替え部分がある場合の二重繰り返しのデフォルトをセットする</a></li>
+    <li><a id="toc-Zao-riFan-siGua-Hu-woDuan-kusuru" href="repeats-_002d-shortening-volta-brackets.ja.html">繰り返し括弧を短くする</a></li>
+    <li><a id="toc-Unfolding-tremolo-repeats" href="repeats-_002d-unfolding-tremolo-repeats.ja.html">Unfolding tremolo repeats</a></li>
+    <li><a id="toc-Zao-riFan-siGua-Hu-wokodo-nemunoXia-niBiao-Shisuru" href="repeats-_002d-volta-below-chords.ja.html">繰り返し括弧をコード ネームの下に表示する</a></li>
+    <li><a id="toc-Volta-brackets-in-multiple-staves" href="repeats-_002d-volta-brackets-in-multiple-staves.ja.html">Volta brackets in multiple staves</a></li>
+    <li><a id="toc-repeatCommands-woYong-iteRu-reTi-eBu-Fen-notekisutonimakuatupuwoShi-Yong-suru" href="repeats-_002d-volta-text-markup-using-repeatcommands.ja.html">repeatCommands を用いて入れ替え部分のテキストにマークアップを使用する</a></li>
+  </ul></li>
+  <li><a id="toc-Simultaneous-notes" href="simultaneous-notes.ja.html">5 Simultaneous notes</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Chong-Tu-woBi-kerutamenoZhui-Jia-noboisu" href="simultaneous-notes-_002d-additional-voices-to-avoid-collisions.ja.html">衝突を避けるための追加のボイス</a></li>
+    <li><a id="toc-Changing-_005cpartCombine-texts" href="simultaneous-notes-_002d-changing-_005cpartcombine-texts.ja.html">Changing \partCombine texts</a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord" href="simultaneous-notes-_002d-changing-a-single-note_0027s-size-in-a-chord.ja.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-kurasuta" href="simultaneous-notes-_002d-clusters.ja.html">クラスタ</a></li>
+    <li><a id="toc-2-tunopatowo-1-tunoPu-nimatomeru" href="simultaneous-notes-_002d-combining-two-parts-on-the-same-staff.ja.html">2 つのパートを 1 つの譜にまとめる</a></li>
+    <li><a id="toc-Fu-Za-naHe-Yin-woBiao-Shisuru" href="simultaneous-notes-_002d-displaying-complex-chords.ja.html">複雑な和音を表示する</a></li>
+    <li><a id="toc-Yin-Fu-noShui-Ping-Wei-Zhi-woQiang-Zhi-De-niDiao-Zheng-suru" href="simultaneous-notes-_002d-forcing-horizontal-shift-of-notes.ja.html">音符の水平位置を強制的に調整する</a></li>
+    <li><a id="toc-Making-an-object-invisible-using-_005chide-1" href="simultaneous-notes-_002d-making-an-object-invisible-using-_005chide.ja.html">Making an object invisible using \hide</a></li>
+    <li><a id="toc-Duo-Sheng-noYin-Le-deFu-Dian-Fu-kinoYin-Fu-woYi-Dong-suru-1" href="simultaneous-notes-_002d-moving-dotted-notes-in-polyphony.ja.html">多声の音楽で付点付きの音符を移動する</a></li>
+    <li><a id="toc-Yin-Fu-noChong-Tu-niGuan-suruJing-Gao-woYi-Zhi-suru" href="simultaneous-notes-_002d-suppressing-warnings-for-clashing-note-columns.ja.html">音符の衝突に関する警告を抑制する</a></li>
+    <li><a id="toc-1-tunoPu-de-2-tuno-_005cpartCombine-woShi-Yong-suru" href="simultaneous-notes-_002d-two-_005cpartcombine-pairs-on-one-staff.ja.html">1 つの譜で 2 つの \partCombine を使用する</a></li>
+  </ul></li>
+  <li><a id="toc-Staff-notation" href="staff-notation.ja.html">6 Staff notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Yin-Yu-woboisugotoniZhui-Jia-suru-1" href="staff-notation-_002d-adding-ambitus-per-voice.ja.html">音域をボイスごとに追加する</a></li>
+    <li><a id="toc-Pu-woZhui-Jia-suru" href="staff-notation-_002d-adding-an-extra-staff.ja.html">譜を追加する</a></li>
+    <li><a id="toc-Gai-Xing-Shi-niPu-woZhui-Jia-suru" href="staff-notation-_002d-adding-an-extra-staff-at-a-line-break.ja.html">改行時に譜を追加する</a></li>
+    <li><a id="toc-Gai-Xing-Hou-niFen-kareruPu-nituite_002c-Zhi-ShiwoBiao-Shisuru" href="staff-notation-_002d-adding-indicators-to-staves-which-get-split-after-a-break.ja.html">改行後に分かれる譜について、指示を表示する</a></li>
+    <li><a id="toc-bokaruPu-niokesutoranoHe-Tu-Yin-Fu-woZhui-Jia-suru" href="staff-notation-_002d-adding-orchestral-cues-to-a-vocal-score.ja.html">ボーカル譜にオーケストラの合図音符を追加する</a></li>
+    <li><a id="toc-Xiao-Jie-Fan-Hao-woBian-Geng-suru" href="staff-notation-_002d-alternative-bar-numbering.ja.html">小節番号を変更する</a></li>
+    <li><a id="toc-Ambitus-after-key-signature-1" href="staff-notation-_002d-ambitus-after-key-signature.ja.html">Ambitus after key signature</a></li>
+    <li><a id="toc-dehuorutonoXiao-Jie-Xian-woBian-Geng-suru-1" href="staff-notation-_002d-changing-the-default-bar-lines.ja.html">デフォルトの小節線を変更する</a></li>
+    <li><a id="toc-Pu-Xian-noShu-woBian-Geng-suru" href="staff-notation-_002d-changing-the-number-of-lines-in-a-staff.ja.html">譜線の数を変更する</a></li>
+    <li><a id="toc-Pu-nosaizuwoBian-Geng-suru" href="staff-notation-_002d-changing-the-staff-size.ja.html">譜のサイズを変更する</a></li>
+    <li><a id="toc-Kong-noPu-woZuo-Cheng-suru" href="staff-notation-_002d-creating-blank-staves.ja.html">空の譜を作成する</a></li>
+    <li><a id="toc-kasutamaizusaretaDiao-Hao-woZuo-Cheng-suru-1" href="staff-notation-_002d-creating-custom-key-signatures.ja.html">カスタマイズされた調号を作成する</a></li>
+    <li><a id="toc-Pu-womatagaruFu-Gan-" href="staff-notation-_002d-cross_002dstaff-stems.ja.html">譜をまたがる符幹</a></li>
+    <li><a id="toc-sisutemuniPu-ga-1-tusikaCun-Zai-sinaiChang-He-nimoGua-Hu-woBiao-Shisuru" href="staff-notation-_002d-display-bracket-with-only-one-staff-in-a-system.ja.html">システムに譜が 1 つしか存在しない場合にも括弧を表示する</a></li>
+    <li><a id="toc-gurupuNei-niYan-Zou-suruPu-gaaruChang-He-ni-GrandStaff-Quan-Ti-woBiao-Shisitamamanisuru" href="staff-notation-_002d-displaying-a-whole-grandstaff-system-if-only-one-of-its-staves-is-alive.ja.html">グループ内に演奏する譜がある場合に GrandStaff 全体を表示したままにする</a></li>
+    <li><a id="toc-Extending-a-trill-spanner" href="staff-notation-_002d-extending-a-trill-spanner.ja.html">Extending a trill spanner</a></li>
+    <li><a id="toc-Zao-riFan-sinimatagaruguritusando" href="staff-notation-_002d-extending-glissandi-across-repeats.ja.html">繰り返しにまたがるグリッサンド</a></li>
+    <li><a id="toc-Ping-Tan-natai" href="staff-notation-_002d-flat-ties.ja.html">平坦なタイ</a></li>
+    <li><a id="toc-Forcing-measure-width-to-adapt-to-a-metronome-mark_0027s-width" href="staff-notation-_002d-forcing-measure-width-to-adapt-to-a-metronome-mark_0027s-width.ja.html">Forcing measure width to adapt to a metronome mark&rsquo;s width</a></li>
+    <li><a id="toc-Grob-wosukitupusuruguritusando-1" href="staff-notation-_002d-glissandi-can-skip-grobs.ja.html">Grob をスキップするグリッサンド</a></li>
+    <li><a id="toc-Harmonizing-bar-line-thickness-for-staves-with-different-sizes" href="staff-notation-_002d-harmonizing-bar-line-thickness-for-staves-with-different-sizes.ja.html">Harmonizing bar line thickness for staves with different sizes</a></li>
+    <li><a id="toc-inkipituto" href="staff-notation-_002d-incipit.ja.html">インキピット</a></li>
+    <li><a id="toc-Pu-noShang-nimakuatuputositeLe-Pu-Pian-woCha-Ru-suru" href="staff-notation-_002d-inserting-score-fragments-above-a-staff_002c-as-markups.ja.html">譜の上にマークアップとして楽譜片を挿入する</a></li>
+    <li><a id="toc-TabStaff-deZui-Gao-Xian-woXia-niBiao-Shisuru" href="staff-notation-_002d-let-tabstaff-print-the-topmost-string-at-bottom.ja.html">TabStaff で最高弦を下に表示する</a></li>
+    <li><a id="toc-WenZi-detabuPu-wohuomatutosuru" href="staff-notation-_002d-letter-tablature-formatting.ja.html">文字でタブ譜をフォーマットする</a></li>
+    <li><a id="toc-guritusandowoGai-Xing-dekiruyounisuru" href="staff-notation-_002d-making-glissandi-breakable.ja.html">グリッサンドを改行できるようにする</a></li>
+    <li><a id="toc-ikutukanoPu-Xian-woTa-yoriTai-kusuru" href="staff-notation-_002d-making-some-staff-lines-thicker-than-the-others.ja.html">いくつかの譜線を他より太くする</a></li>
+    <li><a id="toc-Measure-counters-1" href="staff-notation-_002d-measure-counters.ja.html">Measure counters</a></li>
+    <li><a id="toc-Mensurstriche-reiauto-_0028Pu-noJian-niXiao-Jie-Xian-woBiao-Shisuru_0029" href="staff-notation-_002d-mensurstriche-layout-_0028bar-lines-between-the-staves_0029.ja.html">Mensurstriche レイアウト (譜の間に小節線を表示する)</a></li>
+    <li><a id="toc-otutavuanosupananoQing-kiwoBian-Geng-suru-1" href="staff-notation-_002d-modifying-the-ottava-spanner-slope.ja.html">オッターヴァのスパナの傾きを変更する</a></li>
+    <li><a id="toc-Pu-wonesutosuru" href="staff-notation-_002d-nesting-staves.ja.html">譜をネストする</a></li>
+    <li><a id="toc-Fei-Chuan-Tong-De-naDiao-Hao--1" href="staff-notation-_002d-non_002dtraditional-key-signatures.ja.html">非伝統的な調号</a></li>
+    <li><a id="toc-okesutora_002c-korasu_002c-pianonotenpureto-1" href="staff-notation-_002d-orchestra_002c-choir-and-piano-template.ja.html">オーケストラ、コーラス、ピアノのテンプレート</a></li>
+    <li><a id="toc-Print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note" href="staff-notation-_002d-print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note.ja.html">Print chord names with same root and different bass as slash and bass note</a></li>
+    <li><a id="toc-Ge-Ci-woPu-noNei-Bu-niBiao-Shisuru" href="staff-notation-_002d-putting-lyrics-inside-the-staff.ja.html">歌詞を譜の内部に表示する</a></li>
+    <li><a id="toc-Ta-noboisuwoYin-Yong-suru" href="staff-notation-_002d-quoting-another-voice.ja.html">他のボイスを引用する</a></li>
+    <li><a id="toc-Yi-Diao-woHan-muTa-noboisunoYin-Yong--1" href="staff-notation-_002d-quoting-another-voice-with-transposition.ja.html">移調を含む他のボイスの引用</a></li>
+    <li><a id="toc-pianoQu-noXian-Tou-niaruburesuwoXue-Chu-suru" href="staff-notation-_002d-removing-brace-on-first-line-of-piano-score.ja.html">ピアノ曲の先頭にあるブレースを削除する</a></li>
+    <li><a id="toc-StaffGroup_002c-PianoStaff_002c-GrandStaff-noPu-woXi-guXiao-Jie-Xian-woXue-Chu-suru" href="staff-notation-_002d-removing-connecting-bar-lines-on-staffgroup_002c-pianostaff_002c-or-grandstaff.ja.html">StaffGroup, PianoStaff, GrandStaff の譜を繋ぐ小節線を削除する</a></li>
+    <li><a id="toc-Xian-Tou-noKong-Xing-woXue-Chu-suru" href="staff-notation-_002d-removing-the-first-empty-line.ja.html">先頭の空行を削除する</a></li>
+    <li><a id="toc-sisutemu-separetawoShe-Ding-suru" href="staff-notation-_002d-setting-system-separators.ja.html">システム セパレータを設定する</a></li>
+    <li><a id="toc-Shape-individual-ties-in-chords" href="staff-notation-_002d-shape-individual-ties-in-chords.ja.html">Shape individual ties in chords</a></li>
+    <li><a id="toc-teitukuXiao-Jie-Xian-" href="staff-notation-_002d-tick-bar-lines.ja.html">ティック小節線</a></li>
+    <li><a id="toc-Time-signature-in-brackets-1" href="staff-notation-_002d-time-signature-in-brackets.ja.html">Time signature in brackets</a></li>
+    <li><a id="toc-Gua-Hu-niWei-maretaPai-Zi-Ji-Hao--1" href="staff-notation-_002d-time-signature-in-parentheses.ja.html">括弧に囲まれた拍子記号</a></li>
+    <li><a id="toc-Yin-Bu-Ji-Hao-nopuropateiwoDiao-Zheng-suru-1" href="staff-notation-_002d-tweaking-clef-properties.ja.html">音部記号のプロパティを調整する</a></li>
+    <li><a id="toc-1-tunoPu-de-2-tuno-_005cpartCombine-woShi-Yong-suru-1" href="staff-notation-_002d-two-_005cpartcombine-pairs-on-one-staff.ja.html">1 つの譜で 2 つの \partCombine を使用する</a></li>
+    <li><a id="toc-Pu-gurupunoXian-Tou-niJiao-Gua-Hu-woShi-Yong-suru" href="staff-notation-_002d-use-square-bracket-at-the-start-of-a-staff-group.ja.html">譜グループの先頭に角括弧を使用する</a></li>
+    <li><a id="toc-Using-_005cautoChange-with-more-than-one-voice-1" href="staff-notation-_002d-using-_005cautochange-with-more-than-one-voice.ja.html">Using \autoChange with more than one voice</a></li>
+    <li><a id="toc-Using-mark-lines-in-a-Frenched-score" href="staff-notation-_002d-using-mark-lines-in-a-frenched-score.ja.html">Using mark lines in a Frenched score</a></li>
+    <li><a id="toc-Vertically-aligned-StaffGroups-without-connecting-SystemStartBar" href="staff-notation-_002d-vertically-aligned-staffgroups-without-connecting-systemstartbar.ja.html">Vertically aligned StaffGroups without connecting SystemStartBar</a></li>
+    <li><a id="toc-Zao-riFan-siGua-Hu-wokodo-nemunoXia-niBiao-Shisuru-1" href="staff-notation-_002d-volta-below-chords.ja.html">繰り返し括弧をコード ネームの下に表示する</a></li>
+    <li><a id="toc-Volta-brackets-in-multiple-staves-1" href="staff-notation-_002d-volta-brackets-in-multiple-staves.ja.html">Volta brackets in multiple staves</a></li>
+  </ul></li>
+  <li><a id="toc-Editorial-annotations" href="editorial-annotations.ja.html">7 Editorial annotations</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Le-Pu-niYun-Zhi-Ji-Hao-woZhui-Jia-suru" href="editorial-annotations-_002d-adding-fingerings-to-a-score.ja.html">楽譜に運指記号を追加する</a></li>
+    <li><a id="toc-obuziekutonirinkuwoZhui-Jia-suru" href="editorial-annotations-_002d-adding-links-to-objects.ja.html">オブジェクトにリンクを追加する</a></li>
+    <li><a id="toc-tabuPu-nimakuatupuwoZhui-Jia-suru" href="editorial-annotations-_002d-adding-markups-in-a-tablature.ja.html">タブ譜にマークアップを追加する</a></li>
+    <li><a id="toc-Yun-Zhi-Ji-Hao-woPu-noNei-Ce-niBiao-Shisuru" href="editorial-annotations-_002d-allowing-fingerings-to-be-printed-inside-the-staff.ja.html">運指記号を譜の内側に表示する</a></li>
+    <li><a id="toc-Xiao-Jie-Fan-Hao-woBian-Geng-suru-1" href="editorial-annotations-_002d-alternative-bar-numbering.ja.html">小節番号を変更する</a></li>
+    <li><a id="toc-Fen-Xi-Yong-noburaketutowoPu-noShang-niBiao-Shisuru" href="editorial-annotations-_002d-analysis-brackets-above-the-staff.ja.html">分析用のブラケットを譜の上に表示する</a></li>
+    <li><a id="toc-raberuFu-kinoFen-Xi-Yong-buraketuto" href="editorial-annotations-_002d-analysis-brackets-with-labels.ja.html">ラベル付きの分析用ブラケット</a></li>
+    <li><a id="toc-Yin-Jie-niYing-ziteYi-naruFu-Tou-nosutairuwoShi-Yong-suru-1" href="editorial-annotations-_002d-applying-note-head-styles-depending-on-the-step-of-the-scale.ja.html">音階に応じて異なる符頭のスタイルを適用する</a></li>
+    <li><a id="toc-_005cwhiteout-komandodePu-Xian-woYin-su" href="editorial-annotations-_002d-blanking-staff-lines-using-the-_005cwhiteout-command.ja.html">\whiteout コマンドで譜線を隠す</a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord-1" href="editorial-annotations-_002d-changing-a-single-note_0027s-size-in-a-chord.ja.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-surawoShi-Xian-karaDian-Xian-yaPo-Xian-niBian-Geng-suru-1" href="editorial-annotations-_002d-changing-the-appearance-of-a-slur-from-solid-to-dotted-or-dashed.ja.html">スラーを実線から点線や破線に変更する</a></li>
+    <li><a id="toc-pitutiniYing-ziteFu-Tou-noSe-woBian-Geng-suru-1" href="editorial-annotations-_002d-coloring-notes-depending-on-their-pitch.ja.html">ピッチに応じて符頭の色を変更する</a></li>
+    <li><a id="toc-He-Yin-Nei-noYun-Zhi-Ji-Hao-noWei-Zhi-wokontororusuru-1" href="editorial-annotations-_002d-controlling-the-placement-of-chord-fingerings.ja.html">和音内の運指記号の位置をコントロールする</a></li>
+    <li><a id="toc-Chi-retanwoZuo-Cheng-suru-1" href="editorial-annotations-_002d-creating-a-delayed-turn.ja.html">遅れターンを作成する</a></li>
+    <li><a id="toc-Kong-noPu-woZuo-Cheng-suru-1" href="editorial-annotations-_002d-creating-blank-staves.ja.html">空の譜を作成する</a></li>
+    <li><a id="toc-2-Hang-noYun-Zhi-Ji-Hao-woZuo-Cheng-suru-1" href="editorial-annotations-_002d-creating-double_002ddigit-fingerings.ja.html">2 桁の運指記号を作成する</a></li>
+    <li><a id="toc-Pu-noZhongYang-niaruYin-Fu-noFu-Gan-nodehuorutonoXiang-ki" href="editorial-annotations-_002d-default-direction-of-stems-on-the-center-line-of-the-staff.ja.html">譜の中央にある音符の符幹のデフォルトの向き</a></li>
+    <li><a id="toc-Different-font-size-settings-for-instrumentName-and-shortInstrumentName" href="editorial-annotations-_002d-different-font-size-settings-for-instrumentname-and-shortinstrumentname.ja.html">Different font size settings for instrumentName and shortInstrumentName</a></li>
+    <li><a id="toc-Grob-noZhou-rinibotukusuwoBiao-Shisuru" href="editorial-annotations-_002d-drawing-boxes-around-grobs.ja.html">Grob の周りにボックスを表示する</a></li>
+    <li><a id="toc-Fu-Tou-noZhou-riwoYuan-deWei-mu" href="editorial-annotations-_002d-drawing-circles-around-note-heads.ja.html">符頭の周りを円で囲む</a></li>
+    <li><a id="toc-Yang-_0022naobuziekutonoZhou-riwoYuan-deWei-mu" href="editorial-annotations-_002d-drawing-circles-around-various-objects.ja.html">様々なオブジェクトの周りを円で囲む</a></li>
+    <li><a id="toc-_005cmarkup-burotukunineiteibu-PostScript-woMai-meIp-mu" href="editorial-annotations-_002d-embedding-native-postscript-in-a-_005cmarkup-block.ja.html">\markup ブロックにネイティブ PostScript を埋め込む</a></li>
+    <li><a id="toc-Generate-special-note-head-shapes" href="editorial-annotations-_002d-generate-special-note-head-shapes.ja.html">Generate special note head shapes</a></li>
+    <li><a id="toc-guritudoXian-_003a-Jian-taMu-woBian-Geng-suru" href="editorial-annotations-_002d-grid-lines_003a-changing-their-appearance.ja.html">グリッド線: 見た目を変更する</a></li>
+    <li><a id="toc-guritudoXian-_003a-rizumunoQiang-Diao-toYin-Fu-noTong-Qi-" href="editorial-annotations-_002d-grid-lines_003a-emphasizing-rhythms-and-notes-synchronization.ja.html">グリッド線: リズムの強調と音符の同期</a></li>
+    <li><a id="toc-hanmaringu-ontopuringu-ohu" href="editorial-annotations-_002d-hammer_002don-and-pull_002doff.ja.html">ハンマリング オンとプリング オフ</a></li>
+    <li><a id="toc-He-Yin-niDui-sitehanmaringu-onyapuringu-ohuwoShi-Yong-suru" href="editorial-annotations-_002d-hammer_002don-and-pull_002doff-using-chords.ja.html">和音に対してハンマリング オンやプリング オフを使用する</a></li>
+    <li><a id="toc-boisuniDui-sitehanmaringu-onyapuringu-ohuwoShi-Yong-suru" href="editorial-annotations-_002d-hammer_002don-and-pull_002doff-using-voices.ja.html">ボイスに対してハンマリング オンやプリング オフを使用する</a></li>
+    <li><a id="toc-ikutukanoPu-Xian-woTa-yoriTai-kusuru-1" href="editorial-annotations-_002d-making-some-staff-lines-thicker-than-the-others.ja.html">いくつかの譜線を他より太くする</a></li>
+    <li><a id="toc-Marking-notes-of-spoken-parts-with-a-cross-on-the-stem-_0028Sprechstimme_0029" href="editorial-annotations-_002d-marking-notes-of-spoken-parts-with-a-cross-on-the-stem-_0028sprechstimme_0029.ja.html">Marking notes of spoken parts with a cross on the stem (Sprechstimme)</a></li>
+    <li><a id="toc-Measure-counters-2" href="editorial-annotations-_002d-measure-counters.ja.html">Measure counters</a></li>
+    <li><a id="toc-Measure-spanner" href="editorial-annotations-_002d-measure-spanner.ja.html">Measure spanner</a></li>
+    <li><a id="toc-Yun-Zhi-Ji-Hao-noWei-Zhi-woZheng-Que-nikontororusuru" href="editorial-annotations-_002d-positioning-fingering-indications-precisely.ja.html">運指記号の位置を正確にコントロールする</a></li>
+    <li><a id="toc-tekisuto-makuatupuwosuranoNei-Ce-niPei-Zhi-suru-1" href="editorial-annotations-_002d-positioning-text-markups-inside-slurs.ja.html">テキスト マークアップをスラーの内側に配置する</a></li>
+    <li><a id="toc-tekisutowoYou-karaZuo-heBiao-Shisuru" href="editorial-annotations-_002d-printing-text-from-right-to-left.ja.html">テキストを右から左へ表示する</a></li>
+    <li><a id="toc-Xian-Fan-Hao-noYan-Chang-Xian-" href="editorial-annotations-_002d-string-number-extender-lines.ja.html">弦番号の延長線</a></li>
+    <li><a id="toc-whiteout-puropateiwoShi-Yong-suru-1" href="editorial-annotations-_002d-using-the-whiteout-property.ja.html">whiteout プロパティを使用する</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Text" href="text.ja.html">8 Text</a>
+  <ul class="no-bullet">
+    <li><a id="toc-tabuPu-nimakuatupuwoZhui-Jia-suru-1" href="text-_002d-adding-markups-in-a-tablature.ja.html">タブ譜にマークアップを追加する</a></li>
+    <li class="toc_current"><a id="toc-Le-Pu-niXian-Zai-Ri-Shi-woZhui-Jia-suru" href="text-_002d-adding-the-current-date-to-a-score.ja.html">楽譜に現在日時を追加する</a></li>
+    <li><a id="toc-Adjusting-vertical-spacing-of-lyrics" href="text-_002d-adjusting-vertical-spacing-of-lyrics.ja.html">Adjusting vertical spacing of lyrics</a></li>
+    <li><a id="toc-Le-Qi-Ming-woJian-eru" href="text-_002d-aligning-and-centering-instrument-names.ja.html">楽器名を揃える</a></li>
+    <li><a id="toc-Ge-Ci-Yin-Jie-womerisumaniJian-eru" href="text-_002d-aligning-syllables-with-melisma.ja.html">歌詞音節をメリスマに揃える</a></li>
+    <li><a id="toc-Aligning-text-marks-to-notes" href="text-_002d-aligning-text-marks-to-notes.ja.html">Aligning text marks to notes</a></li>
+    <li><a id="toc-_005cwhiteout-komandodePu-Xian-woYin-su-1" href="text-_002d-blanking-staff-lines-using-the-_005cwhiteout-command.ja.html">\whiteout コマンドで譜線を隠す</a></li>
+    <li><a id="toc-heapinnoXia-nitekisutowoZhongYang-Jian-esuru-1" href="text-_002d-center-text-below-hairpin-dynamics.ja.html">ヘアピンの下にテキストを中央揃えする</a></li>
+    <li><a id="toc-otutabaWei-minotekisutowoBian-Geng-suru-1" href="text-_002d-changing-ottava-text.ja.html">オッターバ囲みのテキストを変更する</a></li>
+    <li><a id="toc-dehuorutonotekisuto-huonto-huamiriwoBian-Geng-suru" href="text-_002d-changing-the-default-text-font-family.ja.html">デフォルトのテキスト フォント ファミリを変更する</a></li>
+    <li><a id="toc-Qiang-Ruo-Ji-Hao-womakuatupu-tekisutotoJie-He-suru-1" href="text-_002d-combining-dynamics-with-markup-texts.ja.html">強弱記号をマークアップ テキストと結合する</a></li>
+    <li><a id="toc-Combining-dynamics-with-markup-texts-_00282_0029-1" href="text-_002d-combining-dynamics-with-markup-texts-_00282_0029.ja.html">Combining dynamics with markup texts (2)</a></li>
+    <li><a id="toc-2-tunopatowo-1-tunoPu-nimatomeru-1" href="text-_002d-combining-two-parts-on-the-same-staff.ja.html">2 つのパートを 1 つの譜にまとめる</a></li>
+    <li><a id="toc-tekisuto-supanawoZuo-Cheng-suru-1" href="text-_002d-creating-text-spanners.ja.html">テキスト スパナを作成する</a></li>
+    <li><a id="toc-Demonstrating-all-_005cheader-fields" href="text-_002d-demonstrating-all-_005cheader-fields.ja.html">Demonstrating all \header fields</a></li>
+    <li><a id="toc-_005cmarkup-burotukunineiteibu-PostScript-woMai-meIp-mu-1" href="text-_002d-embedding-native-postscript-in-a-_005cmarkup-block.ja.html">\markup ブロックにネイティブ PostScript を埋め込む</a></li>
+    <li><a id="toc-Ge-Ci-Yin-Jie-wohuomatutosuru" href="text-_002d-formatting-lyrics-syllables.ja.html">歌詞音節をフォーマットする</a></li>
+    <li><a id="toc-Ge-Ci-Yin-Jie-noJian-nitaiwoRu-Li-suru" href="text-_002d-how-to-put-ties-between-syllables-in-lyrics.ja.html">歌詞音節の間にタイを入力する</a></li>
+    <li><a id="toc-Ge-Ci-noJian-eWei-Zhi-" href="text-_002d-lyrics-alignment.ja.html">歌詞の揃え位置</a></li>
+    <li><a id="toc-Markup-list" href="text-_002d-markup-list.ja.html">Markup list</a></li>
+    <li><a id="toc-Fu-Shu-Xiao-Jie-nimatagaruXiu-Fu-nimakuatupuwoFu-Jia-suru-1" href="text-_002d-multi_002dmeasure-rest-markup.ja.html">複数小節にまたがる休符にマークアップを付加する</a></li>
+    <li><a id="toc-Of-the-ubiquity-of-markup-objects" href="text-_002d-of-the-ubiquity-of-markup-objects.ja.html">Of the ubiquity of markup objects</a></li>
+    <li><a id="toc-baziyonFan-Hao-woChu-Li-suru" href="text-_002d-outputting-the-version-number.ja.html">バージョン番号を出力する</a></li>
+    <li><a id="toc-ZhongYang-niGe-Ci-woPei-Zhi-sitapiano-tenpureto" href="text-_002d-piano-template-with-centered-lyrics.ja.html">中央に歌詞を配置したピアノ テンプレート</a></li>
+    <li><a id="toc-rihasaruJi-Hao-woQuan-tenoPu-noShang-niBiao-Shisuru" href="text-_002d-printing-marks-on-every-staff.ja.html">リハーサル記号を全ての譜の上に表示する</a></li>
+    <li><a id="toc-tekisutowoYou-karaZuo-heBiao-Shisuru-1" href="text-_002d-printing-text-from-right-to-left.ja.html">テキストを右から左へ表示する</a></li>
+    <li><a id="toc-Ge-Ci-woPu-noNei-Bu-niBiao-Shisuru-1" href="text-_002d-putting-lyrics-inside-the-staff.ja.html">歌詞を譜の内部に表示する</a></li>
+    <li><a id="toc-Slanted-parentheses-around-dynamics-1" href="text-_002d-slanted-parentheses-around-dynamics.ja.html">Slanted parentheses around dynamics</a></li>
+    <li><a id="toc-Du-Li-sitatekisutono-2-Duan-Zu-mi" href="text-_002d-stand_002dalone-two_002dcolumn-markup.ja.html">独立したテキストの 2 段組み</a></li>
+    <li><a id="toc-Xian-Fan-Hao-noYan-Chang-Xian--1" href="text-_002d-string-number-extender-lines.ja.html">弦番号の延長線</a></li>
+    <li><a id="toc-3-Fang-Xiang-botukusu-1" href="text-_002d-three_002dsided-box.ja.html">3 方向ボックス</a></li>
+    <li><a id="toc-UTF_002d8" href="text-_002d-utf_002d8.ja.html">UTF-8</a></li>
+    <li><a id="toc-Shang-Xia-niGe-Ci-woPei-Zhi-sitaHe-Chang-Pu-tenpureto" href="text-_002d-vocal-ensemble-template-with-lyrics-aligned-below-and-above-the-staves.ja.html">上下に歌詞を配置した合唱譜テンプレート</a></li>
+    <li><a id="toc-repeatCommands-woYong-iteRu-reTi-eBu-Fen-notekisutonimakuatupuwoShi-Yong-suru-1" href="text-_002d-volta-text-markup-using-repeatcommands.ja.html">repeatCommands を用いて入れ替え部分のテキストにマークアップを使用する</a></li>
+  </ul></li>
+  <li><a id="toc-Vocal-music" href="vocal-music.ja.html">9 Vocal music</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Yin-Yu-woboisugotoniZhui-Jia-suru-2" href="vocal-music-_002d-adding-ambitus-per-voice.ja.html">音域をボイスごとに追加する</a></li>
+    <li><a id="toc-Gai-Xing-Hou-niFen-kareruPu-nituite_002c-Zhi-ShiwoBiao-Shisuru-1" href="vocal-music-_002d-adding-indicators-to-staves-which-get-split-after-a-break.ja.html">改行後に分かれる譜について、指示を表示する</a></li>
+    <li><a id="toc-bokaruPu-niokesutoranoHe-Tu-Yin-Fu-woZhui-Jia-suru-1" href="vocal-music-_002d-adding-orchestral-cues-to-a-vocal-score.ja.html">ボーカル譜にオーケストラの合図音符を追加する</a></li>
+    <li><a id="toc-Adjusting-vertical-spacing-of-lyrics-1" href="vocal-music-_002d-adjusting-vertical-spacing-of-lyrics.ja.html">Adjusting vertical spacing of lyrics</a></li>
+    <li><a id="toc-Ge-Ci-Yin-Jie-womerisumaniJian-eru-1" href="vocal-music-_002d-aligning-syllables-with-melisma.ja.html">歌詞音節をメリスマに揃える</a></li>
+    <li><a id="toc-Yin-Yu--1" href="vocal-music-_002d-ambitus.ja.html">音域</a></li>
+    <li><a id="toc-Ambitus-after-key-signature-2" href="vocal-music-_002d-ambitus-after-key-signature.ja.html">Ambitus after key signature</a></li>
+    <li><a id="toc-Fu-Shu-noboisuwoChi-tuPu-denoYin-Yu--1" href="vocal-music-_002d-ambitus-with-multiple-voices.ja.html">複数のボイスを持つ譜での音域</a></li>
+    <li><a id="toc-Ancient-notation-template-_002d-modern-transcription-of-Gregorian-music" href="vocal-music-_002d-ancient-notation-template-_002d-modern-transcription-of-gregorian-music.ja.html#vocal-music-_002d-ancient-notation-template-_2013-modern-transcription-of-gregorian-music">Ancient notation template – modern transcription of Gregorian music</a></li>
+    <li><a id="toc-angurikan-tiyantonotenpureto" href="vocal-music-_002d-anglican-psalm-template.ja.html">アングリカン チャントのテンプレート</a></li>
+    <li><a id="toc-Yi-naruGe-Ci-woTong-ziXing-niBiao-Shisuru" href="vocal-music-_002d-arranging-separate-lyrics-on-a-single-line.ja.html">異なる歌詞を同じ行に表示する</a></li>
+    <li><a id="toc-Ge-Ci-noJie-nohuontowoBian-Geng-suru" href="vocal-music-_002d-changing-stanza-fonts.ja.html">歌詞の節のフォントを変更する</a></li>
+    <li><a id="toc-Chant-or-psalm-notation-1" href="vocal-music-_002d-chant-or-psalm-notation.ja.html">Chant or psalm notation</a></li>
+    <li><a id="toc-haihunwoQiang-Zhi-De-niBiao-Shisuru" href="vocal-music-_002d-forcing-hyphens-to-be-shown.ja.html">ハイフンを強制的に表示する</a></li>
+    <li><a id="toc-Ge-Ci-Yin-Jie-wohuomatutosuru-1" href="vocal-music-_002d-formatting-lyrics-syllables.ja.html">歌詞音節をフォーマットする</a></li>
+    <li><a id="toc-Ge-Ci-Yin-Jie-noJian-nitaiwoRu-Li-suru-1" href="vocal-music-_002d-how-to-put-ties-between-syllables-in-lyrics.ja.html">歌詞音節の間にタイを入力する</a></li>
+    <li><a id="toc-Zan-Mei-Ge-notenpureto" href="vocal-music-_002d-hymn-template.ja.html">賛美歌のテンプレート</a></li>
+    <li><a id="toc-Ge-Ci-noJian-eWei-Zhi--1" href="vocal-music-_002d-lyrics-alignment.ja.html">歌詞の揃え位置</a></li>
+    <li><a id="toc-Marking-notes-of-spoken-parts-with-a-cross-on-the-stem-_0028Sprechstimme_0029-1" href="vocal-music-_002d-marking-notes-of-spoken-parts-with-a-cross-on-the-stem-_0028sprechstimme_0029.ja.html">Marking notes of spoken parts with a cross on the stem (Sprechstimme)</a></li>
+    <li><a id="toc-okesutora_002c-korasu_002c-pianonotenpureto-2" href="vocal-music-_002d-orchestra_002c-choir-and-piano-template.ja.html">オーケストラ、コーラス、ピアノのテンプレート</a></li>
+    <li><a id="toc-Xuan-Lu-toGe-Ci-woChi-tupiano-tenpureto" href="vocal-music-_002d-piano-template-with-melody-and-lyrics.ja.html">旋律と歌詞を持つピアノ テンプレート</a></li>
+    <li><a id="toc-Ge-Ci-woPu-noNei-Bu-niBiao-Shisuru-2" href="vocal-music-_002d-putting-lyrics-inside-the-staff.ja.html">歌詞を譜の内部に表示する</a></li>
+    <li><a id="toc-SATB-He-Chang-Pu-tenpureto-_002d-4-Pu-" href="vocal-music-_002d-satb-choir-template-_002d_002d-four-staves.ja.html">SATB 合唱譜テンプレート - 4 譜</a></li>
+    <li><a id="toc-Yin-Fu-_002c-Ge-Ci-_002c-kodowoChi-tuDan-YiPu-notenpureto" href="vocal-music-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-and-chords.ja.html">音符、歌詞、コードを持つ単一譜のテンプレート</a></li>
+    <li><a id="toc-Single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets" href="vocal-music-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets.ja.html">Single-staff template with notes, lyrics, chords, and frets</a></li>
+    <li><a id="toc-Yin-Fu-toGe-Ci-woChi-tuDan-YiPu-notenpureto" href="vocal-music-_002d-single_002dstaff-template-with-notes-and-lyrics.ja.html">音符と歌詞を持つ単一譜のテンプレート</a></li>
+    <li><a id="toc-Ge-Ci-mododenosukitupu-1" href="vocal-music-_002d-skips-in-lyric-mode.ja.html">歌詞モードでのスキップ</a></li>
+    <li><a id="toc-Ge-Ci-mododenosukitupu-_00282_0029-1" href="vocal-music-_002d-skips-in-lyric-mode-_00282_0029.ja.html">歌詞モードでのスキップ (2)</a></li>
+    <li><a id="toc-Using-_005carpeggioBracket-to-make-divisi-more-visible-1" href="vocal-music-_002d-using-_005carpeggiobracket-to-make-divisi-more-visible.ja.html">Using \arpeggioBracket to make divisi more visible</a></li>
+    <li><a id="toc-Using-a-bracket-to-clarify-divisi-1" href="vocal-music-_002d-using-a-bracket-to-clarify-divisi.ja.html">Using a bracket to clarify divisi</a></li>
+    <li><a id="toc-taguwoShi-Yong-siteTong-zisosukaraJi-Liang-Yin-Le-Pu-toXian-Dai-Pu-woSheng-Cheng-suru" href="vocal-music-_002d-using-tags-to-produce-mensural-and-modern-music-from-the-same-source.ja.html">タグを使用して同じソースから計量音楽譜と現代譜を生成する</a></li>
+    <li><a id="toc-otusiatoGe-Ci-noZong-Fang-Xiang-noJian-eWei-Zhi-" href="vocal-music-_002d-vertically-aligning-ossias-and-lyrics.ja.html">オッシアと歌詞の縦方向の揃え位置</a></li>
+    <li><a id="toc-Vertically-aligning-stanza-numbers-of-different-staves" href="vocal-music-_002d-vertically-aligning-stanza-numbers-of-different-staves.ja.html">Vertically aligning stanza numbers of different staves</a></li>
+    <li><a id="toc-Gong-Tong-naGe-Ci-woZong-Fang-Xiang-niZhongYang-Jian-esuru" href="vocal-music-_002d-vertically-centered-common-lyrics.ja.html">共通な歌詞を縦方向に中央揃えする</a></li>
+    <li><a id="toc-He-Chang-tenpureto" href="vocal-music-_002d-vocal-ensemble-template.ja.html">合唱テンプレート</a></li>
+    <li><a id="toc-Zi-Dong-pianoBan-Zou-Pu-woChi-tuHe-Chang-Pu-" href="vocal-music-_002d-vocal-ensemble-template-with-automatic-piano-reduction.ja.html">自動ピアノ伴奏譜を持つ合唱譜</a></li>
+    <li><a id="toc-Shang-Xia-niGe-Ci-woPei-Zhi-sitaHe-Chang-Pu-tenpureto-1" href="vocal-music-_002d-vocal-ensemble-template-with-lyrics-aligned-below-and-above-the-staves.ja.html">上下に歌詞を配置した合唱譜テンプレート</a></li>
+    <li><a id="toc-Shi-Ju-torihureinkaranaruHe-Chang-Pu-" href="vocal-music-_002d-vocal-ensemble-template-with-verse-and-refrain.ja.html">詩句とリフレインからなる合唱譜</a></li>
+  </ul></li>
+  <li><a id="toc-Chord-notation" href="chord-notation.ja.html">10 Chord notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Tong-Zou-Di-Yin-woYin-Fu-noShang-kaXia-niZhui-Jia-suru" href="chord-notation-_002d-adding-a-figured-bass-above-or-below-the-notes.ja.html">通奏低音を音符の上か下に追加する</a></li>
+    <li><a id="toc-ChordNames-kontekisutoniXiao-Jie-Xian-woZhui-Jia-suru" href="chord-notation-_002d-adding-bar-lines-to-chordnames-context.ja.html">ChordNames コンテキストに小節線を追加する</a></li>
+    <li><a id="toc-Adjusting-figured-bass-alteration-glyphs" href="chord-notation-_002d-adjusting-figured-bass-alteration-glyphs.ja.html">Adjusting figured bass alteration glyphs</a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord-2" href="chord-notation-_002d-changing-a-single-note_0027s-size-in-a-chord.ja.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-kodo-nemunoQu-Qie-riJi-Hao-woBian-Geng-suru" href="chord-notation-_002d-changing-chord-separator.ja.html">コード ネームの区切り記号を変更する</a></li>
+    <li><a id="toc-Tong-Zou-Di-Yin-noBian-Hua-Ji-Hao-noWei-Zhi-woBian-Geng-suru" href="chord-notation-_002d-changing-the-positions-of-figured-bass-alterations.ja.html">通奏低音の変化記号の位置を変更する</a></li>
+    <li><a id="toc-kodo-nemunoLiWai-" href="chord-notation-_002d-chord-name-exceptions.ja.html">コード ネームの例外</a></li>
+    <li><a id="toc-meziya-sebunsunokodo-nemu" href="chord-notation-_002d-chord-name-major7.ja.html">メジャー セブンスのコード ネーム</a></li>
+    <li><a id="toc-Chord-names-alternative" href="chord-notation-_002d-chord-names-alternative.ja.html">Chord names alternative</a></li>
+    <li><a id="toc-Chords-with-stretched-fingering-for-FretBoards-and-TabVoice" href="chord-notation-_002d-chords-with-stretched-fingering-for-fretboards-and-tabvoice.ja.html">Chords with stretched fingering for FretBoards and TabVoice</a></li>
+    <li><a id="toc-kurasuta-1" href="chord-notation-_002d-clusters.ja.html">クラスタ</a></li>
+    <li><a id="toc-He-Yin-Nei-noYun-Zhi-Ji-Hao-noWei-Zhi-wokontororusuru-2" href="chord-notation-_002d-controlling-the-placement-of-chord-fingerings.ja.html">和音内の運指記号の位置をコントロールする</a></li>
+    <li><a id="toc-Pu-womatagaruHe-Yin--_002d_002d-Lian-Hang-tonoWen-Ti-woJie-Jue-suru" href="chord-notation-_002d-cross_002dstaff-chords-_002d_002d-beaming-problems-workaround.ja.html">譜をまたがる和音 &ndash; 連桁との問題を解決する</a></li>
+    <li><a id="toc-Customizing-the-chord-grid-style" href="chord-notation-_002d-customizing-the-chord-grid-style.ja.html">Customizing the chord grid style</a></li>
+    <li><a id="toc-Customizing-the-no_002dchord-symbol" href="chord-notation-_002d-customizing-the-no_002dchord-symbol.ja.html">Customizing the no-chord symbol</a></li>
+    <li><a id="toc-Fu-Za-naHe-Yin-woBiao-Shisuru-1" href="chord-notation-_002d-displaying-complex-chords.ja.html">複雑な和音を表示する</a></li>
+    <li><a id="toc-Tong-Zou-Di-Yin-noYan-Chang-Xian-woYiBu-dakeTu-Qie-resaseru" href="chord-notation-_002d-manually-break-figured-bass-extenders-for-only-some-numbers.ja.html">通奏低音の延長線を一部だけ途切れさせる</a></li>
+    <li><a id="toc-Print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note-1" href="chord-notation-_002d-print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note.ja.html">Print chord names with same root and different bass as slash and bass note</a></li>
+    <li><a id="toc-kodo-nemuwoBian-Geng-Shi-nomiBiao-Shisuru" href="chord-notation-_002d-showing-chords-at-changes.ja.html">コード ネームを変更時のみ表示する</a></li>
+    <li><a id="toc-sinpuru-rido-sito" href="chord-notation-_002d-simple-lead-sheet.ja.html">シンプル リード シート</a></li>
+    <li><a id="toc-Yin-Fu-_002c-Ge-Ci-_002c-kodowoChi-tuDan-YiPu-notenpureto-1" href="chord-notation-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-and-chords.ja.html">音符、歌詞、コードを持つ単一譜のテンプレート</a></li>
+    <li><a id="toc-Single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets-1" href="chord-notation-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets.ja.html">Single-staff template with notes, lyrics, chords, and frets</a></li>
+    <li><a id="toc-Yin-Fu-tokodowoChi-tuDan-YiPu-notenpureto" href="chord-notation-_002d-single_002dstaff-template-with-notes-and-chords.ja.html">音符とコードを持つ単一譜のテンプレート</a></li>
+    <li><a id="toc-Gong-Tong-naTong-Zou-Di-Yin-noYan-Chang-Xian-woZong-Fang-Xiang-niZhongYang-Jian-esuru" href="chord-notation-_002d-vertically-centering-paired-figured-bass-extenders.ja.html">共通な通奏低音の延長線を縦方向に中央揃えする</a></li>
+    <li><a id="toc-Zao-riFan-siGua-Hu-wokodo-nemunoXia-niBiao-Shisuru-2" href="chord-notation-_002d-volta-below-chords.ja.html">繰り返し括弧をコード ネームの下に表示する</a></li>
+  </ul></li>
+  <li><a id="toc-Keyboard-and-other-multi_002dstaff-instruments" href="keyboard-and-other-multi_002dstaff-instruments.ja.html">11 Keyboard and other multi-staff instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-akodeionnoYin-Se-Qie-riTi-eJi-Hao-" href="keyboard-and-other-multi_002dstaff-instruments-_002d-accordion-register-symbols.ja.html">アコーディオンの音色切り替え記号</a></li>
+    <li><a id="toc-sasutein-pedaruJi-Hao-notekisutowoBian-Geng-suru" href="keyboard-and-other-multi_002dstaff-instruments-_002d-changing-the-text-for-sustain-markings.ja.html">サステイン ペダル記号のテキストを変更する</a></li>
+    <li><a id="toc-kurasuta-2" href="keyboard-and-other-multi_002dstaff-instruments-_002d-clusters.ja.html">クラスタ</a></li>
+    <li><a id="toc-He-Yin-Nei-noYun-Zhi-Ji-Hao-noWei-Zhi-wokontororusuru-3" href="keyboard-and-other-multi_002dstaff-instruments-_002d-controlling-the-placement-of-chord-fingerings.ja.html">和音内の運指記号の位置をコントロールする</a></li>
+    <li><a id="toc-boisuwomatagarusurawoZuo-Cheng-suru-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-creating-slurs-across-voices.ja.html">ボイスをまたがるスラーを作成する</a></li>
+    <li><a id="toc-Pu-womatagaruHe-Yin--_002d_002d-Lian-Hang-tonoWen-Ti-woJie-Jue-suru-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-cross_002dstaff-chords-_002d_002d-beaming-problems-workaround.ja.html">譜をまたがる和音 &ndash; 連桁との問題を解決する</a></li>
+    <li><a id="toc-Pu-womatagarutoremoro-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-cross_002dstaff-tremolos.ja.html">譜をまたがるトレモロ</a></li>
+    <li><a id="toc-pedaruJi-Hao-noburaketutowoWei-Diao-Zheng-suru" href="keyboard-and-other-multi_002dstaff-instruments-_002d-fine_002dtuning-pedal-brackets.ja.html">ペダル記号のブラケットを微調整する</a></li>
+    <li><a id="toc-Indicating-cross_002dstaff-chords-with-a-bracket" href="keyboard-and-other-multi_002dstaff-instruments-_002d-indicating-cross_002dstaff-chords-with-a-bracket.ja.html">Indicating cross-staff chords with a bracket</a></li>
+    <li><a id="toc-ziyazu-konbonotenpureto" href="keyboard-and-other-multi_002dstaff-instruments-_002d-jazz-combo-template.ja.html">ジャズ コンボのテンプレート</a></li>
+    <li><a id="toc-rese-vuiburenotai-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-laissez-vibrer-ties.ja.html">レセ ヴィブレのタイ</a></li>
+    <li><a id="toc-piano-tenpureto-_0028sinpuru_0029" href="keyboard-and-other-multi_002dstaff-instruments-_002d-piano-template-_0028simple_0029.ja.html">ピアノ テンプレート (シンプル)</a></li>
+    <li><a id="toc-ZhongYang-niGe-Ci-woPei-Zhi-sitapiano-tenpureto-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-piano-template-with-centered-lyrics.ja.html">中央に歌詞を配置したピアノ テンプレート</a></li>
+    <li><a id="toc-Xuan-Lu-toGe-Ci-woChi-tupiano-tenpureto-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-piano-template-with-melody-and-lyrics.ja.html">旋律と歌詞を持つピアノ テンプレート</a></li>
+    <li><a id="toc-pianoQu-noXian-Tou-niaruburesuwoXue-Chu-suru-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-removing-brace-on-first-line-of-piano-score.ja.html">ピアノ曲の先頭にあるブレースを削除する</a></li>
+    <li><a id="toc-Using-_005cautoChange-with-more-than-one-voice-2" href="keyboard-and-other-multi_002dstaff-instruments-_002d-using-_005cautochange-with-more-than-one-voice.ja.html">Using \autoChange with more than one voice</a></li>
+    <li><a id="toc-Zi-Dong-pianoBan-Zou-Pu-woChi-tuHe-Chang-Pu--1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-vocal-ensemble-template-with-automatic-piano-reduction.ja.html">自動ピアノ伴奏譜を持つ合唱譜</a></li>
+  </ul></li>
+  <li><a id="toc-Percussion" href="percussion.ja.html">12 Percussion</a>
+  <ul class="no-bullet">
+    <li><a id="toc-doramu-patowoZhui-Jia-suru-1" href="percussion-_002d-adding-drum-parts.ja.html">ドラム パートを追加する</a></li>
+    <li><a id="toc-Cow-and-ride-bell-example-1" href="percussion-_002d-cow-and-ride-bell-example.ja.html">Cow and ride bell example</a></li>
+    <li><a id="toc-Duo-Pai-Zi-Ji-Hao-woDa-kikukasutamaizusuru-1" href="percussion-_002d-heavily-customized-polymetric-time-signatures.ja.html">多拍子記号を大きくカスタマイズする</a></li>
+    <li><a id="toc-High-and-low-woodblock-example-1" href="percussion-_002d-high-and-low-woodblock-example.ja.html">High and low woodblock example</a></li>
+    <li><a id="toc-ziyazu-konbonotenpureto-1" href="percussion-_002d-jazz-combo-template.ja.html">ジャズ コンボのテンプレート</a></li>
+    <li><a id="toc-pakatusiyonnomaretutowoBiao-Shisuru" href="percussion-_002d-percussion-beaters.ja.html">パーカッションのマレットを表示する</a></li>
+    <li><a id="toc-Percussion-example-1" href="percussion-_002d-percussion-example.ja.html">Percussion example</a></li>
+    <li><a id="toc-Yin-Le-woYi-naruPai-Zi-Ji-Hao-deBiao-Shisuru-1" href="percussion-_002d-printing-music-with-different-time-signatures.ja.html">音楽を異なる拍子記号で表示する</a></li>
+    <li><a id="toc-Tam_002dtam-example-1" href="percussion-_002d-tam_002dtam-example.ja.html">Tam-tam example</a></li>
+    <li><a id="toc-Tambourine-example-1" href="percussion-_002d-tambourine-example.ja.html">Tambourine example</a></li>
+  </ul></li>
+  <li><a id="toc-Fretted-string-instruments" href="fretted-string-instruments.ja.html">13 Fretted string instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Le-Pu-niYun-Zhi-Ji-Hao-woZhui-Jia-suru-1" href="fretted-string-instruments-_002d-adding-fingerings-to-a-score.ja.html">楽譜に運指記号を追加する</a></li>
+    <li><a id="toc-tabuPu-niYun-Zhi-Ji-Hao-woZhui-Jia-suru" href="fretted-string-instruments-_002d-adding-fingerings-to-tablatures.ja.html">タブ譜に運指記号を追加する</a></li>
+    <li><a id="toc-tabuPu-nimakuatupuwoZhui-Jia-suru-2" href="fretted-string-instruments-_002d-adding-markups-in-a-tablature.ja.html">タブ譜にマークアップを追加する</a></li>
+    <li><a id="toc-Yun-Zhi-Ji-Hao-woPu-noNei-Ce-niBiao-Shisuru-1" href="fretted-string-instruments-_002d-allowing-fingerings-to-be-printed-inside-the-staff.ja.html">運指記号を譜の内側に表示する</a></li>
+    <li><a id="toc-Automatic-fretboards-barre" href="fretted-string-instruments-_002d-automatic-fretboards-barre.ja.html#fretted-string-instruments-_002d-automatic-fretboards-barr_00e9">Automatic fretboards barré</a></li>
+    <li><a id="toc-huretutoTu-noXiang-kiwoBian-Geng-suru" href="fretted-string-instruments-_002d-changing-fret-orientations.ja.html">フレット図の向きを変更する</a></li>
+    <li><a id="toc-Chord-changes-for-fretboards" href="fretted-string-instruments-_002d-chord-changes-for-fretboards.ja.html">Chord changes for fretboards</a></li>
+    <li><a id="toc-tabuPu-denoHe-Yin-noguritusando" href="fretted-string-instruments-_002d-chord-glissando-in-tablature.ja.html">タブ譜での和音のグリッサンド</a></li>
+    <li><a id="toc-Chords-with-stretched-fingering-for-FretBoards-and-TabVoice-1" href="fretted-string-instruments-_002d-chords-with-stretched-fingering-for-fretboards-and-tabvoice.ja.html">Chords with stretched fingering for FretBoards and TabVoice</a></li>
+    <li><a id="toc-He-Yin-Nei-noYun-Zhi-Ji-Hao-noWei-Zhi-wokontororusuru-4" href="fretted-string-instruments-_002d-controlling-the-placement-of-chord-fingerings.ja.html">和音内の運指記号の位置をコントロールする</a></li>
+    <li><a id="toc-huretutobodonohuretutoTu-wokasutamaizusuru" href="fretted-string-instruments-_002d-customizing-fretboard-fret-diagrams.ja.html">フレットボードのフレット図をカスタマイズする</a></li>
+    <li><a id="toc-makuatupunohuretutoTu-wokasutamaizusuru" href="fretted-string-instruments-_002d-customizing-markup-fret-diagrams.ja.html">マークアップのフレット図をカスタマイズする</a></li>
+    <li><a id="toc-Xian-Fan-Hao-toYou-Shou-noYun-Zhi-" href="fretted-string-instruments-_002d-fingerings_002c-string-indications_002c-and-right_002dhand-fingerings.ja.html">弦番号と右手の運指</a></li>
+    <li><a id="toc-huramenkonoJi-Pu-Fa-" href="fretted-string-instruments-_002d-flamenco-notation.ja.html">フラメンコの記譜法</a></li>
+    <li><a id="toc-huretutoTu-tosonoDiao-Zheng-" href="fretted-string-instruments-_002d-fret-diagrams-explained-and-developed.ja.html">フレット図とその調整</a></li>
+    <li><a id="toc-Dai-Ti-huretuto-teburu" href="fretted-string-instruments-_002d-fretboards-alternate-tables.ja.html">代替フレット テーブル</a></li>
+    <li><a id="toc-huretutonoaruLe-Qi-nohamonikusuwotabuPu-deBiao-Shisuru" href="fretted-string-instruments-_002d-fretted_002dstring-harmonics-in-tablature.ja.html">フレットのある楽器のハーモニクスをタブ譜で表示する</a></li>
+    <li><a id="toc-gitanosuraido" href="fretted-string-instruments-_002d-guitar-slides.ja.html">ギターのスライド</a></li>
+    <li><a id="toc-gita-sutorokunorizumu-1" href="fretted-string-instruments-_002d-guitar-strum-rhythms.ja.html">ギター ストロークのリズム</a></li>
+    <li><a id="toc-hanmaringu-ontopuringu-ohu-1" href="fretted-string-instruments-_002d-hammer_002don-and-pull_002doff.ja.html">ハンマリング オンとプリング オフ</a></li>
+    <li><a id="toc-He-Yin-niDui-sitehanmaringu-onyapuringu-ohuwoShi-Yong-suru-1" href="fretted-string-instruments-_002d-hammer_002don-and-pull_002doff-using-chords.ja.html">和音に対してハンマリング オンやプリング オフを使用する</a></li>
+    <li><a id="toc-boisuniDui-sitehanmaringu-onyapuringu-ohuwoShi-Yong-suru-1" href="fretted-string-instruments-_002d-hammer_002don-and-pull_002doff-using-voices.ja.html">ボイスに対してハンマリング オンやプリング オフを使用する</a></li>
+    <li><a id="toc-huretutoTu-noWei-Zhi-woBian-Geng-suruFang-Fa-" href="fretted-string-instruments-_002d-how-to-change-fret-diagram-position.ja.html">フレット図の位置を変更する方法</a></li>
+    <li><a id="toc-ziyazu-konbonotenpureto-2" href="fretted-string-instruments-_002d-jazz-combo-template.ja.html">ジャズ コンボのテンプレート</a></li>
+    <li><a id="toc-rese-vuiburenotai-2" href="fretted-string-instruments-_002d-laissez-vibrer-ties.ja.html">レセ ヴィブレのタイ</a></li>
+    <li><a id="toc-TabStaff-deZui-Gao-Xian-woXia-niBiao-Shisuru-1" href="fretted-string-instruments-_002d-let-tabstaff-print-the-topmost-string-at-bottom.ja.html">TabStaff で最高弦を下に表示する</a></li>
+    <li><a id="toc-WenZi-detabuPu-wohuomatutosuru-1" href="fretted-string-instruments-_002d-letter-tablature-formatting.ja.html">文字でタブ譜をフォーマットする</a></li>
+    <li><a id="toc-tabuPu-deKai-Fang-Xian-nohamonikusuwoBiao-Shisuru" href="fretted-string-instruments-_002d-open_002dstring-harmonics-in-tablature.ja.html">タブ譜で開放弦のハーモニクスを表示する</a></li>
+    <li><a id="toc-You-Shou-noYun-Zhi-Ji-Hao-noPei-Zhi-" href="fretted-string-instruments-_002d-placement-of-right_002dhand-fingerings.ja.html">右手の運指記号の配置</a></li>
+    <li><a id="toc-tabuPu-niokeruDuo-Sheng-" href="fretted-string-instruments-_002d-polyphony-in-tablature.ja.html">タブ譜における多声</a></li>
+    <li><a id="toc-Setting-up-predefined-fretboards-for-other-instruments" href="fretted-string-instruments-_002d-setting-up-predefined-fretboards-for-other-instruments.ja.html">Setting up predefined fretboards for other instruments</a></li>
+    <li><a id="toc-tabuPu-denosuraido" href="fretted-string-instruments-_002d-slides-in-tablature.ja.html">タブ譜でのスライド</a></li>
+    <li><a id="toc-tabuPu-denoFu-Gan-toLian-Hang-noJu-Dong-" href="fretted-string-instruments-_002d-stem-and-beam-behavior-in-tablature.ja.html">タブ譜での符幹と連桁の挙動</a></li>
+    <li><a id="toc-Xian-Fan-Hao-noYan-Chang-Xian--2" href="fretted-string-instruments-_002d-string-number-extender-lines.ja.html">弦番号の延長線</a></li>
+  </ul></li>
+  <li><a id="toc-Unfretted-string-instruments" href="unfretted-string-instruments.ja.html">14 Unfretted string instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-boisuwomatagarusurawoZuo-Cheng-suru-2" href="unfretted-string-instruments-_002d-creating-slurs-across-voices.ja.html">ボイスをまたがるスラーを作成する</a></li>
+    <li><a id="toc-hamonikusunoFu-Dian-" href="unfretted-string-instruments-_002d-dotted-harmonics.ja.html">ハーモニクスの付点</a></li>
+    <li><a id="toc-Snap-pizzicato-_0028_201cBartok_201d-pizzicato_0029-1" href="unfretted-string-instruments-_002d-snap-pizzicato-_0028_201cbartok_201d-pizzicato_0029.ja.html">Snap pizzicato (&ldquo;Bartok&rdquo; pizzicato)</a></li>
+    <li><a id="toc-Xian-Le-Si-Zhong-Zou-tenpureto-_0028sinpuru_0029" href="unfretted-string-instruments-_002d-string-quartet-template-_0028simple_0029.ja.html">弦楽四重奏テンプレート (シンプル)</a></li>
+    <li><a id="toc-patowoGe-_0022niChi-tuXian-Le-Si-Zhong-Zou-tenpureto" href="unfretted-string-instruments-_002d-string-quartet-template-with-separate-parts.ja.html">パートを個々に持つ弦楽四重奏テンプレート</a></li>
+  </ul></li>
+  <li><a id="toc-Wind-instruments" href="wind-instruments.ja.html">15 Wind instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Mu-Guan-Le-Qi-nodaiaguramunosaizuwoBian-Geng-suru" href="wind-instruments-_002d-changing-the-size-of-woodwind-diagrams.ja.html">木管楽器のダイアグラムのサイズを変更する</a></li>
+    <li><a id="toc-Guan-Le-Qi-noYun-Zhi-Ji-Hao-" href="wind-instruments-_002d-fingering-symbols-for-wind-instruments.ja.html">管楽器の運指記号</a></li>
+    <li><a id="toc-huruto-suratupunoJi-Pu-" href="wind-instruments-_002d-flute-slap-notation.ja.html">フルート スラップの記譜</a></li>
+    <li><a id="toc-Mu-Guan-Le-Qi-nodaiaguramuwoHua-Xiang-totekisutodeBiao-Shisuru" href="wind-instruments-_002d-graphical-and-text-woodwind-diagrams.ja.html">木管楽器のダイアグラムを画像とテキストで表示する</a></li>
+    <li><a id="toc-rikodanoYun-Zhi-Biao-" href="wind-instruments-_002d-recorder-fingering-chart.ja.html">リコーダーの運指表</a></li>
+    <li><a id="toc-Mu-Guan-Le-Qi-nodaiaguramunoDiao-risuto" href="wind-instruments-_002d-woodwind-diagrams-key-lists.ja.html">木管楽器のダイアグラムの調リスト</a></li>
+    <li><a id="toc-Mu-Guan-Le-Qi-nodaiaguramunorisuto" href="wind-instruments-_002d-woodwind-diagrams-listing.ja.html">木管楽器のダイアグラムのリスト</a></li>
+  </ul></li>
+  <li><a id="toc-Ancient-notation" href="ancient-notation.ja.html">16 Ancient notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Tong-Zou-Di-Yin-woYin-Fu-noShang-kaXia-niZhui-Jia-suru-1" href="ancient-notation-_002d-adding-a-figured-bass-above-or-below-the-notes.ja.html">通奏低音を音符の上か下に追加する</a></li>
+    <li><a id="toc-Gu-Dai-noJi-Pu-Fa-nohuonto" href="ancient-notation-_002d-ancient-fonts.ja.html">古代の記譜法のフォント</a></li>
+    <li><a id="toc-Ancient-notation-template-_002d-modern-transcription-of-Gregorian-music-1" href="ancient-notation-_002d-ancient-notation-template-_002d-modern-transcription-of-gregorian-music.ja.html#ancient-notation-_002d-ancient-notation-template-_2013-modern-transcription-of-gregorian-music">Ancient notation template – modern transcription of Gregorian music</a></li>
+    <li><a id="toc-Gu-Dai-noPai-Zi-Ji-Hao-" href="ancient-notation-_002d-ancient-time-signatures.ja.html">古代の拍子記号</a></li>
+    <li><a id="toc-Chant-or-psalm-notation-2" href="ancient-notation-_002d-chant-or-psalm-notation.ja.html">Chant or psalm notation</a></li>
+    <li><a id="toc-kusutosu" href="ancient-notation-_002d-custodes.ja.html">クストス</a></li>
+    <li><a id="toc-inkipituto-1" href="ancient-notation-_002d-incipit.ja.html">インキピット</a></li>
+    <li><a id="toc-Mensurstriche-reiauto-_0028Pu-noJian-niXiao-Jie-Xian-woBiao-Shisuru_0029-1" href="ancient-notation-_002d-mensurstriche-layout-_0028bar-lines-between-the-staves_0029.ja.html">Mensurstriche レイアウト (譜の間に小節線を表示する)</a></li>
+    <li><a id="toc-Xiu-Fu-nosutairu-1" href="ancient-notation-_002d-rest-styles.ja.html">休符のスタイル</a></li>
+    <li><a id="toc-taguwoShi-Yong-siteTong-zisosukaraJi-Liang-Yin-Le-Pu-toXian-Dai-Pu-woSheng-Cheng-suru-1" href="ancient-notation-_002d-using-tags-to-produce-mensural-and-modern-music-from-the-same-source.ja.html">タグを使用して同じソースから計量音楽譜と現代譜を生成する</a></li>
+    <li><a id="toc-barotukuYin-Le-noZong-Xian-ateikiyuresiyon-maku-1" href="ancient-notation-_002d-vertical-line-as-a-baroque-articulation-mark.ja.html">バロック音楽の縦線アーティキュレーション マーク</a></li>
+  </ul></li>
+  <li><a id="toc-World-music" href="world-music.ja.html">17 World music</a>
+  <ul class="no-bullet">
+    <li><a id="toc-arabuYin-Le-noJi-Xing-" href="world-music-_002d-arabic-improvisation.ja.html">アラブ音楽の即興</a></li>
+    <li><a id="toc-makamunoLi-1" href="world-music-_002d-makam-example.ja.html">マカームの例</a></li>
+    <li><a id="toc-tekisutowoYou-karaZuo-heBiao-Shisuru-2" href="world-music-_002d-printing-text-from-right-to-left.ja.html">テキストを右から左へ表示する</a></li>
+    <li><a id="toc-Turkish-Makam-example-1" href="world-music-_002d-turkish-makam-example.ja.html">Turkish Makam example</a></li>
+  </ul></li>
+  <li><a id="toc-Contexts-and-engravers" href="contexts-and-engravers.ja.html">18 Contexts and engravers</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Yin-Yu-woboisugotoniZhui-Jia-suru-3" href="contexts-and-engravers-_002d-adding-ambitus-per-voice.ja.html">音域をボイスごとに追加する</a></li>
+    <li><a id="toc-Pu-woZhui-Jia-suru-1" href="contexts-and-engravers-_002d-adding-an-extra-staff.ja.html">譜を追加する</a></li>
+    <li><a id="toc-Gai-Xing-Shi-niPu-woZhui-Jia-suru-1" href="contexts-and-engravers-_002d-adding-an-extra-staff-at-a-line-break.ja.html">改行時に譜を追加する</a></li>
+    <li><a id="toc-ChordNames-kontekisutoniXiao-Jie-Xian-woZhui-Jia-suru-1" href="contexts-and-engravers-_002d-adding-bar-lines-to-chordnames-context.ja.html">ChordNames コンテキストに小節線を追加する</a></li>
+    <li><a id="toc-Ambitus-after-key-signature-3" href="contexts-and-engravers-_002d-ambitus-after-key-signature.ja.html">Ambitus after key signature</a></li>
+    <li><a id="toc-raberuFu-kinoFen-Xi-Yong-buraketuto-1" href="contexts-and-engravers-_002d-analysis-brackets-with-labels.ja.html">ラベル付きの分析用ブラケット</a></li>
+    <li><a id="toc-merodeiniHe-wasetePu-noZhongYang-niaruYin-Fu-noFu-Gan-noXiang-kiwoZi-Dong-deBian-Geng-suru-1" href="contexts-and-engravers-_002d-automatically-changing-the-stem-direction-of-the-middle-note-based-on-the-melody.ja.html">メロディに合わせて譜の中央にある音符の符幹の向きを自動で変更する</a></li>
+    <li><a id="toc-MIDI-tiyanneruwoboisugotoniGe-riDang-teru" href="contexts-and-engravers-_002d-changing-midi-output-to-one-channel-per-voice.ja.html">MIDI チャンネルをボイスごとに割り当てる</a></li>
+    <li><a id="toc-_005cscaleDurations-woShi-Yong-sitaDuo-Pai-Zi-noBu-Fen-dePai-Zi-Ji-Hao-woBian-Geng-suru-1" href="contexts-and-engravers-_002d-changing-time-signatures-inside-a-polymetric-section-using-_005cscaledurations.ja.html">\scaleDurations を使用した多拍子の部分で拍子記号を変更する</a></li>
+    <li><a id="toc-Yi-naruboisunimatagaruarupeziowoZuo-Cheng-suru-1" href="contexts-and-engravers-_002d-creating-arpeggios-across-notes-in-different-voices.ja.html">異なるボイスにまたがるアルペジオを作成する</a></li>
+    <li><a id="toc-Kong-noPu-woZuo-Cheng-suru-2" href="contexts-and-engravers-_002d-creating-blank-staves.ja.html">空の譜を作成する</a></li>
+    <li><a id="toc-Ta-nokontekisutodePu-womatagaruarupeziowoZuo-Cheng-suru-1" href="contexts-and-engravers-_002d-creating-cross_002dstaff-arpeggios-in-other-contexts.ja.html">他のコンテキストで譜をまたがるアルペジオを作成する</a></li>
+    <li><a id="toc-kasutamaizusaretaDiao-Hao-woZuo-Cheng-suru-2" href="contexts-and-engravers-_002d-creating-custom-key-signatures.ja.html">カスタマイズされた調号を作成する</a></li>
+    <li><a id="toc-Pu-womatagaruFu-Gan--1" href="contexts-and-engravers-_002d-cross_002dstaff-stems.ja.html">譜をまたがる符幹</a></li>
+    <li><a id="toc-Scheme-deengurabawoDing-Yi-suru_003a-Yin-Yu-" href="contexts-and-engravers-_002d-defining-an-engraver-in-scheme_003a-ambitus-engraver.ja.html">Scheme でエングラーバを定義する: 音域</a></li>
+    <li><a id="toc-gurupuNei-niYan-Zou-suruPu-gaaruChang-He-ni-GrandStaff-Quan-Ti-woBiao-Shisitamamanisuru-1" href="contexts-and-engravers-_002d-displaying-a-whole-grandstaff-system-if-only-one-of-its-staves-is-alive.ja.html">グループ内に演奏する譜がある場合に GrandStaff 全体を表示したままにする</a></li>
+    <li><a id="toc-engurabawoYituzutu" href="contexts-and-engravers-_002d-engravers-one-by-one.ja.html">エングラーバを一つずつ</a></li>
+    <li><a id="toc-guritudoXian-_003a-Jian-taMu-woBian-Geng-suru-1" href="contexts-and-engravers-_002d-grid-lines_003a-changing-their-appearance.ja.html">グリッド線: 見た目を変更する</a></li>
+    <li><a id="toc-guritudoXian-_003a-rizumunoQiang-Diao-toYin-Fu-noTong-Qi--1" href="contexts-and-engravers-_002d-grid-lines_003a-emphasizing-rhythms-and-notes-synchronization.ja.html">グリッド線: リズムの強調と音符の同期</a></li>
+    <li><a id="toc-Measure-counters-3" href="contexts-and-engravers-_002d-measure-counters.ja.html">Measure counters</a></li>
+    <li><a id="toc-Measure-spanner-1" href="contexts-and-engravers-_002d-measure-spanner.ja.html">Measure spanner</a></li>
+    <li><a id="toc-Mensurstriche-reiauto-_0028Pu-noJian-niXiao-Jie-Xian-woBiao-Shisuru_0029-2" href="contexts-and-engravers-_002d-mensurstriche-layout-_0028bar-lines-between-the-staves_0029.ja.html">Mensurstriche レイアウト (譜の間に小節線を表示する)</a></li>
+    <li><a id="toc-Pu-wonesutosuru-1" href="contexts-and-engravers-_002d-nesting-staves.ja.html">譜をネストする</a></li>
+    <li><a id="toc-Lian-Hang-deXi-garetaLian-Fu-noTu-ZhongdeGai-Xing-suru-1" href="contexts-and-engravers-_002d-permitting-line-breaks-within-beamed-tuplets.ja.html">連桁で繋がれた連符の途中で改行する</a></li>
+    <li><a id="toc-Print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note-2" href="contexts-and-engravers-_002d-print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note.ja.html">Print chord names with same root and different bass as slash and bass note</a></li>
+    <li><a id="toc-rihasaruJi-Hao-woQuan-tenoPu-noShang-niBiao-Shisuru-1" href="contexts-and-engravers-_002d-printing-marks-on-every-staff.ja.html">リハーサル記号を全ての譜の上に表示する</a></li>
+    <li><a id="toc-Yin-Le-woYi-naruPai-Zi-Ji-Hao-deBiao-Shisuru-2" href="contexts-and-engravers-_002d-printing-music-with-different-time-signatures.ja.html">音楽を異なる拍子記号で表示する</a></li>
+    <li><a id="toc-Le-Pu-karaXiao-Jie-Fan-Hao-woXue-Chu-suru-1" href="contexts-and-engravers-_002d-removing-bar-numbers-from-a-score.ja.html">楽譜から小節番号を削除する</a></li>
+    <li><a id="toc-Pu-gurupunoXian-Tou-niJiao-Gua-Hu-woShi-Yong-suru-1" href="contexts-and-engravers-_002d-use-square-bracket-at-the-start-of-a-staff-group.ja.html">譜グループの先頭に角括弧を使用する</a></li>
+    <li><a id="toc-Using-mark-lines-in-a-Frenched-score-1" href="contexts-and-engravers-_002d-using-mark-lines-in-a-frenched-score.ja.html">Using mark lines in a Frenched score</a></li>
+    <li><a id="toc-taguwoShi-Yong-siteTong-zisosukaraJi-Liang-Yin-Le-Pu-toXian-Dai-Pu-woSheng-Cheng-suru-2" href="contexts-and-engravers-_002d-using-tags-to-produce-mensural-and-modern-music-from-the-same-source.ja.html">タグを使用して同じソースから計量音楽譜と現代譜を生成する</a></li>
+    <li><a id="toc-Shi-Ju-torihureinkaranaruHe-Chang-Pu--1" href="contexts-and-engravers-_002d-vocal-ensemble-template-with-verse-and-refrain.ja.html">詩句とリフレインからなる合唱譜</a></li>
+    <li><a id="toc-Zao-riFan-siGua-Hu-wokodo-nemunoXia-niBiao-Shisuru-3" href="contexts-and-engravers-_002d-volta-below-chords.ja.html">繰り返し括弧をコード ネームの下に表示する</a></li>
+    <li><a id="toc-Volta-brackets-in-multiple-staves-2" href="contexts-and-engravers-_002d-volta-brackets-in-multiple-staves.ja.html">Volta brackets in multiple staves</a></li>
+  </ul></li>
+  <li><a id="toc-Tweaks-and-overrides" href="tweaks-and-overrides.ja.html">19 Tweaks and overrides</a>
+  <ul class="no-bullet">
+    <li><a id="toc-otutabawoDan-YinoboisuniDui-siteShi-Yong-suru-1" href="tweaks-and-overrides-_002d-adding-an-ottava-marking-to-a-single-voice.ja.html">オッターバを単一のボイスに対して適用する</a></li>
+    <li><a id="toc-obuziekutonirinkuwoZhui-Jia-suru-1" href="tweaks-and-overrides-_002d-adding-links-to-objects.ja.html">オブジェクトにリンクを追加する</a></li>
+    <li><a id="toc-tabuPu-nimakuatupuwoZhui-Jia-suru-3" href="tweaks-and-overrides-_002d-adding-markups-in-a-tablature.ja.html">タブ譜にマークアップを追加する</a></li>
+    <li><a id="toc-Chang-iguritusandonitaimingu-makuwoZhui-Jia-suru-1" href="tweaks-and-overrides-_002d-adding-timing-marks-to-long-glissandi.ja.html">長いグリッサンドにタイミング マークを追加する</a></li>
+    <li><a id="toc-Zhuang-Shi-Yin-Fu-nosupesuwoDiao-Zheng-suru-1" href="tweaks-and-overrides-_002d-adjusting-grace-note-spacing.ja.html">装飾音符のスペースを調整する</a></li>
+    <li><a id="toc-Adjusting-slur-positions-vertically-1" href="tweaks-and-overrides-_002d-adjusting-slur-positions-vertically.ja.html">Adjusting slur positions vertically</a></li>
+    <li><a id="toc-Adjusting-vertical-spacing-of-lyrics-2" href="tweaks-and-overrides-_002d-adjusting-vertical-spacing-of-lyrics.ja.html">Adjusting vertical spacing of lyrics</a></li>
+    <li><a id="toc-Aligning-text-marks-to-notes-1" href="tweaks-and-overrides-_002d-aligning-text-marks-to-notes.ja.html">Aligning text marks to notes</a></li>
+    <li><a id="toc-Lian-Hang-deXi-garetaYin-Fu-noFu-Gan-noChang-sawoBian-Geng-suru-1" href="tweaks-and-overrides-_002d-altering-the-length-of-beamed-stems.ja.html">連桁で繋がれた音符の符幹の長さを変更する</a></li>
+    <li><a id="toc-Xiao-Jie-Fan-Hao-woBian-Geng-suru-2" href="tweaks-and-overrides-_002d-alternative-bar-numbering.ja.html">小節番号を変更する</a></li>
+    <li><a id="toc-Fen-Xi-Yong-noburaketutowoPu-noShang-niBiao-Shisuru-1" href="tweaks-and-overrides-_002d-analysis-brackets-above-the-staff.ja.html">分析用のブラケットを譜の上に表示する</a></li>
+    <li><a id="toc-raberuFu-kinoFen-Xi-Yong-buraketuto-2" href="tweaks-and-overrides-_002d-analysis-brackets-with-labels.ja.html">ラベル付きの分析用ブラケット</a></li>
+    <li><a id="toc-Fei-Dui-Cheng-nasura-1" href="tweaks-and-overrides-_002d-asymmetric-slurs.ja.html">非対称なスラー</a></li>
+    <li><a id="toc-Breaking-horizontal-alignment-of-dynamics-and-textscripts" href="tweaks-and-overrides-_002d-breaking-horizontal-alignment-of-dynamics-and-textscripts.ja.html">Breaking horizontal alignment of dynamics and textscripts</a></li>
+    <li><a id="toc-Breaking-vertical-alignment-of-dynamics-and-textscripts" href="tweaks-and-overrides-_002d-breaking-vertical-alignment-of-dynamics-and-textscripts.ja.html">Breaking vertical alignment of dynamics and textscripts</a></li>
+    <li><a id="toc-Caesura-_0028_201crailtracks_201d_0029-with-fermata-1" href="tweaks-and-overrides-_002d-caesura-_0028_201crailtracks_201d_0029-with-fermata.ja.html">Caesura (&ldquo;railtracks&rdquo;) with fermata</a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord-3" href="tweaks-and-overrides-_002d-changing-a-single-note_0027s-size-in-a-chord.ja.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-Lian-Hang-noTai-satosupesinguwoBian-Geng-suru" href="tweaks-and-overrides-_002d-changing-beam-thickness-and-spacing.ja.html">連桁の太さとスペーシングを変更する</a></li>
+    <li><a id="toc-Fu-Shu-Xiao-Jie-nimatagaruXiu-Fu-noXing-woBian-Geng-suru-1" href="tweaks-and-overrides-_002d-changing-form-of-multi_002dmeasure-rests.ja.html">複数小節にまたがる休符の形を変更する</a></li>
+    <li><a id="toc-Ge-_0022no-Grob-nopuropateiwoBian-Geng-suru" href="tweaks-and-overrides-_002d-changing-properties-for-individual-grobs.ja.html">個々の Grob のプロパティを変更する</a></li>
+    <li><a id="toc-tekisutoniyoruQiang-Ruo-Ji-Hao-notekisutotosupananosutairuwoBian-Geng-suru-1" href="tweaks-and-overrides-_002d-changing-text-and-spanner-styles-for-text-dynamics.ja.html">テキストによる強弱記号のテキストとスパナのスタイルを変更する</a></li>
+    <li><a id="toc-dehuorutonotekisuto-huonto-huamiriwoBian-Geng-suru-1" href="tweaks-and-overrides-_002d-changing-the-default-text-font-family.ja.html">デフォルトのテキスト フォント ファミリを変更する</a></li>
+    <li><a id="toc-Pu-nosaizuwoBian-Geng-suru-1" href="tweaks-and-overrides-_002d-changing-the-staff-size.ja.html">譜のサイズを変更する</a></li>
+    <li><a id="toc-metoronomuJi-Hao-woBiao-ShisezunitenpowoBian-Geng-suru-1" href="tweaks-and-overrides-_002d-changing-the-tempo-without-a-metronome-mark.ja.html">メトロノーム記号を表示せずにテンポを変更する</a></li>
+    <li><a id="toc-sasutein-pedaruJi-Hao-notekisutowoBian-Geng-suru-1" href="tweaks-and-overrides-_002d-changing-the-text-for-sustain-markings.ja.html">サステイン ペダル記号のテキストを変更する</a></li>
+    <li><a id="toc-Gai-Xing-Hou-nosupananoKe-Shi-Xing-wokontororusuru-1" href="tweaks-and-overrides-_002d-controlling-spanner-visibility-after-a-line-break.ja.html">改行後のスパナの可視性をコントロールする</a></li>
+    <li><a id="toc-Controlling-the-appearance-of-tremolo-slashes-1" href="tweaks-and-overrides-_002d-controlling-the-appearance-of-tremolo-slashes.ja.html">Controlling the appearance of tremolo slashes</a></li>
+    <li><a id="toc-sukuriputonoZong-Fang-Xiang-noYou-Xian-Shun-Wei-wokontororusuru-1" href="tweaks-and-overrides-_002d-controlling-the-vertical-ordering-of-scripts.ja.html">スクリプトの縦方向の優先順位をコントロールする</a></li>
+    <li><a id="toc-Lian-Fu-noGua-Hu-noKe-Shi-Xing-wokontororusuru-1" href="tweaks-and-overrides-_002d-controlling-tuplet-bracket-visibility.ja.html">連符の括弧の可視性をコントロールする</a></li>
+    <li><a id="toc-Chi-retanwoZuo-Cheng-suru-2" href="tweaks-and-overrides-_002d-creating-a-delayed-turn.ja.html">遅れターンを作成する</a></li>
+    <li><a id="toc-kasutamaizusaretaDiao-Hao-woZuo-Cheng-suru-3" href="tweaks-and-overrides-_002d-creating-custom-key-signatures.ja.html">カスタマイズされた調号を作成する</a></li>
+    <li><a id="toc-tekisuto-supanawoZuo-Cheng-suru-2" href="tweaks-and-overrides-_002d-creating-text-spanners.ja.html">テキスト スパナを作成する</a></li>
+    <li><a id="toc-Pu-womatagaruHe-Yin--_002d_002d-Lian-Hang-tonoWen-Ti-woJie-Jue-suru-2" href="tweaks-and-overrides-_002d-cross_002dstaff-chords-_002d_002d-beaming-problems-workaround.ja.html">譜をまたがる和音 &ndash; 連桁との問題を解決する</a></li>
+    <li><a id="toc-Pu-womatagaruFu-Gan--2" href="tweaks-and-overrides-_002d-cross_002dstaff-stems.ja.html">譜をまたがる符幹</a></li>
+    <li><a id="toc-kusutosu-1" href="tweaks-and-overrides-_002d-custodes.ja.html">クストス</a></li>
+    <li><a id="toc-huretutobodonohuretutoTu-wokasutamaizusuru-1" href="tweaks-and-overrides-_002d-customizing-fretboard-fret-diagrams.ja.html">フレットボードのフレット図をカスタマイズする</a></li>
+    <li><a id="toc-makuatupunohuretutoTu-wokasutamaizusuru-1" href="tweaks-and-overrides-_002d-customizing-markup-fret-diagrams.ja.html">マークアップのフレット図をカスタマイズする</a></li>
+    <li><a id="toc-sisutemuniPu-ga-1-tusikaCun-Zai-sinaiChang-He-nimoGua-Hu-woBiao-Shisuru-1" href="tweaks-and-overrides-_002d-display-bracket-with-only-one-staff-in-a-system.ja.html">システムに譜が 1 つしか存在しない場合にも括弧を表示する</a></li>
+    <li><a id="toc-Grob-noQin-Zi-Guan-Xi-woBiao-Shisuru" href="tweaks-and-overrides-_002d-displaying-grob-ancestry.ja.html">Grob の親子関係を表示する</a></li>
+    <li><a id="toc-hamonikusunoFu-Dian--1" href="tweaks-and-overrides-_002d-dotted-harmonics.ja.html">ハーモニクスの付点</a></li>
+    <li><a id="toc-Grob-noZhou-rinibotukusuwoBiao-Shisuru-1" href="tweaks-and-overrides-_002d-drawing-boxes-around-grobs.ja.html">Grob の周りにボックスを表示する</a></li>
+    <li><a id="toc-Yang-_0022naobuziekutonoZhou-riwoYuan-deWei-mu-1" href="tweaks-and-overrides-_002d-drawing-circles-around-various-objects.ja.html">様々なオブジェクトの周りを円で囲む</a></li>
+    <li><a id="toc-Dynamics-spanner-with-custom-text-1" href="tweaks-and-overrides-_002d-dynamics-spanner-with-custom-text.ja.html">Dynamics spanner with custom text</a></li>
+    <li><a id="toc-Extending-a-trill-spanner-1" href="tweaks-and-overrides-_002d-extending-a-trill-spanner.ja.html">Extending a trill spanner</a></li>
+    <li><a id="toc-Zao-riFan-sinimatagaruguritusando-1" href="tweaks-and-overrides-_002d-extending-glissandi-across-repeats.ja.html">繰り返しにまたがるグリッサンド</a></li>
+    <li><a id="toc-pedaruJi-Hao-noburaketutowoWei-Diao-Zheng-suru-1" href="tweaks-and-overrides-_002d-fine_002dtuning-pedal-brackets.ja.html">ペダル記号のブラケットを微調整する</a></li>
+    <li><a id="toc-Ping-Tan-natai-1" href="tweaks-and-overrides-_002d-flat-ties.ja.html">平坦なタイ</a></li>
+    <li><a id="toc-Force-a-cancellation-natural-before-accidentals-1" href="tweaks-and-overrides-_002d-force-a-cancellation-natural-before-accidentals.ja.html">Force a cancellation natural before accidentals</a></li>
+    <li><a id="toc-Yin-Fu-noShui-Ping-Wei-Zhi-woQiang-Zhi-De-niDiao-Zheng-suru-1" href="tweaks-and-overrides-_002d-forcing-horizontal-shift-of-notes.ja.html">音符の水平位置を強制的に調整する</a></li>
+    <li><a id="toc-huretutoTu-tosonoDiao-Zheng--1" href="tweaks-and-overrides-_002d-fret-diagrams-explained-and-developed.ja.html">フレット図とその調整</a></li>
+    <li><a id="toc-Generate-special-note-head-shapes-1" href="tweaks-and-overrides-_002d-generate-special-note-head-shapes.ja.html">Generate special note head shapes</a></li>
+    <li><a id="toc-Fu-Wei-wokasutamaizusuru-1" href="tweaks-and-overrides-_002d-generating-custom-flags.ja.html">符尾をカスタマイズする</a></li>
+    <li><a id="toc-Grob-wosukitupusuruguritusando-2" href="tweaks-and-overrides-_002d-glissandi-can-skip-grobs.ja.html">Grob をスキップするグリッサンド</a></li>
+    <li><a id="toc-Yi-narurain-sutairunoheapin-1" href="tweaks-and-overrides-_002d-hairpins-with-different-line-styles.ja.html">異なるライン スタイルのヘアピン</a></li>
+    <li><a id="toc-Horizontally-aligning-custom-dynamics-like-_201cpiu-f_201d-1" href="tweaks-and-overrides-_002d-horizontally-aligning-custom-dynamics-like-_201cpiu-f_201d.ja.html#tweaks-and-overrides-_002d-horizontally-aligning-custom-dynamics-like-_201cpi_00f9-f_201d">Horizontally aligning custom dynamics like &ldquo;più f&rdquo;</a></li>
+    <li><a id="toc-huretutoTu-noWei-Zhi-woBian-Geng-suruFang-Fa--1" href="tweaks-and-overrides-_002d-how-to-change-fret-diagram-position.ja.html">フレット図の位置を変更する方法</a></li>
+    <li><a id="toc-kaesurawoCha-Ru-suru-1" href="tweaks-and-overrides-_002d-inserting-a-caesura.ja.html">カエスーラを挿入する</a></li>
+    <li><a id="toc-Yin-Bu-Ji-Hao-noBian-Geng-woDa-kikuBiao-Shisuru-1" href="tweaks-and-overrides-_002d-keep-change-clefs-full_002dsized.ja.html">音部記号の変更を大きく表示する</a></li>
+    <li><a id="toc-Shi-Yin--1" href="tweaks-and-overrides-_002d-line-arrows.ja.html">矢印</a></li>
+    <li><a id="toc-Making-an-object-invisible-using-_005chide-2" href="tweaks-and-overrides-_002d-making-an-object-invisible-using-_005chide.ja.html">Making an object invisible using \hide</a></li>
+    <li><a id="toc-guritusandowoGai-Xing-dekiruyounisuru-1" href="tweaks-and-overrides-_002d-making-glissandi-breakable.ja.html">グリッサンドを改行できるようにする</a></li>
+    <li><a id="toc-Lian-Hang-noWei-Zhi-woShou-Dong-dekontororusuru-1" href="tweaks-and-overrides-_002d-manually-controlling-beam-positions.ja.html">連桁の位置を手動でコントロールする</a></li>
+    <li><a id="toc-Measure_002dcentered-bar-numbers" href="tweaks-and-overrides-_002d-measure_002dcentered-bar-numbers.ja.html">Measure-centered bar numbers</a></li>
+    <li><a id="toc-Mensurstriche-reiauto-_0028Pu-noJian-niXiao-Jie-Xian-woBiao-Shisuru_0029-3" href="tweaks-and-overrides-_002d-mensurstriche-layout-_0028bar-lines-between-the-staves_0029.ja.html">Mensurstriche レイアウト (譜の間に小節線を表示する)</a></li>
+    <li><a id="toc-otutavuanosupananoQing-kiwoBian-Geng-suru-2" href="tweaks-and-overrides-_002d-modifying-the-ottava-spanner-slope.ja.html">オッターヴァのスパナの傾きを変更する</a></li>
+    <li><a id="toc-Duo-Sheng-noYin-Le-deFu-Dian-Fu-kinoYin-Fu-woYi-Dong-suru-2" href="tweaks-and-overrides-_002d-moving-dotted-notes-in-polyphony.ja.html">多声の音楽で付点付きの音符を移動する</a></li>
+    <li><a id="toc-suranoZong-Fang-Xiang-noWei-Zhi-woYi-Dong-suru-1" href="tweaks-and-overrides-_002d-moving-slur-positions-vertically.ja.html">スラーの縦方向の位置を移動する</a></li>
+    <li><a id="toc-Pu-wonesutosuru-2" href="tweaks-and-overrides-_002d-nesting-staves.ja.html">譜をネストする</a></li>
+    <li><a id="toc-Overriding-articulations-by-type" href="tweaks-and-overrides-_002d-overriding-articulations-by-type.ja.html">Overriding articulations by type</a></li>
+    <li><a id="toc-pasentoZao-riFan-sinokauntanoKe-Shi-Xing--1" href="tweaks-and-overrides-_002d-percent-repeat-count-visibility.ja.html">パーセント繰り返しのカウンタの可視性</a></li>
+    <li><a id="toc-arupezionoPei-Zhi--1" href="tweaks-and-overrides-_002d-positioning-arpeggios.ja.html">アルペジオの配置</a></li>
+    <li><a id="toc-Yun-Zhi-Ji-Hao-noWei-Zhi-woZheng-Que-nikontororusuru-1" href="tweaks-and-overrides-_002d-positioning-fingering-indications-precisely.ja.html">運指記号の位置を正確にコントロールする</a></li>
+    <li><a id="toc-Fu-Shu-Xiao-Jie-nimatagaruXiu-Fu-noWei-Zhi-woBian-Geng-suru-1" href="tweaks-and-overrides-_002d-positioning-multi_002dmeasure-rests.ja.html">複数小節にまたがる休符の位置を変更する</a></li>
+    <li><a id="toc-tekisuto-makuatupuwosuranoNei-Ce-niPei-Zhi-suru-2" href="tweaks-and-overrides-_002d-positioning-text-markups-inside-slurs.ja.html">テキスト マークアップをスラーの内側に配置する</a></li>
+    <li><a id="toc-Xiao-Jie-Fan-Hao-woSi-Jiao-yaWan-noZhongniBiao-Shisuru-1" href="tweaks-and-overrides-_002d-printing-bar-numbers-inside-boxes-or-circles.ja.html">小節番号を四角や丸の中に表示する</a></li>
+    <li><a id="toc-metoronomuJi-Hao-yarihasaruJi-Hao-woPu-noXia-niBiao-Shisuru-2" href="tweaks-and-overrides-_002d-printing-metronome-and-rehearsal-marks-below-the-staff.ja.html">メトロノーム記号やリハーサル記号を譜の下に表示する</a></li>
+    <li><a id="toc-Yin-Ming-woBiao-Shisi_002c-okutabunoBiao-ShiwoZhi-Yu-suru" href="tweaks-and-overrides-_002d-printing-note-names-with-and-without-an-octave-marker.ja.html">音名を表示し、オクターブの表示を制御する</a></li>
+    <li><a id="toc-Printing-tuplet-brackets-on-the-note-head-side-1" href="tweaks-and-overrides-_002d-printing-tuplet-brackets-on-the-note-head-side.ja.html">Printing tuplet brackets on the note head side</a></li>
+    <li><a id="toc-puroposiyonaru-notesiyondeYan-Ge-modowoShi-Yong-suru" href="tweaks-and-overrides-_002d-proportional-strict-notespacing.ja.html">プロポーショナル ノーテーションで厳格モードを使用する</a></li>
+    <li><a id="toc-pianoQu-noXian-Tou-niaruburesuwoXue-Chu-suru-2" href="tweaks-and-overrides-_002d-removing-brace-on-first-line-of-piano-score.ja.html">ピアノ曲の先頭にあるブレースを削除する</a></li>
+    <li><a id="toc-StaffGroup_002c-PianoStaff_002c-GrandStaff-noPu-woXi-guXiao-Jie-Xian-woXue-Chu-suru-1" href="tweaks-and-overrides-_002d-removing-connecting-bar-lines-on-staffgroup_002c-pianostaff_002c-or-grandstaff.ja.html">StaffGroup, PianoStaff, GrandStaff の譜を繋ぐ小節線を削除する</a></li>
+    <li><a id="toc-Xian-Tou-noKong-Xing-woXue-Chu-suru-1" href="tweaks-and-overrides-_002d-removing-the-first-empty-line.ja.html">先頭の空行を削除する</a></li>
+    <li><a id="toc-Xiu-Fu-nosutairu-2" href="tweaks-and-overrides-_002d-rest-styles.ja.html">休符のスタイル</a></li>
+    <li><a id="toc-rizumu-suratusiyu-1" href="tweaks-and-overrides-_002d-rhythmic-slashes.ja.html">リズム スラッシュ</a></li>
+    <li><a id="toc-Diao-Hao-noQu-riXiao-siBiao-ShiwoXin-tanaDiao-Hao-karaLi-su-1" href="tweaks-and-overrides-_002d-separating-key-cancellations-from-key-signature-changes.ja.html">調号の取り消し表示を新たな調号から離す</a></li>
+    <li><a id="toc-Xiao-Jie-Xian-nibutukaruheapinnoJu-Dong-woShe-Ding-suru-1" href="tweaks-and-overrides-_002d-setting-hairpin-behavior-at-bar-lines.ja.html">小節線にぶつかるヘアピンの挙動を設定する</a></li>
+    <li><a id="toc-sisutemu-separetawoShe-Ding-suru-1" href="tweaks-and-overrides-_002d-setting-system-separators.ja.html">システム セパレータを設定する</a></li>
+    <li><a id="toc-Shape-individual-ties-in-chords-1" href="tweaks-and-overrides-_002d-shape-individual-ties-in-chords.ja.html">Shape individual ties in chords</a></li>
+    <li><a id="toc-Tong-ziateikiyuresiyonwoYin-Fu-yaHe-Yin-noShang-toXia-noLiang-Fang-niBiao-Shisuru-1" href="tweaks-and-overrides-_002d-showing-the-same-articulation-above-and-below-a-note-or-chord.ja.html">同じアーティキュレーションを音符や和音の上と下の両方に表示する</a></li>
+    <li><a id="toc-Xian-Fan-Hao-noYan-Chang-Xian--3" href="tweaks-and-overrides-_002d-string-number-extender-lines.ja.html">弦番号の延長線</a></li>
+    <li><a id="toc-Yin-Fu-noChong-Tu-niGuan-suruJing-Gao-woYi-Zhi-suru-1" href="tweaks-and-overrides-_002d-suppressing-warnings-for-clashing-note-columns.ja.html">音符の衝突に関する警告を抑制する</a></li>
+    <li><a id="toc-Time-signature-in-brackets-2" href="tweaks-and-overrides-_002d-time-signature-in-brackets.ja.html">Time signature in brackets</a></li>
+    <li><a id="toc-Gua-Hu-niWei-maretaPai-Zi-Ji-Hao--2" href="tweaks-and-overrides-_002d-time-signature-in-parentheses.ja.html">括弧に囲まれた拍子記号</a></li>
+    <li><a id="toc-Pai-Zi-Ji-Hao-no-_0028Fen-Shu-dehanaku_0029-Fen-Zi-nomiwoShu-Zi-deBiao-Shisuru-1" href="tweaks-and-overrides-_002d-time-signature-printing-only-the-numerator-as-a-number-_0028instead-of-the-fraction_0029.ja.html">拍子記号の (分数ではなく) 分子のみを数字で表示する</a></li>
+    <li><a id="toc-Lian-Fu-noburaketutotoPu-noBian-Geng-" href="tweaks-and-overrides-_002d-tuplet-bracket-and-change-staff.ja.html">連符のブラケットと譜の変更</a></li>
+    <li><a id="toc-Yin-Bu-Ji-Hao-nopuropateiwoDiao-Zheng-suru-2" href="tweaks-and-overrides-_002d-tweaking-clef-properties.ja.html">音部記号のプロパティを調整する</a></li>
+    <li><a id="toc-Zhuang-Shi-Yin-Fu-nosutairuwoDiao-Zheng-suru-1" href="tweaks-and-overrides-_002d-tweaking-grace-layout-within-music.ja.html">装飾音符のスタイルを調整する</a></li>
+    <li><a id="toc-Fu-Wei-nosutairuwoBian-Geng-suru-1" href="tweaks-and-overrides-_002d-using-alternative-flag-styles.ja.html">符尾のスタイルを変更する</a></li>
+    <li><a id="toc-_005ctweak-de-Grob-niakusesusurutameni-ly_003agrob_002dobject-woYong-iru" href="tweaks-and-overrides-_002d-using-ly_003agrob_002dobject-to-access-grobs-with-_005ctweak.ja.html">\tweak で Grob にアクセスするために ly:grob-object を用いる</a></li>
+    <li><a id="toc-Ge-_0022no-Grob-woDiao-Zheng-surutameni-_005ctweak-komandowoShi-Yong-suru" href="tweaks-and-overrides-_002d-using-the-_005ctweak-command-to-tweak-individual-grobs.ja.html">個々の Grob を調整するために \tweak コマンドを使用する</a></li>
+    <li><a id="toc-Qiang-Ruo-Ji-Hao-yatekisuto-sukuriputowoZong-Fang-Xiang-niJian-eru" href="tweaks-and-overrides-_002d-vertically-aligned-dynamics-and-textscripts.ja.html">強弱記号やテキスト スクリプトを縦方向に揃える</a></li>
+    <li><a id="toc-otusiatoGe-Ci-noZong-Fang-Xiang-noJian-eWei-Zhi--1" href="tweaks-and-overrides-_002d-vertically-aligning-ossias-and-lyrics.ja.html">オッシアと歌詞の縦方向の揃え位置</a></li>
+    <li><a id="toc-Vertically-aligning-stanza-numbers-of-different-staves-1" href="tweaks-and-overrides-_002d-vertically-aligning-stanza-numbers-of-different-staves.ja.html">Vertically aligning stanza numbers of different staves</a></li>
+    <li><a id="toc-Gong-Tong-naTong-Zou-Di-Yin-noYan-Chang-Xian-woZong-Fang-Xiang-niZhongYang-Jian-esuru-1" href="tweaks-and-overrides-_002d-vertically-centering-paired-figured-bass-extenders.ja.html">共通な通奏低音の延長線を縦方向に中央揃えする</a></li>
+  </ul></li>
+  <li><a id="toc-Paper-and-layout" href="paper-and-layout.ja.html">20 Paper and layout</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Le-Qi-Ming-woJian-eru-1" href="paper-and-layout-_002d-aligning-and-centering-instrument-names.ja.html">楽器名を揃える</a></li>
+    <li><a id="toc-Yi-naruGe-Ci-woTong-ziXing-niBiao-Shisuru-1" href="paper-and-layout-_002d-arranging-separate-lyrics-on-a-single-line.ja.html">異なる歌詞を同じ行に表示する</a></li>
+    <li><a id="toc-butuku-pato" href="paper-and-layout-_002d-book-parts.ja.html">ブック パート</a></li>
+    <li><a id="toc-Pu-nosaizuwoBian-Geng-suru-2" href="paper-and-layout-_002d-changing-the-staff-size.ja.html">譜のサイズを変更する</a></li>
+    <li><a id="toc-sisutemuwokuritupusuru" href="paper-and-layout-_002d-clip-systems.ja.html">システムをクリップする</a></li>
+    <li><a id="toc-Kong-noPu-woZuo-Cheng-suru-3" href="paper-and-layout-_002d-creating-blank-staves.ja.html">空の譜を作成する</a></li>
+    <li><a id="toc-Demonstrating-all-_005cheader-fields-1" href="paper-and-layout-_002d-demonstrating-all-_005cheader-fields.ja.html">Demonstrating all \header fields</a></li>
+    <li><a id="toc-gurupuNei-niYan-Zou-suruPu-gaaruChang-He-ni-GrandStaff-Quan-Ti-woBiao-Shisitamamanisuru-2" href="paper-and-layout-_002d-displaying-a-whole-grandstaff-system-if-only-one-of-its-staves-is-alive.ja.html">グループ内に演奏する譜がある場合に GrandStaff 全体を表示したままにする</a></li>
+    <li><a id="toc-sisutemu-separetawoShe-Ding-suru-2" href="paper-and-layout-_002d-setting-system-separators.ja.html">システム セパレータを設定する</a></li>
+    <li><a id="toc-Mu-Ci-" href="paper-and-layout-_002d-table-of-contents.ja.html">目次</a></li>
+    <li><a id="toc-Vertically-aligned-StaffGroups-without-connecting-SystemStartBar-1" href="paper-and-layout-_002d-vertically-aligned-staffgroups-without-connecting-systemstartbar.ja.html">Vertically aligned StaffGroups without connecting SystemStartBar</a></li>
+  </ul></li>
+  <li><a id="toc-Titles" href="titles.ja.html">21 Titles</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Le-Pu-niXian-Zai-Ri-Shi-woZhui-Jia-suru-1" href="titles-_002d-adding-the-current-date-to-a-score.ja.html">楽譜に現在日時を追加する</a></li>
+    <li><a id="toc-Le-Qi-Ming-woJian-eru-2" href="titles-_002d-aligning-and-centering-instrument-names.ja.html">楽器名を揃える</a></li>
+    <li><a id="toc-Demonstrating-all-_005cheader-fields-2" href="titles-_002d-demonstrating-all-_005cheader-fields.ja.html">Demonstrating all \header fields</a></li>
+    <li><a id="toc-baziyonFan-Hao-woChu-Li-suru-1" href="titles-_002d-outputting-the-version-number.ja.html">バージョン番号を出力する</a></li>
+  </ul></li>
+  <li><a id="toc-Spacing" href="spacing.ja.html">22 Spacing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Adjusting-vertical-spacing-of-lyrics-3" href="spacing-_002d-adjusting-vertical-spacing-of-lyrics.ja.html">Adjusting vertical spacing of lyrics</a></li>
+    <li><a id="toc-Yun-Zhi-Ji-Hao-woPu-noNei-Ce-niBiao-Shisuru-2" href="spacing-_002d-allowing-fingerings-to-be-printed-inside-the-staff.ja.html">運指記号を譜の内側に表示する</a></li>
+    <li><a id="toc-Breaking-horizontal-alignment-of-dynamics-and-textscripts-1" href="spacing-_002d-breaking-horizontal-alignment-of-dynamics-and-textscripts.ja.html">Breaking horizontal alignment of dynamics and textscripts</a></li>
+    <li><a id="toc-Breaking-vertical-alignment-of-dynamics-and-textscripts-1" href="spacing-_002d-breaking-vertical-alignment-of-dynamics-and-textscripts.ja.html">Breaking vertical alignment of dynamics and textscripts</a></li>
+    <li><a id="toc-Harmonizing-bar-line-thickness-for-staves-with-different-sizes-1" href="spacing-_002d-harmonizing-bar-line-thickness-for-staves-with-different-sizes.ja.html">Harmonizing bar line thickness for staves with different sizes</a></li>
+    <li><a id="toc-pezi-raberu" href="spacing-_002d-page-label.ja.html">ページ ラベル</a></li>
+    <li><a id="toc-puroposiyonaru-notesiyondeYan-Ge-modowoShi-Yong-suru-1" href="spacing-_002d-proportional-strict-notespacing.ja.html">プロポーショナル ノーテーションで厳格モードを使用する</a></li>
+    <li><a id="toc-Qiang-Ruo-Ji-Hao-yatekisuto-sukuriputowoZong-Fang-Xiang-niJian-eru-1" href="spacing-_002d-vertically-aligned-dynamics-and-textscripts.ja.html">強弱記号やテキスト スクリプトを縦方向に揃える</a></li>
+    <li><a id="toc-otusiatoGe-Ci-noZong-Fang-Xiang-noJian-eWei-Zhi--2" href="spacing-_002d-vertically-aligning-ossias-and-lyrics.ja.html">オッシアと歌詞の縦方向の揃え位置</a></li>
+  </ul></li>
+  <li><a id="toc-MIDI" href="midi.ja.html">23 MIDI</a>
+  <ul class="no-bullet">
+    <li><a id="toc-MIDI-tiyanneruwoboisugotoniGe-riDang-teru-1" href="midi-_002d-changing-midi-output-to-one-channel-per-voice.ja.html">MIDI チャンネルをボイスごとに割り当てる</a></li>
+    <li><a id="toc-metoronomuJi-Hao-woBiao-ShisezunitenpowoBian-Geng-suru-2" href="midi-_002d-changing-the-tempo-without-a-metronome-mark.ja.html">メトロノーム記号を表示せずにテンポを変更する</a></li>
+    <li><a id="toc-MIDI-Chu-Li-dekasutamuQiang-Ruo-Ji-Hao-woZuo-Cheng-suru" href="midi-_002d-creating-custom-dynamics-in-midi-output.ja.html">MIDI 出力でカスタム強弱記号を作成する</a></li>
+    <li><a id="toc-Demo-of-MIDI-instruments" href="midi-_002d-demo-of-midi-instruments.ja.html">Demo of MIDI instruments</a></li>
+    <li><a id="toc-dehuorutono-MIDI-Le-Qi-noYin-Liang-woZhi-kiHuan-eru" href="midi-_002d-replacing-default-midi-instrument-equalization.ja.html">デフォルトの MIDI 楽器の音量を置き換える</a></li>
+  </ul></li>
+  <li><a id="toc-Templates" href="templates.ja.html">24 Templates</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Ancient-notation-template-_002d-modern-transcription-of-Gregorian-music-2" href="templates-_002d-ancient-notation-template-_002d-modern-transcription-of-gregorian-music.ja.html#templates-_002d-ancient-notation-template-_2013-modern-transcription-of-gregorian-music">Ancient notation template – modern transcription of Gregorian music</a></li>
+    <li><a id="toc-angurikan-tiyantonotenpureto-1" href="templates-_002d-anglican-psalm-template.ja.html">アングリカン チャントのテンプレート</a></li>
+    <li><a id="toc-Zan-Mei-Ge-notenpureto-1" href="templates-_002d-hymn-template.ja.html">賛美歌のテンプレート</a></li>
+    <li><a id="toc-ziyazu-konbonotenpureto-3" href="templates-_002d-jazz-combo-template.ja.html">ジャズ コンボのテンプレート</a></li>
+    <li><a id="toc-okesutora_002c-korasu_002c-pianonotenpureto-3" href="templates-_002d-orchestra_002c-choir-and-piano-template.ja.html">オーケストラ、コーラス、ピアノのテンプレート</a></li>
+    <li><a id="toc-piano-tenpureto-_0028sinpuru_0029-1" href="templates-_002d-piano-template-_0028simple_0029.ja.html">ピアノ テンプレート (シンプル)</a></li>
+    <li><a id="toc-ZhongYang-niGe-Ci-woPei-Zhi-sitapiano-tenpureto-2" href="templates-_002d-piano-template-with-centered-lyrics.ja.html">中央に歌詞を配置したピアノ テンプレート</a></li>
+    <li><a id="toc-Xuan-Lu-toGe-Ci-woChi-tupiano-tenpureto-2" href="templates-_002d-piano-template-with-melody-and-lyrics.ja.html">旋律と歌詞を持つピアノ テンプレート</a></li>
+    <li><a id="toc-SATB-He-Chang-Pu-tenpureto-_002d-4-Pu--1" href="templates-_002d-satb-choir-template-_002d_002d-four-staves.ja.html">SATB 合唱譜テンプレート - 4 譜</a></li>
+    <li><a id="toc-Yin-Fu-_002c-Ge-Ci-_002c-kodowoChi-tuDan-YiPu-notenpureto-2" href="templates-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-and-chords.ja.html">音符、歌詞、コードを持つ単一譜のテンプレート</a></li>
+    <li><a id="toc-Single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets-2" href="templates-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets.ja.html">Single-staff template with notes, lyrics, chords, and frets</a></li>
+    <li><a id="toc-Yin-Fu-tokodowoChi-tuDan-YiPu-notenpureto-1" href="templates-_002d-single_002dstaff-template-with-notes-and-chords.ja.html">音符とコードを持つ単一譜のテンプレート</a></li>
+    <li><a id="toc-Yin-Fu-toGe-Ci-woChi-tuDan-YiPu-notenpureto-1" href="templates-_002d-single_002dstaff-template-with-notes-and-lyrics.ja.html">音符と歌詞を持つ単一譜のテンプレート</a></li>
+    <li><a id="toc-Yin-Fu-dakewoChi-tuDan-YiPu-notenpureto" href="templates-_002d-single_002dstaff-template-with-only-notes.ja.html">音符だけを持つ単一譜のテンプレート</a></li>
+    <li><a id="toc-Xian-Le-Si-Zhong-Zou-tenpureto-_0028sinpuru_0029-1" href="templates-_002d-string-quartet-template-_0028simple_0029.ja.html">弦楽四重奏テンプレート (シンプル)</a></li>
+    <li><a id="toc-patowoGe-_0022niChi-tuXian-Le-Si-Zhong-Zou-tenpureto-1" href="templates-_002d-string-quartet-template-with-separate-parts.ja.html">パートを個々に持つ弦楽四重奏テンプレート</a></li>
+    <li><a id="toc-He-Chang-tenpureto-1" href="templates-_002d-vocal-ensemble-template.ja.html">合唱テンプレート</a></li>
+    <li><a id="toc-Zi-Dong-pianoBan-Zou-Pu-woChi-tuHe-Chang-Pu--2" href="templates-_002d-vocal-ensemble-template-with-automatic-piano-reduction.ja.html">自動ピアノ伴奏譜を持つ合唱譜</a></li>
+    <li><a id="toc-Shang-Xia-niGe-Ci-woPei-Zhi-sitaHe-Chang-Pu-tenpureto-2" href="templates-_002d-vocal-ensemble-template-with-lyrics-aligned-below-and-above-the-staves.ja.html">上下に歌詞を配置した合唱譜テンプレート</a></li>
+    <li><a id="toc-Shi-Ju-torihureinkaranaruHe-Chang-Pu--2" href="templates-_002d-vocal-ensemble-template-with-verse-and-refrain.ja.html">詩句とリフレインからなる合唱譜</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 0cc270b871321ae5aa8622cea8d8262aafd16641
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google 検索">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="検索">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

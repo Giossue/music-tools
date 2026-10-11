@@ -1,0 +1,1011 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>2.2.139 Staff_performer (LilyPond Internals Reference)</title>
+
+<meta name="description" content="2.2.139 Staff_performer (LilyPond Internals Reference)">
+<meta name="keywords" content="2.2.139 Staff_performer (LilyPond Internals Reference)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="LilyPond &ndash; Internals Reference">
+<link href="indices.html" rel="index" title="Appendix A Indices">
+<link href="internals_toc.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="engravers-and-performers.html" rel="up" title="2.2 Engravers and Performers">
+<link href="staff_005fsymbol_005fengraver.html" rel="next" title="2.2.140 Staff_symbol_engraver">
+<link href="staff_005fhighlight_005fengraver.html" rel="prev" title="2.2.138 Staff_highlight_engraver">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="en" class="internals">
+<div id="main">
+<div class="subsection" id="staff_005fperformer">
+<table class="nav_table">
+<tr><td align="left">[<a href="translation.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Translation </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="internals_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="indices.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="backend.html" title="Next chapter"> Backend &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="staff_005fhighlight_005fengraver.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; <code>Staff_highlight_engraver</code> </a>]</td><td align="center">[<a href="engravers-and-performers.html" title="Up section" accesskey="u" rel="up">  Up: Engravers and Performers </a>]</td><td align="right">[<a href="staff_005fsymbol_005fengraver.html" title="Next section in reading order" accesskey="n" rel="next"> <code>Staff_symbol_engraver</code> &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Staff_005fperformer"></span><h4 class="subsection">2.2.139 <code>Staff_performer</code></h4>
+
+
+
+
+
+<p>Properties (read)
+</p><blockquote class="indentedblock">
+<dl compact="compact">
+<dt><span><code>midiChannelMapping</code> (symbol)</span></dt>
+<dd><p>How to map MIDI channels: per
+<code>staff</code> (default), <code>instrument</code> or <code>voice</code>.
+</p>
+</dd>
+<dt><span><code>midiMergeUnisons</code> (boolean)</span></dt>
+<dd><p>If true, output only one MIDI note-on
+event when notes with the same pitch, in the same MIDI-file track, overlap.
+</p>
+</dd>
+<dt><span><code>midiSkipOffset</code> (moment)</span></dt>
+<dd><p>This is the accrued MIDI offset to
+account for time skipped via <code>skipTypesetting</code>.
+</p>
+</dd>
+</dl>
+</blockquote>
+
+
+<p><code>Staff_performer</code> is part of the following context(s) in <code>\midi</code>: <a href="chordgrid.html"><code>ChordGrid</code></a>, <a href="chordnames.html"><code>ChordNames</code></a>, <a href="drumstaff.html"><code>DrumStaff</code></a>, <a href="gregoriantranscriptionlyrics.html"><code>GregorianTranscriptionLyrics</code></a>, <a href="gregoriantranscriptionstaff.html"><code>GregorianTranscriptionStaff</code></a>, <a href="kievanstaff.html"><code>KievanStaff</code></a>, <a href="lyrics.html"><code>Lyrics</code></a>, <a href="mensuralstaff.html"><code>MensuralStaff</code></a>, <a href="notenames.html"><code>NoteNames</code></a>, <a href="petruccistaff.html"><code>PetrucciStaff</code></a>, <a href="rhythmicstaff.html"><code>RhythmicStaff</code></a>, <a href="staff.html"><code>Staff</code></a>, <a href="tabstaff.html"><code>TabStaff</code></a> and <a href="vaticanastaff.html"><code>VaticanaStaff</code></a>.
+</p>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="translation.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Translation </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="internals_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="indices.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="backend.html" title="Next chapter"> Backend &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="staff_005fhighlight_005fengraver.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; <code>Staff_highlight_engraver</code> </a>]</td><td align="center">[<a href="engravers-and-performers.html" title="Up section" accesskey="u" rel="up">  Up: Engravers and Performers </a>]</td><td align="right">[<a href="staff_005fsymbol_005fengraver.html" title="Next section in reading order" accesskey="n" rel="next"> <code>Staff_symbol_engraver</code> &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.html" title="Documentation Index">
+    &lt;&lt; Back to Documentation Index
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.html#top" title="Cover (top) of document">
+    LilyPond Internals Reference  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Music-definitions" href="music-definitions.html">1 Music definitions</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Music-expressions" href="music-expressions.html">1.1 Music expressions</a>
+    <ul class="no-bullet">
+      <li><a id="toc-AbsoluteDynamicEvent" href="absolutedynamicevent.html">1.1.1 <code>AbsoluteDynamicEvent</code></a></li>
+      <li><a id="toc-AdHocJumpEvent" href="adhocjumpevent.html">1.1.2 <code>AdHocJumpEvent</code></a></li>
+      <li><a id="toc-AdHocMarkEvent" href="adhocmarkevent.html">1.1.3 <code>AdHocMarkEvent</code></a></li>
+      <li><a id="toc-AlternativeEvent" href="alternativeevent.html">1.1.4 <code>AlternativeEvent</code></a></li>
+      <li><a id="toc-AnnotateOutputEvent" href="annotateoutputevent.html">1.1.5 <code>AnnotateOutputEvent</code></a></li>
+      <li><a id="toc-ApplyContext" href="applycontext.html">1.1.6 <code>ApplyContext</code></a></li>
+      <li><a id="toc-ApplyOutputEvent" href="applyoutputevent.html">1.1.7 <code>ApplyOutputEvent</code></a></li>
+      <li><a id="toc-ArpeggioEvent" href="arpeggioevent.html">1.1.8 <code>ArpeggioEvent</code></a></li>
+      <li><a id="toc-ArticulationEvent" href="articulationevent.html">1.1.9 <code>ArticulationEvent</code></a></li>
+      <li><a id="toc-BarCheckEvent" href="barcheckevent.html">1.1.10 <code>BarCheckEvent</code></a></li>
+      <li><a id="toc-BarEvent" href="barevent.html">1.1.11 <code>BarEvent</code></a></li>
+      <li><a id="toc-BassFigureEvent" href="bassfigureevent.html">1.1.12 <code>BassFigureEvent</code></a></li>
+      <li><a id="toc-BeamEvent" href="beamevent.html">1.1.13 <code>BeamEvent</code></a></li>
+      <li><a id="toc-BeamForbidEvent" href="beamforbidevent.html">1.1.14 <code>BeamForbidEvent</code></a></li>
+      <li><a id="toc-BendAfterEvent" href="bendafterevent.html">1.1.15 <code>BendAfterEvent</code></a></li>
+      <li><a id="toc-BendSpanEvent" href="bendspanevent.html">1.1.16 <code>BendSpanEvent</code></a></li>
+      <li><a id="toc-BreakDynamicSpanEvent" href="breakdynamicspanevent.html">1.1.17 <code>BreakDynamicSpanEvent</code></a></li>
+      <li><a id="toc-BreathingEvent" href="breathingevent.html">1.1.18 <code>BreathingEvent</code></a></li>
+      <li><a id="toc-CaesuraEvent" href="caesuraevent.html">1.1.19 <code>CaesuraEvent</code></a></li>
+      <li><a id="toc-ChordSlurEvent" href="chordslurevent.html">1.1.20 <code>ChordSlurEvent</code></a></li>
+      <li><a id="toc-ClusterNoteEvent" href="clusternoteevent.html">1.1.21 <code>ClusterNoteEvent</code></a></li>
+      <li><a id="toc-CodaMarkEvent" href="codamarkevent.html">1.1.22 <code>CodaMarkEvent</code></a></li>
+      <li><a id="toc-CompletizeExtenderEvent" href="completizeextenderevent.html">1.1.23 <code>CompletizeExtenderEvent</code></a></li>
+      <li><a id="toc-ContextChange" href="contextchange.html">1.1.24 <code>ContextChange</code></a></li>
+      <li><a id="toc-ContextSpeccedMusic" href="contextspeccedmusic.html">1.1.25 <code>ContextSpeccedMusic</code></a></li>
+      <li><a id="toc-CrescendoEvent" href="crescendoevent.html">1.1.26 <code>CrescendoEvent</code></a></li>
+      <li><a id="toc-DalSegnoEvent" href="dalsegnoevent.html">1.1.27 <code>DalSegnoEvent</code></a></li>
+      <li><a id="toc-DecrescendoEvent" href="decrescendoevent.html">1.1.28 <code>DecrescendoEvent</code></a></li>
+      <li><a id="toc-DoublePercentEvent" href="doublepercentevent.html">1.1.29 <code>DoublePercentEvent</code></a></li>
+      <li><a id="toc-DurationLineEvent" href="durationlineevent.html">1.1.30 <code>DurationLineEvent</code></a></li>
+      <li><a id="toc-EpisemaEvent" href="episemaevent.html">1.1.31 <code>EpisemaEvent</code></a></li>
+      <li><a id="toc-Event" href="event.html">1.1.32 <code>Event</code></a></li>
+      <li><a id="toc-EventChord" href="eventchord.html">1.1.33 <code>EventChord</code></a></li>
+      <li><a id="toc-ExtenderEvent" href="extenderevent.html">1.1.34 <code>ExtenderEvent</code></a></li>
+      <li><a id="toc-FineEvent" href="fineevent.html">1.1.35 <code>FineEvent</code></a></li>
+      <li><a id="toc-FingerGlideEvent" href="fingerglideevent.html">1.1.36 <code>FingerGlideEvent</code></a></li>
+      <li><a id="toc-FingeringEvent" href="fingeringevent.html">1.1.37 <code>FingeringEvent</code></a></li>
+      <li><a id="toc-FootnoteEvent" href="footnoteevent.html">1.1.38 <code>FootnoteEvent</code></a></li>
+      <li><a id="toc-GlissandoEvent" href="glissandoevent.html">1.1.39 <code>GlissandoEvent</code></a></li>
+      <li><a id="toc-GraceMusic" href="gracemusic.html">1.1.40 <code>GraceMusic</code></a></li>
+      <li><a id="toc-HarmonicEvent" href="harmonicevent.html">1.1.41 <code>HarmonicEvent</code></a></li>
+      <li><a id="toc-HyphenEvent" href="hyphenevent.html">1.1.42 <code>HyphenEvent</code></a></li>
+      <li><a id="toc-InitialContextMusic" href="initialcontextmusic.html">1.1.43 <code>InitialContextMusic</code></a></li>
+      <li><a id="toc-KeyChangeEvent" href="keychangeevent.html">1.1.44 <code>KeyChangeEvent</code></a></li>
+      <li><a id="toc-LabelEvent" href="labelevent.html">1.1.45 <code>LabelEvent</code></a></li>
+      <li><a id="toc-LaissezVibrerEvent" href="laissezvibrerevent.html">1.1.46 <code>LaissezVibrerEvent</code></a></li>
+      <li><a id="toc-LigatureEvent" href="ligatureevent.html">1.1.47 <code>LigatureEvent</code></a></li>
+      <li><a id="toc-LineBreakEvent" href="linebreakevent.html">1.1.48 <code>LineBreakEvent</code></a></li>
+      <li><a id="toc-LyricCombineMusic" href="lyriccombinemusic.html">1.1.49 <code>LyricCombineMusic</code></a></li>
+      <li><a id="toc-LyricEvent" href="lyricevent.html">1.1.50 <code>LyricEvent</code></a></li>
+      <li><a id="toc-MeasureCounterEvent" href="measurecounterevent.html">1.1.51 <code>MeasureCounterEvent</code></a></li>
+      <li><a id="toc-MeasureSpannerEvent" href="measurespannerevent.html">1.1.52 <code>MeasureSpannerEvent</code></a></li>
+      <li><a id="toc-MultiMeasureArticulationEvent" href="multimeasurearticulationevent.html">1.1.53 <code>MultiMeasureArticulationEvent</code></a></li>
+      <li><a id="toc-MultiMeasureRestEvent" href="multimeasurerestevent.html">1.1.54 <code>MultiMeasureRestEvent</code></a></li>
+      <li><a id="toc-MultiMeasureRestMusic" href="multimeasurerestmusic.html">1.1.55 <code>MultiMeasureRestMusic</code></a></li>
+      <li><a id="toc-MultiMeasureTextEvent" href="multimeasuretextevent.html">1.1.56 <code>MultiMeasureTextEvent</code></a></li>
+      <li><a id="toc-Music" href="music.html">1.1.57 <code>Music</code></a></li>
+      <li><a id="toc-NonArpeggiatoEvent" href="nonarpeggiatoevent.html">1.1.58 <code>NonArpeggiatoEvent</code></a></li>
+      <li><a id="toc-NoteEvent" href="noteevent.html">1.1.59 <code>NoteEvent</code></a></li>
+      <li><a id="toc-NoteGroupingEvent" href="notegroupingevent.html">1.1.60 <code>NoteGroupingEvent</code></a></li>
+      <li><a id="toc-OptionalMaterialEvent" href="optionalmaterialevent.html">1.1.61 <code>OptionalMaterialEvent</code></a></li>
+      <li><a id="toc-OttavaEvent" href="ottavaevent.html">1.1.62 <code>OttavaEvent</code></a></li>
+      <li><a id="toc-OverrideProperty" href="overrideproperty.html">1.1.63 <code>OverrideProperty</code></a></li>
+      <li><a id="toc-PageBreakEvent" href="pagebreakevent.html">1.1.64 <code>PageBreakEvent</code></a></li>
+      <li><a id="toc-PageTurnEvent" href="pageturnevent.html">1.1.65 <code>PageTurnEvent</code></a></li>
+      <li><a id="toc-PartCombineEvent" href="partcombineevent.html">1.1.66 <code>PartCombineEvent</code></a></li>
+      <li><a id="toc-PartCombineMusic" href="partcombinemusic.html">1.1.67 <code>PartCombineMusic</code></a></li>
+      <li><a id="toc-PartialEvent" href="partialevent.html">1.1.68 <code>PartialEvent</code></a></li>
+      <li><a id="toc-PartialSet" href="partialset.html">1.1.69 <code>PartialSet</code></a></li>
+      <li><a id="toc-PercentEvent" href="percentevent.html">1.1.70 <code>PercentEvent</code></a></li>
+      <li><a id="toc-PercentRepeatedMusic" href="percentrepeatedmusic.html">1.1.71 <code>PercentRepeatedMusic</code></a></li>
+      <li><a id="toc-PesOrFlexaEvent" href="pesorflexaevent.html">1.1.72 <code>PesOrFlexaEvent</code></a></li>
+      <li><a id="toc-PhrasingSlurEvent" href="phrasingslurevent.html">1.1.73 <code>PhrasingSlurEvent</code></a></li>
+      <li><a id="toc-PolymetricTimeSignatureEvent" href="polymetrictimesignatureevent.html">1.1.74 <code>PolymetricTimeSignatureEvent</code></a></li>
+      <li><a id="toc-PolymetricTimeSignatureMusic" href="polymetrictimesignaturemusic.html">1.1.75 <code>PolymetricTimeSignatureMusic</code></a></li>
+      <li><a id="toc-PostEvents" href="postevents.html">1.1.76 <code>PostEvents</code></a></li>
+      <li><a id="toc-PropertySet" href="propertyset.html">1.1.77 <code>PropertySet</code></a></li>
+      <li><a id="toc-PropertyUnset" href="propertyunset.html">1.1.78 <code>PropertyUnset</code></a></li>
+      <li><a id="toc-QuoteMusic" href="quotemusic.html">1.1.79 <code>QuoteMusic</code></a></li>
+      <li><a id="toc-ReferenceTimeSignatureEvent" href="referencetimesignatureevent.html">1.1.80 <code>ReferenceTimeSignatureEvent</code></a></li>
+      <li><a id="toc-ReferenceTimeSignatureMusic" href="referencetimesignaturemusic.html">1.1.81 <code>ReferenceTimeSignatureMusic</code></a></li>
+      <li><a id="toc-RehearsalMarkEvent" href="rehearsalmarkevent.html">1.1.82 <code>RehearsalMarkEvent</code></a></li>
+      <li><a id="toc-RelativeOctaveCheck" href="relativeoctavecheck.html">1.1.83 <code>RelativeOctaveCheck</code></a></li>
+      <li><a id="toc-RelativeOctaveMusic" href="relativeoctavemusic.html">1.1.84 <code>RelativeOctaveMusic</code></a></li>
+      <li><a id="toc-RepeatSlashEvent" href="repeatslashevent.html">1.1.85 <code>RepeatSlashEvent</code></a></li>
+      <li><a id="toc-RepeatTieEvent" href="repeattieevent.html">1.1.86 <code>RepeatTieEvent</code></a></li>
+      <li><a id="toc-RestEvent" href="restevent.html">1.1.87 <code>RestEvent</code></a></li>
+      <li><a id="toc-RevertProperty" href="revertproperty.html">1.1.88 <code>RevertProperty</code></a></li>
+      <li><a id="toc-ScriptEvent" href="scriptevent.html">1.1.89 <code>ScriptEvent</code></a></li>
+      <li><a id="toc-SectionEvent" href="sectionevent.html">1.1.90 <code>SectionEvent</code></a></li>
+      <li><a id="toc-SectionLabelEvent" href="sectionlabelevent.html">1.1.91 <code>SectionLabelEvent</code></a></li>
+      <li><a id="toc-SegnoMarkEvent" href="segnomarkevent.html">1.1.92 <code>SegnoMarkEvent</code></a></li>
+      <li><a id="toc-SegnoRepeatedMusic" href="segnorepeatedmusic.html">1.1.93 <code>SegnoRepeatedMusic</code></a></li>
+      <li><a id="toc-SequentialAlternativeMusic" href="sequentialalternativemusic.html">1.1.94 <code>SequentialAlternativeMusic</code></a></li>
+      <li><a id="toc-SequentialMusic" href="sequentialmusic.html">1.1.95 <code>SequentialMusic</code></a></li>
+      <li><a id="toc-SimultaneousMusic" href="simultaneousmusic.html">1.1.96 <code>SimultaneousMusic</code></a></li>
+      <li><a id="toc-SkipEvent" href="skipevent.html">1.1.97 <code>SkipEvent</code></a></li>
+      <li><a id="toc-SkipMusic" href="skipmusic.html">1.1.98 <code>SkipMusic</code></a></li>
+      <li><a id="toc-SkippedMusic" href="skippedmusic.html">1.1.99 <code>SkippedMusic</code></a></li>
+      <li><a id="toc-SlurEvent" href="slurevent.html">1.1.100 <code>SlurEvent</code></a></li>
+      <li><a id="toc-SostenutoEvent" href="sostenutoevent.html">1.1.101 <code>SostenutoEvent</code></a></li>
+      <li><a id="toc-SpacingSectionEvent" href="spacingsectionevent.html">1.1.102 <code>SpacingSectionEvent</code></a></li>
+      <li><a id="toc-SpanEvent" href="spanevent.html">1.1.103 <code>SpanEvent</code></a></li>
+      <li><a id="toc-StaffHighlightEvent" href="staffhighlightevent.html">1.1.104 <code>StaffHighlightEvent</code></a></li>
+      <li><a id="toc-StaffSpanEvent" href="staffspanevent.html">1.1.105 <code>StaffSpanEvent</code></a></li>
+      <li><a id="toc-StringNumberEvent" href="stringnumberevent.html">1.1.106 <code>StringNumberEvent</code></a></li>
+      <li><a id="toc-StrokeFingerEvent" href="strokefingerevent.html">1.1.107 <code>StrokeFingerEvent</code></a></li>
+      <li><a id="toc-SustainEvent" href="sustainevent.html">1.1.108 <code>SustainEvent</code></a></li>
+      <li><a id="toc-TempoChangeEvent" href="tempochangeevent.html">1.1.109 <code>TempoChangeEvent</code></a></li>
+      <li><a id="toc-TextMarkEvent" href="textmarkevent.html">1.1.110 <code>TextMarkEvent</code></a></li>
+      <li><a id="toc-TextScriptEvent" href="textscriptevent.html">1.1.111 <code>TextScriptEvent</code></a></li>
+      <li><a id="toc-TextSpanEvent" href="textspanevent.html">1.1.112 <code>TextSpanEvent</code></a></li>
+      <li><a id="toc-TieEvent" href="tieevent.html">1.1.113 <code>TieEvent</code></a></li>
+      <li><a id="toc-TimeScaledMusic" href="timescaledmusic.html">1.1.114 <code>TimeScaledMusic</code></a></li>
+      <li><a id="toc-TransposedMusic" href="transposedmusic.html">1.1.115 <code>TransposedMusic</code></a></li>
+      <li><a id="toc-TremoloEvent" href="tremoloevent.html">1.1.116 <code>TremoloEvent</code></a></li>
+      <li><a id="toc-TremoloRepeatedMusic" href="tremolorepeatedmusic.html">1.1.117 <code>TremoloRepeatedMusic</code></a></li>
+      <li><a id="toc-TremoloSpanEvent" href="tremolospanevent.html">1.1.118 <code>TremoloSpanEvent</code></a></li>
+      <li><a id="toc-TrillSpanEvent" href="trillspanevent.html">1.1.119 <code>TrillSpanEvent</code></a></li>
+      <li><a id="toc-TupletSpanEvent" href="tupletspanevent.html">1.1.120 <code>TupletSpanEvent</code></a></li>
+      <li><a id="toc-UnaCordaEvent" href="unacordaevent.html">1.1.121 <code>UnaCordaEvent</code></a></li>
+      <li><a id="toc-UnfoldedRepeatedMusic" href="unfoldedrepeatedmusic.html">1.1.122 <code>UnfoldedRepeatedMusic</code></a></li>
+      <li><a id="toc-UnfoldedSpeccedMusic" href="unfoldedspeccedmusic.html">1.1.123 <code>UnfoldedSpeccedMusic</code></a></li>
+      <li><a id="toc-UnrelativableMusic" href="unrelativablemusic.html">1.1.124 <code>UnrelativableMusic</code></a></li>
+      <li><a id="toc-VoiceSeparator" href="voiceseparator.html">1.1.125 <code>VoiceSeparator</code></a></li>
+      <li><a id="toc-VoltaRepeatEndEvent" href="voltarepeatendevent.html">1.1.126 <code>VoltaRepeatEndEvent</code></a></li>
+      <li><a id="toc-VoltaRepeatStartEvent" href="voltarepeatstartevent.html">1.1.127 <code>VoltaRepeatStartEvent</code></a></li>
+      <li><a id="toc-VoltaRepeatedMusic" href="voltarepeatedmusic.html">1.1.128 <code>VoltaRepeatedMusic</code></a></li>
+      <li><a id="toc-VoltaSpanEvent" href="voltaspanevent.html">1.1.129 <code>VoltaSpanEvent</code></a></li>
+      <li><a id="toc-VoltaSpeccedMusic" href="voltaspeccedmusic.html">1.1.130 <code>VoltaSpeccedMusic</code></a></li>
+      <li><a id="toc-VowelTransitionEvent" href="voweltransitionevent.html">1.1.131 <code>VowelTransitionEvent</code></a></li>
+    </ul></li>
+    <li><a id="toc-Music-classes" href="music-classes.html">1.2 Music classes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-absolute_002ddynamic_002devent-1" href="absolute_002ddynamic_002devent.html">1.2.1 <code>absolute-dynamic-event</code></a></li>
+      <li><a id="toc-ad_002dhoc_002djump_002devent-1" href="ad_002dhoc_002djump_002devent.html">1.2.2 <code>ad-hoc-jump-event</code></a></li>
+      <li><a id="toc-ad_002dhoc_002dmark_002devent-1" href="ad_002dhoc_002dmark_002devent.html">1.2.3 <code>ad-hoc-mark-event</code></a></li>
+      <li><a id="toc-alternative_002devent-1" href="alternative_002devent.html">1.2.4 <code>alternative-event</code></a></li>
+      <li><a id="toc-annotate_002doutput_002devent-1" href="annotate_002doutput_002devent.html">1.2.5 <code>annotate-output-event</code></a></li>
+      <li><a id="toc-apply_002doutput_002devent-1" href="apply_002doutput_002devent.html">1.2.6 <code>apply-output-event</code></a></li>
+      <li><a id="toc-arpeggio_002devent-1" href="arpeggio_002devent.html">1.2.7 <code>arpeggio-event</code></a></li>
+      <li><a id="toc-articulation_002devent-1" href="articulation_002devent.html">1.2.8 <code>articulation-event</code></a></li>
+      <li><a id="toc-bar_002dcheck_002devent-1" href="bar_002dcheck_002devent.html">1.2.9 <code>bar-check-event</code></a></li>
+      <li><a id="toc-bar_002devent-1" href="bar_002devent.html">1.2.10 <code>bar-event</code></a></li>
+      <li><a id="toc-bass_002dfigure_002devent-1" href="bass_002dfigure_002devent.html">1.2.11 <code>bass-figure-event</code></a></li>
+      <li><a id="toc-beam_002devent-1" href="beam_002devent.html">1.2.12 <code>beam-event</code></a></li>
+      <li><a id="toc-beam_002dforbid_002devent-1" href="beam_002dforbid_002devent.html">1.2.13 <code>beam-forbid-event</code></a></li>
+      <li><a id="toc-bend_002dafter_002devent-1" href="bend_002dafter_002devent.html">1.2.14 <code>bend-after-event</code></a></li>
+      <li><a id="toc-bend_002dspan_002devent-1" href="bend_002dspan_002devent.html">1.2.15 <code>bend-span-event</code></a></li>
+      <li><a id="toc-break_002ddynamic_002dspan_002devent-1" href="break_002ddynamic_002dspan_002devent.html">1.2.16 <code>break-dynamic-span-event</code></a></li>
+      <li><a id="toc-break_002devent-1" href="break_002devent.html">1.2.17 <code>break-event</code></a></li>
+      <li><a id="toc-break_002dspan_002devent-1" href="break_002dspan_002devent.html">1.2.18 <code>break-span-event</code></a></li>
+      <li><a id="toc-breathing_002devent-1" href="breathing_002devent.html">1.2.19 <code>breathing-event</code></a></li>
+      <li><a id="toc-caesura_002devent-1" href="caesura_002devent.html">1.2.20 <code>caesura-event</code></a></li>
+      <li><a id="toc-chord_002dslur_002devent-1" href="chord_002dslur_002devent.html">1.2.21 <code>chord-slur-event</code></a></li>
+      <li><a id="toc-cluster_002dnote_002devent-1" href="cluster_002dnote_002devent.html">1.2.22 <code>cluster-note-event</code></a></li>
+      <li><a id="toc-coda_002dmark_002devent-1" href="coda_002dmark_002devent.html">1.2.23 <code>coda-mark-event</code></a></li>
+      <li><a id="toc-completize_002dextender_002devent-1" href="completize_002dextender_002devent.html">1.2.24 <code>completize-extender-event</code></a></li>
+      <li><a id="toc-crescendo_002devent-1" href="crescendo_002devent.html">1.2.25 <code>crescendo-event</code></a></li>
+      <li><a id="toc-dal_002dsegno_002devent-1" href="dal_002dsegno_002devent.html">1.2.26 <code>dal-segno-event</code></a></li>
+      <li><a id="toc-decrescendo_002devent-1" href="decrescendo_002devent.html">1.2.27 <code>decrescendo-event</code></a></li>
+      <li><a id="toc-double_002dpercent_002devent-1" href="double_002dpercent_002devent.html">1.2.28 <code>double-percent-event</code></a></li>
+      <li><a id="toc-duration_002dline_002devent-1" href="duration_002dline_002devent.html">1.2.29 <code>duration-line-event</code></a></li>
+      <li><a id="toc-dynamic_002devent-1" href="dynamic_002devent.html">1.2.30 <code>dynamic-event</code></a></li>
+      <li><a id="toc-episema_002devent-1" href="episema_002devent.html">1.2.31 <code>episema-event</code></a></li>
+      <li><a id="toc-extender_002devent-1" href="extender_002devent.html">1.2.32 <code>extender-event</code></a></li>
+      <li><a id="toc-fine_002devent-1" href="fine_002devent.html">1.2.33 <code>fine-event</code></a></li>
+      <li><a id="toc-finger_002dglide_002devent-1" href="finger_002dglide_002devent.html">1.2.34 <code>finger-glide-event</code></a></li>
+      <li><a id="toc-fingering_002devent-1" href="fingering_002devent.html">1.2.35 <code>fingering-event</code></a></li>
+      <li><a id="toc-footnote_002devent-1" href="footnote_002devent.html">1.2.36 <code>footnote-event</code></a></li>
+      <li><a id="toc-general_002drest_002devent-1" href="general_002drest_002devent.html">1.2.37 <code>general-rest-event</code></a></li>
+      <li><a id="toc-glissando_002devent-1" href="glissando_002devent.html">1.2.38 <code>glissando-event</code></a></li>
+      <li><a id="toc-harmonic_002devent-1" href="harmonic_002devent.html">1.2.39 <code>harmonic-event</code></a></li>
+      <li><a id="toc-hyphen_002devent-1" href="hyphen_002devent.html">1.2.40 <code>hyphen-event</code></a></li>
+      <li><a id="toc-key_002dchange_002devent-1" href="key_002dchange_002devent.html">1.2.41 <code>key-change-event</code></a></li>
+      <li><a id="toc-label_002devent-1" href="label_002devent.html">1.2.42 <code>label-event</code></a></li>
+      <li><a id="toc-laissez_002dvibrer_002devent-1" href="laissez_002dvibrer_002devent.html">1.2.43 <code>laissez-vibrer-event</code></a></li>
+      <li><a id="toc-layout_002dinstruction_002devent-1" href="layout_002dinstruction_002devent.html">1.2.44 <code>layout-instruction-event</code></a></li>
+      <li><a id="toc-ligature_002devent-1" href="ligature_002devent.html">1.2.45 <code>ligature-event</code></a></li>
+      <li><a id="toc-line_002dbreak_002devent-1" href="line_002dbreak_002devent.html">1.2.46 <code>line-break-event</code></a></li>
+      <li><a id="toc-lyric_002devent-1" href="lyric_002devent.html">1.2.47 <code>lyric-event</code></a></li>
+      <li><a id="toc-mark_002devent-1" href="mark_002devent.html">1.2.48 <code>mark-event</code></a></li>
+      <li><a id="toc-measure_002dcounter_002devent-1" href="measure_002dcounter_002devent.html">1.2.49 <code>measure-counter-event</code></a></li>
+      <li><a id="toc-measure_002dspanner_002devent-1" href="measure_002dspanner_002devent.html">1.2.50 <code>measure-spanner-event</code></a></li>
+      <li><a id="toc-melodic_002devent-1" href="melodic_002devent.html">1.2.51 <code>melodic-event</code></a></li>
+      <li><a id="toc-multi_002dmeasure_002darticulation_002devent-1" href="multi_002dmeasure_002darticulation_002devent.html">1.2.52 <code>multi-measure-articulation-event</code></a></li>
+      <li><a id="toc-multi_002dmeasure_002drest_002devent-1" href="multi_002dmeasure_002drest_002devent.html">1.2.53 <code>multi-measure-rest-event</code></a></li>
+      <li><a id="toc-multi_002dmeasure_002dtext_002devent-1" href="multi_002dmeasure_002dtext_002devent.html">1.2.54 <code>multi-measure-text-event</code></a></li>
+      <li><a id="toc-music_002devent-1" href="music_002devent.html">1.2.55 <code>music-event</code></a></li>
+      <li><a id="toc-non_002darpeggiato_002devent-1" href="non_002darpeggiato_002devent.html">1.2.56 <code>non-arpeggiato-event</code></a></li>
+      <li><a id="toc-note_002devent-1" href="note_002devent.html">1.2.57 <code>note-event</code></a></li>
+      <li><a id="toc-note_002dgrouping_002devent-1" href="note_002dgrouping_002devent.html">1.2.58 <code>note-grouping-event</code></a></li>
+      <li><a id="toc-optional_002dmaterial_002devent-1" href="optional_002dmaterial_002devent.html">1.2.59 <code>optional-material-event</code></a></li>
+      <li><a id="toc-ottava_002devent-1" href="ottava_002devent.html">1.2.60 <code>ottava-event</code></a></li>
+      <li><a id="toc-page_002dbreak_002devent-1" href="page_002dbreak_002devent.html">1.2.61 <code>page-break-event</code></a></li>
+      <li><a id="toc-page_002dturn_002devent-1" href="page_002dturn_002devent.html">1.2.62 <code>page-turn-event</code></a></li>
+      <li><a id="toc-part_002dcombine_002devent-1" href="part_002dcombine_002devent.html">1.2.63 <code>part-combine-event</code></a></li>
+      <li><a id="toc-partial_002devent-1" href="partial_002devent.html">1.2.64 <code>partial-event</code></a></li>
+      <li><a id="toc-pedal_002devent-1" href="pedal_002devent.html">1.2.65 <code>pedal-event</code></a></li>
+      <li><a id="toc-percent_002devent-1" href="percent_002devent.html">1.2.66 <code>percent-event</code></a></li>
+      <li><a id="toc-pes_002dor_002dflexa_002devent-1" href="pes_002dor_002dflexa_002devent.html">1.2.67 <code>pes-or-flexa-event</code></a></li>
+      <li><a id="toc-phrasing_002dslur_002devent-1" href="phrasing_002dslur_002devent.html">1.2.68 <code>phrasing-slur-event</code></a></li>
+      <li><a id="toc-polymetric_002dtime_002dsignature_002devent-1" href="polymetric_002dtime_002dsignature_002devent.html">1.2.69 <code>polymetric-time-signature-event</code></a></li>
+      <li><a id="toc-reference_002dtime_002dsignature_002devent-1" href="reference_002dtime_002dsignature_002devent.html">1.2.70 <code>reference-time-signature-event</code></a></li>
+      <li><a id="toc-rehearsal_002dmark_002devent-1" href="rehearsal_002dmark_002devent.html">1.2.71 <code>rehearsal-mark-event</code></a></li>
+      <li><a id="toc-repeat_002dslash_002devent-1" href="repeat_002dslash_002devent.html">1.2.72 <code>repeat-slash-event</code></a></li>
+      <li><a id="toc-repeat_002dtie_002devent-1" href="repeat_002dtie_002devent.html">1.2.73 <code>repeat-tie-event</code></a></li>
+      <li><a id="toc-rest_002devent-1" href="rest_002devent.html">1.2.74 <code>rest-event</code></a></li>
+      <li><a id="toc-rhythmic_002devent-1" href="rhythmic_002devent.html">1.2.75 <code>rhythmic-event</code></a></li>
+      <li><a id="toc-script_002devent-1" href="script_002devent.html">1.2.76 <code>script-event</code></a></li>
+      <li><a id="toc-section_002devent-1" href="section_002devent.html">1.2.77 <code>section-event</code></a></li>
+      <li><a id="toc-section_002dlabel_002devent-1" href="section_002dlabel_002devent.html">1.2.78 <code>section-label-event</code></a></li>
+      <li><a id="toc-segno_002dmark_002devent-1" href="segno_002dmark_002devent.html">1.2.79 <code>segno-mark-event</code></a></li>
+      <li><a id="toc-skip_002devent-1" href="skip_002devent.html">1.2.80 <code>skip-event</code></a></li>
+      <li><a id="toc-slur_002devent-1" href="slur_002devent.html">1.2.81 <code>slur-event</code></a></li>
+      <li><a id="toc-sostenuto_002devent-1" href="sostenuto_002devent.html">1.2.82 <code>sostenuto-event</code></a></li>
+      <li><a id="toc-spacing_002dsection_002devent-1" href="spacing_002dsection_002devent.html">1.2.83 <code>spacing-section-event</code></a></li>
+      <li><a id="toc-span_002ddynamic_002devent-1" href="span_002ddynamic_002devent.html">1.2.84 <code>span-dynamic-event</code></a></li>
+      <li><a id="toc-span_002devent-1" href="span_002devent.html">1.2.85 <code>span-event</code></a></li>
+      <li><a id="toc-staff_002dhighlight_002devent-1" href="staff_002dhighlight_002devent.html">1.2.86 <code>staff-highlight-event</code></a></li>
+      <li><a id="toc-staff_002dspan_002devent-1" href="staff_002dspan_002devent.html">1.2.87 <code>staff-span-event</code></a></li>
+      <li><a id="toc-StreamEvent" href="streamevent.html">1.2.88 <code>StreamEvent</code></a></li>
+      <li><a id="toc-string_002dnumber_002devent-1" href="string_002dnumber_002devent.html">1.2.89 <code>string-number-event</code></a></li>
+      <li><a id="toc-stroke_002dfinger_002devent-1" href="stroke_002dfinger_002devent.html">1.2.90 <code>stroke-finger-event</code></a></li>
+      <li><a id="toc-structural_002devent-1" href="structural_002devent.html">1.2.91 <code>structural-event</code></a></li>
+      <li><a id="toc-sustain_002devent-1" href="sustain_002devent.html">1.2.92 <code>sustain-event</code></a></li>
+      <li><a id="toc-tempo_002dchange_002devent-1" href="tempo_002dchange_002devent.html">1.2.93 <code>tempo-change-event</code></a></li>
+      <li><a id="toc-text_002dmark_002devent-1" href="text_002dmark_002devent.html">1.2.94 <code>text-mark-event</code></a></li>
+      <li><a id="toc-text_002dscript_002devent-1" href="text_002dscript_002devent.html">1.2.95 <code>text-script-event</code></a></li>
+      <li><a id="toc-text_002dspan_002devent-1" href="text_002dspan_002devent.html">1.2.96 <code>text-span-event</code></a></li>
+      <li><a id="toc-tie_002devent-1" href="tie_002devent.html">1.2.97 <code>tie-event</code></a></li>
+      <li><a id="toc-time_002dsignature_002devent-1" href="time_002dsignature_002devent.html">1.2.98 <code>time-signature-event</code></a></li>
+      <li><a id="toc-tremolo_002devent-1" href="tremolo_002devent.html">1.2.99 <code>tremolo-event</code></a></li>
+      <li><a id="toc-tremolo_002dspan_002devent-1" href="tremolo_002dspan_002devent.html">1.2.100 <code>tremolo-span-event</code></a></li>
+      <li><a id="toc-trill_002dspan_002devent-1" href="trill_002dspan_002devent.html">1.2.101 <code>trill-span-event</code></a></li>
+      <li><a id="toc-tuplet_002dspan_002devent-1" href="tuplet_002dspan_002devent.html">1.2.102 <code>tuplet-span-event</code></a></li>
+      <li><a id="toc-una_002dcorda_002devent-1" href="una_002dcorda_002devent.html">1.2.103 <code>una-corda-event</code></a></li>
+      <li><a id="toc-volta_002drepeat_002dend_002devent-1" href="volta_002drepeat_002dend_002devent.html">1.2.104 <code>volta-repeat-end-event</code></a></li>
+      <li><a id="toc-volta_002drepeat_002dstart_002devent-1" href="volta_002drepeat_002dstart_002devent.html">1.2.105 <code>volta-repeat-start-event</code></a></li>
+      <li><a id="toc-volta_002dspan_002devent-1" href="volta_002dspan_002devent.html">1.2.106 <code>volta-span-event</code></a></li>
+      <li><a id="toc-vowel_002dtransition_002devent-1" href="vowel_002dtransition_002devent.html">1.2.107 <code>vowel-transition-event</code></a></li>
+    </ul></li>
+    <li><a id="toc-Music-properties" href="music-properties.html">1.3 Music properties</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Translation" href="translation.html">2 Translation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Contexts" href="contexts.html">2.1 Contexts</a>
+    <ul class="no-bullet">
+      <li><a id="toc-ChoirStaff" href="choirstaff.html">2.1.1 <code>ChoirStaff</code></a></li>
+      <li><a id="toc-ChordGrid" href="chordgrid.html">2.1.2 <code>ChordGrid</code></a></li>
+      <li><a id="toc-ChordGridScore" href="chordgridscore.html">2.1.3 <code>ChordGridScore</code></a></li>
+      <li><a id="toc-ChordNames" href="chordnames.html">2.1.4 <code>ChordNames</code></a></li>
+      <li><a id="toc-CueVoice" href="cuevoice.html">2.1.5 <code>CueVoice</code></a></li>
+      <li><a id="toc-Devnull" href="devnull.html">2.1.6 <code>Devnull</code></a></li>
+      <li><a id="toc-DrumStaff" href="drumstaff.html">2.1.7 <code>DrumStaff</code></a></li>
+      <li><a id="toc-DrumVoice" href="drumvoice.html">2.1.8 <code>DrumVoice</code></a></li>
+      <li><a id="toc-Dynamics" href="dynamics.html">2.1.9 <code>Dynamics</code></a></li>
+      <li><a id="toc-FiguredBass" href="figuredbass.html">2.1.10 <code>FiguredBass</code></a></li>
+      <li><a id="toc-FretBoards" href="fretboards.html">2.1.11 <code>FretBoards</code></a></li>
+      <li><a id="toc-Global" href="global.html">2.1.12 <code>Global</code></a></li>
+      <li><a id="toc-GrandStaff" href="grandstaff.html">2.1.13 <code>GrandStaff</code></a></li>
+      <li><a id="toc-GregorianTranscriptionLyrics" href="gregoriantranscriptionlyrics.html">2.1.14 <code>GregorianTranscriptionLyrics</code></a></li>
+      <li><a id="toc-GregorianTranscriptionStaff" href="gregoriantranscriptionstaff.html">2.1.15 <code>GregorianTranscriptionStaff</code></a></li>
+      <li><a id="toc-GregorianTranscriptionVoice" href="gregoriantranscriptionvoice.html">2.1.16 <code>GregorianTranscriptionVoice</code></a></li>
+      <li><a id="toc-InternalGregorianStaff" href="internalgregorianstaff.html">2.1.17 <code>InternalGregorianStaff</code></a></li>
+      <li><a id="toc-InternalMensuralStaff" href="internalmensuralstaff.html">2.1.18 <code>InternalMensuralStaff</code></a></li>
+      <li><a id="toc-KievanStaff" href="kievanstaff.html">2.1.19 <code>KievanStaff</code></a></li>
+      <li><a id="toc-KievanVoice" href="kievanvoice.html">2.1.20 <code>KievanVoice</code></a></li>
+      <li><a id="toc-Lyrics" href="lyrics.html">2.1.21 <code>Lyrics</code></a></li>
+      <li><a id="toc-MensuralStaff" href="mensuralstaff.html">2.1.22 <code>MensuralStaff</code></a></li>
+      <li><a id="toc-MensuralVoice" href="mensuralvoice.html">2.1.23 <code>MensuralVoice</code></a></li>
+      <li><a id="toc-NoteNames" href="notenames.html">2.1.24 <code>NoteNames</code></a></li>
+      <li><a id="toc-NullVoice" href="nullvoice.html">2.1.25 <code>NullVoice</code></a></li>
+      <li><a id="toc-OneStaff" href="onestaff.html">2.1.26 <code>OneStaff</code></a></li>
+      <li><a id="toc-PetrucciStaff" href="petruccistaff.html">2.1.27 <code>PetrucciStaff</code></a></li>
+      <li><a id="toc-PetrucciVoice" href="petruccivoice.html">2.1.28 <code>PetrucciVoice</code></a></li>
+      <li><a id="toc-PianoStaff" href="pianostaff.html">2.1.29 <code>PianoStaff</code></a></li>
+      <li><a id="toc-RhythmicStaff" href="rhythmicstaff.html">2.1.30 <code>RhythmicStaff</code></a></li>
+      <li><a id="toc-Score" href="score.html">2.1.31 <code>Score</code></a></li>
+      <li><a id="toc-Staff" href="staff.html">2.1.32 <code>Staff</code></a></li>
+      <li><a id="toc-StaffGroup" href="staffgroup.html">2.1.33 <code>StaffGroup</code></a></li>
+      <li><a id="toc-StandaloneRhythmScore" href="standalonerhythmscore.html">2.1.34 <code>StandaloneRhythmScore</code></a></li>
+      <li><a id="toc-StandaloneRhythmStaff" href="standalonerhythmstaff.html">2.1.35 <code>StandaloneRhythmStaff</code></a></li>
+      <li><a id="toc-StandaloneRhythmVoice" href="standalonerhythmvoice.html">2.1.36 <code>StandaloneRhythmVoice</code></a></li>
+      <li><a id="toc-TabStaff" href="tabstaff.html">2.1.37 <code>TabStaff</code></a></li>
+      <li><a id="toc-TabVoice" href="tabvoice.html">2.1.38 <code>TabVoice</code></a></li>
+      <li><a id="toc-VaticanaLyrics" href="vaticanalyrics.html">2.1.39 <code>VaticanaLyrics</code></a></li>
+      <li><a id="toc-VaticanaScore" href="vaticanascore.html">2.1.40 <code>VaticanaScore</code></a></li>
+      <li><a id="toc-VaticanaStaff" href="vaticanastaff.html">2.1.41 <code>VaticanaStaff</code></a></li>
+      <li><a id="toc-VaticanaVoice" href="vaticanavoice.html">2.1.42 <code>VaticanaVoice</code></a></li>
+      <li><a id="toc-Voice" href="voice.html">2.1.43 <code>Voice</code></a></li>
+    </ul></li>
+    <li class="toc_current"><a id="toc-Engravers-and-Performers" href="engravers-and-performers.html">2.2 Engravers and Performers</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Accidental_005fengraver" href="accidental_005fengraver.html">2.2.1 <code>Accidental_engraver</code></a></li>
+      <li><a id="toc-Alteration_005fglyph_005fengraver" href="alteration_005fglyph_005fengraver.html">2.2.2 <code>Alteration_glyph_engraver</code></a></li>
+      <li><a id="toc-Ambitus_005fengraver" href="ambitus_005fengraver.html">2.2.3 <code>Ambitus_engraver</code></a></li>
+      <li><a id="toc-Apply_005foutput_005fengraver" href="apply_005foutput_005fengraver.html">2.2.4 <code>Apply_output_engraver</code></a></li>
+      <li><a id="toc-Arpeggio_005fengraver" href="arpeggio_005fengraver.html">2.2.5 <code>Arpeggio_engraver</code></a></li>
+      <li><a id="toc-Auto_005fbeam_005fengraver" href="auto_005fbeam_005fengraver.html">2.2.6 <code>Auto_beam_engraver</code></a></li>
+      <li><a id="toc-Axis_005fgroup_005fengraver" href="axis_005fgroup_005fengraver.html">2.2.7 <code>Axis_group_engraver</code></a></li>
+      <li><a id="toc-Balloon_005fengraver" href="balloon_005fengraver.html">2.2.8 <code>Balloon_engraver</code></a></li>
+      <li><a id="toc-Bar_005fengraver" href="bar_005fengraver.html">2.2.9 <code>Bar_engraver</code></a></li>
+      <li><a id="toc-Bar_005fnumber_005fengraver" href="bar_005fnumber_005fengraver.html">2.2.10 <code>Bar_number_engraver</code></a></li>
+      <li><a id="toc-Beam_005fcollision_005fengraver" href="beam_005fcollision_005fengraver.html">2.2.11 <code>Beam_collision_engraver</code></a></li>
+      <li><a id="toc-Beam_005fengraver" href="beam_005fengraver.html">2.2.12 <code>Beam_engraver</code></a></li>
+      <li><a id="toc-Beam_005fperformer" href="beam_005fperformer.html">2.2.13 <code>Beam_performer</code></a></li>
+      <li><a id="toc-Beat_005fengraver" href="beat_005fengraver.html">2.2.14 <code>Beat_engraver</code></a></li>
+      <li><a id="toc-Beat_005fperformer" href="beat_005fperformer.html">2.2.15 <code>Beat_performer</code></a></li>
+      <li><a id="toc-Bend_005fengraver" href="bend_005fengraver.html">2.2.16 <code>Bend_engraver</code></a></li>
+      <li><a id="toc-Bend_005fspanner_005fengraver" href="bend_005fspanner_005fengraver.html">2.2.17 <code>Bend_spanner_engraver</code></a></li>
+      <li><a id="toc-Break_005falign_005fengraver" href="break_005falign_005fengraver.html">2.2.18 <code>Break_align_engraver</code></a></li>
+      <li><a id="toc-Breathing_005fsign_005fengraver" href="breathing_005fsign_005fengraver.html">2.2.19 <code>Breathing_sign_engraver</code></a></li>
+      <li><a id="toc-Caesura_005fengraver" href="caesura_005fengraver.html">2.2.20 <code>Caesura_engraver</code></a></li>
+      <li><a id="toc-Centered_005fbar_005fnumber_005falign_005fengraver" href="centered_005fbar_005fnumber_005falign_005fengraver.html">2.2.21 <code>Centered_bar_number_align_engraver</code></a></li>
+      <li><a id="toc-Chord_005fname_005fengraver" href="chord_005fname_005fengraver.html">2.2.22 <code>Chord_name_engraver</code></a></li>
+      <li><a id="toc-Chord_005fsquare_005fengraver" href="chord_005fsquare_005fengraver.html">2.2.23 <code>Chord_square_engraver</code></a></li>
+      <li><a id="toc-Chord_005ftremolo_005fengraver" href="chord_005ftremolo_005fengraver.html">2.2.24 <code>Chord_tremolo_engraver</code></a></li>
+      <li><a id="toc-Clef_005fengraver" href="clef_005fengraver.html">2.2.25 <code>Clef_engraver</code></a></li>
+      <li><a id="toc-Cluster_005fspanner_005fengraver" href="cluster_005fspanner_005fengraver.html">2.2.26 <code>Cluster_spanner_engraver</code></a></li>
+      <li><a id="toc-Collision_005fengraver" href="collision_005fengraver.html">2.2.27 <code>Collision_engraver</code></a></li>
+      <li><a id="toc-Completion_005fheads_005fengraver" href="completion_005fheads_005fengraver.html">2.2.28 <code>Completion_heads_engraver</code></a></li>
+      <li><a id="toc-Completion_005frest_005fengraver" href="completion_005frest_005fengraver.html">2.2.29 <code>Completion_rest_engraver</code></a></li>
+      <li><a id="toc-Concurrent_005fhairpin_005fengraver" href="concurrent_005fhairpin_005fengraver.html">2.2.30 <code>Concurrent_hairpin_engraver</code></a></li>
+      <li><a id="toc-Control_005ftrack_005fperformer" href="control_005ftrack_005fperformer.html">2.2.31 <code>Control_track_performer</code></a></li>
+      <li><a id="toc-Cue_005fclef_005fengraver" href="cue_005fclef_005fengraver.html">2.2.32 <code>Cue_clef_engraver</code></a></li>
+      <li><a id="toc-Current_005fchord_005ftext_005fengraver" href="current_005fchord_005ftext_005fengraver.html">2.2.33 <code>Current_chord_text_engraver</code></a></li>
+      <li><a id="toc-Custos_005fengraver" href="custos_005fengraver.html">2.2.34 <code>Custos_engraver</code></a></li>
+      <li><a id="toc-Divisio_005fengraver" href="divisio_005fengraver.html">2.2.35 <code>Divisio_engraver</code></a></li>
+      <li><a id="toc-Dot_005fcolumn_005fengraver" href="dot_005fcolumn_005fengraver.html">2.2.36 <code>Dot_column_engraver</code></a></li>
+      <li><a id="toc-Dots_005fengraver" href="dots_005fengraver.html">2.2.37 <code>Dots_engraver</code></a></li>
+      <li><a id="toc-Double_005fpercent_005frepeat_005fengraver" href="double_005fpercent_005frepeat_005fengraver.html">2.2.38 <code>Double_percent_repeat_engraver</code></a></li>
+      <li><a id="toc-Drum_005fnote_005fperformer" href="drum_005fnote_005fperformer.html">2.2.39 <code>Drum_note_performer</code></a></li>
+      <li><a id="toc-Drum_005fnotes_005fengraver" href="drum_005fnotes_005fengraver.html">2.2.40 <code>Drum_notes_engraver</code></a></li>
+      <li><a id="toc-Duration_005fline_005fengraver" href="duration_005fline_005fengraver.html">2.2.41 <code>Duration_line_engraver</code></a></li>
+      <li><a id="toc-Dynamic_005falign_005fengraver" href="dynamic_005falign_005fengraver.html">2.2.42 <code>Dynamic_align_engraver</code></a></li>
+      <li><a id="toc-Dynamic_005fengraver" href="dynamic_005fengraver.html">2.2.43 <code>Dynamic_engraver</code></a></li>
+      <li><a id="toc-Dynamic_005fperformer" href="dynamic_005fperformer.html">2.2.44 <code>Dynamic_performer</code></a></li>
+      <li><a id="toc-Episema_005fengraver" href="episema_005fengraver.html">2.2.45 <code>Episema_engraver</code></a></li>
+      <li><a id="toc-Extender_005fengraver" href="extender_005fengraver.html">2.2.46 <code>Extender_engraver</code></a></li>
+      <li><a id="toc-Figured_005fbass_005fengraver" href="figured_005fbass_005fengraver.html">2.2.47 <code>Figured_bass_engraver</code></a></li>
+      <li><a id="toc-Figured_005fbass_005fposition_005fengraver" href="figured_005fbass_005fposition_005fengraver.html">2.2.48 <code>Figured_bass_position_engraver</code></a></li>
+      <li><a id="toc-Finger_005fglide_005fengraver" href="finger_005fglide_005fengraver.html">2.2.49 <code>Finger_glide_engraver</code></a></li>
+      <li><a id="toc-Fingering_005fcolumn_005fengraver" href="fingering_005fcolumn_005fengraver.html">2.2.50 <code>Fingering_column_engraver</code></a></li>
+      <li><a id="toc-Fingering_005fengraver" href="fingering_005fengraver.html">2.2.51 <code>Fingering_engraver</code></a></li>
+      <li><a id="toc-Font_005fsize_005fengraver" href="font_005fsize_005fengraver.html">2.2.52 <code>Font_size_engraver</code></a></li>
+      <li><a id="toc-Footnote_005fengraver" href="footnote_005fengraver.html">2.2.53 <code>Footnote_engraver</code></a></li>
+      <li><a id="toc-Forbid_005fline_005fbreak_005fengraver" href="forbid_005fline_005fbreak_005fengraver.html">2.2.54 <code>Forbid_line_break_engraver</code></a></li>
+      <li><a id="toc-Fretboard_005fengraver" href="fretboard_005fengraver.html">2.2.55 <code>Fretboard_engraver</code></a></li>
+      <li><a id="toc-Glissando_005fengraver" href="glissando_005fengraver.html">2.2.56 <code>Glissando_engraver</code></a></li>
+      <li><a id="toc-Grace_005fauto_005fbeam_005fengraver" href="grace_005fauto_005fbeam_005fengraver.html">2.2.57 <code>Grace_auto_beam_engraver</code></a></li>
+      <li><a id="toc-Grace_005fbeam_005fengraver" href="grace_005fbeam_005fengraver.html">2.2.58 <code>Grace_beam_engraver</code></a></li>
+      <li><a id="toc-Grace_005fengraver" href="grace_005fengraver.html">2.2.59 <code>Grace_engraver</code></a></li>
+      <li><a id="toc-Grace_005fspacing_005fengraver" href="grace_005fspacing_005fengraver.html">2.2.60 <code>Grace_spacing_engraver</code></a></li>
+      <li><a id="toc-Grid_005fchord_005fname_005fengraver" href="grid_005fchord_005fname_005fengraver.html">2.2.61 <code>Grid_chord_name_engraver</code></a></li>
+      <li><a id="toc-Grid_005fline_005fspan_005fengraver" href="grid_005fline_005fspan_005fengraver.html">2.2.62 <code>Grid_line_span_engraver</code></a></li>
+      <li><a id="toc-Grid_005fpoint_005fengraver" href="grid_005fpoint_005fengraver.html">2.2.63 <code>Grid_point_engraver</code></a></li>
+      <li><a id="toc-Grob_005fpq_005fengraver" href="grob_005fpq_005fengraver.html">2.2.64 <code>Grob_pq_engraver</code></a></li>
+      <li><a id="toc-Horizontal_005fbracket_005fengraver" href="horizontal_005fbracket_005fengraver.html">2.2.65 <code>Horizontal_bracket_engraver</code></a></li>
+      <li><a id="toc-Horizontal_005fscript_005fengraver" href="horizontal_005fscript_005fengraver.html">2.2.66 <code>Horizontal_script_engraver</code></a></li>
+      <li><a id="toc-Hyphen_005fengraver" href="hyphen_005fengraver.html">2.2.67 <code>Hyphen_engraver</code></a></li>
+      <li><a id="toc-Instrument_005fname_005fengraver" href="instrument_005fname_005fengraver.html">2.2.68 <code>Instrument_name_engraver</code></a></li>
+      <li><a id="toc-Instrument_005fswitch_005fengraver" href="instrument_005fswitch_005fengraver.html">2.2.69 <code>Instrument_switch_engraver</code></a></li>
+      <li><a id="toc-Jump_005fengraver" href="jump_005fengraver.html">2.2.70 <code>Jump_engraver</code></a></li>
+      <li><a id="toc-Keep_005falive_005ftogether_005fengraver" href="keep_005falive_005ftogether_005fengraver.html">2.2.71 <code>Keep_alive_together_engraver</code></a></li>
+      <li><a id="toc-Key_005fengraver" href="key_005fengraver.html">2.2.72 <code>Key_engraver</code></a></li>
+      <li><a id="toc-Key_005fperformer" href="key_005fperformer.html">2.2.73 <code>Key_performer</code></a></li>
+      <li><a id="toc-Kievan_005fligature_005fengraver" href="kievan_005fligature_005fengraver.html">2.2.74 <code>Kievan_ligature_engraver</code></a></li>
+      <li><a id="toc-Laissez_005fvibrer_005fengraver" href="laissez_005fvibrer_005fengraver.html">2.2.75 <code>Laissez_vibrer_engraver</code></a></li>
+      <li><a id="toc-Ledger_005fline_005fengraver" href="ledger_005fline_005fengraver.html">2.2.76 <code>Ledger_line_engraver</code></a></li>
+      <li><a id="toc-Ligature_005fbracket_005fengraver" href="ligature_005fbracket_005fengraver.html">2.2.77 <code>Ligature_bracket_engraver</code></a></li>
+      <li><a id="toc-Lyric_005fengraver" href="lyric_005fengraver.html">2.2.78 <code>Lyric_engraver</code></a></li>
+      <li><a id="toc-Lyric_005fperformer" href="lyric_005fperformer.html">2.2.79 <code>Lyric_performer</code></a></li>
+      <li><a id="toc-Lyric_005frepeat_005fcount_005fengraver" href="lyric_005frepeat_005fcount_005fengraver.html">2.2.80 <code>Lyric_repeat_count_engraver</code></a></li>
+      <li><a id="toc-Mark_005fengraver" href="mark_005fengraver.html">2.2.81 <code>Mark_engraver</code></a></li>
+      <li><a id="toc-Mark_005fperformer" href="mark_005fperformer.html">2.2.82 <code>Mark_performer</code></a></li>
+      <li><a id="toc-Mark_005ftracking_005ftranslator" href="mark_005ftracking_005ftranslator.html">2.2.83 <code>Mark_tracking_translator</code></a></li>
+      <li><a id="toc-Measure_005fcounter_005fengraver" href="measure_005fcounter_005fengraver.html">2.2.84 <code>Measure_counter_engraver</code></a></li>
+      <li><a id="toc-Measure_005fgrouping_005fengraver" href="measure_005fgrouping_005fengraver.html">2.2.85 <code>Measure_grouping_engraver</code></a></li>
+      <li><a id="toc-Measure_005fspanner_005fengraver" href="measure_005fspanner_005fengraver.html">2.2.86 <code>Measure_spanner_engraver</code></a></li>
+      <li><a id="toc-Melody_005fengraver" href="melody_005fengraver.html">2.2.87 <code>Melody_engraver</code></a></li>
+      <li><a id="toc-Mensural_005fligature_005fengraver" href="mensural_005fligature_005fengraver.html">2.2.88 <code>Mensural_ligature_engraver</code></a></li>
+      <li><a id="toc-Merge_005fmmrest_005fnumbers_005fengraver" href="merge_005fmmrest_005fnumbers_005fengraver.html">2.2.89 <code>Merge_mmrest_numbers_engraver</code></a></li>
+      <li><a id="toc-Merge_005frests_005fengraver" href="merge_005frests_005fengraver.html">2.2.90 <code>Merge_rests_engraver</code></a></li>
+      <li><a id="toc-Metronome_005fmark_005fengraver" href="metronome_005fmark_005fengraver.html">2.2.91 <code>Metronome_mark_engraver</code></a></li>
+      <li><a id="toc-Midi_005fcontrol_005fchange_005fperformer" href="midi_005fcontrol_005fchange_005fperformer.html">2.2.92 <code>Midi_control_change_performer</code></a></li>
+      <li><a id="toc-Multi_005fmeasure_005frest_005fengraver" href="multi_005fmeasure_005frest_005fengraver.html">2.2.93 <code>Multi_measure_rest_engraver</code></a></li>
+      <li><a id="toc-New_005ffingering_005fengraver" href="new_005ffingering_005fengraver.html">2.2.94 <code>New_fingering_engraver</code></a></li>
+      <li><a id="toc-Non_005fmusical_005fscript_005fcolumn_005fengraver" href="non_005fmusical_005fscript_005fcolumn_005fengraver.html">2.2.95 <code>Non_musical_script_column_engraver</code></a></li>
+      <li><a id="toc-Note_005fhead_005fline_005fengraver" href="note_005fhead_005fline_005fengraver.html">2.2.96 <code>Note_head_line_engraver</code></a></li>
+      <li><a id="toc-Note_005fheads_005fengraver" href="note_005fheads_005fengraver.html">2.2.97 <code>Note_heads_engraver</code></a></li>
+      <li><a id="toc-Note_005fname_005fengraver" href="note_005fname_005fengraver.html">2.2.98 <code>Note_name_engraver</code></a></li>
+      <li><a id="toc-Note_005fperformer" href="note_005fperformer.html">2.2.99 <code>Note_performer</code></a></li>
+      <li><a id="toc-Note_005fspacing_005fengraver" href="note_005fspacing_005fengraver.html">2.2.100 <code>Note_spacing_engraver</code></a></li>
+      <li><a id="toc-Optional_005fmaterial_005fbracket_005fengraver" href="optional_005fmaterial_005fbracket_005fengraver.html">2.2.101 <code>Optional_material_bracket_engraver</code></a></li>
+      <li><a id="toc-Ottava_005fspanner_005fengraver" href="ottava_005fspanner_005fengraver.html">2.2.102 <code>Ottava_spanner_engraver</code></a></li>
+      <li><a id="toc-Page_005fturn_005fengraver" href="page_005fturn_005fengraver.html">2.2.103 <code>Page_turn_engraver</code></a></li>
+      <li><a id="toc-Paper_005fcolumn_005fengraver" href="paper_005fcolumn_005fengraver.html">2.2.104 <code>Paper_column_engraver</code></a></li>
+      <li><a id="toc-Parenthesis_005fengraver" href="parenthesis_005fengraver.html">2.2.105 <code>Parenthesis_engraver</code></a></li>
+      <li><a id="toc-Part_005fcombine_005fengraver" href="part_005fcombine_005fengraver.html">2.2.106 <code>Part_combine_engraver</code></a></li>
+      <li><a id="toc-Percent_005frepeat_005fengraver" href="percent_005frepeat_005fengraver.html">2.2.107 <code>Percent_repeat_engraver</code></a></li>
+      <li><a id="toc-Phrasing_005fslur_005fengraver" href="phrasing_005fslur_005fengraver.html">2.2.108 <code>Phrasing_slur_engraver</code></a></li>
+      <li><a id="toc-Piano_005fpedal_005falign_005fengraver" href="piano_005fpedal_005falign_005fengraver.html">2.2.109 <code>Piano_pedal_align_engraver</code></a></li>
+      <li><a id="toc-Piano_005fpedal_005fengraver" href="piano_005fpedal_005fengraver.html">2.2.110 <code>Piano_pedal_engraver</code></a></li>
+      <li><a id="toc-Piano_005fpedal_005fperformer" href="piano_005fpedal_005fperformer.html">2.2.111 <code>Piano_pedal_performer</code></a></li>
+      <li><a id="toc-Pitch_005fsquash_005fengraver" href="pitch_005fsquash_005fengraver.html">2.2.112 <code>Pitch_squash_engraver</code></a></li>
+      <li><a id="toc-Pitched_005ftrill_005fengraver" href="pitched_005ftrill_005fengraver.html">2.2.113 <code>Pitched_trill_engraver</code></a></li>
+      <li><a id="toc-Pure_005ffrom_005fneighbor_005fengraver" href="pure_005ffrom_005fneighbor_005fengraver.html">2.2.114 <code>Pure_from_neighbor_engraver</code></a></li>
+      <li><a id="toc-Repeat_005facknowledge_005fengraver" href="repeat_005facknowledge_005fengraver.html">2.2.115 <code>Repeat_acknowledge_engraver</code></a></li>
+      <li><a id="toc-Repeat_005ftie_005fengraver" href="repeat_005ftie_005fengraver.html">2.2.116 <code>Repeat_tie_engraver</code></a></li>
+      <li><a id="toc-Rest_005fcollision_005fengraver" href="rest_005fcollision_005fengraver.html">2.2.117 <code>Rest_collision_engraver</code></a></li>
+      <li><a id="toc-Rest_005fengraver" href="rest_005fengraver.html">2.2.118 <code>Rest_engraver</code></a></li>
+      <li><a id="toc-Rhythmic_005fcolumn_005fengraver" href="rhythmic_005fcolumn_005fengraver.html">2.2.119 <code>Rhythmic_column_engraver</code></a></li>
+      <li><a id="toc-Script_005fcolumn_005fengraver" href="script_005fcolumn_005fengraver.html">2.2.120 <code>Script_column_engraver</code></a></li>
+      <li><a id="toc-Script_005fengraver" href="script_005fengraver.html">2.2.121 <code>Script_engraver</code></a></li>
+      <li><a id="toc-Script_005frow_005fengraver" href="script_005frow_005fengraver.html">2.2.122 <code>Script_row_engraver</code></a></li>
+      <li><a id="toc-Separating_005fline_005fgroup_005fengraver" href="separating_005fline_005fgroup_005fengraver.html">2.2.123 <code>Separating_line_group_engraver</code></a></li>
+      <li><a id="toc-Show_005fcontrol_005fpoints_005fengraver" href="show_005fcontrol_005fpoints_005fengraver.html">2.2.124 <code>Show_control_points_engraver</code></a></li>
+      <li><a id="toc-Signum_005frepetitionis_005fengraver" href="signum_005frepetitionis_005fengraver.html">2.2.125 <code>Signum_repetitionis_engraver</code></a></li>
+      <li><a id="toc-Skip_005ftypesetting_005fengraver" href="skip_005ftypesetting_005fengraver.html">2.2.126 <code>Skip_typesetting_engraver</code></a></li>
+      <li><a id="toc-Slash_005frepeat_005fengraver" href="slash_005frepeat_005fengraver.html">2.2.127 <code>Slash_repeat_engraver</code></a></li>
+      <li><a id="toc-Slur_005fengraver" href="slur_005fengraver.html">2.2.128 <code>Slur_engraver</code></a></li>
+      <li><a id="toc-Slur_005fperformer" href="slur_005fperformer.html">2.2.129 <code>Slur_performer</code></a></li>
+      <li><a id="toc-Spacing_005fengraver" href="spacing_005fengraver.html">2.2.130 <code>Spacing_engraver</code></a></li>
+      <li><a id="toc-Span_005farpeggio_005fengraver" href="span_005farpeggio_005fengraver.html">2.2.131 <code>Span_arpeggio_engraver</code></a></li>
+      <li><a id="toc-Span_005fbar_005fengraver" href="span_005fbar_005fengraver.html">2.2.132 <code>Span_bar_engraver</code></a></li>
+      <li><a id="toc-Span_005fbar_005fstub_005fengraver" href="span_005fbar_005fstub_005fengraver.html">2.2.133 <code>Span_bar_stub_engraver</code></a></li>
+      <li><a id="toc-Span_005fstem_005fengraver" href="span_005fstem_005fengraver.html">2.2.134 <code>Span_stem_engraver</code></a></li>
+      <li><a id="toc-Spanner_005fbreak_005fforbid_005fengraver" href="spanner_005fbreak_005fforbid_005fengraver.html">2.2.135 <code>Spanner_break_forbid_engraver</code></a></li>
+      <li><a id="toc-Spanner_005ftracking_005fengraver" href="spanner_005ftracking_005fengraver.html">2.2.136 <code>Spanner_tracking_engraver</code></a></li>
+      <li><a id="toc-Staff_005fcollecting_005fengraver" href="staff_005fcollecting_005fengraver.html">2.2.137 <code>Staff_collecting_engraver</code></a></li>
+      <li><a id="toc-Staff_005fhighlight_005fengraver" href="staff_005fhighlight_005fengraver.html">2.2.138 <code>Staff_highlight_engraver</code></a></li>
+      <li class="toc_current"><a id="toc-Staff_005fperformer" href="staff_005fperformer.html">2.2.139 <code>Staff_performer</code></a></li>
+      <li><a id="toc-Staff_005fsymbol_005fengraver" href="staff_005fsymbol_005fengraver.html">2.2.140 <code>Staff_symbol_engraver</code></a></li>
+      <li><a id="toc-Stanza_005fnumber_005falign_005fengraver" href="stanza_005fnumber_005falign_005fengraver.html">2.2.141 <code>Stanza_number_align_engraver</code></a></li>
+      <li><a id="toc-Stanza_005fnumber_005fengraver" href="stanza_005fnumber_005fengraver.html">2.2.142 <code>Stanza_number_engraver</code></a></li>
+      <li><a id="toc-Stem_005fengraver" href="stem_005fengraver.html">2.2.143 <code>Stem_engraver</code></a></li>
+      <li><a id="toc-System_005fstart_005fdelimiter_005fengraver" href="system_005fstart_005fdelimiter_005fengraver.html">2.2.144 <code>System_start_delimiter_engraver</code></a></li>
+      <li><a id="toc-Tab_005fnote_005fheads_005fengraver" href="tab_005fnote_005fheads_005fengraver.html">2.2.145 <code>Tab_note_heads_engraver</code></a></li>
+      <li><a id="toc-Tab_005fstaff_005fsymbol_005fengraver" href="tab_005fstaff_005fsymbol_005fengraver.html">2.2.146 <code>Tab_staff_symbol_engraver</code></a></li>
+      <li><a id="toc-Tab_005ftie_005ffollow_005fengraver" href="tab_005ftie_005ffollow_005fengraver.html">2.2.147 <code>Tab_tie_follow_engraver</code></a></li>
+      <li><a id="toc-Tempo_005fperformer" href="tempo_005fperformer.html">2.2.148 <code>Tempo_performer</code></a></li>
+      <li><a id="toc-Text_005fengraver" href="text_005fengraver.html">2.2.149 <code>Text_engraver</code></a></li>
+      <li><a id="toc-Text_005fmark_005fengraver" href="text_005fmark_005fengraver.html">2.2.150 <code>Text_mark_engraver</code></a></li>
+      <li><a id="toc-Text_005fspanner_005fengraver" href="text_005fspanner_005fengraver.html">2.2.151 <code>Text_spanner_engraver</code></a></li>
+      <li><a id="toc-Tie_005fengraver" href="tie_005fengraver.html">2.2.152 <code>Tie_engraver</code></a></li>
+      <li><a id="toc-Tie_005fperformer" href="tie_005fperformer.html">2.2.153 <code>Tie_performer</code></a></li>
+      <li><a id="toc-Time_005fsignature_005fengraver" href="time_005fsignature_005fengraver.html">2.2.154 <code>Time_signature_engraver</code></a></li>
+      <li><a id="toc-Time_005fsignature_005fperformer" href="time_005fsignature_005fperformer.html">2.2.155 <code>Time_signature_performer</code></a></li>
+      <li><a id="toc-Timing_005ftranslator" href="timing_005ftranslator.html">2.2.156 <code>Timing_translator</code></a></li>
+      <li><a id="toc-Toe_005fheel_005fengraver" href="toe_005fheel_005fengraver.html">2.2.157 <code>Toe_heel_engraver</code></a></li>
+      <li><a id="toc-Trill_005fspanner_005fengraver" href="trill_005fspanner_005fengraver.html">2.2.158 <code>Trill_spanner_engraver</code></a></li>
+      <li><a id="toc-Tuplet_005fengraver" href="tuplet_005fengraver.html">2.2.159 <code>Tuplet_engraver</code></a></li>
+      <li><a id="toc-Tweak_005fengraver" href="tweak_005fengraver.html">2.2.160 <code>Tweak_engraver</code></a></li>
+      <li><a id="toc-Vaticana_005fligature_005fengraver" href="vaticana_005fligature_005fengraver.html">2.2.161 <code>Vaticana_ligature_engraver</code></a></li>
+      <li><a id="toc-Vertical_005falign_005fengraver" href="vertical_005falign_005fengraver.html">2.2.162 <code>Vertical_align_engraver</code></a></li>
+      <li><a id="toc-Volta_005fengraver" href="volta_005fengraver.html">2.2.163 <code>Volta_engraver</code></a></li>
+    </ul></li>
+    <li><a id="toc-Tunable-context-properties" href="tunable-context-properties.html">2.3 Tunable context properties</a></li>
+    <li><a id="toc-Internal-context-properties" href="internal-context-properties.html">2.4 Internal context properties</a></li>
+  </ul></li>
+  <li><a id="toc-Backend" href="backend.html">3 Backend</a>
+  <ul class="no-bullet">
+    <li><a id="toc-All-layout-objects" href="all-layout-objects.html">3.1 All layout objects</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Accidental" href="accidental.html">3.1.1 <code>Accidental</code></a></li>
+      <li><a id="toc-AccidentalCautionary" href="accidentalcautionary.html">3.1.2 <code>AccidentalCautionary</code></a></li>
+      <li><a id="toc-AccidentalPlacement" href="accidentalplacement.html">3.1.3 <code>AccidentalPlacement</code></a></li>
+      <li><a id="toc-AccidentalSuggestion" href="accidentalsuggestion.html">3.1.4 <code>AccidentalSuggestion</code></a></li>
+      <li><a id="toc-Ambitus" href="ambitus.html">3.1.5 <code>Ambitus</code></a></li>
+      <li><a id="toc-AmbitusAccidental" href="ambitusaccidental.html">3.1.6 <code>AmbitusAccidental</code></a></li>
+      <li><a id="toc-AmbitusLine" href="ambitusline.html">3.1.7 <code>AmbitusLine</code></a></li>
+      <li><a id="toc-AmbitusNoteHead" href="ambitusnotehead.html">3.1.8 <code>AmbitusNoteHead</code></a></li>
+      <li><a id="toc-ApproximatePitchNoteHead" href="approximatepitchnotehead.html">3.1.9 <code>ApproximatePitchNoteHead</code></a></li>
+      <li><a id="toc-Arpeggio" href="arpeggio.html">3.1.10 <code>Arpeggio</code></a></li>
+      <li><a id="toc-BalloonText" href="balloontext.html">3.1.11 <code>BalloonText</code></a></li>
+      <li><a id="toc-BarLine" href="barline.html">3.1.12 <code>BarLine</code></a></li>
+      <li><a id="toc-BarNumber" href="barnumber.html">3.1.13 <code>BarNumber</code></a></li>
+      <li><a id="toc-BassFigure" href="bassfigure.html">3.1.14 <code>BassFigure</code></a></li>
+      <li><a id="toc-BassFigureAlignment" href="bassfigurealignment.html">3.1.15 <code>BassFigureAlignment</code></a></li>
+      <li><a id="toc-BassFigureAlignmentPositioning" href="bassfigurealignmentpositioning.html">3.1.16 <code>BassFigureAlignmentPositioning</code></a></li>
+      <li><a id="toc-BassFigureBracket" href="bassfigurebracket.html">3.1.17 <code>BassFigureBracket</code></a></li>
+      <li><a id="toc-BassFigureContinuation" href="bassfigurecontinuation.html">3.1.18 <code>BassFigureContinuation</code></a></li>
+      <li><a id="toc-BassFigureLine" href="bassfigureline.html">3.1.19 <code>BassFigureLine</code></a></li>
+      <li><a id="toc-Beam" href="beam.html">3.1.20 <code>Beam</code></a></li>
+      <li><a id="toc-BendAfter" href="bendafter.html">3.1.21 <code>BendAfter</code></a></li>
+      <li><a id="toc-BendSpanner" href="bendspanner.html">3.1.22 <code>BendSpanner</code></a></li>
+      <li><a id="toc-BreakAlignGroup" href="breakaligngroup.html">3.1.23 <code>BreakAlignGroup</code></a></li>
+      <li><a id="toc-BreakAlignment" href="breakalignment.html">3.1.24 <code>BreakAlignment</code></a></li>
+      <li><a id="toc-BreathingSign" href="breathingsign.html">3.1.25 <code>BreathingSign</code></a></li>
+      <li><a id="toc-CaesuraScript" href="caesurascript.html">3.1.26 <code>CaesuraScript</code></a></li>
+      <li><a id="toc-CenteredBarNumber" href="centeredbarnumber.html">3.1.27 <code>CenteredBarNumber</code></a></li>
+      <li><a id="toc-CenteredBarNumberLineSpanner" href="centeredbarnumberlinespanner.html">3.1.28 <code>CenteredBarNumberLineSpanner</code></a></li>
+      <li><a id="toc-ChordBracket" href="chordbracket.html">3.1.29 <code>ChordBracket</code></a></li>
+      <li><a id="toc-ChordName" href="chordname.html">3.1.30 <code>ChordName</code></a></li>
+      <li><a id="toc-ChordSlur" href="chordslur.html">3.1.31 <code>ChordSlur</code></a></li>
+      <li><a id="toc-ChordSquare" href="chordsquare.html">3.1.32 <code>ChordSquare</code></a></li>
+      <li><a id="toc-Clef" href="clef.html">3.1.33 <code>Clef</code></a></li>
+      <li><a id="toc-ClefModifier" href="clefmodifier.html">3.1.34 <code>ClefModifier</code></a></li>
+      <li><a id="toc-ClusterSpanner" href="clusterspanner.html">3.1.35 <code>ClusterSpanner</code></a></li>
+      <li><a id="toc-ClusterSpannerBeacon" href="clusterspannerbeacon.html">3.1.36 <code>ClusterSpannerBeacon</code></a></li>
+      <li><a id="toc-CodaMark" href="codamark.html">3.1.37 <code>CodaMark</code></a></li>
+      <li><a id="toc-CombineTextScript" href="combinetextscript.html">3.1.38 <code>CombineTextScript</code></a></li>
+      <li><a id="toc-ControlPoint" href="controlpoint.html">3.1.39 <code>ControlPoint</code></a></li>
+      <li><a id="toc-ControlPolygon" href="controlpolygon.html">3.1.40 <code>ControlPolygon</code></a></li>
+      <li><a id="toc-CueClef" href="cueclef.html">3.1.41 <code>CueClef</code></a></li>
+      <li><a id="toc-CueEndClef" href="cueendclef.html">3.1.42 <code>CueEndClef</code></a></li>
+      <li><a id="toc-Custos" href="custos.html">3.1.43 <code>Custos</code></a></li>
+      <li><a id="toc-Divisio" href="divisio.html">3.1.44 <code>Divisio</code></a></li>
+      <li><a id="toc-DotColumn" href="dotcolumn.html">3.1.45 <code>DotColumn</code></a></li>
+      <li><a id="toc-Dots" href="dots.html">3.1.46 <code>Dots</code></a></li>
+      <li><a id="toc-DoublePercentRepeat" href="doublepercentrepeat.html">3.1.47 <code>DoublePercentRepeat</code></a></li>
+      <li><a id="toc-DoublePercentRepeatCounter" href="doublepercentrepeatcounter.html">3.1.48 <code>DoublePercentRepeatCounter</code></a></li>
+      <li><a id="toc-DoubleRepeatSlash" href="doublerepeatslash.html">3.1.49 <code>DoubleRepeatSlash</code></a></li>
+      <li><a id="toc-DurationLine" href="durationline.html">3.1.50 <code>DurationLine</code></a></li>
+      <li><a id="toc-DynamicLineSpanner" href="dynamiclinespanner.html">3.1.51 <code>DynamicLineSpanner</code></a></li>
+      <li><a id="toc-DynamicText" href="dynamictext.html">3.1.52 <code>DynamicText</code></a></li>
+      <li><a id="toc-DynamicTextSpanner" href="dynamictextspanner.html">3.1.53 <code>DynamicTextSpanner</code></a></li>
+      <li><a id="toc-Episema" href="episema.html">3.1.54 <code>Episema</code></a></li>
+      <li><a id="toc-FingerGlideSpanner" href="fingerglidespanner.html">3.1.55 <code>FingerGlideSpanner</code></a></li>
+      <li><a id="toc-Fingering" href="fingering.html">3.1.56 <code>Fingering</code></a></li>
+      <li><a id="toc-FingeringColumn" href="fingeringcolumn.html">3.1.57 <code>FingeringColumn</code></a></li>
+      <li><a id="toc-Flag" href="flag.html">3.1.58 <code>Flag</code></a></li>
+      <li><a id="toc-Footnote" href="footnote.html">3.1.59 <code>Footnote</code></a></li>
+      <li><a id="toc-FretBoard" href="fretboard.html">3.1.60 <code>FretBoard</code></a></li>
+      <li><a id="toc-Glissando" href="glissando.html">3.1.61 <code>Glissando</code></a></li>
+      <li><a id="toc-GraceSpacing" href="gracespacing.html">3.1.62 <code>GraceSpacing</code></a></li>
+      <li><a id="toc-GridChordName" href="gridchordname.html">3.1.63 <code>GridChordName</code></a></li>
+      <li><a id="toc-GridLine" href="gridline.html">3.1.64 <code>GridLine</code></a></li>
+      <li><a id="toc-GridPoint" href="gridpoint.html">3.1.65 <code>GridPoint</code></a></li>
+      <li><a id="toc-Hairpin" href="hairpin.html">3.1.66 <code>Hairpin</code></a></li>
+      <li><a id="toc-HorizontalBracket" href="horizontalbracket.html">3.1.67 <code>HorizontalBracket</code></a></li>
+      <li><a id="toc-HorizontalBracketText" href="horizontalbrackettext.html">3.1.68 <code>HorizontalBracketText</code></a></li>
+      <li><a id="toc-InstrumentName" href="instrumentname.html">3.1.69 <code>InstrumentName</code></a></li>
+      <li><a id="toc-InstrumentSwitch" href="instrumentswitch.html">3.1.70 <code>InstrumentSwitch</code></a></li>
+      <li><a id="toc-JumpScript" href="jumpscript.html">3.1.71 <code>JumpScript</code></a></li>
+      <li><a id="toc-KeyCancellation" href="keycancellation.html">3.1.72 <code>KeyCancellation</code></a></li>
+      <li><a id="toc-KeySignature" href="keysignature.html">3.1.73 <code>KeySignature</code></a></li>
+      <li><a id="toc-KievanLigature" href="kievanligature.html">3.1.74 <code>KievanLigature</code></a></li>
+      <li><a id="toc-LaissezVibrerTie" href="laissezvibrertie.html">3.1.75 <code>LaissezVibrerTie</code></a></li>
+      <li><a id="toc-LaissezVibrerTieColumn" href="laissezvibrertiecolumn.html">3.1.76 <code>LaissezVibrerTieColumn</code></a></li>
+      <li><a id="toc-LedgerLineSpanner" href="ledgerlinespanner.html">3.1.77 <code>LedgerLineSpanner</code></a></li>
+      <li><a id="toc-LeftEdge" href="leftedge.html">3.1.78 <code>LeftEdge</code></a></li>
+      <li><a id="toc-LigatureBracket" href="ligaturebracket.html">3.1.79 <code>LigatureBracket</code></a></li>
+      <li><a id="toc-LyricExtender" href="lyricextender.html">3.1.80 <code>LyricExtender</code></a></li>
+      <li><a id="toc-LyricHyphen" href="lyrichyphen.html">3.1.81 <code>LyricHyphen</code></a></li>
+      <li><a id="toc-LyricRepeatCount" href="lyricrepeatcount.html">3.1.82 <code>LyricRepeatCount</code></a></li>
+      <li><a id="toc-LyricSpace" href="lyricspace.html">3.1.83 <code>LyricSpace</code></a></li>
+      <li><a id="toc-LyricText" href="lyrictext.html">3.1.84 <code>LyricText</code></a></li>
+      <li><a id="toc-MeasureCounter" href="measurecounter.html">3.1.85 <code>MeasureCounter</code></a></li>
+      <li><a id="toc-MeasureGrouping" href="measuregrouping.html">3.1.86 <code>MeasureGrouping</code></a></li>
+      <li><a id="toc-MeasureSpanner" href="measurespanner.html">3.1.87 <code>MeasureSpanner</code></a></li>
+      <li><a id="toc-MelodyItem" href="melodyitem.html">3.1.88 <code>MelodyItem</code></a></li>
+      <li><a id="toc-MensuralLigature" href="mensuralligature.html">3.1.89 <code>MensuralLigature</code></a></li>
+      <li><a id="toc-MetronomeMark" href="metronomemark.html">3.1.90 <code>MetronomeMark</code></a></li>
+      <li><a id="toc-MultiMeasureRest" href="multimeasurerest.html">3.1.91 <code>MultiMeasureRest</code></a></li>
+      <li><a id="toc-MultiMeasureRestNumber" href="multimeasurerestnumber.html">3.1.92 <code>MultiMeasureRestNumber</code></a></li>
+      <li><a id="toc-MultiMeasureRestScript" href="multimeasurerestscript.html">3.1.93 <code>MultiMeasureRestScript</code></a></li>
+      <li><a id="toc-MultiMeasureRestText" href="multimeasureresttext.html">3.1.94 <code>MultiMeasureRestText</code></a></li>
+      <li><a id="toc-NonMusicalPaperColumn" href="nonmusicalpapercolumn.html">3.1.95 <code>NonMusicalPaperColumn</code></a></li>
+      <li><a id="toc-NoteCollision" href="notecollision.html">3.1.96 <code>NoteCollision</code></a></li>
+      <li><a id="toc-NoteColumn" href="notecolumn.html">3.1.97 <code>NoteColumn</code></a></li>
+      <li><a id="toc-NoteHead" href="notehead.html">3.1.98 <code>NoteHead</code></a></li>
+      <li><a id="toc-NoteName" href="notename.html">3.1.99 <code>NoteName</code></a></li>
+      <li><a id="toc-NoteSpacing" href="notespacing.html">3.1.100 <code>NoteSpacing</code></a></li>
+      <li><a id="toc-OptionalMaterialBracket" href="optionalmaterialbracket.html">3.1.101 <code>OptionalMaterialBracket</code></a></li>
+      <li><a id="toc-OttavaBracket" href="ottavabracket.html">3.1.102 <code>OttavaBracket</code></a></li>
+      <li><a id="toc-PaperColumn" href="papercolumn.html">3.1.103 <code>PaperColumn</code></a></li>
+      <li><a id="toc-Parentheses" href="parentheses.html">3.1.104 <code>Parentheses</code></a></li>
+      <li><a id="toc-PercentRepeat" href="percentrepeat.html">3.1.105 <code>PercentRepeat</code></a></li>
+      <li><a id="toc-PercentRepeatCounter" href="percentrepeatcounter.html">3.1.106 <code>PercentRepeatCounter</code></a></li>
+      <li><a id="toc-PhrasingSlur" href="phrasingslur.html">3.1.107 <code>PhrasingSlur</code></a></li>
+      <li><a id="toc-PianoPedalBracket" href="pianopedalbracket.html">3.1.108 <code>PianoPedalBracket</code></a></li>
+      <li><a id="toc-RehearsalMark" href="rehearsalmark.html">3.1.109 <code>RehearsalMark</code></a></li>
+      <li><a id="toc-RepeatSlash" href="repeatslash.html">3.1.110 <code>RepeatSlash</code></a></li>
+      <li><a id="toc-RepeatTie" href="repeattie.html">3.1.111 <code>RepeatTie</code></a></li>
+      <li><a id="toc-RepeatTieColumn" href="repeattiecolumn.html">3.1.112 <code>RepeatTieColumn</code></a></li>
+      <li><a id="toc-Rest" href="rest.html">3.1.113 <code>Rest</code></a></li>
+      <li><a id="toc-RestCollision" href="restcollision.html">3.1.114 <code>RestCollision</code></a></li>
+      <li><a id="toc-Script" href="script.html">3.1.115 <code>Script</code></a></li>
+      <li><a id="toc-ScriptColumn" href="scriptcolumn.html">3.1.116 <code>ScriptColumn</code></a></li>
+      <li><a id="toc-ScriptRow" href="scriptrow.html">3.1.117 <code>ScriptRow</code></a></li>
+      <li><a id="toc-SectionLabel" href="sectionlabel.html">3.1.118 <code>SectionLabel</code></a></li>
+      <li><a id="toc-SegnoMark" href="segnomark.html">3.1.119 <code>SegnoMark</code></a></li>
+      <li><a id="toc-SignumRepetitionis" href="signumrepetitionis.html">3.1.120 <code>SignumRepetitionis</code></a></li>
+      <li><a id="toc-Slur" href="slur.html">3.1.121 <code>Slur</code></a></li>
+      <li><a id="toc-SostenutoPedal" href="sostenutopedal.html">3.1.122 <code>SostenutoPedal</code></a></li>
+      <li><a id="toc-SostenutoPedalLineSpanner" href="sostenutopedallinespanner.html">3.1.123 <code>SostenutoPedalLineSpanner</code></a></li>
+      <li><a id="toc-SpacingSpanner" href="spacingspanner.html">3.1.124 <code>SpacingSpanner</code></a></li>
+      <li><a id="toc-SpanBar" href="spanbar.html">3.1.125 <code>SpanBar</code></a></li>
+      <li><a id="toc-SpanBarStub" href="spanbarstub.html">3.1.126 <code>SpanBarStub</code></a></li>
+      <li><a id="toc-StaffEllipsis" href="staffellipsis.html">3.1.127 <code>StaffEllipsis</code></a></li>
+      <li><a id="toc-StaffGrouper" href="staffgrouper.html">3.1.128 <code>StaffGrouper</code></a></li>
+      <li><a id="toc-StaffHighlight" href="staffhighlight.html">3.1.129 <code>StaffHighlight</code></a></li>
+      <li><a id="toc-StaffSpacing" href="staffspacing.html">3.1.130 <code>StaffSpacing</code></a></li>
+      <li><a id="toc-StaffSymbol" href="staffsymbol.html">3.1.131 <code>StaffSymbol</code></a></li>
+      <li><a id="toc-StanzaNumber" href="stanzanumber.html">3.1.132 <code>StanzaNumber</code></a></li>
+      <li><a id="toc-Stem" href="stem.html">3.1.133 <code>Stem</code></a></li>
+      <li><a id="toc-StemStub" href="stemstub.html">3.1.134 <code>StemStub</code></a></li>
+      <li><a id="toc-StemTremolo" href="stemtremolo.html">3.1.135 <code>StemTremolo</code></a></li>
+      <li><a id="toc-StringNumber" href="stringnumber.html">3.1.136 <code>StringNumber</code></a></li>
+      <li><a id="toc-StrokeFinger" href="strokefinger.html">3.1.137 <code>StrokeFinger</code></a></li>
+      <li><a id="toc-SustainPedal" href="sustainpedal.html">3.1.138 <code>SustainPedal</code></a></li>
+      <li><a id="toc-SustainPedalLineSpanner" href="sustainpedallinespanner.html">3.1.139 <code>SustainPedalLineSpanner</code></a></li>
+      <li><a id="toc-System" href="system.html">3.1.140 <code>System</code></a></li>
+      <li><a id="toc-SystemStartBar" href="systemstartbar.html">3.1.141 <code>SystemStartBar</code></a></li>
+      <li><a id="toc-SystemStartBrace" href="systemstartbrace.html">3.1.142 <code>SystemStartBrace</code></a></li>
+      <li><a id="toc-SystemStartBracket" href="systemstartbracket.html">3.1.143 <code>SystemStartBracket</code></a></li>
+      <li><a id="toc-SystemStartSquare" href="systemstartsquare.html">3.1.144 <code>SystemStartSquare</code></a></li>
+      <li><a id="toc-TabNoteHead" href="tabnotehead.html">3.1.145 <code>TabNoteHead</code></a></li>
+      <li><a id="toc-TextMark" href="textmark.html">3.1.146 <code>TextMark</code></a></li>
+      <li><a id="toc-TextScript" href="textscript.html">3.1.147 <code>TextScript</code></a></li>
+      <li><a id="toc-TextSpanner" href="textspanner.html">3.1.148 <code>TextSpanner</code></a></li>
+      <li><a id="toc-Tie" href="tie.html">3.1.149 <code>Tie</code></a></li>
+      <li><a id="toc-TieColumn" href="tiecolumn.html">3.1.150 <code>TieColumn</code></a></li>
+      <li><a id="toc-TimeSignature" href="timesignature.html">3.1.151 <code>TimeSignature</code></a></li>
+      <li><a id="toc-TrillPitchAccidental" href="trillpitchaccidental.html">3.1.152 <code>TrillPitchAccidental</code></a></li>
+      <li><a id="toc-TrillPitchGroup" href="trillpitchgroup.html">3.1.153 <code>TrillPitchGroup</code></a></li>
+      <li><a id="toc-TrillPitchHead" href="trillpitchhead.html">3.1.154 <code>TrillPitchHead</code></a></li>
+      <li><a id="toc-TrillPitchParentheses" href="trillpitchparentheses.html">3.1.155 <code>TrillPitchParentheses</code></a></li>
+      <li><a id="toc-TrillSpanner" href="trillspanner.html">3.1.156 <code>TrillSpanner</code></a></li>
+      <li><a id="toc-TupletBracket" href="tupletbracket.html">3.1.157 <code>TupletBracket</code></a></li>
+      <li><a id="toc-TupletNumber" href="tupletnumber.html">3.1.158 <code>TupletNumber</code></a></li>
+      <li><a id="toc-UnaCordaPedal" href="unacordapedal.html">3.1.159 <code>UnaCordaPedal</code></a></li>
+      <li><a id="toc-UnaCordaPedalLineSpanner" href="unacordapedallinespanner.html">3.1.160 <code>UnaCordaPedalLineSpanner</code></a></li>
+      <li><a id="toc-VaticanaLigature" href="vaticanaligature.html">3.1.161 <code>VaticanaLigature</code></a></li>
+      <li><a id="toc-VerticalAlignment" href="verticalalignment.html">3.1.162 <code>VerticalAlignment</code></a></li>
+      <li><a id="toc-VerticalAxisGroup" href="verticalaxisgroup.html">3.1.163 <code>VerticalAxisGroup</code></a></li>
+      <li><a id="toc-VoiceFollower" href="voicefollower.html">3.1.164 <code>VoiceFollower</code></a></li>
+      <li><a id="toc-VoltaBracket" href="voltabracket.html">3.1.165 <code>VoltaBracket</code></a></li>
+      <li><a id="toc-VoltaBracketSpanner" href="voltabracketspanner.html">3.1.166 <code>VoltaBracketSpanner</code></a></li>
+      <li><a id="toc-VowelTransition" href="voweltransition.html">3.1.167 <code>VowelTransition</code></a></li>
+    </ul></li>
+    <li><a id="toc-Graphical-Object-Interfaces" href="graphical-object-interfaces.html">3.2 Graphical Object Interfaces</a>
+    <ul class="no-bullet">
+      <li><a id="toc-accidental_002dinterface-1" href="accidental_002dinterface.html">3.2.1 <code>accidental-interface</code></a></li>
+      <li><a id="toc-accidental_002dparticipating_002dhead_002dinterface-1" href="accidental_002dparticipating_002dhead_002dinterface.html">3.2.2 <code>accidental-participating-head-interface</code></a></li>
+      <li><a id="toc-accidental_002dplacement_002dinterface-1" href="accidental_002dplacement_002dinterface.html">3.2.3 <code>accidental-placement-interface</code></a></li>
+      <li><a id="toc-accidental_002dsuggestion_002dinterface-1" href="accidental_002dsuggestion_002dinterface.html">3.2.4 <code>accidental-suggestion-interface</code></a></li>
+      <li><a id="toc-accidental_002dswitch_002dinterface-1" href="accidental_002dswitch_002dinterface.html">3.2.5 <code>accidental-switch-interface</code></a></li>
+      <li><a id="toc-align_002dinterface-1" href="align_002dinterface.html">3.2.6 <code>align-interface</code></a></li>
+      <li><a id="toc-ambitus_002dinterface-1" href="ambitus_002dinterface.html">3.2.7 <code>ambitus-interface</code></a></li>
+      <li><a id="toc-arpeggio_002dinterface-1" href="arpeggio_002dinterface.html">3.2.8 <code>arpeggio-interface</code></a></li>
+      <li><a id="toc-axis_002dgroup_002dinterface-1" href="axis_002dgroup_002dinterface.html">3.2.9 <code>axis-group-interface</code></a></li>
+      <li><a id="toc-balloon_002dinterface-1" href="balloon_002dinterface.html">3.2.10 <code>balloon-interface</code></a></li>
+      <li><a id="toc-bar_002dline_002dinterface-1" href="bar_002dline_002dinterface.html">3.2.11 <code>bar-line-interface</code></a></li>
+      <li><a id="toc-bar_002dnumber_002dinterface-1" href="bar_002dnumber_002dinterface.html">3.2.12 <code>bar-number-interface</code></a></li>
+      <li><a id="toc-bass_002dfigure_002dalignment_002dinterface-1" href="bass_002dfigure_002dalignment_002dinterface.html">3.2.13 <code>bass-figure-alignment-interface</code></a></li>
+      <li><a id="toc-bass_002dfigure_002dinterface-1" href="bass_002dfigure_002dinterface.html">3.2.14 <code>bass-figure-interface</code></a></li>
+      <li><a id="toc-beam_002dinterface-1" href="beam_002dinterface.html">3.2.15 <code>beam-interface</code></a></li>
+      <li><a id="toc-bend_002dafter_002dinterface-1" href="bend_002dafter_002dinterface.html">3.2.16 <code>bend-after-interface</code></a></li>
+      <li><a id="toc-bend_002dinterface-1" href="bend_002dinterface.html">3.2.17 <code>bend-interface</code></a></li>
+      <li><a id="toc-bezier_002dcurve_002dinterface-1" href="bezier_002dcurve_002dinterface.html">3.2.18 <code>bezier-curve-interface</code></a></li>
+      <li><a id="toc-break_002dalignable_002dinterface-1" href="break_002dalignable_002dinterface.html">3.2.19 <code>break-alignable-interface</code></a></li>
+      <li><a id="toc-break_002daligned_002dinterface-1" href="break_002daligned_002dinterface.html">3.2.20 <code>break-aligned-interface</code></a></li>
+      <li><a id="toc-break_002dalignment_002dinterface-1" href="break_002dalignment_002dinterface.html">3.2.21 <code>break-alignment-interface</code></a></li>
+      <li><a id="toc-breathing_002dsign_002dinterface-1" href="breathing_002dsign_002dinterface.html">3.2.22 <code>breathing-sign-interface</code></a></li>
+      <li><a id="toc-caesura_002dscript_002dinterface-1" href="caesura_002dscript_002dinterface.html">3.2.23 <code>caesura-script-interface</code></a></li>
+      <li><a id="toc-centered_002dbar_002dnumber_002dinterface-1" href="centered_002dbar_002dnumber_002dinterface.html">3.2.24 <code>centered-bar-number-interface</code></a></li>
+      <li><a id="toc-centered_002dbar_002dnumber_002dline_002dspanner_002dinterface-1" href="centered_002dbar_002dnumber_002dline_002dspanner_002dinterface.html">3.2.25 <code>centered-bar-number-line-spanner-interface</code></a></li>
+      <li><a id="toc-centered_002dspanner_002dinterface-1" href="centered_002dspanner_002dinterface.html">3.2.26 <code>centered-spanner-interface</code></a></li>
+      <li><a id="toc-chord_002dbracket_002dinterface-1" href="chord_002dbracket_002dinterface.html">3.2.27 <code>chord-bracket-interface</code></a></li>
+      <li><a id="toc-chord_002dname_002dinterface-1" href="chord_002dname_002dinterface.html">3.2.28 <code>chord-name-interface</code></a></li>
+      <li><a id="toc-chord_002dslur_002dinterface-1" href="chord_002dslur_002dinterface.html">3.2.29 <code>chord-slur-interface</code></a></li>
+      <li><a id="toc-chord_002dsquare_002dinterface-1" href="chord_002dsquare_002dinterface.html">3.2.30 <code>chord-square-interface</code></a></li>
+      <li><a id="toc-clef_002dinterface-1" href="clef_002dinterface.html">3.2.31 <code>clef-interface</code></a></li>
+      <li><a id="toc-clef_002dmodifier_002dinterface-1" href="clef_002dmodifier_002dinterface.html">3.2.32 <code>clef-modifier-interface</code></a></li>
+      <li><a id="toc-cluster_002dbeacon_002dinterface-1" href="cluster_002dbeacon_002dinterface.html">3.2.33 <code>cluster-beacon-interface</code></a></li>
+      <li><a id="toc-cluster_002dinterface-1" href="cluster_002dinterface.html">3.2.34 <code>cluster-interface</code></a></li>
+      <li><a id="toc-coda_002dmark_002dinterface-1" href="coda_002dmark_002dinterface.html">3.2.35 <code>coda-mark-interface</code></a></li>
+      <li><a id="toc-control_002dpoint_002dinterface-1" href="control_002dpoint_002dinterface.html">3.2.36 <code>control-point-interface</code></a></li>
+      <li><a id="toc-control_002dpolygon_002dinterface-1" href="control_002dpolygon_002dinterface.html">3.2.37 <code>control-polygon-interface</code></a></li>
+      <li><a id="toc-custos_002dinterface-1" href="custos_002dinterface.html">3.2.38 <code>custos-interface</code></a></li>
+      <li><a id="toc-dot_002dcolumn_002dinterface-1" href="dot_002dcolumn_002dinterface.html">3.2.39 <code>dot-column-interface</code></a></li>
+      <li><a id="toc-dots_002dinterface-1" href="dots_002dinterface.html">3.2.40 <code>dots-interface</code></a></li>
+      <li><a id="toc-duration_002dline_002dinterface-1" href="duration_002dline_002dinterface.html">3.2.41 <code>duration-line-interface</code></a></li>
+      <li><a id="toc-dynamic_002dinterface-1" href="dynamic_002dinterface.html">3.2.42 <code>dynamic-interface</code></a></li>
+      <li><a id="toc-dynamic_002dline_002dspanner_002dinterface-1" href="dynamic_002dline_002dspanner_002dinterface.html">3.2.43 <code>dynamic-line-spanner-interface</code></a></li>
+      <li><a id="toc-dynamic_002dtext_002dinterface-1" href="dynamic_002dtext_002dinterface.html">3.2.44 <code>dynamic-text-interface</code></a></li>
+      <li><a id="toc-dynamic_002dtext_002dspanner_002dinterface-1" href="dynamic_002dtext_002dspanner_002dinterface.html">3.2.45 <code>dynamic-text-spanner-interface</code></a></li>
+      <li><a id="toc-enclosing_002dbracket_002dinterface-1" href="enclosing_002dbracket_002dinterface.html">3.2.46 <code>enclosing-bracket-interface</code></a></li>
+      <li><a id="toc-episema_002dinterface-1" href="episema_002dinterface.html">3.2.47 <code>episema-interface</code></a></li>
+      <li><a id="toc-figured_002dbass_002dcontinuation_002dinterface-1" href="figured_002dbass_002dcontinuation_002dinterface.html">3.2.48 <code>figured-bass-continuation-interface</code></a></li>
+      <li><a id="toc-finger_002dglide_002dinterface-1" href="finger_002dglide_002dinterface.html">3.2.49 <code>finger-glide-interface</code></a></li>
+      <li><a id="toc-finger_002dinterface-1" href="finger_002dinterface.html">3.2.50 <code>finger-interface</code></a></li>
+      <li><a id="toc-fingering_002dcolumn_002dinterface-1" href="fingering_002dcolumn_002dinterface.html">3.2.51 <code>fingering-column-interface</code></a></li>
+      <li><a id="toc-flag_002dinterface-1" href="flag_002dinterface.html">3.2.52 <code>flag-interface</code></a></li>
+      <li><a id="toc-font_002dinterface-1" href="font_002dinterface.html">3.2.53 <code>font-interface</code></a></li>
+      <li><a id="toc-footnote_002dinterface-1" href="footnote_002dinterface.html">3.2.54 <code>footnote-interface</code></a></li>
+      <li><a id="toc-fret_002ddiagram_002dinterface-1" href="fret_002ddiagram_002dinterface.html">3.2.55 <code>fret-diagram-interface</code></a></li>
+      <li><a id="toc-glissando_002dinterface-1" href="glissando_002dinterface.html">3.2.56 <code>glissando-interface</code></a></li>
+      <li><a id="toc-grace_002dspacing_002dinterface-1" href="grace_002dspacing_002dinterface.html">3.2.57 <code>grace-spacing-interface</code></a></li>
+      <li><a id="toc-gregorian_002dligature_002dinterface-1" href="gregorian_002dligature_002dinterface.html">3.2.58 <code>gregorian-ligature-interface</code></a></li>
+      <li><a id="toc-grid_002dchord_002dname_002dinterface-1" href="grid_002dchord_002dname_002dinterface.html">3.2.59 <code>grid-chord-name-interface</code></a></li>
+      <li><a id="toc-grid_002dline_002dinterface-1" href="grid_002dline_002dinterface.html">3.2.60 <code>grid-line-interface</code></a></li>
+      <li><a id="toc-grid_002dpoint_002dinterface-1" href="grid_002dpoint_002dinterface.html">3.2.61 <code>grid-point-interface</code></a></li>
+      <li><a id="toc-grob_002dinterface-1" href="grob_002dinterface.html">3.2.62 <code>grob-interface</code></a></li>
+      <li><a id="toc-hairpin_002dinterface-1" href="hairpin_002dinterface.html">3.2.63 <code>hairpin-interface</code></a></li>
+      <li><a id="toc-hara_002dkiri_002dgroup_002dspanner_002dinterface-1" href="hara_002dkiri_002dgroup_002dspanner_002dinterface.html">3.2.64 <code>hara-kiri-group-spanner-interface</code></a></li>
+      <li><a id="toc-horizontal_002dbracket_002dinterface-1" href="horizontal_002dbracket_002dinterface.html">3.2.65 <code>horizontal-bracket-interface</code></a></li>
+      <li><a id="toc-horizontal_002dbracket_002dtext_002dinterface-1" href="horizontal_002dbracket_002dtext_002dinterface.html">3.2.66 <code>horizontal-bracket-text-interface</code></a></li>
+      <li><a id="toc-horizontal_002dline_002dspanner_002dinterface-1" href="horizontal_002dline_002dspanner_002dinterface.html">3.2.67 <code>horizontal-line-spanner-interface</code></a></li>
+      <li><a id="toc-inline_002daccidental_002dinterface-1" href="inline_002daccidental_002dinterface.html">3.2.68 <code>inline-accidental-interface</code></a></li>
+      <li><a id="toc-instrument_002dspecific_002dmarkup_002dinterface-1" href="instrument_002dspecific_002dmarkup_002dinterface.html">3.2.69 <code>instrument-specific-markup-interface</code></a></li>
+      <li><a id="toc-item_002dinterface-1" href="item_002dinterface.html">3.2.70 <code>item-interface</code></a></li>
+      <li><a id="toc-jump_002dscript_002dinterface-1" href="jump_002dscript_002dinterface.html">3.2.71 <code>jump-script-interface</code></a></li>
+      <li><a id="toc-key_002dcancellation_002dinterface-1" href="key_002dcancellation_002dinterface.html">3.2.72 <code>key-cancellation-interface</code></a></li>
+      <li><a id="toc-key_002dsignature_002dinterface-1" href="key_002dsignature_002dinterface.html">3.2.73 <code>key-signature-interface</code></a></li>
+      <li><a id="toc-kievan_002dligature_002dinterface-1" href="kievan_002dligature_002dinterface.html">3.2.74 <code>kievan-ligature-interface</code></a></li>
+      <li><a id="toc-ledger_002dline_002dspanner_002dinterface-1" href="ledger_002dline_002dspanner_002dinterface.html">3.2.75 <code>ledger-line-spanner-interface</code></a></li>
+      <li><a id="toc-ledgered_002dgrob_002dinterface-1" href="ledgered_002dgrob_002dinterface.html">3.2.76 <code>ledgered-grob-interface</code></a></li>
+      <li><a id="toc-ledgered_002dinterface-1" href="ledgered_002dinterface.html">3.2.77 <code>ledgered-interface</code></a></li>
+      <li><a id="toc-ligature_002dbracket_002dinterface-1" href="ligature_002dbracket_002dinterface.html">3.2.78 <code>ligature-bracket-interface</code></a></li>
+      <li><a id="toc-ligature_002dhead_002dinterface-1" href="ligature_002dhead_002dinterface.html">3.2.79 <code>ligature-head-interface</code></a></li>
+      <li><a id="toc-ligature_002dinterface-1" href="ligature_002dinterface.html">3.2.80 <code>ligature-interface</code></a></li>
+      <li><a id="toc-line_002dinterface-1" href="line_002dinterface.html">3.2.81 <code>line-interface</code></a></li>
+      <li><a id="toc-line_002dspanner_002dinterface-1" href="line_002dspanner_002dinterface.html">3.2.82 <code>line-spanner-interface</code></a></li>
+      <li><a id="toc-lyric_002dextender_002dinterface-1" href="lyric_002dextender_002dinterface.html">3.2.83 <code>lyric-extender-interface</code></a></li>
+      <li><a id="toc-lyric_002dhyphen_002dinterface-1" href="lyric_002dhyphen_002dinterface.html">3.2.84 <code>lyric-hyphen-interface</code></a></li>
+      <li><a id="toc-lyric_002dinterface-1" href="lyric_002dinterface.html">3.2.85 <code>lyric-interface</code></a></li>
+      <li><a id="toc-lyric_002drepeat_002dcount_002dinterface-1" href="lyric_002drepeat_002dcount_002dinterface.html">3.2.86 <code>lyric-repeat-count-interface</code></a></li>
+      <li><a id="toc-lyric_002dspace_002dinterface-1" href="lyric_002dspace_002dinterface.html">3.2.87 <code>lyric-space-interface</code></a></li>
+      <li><a id="toc-lyric_002dsyllable_002dinterface-1" href="lyric_002dsyllable_002dinterface.html">3.2.88 <code>lyric-syllable-interface</code></a></li>
+      <li><a id="toc-mark_002dinterface-1" href="mark_002dinterface.html">3.2.89 <code>mark-interface</code></a></li>
+      <li><a id="toc-measure_002dcounter_002dinterface-1" href="measure_002dcounter_002dinterface.html">3.2.90 <code>measure-counter-interface</code></a></li>
+      <li><a id="toc-measure_002dgrouping_002dinterface-1" href="measure_002dgrouping_002dinterface.html">3.2.91 <code>measure-grouping-interface</code></a></li>
+      <li><a id="toc-measure_002dspanner_002dinterface-1" href="measure_002dspanner_002dinterface.html">3.2.92 <code>measure-spanner-interface</code></a></li>
+      <li><a id="toc-melody_002dspanner_002dinterface-1" href="melody_002dspanner_002dinterface.html">3.2.93 <code>melody-spanner-interface</code></a></li>
+      <li><a id="toc-mensural_002dligature_002dinterface-1" href="mensural_002dligature_002dinterface.html">3.2.94 <code>mensural-ligature-interface</code></a></li>
+      <li><a id="toc-metronome_002dmark_002dinterface-1" href="metronome_002dmark_002dinterface.html">3.2.95 <code>metronome-mark-interface</code></a></li>
+      <li><a id="toc-multi_002dmeasure_002dinterface-1" href="multi_002dmeasure_002dinterface.html">3.2.96 <code>multi-measure-interface</code></a></li>
+      <li><a id="toc-multi_002dmeasure_002drest_002dinterface-1" href="multi_002dmeasure_002drest_002dinterface.html">3.2.97 <code>multi-measure-rest-interface</code></a></li>
+      <li><a id="toc-multi_002dmeasure_002drest_002dnumber_002dinterface-1" href="multi_002dmeasure_002drest_002dnumber_002dinterface.html">3.2.98 <code>multi-measure-rest-number-interface</code></a></li>
+      <li><a id="toc-musical_002dpaper_002dcolumn_002dinterface-1" href="musical_002dpaper_002dcolumn_002dinterface.html">3.2.99 <code>musical-paper-column-interface</code></a></li>
+      <li><a id="toc-non_002dmusical_002dpaper_002dcolumn_002dinterface-1" href="non_002dmusical_002dpaper_002dcolumn_002dinterface.html">3.2.100 <code>non-musical-paper-column-interface</code></a></li>
+      <li><a id="toc-note_002dcollision_002dinterface-1" href="note_002dcollision_002dinterface.html">3.2.101 <code>note-collision-interface</code></a></li>
+      <li><a id="toc-note_002dcolumn_002dinterface-1" href="note_002dcolumn_002dinterface.html">3.2.102 <code>note-column-interface</code></a></li>
+      <li><a id="toc-note_002dhead_002dinterface-1" href="note_002dhead_002dinterface.html">3.2.103 <code>note-head-interface</code></a></li>
+      <li><a id="toc-note_002dname_002dinterface-1" href="note_002dname_002dinterface.html">3.2.104 <code>note-name-interface</code></a></li>
+      <li><a id="toc-note_002dspacing_002dinterface-1" href="note_002dspacing_002dinterface.html">3.2.105 <code>note-spacing-interface</code></a></li>
+      <li><a id="toc-number_002dinterface-1" href="number_002dinterface.html">3.2.106 <code>number-interface</code></a></li>
+      <li><a id="toc-optional_002dmaterial_002dbracket_002dinterface-1" href="optional_002dmaterial_002dbracket_002dinterface.html">3.2.107 <code>optional-material-bracket-interface</code></a></li>
+      <li><a id="toc-ottava_002dbracket_002dinterface-1" href="ottava_002dbracket_002dinterface.html">3.2.108 <code>ottava-bracket-interface</code></a></li>
+      <li><a id="toc-outside_002dstaff_002daxis_002dgroup_002dinterface-1" href="outside_002dstaff_002daxis_002dgroup_002dinterface.html">3.2.109 <code>outside-staff-axis-group-interface</code></a></li>
+      <li><a id="toc-outside_002dstaff_002dinterface-1" href="outside_002dstaff_002dinterface.html">3.2.110 <code>outside-staff-interface</code></a></li>
+      <li><a id="toc-paper_002dcolumn_002dinterface-1" href="paper_002dcolumn_002dinterface.html">3.2.111 <code>paper-column-interface</code></a></li>
+      <li><a id="toc-parentheses_002dinterface-1" href="parentheses_002dinterface.html">3.2.112 <code>parentheses-interface</code></a></li>
+      <li><a id="toc-passage_002ddelimiter_002dinterface-1" href="passage_002ddelimiter_002dinterface.html">3.2.113 <code>passage-delimiter-interface</code></a></li>
+      <li><a id="toc-percent_002drepeat_002dinterface-1" href="percent_002drepeat_002dinterface.html">3.2.114 <code>percent-repeat-interface</code></a></li>
+      <li><a id="toc-piano_002dpedal_002dbracket_002dinterface-1" href="piano_002dpedal_002dbracket_002dinterface.html">3.2.115 <code>piano-pedal-bracket-interface</code></a></li>
+      <li><a id="toc-piano_002dpedal_002dinterface-1" href="piano_002dpedal_002dinterface.html">3.2.116 <code>piano-pedal-interface</code></a></li>
+      <li><a id="toc-piano_002dpedal_002dscript_002dinterface-1" href="piano_002dpedal_002dscript_002dinterface.html">3.2.117 <code>piano-pedal-script-interface</code></a></li>
+      <li><a id="toc-pitched_002dtrill_002dinterface-1" href="pitched_002dtrill_002dinterface.html">3.2.118 <code>pitched-trill-interface</code></a></li>
+      <li><a id="toc-pure_002dfrom_002dneighbor_002dinterface-1" href="pure_002dfrom_002dneighbor_002dinterface.html">3.2.119 <code>pure-from-neighbor-interface</code></a></li>
+      <li><a id="toc-rehearsal_002dmark_002dinterface-1" href="rehearsal_002dmark_002dinterface.html">3.2.120 <code>rehearsal-mark-interface</code></a></li>
+      <li><a id="toc-rest_002dcollision_002dinterface-1" href="rest_002dcollision_002dinterface.html">3.2.121 <code>rest-collision-interface</code></a></li>
+      <li><a id="toc-rest_002dinterface-1" href="rest_002dinterface.html">3.2.122 <code>rest-interface</code></a></li>
+      <li><a id="toc-rhythmic_002dgrob_002dinterface-1" href="rhythmic_002dgrob_002dinterface.html">3.2.123 <code>rhythmic-grob-interface</code></a></li>
+      <li><a id="toc-rhythmic_002dhead_002dinterface-1" href="rhythmic_002dhead_002dinterface.html">3.2.124 <code>rhythmic-head-interface</code></a></li>
+      <li><a id="toc-script_002dcolumn_002dinterface-1" href="script_002dcolumn_002dinterface.html">3.2.125 <code>script-column-interface</code></a></li>
+      <li><a id="toc-script_002dinterface-1" href="script_002dinterface.html">3.2.126 <code>script-interface</code></a></li>
+      <li><a id="toc-section_002dlabel_002dinterface-1" href="section_002dlabel_002dinterface.html">3.2.127 <code>section-label-interface</code></a></li>
+      <li><a id="toc-segno_002dmark_002dinterface-1" href="segno_002dmark_002dinterface.html">3.2.128 <code>segno-mark-interface</code></a></li>
+      <li><a id="toc-self_002dalignment_002dinterface-1" href="self_002dalignment_002dinterface.html">3.2.129 <code>self-alignment-interface</code></a></li>
+      <li><a id="toc-semi_002dtie_002dcolumn_002dinterface-1" href="semi_002dtie_002dcolumn_002dinterface.html">3.2.130 <code>semi-tie-column-interface</code></a></li>
+      <li><a id="toc-semi_002dtie_002dinterface-1" href="semi_002dtie_002dinterface.html">3.2.131 <code>semi-tie-interface</code></a></li>
+      <li><a id="toc-separation_002ditem_002dinterface-1" href="separation_002ditem_002dinterface.html">3.2.132 <code>separation-item-interface</code></a></li>
+      <li><a id="toc-side_002dposition_002dinterface-1" href="side_002dposition_002dinterface.html">3.2.133 <code>side-position-interface</code></a></li>
+      <li><a id="toc-signum_002drepetitionis_002dinterface-1" href="signum_002drepetitionis_002dinterface.html">3.2.134 <code>signum-repetitionis-interface</code></a></li>
+      <li><a id="toc-slur_002dinterface-1" href="slur_002dinterface.html">3.2.135 <code>slur-interface</code></a></li>
+      <li><a id="toc-spaceable_002dgrob_002dinterface-1" href="spaceable_002dgrob_002dinterface.html">3.2.136 <code>spaceable-grob-interface</code></a></li>
+      <li><a id="toc-spacing_002dinterface-1" href="spacing_002dinterface.html">3.2.137 <code>spacing-interface</code></a></li>
+      <li><a id="toc-spacing_002doptions_002dinterface-1" href="spacing_002doptions_002dinterface.html">3.2.138 <code>spacing-options-interface</code></a></li>
+      <li><a id="toc-spacing_002dspanner_002dinterface-1" href="spacing_002dspanner_002dinterface.html">3.2.139 <code>spacing-spanner-interface</code></a></li>
+      <li><a id="toc-span_002dbar_002dinterface-1" href="span_002dbar_002dinterface.html">3.2.140 <code>span-bar-interface</code></a></li>
+      <li><a id="toc-span_002dbar_002dstub_002dinterface-1" href="span_002dbar_002dstub_002dinterface.html">3.2.141 <code>span-bar-stub-interface</code></a></li>
+      <li><a id="toc-spanner_002dinterface-1" href="spanner_002dinterface.html">3.2.142 <code>spanner-interface</code></a></li>
+      <li><a id="toc-staff_002dellipsis_002dinterface-1" href="staff_002dellipsis_002dinterface.html">3.2.143 <code>staff-ellipsis-interface</code></a></li>
+      <li><a id="toc-staff_002dgrouper_002dinterface-1" href="staff_002dgrouper_002dinterface.html">3.2.144 <code>staff-grouper-interface</code></a></li>
+      <li><a id="toc-staff_002dhighlight_002dinterface-1" href="staff_002dhighlight_002dinterface.html">3.2.145 <code>staff-highlight-interface</code></a></li>
+      <li><a id="toc-staff_002dspacing_002dinterface-1" href="staff_002dspacing_002dinterface.html">3.2.146 <code>staff-spacing-interface</code></a></li>
+      <li><a id="toc-staff_002dsymbol_002dinterface-1" href="staff_002dsymbol_002dinterface.html">3.2.147 <code>staff-symbol-interface</code></a></li>
+      <li><a id="toc-staff_002dsymbol_002dreferencer_002dinterface-1" href="staff_002dsymbol_002dreferencer_002dinterface.html">3.2.148 <code>staff-symbol-referencer-interface</code></a></li>
+      <li><a id="toc-stanza_002dnumber_002dinterface-1" href="stanza_002dnumber_002dinterface.html">3.2.149 <code>stanza-number-interface</code></a></li>
+      <li><a id="toc-stem_002dinterface-1" href="stem_002dinterface.html">3.2.150 <code>stem-interface</code></a></li>
+      <li><a id="toc-stem_002dtremolo_002dinterface-1" href="stem_002dtremolo_002dinterface.html">3.2.151 <code>stem-tremolo-interface</code></a></li>
+      <li><a id="toc-sticky_002dgrob_002dinterface-1" href="sticky_002dgrob_002dinterface.html">3.2.152 <code>sticky-grob-interface</code></a></li>
+      <li><a id="toc-string_002dnumber_002dinterface-1" href="string_002dnumber_002dinterface.html">3.2.153 <code>string-number-interface</code></a></li>
+      <li><a id="toc-stroke_002dfinger_002dinterface-1" href="stroke_002dfinger_002dinterface.html">3.2.154 <code>stroke-finger-interface</code></a></li>
+      <li><a id="toc-system_002dinterface-1" href="system_002dinterface.html">3.2.155 <code>system-interface</code></a></li>
+      <li><a id="toc-system_002dstart_002ddelimiter_002dinterface-1" href="system_002dstart_002ddelimiter_002dinterface.html">3.2.156 <code>system-start-delimiter-interface</code></a></li>
+      <li><a id="toc-system_002dstart_002dtext_002dinterface-1" href="system_002dstart_002dtext_002dinterface.html">3.2.157 <code>system-start-text-interface</code></a></li>
+      <li><a id="toc-tab_002dnote_002dhead_002dinterface-1" href="tab_002dnote_002dhead_002dinterface.html">3.2.158 <code>tab-note-head-interface</code></a></li>
+      <li><a id="toc-text_002dinterface-1" href="text_002dinterface.html">3.2.159 <code>text-interface</code></a></li>
+      <li><a id="toc-text_002dmark_002dinterface-1" href="text_002dmark_002dinterface.html">3.2.160 <code>text-mark-interface</code></a></li>
+      <li><a id="toc-text_002dscript_002dinterface-1" href="text_002dscript_002dinterface.html">3.2.161 <code>text-script-interface</code></a></li>
+      <li><a id="toc-tie_002dcolumn_002dinterface-1" href="tie_002dcolumn_002dinterface.html">3.2.162 <code>tie-column-interface</code></a></li>
+      <li><a id="toc-tie_002dinterface-1" href="tie_002dinterface.html">3.2.163 <code>tie-interface</code></a></li>
+      <li><a id="toc-time_002dsignature_002dinterface-1" href="time_002dsignature_002dinterface.html">3.2.164 <code>time-signature-interface</code></a></li>
+      <li><a id="toc-trill_002dpitch_002daccidental_002dinterface-1" href="trill_002dpitch_002daccidental_002dinterface.html">3.2.165 <code>trill-pitch-accidental-interface</code></a></li>
+      <li><a id="toc-trill_002dspanner_002dinterface-1" href="trill_002dspanner_002dinterface.html">3.2.166 <code>trill-spanner-interface</code></a></li>
+      <li><a id="toc-tuplet_002dbracket_002dinterface-1" href="tuplet_002dbracket_002dinterface.html">3.2.167 <code>tuplet-bracket-interface</code></a></li>
+      <li><a id="toc-tuplet_002dnumber_002dinterface-1" href="tuplet_002dnumber_002dinterface.html">3.2.168 <code>tuplet-number-interface</code></a></li>
+      <li><a id="toc-unbreakable_002dspanner_002dinterface-1" href="unbreakable_002dspanner_002dinterface.html">3.2.169 <code>unbreakable-spanner-interface</code></a></li>
+      <li><a id="toc-vaticana_002dligature_002dinterface-1" href="vaticana_002dligature_002dinterface.html">3.2.170 <code>vaticana-ligature-interface</code></a></li>
+      <li><a id="toc-volta_002dbracket_002dinterface-1" href="volta_002dbracket_002dinterface.html">3.2.171 <code>volta-bracket-interface</code></a></li>
+      <li><a id="toc-volta_002dinterface-1" href="volta_002dinterface.html">3.2.172 <code>volta-interface</code></a></li>
+    </ul></li>
+    <li><a id="toc-User-backend-properties" href="user-backend-properties.html">3.3 User backend properties</a></li>
+    <li><a id="toc-Internal-backend-properties" href="internal-backend-properties.html">3.4 Internal backend properties</a></li>
+  </ul></li>
+  <li><a id="toc-Scheme-functions" href="scheme-functions.html">4 Scheme functions</a></li>
+  <li><a id="toc-Indices" href="indices.html">Appendix A Indices</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Function-index" href="function-index.html" rel="index">A.1 Function index</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: FILL-IN-HEAD-COMMITTISH
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google Search">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Search">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

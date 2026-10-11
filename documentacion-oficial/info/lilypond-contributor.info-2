@@ -1,0 +1,2687 @@
+This is lilypond-contributor.info, produced by texi2any version 6.8 from
+contributor.texi.
+
+Copyright © 2007–2026 by the authors.
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections.  A copy of the license is
+     included in the section entitled “GNU Free Documentation License”.
+INFO-DIR-SECTION LilyPond – the music typesetter
+START-INFO-DIR-ENTRY
+* Contributing: (lilypond-contributor). How to contribute to LilyPond.
+END-INFO-DIR-ENTRY
+
+
+
+File: lilypond-contributor.info,  Node: Write the code,  Next: Write regression tests,  Up: Adding or modifying features
+
+10.10.1 Write the code
+----------------------
+
+You should probably create a new git branch for writing the code, as
+that will separate it from the master branch and allow you to continue
+to work on small projects related to master.
+
+   Please be sure to follow the rules for programming style discussed
+earlier in this chapter.
+
+
+File: lilypond-contributor.info,  Node: Write regression tests,  Next: Write convert-ly rule,  Prev: Write the code,  Up: Adding or modifying features
+
+10.10.2 Write regression tests
+------------------------------
+
+In order to demonstrate that the code works properly, you will need to
+write one or more regression tests.  These tests are typically ‘.ly’
+files that are found in ‘input/regression’.
+
+   Regression tests should be as brief as possible to demonstrate the
+functionality of the code.
+
+   Regression tests should generally cover one issue per test.  Several
+short, single-issue regression tests are preferred to a single, long,
+multiple-issue regression test.
+
+   If the change in the output is small or easy to overlook, use bigger
+staff size – 40 or more (up to 100 in extreme cases).  Size 30 means
+"pay extra attention to details in general".
+
+   Use existing regression tests as templates to demonstrate the type of
+header information that should be included in a regression test.
+
+
+File: lilypond-contributor.info,  Node: Write convert-ly rule,  Next: Automatically update documentation,  Prev: Write regression tests,  Up: Adding or modifying features
+
+10.10.3 Write convert-ly rule
+-----------------------------
+
+If the modification changes the input syntax, a convert-ly rule should
+be written to automatically update input files from older versions.
+
+   convert-ly rules are found in python/convertrules.py
+
+   If possible, the convert-ly rule should allow automatic updating of
+the file.  In some cases, this will not be possible, so the rule will
+simply point out to the user that the feature needs manual correction.
+
+
+File: lilypond-contributor.info,  Node: Automatically update documentation,  Next: Manually update documentation,  Prev: Write convert-ly rule,  Up: Adding or modifying features
+
+10.10.4 Automatically update documentation
+------------------------------------------
+
+‘convert-ly’ should be used to update the documentation, the snippets,
+and the regression tests.  This not only makes the necessary syntax
+changes, it also tests the ‘convert-ly’ rules.
+
+   The automatic updating is performed by changing to the top-level
+source directory, then running:
+
+     scripts/auxiliar/update-with-convert-ly.sh
+
+   If you did an out-of-tree build, pass in the relative path:
+
+     LILYPOND_BUILD_DIR=../build-lilypond/ \
+       scripts/auxiliar/update-with-convert-ly.sh
+
+
+File: lilypond-contributor.info,  Node: Manually update documentation,  Next: Edit the Changes file,  Prev: Automatically update documentation,  Up: Adding or modifying features
+
+10.10.5 Manually update documentation
+-------------------------------------
+
+Where the ‘convert-ly’ rule is not able to automatically update the
+inline LilyPond code in the documentation (i.e., if a ‘NOT_SMART’ rule
+is used), the documentation must be manually updated.  The inline
+snippets that require modification must be changed in the English
+version of the documentation and all translated versions.  If the inline
+code is not changed in the translated documentation, old snippets will
+show up instead.
+
+   Where the ‘convert-ly’ rule is not able to automatically update
+snippets in ‘Documentation/snippets/’, those snippets must be manually
+updated and copied to ‘Documentation/snippets/new’.  The comments at the
+top of the snippet describing its automatic generation should be
+removed.  All translated texidoc strings should be removed.  The comment
+‘% begin verbatim’ should be removed.  The syntax of the snippet should
+then be manually edited.
+
+   Where snippets in ‘Documentation/snippets’ are made obsolete, the
+snippet should be copied to ‘Documentation/snippets/new’.  The comments
+and texidoc strings should be removed as described above.  Then the body
+of the snippet should be changed to:
+
+     \markup {
+       This snippet is deprecated as of version X.Y.Z and
+       will be removed from the documentation.
+     }
+
+where ‘X.Y.Z’ is the version number for which the ‘convert-ly’ rule was
+written.
+
+   Update the snippet files by running:
+
+     scripts/auxiliar/makelsr.pl --no-lsr --no-snippet-list
+
+   Where the ‘convert-ly’ rule is not able to automatically update
+regression tests, the regression tests in ‘input/regression/’ should be
+manually edited.
+
+   Although it is not required, it is helpful if the developer can write
+relevant material for inclusion in the Notation Reference.  If the
+developer does not feel qualified to write the documentation, a
+documentation editor will be able to write it from the regression tests.
+In this case the developer should raise a new issue in the tracker
+(setting the ‘Doc’ label) containing a reference to the original issue
+number and/or the committish of the pushed patch so that the need for
+new documention is not overlooked.
+
+   Any text that is added to or removed from the documentation should be
+changed only in the English version.
+
+
+File: lilypond-contributor.info,  Node: Edit the Changes file,  Next: Verify successful build,  Prev: Manually update documentation,  Up: Adding or modifying features
+
+10.10.6 Edit changes.tely
+-------------------------
+
+An entry should be added to Documentation/changes.tely to describe the
+feature changes to be implemented.  This is especially important for
+changes that change input file syntax.
+
+   Hints for changes.tely entries are given at the top of the file.
+
+   New entries in changes.tely go at the top of the file.
+
+   The changes.tely entry should be written to show how the new change
+improves LilyPond, if possible.
+
+
+File: lilypond-contributor.info,  Node: Verify successful build,  Next: Verify regression tests,  Prev: Edit the Changes file,  Up: Adding or modifying features
+
+10.10.7 Verify successful build
+-------------------------------
+
+When the changes have been made, successful completion must be verified
+by doing
+
+     make all
+     make doc
+
+   When these commands complete without error, the patch is considered
+to function successfully.
+
+   Developers on Windows who are unable to build LilyPond should get
+help from a GNU/Linux or OSX developer to do the make tests.
+
+
+File: lilypond-contributor.info,  Node: Verify regression tests,  Next: Post patch for comments,  Prev: Verify successful build,  Up: Adding or modifying features
+
+10.10.8 Verify regression tests
+-------------------------------
+
+In order to avoid breaking LilyPond, it is important to verify that the
+regression tests succeed, and that no unwanted changes are introduced
+into the output.  This process is described in *note Regtest
+comparison::.
+
+Typical developer’s edit/compile/test cycle
+-------------------------------------------
+
+   • Initial test:
+
+          make clean                     _## when needed (see below)_
+          make [-jX CPU_COUNT=X] test-baseline
+
+   • Edit/compile/test cycle:
+
+          _## edit source files, then..._
+
+          make clean                     _## when needed (see below)_
+          make [-jX]                     _## when needed (see below)_
+          make [-jX CPU_COUNT=X] check   _## retest cases differing from baseline_
+
+   • Reset:
+
+          make test-clean
+
+   If you have modified LilyPond source files that have to be compiled
+(such as ‘.cc’ or ‘.hh’ files in ‘flower/’ or ‘lily/’), the
+regression-test targets automatically rebuild LilyPond before running
+the tests.
+
+   If you have modified any font definitions in the ‘mf/’ directory,
+then you must run ‘make clean’ before running regression tests.  This
+works around incomplete makefile dependencies.  The subsequent
+regression-test target rebuilds all of LilyPond and the fonts before
+running the tests.
+
+   Regression-test targets do not necessarily rebuild everything that a
+simple ‘make’ builds.  You may omit ‘make’ from the debugging cycle to
+save time, but it is still important to run ‘make’ before committing.
+
+   Running ‘make check’ leaves an HTML page
+‘out/test-results/index.html’.  This page shows all the important
+differences that your change introduced, whether in the layout, MIDI,
+performance or error reporting.
+
+   You only need to use ‘make test-clean’ to retest all cases.  To
+retest mismatching cases only, all that is needed is to repeat
+‘make check’.
+
+
+File: lilypond-contributor.info,  Node: Post patch for comments,  Next: Push patch,  Prev: Verify regression tests,  Up: Adding or modifying features
+
+10.10.9 Post patch for comments
+-------------------------------
+
+See *note Uploading a patch for review::.
+
+
+File: lilypond-contributor.info,  Node: Push patch,  Next: Closing the issues,  Prev: Post patch for comments,  Up: Adding or modifying features
+
+10.10.10 Push patch
+-------------------
+
+Once all the comments have been addressed, the patch can be pushed.
+
+   If the author has push privileges, the author will push the patch.
+Otherwise, a developer with push privileges will push the patch.
+
+
+File: lilypond-contributor.info,  Node: Closing the issues,  Prev: Push patch,  Up: Adding or modifying features
+
+10.10.11 Closing the issues
+---------------------------
+
+Once the patch has been pushed, all the relevant issues should be
+closed.
+
+   If the changes were in response to a feature request on the issue
+tracker for LilyPond, the author should change the label to
+‘Status::Fixed’ and set the milestone to the version where the issue was
+fixed.
+
+
+File: lilypond-contributor.info,  Node: Iterator tutorial,  Next: Engraver tutorial,  Prev: Adding or modifying features,  Up: Programming work
+
+10.11 Iterator tutorial
+=======================
+
+TODO – this is a placeholder for a tutorial on iterators
+
+   Iterators are routines written in C++ that process music expressions
+and sent the music events to the appropriate engravers and/or
+performers.
+
+   See a short example discussing iterators and their duties in *note
+Articulations on EventChord::.
+
+
+File: lilypond-contributor.info,  Node: Engraver tutorial,  Next: Callback tutorial,  Prev: Iterator tutorial,  Up: Programming work
+
+10.12 Engraver tutorial
+=======================
+
+Engravers are C++ classes that catch music events and create the
+appropriate grobs for display on the page.  Though the majority of
+engravers are responsible for the creation of a single grob, in some
+cases (e.g.  ‘New_fingering_engraver’), several different grobs may be
+created.
+
+   Engravers listen for events and acknowledge grobs.  Events are passed
+to the engraver in time-step order during the iteration phase.  Grobs
+are made available to the engraver when they are created by other
+engravers during the iteration phase.
+
+* Menu:
+
+* Useful methods for information processing::
+* Translation process::
+* Listening to music events::
+* Acknowledging grobs::
+* Engraver declaration/documentation::
+
+
+File: lilypond-contributor.info,  Node: Useful methods for information processing,  Next: Translation process,  Up: Engraver tutorial
+
+10.12.1 Useful methods for information processing
+-------------------------------------------------
+
+An engraver inherits the following public methods from the Translator
+base class, which can be used to process listened events and
+acknowledged grobs:
+
+   • ‘virtual void initialize ()’
+   • ‘void start_translation_timestep ()’
+   • ‘void process_music ()’
+   • ‘void process_acknowledged ()’
+   • ‘void stop_translation_timestep ()’
+   • ‘virtual void finalize ()’
+
+   These methods are listed in order of translation time, with
+‘initialize ()’ and ‘finalize ()’ bookending the whole process.
+‘initialize ()’ can be used for one-time initialization of context
+properties before translation starts, whereas ‘finalize ()’ is often
+used to tie up loose ends at the end of translation: for example, an
+unterminated spanner might be completed automatically or reported with a
+warning message.
+
+   In addition, there is a ‘derived_mark’ method that should be used to
+protect Scheme members from garbage collection.  *Note Garbage
+collection for dummies::.
+
+
+File: lilypond-contributor.info,  Node: Translation process,  Next: Listening to music events,  Prev: Useful methods for information processing,  Up: Engraver tutorial
+
+10.12.2 Translation process
+---------------------------
+
+At each timestep in the music, translation proceeds by calling the
+following methods in turn:
+
+   ‘start_translation_timestep ()’ is called before any user information
+enters the translators, i.e., no property operations (\set, \override,
+etc.) or events have been processed yet.
+
+   ‘process_music ()’ and ‘process_acknowledged ()’ are called after all
+events in the current time step have been heard, or all grobs in the
+current time step have been acknowledged.  The latter tends to be used
+exclusively with engravers which only acknowledge grobs, whereas the
+former is the default method for main processing within engravers.
+
+   ‘stop_translation_timestep ()’ is called after all user information
+has been processed prior to beginning the translation for the next
+timestep.
+
+
+File: lilypond-contributor.info,  Node: Listening to music events,  Next: Acknowledging grobs,  Prev: Translation process,  Up: Engraver tutorial
+
+10.12.3 Listening to music events
+---------------------------------
+
+External interfaces to the engraver are implemented by protected macros
+including one or more of the following:
+
+   • ‘DECLARE_TRANSLATOR_LISTENER (event_name)’
+   • ‘IMPLEMENT_TRANSLATOR_LISTENER (Engraver_name, event_name)’
+
+where EVENT_NAME is the type of event required to provide the input the
+engraver needs and ENGRAVER_NAME is the name of the engraver.
+
+   Following declaration of a listener, the method is implemented as
+follows:
+
+     IMPLEMENT_TRANSLATOR_LISTENER (Engraver_name, event_name)
+     void
+     Engraver_name::listen_event_name (Stream event *event)
+     {
+       ...body of listener method...
+     }
+
+
+File: lilypond-contributor.info,  Node: Acknowledging grobs,  Next: Engraver declaration/documentation,  Prev: Listening to music events,  Up: Engraver tutorial
+
+10.12.4 Acknowledging grobs
+---------------------------
+
+Some engravers also need information from grobs as they are created and
+as they terminate.  The mechanism and methods to obtain this information
+are set up by the macros:
+
+   • ‘DECLARE_ACKNOWLEDGER (grob_interface)’
+   • ‘DECLARE_END_ACKNOWLEDGER (grob_interface)’
+
+   where GROB_INTERFACE is an interface supported by the grob(s) which
+should be acknowledged.  For example, the following code would declare
+acknowledgers for a ‘NoteHead’ grob (via the ‘note-head-interface’) and
+any grobs which support the ‘side-position-interface’:
+
+     DECLARE_ACKNOWLEDGER (note_head)
+     DECLARE_ACKNOWLEDGER (side_position)
+
+   The ‘DECLARE_END_ACKNOWLEDGER ()’ macro sets up a spanner-specific
+acknowledger which will be called whenever a spanner ends.
+
+   Following declaration of an acknowledger, the method is coded as
+follows:
+
+     void
+     Engraver_name::acknowledge_interface_name (Grob_info info)
+     {
+       ...body of acknowledger method...
+     }
+
+   Acknowledge functions are called in the order engravers are
+‘\consist’-ed (the only exception is if you set ‘must-be-last’ to ‘#t’).
+
+   There will always be a call to ‘process-acknowledged ()’ whenever
+grobs have been created, and _reading_ stuff from grobs should be
+delayed until then since other acknowledgers might _write_ stuff into a
+grob even after your acknowledger has been called.  So the basic
+workflow is to use the various acknowledgers to _record_ the grobs you
+are interested in and _write_ stuff into them (or do read/write stuff
+that more or less is accumulative and/or really unrelated to other
+engravers), and then use the ‘process-acknowledged ()’ hook for
+processing (including _reading_) the grobs you had recorded.
+
+   You can create new grobs in ‘process-acknowledged ()’.  That will
+lead to a new cycle of ‘acknowledger ()’ calls followed by a new cycle
+of ‘process-acknowledged ()’ calls.
+
+   Only when all those cycles are over is ‘stop-translator-timestep ()’
+called, and then creating grobs is no longer an option.  You can still
+‘process’ parts of the grob there (if that means just reading out
+properties and possibly setting context properties based on them) but
+‘stop-translation-timestep ()’ is a cleanup hook, and other engravers
+might have already cleaned up stuff you might have wanted to use.
+Creating grobs in there is not possible since engravers and other code
+may no longer be in a state where they could process them, possibly
+causing a crash.
+
+
+File: lilypond-contributor.info,  Node: Engraver declaration/documentation,  Prev: Acknowledging grobs,  Up: Engraver tutorial
+
+10.12.5 Engraver declaration/documentation
+------------------------------------------
+
+An engraver must have a public macro
+
+   • ‘TRANSLATOR_DECLARATIONS (Engraver_name)’
+
+where ‘Engraver_name’ is the name of the engraver.  This defines the
+common variables and methods used by every engraver.
+
+   At the end of the engraver file, one or both of the following macros
+are generally called to document the engraver in the Internals
+Reference:
+
+   • ‘ADD_ACKNOWLEDGER (Engraver_name, grob_interface)’
+   • ‘ADD_TRANSLATOR (Engraver_name, Engraver_doc, Engraver_creates,
+     Engraver_reads, Engraver_writes)’
+
+where ‘Engraver_name’ is the name of the engraver, ‘grob_interface’ is
+the name of the interface that will be acknowledged, ‘Engraver_doc’ is a
+docstring for the engraver, ‘Engraver_creates’ is the set of grobs
+created by the engraver, ‘Engraver_reads’ is the set of properties read
+by the engraver, and ‘Engraver_writes’ is the set of properties written
+by the engraver.
+
+   The ‘ADD_ACKNOWLEDGER’ and ‘ADD_TRANSLATOR’ macros use a non-standard
+indentation system.  Each interface, grob, read property, and write
+property is on its own line, and the closing parenthesis and semicolon
+for the macro all occupy a separate line beneath the final interface or
+write property.  See existing engraver files for more information.
+
+
+File: lilypond-contributor.info,  Node: Callback tutorial,  Next: Understanding pure properties,  Prev: Engraver tutorial,  Up: Programming work
+
+10.13 Callback tutorial
+=======================
+
+TODO – This is a placeholder for a tutorial on callback functions.
+
+
+File: lilypond-contributor.info,  Node: Understanding pure properties,  Next: LilyPond scoping,  Prev: Callback tutorial,  Up: Programming work
+
+10.14 Understanding pure properties
+===================================
+
+Pure properties are some of the most difficult properties to understand
+in LilyPond but, once understood, it is much easier to work with
+horizontal spacing.  This document provides an overview of what it means
+for something to be ‘pure’ in LilyPond, what this purity guarantees, and
+where pure properties are stored and used.  It finishes by discussing a
+few case studies for the pure programmer to save you some time and to
+prevent you some major headaches.
+
+* Menu:
+
+* Purity in LilyPond::
+* Writing a pure function::
+* How purity is defined and stored::
+* Where purity is used::
+* Case studies::
+* Debugging tips::
+
+
+File: lilypond-contributor.info,  Node: Purity in LilyPond,  Next: Writing a pure function,  Up: Understanding pure properties
+
+10.14.1 Purity in LilyPond
+--------------------------
+
+Pure properties in LilyPond are properties that do not have any ‘side
+effects’.  That is, looking up a pure property should never result in
+calls to the following functions:
+   • ‘set_property’
+   • ‘set_object’
+   • ‘suicide’
+   This means that, if the property is calculated via a callback, this
+callback must not only avoid the functions above but make sure that any
+functions it calls also avoid the functions above.  Also, to date in
+LilyPond, a pure function will always return the same value before line
+breaking (or, more precisely, before any version of ‘break_into_pieces’
+is called).  This convention makes it possible to cache pure functions
+and be more flexible about the order in which functions are called.  For
+example; ‘Stem.length’ has a pure property that will _never_ trigger one
+of the functions listed above and will _always_ return the same value
+before line breaking, independent of where it is called.  Sometimes,
+this will be the actual length of the Stem.  But sometimes it will not.
+For example; stem that links up with a beam will need its end set to the
+Y position of the beam at the stem’s X position.  However, the beam’s Y
+positions can only be known after the score is broken up in to several
+systems (a beam that has a shallow slope on a compressed line of music,
+for example, may have a steeper one on an uncompressed line).  Thus, we
+only call the impure version of the properties once we are _absolutely
+certain_ that all of the parameters needed to calculate their final
+value have been calculated.  The pure version provides a useful estimate
+of what this Stem length (or any property) will be, and the art of
+creating good pure properties is trying to get the estimation as close
+to the actual value as possible.
+
+   Of course, like Gregory Peck and Tintin, some Grobs will have
+properties that will always be pure.  For example, the height of a
+note-head in not-crazy music will never depend on line breaking or other
+parameters decided late in the typesetting process.  Inversely, in rare
+cases, certain properties are difficult to estimate with pure values.
+For example, the height of a Hairpin at a certain cross-section of its
+horizontal span is difficult to know without knowing the horizontal
+distance that the hairpin spans, and LilyPond provides an
+over-estimation by reporting the pure height as the entire height of the
+Hairpin.
+
+   Purity, like for those living in a convent, is more like a contract
+than an _a priori_.  If you write a pure-function, you are promising the
+user (and the developer who may have to clean up after you) that your
+function will not be dependent on factors that change at different
+stages of the compilation process (compilation of a score, not of
+LilyPond).
+
+   One last oddity is that purity, in LilyPond, is currently limited
+exclusively to things that have to do with Y-extent and positioning.
+There is no concept of ‘pure X’ as, by design, X is always the
+independent variable (i.e., from column X1 to column X2, what will be
+the Y height of a given grob).  Furthermore, there is no purity for
+properties like color, text, and other things for which a meaningful
+notion of estimation is either not necessary or has not yet been found.
+For example, even if a color were susceptible to change at different
+points of the compilation process, it is not clear what a pure estimate
+of this color would be or how this pure color could be used.  Thus, in
+this document and in the source, you will see purity discussed almost
+interchangeably with Y-axis positioning issues.
+
+
+File: lilypond-contributor.info,  Node: Writing a pure function,  Next: How purity is defined and stored,  Prev: Purity in LilyPond,  Up: Understanding pure properties
+
+10.14.2 Writing a pure function
+-------------------------------
+
+Pure functions take, at a minimum, three arguments: the GROB, the
+starting column at which the function is being evaluated (hereafter
+referred to as START), and the end column at which the grob is being
+evaluated (hereafter referred to as END).  For items, START and END must
+be provided (meaning they are not optional) but will not have a
+meaningful impact on the result, as items only occupy one column and
+will thus yield a value or not (if they are not in the range from START
+to END).  For spanners however, START and END are important, as we may
+can get a better pure estimation of a slice of the spanner than
+considering it on the whole.  This is useful during line breaking, for
+example, when we want to estimate the Y-extent of a spanner broken at
+given starting and ending columns.
+
+
+File: lilypond-contributor.info,  Node: How purity is defined and stored,  Next: Where purity is used,  Prev: Writing a pure function,  Up: Understanding pure properties
+
+10.14.3 How purity is defined and stored
+----------------------------------------
+
+Purity is defined in LilyPond with the creation of an unpure-pure
+container (unpure is not a word, but hey, neither was LilyPond until the
+90s).  For example:
+
+     #(define (foo grob)
+       '(-1 . 1))
+
+     #(define (bar grob start end)
+       '(-2 . 2))
+
+     \override Stem.length = #(ly:make-unpure-pure-container foo bar)
+
+   Note that items can only ever have two pure heights: their actual
+pure height if they are between ‘start’ and ‘end’, or an empty interval
+if they are not.  Thus, their pure property is cached to speed LilyPond
+up.  Pure heights for spanners are generally not cached as they change
+depending on the start and end values.  They are only cached in certain
+particular cases.  Before writing a lot of caching code, make sure that
+it is a value that will be reused a lot.
+
+
+File: lilypond-contributor.info,  Node: Where purity is used,  Next: Case studies,  Prev: How purity is defined and stored,  Up: Understanding pure properties
+
+10.14.4 Where purity is used
+----------------------------
+
+Pure Y values must be used in any functions that are called before line
+breaking.  Examples of this can be seen in ‘Separation_items::boxes’ to
+construct horizontal skylines and in ‘Note_spacing::stem_dir_correction’
+to correct for optical illusions in spacing.  Pure properties are also
+used in the calculation of other pure properties.  For example, the
+‘Axis_group_interface’ has pure functions that look up other pure
+functions.
+
+   Purity is also implicitly used in any functions that should only ever
+return pure values.  For example, extra-spacing-height is only ever used
+before line-breaking and thus should never use values that would only be
+available after line breaking.  In this case, there is no need to create
+callbacks with pure equivalents because these functions, by design, need
+to be pure.
+
+   To know if a property will be called before and/or after
+line-breaking is sometimes tricky and can, like all things in coding, be
+found by using a debugger and/or adding PRINTF statements to see where
+they are called in various circumstances.
+
+
+File: lilypond-contributor.info,  Node: Case studies,  Next: Debugging tips,  Prev: Where purity is used,  Up: Understanding pure properties
+
+10.14.5 Case studies
+--------------------
+
+In each of these case studies, we expose a problem in pure properties, a
+solution, and the pros and cons of this solution.
+
+Time signatures
+---------------
+
+A time signature needs to prevent accidentals from passing over or under
+it, but its extent does not necessarily extend to the Y-position of
+accidentals.  LilyPond’s horizontal spacing sometimes makes a line of
+music compact and, when doing so, allows certain columns to pass over
+each other if they will not collide.  This type of passing over is not
+desirable with time signatures in traditional engraving.  But how do we
+know if this passing over will happen before line breaking, as we are
+not sure what the X positions will be?  We need a pure estimation of how
+much extra spacing height the time signatures would need to prevent this
+form of passing over without making this height so large as to
+overly-distort the Y-extent of an system, which could result in a very
+‘loose’ looking score with lots of horizontal space between columns.
+So, to approximate this extra spacing height, we use the Y-extent of a
+time signature’s next-door-neighbor grobs via the pure-from-neighbor
+interface.
+
+   • pros: By extending the extra spacing height of a time signature to
+     that of its next-door-neighbors, we make sure that grobs to the
+     right of it that could pass above or below it do not.
+
+   • cons: This over-estimation of the vertical height could prevent
+     snug vertical spacing of systems, as the system will be registered
+     as being taller at the point of the time signature than it actually
+     is.  This approach can be used for clefs and bar lines as well.
+
+Stems
+-----
+
+As described above, Stems need pure height approximations when they are
+beamed, as we do not know the beam positions before line breaking.  To
+estimate this pure height, we take all the stems in a beam and find
+their pure heights as if they were not beamed.  Then, we find the union
+of all these pure heights and take the intersection between this
+interval (which is large) and an interval going from the note-head of a
+stem to infinity in the direction of the stem so that the interval stops
+at the note head.
+
+   • pros: This is guaranteed to be at least as long as the beamed stem,
+     as a beamed stem will never go over the ideal length of the
+     extremal beam of a stem.
+
+   • cons: Certain stems will be estimated as being too long, which
+     leads to the same problem of too-much-vertical-height as described
+     above.
+
+
+File: lilypond-contributor.info,  Node: Debugging tips,  Prev: Case studies,  Up: Understanding pure properties
+
+10.14.6 Debugging tips
+----------------------
+
+A few questions to ask yourself when working with pure properties:
+
+   • Is the property really pure?  Are you sure that its value could not
+     be changed later in the compiling process due to other changes?
+
+   • Can the property be made to correspond even more exactly with the
+     eventual impure property?
+
+   • For a spanner, is the pure property changing correctly depending on
+     the starting and ending points of the spanner?
+
+   • For an Item, will the item’s pure height need to act in horizontal
+     spacing but not in vertical spacing?  If so, use
+     extra-spacing-height instead of pure height.
+
+
+File: lilypond-contributor.info,  Node: LilyPond scoping,  Next: Regular expressions,  Prev: Understanding pure properties,  Up: Programming work
+
+10.15 LilyPond scoping
+======================
+
+The LilyPond language has a concept of scoping, i.e., you can do:
+
+     foo = 1
+
+     #(begin
+        (display (+ foo 2)))
+
+with ‘\paper’, ‘\midi’ and ‘\header’ being nested scope inside the ‘.ly’
+file-level scope.  ‘foo = 1’ is translated in to a scheme variable
+definition.
+
+   This implemented using modules, with each scope being an anonymous
+module that imports its enclosing scope’s module.
+
+   LilyPond’s core, loaded from ‘.scm’ files, is usually placed in the
+‘lily’ module, outside the ‘.ly’ level.  In the case of
+
+     lilypond a.ly b.ly
+
+we want to reuse the built-in definitions, without changes effected in
+user-level ‘a.ly’ leaking into the processing of ‘b.ly’.
+
+   The user-accessible definition commands have to take care to avoid
+memory leaks that could occur when running multiple files.  All
+information belonging to user-defined commands and markups is stored in
+a manner that allows it to be garbage-collected when the module is
+dispersed, either by being stored module-locally, or in weak hash
+tables.
+
+
+File: lilypond-contributor.info,  Node: Regular expressions,  Next: Scheme->C interface,  Prev: LilyPond scoping,  Up: Programming work
+
+10.16 Regular expressions
+=========================
+
+_Never_ use Guile’s native regular expressions in LilyPond.  They are a
+source of portability problems, especially in relation with Unicode.
+Instead, use LilyPond’s own regular expression interface, which is made
+of all ‘ly:regex-...’ functions (see the Internals Reference).
+
+
+File: lilypond-contributor.info,  Node: Scheme->C interface,  Next: Garbage collection for dummies,  Prev: Regular expressions,  Up: Programming work
+
+10.17 Scheme->C interface
+=========================
+
+Most of the C functions interfacing with Guile/Scheme used in LilyPond
+are described in the API Reference of the Guile Reference Manual
+(https://www.gnu.org/software/guile/manual/html_node/index.html).
+
+   The remaining functions are defined in ‘lily/lily-guile.cc’,
+‘lily/include/lily-guile.hh’ and ‘lily/include/lily-guile-macros.hh’.
+Although their names are meaningful there’s a few things you should know
+about them.
+
+* Menu:
+
+* Comparison::
+* Conversion::
+
+
+File: lilypond-contributor.info,  Node: Comparison,  Next: Conversion,  Up: Scheme->C interface
+
+10.17.1 Comparison
+------------------
+
+This is the trickiest part of the interface.
+
+   Mixing Scheme values with C comparison operators won’t produce any
+crash or warning when compiling but must be avoided:
+
+     scm_string_p (scm_value) == SCM_BOOL_T
+
+   As we can read in the reference, ‘scm_string_p’ returns a Scheme
+value: either ‘#t’ or ‘#f’ which are written ‘SCM_BOOL_T’ and
+‘SCM_BOOL_F’ in C. This will work, but it is not following to the API
+guidelines.  For further information, read this discussion:
+
+     <https://lists.gnu.org/archive/html/lilypond-devel/2011-08/msg00646.html>
+
+   There are functions in the Guile reference that returns C values
+instead of Scheme values.  In our example, a function called
+‘scm_is_string’ (described after ‘string?’ and ‘scm_string_p’) returns
+the C value 0 or 1.
+
+   So the best solution was simply:
+
+     scm_is_string (scm_value)
+
+   There a simple solution for almost every common comparison.  Another
+example: we want to know if a Scheme value is a non-empty list.  Instead
+of:
+
+     (scm_is_true (scm_list_p (scm_value)) && scm_value != SCM_EOL)
+
+   one can usually use:
+
+     scm_is_pair (scm_value)
+
+   since a list of at least one member is a pair.  This test is cheap;
+‘scm_list_p’ is actually quite more complex since it makes sure that its
+argument is neither a ‘dotted list’ where the last pair has a non-null
+‘cdr’, nor a circular list.  There are few situations where the
+complexity of those tests make sense.
+
+   Unfortunately, there is not a ‘scm_is_[something]’ function for
+everything.  That’s one of the reasons why LilyPond has its own Scheme
+interface.  As a rule of thumb, tests that are cheap enough to be worth
+inlining tend to have such a C interface.  So there is ‘scm_is_pair’ but
+not ‘scm_is_list’, and ‘scm_is_eq’ but not ‘scm_is_equal’.
+
+General definitions
+-------------------
+
+bool to_boolean (SCM b)
+.......................
+
+Return ‘true’ if B is ‘SCM_BOOL_T’, else return ‘false’.
+
+   This should be used instead of ‘scm_is_true’ and ‘scm_is_false’ for
+properties since in LilyPond, unset properties are read as an empty
+list, and by convention unset Boolean properties default to false.
+Since both ‘scm_is_true’ and ‘scm_is_false’ only compare with ‘##f’ in
+line with what Scheme’s conditionals do, they are not really useful for
+checking the state of a Boolean property.
+
+bool ly_is_[something] (args)
+.............................
+
+Behave the same as scm_is_[something] would do if it existed.
+
+bool is_[type] (SCM s)
+......................
+
+Test whether the type of S is [type].  [type] is a LilyPond-only set of
+values (direction, axis...).  More often than not, the code checks
+LilyPond specific C++-implemented types using
+
+[Type *] unsmob<Type> (SCM s)
+.............................
+
+This tries converting a Scheme object to a pointer of the desired kind.
+If the Scheme object is of the wrong type, a pointer value of ‘0’ is
+returned, making this suitable for a Boolean test.
+
+
+File: lilypond-contributor.info,  Node: Conversion,  Prev: Comparison,  Up: Scheme->C interface
+
+10.17.2 Conversion
+------------------
+
+General definitions
+-------------------
+
+bool to_boolean (SCM b)
+.......................
+
+Return ‘true’ if B is ‘SCM_BOOL_T’, else return ‘false’.
+
+   This should be used instead of ‘scm_is_true’ and ‘scm_is_false’ for
+properties since empty lists are sometimes used to unset them.
+
+[C type] ly_scm2[C type] (SCM s)
+................................
+
+Behave the same as scm_to_[C type] would do if it existed.
+
+[C type] robust_scm2[C type] (SCM s, [C type] d)
+................................................
+
+Behave the same as scm_to_[C type] would do if it existed.  Return D if
+type verification fails.
+
+
+File: lilypond-contributor.info,  Node: Garbage collection for dummies,  Next: LilyPond miscellany,  Prev: Scheme->C interface,  Up: Programming work
+
+10.18 Garbage collection for dummies
+====================================
+
+          Note: Reading this section is strongly recommended before
+          attempting complex C++ programming.
+
+   Within LilyPond, interaction with Guile is ubiquitous.  LilyPond is
+written in C++ and Guile Scheme.  Even in C++, most of the code uses
+Guile APIs to interface with the outside Scheme world, both with user
+and internal Scheme code.
+
+   Scheme is a garbage-collected language.  This means that once in a
+while, a so-called garbage collector scans the memory for values that
+are no longer being used, and reclaims them.  This process ensures that
+the memory is given back to the computer and made available for other
+uses.  The garbage collector implementation used in Guile 2 and later is
+the Boehm-Demers-Weiser garbage collector (BDWGC).
+
+   C++, on the other hand, usually frees values at determined points of
+time (although most of the time they remain implicit, through the use of
+the famous “RAII” or “scope-bound resource management” technique).  It
+has no direct support for garbage collection.  This can make memory
+management of Scheme values in C++ a challenge (or a headache).
+Whenever you are using a value whose memory is managed by Guile, you
+*must* keep an eye on its lifetime.
+
+   To be more precise, the garbage collector works in a _mark_ phase and
+a _sweep_ phase.  During marking, the collector scans values that the
+program is currently using, then asks these values for containing
+references to other values, and continues following references until all
+reachable objects have been found.  Objects that are unreachable can
+logically no longer be used in the program, so they are freed in the
+sweep phase.
+
+   In Schemeland, the interpreter takes care of marking values for you.
+For instance, if you store a list in a variable, then during garbage
+collection, this list is automatically marked, and this causes all
+elements of the list to be marked in turn, which ensures they remain
+alive.  In Cppland, you need to be very careful to keep values allocated
+on Guile’s heap as visible to the garbage collector if they cannot be
+reached from the Scheme side.
+
+Understanding which values are under garbage-collected management
+-----------------------------------------------------------------
+
+To begin with, which values are allocated on the Guile heap?  The basic
+Guile API type is the SCM type, which represents a value boxed for usage
+in Scheme.  The SCM type is pointer-sized piece of data.  It is either a
+pointer to Scheme data structures (e.g.  pair, double pair, etc.)  – in
+this case, the pointer is 64-bit aligned and has its lower bits set to 0
+–, or it is an immediate value (short integer, boolean, ‘'()’, etc.)  –
+in which case the lower order bits are non-zero.  Smobs, vectors,
+strings and many other Scheme data structures are represented as pairs,
+where the car holds a tag value (non-aligned, lower order bits set) and
+the cdr holds the pointer to data.  From the scheme side, the fact that
+these types are represented using pairs is invisible.
+
+   Thus, for immediate SCM values, all the value is contained in the SCM
+itself.  There is no concept of freeing these values, as they are never
+heap-allocated: they just keep being copied around, and dropped by
+normal C++ lifetime mechanisms when done (such as dropping local
+variables of a function when it returns).  On the other hand, all other
+values point to memory allocated on the Guile heap.  It is the lifetime
+of this memory that you need to care about.
+
+   LilyPond adds its own object types to Guile as well.  They as called
+“smobs”, which depending on sources means “Scheme objects” or “small
+objects”.  Smobs come in two flavors:
+
+   “Simple smobs” are objects that can be passed around by copy without
+changing the meaning.  Their classes derive from ‘Simple_smob’.  ‘Pitch’
+and ‘Duration’ are good examples.  The usual way to create them is just
+like a normal C++ object (e.g., ‘Smob_type variable (constructor
+parameters);’).  When created in this way, simple smobs are allocated on
+the stack like any other C++ automatic variable, and dropped in the same
+way too.  When you need to send a simple smob to Schemeland, you should
+call the member function ‘smobbed_copy ()’.  This calls the smob’s copy
+constructor to make a copy under garbage collection control, packed in
+an SCM value.
+
+   “Complex smobs” are objects with an identity, such as ‘Music’,
+‘Context’ and ‘Grob’.  Their classes derive from ‘Smob’.  They are
+always created via the C++ ‘new’ operator.  After allocating, their
+memory is put under the control of the garbage collector.  A complex
+smob has a field containing its SCM identity, which points back to
+itself.  You can access this field using the member function ‘self_scm
+()’.
+
+   The function to convert a SCM value back into the C++ smob type is
+‘unsmob<Smob_type *> (value)’ (which returns a null pointer if the SCM
+was not a value of the smob type in question).  Because of the dual
+nature of simple smobs, you need to be mindful that if ‘Smob_type’
+derives from ‘Simple_smob’, the memory referred to by the result of
+‘unsmob<Smob_type>’ (if non-null) may either be on the stack or on the
+Guile heap, even though most of the time it will be on the Guile heap.
+On the other hand, for a complex smob, it will systematically be on the
+Guile heap.
+
+How values are protected
+------------------------
+
+When the garbage collector starts a collection, it first scans all
+memory being used by the program at the current point of time.  This is
+called the root set.  For Scheme, it includes all global variables of
+all modules and local variables of the function being executed.  C++
+adds everything that is on the stack and in registers (FIXME:
+investigate global variables).  The dependencies of these values are
+then marked, etc.
+
+Marking roots
+.............
+
+The marking of the C++ function stack is very simple: scan the stack and
+treat every value as a possible pointer.  This principle is called
+“conservative garbage collection”, and has a few consequences.  One is
+that there may be some false positives, if random values on the stack
+happen to look the same as pointers to memory in the Guile heap.  These
+values will be held longer than necessary, which is harmless.
+
+   Another, much more nasty consequence is that values are _only_ kept
+alive while they have an SCM presence on the stack.  Here is an example
+of what _not_ to do:
+
+     Complex_smob_type *
+     func ()
+     {
+       Complex_smob_type *object = new Complex_smob_type ();
+       object->unprotect ();
+       return object;
+     }
+
+   When the caller of this function receives the object pointer, there
+is no reason for the object’s SCM identity (what would be returned by
+its ‘self_scm ()’ method) to be present on the stack or in registers.
+Only the pointer to the C++ object is.  This does not work to protect
+the object from garbage collection.  The object could be freed if a GC
+pass occurs.  The fix is to unprotect later if possible, at a point
+where the object’s ‘self_scm ()’ is placed in a long-lived reachable
+Scheme data structure.  Alternatively, if this is impractical, return an
+SCM to keep the object protected.  The ‘unprotect ()’ method actually
+returns the SCM for convenience.
+
+     SCM
+     func ()
+     {
+       Complex_smob_type *object = new Complex_smob_type ();
+       return object->unprotect ();
+     }
+
+   A different, even nastier trap can be illustrated with this example:
+
+     LY_DEFINE (ly_func, "ly:func",
+                1, 0, 0, (SCM param),
+                R"(
+     Doc
+                )")
+     {
+       Smob_type *object = unsmob<Smob_type> (param);
+       // do some stuff here, including
+       scm_cons (a, b)
+       // ...
+       return to_scm (object->some_field_);
+     }
+
+   At first glance, this looks fine.  The SCM value ‘param’ should
+remain on the stack until the end of the function, keeping the smob
+protected.  This is not always true, however.  If the compiler does a
+clever optimization, it might reuse the memory of the ‘param’ variable
+for something else.  If this happens, the object is unprotected while
+the memory of the cons cell is being allocated, which could cause the
+smob to be collected.  The access ‘object->some_field_’ is then
+use-after-free.
+
+   The solution to this is to use ‘scm_remember_upto_here’, which allows
+to forcefully keep the object alive:
+
+     LY_DEFINE (ly_func, "ly:func",
+                1, 0, 0, (SCM param),
+                R"(
+     Doc
+                )")
+     {
+       Smob_type *object = unsmob<Smob_type> (param);
+       // do some stuff here, including
+       scm_cons (a, b)
+       // ...
+       SCM field = to_scm (object->some_field_);
+       scm_remember_upto_here (param);
+       return field;
+     }
+
+GC marking for smobs
+....................
+
+Guile automatically marks the elements contained in compound values of
+the types it provides, like lists and vectors.  LilyPond’s smobs must do
+the same in order to keep elements they refer to alive while they are
+themselves alive.  This is done by implementing the member function ‘SCM
+mark_smob () const’.  This function must call ‘scm_gc_mark’ on every
+Scheme value that needs to be kept alive with the object.  It can return
+an SCM value, which is marked in the same way.  (This dates back to
+Guile 1, which used the C++ function stack to mark objects.  It was
+necessary to keep the stack depth constant when marking objects such as
+lists, or stack overflows would have easily ensued.  It is no longer
+very relevant in Guile 2.)
+
+   For many smob types, ‘mark_smob’ needs to add marking to the
+implementation of the superclass.  This is usually done using a
+‘derived_mark’ method.  This is the case for translators, for example.
+The child class should thus just implement ‘derived_mark’ and not
+override ‘mark_smob’.
+
+   For simple smobs allocated as automatic variables, i.e., outside of
+Guile’s control, ‘mark_smob’ is _not_ called during garbage collection.
+In this case, the only marking that the object receives is conservative
+scanning of the stack.  This has the strong implication that a simple
+smob must contain all SCM values it refers to in its memory image on the
+stack.  Anything that needs more complex marking behavior should be a
+complex smob.  For example, it’s not OK for a simple smob to contain an
+‘std::vector<SCM>’.  On the other hand, that would be OK for a complex
+smob as long as its ‘mark_smob’ function iterates over the vector to
+mark each element.  The simplest solution is storing a Guile vector, of
+SCM type, which _is_ OK even in simple smobs because the memory image on
+the stack is an SCM vector value, which during marking causes the
+marking of all vector elements, unlike an ‘std::vector<SCM>’.
+
+Initial protection for complex smobs
+....................................
+
+When you create a complex smob, it receives an initial GC protection,
+which should be removed with its ‘unprotect ()’ method once the complex
+smob enters an area where it is protected by other means.
+
+   There is no such protection for a ‘smobbed_copy ()’ of a simple smob
+because those tend to be more short-lived and are often just returned to
+Scheme after being created.
+
+   TODO: expand on smob constructors, especially the need for Preinit
+classes.  See ‘lily/include/smobs.hh’.
+
+   TODO: explain the quirks of finalization (non-)ordering.  See commit
+‘6555b3841a’.
+
+
+File: lilypond-contributor.info,  Node: LilyPond miscellany,  Prev: Garbage collection for dummies,  Up: Programming work
+
+10.19 LilyPond miscellany
+=========================
+
+This is a place to dump information that may be of use to developers but
+doesn’t yet have a proper home.  Ideally, the length of this section
+would become zero as items are moved to other homes.
+
+* Menu:
+
+* Spacing algorithms::
+* Info from Han-Wen email::
+* Music functions and Guile debugging::
+* Articulations on EventChord::
+
+
+File: lilypond-contributor.info,  Node: Spacing algorithms,  Next: Info from Han-Wen email,  Up: LilyPond miscellany
+
+10.19.1 Spacing algorithms
+--------------------------
+
+Here is information from an email exchange about spacing algorithms.
+
+   On Thu, 2010-02-04 at 15:33 -0500, Boris Shingarov wrote: I am
+experimenting with some modifications to the line breaking code, and I
+am stuck trying to understand how some of it works.  So far my
+understanding is that Simple_spacer operates on a vector of Grobs, and
+it is a well-known Constrained-QP problem (rods = constraints, springs =
+quadratic function to minimize).  What I don’t understand is, if the
+spacer operates at the level of Grobs, which are built at an earlier
+stage in the pipeline, how are the changes necessitated by differences
+in line breaking, taken into account?  in other words, if I take the
+last measure of a line and place it on the next line, it is not just a
+matter of literally moving that graphic to where the start of the next
+line is, but I also need to draw a clef, key signature, and possibly
+other fundamental things – but at that stage in the rendering pipeline,
+is it not too late??
+
+   Joe Neeman answered:
+
+   We create lots of extra grobs (e.g., a BarNumber at every bar line)
+but most of them are not drawn.  See the break-visibility property in
+item-interface.
+
+   Here is another e-mail exchange.  Janek Warchoł asked for a starting
+point to fixing 1301 (change clef colliding with notes).  Neil Puttock
+replied:
+
+   The clef is on a loose column (it floats before the head), so the
+first place I’d look would be lily/spacing-loose-columns.cc (and
+possibly lily/spacing-determine-loose-columns.cc).  I’d guess the
+problem is the way loose columns are spaced between other columns: in
+this snippet, the columns for the quaver and tuplet minim are so close
+together that the clef’s column gets dumped on top of the quaver (since
+it’s loose, it doesn’t influence the spacing).
+
+
+File: lilypond-contributor.info,  Node: Info from Han-Wen email,  Next: Music functions and Guile debugging,  Prev: Spacing algorithms,  Up: LilyPond miscellany
+
+10.19.2 Info from Han-Wen email
+-------------------------------
+
+In 2004, Douglas Linhardt decided to try starting a document that would
+explain LilyPond architecture and design principles.  The material below
+is extracted from that email, which can be found at
+<http://thread.gmane.org/gmane.comp.gnu.lilypond.devel/2992>.  The
+headings reflect questions from Doug or comments from Han-Wen; the body
+text are Han-Wen’s answers.
+
+Figuring out how things work.
+-----------------------------
+
+I must admit that when I want to know how a program works, I use grep
+and emacs and dive into the source code.  The comments and the code
+itself are usually more revealing than technical documents.
+
+What’s a grob, and how is one used?
+-----------------------------------
+
+Graphical object - they are created from within engravers, either as
+Spanners (derived class) -slurs, beams- or Items (also a derived class)
+-notes, clefs, etc.
+
+   There are two other derived classes System (derived from Spanner,
+containing a "line of music") and Paper_column (derived from Item, it
+contains all items that happen at the same moment).  They are separate
+classes because they play a special role in the linebreaking process.
+
+What’s a smob, and how is one used?
+-----------------------------------
+
+A C(++) object that is encapsulated so it can be used as a Scheme
+object.  See Guile info, "19.3 Defining New Types (Smobs)"
+
+When is each C++ class constructed and used?
+--------------------------------------------
+
+   • Music classes
+
+     In the parser.yy see the macro calls MAKE_MUSIC_BY_NAME().
+
+   • Contexts
+
+     Constructed during "interpreting" phase.
+
+   • Engravers
+
+     Executive branch of Contexts, plugins that create grobs, usually
+     one engraver per grob type.  Created together with context.
+
+   • Layout Objects
+
+     = grobs
+
+   • Grob Interfaces
+
+     These are not C++ classes per se.  The idea of a Grob interface
+     hasn’t crystallized well.  ATM, an interface is a symbol, with a
+     bunch of grob properties.  They are not objects that are created or
+     destroyed.
+
+   • Iterators
+
+     Objects that walk through different music classes, and deliver
+     events in a synchronized way, so that notes that play together are
+     processed at the same moment and (as a result) end up on the same
+     horizontal position.
+
+     Created during interpreting phase.
+
+     BTW, the entry point for interpreting is ly:run-translator
+     (ly_run_translator on the C++ side)
+
+Can you get to Context properties from a Music object?
+------------------------------------------------------
+
+You can create music object with a Scheme function that reads context
+properties (the \applycontext syntax).  However, that function is
+executed during Interpreting, so you can not really get Context
+properties from Music objects, since music objects are not directly
+connected to Contexts.  That connection is made by the Music_iterators
+
+Can you get to Music properties from a Context object?
+------------------------------------------------------
+
+Yes, if you are given the music object within a Context object.
+Normally, the music objects enter Contexts in synchronized fashion, and
+the synchronization is done by Music_iterators.
+
+What is the relationship between C++ classes and Scheme objects?
+----------------------------------------------------------------
+
+Smobs are C++ objects in Scheme.  Scheme objects (lists, functions) are
+manipulated from C++ as well using the Guile C function interface
+(prefix: scm_)
+
+How do Scheme procedures get called from C++ functions?
+-------------------------------------------------------
+
+scm_call_*, where * is an integer from 0 to 4.  Also scm_c_eval_string
+(), scm_eval ()
+
+How do C++ functions get called from Scheme procedures?
+-------------------------------------------------------
+
+Export a C++ function to Scheme with LY_DEFINE.
+
+What is the flow of control in the program?
+-------------------------------------------
+
+Good question.  Things used to be clear-cut, but we have Scheme and
+SMOBs now, which means that interactions do not follow a very rigid
+format anymore.  See below for an overview, though.
+
+Does the parser make Scheme procedure calls or C++ function calls?
+------------------------------------------------------------------
+
+Both.  And the Scheme calls can call C++ and vice versa.  It’s nested,
+with the SCM datatype as lubrication between the interactions
+
+   (I think the word "lubrication" describes the process better than the
+traditional word "glue")
+
+How do the front-end and back-end get started?
+----------------------------------------------
+
+Front-end: a file is parsed, the rest follows from that.  Specifically,
+
+   Parsing leads to a Music + Music_output_def object (see parser.yy,
+definition of toplevel_expression )
+
+   A Music + Music_output_def object leads to a Global_context object
+(see ly_run_translator ())
+
+   During interpreting, Global_context + Music leads to a bunch of
+Contexts (see Global_translator::run_iterator_on_me ()).
+
+   After interpreting, Global_context contains a Score_context (which
+contains staves, lyrics etc.) as a child.  Score_context::get_output ()
+spews a Music_output object (either a Paper_score object for notation or
+Performance object for MIDI).
+
+   The Music_output object is the entry point for the backend (see
+ly_render_output ()).
+
+   The main steps of the backend itself are in
+
+   • ‘paper-score.cc’ , Paper_score::process_
+
+   • ‘system.cc’ , System::get_lines()
+
+   • The step, where things go from grobs to output, is in
+     System::get_line(): each grob delivers a Stencil (a Device
+     independent output description), which is interpreted by our
+     outputting backends (‘scm/output-tex.scm’ and ‘scm/output-ps.scm’)
+     to produce TeX and PS.
+
+   Interactions between grobs and putting things into .tex and .ps files
+have gotten a little more complex lately.  Jan has implemented
+page-breaking, so now the backend also involves Paper_book, Paper_lines
+and other things.  This area is still heavily in flux, and perhaps not
+something you should want to look at.
+
+How do the front-end and back-end communicate?
+----------------------------------------------
+
+There is no communication from backend to front-end.  From front-end to
+backend is simply the program flow: music + definitions gives contexts,
+contexts yield output, after processing, output is written to disk.
+
+Where is the functionality associated with KEYWORDs?
+----------------------------------------------------
+
+See ‘my-lily-lexer.cc’ (keywords, there aren’t that many) and ‘ly/*.ly’
+(most of the other backslashed ‘/\words’ are identifiers)
+
+What Contexts/Properties/Music/etc. are available when they are processed?
+--------------------------------------------------------------------------
+
+What do you mean exactly with this question?
+
+   See ‘ly/engraver-init.ly’ for contexts, see ‘scm/define-*.scm’ for
+other objects.
+
+How do you decide if something is a Music, Context, or Grob property?
+---------------------------------------------------------------------
+
+Why is part-combine-status a Music property when it seems (IMO) to be
+related to the Staff context?
+
+   The Music_iterators and Context communicate through two channels
+
+   Music_iterators can set and read context properties, idem for
+Engravers and Contexts
+
+   Music_iterators can send "synthetic" music events (which aren’t in
+the input) to a context.  These are caught by Engravers.  This is mostly
+a one way communication channel.
+
+   part-combine-status is part of such a synthetic event, used by
+Part_combine_iterator to communicate with Part_combine_engraver.
+
+Deciding between context and music properties
+---------------------------------------------
+
+I’m adding a property to affect how \autoChange works.  It seems to me
+that it should be a context property, but the Scheme autoChange
+procedure has a Music argument.  Does this mean I should use a Music
+property?
+
+   \autoChange is one of these extra strange beasts: it requires
+look-ahead to decide when to change staves.  This is achieved by running
+the interpreting step twice (see ‘scm/part-combiner.scm’ , at the
+bottom), and storing the result of the first step (where to switch
+staves) in a Music property.  Since you want to influence that
+where-to-switch list, your must affect the code in make-autochange-music
+(‘scm/part-combiner.scm’).  That code is called directly from the parser
+and there are no official "parsing properties" yet, so there is no
+generic way to tune \autoChange.  We would have to invent something new
+for this, or add a separate argument,
+
+         \autoChange #around-central-C ..music..
+
+where around-central-C is some function that is called from
+make-autochange-music.
+
+More on context and music properties
+------------------------------------
+
+From Neil Puttock, in response to a question about transposition:
+
+   Context properties (using \set & \unset) are tied to engravers: they
+provide information relevant to the generation of graphical objects.
+
+   Since transposition occurs at the music interpretation stage, it has
+no direct connection with engravers: the pitch of a note is fixed before
+a notehead is created.  Consider the following minimal snippet:
+
+     { c' }
+
+   This generates (simplified) a NoteEvent, with its pitch and duration
+as event properties,
+
+     (make-music
+       'NoteEvent
+       'duration
+       (ly:make-duration 2 0 1 1)
+       'pitch
+       (ly:make-pitch 0 0 0)
+
+   which the Note_heads_engraver hears.  It passes this information on
+to the NoteHead grob it creates from the event, so the head’s correct
+position and duration-log can be determined once it’s ready for
+printing.
+
+   If we transpose the snippet,
+
+     \transpose c d { c' }
+
+   the pitch is changed before it reaches the engraver (in fact, it
+happens just after the parsing stage with the creation of a
+TransposedMusic music object):
+
+     (make-music
+      'NoteEvent
+      'duration
+      (ly:make-duration 2 0 1 1)
+      'pitch
+      (ly:make-pitch 0 1 0)
+
+   You can see an example of a music property relevant to transposition:
+untransposable.
+
+     \transpose c d { c'2 \withMusicProperty #'untransposable ##t c' }
+
+   -> the second c’ remains untransposed.
+
+   Take a look at ‘lily/music.cc’ to see where the transposition takes
+place.
+
+How do I tell about the execution environment?
+----------------------------------------------
+
+I get lost figuring out what environment the code I’m looking at is in
+when it executes.  I found both the C++ and Scheme autoChange code.
+Then I was trying to figure out where the code got called from.  I
+finally figured out that the Scheme procedure was called before the C++
+iterator code, but it took me a while to figure that out, and I still
+didn’t know who did the calling in the first place.  I only know a
+little bit about Flex and Bison, so reading those files helped only a
+little bit.
+
+   _Han-Wen:_ GDB can be of help here.  Set a breakpoint in C++, and
+run.  When you hit the breakpoint, do a backtrace.  You can inspect
+Scheme objects along the way by doing
+
+     p ly_display_scm(obj)
+
+   this will display OBJ through Guile.
+
+
+File: lilypond-contributor.info,  Node: Music functions and Guile debugging,  Next: Articulations on EventChord,  Prev: Info from Han-Wen email,  Up: LilyPond miscellany
+
+10.19.3 Music functions and Guile debugging
+-------------------------------------------
+
+Ian Hulin was trying to do some debugging in music functions, and came
+up with the following question (edited and adapted to current versions):
+
+   HI all, I’m working on the Guile Debugger Stuff, and would like to
+try debugging a music function definition such as:
+
+     conditionalMark =
+     #(define-music-function () ()
+       #{ \tag instrumental-part {\mark \default} #} )
+
+   It appears ‘conditionalMark’ does not get set up as an equivalent of
+a Scheme
+
+     (define conditionalMark = define-music-function () () ...
+
+although something gets defined because Scheme apparently recognizes
+
+     #(set-break! conditionalMark)
+
+later on in the file without signalling any Guile errors.
+
+   However the breakpoint trap is never encountered as
+‘define-music-function’ passed things on to ‘ly:make-music-function’,
+which is really C++ code ‘ly_make_music_function’, so Guile never finds
+out about the breakpoint.
+
+   The answer in the mailing list archive at that time was less than
+helpful.  The question already misidentifies the purpose of
+‘ly:make-music-function’ which is only called once at the time of
+_defining_ ‘conditionalMark’ but is not involved in its later
+_execution_.
+
+   Here is the real deal:
+
+   A music function is not the same as a Guile function.  It boxes both
+a proper Scheme function (with argument list and body from the
+‘define-music-function’ definition) along with a call signature
+representing the _types_ of both function and arguments.
+
+   Those components can be reextracted using ‘ly:music-function-extract’
+and ‘ly:music-function-signature’, respectively.
+
+   When LilyPond’s parser encounters a music function call in its input,
+it reads, interprets, and verifies the arguments individually according
+to the call signature and _then_ calls the proper Scheme function.
+
+   While it is actually possible these days to call a music function _as
+if_ it were a Scheme function itself, this pseudo-call uses its own
+wrapping code matching the argument list _as a whole_ to the call
+signature, substituting omitted optional arguments with defaults and
+verifying the result type.
+
+   So putting a breakpoint on the music function itself will still not
+help with debugging uses of the function using LilyPond syntax.
+
+   However, either calling mechanism ultimately calls the proper Scheme
+function stored as part of the music function, and that is where the
+breakpoint belongs:
+
+     #(set-break! (ly:music-function-extract conditionalMark))
+
+   will work for either calling mechanism.
+
+
+File: lilypond-contributor.info,  Node: Articulations on EventChord,  Prev: Music functions and Guile debugging,  Up: LilyPond miscellany
+
+10.19.4 Articulations on EventChord
+-----------------------------------
+
+From David Kastrup’s email
+<https://lists.gnu.org/archive/html/lilypond-devel/2012-02/msg00189.html>:
+
+   LilyPond’s typesetting does not act on music expressions and music
+events.  It acts exclusively on stream events.  It is the act of
+iterators to convert a music expression into a sequence of stream events
+played in time order.
+
+   The EventChord iterator is pretty simple: it just takes its
+"elements" field when its time comes up, turns every member into a
+StreamEvent and plays that through the typesetting process.  The parser
+currently appends all postevents belonging to a chord at the end of
+"elements", and thus they get played at the same point of time as the
+elements of the chord.  Due to this design, you can add per-chord
+articulations or postevents or even assemble chords with a common stem
+by using parallel music providing additional notes/events: the
+typesetter does not see a chord structure or postevents belonging to a
+chord, it just sees a number of events occuring at the same point of
+time in a Voice context.
+
+   So all one needs to do is let the EventChord iterator play
+articulations after elements, and then adding to articulations in
+EventChord is equivalent to adding them to elements (except in cases
+where the order of events matters).
+
+
+File: lilypond-contributor.info,  Node: Release work,  Next: Modifying the Emmentaler font,  Prev: Programming work,  Up: Top
+
+11 Release work
+***************
+
+* Menu:
+
+* Development phases::
+* Release checklist::
+* Major release checklist::
+
+
+File: lilypond-contributor.info,  Node: Development phases,  Next: Release checklist,  Up: Release work
+
+11.1 Development phases
+=======================
+
+There are 2 states of development on ‘master’:
+
+  1. *Normal development*: Any commits are fine.
+
+  2. *Build-frozen*: Do not require any additional or updated libraries
+     or make non-trivial changes to the build process.  Any such patch
+     (or branch) may not be merged with master during this period.
+
+     This should occur approximately 1 month before any alpha version of
+     the next stable release, and ends when the next unstable branch
+     begins.
+
+   After announcing a beta release, branch ‘stable/2.x’.  There are 2
+states of development for this branch:
+
+  1. *Normal maintenance*: The following patches *MAY NOT* be merged
+     with this branch:
+
+        • Any change to the input syntax.  If a file compiled with a
+          previous ‘2.x’ (beta) version, then it must compile in the new
+          version.
+
+          Exception: any bugfix to a Critical issue.
+
+        • New features with new syntax _may be committed_, although once
+          committed that syntax cannot change during the remainder of
+          the stable phase.
+
+        • Any change to the build dependencies (including programming
+          libraries, documentation process programs, or python modules
+          used in the buildscripts).  If a contributor could compile a
+          previous lilypond ‘2.x’, then he must be able to compile the
+          new version.
+
+  2. *Release prep*: Only translation updates and important bugfixes are
+     allowed.
+
+
+File: lilypond-contributor.info,  Node: Release checklist,  Next: Major release checklist,  Prev: Development phases,  Up: Release work
+
+11.2 Release checklist
+======================
+
+A “minor release” means an update of ‘Y’ in ‘2.X.Y’.
+
+Preparing the release
+---------------------
+
+  1. Prepare the release branch (‘release/unstable’ for unstable
+     releases or ‘stable/2.X’ for stable releases).  It is recommended
+     to use a separate repository for this, or at least a worktree.  The
+     checked out repository must have no changes to tracked files.
+
+        • Pull the latest changes in the remote repository, then switch
+          to and update the branch:
+               git fetch origin
+               git rebase origin/master release/unstable
+          (adapt as necessary for ‘stable/2.X’)
+
+        • Remove untracked files from the repository, especially the
+          ‘configure’ script:
+               git clean -dfx --exclude release/
+          (Keep untracked files in the ‘release/’ directory, such as
+          ‘release/binaries/downloads/’ and local test builds.)
+
+  2. Generate the ‘configure’ script and run it:
+          ./autogen.sh
+
+  3. Update the translation template ‘po/lilypond.pot’:
+          make po-replace
+
+  4. Edit the news files:
+        • Copy the previous announcement from
+          ‘Documentation/en/web/news-new.itexi’ to
+          ‘Documentation/en/web/news-old.itexi’.
+
+        • Create a new announcement in
+          ‘Documentation/en/web/news-new.itexi’ by adjusting the version
+          number and the date.
+
+        • Adjust the headlines in
+          ‘Documentation/en/web/news-headlines.itexi’ accordingly.
+
+  5. Adjust version numbers in ‘VERSION’.  In most cases, this means
+     setting ‘VERSION_DEVEL’ to the current version.  Only change
+     ‘VERSION_STABLE’ if releasing a stable version.
+
+  6. Commit the changes:
+          git commit -m "po: Update template" -- po/lilypond.pot
+          git commit -m "web: Update news" -- Documentation/en/web/
+          git commit -m "Bump VERSION_DEVEL" -- VERSION
+
+Creating the source release
+---------------------------
+
+  1. Remove untracked files from the repository (see above):
+          git clean -dfx --exclude release/
+
+  2. Generate the ‘configure’ script and run it:
+          ./autogen.sh
+
+  3. Create the source tarball:
+          make dist
+
+   The last step creates ‘out/lilypond-2.X.Y.tar.gz’, which will be the
+“single source of truth” for the following steps.  Put it into a
+directory for the final upload step.
+
+Building the binaries and documentation
+---------------------------------------
+
+These steps can be run in any order, or in parallel, with the exception
+of the Windows (mingw) build, that needs a run of the Linux build
+before.
+
+   • Build binaries on “native” platforms (Linux and macOS) with the
+     scripts in ‘release/binaries/’ _from the tarball_:
+          ./build-dependencies && ./build-lilypond /path/to/lilypond-2.X.Y.tar.gz
+
+   • Build binaries for Windows (needs a run of the previous step on
+     Linux):
+          ./build-dependencies --mingw && ./build-lilypond --mingw /path/to/lilypond-2.X.Y.tar.gz
+
+   • Build the documentation using ‘release/doc/build-doc.sh’:
+          ./build-doc.sh /path/to/lilypond-2.X.Y.tar.gz
+
+   Collect all created binaries (‘.tar.gz’ and ‘.zip’) and documentation
+archives (‘.tar.xz’) in the directory next to the source tarball.  If
+possible, give them some short testing to make sure everything works as
+expected.
+
+Uploading the release
+---------------------
+
+During this step, the artifacts from the previous steps are uploaded to
+‘lilypond.org’ and GitLab for the world to see.  Make sure everything is
+ready before proceeding.
+
+  1. Create a personal access token at
+     <https://gitlab.com/-/user_settings/personal_access_tokens> and
+     select the ‘api’ scope (complete read/write access).  The token can
+     be limited to auto-expire the next day.
+
+  2. Upload the source tarball to ‘lilypond.org’:
+          scp lilypond-2.X.Y.tar.gz graham@gcp.lilypond.org:/var/www/lilypond/downloads/sources/v2.X/lilypond-2.X.Y.tar.gz
+
+  3. In the directory where you collected the binaries, run the script
+     to upload the files to GitLab:
+          /path/to/lilypond/release/upload.py --token TOKEN 2.X.Y
+
+  4. Upload the documentation to ‘lilypond.org’:
+          /path/to/lilypond/release/doc/upload-webdoc.sh 2.X.Y
+
+Tagging and announcing the release
+----------------------------------
+
+  1. In the repository that was used to create the release (check that
+     ‘git log’ has the expected commits; “Bump VERSION_DEVEL” should be
+     the last one), tag the release:
+          git tag -am "LilyPond 2.X.Y" v2.X.Y
+
+  2. Push the changes and the tag:
+          git push origin HEAD:release/unstable v2.X.Y
+     (adapt as necessary for ‘stable/2.X’)
+
+  3. Create a file ‘description.md’ with a copy of the release
+     announcement (may be formatted as Markdown for links).
+
+  4. Create the release on GitLab:
+          /path/to/lilypond/release/create-release.py --token TOKEN --description description.md 2.X.Y
+
+   Creating a release on GitLab will automatically send an email to
+everbody who subscribed to release notifications.
+
+Post unstable release
+---------------------
+
+In this case, the release branch is ‘release/unstable’.
+
+  1. Update the ‘master’ branch with the latest changes:
+          git fetch origin
+          git rebase origin/master master
+
+  2. Merge the release branch:
+          git merge --no-ff release/unstable
+
+  3. Bump ‘PATCH_LEVEL’ in the ‘VERSION’ file and commit:
+          git commit -m "Bump VERSION" -- VERSION
+
+  4. Push the branch to GitLab:
+          git push origin HEAD:release/unstable
+
+  5. Create a merge request from ‘release/unstable’ to merge the changes
+     into ‘master’.
+
+  6. Update the website as described in *note Uploading website::.
+
+  7. Update the milestones at GitLab:
+       1. Make sure all merge requests and issues are added to the
+          milestone of the released version.  Fill in the due date and
+          close it.
+
+       2. Create a new milestone for the next release (unless no more
+          bugfix release is planned) and set the start date.
+
+  8. Check open merge requests and remind people to update the
+     ‘\version’ statement in conversion rules and regression tests.
+
+   _After the website update appears on ‘lilypond.org’_, send a release
+notice to ‘lilypond-devel’ and ‘lilypond-user’ with the same
+announcement text and possibly further instructions.
+
+
+File: lilypond-contributor.info,  Node: Major release checklist,  Prev: Release checklist,  Up: Release work
+
+11.3 Major release checklist
+============================
+
+A “major release” means an update of ‘x’ in ‘2.x.0’.
+
+Main requirements
+-----------------
+
+These are the current official guidelines.
+
+   • 0 Critical issues for two weeks (14 days) after the latest release
+     candidate.
+
+Potential requirements
+----------------------
+
+These might become official guidelines in the future.
+
+   • Check reg test
+
+   • Check all 2ly scripts
+
+   • Check for emergencies the docs:
+
+          grep FIXME --exclude "misc/*" --exclude "*GNUmakefile" \
+            --exclude "snippets/*" ????*/*
+
+   • Check for altered regtests, and document as necessary:
+
+          git diff -u -r release/2.FIRST-CURRENT-STABLE \
+            -r release/2.LAST-CURRENT-DEVELOPMENT input/regression/
+
+Housekeeping requirements
+-------------------------
+
+Before the release:
+
+   • write release notes.  note: stringent size requirements for various
+     websites, so be brief.
+
+   • Run convert-ly on all files, bump parser minimum version.
+
+   • Update lilypond.pot:
+
+          make -C $LILYPOND_BUILD_DIR po-replace
+          mv $LILYPOND_BUILD_DIR/po/lilypond.pot po/
+
+   • Make directories on lilypond.org:
+
+          ~/download/sources/v2.NEW-STABLE
+          ~/download/sources/v2.NEW-DEVELOPMENT
+
+   Shortly after the release:
+
+   • Move all current contributors to previous contributors in
+     ‘Documentation/en/included/authors.itexi’.
+
+   • Delete old material in ‘Documentation/en/changes.tely’, but don’t
+     forget to check it still compiles!  Also update the version
+     numbers:
+
+          @node Top
+          @top New features in 2.NEW-STABLE since 2.OLD-STABLE
+
+   • Update the version of the search boxes in the Table of Contents
+     sidebar to 2.NEW-DEVELOPMENT (in ‘Documentation/lilypond.init’).
+
+   • Prevent crawlers from indexing the old documentation by adding
+     lines to ‘Documentation/webserver/robots.txt’ until:
+
+          Disallow: /doc/v2.OLD-STABLE/
+
+     Do _not_ yet add a line for 2.OLD-DEVELOPMENT because the search
+     for the documentation of 2.NEW-STABLE relies on it!
+
+   • Update the htaccess redirections (‘/latest/’, ‘/stable/’, etc.) in
+     ‘Documentation/webserver/lilypond.org.htaccess’.
+
+   • Add a link to the previous stable version’s announcement, list of
+     changes and contributors acknowledgements to the ‘Attic’ page, in
+     ‘Documentation/en/web/community.itexi’.
+
+   • Add a link to the previous stable version’s documentation to
+     ‘Documentation/en/web/manuals.itexi’.
+
+Unsorted
+--------
+
+   • submit po template for translation: send url of tarball to
+     <coordinator@translationproject.org>, mentioning
+     lilypond-VERSION.pot
+
+   • Send announcements to...
+
+     News:
+
+          comp.music.research
+          comp.os.linux.announce
+
+          comp.text.tex
+          rec.music.compose
+
+     Mail:
+
+          info-lilypond@gnu.org
+          info-gnu@gnu.org
+          planet@gnu.org
+
+          linux-audio-announce@lists.linuxaudio.org
+          linux-audio-user@lists.linuxaudio.org
+          linux-audio-dev@lists.linuxaudio.org
+          consortium@lists.linuxaudio.org
+          planetccrma@ccrma.stanford.edu
+
+          tex-music@tug.org
+
+          rosegarden-user@lists.sourceforge.net
+          denemo-devel@gnu.org
+
+
+     Web (forums):
+
+          imslpforums.org
+          abcusers (Yahoo group)
+          canorus (Github? Freenode IRC?)
+          musescore.org/forum
+          reddit.com/lilypond
+          linuxquestions.org
+          Slashdot
+
+
+     Web (websites and aggregators):
+
+          lilypond.org
+          https://savannah.gnu.org/news/submit.php?group_id=1673
+          freshmeat.sourceforge.net
+          linuxtoday.com
+          lxer.com
+          fossmint.com
+          fsdaily.com
+          freesoftwaremagazine.com
+          lwn.net
+          hitsquad.com/smm
+
+          in French: linuxfr.org; framalibre.org
+
+
+
+File: lilypond-contributor.info,  Node: Modifying the Emmentaler font,  Next: Administrative policies,  Prev: Release work,  Up: Top
+
+12 Modifying the Emmentaler font
+********************************
+
+* Menu:
+
+* Overview of the Emmentaler font::
+* Font creation tools::
+* Adding a new font section::
+* Adding a new glyph::
+* Building the changed font::
+* METAFONT formatting rules::
+
+
+File: lilypond-contributor.info,  Node: Overview of the Emmentaler font,  Next: Font creation tools,  Up: Modifying the Emmentaler font
+
+12.1 Overview of the Emmentaler font
+====================================
+
+Emmentaler was created specifically for use in LilyPond.  The font
+consists of two _sub-sets_ of glyphs.  “Feta”, used for clasical
+notation and “Parmesan”, used for Ancient notation.  The sources of
+which are all found in mf/*.mf.
+
+   The font is merged from a number of subfonts.  Each subfont can
+contain at most 224 glyphs.  This is because each subfont is limited to
+a one-byte address space (256 glyphs maximum) and we avoid the first 32
+points in that address space, since they are non-printing control
+characters in ASCII.
+
+   In LilyPond, glyphs are accessed by a ‘glyph name’, rather than by
+code point.  Therefore, the name of a glyph is significant.
+
+   Information about correctly creating glyphs is found in ‘mf/README’.
+Please make sure you read and understand this file.
+
+   TODO – we should get mf/README automatically generated from texinfo
+source and include it here.
+
+
+File: lilypond-contributor.info,  Node: Font creation tools,  Next: Adding a new font section,  Prev: Overview of the Emmentaler font,  Up: Modifying the Emmentaler font
+
+12.2 Font creation tools
+========================
+
+The sources for Emmentaler are written in metafont.  The definitive
+reference for metafont is "The METAFONT book" – the source of which is
+available at CTAN.
+
+   mf2pt1 is used to create type 1 fonts from the metafont sources.
+
+   FontForge is used to postprocess the output of mf2pt1 and clean up
+details of the font.  It can also be used by a developer to display the
+resulting glyph shapes.
+
+
+File: lilypond-contributor.info,  Node: Adding a new font section,  Next: Adding a new glyph,  Prev: Font creation tools,  Up: Modifying the Emmentaler font
+
+12.3 Adding a new font section
+==============================
+
+The font is divided into sections, each of which contains less than 224
+glyphs.  If more than 224 glyphs are included in a section, an error
+will be generated.
+
+   Each of the sections is contained in a separate ‘.mf’ file.  The
+files are named according to the type of glyphs in that section.
+
+   When adding a new section, it will be necessary to add the following:
+
+   • The code for the glyphs, in a file ‘<section-name>.mf’
+   • Driver files used to create the font in different sizes
+   • An entry in the generic file used to create the font, or a new
+     generic file
+   • If necessary, new entries in the GNUmakefile
+   • An entry in ‘scripts/build/gen-emmentaler-scripts.py’
+
+   See the examples in ‘mf/’ for more information.
+
+
+File: lilypond-contributor.info,  Node: Adding a new glyph,  Next: Building the changed font,  Prev: Adding a new font section,  Up: Modifying the Emmentaler font
+
+12.4 Adding a new glyph
+=======================
+
+Adding a new glyph is done by modifying the .mf file to which the glyph
+will be added.
+
+   Necessary functions to draw the glyph can be added anywhere in the
+file, but it is standard to put them immediately before the glyph
+definition.
+
+   The glyph definition begins with:
+
+     fet_beginchar ("glyph description", "glyphname");
+
+with ‘glyph description’ replaced with a short description of the glyph,
+and ‘glyphname’ replaced with the glyphname, which is chosen to comply
+with the naming rules in ‘mf/README’.
+
+   The metafont code used to draw the glyph follows the ‘fet_beginchar’
+entry.  The glyph is finished with:
+
+     fet_endchar;
+
+
+File: lilypond-contributor.info,  Node: Building the changed font,  Next: METAFONT formatting rules,  Prev: Adding a new glyph,  Up: Modifying the Emmentaler font
+
+12.5 Building the changed font
+==============================
+
+In order to rebuild the font after making the changes, the existing font
+files must be deleted.  The simplest and quickest way to do this is to
+do:
+
+     rm mf/out/*
+     make
+
+
+File: lilypond-contributor.info,  Node: METAFONT formatting rules,  Prev: Building the changed font,  Up: Modifying the Emmentaler font
+
+12.6 METAFONT formatting rules
+==============================
+
+There are special formatting rules for METAFONT files.
+
+   Please do not use tabs for the indentation of commands.
+
+   When a path contains more than two points, put each point on a
+separate line, with the operator at the beginning of the line.  The
+operators are indented to the same depth as the initial point on the
+path using spaces.  The indentation mechanism is illustrated below.
+
+     def draw_something (expr test) =
+       set_char_box (staff_space#, 1.6 linethickness# / 2,
+                     0.5 staff_space#, 0.5 staff_space#);
+       if test:
+         fill z1
+              -- z2
+              -- z3
+              .. cycle;
+       fi;
+     enddef;
+
+
+File: lilypond-contributor.info,  Node: Administrative policies,  Next: GNU Free Documentation License,  Prev: Modifying the Emmentaler font,  Up: Top
+
+13 Administrative policies
+**************************
+
+This chapter discusses miscellaneous administrative issues which don’t
+fit anywhere else.
+
+* Menu:
+
+* LilyPond is GNU Software::
+* Environment variables::
+* Performing yearly copyright update (grand-replace)::
+
+
+File: lilypond-contributor.info,  Node: LilyPond is GNU Software,  Next: Environment variables,  Up: Administrative policies
+
+13.1 LilyPond is GNU Software
+=============================
+
+LilyPond is a GNU software package.  As such, it falls under the
+requirements found in the GNU Coding Standards
+(https://www.gnu.org/prep/standards/).  All suggested changes should
+move toward increased compliance with these Standards.
+
+
+File: lilypond-contributor.info,  Node: Environment variables,  Next: Performing yearly copyright update (grand-replace),  Prev: LilyPond is GNU Software,  Up: Administrative policies
+
+13.2 Environment variables
+==========================
+
+Some maintenance scripts and instructions in this guide rely on the
+following environment variables.  They should be predefined in LilyDev
+distribution (see *note LilyDev::); if you set up your own development
+environment, you can set them by appending these settings to your
+‘~/.bashrc’ (or whatever defines your default environment variables for
+the user account for LilyPond development), then logging out and in
+(adapt directories to your setup):
+
+     LILYPOND_GIT=~/lilypond-git
+     export LILYPOND_GIT
+     LILYPOND_BUILD_DIR=~/lilypond-git/build
+     export LILYPOND_BUILD_DIR
+
+   The standard build and install procedure (with ‘autogen.sh’,
+‘configure’, ‘make’, ‘make install’, ‘make doc’ ...) does not rely on
+them.
+
+
+File: lilypond-contributor.info,  Node: Performing yearly copyright update (grand-replace),  Prev: Environment variables,  Up: Administrative policies
+
+13.3 Performing yearly copyright update (“grand-replace”)
+=========================================================
+
+At the start of each year, copyright notices for all source files should
+be refreshed by running the following command from the top of the source
+tree:
+
+     make grand-replace
+
+   Internally, this invokes the script ‘scripts/build/grand-replace.py’,
+which performs a regular expression substitution for old-year ->
+new-year wherever it finds a valid copyright notice.
+
+   Note that snapshots of third party files such as ‘texinfo.tex’ should
+not be included in the automatic update; ‘grand-replace.py’ ignores
+these files if they are listed in the variable ‘copied_files’.
+
+
+File: lilypond-contributor.info,  Node: GNU Free Documentation License,  Prev: Administrative policies,  Up: Top
+
+Appendix A GNU Free Documentation License
+*****************************************
+
+                     Version 1.3, 3 November 2008
+
+     Copyright © 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+     <https://fsf.org/>
+
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+
+  0. PREAMBLE
+
+     The purpose of this License is to make a manual, textbook, or other
+     functional and useful document “free” in the sense of freedom: to
+     assure everyone the effective freedom to copy and redistribute it,
+     with or without modifying it, either commercially or
+     noncommercially.  Secondarily, this License preserves for the
+     author and publisher a way to get credit for their work, while not
+     being considered responsible for modifications made by others.
+
+     This License is a kind of “copyleft”, which means that derivative
+     works of the document must themselves be free in the same sense.
+     It complements the GNU General Public License, which is a copyleft
+     license designed for free software.
+
+     We have designed this License in order to use it for manuals for
+     free software, because free software needs free documentation: a
+     free program should come with manuals providing the same freedoms
+     that the software does.  But this License is not limited to
+     software manuals; it can be used for any textual work, regardless
+     of subject matter or whether it is published as a printed book.  We
+     recommend this License principally for works whose purpose is
+     instruction or reference.
+
+  1. APPLICABILITY AND DEFINITIONS
+
+     This License applies to any manual or other work, in any medium,
+     that contains a notice placed by the copyright holder saying it can
+     be distributed under the terms of this License.  Such a notice
+     grants a world-wide, royalty-free license, unlimited in duration,
+     to use that work under the conditions stated herein.  The
+     “Document”, below, refers to any such manual or work.  Any member
+     of the public is a licensee, and is addressed as “you”.  You accept
+     the license if you copy, modify or distribute the work in a way
+     requiring permission under copyright law.
+
+     A “Modified Version” of the Document means any work containing the
+     Document or a portion of it, either copied verbatim, or with
+     modifications and/or translated into another language.
+
+     A “Secondary Section” is a named appendix or a front-matter section
+     of the Document that deals exclusively with the relationship of the
+     publishers or authors of the Document to the Document’s overall
+     subject (or to related matters) and contains nothing that could
+     fall directly within that overall subject.  (Thus, if the Document
+     is in part a textbook of mathematics, a Secondary Section may not
+     explain any mathematics.)  The relationship could be a matter of
+     historical connection with the subject or with related matters, or
+     of legal, commercial, philosophical, ethical or political position
+     regarding them.
+
+     The “Invariant Sections” are certain Secondary Sections whose
+     titles are designated, as being those of Invariant Sections, in the
+     notice that says that the Document is released under this License.
+     If a section does not fit the above definition of Secondary then it
+     is not allowed to be designated as Invariant.  The Document may
+     contain zero Invariant Sections.  If the Document does not identify
+     any Invariant Sections then there are none.
+
+     The “Cover Texts” are certain short passages of text that are
+     listed, as Front-Cover Texts or Back-Cover Texts, in the notice
+     that says that the Document is released under this License.  A
+     Front-Cover Text may be at most 5 words, and a Back-Cover Text may
+     be at most 25 words.
+
+     A “Transparent” copy of the Document means a machine-readable copy,
+     represented in a format whose specification is available to the
+     general public, that is suitable for revising the document
+     straightforwardly with generic text editors or (for images composed
+     of pixels) generic paint programs or (for drawings) some widely
+     available drawing editor, and that is suitable for input to text
+     formatters or for automatic translation to a variety of formats
+     suitable for input to text formatters.  A copy made in an otherwise
+     Transparent file format whose markup, or absence of markup, has
+     been arranged to thwart or discourage subsequent modification by
+     readers is not Transparent.  An image format is not Transparent if
+     used for any substantial amount of text.  A copy that is not
+     “Transparent” is called “Opaque”.
+
+     Examples of suitable formats for Transparent copies include plain
+     ASCII without markup, Texinfo input format, LaTeX input format,
+     SGML or XML using a publicly available DTD, and standard-conforming
+     simple HTML, PostScript or PDF designed for human modification.
+     Examples of transparent image formats include PNG, XCF and JPG.
+     Opaque formats include proprietary formats that can be read and
+     edited only by proprietary word processors, SGML or XML for which
+     the DTD and/or processing tools are not generally available, and
+     the machine-generated HTML, PostScript or PDF produced by some word
+     processors for output purposes only.
+
+     The “Title Page” means, for a printed book, the title page itself,
+     plus such following pages as are needed to hold, legibly, the
+     material this License requires to appear in the title page.  For
+     works in formats which do not have any title page as such, “Title
+     Page” means the text near the most prominent appearance of the
+     work’s title, preceding the beginning of the body of the text.
+
+     The “publisher” means any person or entity that distributes copies
+     of the Document to the public.
+
+     A section “Entitled XYZ” means a named subunit of the Document
+     whose title either is precisely XYZ or contains XYZ in parentheses
+     following text that translates XYZ in another language.  (Here XYZ
+     stands for a specific section name mentioned below, such as
+     “Acknowledgements”, “Dedications”, “Endorsements”, or “History”.)
+     To “Preserve the Title” of such a section when you modify the
+     Document means that it remains a section “Entitled XYZ” according
+     to this definition.
+
+     The Document may include Warranty Disclaimers next to the notice
+     which states that this License applies to the Document.  These
+     Warranty Disclaimers are considered to be included by reference in
+     this License, but only as regards disclaiming warranties: any other
+     implication that these Warranty Disclaimers may have is void and
+     has no effect on the meaning of this License.
+
+  2. VERBATIM COPYING
+
+     You may copy and distribute the Document in any medium, either
+     commercially or noncommercially, provided that this License, the
+     copyright notices, and the license notice saying this License
+     applies to the Document are reproduced in all copies, and that you
+     add no other conditions whatsoever to those of this License.  You
+     may not use technical measures to obstruct or control the reading
+     or further copying of the copies you make or distribute.  However,
+     you may accept compensation in exchange for copies.  If you
+     distribute a large enough number of copies you must also follow the
+     conditions in section 3.
+
+     You may also lend copies, under the same conditions stated above,
+     and you may publicly display copies.
+
+  3. COPYING IN QUANTITY
+
+     If you publish printed copies (or copies in media that commonly
+     have printed covers) of the Document, numbering more than 100, and
+     the Document’s license notice requires Cover Texts, you must
+     enclose the copies in covers that carry, clearly and legibly, all
+     these Cover Texts: Front-Cover Texts on the front cover, and
+     Back-Cover Texts on the back cover.  Both covers must also clearly
+     and legibly identify you as the publisher of these copies.  The
+     front cover must present the full title with all words of the title
+     equally prominent and visible.  You may add other material on the
+     covers in addition.  Copying with changes limited to the covers, as
+     long as they preserve the title of the Document and satisfy these
+     conditions, can be treated as verbatim copying in other respects.
+
+     If the required texts for either cover are too voluminous to fit
+     legibly, you should put the first ones listed (as many as fit
+     reasonably) on the actual cover, and continue the rest onto
+     adjacent pages.
+
+     If you publish or distribute Opaque copies of the Document
+     numbering more than 100, you must either include a machine-readable
+     Transparent copy along with each Opaque copy, or state in or with
+     each Opaque copy a computer-network location from which the general
+     network-using public has access to download using public-standard
+     network protocols a complete Transparent copy of the Document, free
+     of added material.  If you use the latter option, you must take
+     reasonably prudent steps, when you begin distribution of Opaque
+     copies in quantity, to ensure that this Transparent copy will
+     remain thus accessible at the stated location until at least one
+     year after the last time you distribute an Opaque copy (directly or
+     through your agents or retailers) of that edition to the public.
+
+     It is requested, but not required, that you contact the authors of
+     the Document well before redistributing any large number of copies,
+     to give them a chance to provide you with an updated version of the
+     Document.
+
+  4. MODIFICATIONS
+
+     You may copy and distribute a Modified Version of the Document
+     under the conditions of sections 2 and 3 above, provided that you
+     release the Modified Version under precisely this License, with the
+     Modified Version filling the role of the Document, thus licensing
+     distribution and modification of the Modified Version to whoever
+     possesses a copy of it.  In addition, you must do these things in
+     the Modified Version:
+
+       A. Use in the Title Page (and on the covers, if any) a title
+          distinct from that of the Document, and from those of previous
+          versions (which should, if there were any, be listed in the
+          History section of the Document).  You may use the same title
+          as a previous version if the original publisher of that
+          version gives permission.
+
+       B. List on the Title Page, as authors, one or more persons or
+          entities responsible for authorship of the modifications in
+          the Modified Version, together with at least five of the
+          principal authors of the Document (all of its principal
+          authors, if it has fewer than five), unless they release you
+          from this requirement.
+
+       C. State on the Title page the name of the publisher of the
+          Modified Version, as the publisher.
+
+       D. Preserve all the copyright notices of the Document.
+
+       E. Add an appropriate copyright notice for your modifications
+          adjacent to the other copyright notices.
+
+       F. Include, immediately after the copyright notices, a license
+          notice giving the public permission to use the Modified
+          Version under the terms of this License, in the form shown in
+          the Addendum below.
+
+       G. Preserve in that license notice the full lists of Invariant
+          Sections and required Cover Texts given in the Document’s
+          license notice.
+
+       H. Include an unaltered copy of this License.
+
+       I. Preserve the section Entitled “History”, Preserve its Title,
+          and add to it an item stating at least the title, year, new
+          authors, and publisher of the Modified Version as given on the
+          Title Page.  If there is no section Entitled “History” in the
+          Document, create one stating the title, year, authors, and
+          publisher of the Document as given on its Title Page, then add
+          an item describing the Modified Version as stated in the
+          previous sentence.
+
+       J. Preserve the network location, if any, given in the Document
+          for public access to a Transparent copy of the Document, and
+          likewise the network locations given in the Document for
+          previous versions it was based on.  These may be placed in the
+          “History” section.  You may omit a network location for a work
+          that was published at least four years before the Document
+          itself, or if the original publisher of the version it refers
+          to gives permission.
+
+       K. For any section Entitled “Acknowledgements” or “Dedications”,
+          Preserve the Title of the section, and preserve in the section
+          all the substance and tone of each of the contributor
+          acknowledgements and/or dedications given therein.
+
+       L. Preserve all the Invariant Sections of the Document, unaltered
+          in their text and in their titles.  Section numbers or the
+          equivalent are not considered part of the section titles.
+
+       M. Delete any section Entitled “Endorsements”.  Such a section
+          may not be included in the Modified Version.
+
+       N. Do not retitle any existing section to be Entitled
+          “Endorsements” or to conflict in title with any Invariant
+          Section.
+
+       O. Preserve any Warranty Disclaimers.
+
+     If the Modified Version includes new front-matter sections or
+     appendices that qualify as Secondary Sections and contain no
+     material copied from the Document, you may at your option designate
+     some or all of these sections as invariant.  To do this, add their
+     titles to the list of Invariant Sections in the Modified Version’s
+     license notice.  These titles must be distinct from any other
+     section titles.
+
+     You may add a section Entitled “Endorsements”, provided it contains
+     nothing but endorsements of your Modified Version by various
+     parties—for example, statements of peer review or that the text has
+     been approved by an organization as the authoritative definition of
+     a standard.
+
+     You may add a passage of up to five words as a Front-Cover Text,
+     and a passage of up to 25 words as a Back-Cover Text, to the end of
+     the list of Cover Texts in the Modified Version.  Only one passage
+     of Front-Cover Text and one of Back-Cover Text may be added by (or
+     through arrangements made by) any one entity.  If the Document
+     already includes a cover text for the same cover, previously added
+     by you or by arrangement made by the same entity you are acting on
+     behalf of, you may not add another; but you may replace the old
+     one, on explicit permission from the previous publisher that added
+     the old one.
+
+     The author(s) and publisher(s) of the Document do not by this
+     License give permission to use their names for publicity for or to
+     assert or imply endorsement of any Modified Version.
+
+  5. COMBINING DOCUMENTS
+
+     You may combine the Document with other documents released under
+     this License, under the terms defined in section 4 above for
+     modified versions, provided that you include in the combination all
+     of the Invariant Sections of all of the original documents,
+     unmodified, and list them all as Invariant Sections of your
+     combined work in its license notice, and that you preserve all
+     their Warranty Disclaimers.
+
+     The combined work need only contain one copy of this License, and
+     multiple identical Invariant Sections may be replaced with a single
+     copy.  If there are multiple Invariant Sections with the same name
+     but different contents, make the title of each such section unique
+     by adding at the end of it, in parentheses, the name of the
+     original author or publisher of that section if known, or else a
+     unique number.  Make the same adjustment to the section titles in
+     the list of Invariant Sections in the license notice of the
+     combined work.
+
+     In the combination, you must combine any sections Entitled
+     “History” in the various original documents, forming one section
+     Entitled “History”; likewise combine any sections Entitled
+     “Acknowledgements”, and any sections Entitled “Dedications”.  You
+     must delete all sections Entitled “Endorsements.”
+
+  6. COLLECTIONS OF DOCUMENTS
+
+     You may make a collection consisting of the Document and other
+     documents released under this License, and replace the individual
+     copies of this License in the various documents with a single copy
+     that is included in the collection, provided that you follow the
+     rules of this License for verbatim copying of each of the documents
+     in all other respects.
+
+     You may extract a single document from such a collection, and
+     distribute it individually under this License, provided you insert
+     a copy of this License into the extracted document, and follow this
+     License in all other respects regarding verbatim copying of that
+     document.
+
+  7. AGGREGATION WITH INDEPENDENT WORKS
+
+     A compilation of the Document or its derivatives with other
+     separate and independent documents or works, in or on a volume of a
+     storage or distribution medium, is called an “aggregate” if the
+     copyright resulting from the compilation is not used to limit the
+     legal rights of the compilation’s users beyond what the individual
+     works permit.  When the Document is included in an aggregate, this
+     License does not apply to the other works in the aggregate which
+     are not themselves derivative works of the Document.
+
+     If the Cover Text requirement of section 3 is applicable to these
+     copies of the Document, then if the Document is less than one half
+     of the entire aggregate, the Document’s Cover Texts may be placed
+     on covers that bracket the Document within the aggregate, or the
+     electronic equivalent of covers if the Document is in electronic
+     form.  Otherwise they must appear on printed covers that bracket
+     the whole aggregate.
+
+  8. TRANSLATION
+
+     Translation is considered a kind of modification, so you may
+     distribute translations of the Document under the terms of section
+     4.  Replacing Invariant Sections with translations requires special
+     permission from their copyright holders, but you may include
+     translations of some or all Invariant Sections in addition to the
+     original versions of these Invariant Sections.  You may include a
+     translation of this License, and all the license notices in the
+     Document, and any Warranty Disclaimers, provided that you also
+     include the original English version of this License and the
+     original versions of those notices and disclaimers.  In case of a
+     disagreement between the translation and the original version of
+     this License or a notice or disclaimer, the original version will
+     prevail.
+
+     If a section in the Document is Entitled “Acknowledgements”,
+     “Dedications”, or “History”, the requirement (section 4) to
+     Preserve its Title (section 1) will typically require changing the
+     actual title.
+
+  9. TERMINATION
+
+     You may not copy, modify, sublicense, or distribute the Document
+     except as expressly provided under this License.  Any attempt
+     otherwise to copy, modify, sublicense, or distribute it is void,
+     and will automatically terminate your rights under this License.
+
+     However, if you cease all violation of this License, then your
+     license from a particular copyright holder is reinstated (a)
+     provisionally, unless and until the copyright holder explicitly and
+     finally terminates your license, and (b) permanently, if the
+     copyright holder fails to notify you of the violation by some
+     reasonable means prior to 60 days after the cessation.
+
+     Moreover, your license from a particular copyright holder is
+     reinstated permanently if the copyright holder notifies you of the
+     violation by some reasonable means, this is the first time you have
+     received notice of violation of this License (for any work) from
+     that copyright holder, and you cure the violation prior to 30 days
+     after your receipt of the notice.
+
+     Termination of your rights under this section does not terminate
+     the licenses of parties who have received copies or rights from you
+     under this License.  If your rights have been terminated and not
+     permanently reinstated, receipt of a copy of some or all of the
+     same material does not give you any rights to use it.
+
+  10. FUTURE REVISIONS OF THIS LICENSE
+
+     The Free Software Foundation may publish new, revised versions of
+     the GNU Free Documentation License from time to time.  Such new
+     versions will be similar in spirit to the present version, but may
+     differ in detail to address new problems or concerns.  See
+     <https://www.gnu.org/licenses/>.
+
+     Each version of the License is given a distinguishing version
+     number.  If the Document specifies that a particular numbered
+     version of this License “or any later version” applies to it, you
+     have the option of following the terms and conditions either of
+     that specified version or of any later version that has been
+     published (not as a draft) by the Free Software Foundation.  If the
+     Document does not specify a version number of this License, you may
+     choose any version ever published (not as a draft) by the Free
+     Software Foundation.  If the Document specifies that a proxy can
+     decide which future versions of this License can be used, that
+     proxy’s public statement of acceptance of a version permanently
+     authorizes you to choose that version for the Document.
+
+  11. RELICENSING
+
+     “Massive Multiauthor Collaboration Site” (or “MMC Site”) means any
+     World Wide Web server that publishes copyrightable works and also
+     provides prominent facilities for anybody to edit those works.  A
+     public wiki that anybody can edit is an example of such a server.
+     A “Massive Multiauthor Collaboration” (or “MMC”) contained in the
+     site means any set of copyrightable works thus published on the MMC
+     site.
+
+     “CC-BY-SA” means the Creative Commons Attribution-Share Alike 3.0
+     license published by Creative Commons Corporation, a not-for-profit
+     corporation with a principal place of business in San Francisco,
+     California, as well as future copyleft versions of that license
+     published by that same organization.
+
+     “Incorporate” means to publish or republish a Document, in whole or
+     in part, as part of another Document.
+
+     An MMC is “eligible for relicensing” if it is licensed under this
+     License, and if all works that were first published under this
+     License somewhere other than this MMC, and subsequently
+     incorporated in whole or in part into the MMC, (1) had no cover
+     texts or invariant sections, and (2) were thus incorporated prior
+     to November 1, 2008.
+
+     The operator of an MMC Site may republish an MMC contained in the
+     site under CC-BY-SA on the same site at any time before August 1,
+     2009, provided the MMC is eligible for relicensing.
+
+ADDENDUM: How to use this License for your documents
+====================================================
+
+To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and license
+notices just after the title page:
+
+       Copyright (C)  YEAR  YOUR NAME.
+       Permission is granted to copy, distribute and/or modify this document
+       under the terms of the GNU Free Documentation License, Version 1.3
+       or any later version published by the Free Software Foundation;
+       with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+       Texts.  A copy of the license is included in the section entitled ``GNU
+       Free Documentation License''.
+
+   If you have Invariant Sections, Front-Cover Texts and Back-Cover
+Texts, replace the “with...Texts.” line with this:
+
+         with the Invariant Sections being LIST THEIR TITLES, with
+         the Front-Cover Texts being LIST, and with the Back-Cover Texts
+         being LIST.
+
+   If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+
+   If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of free
+software license, such as the GNU General Public License, to permit
+their use in free software.
+

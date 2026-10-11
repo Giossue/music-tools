@@ -1,0 +1,1169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Este documento se ha puesto en el dominio público. -->
+<title>Plantilla per a combo de jazz (Fragments del LilyPond)</title>
+
+<meta name="description" content="Plantilla per a combo de jazz (Fragments del LilyPond)">
+<meta name="keywords" content="Plantilla per a combo de jazz (Fragments del LilyPond)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ca.html" rel="start" title="LilyPond &mdash; Fragments">
+<link href="snippets_toc.ca.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="templates.ca.html" rel="up" title="24 Templates">
+<link href="templates-_002d-orchestra_002c-choir-and-piano-template.ca.html" rel="next" title="Plantilla d&rsquo;orquestra amb cor i piano">
+<link href="templates-_002d-hymn-template.ca.html" rel="prev" title="Plantilla per a himnes">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="ca" class="snippets">
+<div id="main">
+<div class="unnumberedsec" id="templates-_002d-jazz-combo-template">
+<table class="nav_table">
+<tr><td align="left">[<a href="templates.ca.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Templates </a>]</td><td align="center">[<a href="index.ca.html" title="Cover (top) of document" rel="start">Top</a>][<a href="snippets_toc.ca.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="templates-_002d-hymn-template.ca.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Plantilla per a himnes </a>]</td><td align="center">[<a href="templates.ca.html" title="Up section" accesskey="u" rel="up">  Up: Templates </a>]</td><td align="right">[<a href="templates-_002d-orchestra_002c-choir-and-piano-template.ca.html" title="Next section in reading order" accesskey="n" rel="next"> Plantilla d&rsquo;orquestra amb cor i piano &gt; </a>]</td></tr>
+</table>
+<hr>
+
+<span id="Plantilla-per-a-combo-de-jazz-3"></span><h3 class="unnumberedsec">Plantilla per a combo de jazz</h3>
+
+
+<p>Això és una plantilla força avançada, per a un conjunt de jazz.
+Observeu que la notació de tots els instruments està a
+<code>\key c \major</code> (Do major). Això es refereix al to de
+concert; l&rsquo;armadura es transporta automàticament si la música està
+dins d&rsquo;una secció <code>\transpose</code>.
+</p>
+
+
+
+<pre class="verbatim"><span class="k">\header</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-HeaderVariable">title</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Song&quot;</span>
+<span class="w">  </span><span class="nb nb-HeaderVariable">subtitle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;(tune)&quot;</span>
+<span class="w">  </span><span class="nb nb-HeaderVariable">composer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Me&quot;</span>
+<span class="w">  </span><span class="nb nb-HeaderVariable">meter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;moderato&quot;</span>
+<span class="w">  </span><span class="nb nb-HeaderVariable">piece</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Swing&quot;</span>
+<span class="w">  </span><span class="nb nb-PaperVariable">tagline</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="nb nb-MarkupCommand">\column</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="s">&quot;LilyPond example file by Amelie Zapf,&quot;</span>
+<span class="w">              </span><span class="s">&quot;Berlin 07/07/2003&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">% To make the example display properly in the documentation.</span>
+<span class="k">\paper</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-PaperVariable">paper-width</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">130\mm</span>
+<span class="w">  </span><span class="nb nb-PaperVariable">paper-height</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">205\mm</span>
+<span class="p">}</span>
+
+<span class="c1">% #(set-global-staff-size 16)</span>
+
+<span class="k">\include</span><span class="w"> </span><span class="s">&quot;english.ly&quot;</span>
+
+
+<span class="c1">%%%%%%%%%%%% Some macros %%%%%%%%%%%%%%%%%%%</span>
+
+<span class="n n-Lvalue">sl</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">NoteHead</span><span class="p">.</span><span class="nb nb-GrobProperty">style</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;slash</span>
+<span class="w">       </span><span class="nb nb-MusicFunction">\hide</span><span class="w"> </span><span class="nb nb-Grob">Stem</span><span class="w"> </span><span class="p">}</span>
+<span class="n n-Lvalue">nsl</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\revert</span><span class="w"> </span><span class="nb nb-Grob">NoteHead</span><span class="p">.</span><span class="nb nb-GrobProperty">style</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\undo</span><span class="w"> </span><span class="nb nb-MusicFunction">\hide</span><span class="w"> </span><span class="nb nb-Grob">Stem</span><span class="w"> </span><span class="p">}</span>
+<span class="n n-Lvalue">crOn</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">NoteHead</span><span class="p">.</span><span class="nb nb-GrobProperty">style</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;cross</span>
+<span class="n n-Lvalue">crOff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\revert</span><span class="w"> </span><span class="nb nb-Grob">NoteHead</span><span class="p">.</span><span class="nb nb-GrobProperty">style</span>
+
+<span class="c1">% Insert chord name style stuff here.</span>
+
+<span class="n n-Lvalue">jazzChords</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+
+
+<span class="c1">%%%%%%%%%%%% Keys&#39;n&#39;thangs %%%%%%%%%%%%%%%%%</span>
+
+<span class="n n-Lvalue">global</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\time</span><span class="w"> </span><span class="m m-Fraction">4/4</span><span class="w"> </span><span class="p">}</span>
+
+<span class="n n-Lvalue">Key</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="nb nb-Scale">\major</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">% ############ Horns ############</span>
+
+<span class="c1">% ------ Trumpet ------</span>
+<span class="n n-Lvalue">trpt</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\transpose</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\Key</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">trpHarmony</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\transpose</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\jazzChords</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">trumpet</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\global</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">treble</span>
+<span class="w">  </span><span class="n n-BackslashReference">\trpt</span>
+<span class="p">}</span>
+
+<span class="c1">% ------ Alto Saxophone ------</span>
+<span class="nb nb-Clef">alto</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\transpose</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\Key</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">altoHarmony</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\transpose</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\jazzChords</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">altoSax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\global</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">treble</span>
+<span class="w">  </span><span class="n n-BackslashReference">\alto</span>
+<span class="p">}</span>
+
+<span class="c1">% ------ Baritone Saxophone ------</span>
+<span class="n n-Lvalue">bari</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\transpose</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">a&#39;</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\Key</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">1</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="n n-BackslashReference">\sl</span><span class="w"> </span><span class=" -Pitch">d</span><span class="m">4</span><span class="s">^&quot;Solo&quot;</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="n n-BackslashReference">\nsl</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">bariHarmony</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\transpose</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class=" -Pitch">a</span><span class="w"> </span><span class="k">\chordmode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\jazzChords</span>
+<span class="w">  </span>s<span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>s<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class=" -Pitch">d</span><span class="m">2</span><span class="p">:</span><span class=" -ChordModifier">maj</span><span class="w"> </span><span class=" -Pitch">e</span><span class="p">:</span><span class=" -ChordModifier">m</span><span class="m">7</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">bariSax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\global</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">treble</span>
+<span class="w">  </span><span class="n n-BackslashReference">\bari</span>
+<span class="p">}</span>
+
+<span class="c1">% ------ Trombone ------</span>
+<span class="n n-Lvalue">tbone</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\Key</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">tboneHarmony</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">\chordmode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\jazzChords</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">trombone</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\global</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">bass</span>
+<span class="w">  </span><span class="n n-BackslashReference">\tbone</span>
+<span class="p">}</span>
+
+<span class="c1">% ############ Rhythm Section #############</span>
+
+<span class="c1">% ------ Guitar ------</span>
+<span class="n n-Lvalue">gtr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\Key</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">1</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class="n n-BackslashReference">\sl</span><span class="w"> </span><span class=" -Pitch">b</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class="n n-BackslashReference">\nsl</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">1</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">gtrHarmony</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">\chordmode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\jazzChords</span>
+<span class="w">  </span>s<span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">2</span><span class="p">:</span>min<span class="m">7</span>+<span class="w"> </span><span class=" -Pitch">d</span><span class="m">2</span><span class="p">:</span><span class=" -ChordModifier">maj</span><span class="m">9</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>s<span class="m">1</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">guitar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\global</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">treble</span>
+<span class="w">  </span><span class="n n-BackslashReference">\gtr</span>
+<span class="p">}</span>
+
+<span class="c1">%% ------ Piano ------</span>
+<span class="n n-Lvalue">rhUpper</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicCommand">\voiceOne</span>
+<span class="w">  </span><span class="n n-BackslashReference">\Key</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">rhLower</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicCommand">\voiceTwo</span>
+<span class="w">  </span><span class="n n-BackslashReference">\Key</span>
+<span class="w">  </span><span class=" -Pitch">e</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+
+<span class="n n-Lvalue">lhUpper</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicCommand">\voiceOne</span>
+<span class="w">  </span><span class="n n-BackslashReference">\Key</span>
+<span class="w">  </span><span class=" -Pitch">g</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">lhLower</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicCommand">\voiceTwo</span>
+<span class="w">  </span><span class="n n-BackslashReference">\Key</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+
+<span class="n n-Lvalue">PianoRH</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">treble</span>
+<span class="w">  </span><span class="n n-BackslashReference">\global</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;one&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\rhUpper</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;two&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\rhLower</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">PianoLH</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">bass</span>
+<span class="w">  </span><span class="n n-BackslashReference">\global</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;one&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\lhUpper</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;two&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\lhLower</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+<span class="p">}</span>
+
+<span class="n n-Lvalue">piano</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;upper&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\PianoRH</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;lower&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\PianoLH</span>
+<span class="p">&gt;&gt;</span>
+
+
+<span class="c1">% ------ Bass Guitar ------</span>
+<span class="n n-Lvalue">Bass</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\Key</span>
+<span class="w">  </span><span class=" -Pitch">c</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+<span class="nb nb-Clef">bass</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\global</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">bass</span>
+<span class="w">  </span><span class="n n-BackslashReference">\Bass</span>
+<span class="p">}</span>
+
+<span class="c1">% ------ Drums ------</span>
+<span class="n n-Lvalue">up</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">\drummode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicCommand">\voiceOne</span>
+<span class="w">  </span><span class=" -Pitch">hh</span><span class="m">4</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">hh</span><span class="w"> </span><span class=" -Pitch">sn</span><span class="p">&gt;</span><span class="w"> </span><span class=" -Pitch">hh</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">hh</span><span class="w"> </span><span class=" -Pitch">sn</span><span class="p">&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class=" -Pitch">hh</span><span class="m">4</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">hh</span><span class="w"> </span><span class=" -Pitch">sn</span><span class="p">&gt;</span><span class="w"> </span><span class=" -Pitch">hh</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">hh</span><span class="w"> </span><span class=" -Pitch">sn</span><span class="p">&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class=" -Pitch">hh</span><span class="m">4</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">hh</span><span class="w"> </span><span class=" -Pitch">sn</span><span class="p">&gt;</span><span class="w"> </span><span class=" -Pitch">hh</span><span class="w"> </span><span class="p">&lt;</span><span class=" -Pitch">hh</span><span class="w"> </span><span class=" -Pitch">sn</span><span class="p">&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+<span class="n n-Lvalue">down</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">\drummode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicCommand">\voiceTwo</span>
+<span class="w">  </span><span class=" -Pitch">bd</span><span class="m">4</span><span class="w"> </span>s<span class="w"> </span><span class=" -Pitch">bd</span><span class="w"> </span>s<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class=" -Pitch">bd</span><span class="m">4</span><span class="w"> </span>s<span class="w"> </span><span class=" -Pitch">bd</span><span class="w"> </span>s<span class="w"> </span><span class="p">|</span>
+<span class="w">  </span><span class=" -Pitch">bd</span><span class="m">4</span><span class="w"> </span>s<span class="w"> </span><span class=" -Pitch">bd</span><span class="w"> </span>s<span class="w"> </span><span class="p">|</span>
+<span class="p">}</span>
+
+<span class="n n-Lvalue">drumContents</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\global</span>
+<span class="w">  </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">DrumVoice</span><span class="w"> </span><span class="n n-BackslashReference">\up</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">DrumVoice</span><span class="w"> </span><span class="n n-BackslashReference">\down</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+<span class="p">}</span>
+
+<span class="c1">%%%%%%%%% It All Goes Together Here %%%%%%%%%%%%%%%%%%%%%%</span>
+
+<span class="k">\book</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">% For the LilyPond documentation.</span>
+<span class="w">  </span><span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">&lt;&lt;</span>
+<span class="w">      </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">StaffGroup</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;horns&quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;trumpet&quot;</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Trumpet&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">          </span><span class="n n-BackslashReference">\trumpet</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;altosax&quot;</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Alto Sax&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">          </span><span class="n n-BackslashReference">\altoSax</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">ChordNames</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;barichords&quot;</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Bari Sax&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">          </span><span class="n n-BackslashReference">\bariHarmony</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;barisax&quot;</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Bari Sax&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">          </span><span class="n n-BackslashReference">\bariSax</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;trombone&quot;</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Trombone&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">          </span><span class="n n-BackslashReference">\trombone</span>
+<span class="w">      </span><span class="p">&gt;&gt;</span>
+
+<span class="w">      </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">StaffGroup</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;rhythm&quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">ChordNames</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;chords&quot;</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Guitar&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">          </span><span class="n n-BackslashReference">\gtrHarmony</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;guitar&quot;</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Guitar&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">          </span><span class="n n-BackslashReference">\guitar</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">PianoStaff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;piano&quot;</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Piano&quot;</span>
+<span class="w">          </span><span class="nb nb-ContextProperty">midiInstrument</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;acoustic grand&quot;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="n n-BackslashReference">\piano</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;bass&quot;</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Bass&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">          </span><span class="n n-BackslashReference">\bass</span>
+<span class="w">        </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">DrumStaff</span><span class="w"> </span><span class="k">\with</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-ContextProperty">instrumentName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Drums&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">          </span><span class="n n-BackslashReference">\drumContents</span>
+<span class="w">      </span><span class="p">&gt;&gt;</span>
+<span class="w">    </span><span class="p">&gt;&gt;</span>
+
+<span class="w">    </span><span class="k">\layout</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">\context</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb nb-Context">\Staff</span>
+<span class="w">        </span><span class="n n-BackslashReference">\RemoveEmptyStaves</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">\context</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb nb-Context">\Score</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">BarNumber</span><span class="p">.</span><span class="nb nb-GrobProperty">padding</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">3</span>
+<span class="w">        </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">RehearsalMark</span><span class="p">.</span><span class="nb nb-GrobProperty">padding</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">2</span>
+<span class="w">        </span><span class="nb nb-ContextProperty">skipBars</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="no">#t</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">\midi</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../8b/lily-c01ec3ce.ly">
+  <img align="middle"
+       border="0"
+       src="../8b/lily-c01ec3ce.png"
+       alt="[image of music]"></a>
+
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="templates.ca.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Templates </a>]</td><td align="center">[<a href="index.ca.html" title="Cover (top) of document" rel="start">Top</a>][<a href="snippets_toc.ca.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="templates-_002d-hymn-template.ca.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Plantilla per a himnes </a>]</td><td align="center">[<a href="templates.ca.html" title="Up section" accesskey="u" rel="up">  Up: Templates </a>]</td><td align="right">[<a href="templates-_002d-orchestra_002c-choir-and-piano-template.ca.html" title="Next section in reading order" accesskey="n" rel="next"> Plantilla d&rsquo;orquestra amb cor i piano &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="templates-_002d-jazz-combo-template.html">English</a>, <a href="templates-_002d-jazz-combo-template.de.html">Deutsch</a>, <a href="templates-_002d-jazz-combo-template.es.html">Español</a>, <a href="templates-_002d-jazz-combo-template.fr.html">Français</a>, <a href="templates-_002d-jazz-combo-template.it.html">Italiano</a>, <a href="templates-_002d-jazz-combo-template.ja.html">日本語</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.ca.html" title="Documentation Index">
+    &lt;&lt; Torna a l'índex de la documentació
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.ca.html#top" title="Cover (top) of document">
+    Fragments del LilyPond  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Pitches" href="pitches.ca.html">1 Pitches</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Afegir-un-ambit-per-veu" href="pitches-_002d-adding-ambitus-per-voice.ca.html">Afegir un àmbit per veu</a></li>
+    <li><a id="toc-Afegir-una-indicacio-d_0027octava-alta-a-una-sola-veu" href="pitches-_002d-adding-an-ottava-marking-to-a-single-voice.ca.html">Afegir una indicació d&rsquo;octava alta a una sola veu</a></li>
+    <li><a id="toc-Aiken-head-thin-variant-noteheads" href="pitches-_002d-aiken-head-thin-variant-noteheads.ca.html">Aiken head thin variant noteheads</a></li>
+    <li><a id="toc-Alterar-la-longitud-de-les-pliques-unides-per-una-barra" href="pitches-_002d-altering-the-length-of-beamed-stems.ca.html">Alterar la longitud de les pliques unides per una barra</a></li>
+    <li><a id="toc-Indicacions-de-tessitura" href="pitches-_002d-ambitus.ca.html">Indicacions de tessitura</a></li>
+    <li><a id="toc-Ambitus-after-key-signature" href="pitches-_002d-ambitus-after-key-signature.ca.html">Ambitus after key signature</a></li>
+    <li><a id="toc-Ambits-amb-diverses-veus" href="pitches-_002d-ambitus-with-multiple-voices.ca.html">Àmbits amb diverses veus</a></li>
+    <li><a id="toc-Aplicar-estils-de-cap-segons-la-nota-de-l_0027escala" href="pitches-_002d-applying-note-head-styles-depending-on-the-step-of-the-scale.ca.html">Aplicar estils de cap segons la nota de l&rsquo;escala</a></li>
+    <li><a id="toc-Canviar-la-direccio-de-la-plica-de-les-notes-de-tercera-linia-automaticament_002c-basat-en-la-melodia" href="pitches-_002d-automatically-changing-the-stem-direction-of-the-middle-note-based-on-the-melody.ca.html">Canviar la direcció de la plica de les notes de tercera línia automàticament, basat en la melodia</a></li>
+    <li><a id="toc-Changing-ottava-text" href="pitches-_002d-changing-ottava-text.ca.html">Changing ottava text</a></li>
+    <li><a id="toc-Modificacio-de-la-separacio-en-les-indicacions-de-tessitura" href="pitches-_002d-changing-the-ambitus-gap.ca.html">Modificació de la separació en les indicacions de tessitura</a></li>
+    <li><a id="toc-Canviar-l_0027interval-de-les-linies-de-la-pauta" href="pitches-_002d-changing-the-interval-of-lines-on-the-stave.ca.html">Canviar l&rsquo;interval de les línies de la pauta</a></li>
+    <li><a id="toc-Les-claus-es-poden-transposar-en-intervals-arbitraris" href="pitches-_002d-clefs-can-be-transposed-by-arbitrary-amounts.ca.html">Les claus es poden transposar en intervals arbitraris</a></li>
+    <li><a id="toc-Acolorir-les-notes-segons-la-seva-alcada" href="pitches-_002d-coloring-notes-depending-on-their-pitch.ca.html">Acolorir les notes segons la seva alçada</a></li>
+    <li><a id="toc-Crear-una-sequencia-de-notes-a-diferents-alcades" href="pitches-_002d-creating-a-sequence-of-notes-on-various-pitches.ca.html">Crear una seqüència de notes a diferents alçades</a></li>
+    <li><a id="toc-Creacio-d_0027armadures-personalitzades" href="pitches-_002d-creating-custom-key-signatures.ca.html">Creació d&rsquo;armadures personalitzades</a></li>
+    <li><a id="toc-Direction-of-merged-_2018fa_2019-shape-note-heads" href="pitches-_002d-direction-of-merged-_2018fa_2019-shape-note-heads.ca.html">Direction of merged &lsquo;fa&rsquo; shape note heads</a></li>
+    <li><a id="toc-Force-a-cancellation-natural-before-accidentals" href="pitches-_002d-force-a-cancellation-natural-before-accidentals.ca.html">Force a cancellation natural before accidentals</a></li>
+    <li><a id="toc-Forcar-la-impressio-de-la-clau" href="pitches-_002d-forcing-a-clef-symbol-to-be-displayed.ca.html">Forçar la impressió de la clau</a></li>
+    <li><a id="toc-Generacio-de-notes-aleatories" href="pitches-_002d-generating-random-notes.ca.html">Generació de notes aleatòries</a></li>
+    <li><a id="toc-Ocultar-les-alteracions-sobre-notes-lligades-al-principi-d_0027un-sistema-nou" href="pitches-_002d-hiding-accidentals-on-tied-notes-at-the-start-of-a-new-system.ca.html">Ocultar les alteracions sobre notes lligades al principi d&rsquo;un sistema nou</a></li>
+    <li><a id="toc-Mantenir-la-mida-del-simbol-en-els-canvis-de-clau" href="pitches-_002d-keep-change-clefs-full_002dsized.ca.html">Mantenir la mida del símbol en els canvis de clau</a></li>
+    <li><a id="toc-Exemple-de-_00abMakam_00bb" href="pitches-_002d-makam-example.ca.html">Exemple de «Makam»</a></li>
+    <li><a id="toc-Modifying-the-ottava-spanner-slope" href="pitches-_002d-modifying-the-ottava-spanner-slope.ca.html">Modifying the ottava spanner slope</a></li>
+    <li><a id="toc-Armadures-de-tonalitat-no-tradicional" href="pitches-_002d-non_002dtraditional-key-signatures.ca.html">Armadures de tonalitat no tradicional</a></li>
+    <li><a id="toc-Nombres-com-notes-de-notacio-facil" href="pitches-_002d-numbers-as-easy-note-heads.ca.html">Nombres com notes de notació fàcil</a></li>
+    <li><a id="toc-Plantilla-d_0027orquestra-amb-cor-i-piano" href="pitches-_002d-orchestra_002c-choir-and-piano-template.ca.html">Plantilla d&rsquo;orquestra amb cor i piano</a></li>
+    <li><a id="toc-Evitar-que-s_0027afegeixen-becaires-addicionals-automaticament" href="pitches-_002d-preventing-extra-naturals-from-being-automatically-added.ca.html">Evitar que s&rsquo;afegeixen becaires addicionals automàticament</a></li>
+    <li><a id="toc-Evitar-que-se-impriman-becuadros-cuando-cambia-la-armadura" href="pitches-_002d-preventing-natural-signs-from-being-printed-when-the-key-signature-changes.ca.html">Evitar que se impriman becuadros cuando cambia la armadura</a></li>
+    <li><a id="toc-Citacio-d_0027una-altra-veu-amb-transposicio" href="pitches-_002d-quoting-another-voice-with-transposition.ca.html">Citació d&rsquo;una altra veu amb transposició</a></li>
+    <li><a id="toc-Separar-les-cancel_002alacions-de-tonalitat-dels-canvis-d_0027armadura" href="pitches-_002d-separating-key-cancellations-from-key-signature-changes.ca.html">Separar les cancel·lacions de tonalitat dels canvis d&rsquo;armadura</a></li>
+    <li><a id="toc-Transposing-pitches-with-minimum-accidentals-_0028_201csmart_201d-transpose_0029" href="pitches-_002d-transposing-pitches-with-minimum-accidentals-_0028_201csmart_201d-transpose_0029.ca.html">Transposing pitches with minimum accidentals (&ldquo;smart&rdquo; transpose)</a></li>
+    <li><a id="toc-Turkish-Makam-example" href="pitches-_002d-turkish-makam-example.ca.html">Turkish Makam example</a></li>
+    <li><a id="toc-Ajustament-de-les-propietats-de-clau" href="pitches-_002d-tweaking-clef-properties.ca.html">Ajustament de les propietats de clau</a></li>
+    <li><a id="toc-Using-_005cautoChange-with-more-than-one-voice" href="pitches-_002d-using-_005cautochange-with-more-than-one-voice.ca.html">Using \autoChange with more than one voice</a></li>
+  </ul></li>
+  <li><a id="toc-Rhythms" href="rhythms.ca.html">2 Rhythms</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Adding-beams_002c-slurs_002c-ties_002c-etc_002e_002c-when-using-tuplet-and-non_002dtuplet-rhythms" href="rhythms-_002d-adding-beams_002c-slurs_002c-ties_002c-etc_002e_002c-when-using-tuplet-and-non_002dtuplet-rhythms.ca.html">Adding beams, slurs, ties, etc., when using tuplet and non-tuplet rhythms</a></li>
+    <li><a id="toc-Escriptura-de-parts-de-percussio" href="rhythms-_002d-adding-drum-parts.ca.html">Escriptura de parts de percussió</a></li>
+    <li><a id="toc-Ajustament-d_0027espaiat-de-les-notes-d_0027adorn" href="rhythms-_002d-adjusting-grace-note-spacing.ca.html">Ajustament d&rsquo;espaiat de les notes d&rsquo;adorn</a></li>
+    <li><a id="toc-Alineacio-dels-numeros-de-compas" href="rhythms-_002d-aligning-bar-numbers.ca.html">Alineació dels números de compàs</a></li>
+    <li><a id="toc-Formes-alternatives-de-la-figura-breu" href="rhythms-_002d-alternative-breve-notes.ca.html">Formes alternatives de la figura breu</a></li>
+    <li><a id="toc-Appoggiatura-or-grace-note-before-a-bar-line" href="rhythms-_002d-appoggiatura-or-grace-note-before-a-bar-line.ca.html">Appoggiatura or grace note before a bar line</a></li>
+    <li><a id="toc-Subdivisions-de-barra-automatiques" href="rhythms-_002d-automatic-beam-subdivisions.ca.html">Subdivisions de barra automàtiques</a></li>
+    <li><a id="toc-Modificar-duracions-automaticament" href="rhythms-_002d-automatically-change-durations.ca.html">Modificar duracions automàticament</a></li>
+    <li><a id="toc-Finals-de-barra-en-el-context-Score" href="rhythms-_002d-beam-endings-in-score-context.ca.html">Finals de barra en el context Score</a></li>
+    <li><a id="toc-Beam-nibs" href="rhythms-_002d-beam-nibs.ca.html">Beam nibs</a></li>
+    <li><a id="toc-Barres-que-travessen-salts-de-linia" href="rhythms-_002d-beams-across-line-breaks.ca.html">Barres que travessen salts de línia</a></li>
+    <li><a id="toc-Canviar-el-salt-de-les-barres-en-angle" href="rhythms-_002d-changing-beam-knee-gap.ca.html">Canviar el salt de les barres en angle</a></li>
+    <li><a id="toc-Canviar-la-forma-dels-silencis-multicompas" href="rhythms-_002d-changing-form-of-multi_002dmeasure-rests.ca.html">Canviar la forma dels silencis multicompàs</a></li>
+    <li><a id="toc-Modificar-el-nombre-de-puntets-d_0027una-nota" href="rhythms-_002d-changing-the-number-of-augmentation-dots-per-note.ca.html">Modificar el nombre de puntets d&rsquo;una nota</a></li>
+    <li><a id="toc-Canviar-el-tempo-sense-indicacio-metronomica" href="rhythms-_002d-changing-the-tempo-without-a-metronome-mark.ca.html">Canviar el tempo sense indicació metronòmica</a></li>
+    <li><a id="toc-Canviar-el-numero-del-grup-especial" href="rhythms-_002d-changing-the-tuplet-number.ca.html">Canviar el número del grup especial</a></li>
+    <li><a id="toc-Modificar-el-compas-d_0027una-seccio-polimetrica-utilitzant-_005cscaleDurations" href="rhythms-_002d-changing-time-signatures-inside-a-polymetric-section-using-_005cscaledurations.ca.html">Modificar el compàs d&rsquo;una secció polimètrica utilitzant <code>\scaleDurations</code></a></li>
+    <li><a id="toc-Chant-or-psalm-notation" href="rhythms-_002d-chant-or-psalm-notation.ca.html">Chant or psalm notation</a></li>
+    <li><a id="toc-Complex-time-signatures" href="rhythms-_002d-complex-time-signatures.ca.html">Complex time signatures</a></li>
+    <li><a id="toc-Simbols-de-direccio-y-simbols-d_0027agrupacio-de-compas" href="rhythms-_002d-conducting-signs_002c-measure-grouping-signs.ca.html">Símbols de direcció y símbols d&rsquo;agrupació de compàs</a></li>
+    <li><a id="toc-Control-de-la-visibilitat-dels-corxets-de-grup-especial" href="rhythms-_002d-controlling-tuplet-bracket-visibility.ca.html">Control de la visibilitat dels corxets de grup especial</a></li>
+    <li><a id="toc-Cow-and-ride-bell-example" href="rhythms-_002d-cow-and-ride-bell-example.ca.html">Cow and ride bell example</a></li>
+    <li><a id="toc-Crear-indicacions-metronomiques-en-mode-de-marcatge" href="rhythms-_002d-creating-metronome-marks-in-markup-mode.ca.html">Crear indicacions metronòmiques en mode de marcatge</a></li>
+    <li><a id="toc-Gravat-manual-de-les-lligadures" href="rhythms-_002d-engraving-ties-manually.ca.html">Gravat manual de les lligadures</a></li>
+    <li><a id="toc-Tremols-amb-barres-flotants" href="rhythms-_002d-engraving-tremolos-with-floating-beams.ca.html">Trèmols amb barres flotants</a></li>
+    <li><a id="toc-Entering-several-tuplets-using-only-one-_005ctuplet-command" href="rhythms-_002d-entering-several-tuplets-using-only-one-_005ctuplet-command.ca.html">Entering several tuplets using only one \tuplet command</a></li>
+    <li><a id="toc-Forcar-que-les-marques-d_0027assaig-comencin-en-una-lletra-o-nombre-donats" href="rhythms-_002d-forcing-rehearsal-marks-to-start-from-a-given-letter-or-number.ca.html">Forçar que les marques d&rsquo;assaig comencin en una lletra o nombre donats</a></li>
+    <li><a id="toc-Generar-claudators-personalitzats" href="rhythms-_002d-generating-custom-flags.ca.html">Generar claudàtors personalitzats</a></li>
+    <li><a id="toc-Ritmes-rasguejats-de-guitarra" href="rhythms-_002d-guitar-strum-rhythms.ca.html">Ritmes rasguejats de guitarra</a></li>
+    <li><a id="toc-Indicacions-polimetricques-de-compas-totalment-personalitzades" href="rhythms-_002d-heavily-customized-polymetric-time-signatures.ca.html">Indicacions polimètricques de compàs totalment personalitzades</a></li>
+    <li><a id="toc-High-and-low-woodblock-example" href="rhythms-_002d-high-and-low-woodblock-example.ca.html">High and low woodblock example</a></li>
+    <li><a id="toc-Making-an-object-invisible-using-_005chide" href="rhythms-_002d-making-an-object-invisible-using-_005chide.ca.html">Making an object invisible using \hide</a></li>
+    <li><a id="toc-Fer-lligadures-d_0027expressio-amb-estructura-complexa-de-discontinuitat" href="rhythms-_002d-making-slurs-with-complex-dash-structure.ca.html">Fer lligadures d&rsquo;expressió amb estructura complexa de discontinuïtat</a></li>
+    <li><a id="toc-Control-manual-de-les-posicions-de-les-barres" href="rhythms-_002d-manually-controlling-beam-positions.ca.html">Control manual de les posicions de les barres</a></li>
+    <li><a id="toc-Combinacio-dels-silencis-multicompas-a-una-part-polifonica" href="rhythms-_002d-merging-multi_002dmeasure-rests-in-a-polyphonic-part.ca.html">Combinació dels silencis multicompàs a una part polifònica</a></li>
+    <li><a id="toc-Modificacio-de-la-longitud-del-corxet-de-grup-especial" href="rhythms-_002d-modifying-tuplet-bracket-length.ca.html">Modificació de la longitud del corxet de grup especial</a></li>
+    <li><a id="toc-Desplacament-de-les-notes-amb-puntet-en-polifonia" href="rhythms-_002d-moving-dotted-notes-in-polyphony.ca.html">Desplaçament de les notes amb puntet en polifonia</a></li>
+    <li><a id="toc-Multi_002dmeasure-rest-length-control" href="rhythms-_002d-multi_002dmeasure-rest-length-control.ca.html">Multi-measure rest length control</a></li>
+    <li><a id="toc-Marcatge-de-silencis-multicompas" href="rhythms-_002d-multi_002dmeasure-rest-markup.ca.html">Marcatge de silencis multicompàs</a></li>
+    <li><a id="toc-Nombres-d_0027agrupacio-especial-diferents-o-els-predeterminats" href="rhythms-_002d-non_002ddefault-tuplet-numbers.ca.html">Nombres d&rsquo;agrupació especial diferents o els predeterminats</a></li>
+    <li><a id="toc-Numbering-single-measure-rests" href="rhythms-_002d-numbering-single-measure-rests.ca.html">Numbering single measure rests</a></li>
+    <li><a id="toc-Partcombine-and-_005cautoBeamOff" href="rhythms-_002d-partcombine-and-_005cautobeamoff.ca.html">Partcombine and \autoBeamOff</a></li>
+    <li><a id="toc-Percussion-example" href="rhythms-_002d-percussion-example.ca.html">Percussion example</a></li>
+    <li><a id="toc-Permetre-salts-de-linia-dins-de-grups-especials-amb-barra" href="rhythms-_002d-permitting-line-breaks-within-beamed-tuplets.ca.html">Permetre salts de línia dins de grups especials amb barra</a></li>
+    <li><a id="toc-Col_002alocar-les-barres-de-les-notes-d_0027adorn-a-la-mateixa-alcada-que-les-barres-de-notes-normals" href="rhythms-_002d-positioning-grace-note-beams-at-the-height-of-normal-note-beams.ca.html">Col·locar les barres de les notes d&rsquo;adorn a la mateixa alçada que les barres de notes normals</a></li>
+    <li><a id="toc-Posicionament-de-les-notes-d_0027adorn-amb-espai-flotant" href="rhythms-_002d-positioning-grace-notes-with-floating-space.ca.html">Posicionament de les notes d&rsquo;adorn amb espai flotant</a></li>
+    <li><a id="toc-Posicionar-els-silencis-multicompas" href="rhythms-_002d-positioning-multi_002dmeasure-rests.ca.html">Posicionar els silencis multicompàs</a></li>
+    <li><a id="toc-Positioning-opposing-fermatas-on-a-bar-line" href="rhythms-_002d-positioning-opposing-fermatas-on-a-bar-line.ca.html">Positioning opposing fermatas on a bar line</a></li>
+    <li><a id="toc-Evitar-que-una-marca-de-assaig-final-suprimeixi-el-corxet-d_0027un-grup-de-valoracio-especial" href="rhythms-_002d-preventing-final-mark-from-removing-final-tuplet.ca.html">Evitar que una marca de assaig final suprimeixi el corxet d&rsquo;un grup de valoració especial</a></li>
+    <li><a id="toc-Imprimir-numeros-de-compas-a-intervals-regulars" href="rhythms-_002d-printing-bar-numbers-at-regular-intervals.ca.html">Imprimir números de compàs a intervals regulars</a></li>
+    <li><a id="toc-Printing-bar-numbers-for-broken-measures" href="rhythms-_002d-printing-bar-numbers-for-broken-measures.ca.html">Printing bar numbers for broken measures</a></li>
+    <li><a id="toc-Impressio-de-nombre-de-compas-dins-de-rectangles-o-circumferencies" href="rhythms-_002d-printing-bar-numbers-inside-boxes-or-circles.ca.html">Impressió de nombre de compàs dins de rectangles o circumferències</a></li>
+    <li><a id="toc-Printing-bar-numbers-using-modulo_002dbar_002dnumber_002dvisible" href="rhythms-_002d-printing-bar-numbers-using-modulo_002dbar_002dnumber_002dvisible.ca.html">Printing bar numbers using modulo-bar-number-visible</a></li>
+    <li><a id="toc-Printing-bar-numbers-with-changing-regular-intervals" href="rhythms-_002d-printing-bar-numbers-with-changing-regular-intervals.ca.html">Printing bar numbers with changing regular intervals</a></li>
+    <li><a id="toc-Impressio-d_0027indicacions-de-metronom-i-lletres-d_0027assaig-a-sota-del-pentagrama" href="rhythms-_002d-printing-metronome-and-rehearsal-marks-below-the-staff.ca.html">Impressió d&rsquo;indicacions de metrònom i lletres d&rsquo;assaig a sota del pentagrama</a></li>
+    <li><a id="toc-Impressio-de-musica-que-tingui-compassos-en-cada-pentagrama" href="rhythms-_002d-printing-music-with-different-time-signatures.ca.html">Impressió de música que tingui compassos en cada pentagrama</a></li>
+    <li><a id="toc-Impressio-del-nombre-de-compas-al-primer-compas" href="rhythms-_002d-printing-the-bar-number-for-the-first-measure.ca.html">Impressió del nombre de compàs al primer compàs</a></li>
+    <li><a id="toc-Printing-tuplet-brackets-on-the-note-head-side" href="rhythms-_002d-printing-tuplet-brackets-on-the-note-head-side.ca.html">Printing tuplet brackets on the note head side</a></li>
+    <li><a id="toc-Redefinicio-dels-valors-globals-predeterminats-per-a-notes-d_0027adorn" href="rhythms-_002d-redefining-grace-note-global-defaults.ca.html">Redefinició dels valors globals predeterminats per a notes d&rsquo;adorn</a></li>
+    <li><a id="toc-Supressio-dels-nombres-de-compas-de-tota-la-partitura" href="rhythms-_002d-removing-bar-numbers-from-a-score.ca.html">Supressió dels nombres de compàs de tota la partitura</a></li>
+    <li><a id="toc-Estils-de-silencis" href="rhythms-_002d-rest-styles.ca.html">Estils de silencis</a></li>
+    <li><a id="toc-Alteracio-dels-finals-de-barra-predeterminats" href="rhythms-_002d-reverting-default-beam-endings.ca.html">Alteració dels finals de barra predeterminats</a></li>
+    <li><a id="toc-Barres-ritmiques" href="rhythms-_002d-rhythmic-slashes.ca.html">Barres rítmiques</a></li>
+    <li><a id="toc-Silencis-de-separacio-en-mode-de-lletra" href="rhythms-_002d-skips-in-lyric-mode.ca.html">Silencis de separació en mode de lletra</a></li>
+    <li><a id="toc-Silencis-de-separacio-en-mode-de-lletra-_00282_0029" href="rhythms-_002d-skips-in-lyric-mode-_00282_0029.ca.html">Silencis de separació en mode de lletra (2)</a></li>
+    <li><a id="toc-Stemlets-_0028pliques-de-mida-reduida_0029" href="rhythms-_002d-stemlets.ca.html">Stemlets (pliques de mida reduïda)</a></li>
+    <li><a id="toc-Barres-que-respecten-el-pols-estrictament" href="rhythms-_002d-strict-beat-beaming.ca.html">Barres que respecten el pols estrictament</a></li>
+    <li><a id="toc-Subdivisio-de-barres" href="rhythms-_002d-subdividing-beams.ca.html">Subdivisió de barres</a></li>
+    <li><a id="toc-Tam_002dtam-example" href="rhythms-_002d-tam_002dtam-example.ca.html">Tam-tam example</a></li>
+    <li><a id="toc-Tambourine-example" href="rhythms-_002d-tambourine-example.ca.html">Tambourine example</a></li>
+    <li><a id="toc-Rectangle-de-tres-segments-visibles" href="rhythms-_002d-three_002dsided-box.ca.html">Rectangle de tres segments visibles</a></li>
+    <li><a id="toc-Time-signature-in-brackets" href="rhythms-_002d-time-signature-in-brackets.ca.html">Time signature in brackets</a></li>
+    <li><a id="toc-Compas-entre-parentesis" href="rhythms-_002d-time-signature-in-parentheses.ca.html">Compàs entre parèntesis</a></li>
+    <li><a id="toc-Indicacio-de-compas-imprimint-sols-el-numerador-_0028en-lloc-de-la-fraccio_0029" href="rhythms-_002d-time-signature-printing-only-the-numerator-as-a-number-_0028instead-of-the-fraction_0029.ca.html">Indicació de compàs imprimint sols el numerador (en lloc de la fracció)</a></li>
+    <li><a id="toc-Ajustament-de-la-disposicio-de-les-notes-d_0027adorn-dins-de-la-musica" href="rhythms-_002d-tweaking-grace-layout-within-music.ca.html">Ajustament de la disposició de les notes d&rsquo;adorn dins de la música</a></li>
+    <li><a id="toc-User_002ddefined-time-signatures" href="rhythms-_002d-user_002ddefined-time-signatures.ca.html">User-defined time signatures</a></li>
+    <li><a id="toc-Us-d_0027estils-alternatius-per-als-corxets" href="rhythms-_002d-using-alternative-flag-styles.ca.html">Ús d&rsquo;estils alternatius per als corxets</a></li>
+    <li><a id="toc-Utilitzar-la-barra-que-tatxa-les-notes-amb-notes-normals" href="rhythms-_002d-using-grace-note-slashes-with-normal-heads.ca.html">Utilitzar la barra que tatxa les notes amb notes normals</a></li>
+    <li><a id="toc-Us-de-les-lligadures-als-arpegis" href="rhythms-_002d-using-ties-with-arpeggios.ca.html">Ús de les lligadures als arpegis</a></li>
+  </ul></li>
+  <li><a id="toc-Expressive-marks" href="expressive-marks.ca.html">3 Expressive marks</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Envoltar-entre-parentesis-una-marca-expressiva-o-una-nota-d_0027un-acord" href="expressive-marks-_002d-adding-parentheses-around-an-expressive-mark-or-chordal-note.ca.html">Envoltar entre parèntesis una marca expressiva o una nota d&rsquo;un acord</a></li>
+    <li><a id="toc-Afegir-marques-de-temps-a-glissandos-llargs" href="expressive-marks-_002d-adding-timing-marks-to-long-glissandi.ca.html">Afegir marques de temps a glissandos llargs</a></li>
+    <li><a id="toc-Adjusting-slur-positions-vertically" href="expressive-marks-_002d-adjusting-slur-positions-vertically.ca.html">Adjusting slur positions vertically</a></li>
+    <li><a id="toc-Ajustar-la-forma-de-les-caigudes-i-pujades-de-to" href="expressive-marks-_002d-adjusting-the-shape-of-falls-and-doits.ca.html">Ajustar la forma de les caigudes i pujades de to</a></li>
+    <li><a id="toc-Aligning-the-ends-of-hairpins-to-NoteColumn-directions" href="expressive-marks-_002d-aligning-the-ends-of-hairpins-to-notecolumn-directions.ca.html">Aligning the ends of hairpins to NoteColumn directions</a></li>
+    <li><a id="toc-Formes-alternatives-de-la-figura-breu-1" href="expressive-marks-_002d-alternative-breve-notes.ca.html">Formes alternatives de la figura breu</a></li>
+    <li><a id="toc-Lligadures-asimetriques" href="expressive-marks-_002d-asymmetric-slurs.ca.html">Lligadures asimètriques</a></li>
+    <li><a id="toc-Marques-de-respiracio" href="expressive-marks-_002d-breathing-signs.ca.html">Marques de respiració</a></li>
+    <li><a id="toc-Regulador-interromput" href="expressive-marks-_002d-broken-crescendo-hairpin.ca.html">Regulador interromput</a></li>
+    <li><a id="toc-Caesura-_0028_201crailtracks_201d_0029-with-fermata" href="expressive-marks-_002d-caesura-_0028_201crailtracks_201d_0029-with-fermata.ca.html">Caesura (&ldquo;railtracks&rdquo;) with fermata</a></li>
+    <li><a id="toc-Centrar-text-a-sota-d_0027un-regulador" href="expressive-marks-_002d-center-text-below-hairpin-dynamics.ca.html">Centrar text a sota d&rsquo;un regulador</a></li>
+    <li><a id="toc-Canviar-el-text-i-els-estils-d_0027objecte-d_0027extensio-per-a-les-indicacions-dinamiques-textuals" href="expressive-marks-_002d-changing-text-and-spanner-styles-for-text-dynamics.ca.html">Canviar el text i els estils d&rsquo;objecte d&rsquo;extensió per a les indicacions dinàmiques textuals</a></li>
+    <li><a id="toc-Modificar-l_0027aspecte-continu-d_0027una-lligadura-d_0027expressio-a-puntejat-o-intermitent" href="expressive-marks-_002d-changing-the-appearance-of-a-slur-from-solid-to-dotted-or-dashed.ca.html">Modificar l&rsquo;aspecte continu d&rsquo;una lligadura d&rsquo;expressió a puntejat o intermitent</a></li>
+    <li><a id="toc-Canviar-el-simbol-de-la-marca-de-respiracio" href="expressive-marks-_002d-changing-the-breath-mark-symbol.ca.html">Canviar el símbol de la marca de respiració</a></li>
+    <li><a id="toc-Modificar-el-nombre-de-puntets-d_0027una-nota-1" href="expressive-marks-_002d-changing-the-number-of-augmentation-dots-per-note.ca.html">Modificar el nombre de puntets d&rsquo;una nota</a></li>
+    <li><a id="toc-Combinar-indicacions-dinamiques-amb-marcatges-textuals" href="expressive-marks-_002d-combining-dynamics-with-markup-texts.ca.html">Combinar indicacions dinàmiques amb marcatges textuals</a></li>
+    <li><a id="toc-Combining-dynamics-with-markup-texts-_00282_0029" href="expressive-marks-_002d-combining-dynamics-with-markup-texts-_00282_0029.ca.html">Combining dynamics with markup texts (2)</a></li>
+    <li><a id="toc-Glissando-contemporani" href="expressive-marks-_002d-contemporary-glissando.ca.html">Glissando contemporani</a></li>
+    <li><a id="toc-Controlar-la-visibilitat-dels-objectes-d_0027extensio-despres-d_0027un-salt-de-linia" href="expressive-marks-_002d-controlling-spanner-visibility-after-a-line-break.ca.html">Controlar la visibilitat dels objectes d&rsquo;extensió després d&rsquo;un salt de línia</a></li>
+    <li><a id="toc-Controlar-la-col_002alocacion-de-les-digitacions-d_0027acords" href="expressive-marks-_002d-controlling-the-placement-of-chord-fingerings.ca.html">Controlar la col·locación de les digitacions d&rsquo;acords</a></li>
+    <li><a id="toc-Controlar-l_0027ordenacio-vertical-de-les-inscripcions" href="expressive-marks-_002d-controlling-the-vertical-ordering-of-scripts.ca.html">Controlar l&rsquo;ordenació vertical de les inscripcions</a></li>
+    <li><a id="toc-Crear-un-grupet-d_0027anticipacio" href="expressive-marks-_002d-creating-a-delayed-turn.ca.html">Crear un grupet d&rsquo;anticipació</a></li>
+    <li><a id="toc-Crear-arpegis-entre-notes-de-veus-diferents" href="expressive-marks-_002d-creating-arpeggios-across-notes-in-different-voices.ca.html">Crear arpegis entre notes de veus diferents</a></li>
+    <li><a id="toc-Crear-arpegis-que-es-creuen-entre-pentagrames-dins-d_0027un-sistema-de-piano" href="expressive-marks-_002d-creating-cross_002dstaff-arpeggios-in-a-piano-staff.ca.html">Crear arpegis que es creuen entre pentagrames dins d&rsquo;un sistema de piano</a></li>
+    <li><a id="toc-Creacio-d_0027arpegis-que-es-creuen-entre-pentagrames-dins-d_0027altres-contextos" href="expressive-marks-_002d-creating-cross_002dstaff-arpeggios-in-other-contexts.ca.html">Creació d&rsquo;arpegis que es creuen entre pentagrames dins d&rsquo;altres contextos</a></li>
+    <li><a id="toc-Crear-digitacions-de-dues-xifres" href="expressive-marks-_002d-creating-double_002ddigit-fingerings.ca.html">Crear digitacions de dues xifres</a></li>
+    <li><a id="toc-Fer-lligadures-entre-veus-diferents" href="expressive-marks-_002d-creating-slurs-across-voices.ca.html">Fer lligadures entre veus diferents</a></li>
+    <li><a id="toc-Crear-elements-de-extensio-textuals" href="expressive-marks-_002d-creating-text-spanners.ca.html">Crear elements de extensió textuals</a></li>
+    <li><a id="toc-Dynamics-spanner-with-custom-text" href="expressive-marks-_002d-dynamics-spanner-with-custom-text.ca.html">Dynamics spanner with custom text</a></li>
+    <li><a id="toc-Glissando-per-sota-d_0027una-objecte-grafic" href="expressive-marks-_002d-glissandi-can-skip-grobs.ca.html">Glissando per sota d&rsquo;una objecte gràfic</a></li>
+    <li><a id="toc-Reguladors-amb-diferents-estils-de-linia" href="expressive-marks-_002d-hairpins-with-different-line-styles.ca.html">Reguladors amb diferents estils de línia</a></li>
+    <li><a id="toc-Ocultar-la-linia-d_0027extensio-de-les-expressions-textuals-de-dinamica" href="expressive-marks-_002d-hiding-the-extender-line-for-text-dynamics.ca.html">Ocultar la línia d&rsquo;extensió de les expressions textuals de dinàmica</a></li>
+    <li><a id="toc-Horizontally-aligning-custom-dynamics-like-_201cpiu-f_201d" href="expressive-marks-_002d-horizontally-aligning-custom-dynamics-like-_201cpiu-f_201d.ca.html#expressive-marks-_002d-horizontally-aligning-custom-dynamics-like-_201cpi_00f9-f_201d">Horizontally aligning custom dynamics like &ldquo;più f&rdquo;</a></li>
+    <li><a id="toc-Inserir-una-cesura" href="expressive-marks-_002d-inserting-a-caesura.ca.html">Inserir una cesura</a></li>
+    <li><a id="toc-Lligaduras-_201cLaissez-vibrer_201d" href="expressive-marks-_002d-laissez-vibrer-ties.ca.html">Lligaduras &ldquo;Laissez vibrer&rdquo;</a></li>
+    <li><a id="toc-Puntes-de-fletxa-per-a-les-linies" href="expressive-marks-_002d-line-arrows.ca.html">Puntes de fletxa per a les línies</a></li>
+    <li><a id="toc-Fer-lligadures-d_0027expressio-amb-estructura-complexa-de-discontinuitat-1" href="expressive-marks-_002d-making-slurs-with-complex-dash-structure.ca.html">Fer lligadures d&rsquo;expressió amb estructura complexa de discontinuïtat</a></li>
+    <li><a id="toc-Modificacio-dels-valors-predeterminats-per-a-la-notacio-abreviada-de-les-articulacions" href="expressive-marks-_002d-modifying-default-values-for-articulation-shorthand-notation.ca.html">Modificació dels valors predeterminats per a la notació abreviada de les articulacions</a></li>
+    <li><a id="toc-Desplacament-de-les-lligadures-d_0027expressio-verticalment" href="expressive-marks-_002d-moving-slur-positions-vertically.ca.html">Desplaçament de les lligadures d&rsquo;expressió verticalment</a></li>
+    <li><a id="toc-Moving-the-ends-of-hairpins" href="expressive-marks-_002d-moving-the-ends-of-hairpins.ca.html">Moving the ends of hairpins</a></li>
+    <li><a id="toc-Posicionar-simbols-d_0027arpegi" href="expressive-marks-_002d-positioning-arpeggios.ca.html">Posicionar símbols d&rsquo;arpegi</a></li>
+    <li><a id="toc-Situar-els-elements-de-marcatge-de-text-por-dins-de-les-lligadures" href="expressive-marks-_002d-positioning-text-markups-inside-slurs.ca.html">Situar els elements de marcatge de text por dins de les lligadures</a></li>
+    <li><a id="toc-Impressio-de-reguladors-en-diversos-estils" href="expressive-marks-_002d-printing-hairpins-in-various-styles.ca.html">Impressió de reguladors en diversos estils</a></li>
+    <li><a id="toc-Impressio-de-reguladors-utilitzant-la-notacio-_00abal-niente_00bb" href="expressive-marks-_002d-printing-hairpins-using-al-niente-notation.ca.html">Impressió de reguladors utilitzant la notació «al niente»</a></li>
+    <li><a id="toc-Impressio-d_0027indicacions-de-metronom-i-lletres-d_0027assaig-a-sota-del-pentagrama-1" href="expressive-marks-_002d-printing-metronome-and-rehearsal-marks-below-the-staff.ca.html">Impressió d&rsquo;indicacions de metrònom i lletres d&rsquo;assaig a sota del pentagrama</a></li>
+    <li><a id="toc-Establir-el-comportament-dels-reguladors-a-les-barres-de-compas" href="expressive-marks-_002d-setting-hairpin-behavior-at-bar-lines.ca.html">Establir el comportament dels reguladors a les barres de compàs</a></li>
+    <li><a id="toc-Ajustament-de-la-longitud-minima-dels-reguladors" href="expressive-marks-_002d-setting-the-minimum-length-of-hairpins.ca.html">Ajustament de la longitud mínima dels reguladors</a></li>
+    <li><a id="toc-Impressio-de-la-mateixa-articulacio-a-sobre-i-a-sota-de-la-mateixa-nota-o-acord" href="expressive-marks-_002d-showing-the-same-articulation-above-and-below-a-note-or-chord.ca.html">Impressió de la mateixa articulació a sobre i a sota de la mateixa nota o acord</a></li>
+    <li><a id="toc-Slanted-parentheses-around-dynamics" href="expressive-marks-_002d-slanted-parentheses-around-dynamics.ca.html">Slanted parentheses around dynamics</a></li>
+    <li><a id="toc-Snap-pizzicato-_0028_201cBartok_201d-pizzicato_0029" href="expressive-marks-_002d-snap-pizzicato-_0028_201cbartok_201d-pizzicato_0029.ca.html">Snap pizzicato (&ldquo;Bartok&rdquo; pizzicato)</a></li>
+    <li><a id="toc-Using-_005carpeggioBracket-to-make-divisi-more-visible" href="expressive-marks-_002d-using-_005carpeggiobracket-to-make-divisi-more-visible.ca.html">Using \arpeggioBracket to make divisi more visible</a></li>
+    <li><a id="toc-Using-a-bracket-to-clarify-divisi" href="expressive-marks-_002d-using-a-bracket-to-clarify-divisi.ca.html">Using a bracket to clarify divisi</a></li>
+    <li><a id="toc-Usar-una-ratlla-curta-com-a-simbol-de-respiracio" href="expressive-marks-_002d-using-a-tick-as-the-breath-mark-symbol.ca.html">Usar una ratlla curta com a símbol de respiració</a></li>
+    <li><a id="toc-Utilitzar-lligadures-dobles-per-acords-legato" href="expressive-marks-_002d-using-double-slurs-for-legato-chords.ca.html">Utilitzar lligadures dobles per acords legato</a></li>
+    <li><a id="toc-Us-de-la-propietat-whiteout" href="expressive-marks-_002d-using-the-whiteout-property.ca.html">Ús de la propietat whiteout</a></li>
+    <li><a id="toc-Linia-vertical-com-una-articulacio-barroca" href="expressive-marks-_002d-vertical-line-as-a-baroque-articulation-mark.ca.html">Línia vertical com una articulació barroca</a></li>
+    <li><a id="toc-Alinear-verticalment-expressions-dinamiques-que-abasten-diverses-notes" href="expressive-marks-_002d-vertically-aligning-dynamics-across-multiple-notes.ca.html">Alinear verticalment expressions dinàmiques que abasten diverses notes</a></li>
+  </ul></li>
+  <li><a id="toc-Repeats" href="repeats.ca.html">4 Repeats</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Changing-the-default-bar-lines" href="repeats-_002d-changing-the-default-bar-lines.ca.html">Changing the default bar lines</a></li>
+    <li><a id="toc-Controlling-the-appearance-of-tremolo-slashes" href="repeats-_002d-controlling-the-appearance-of-tremolo-slashes.ca.html">Controlling the appearance of tremolo slashes</a></li>
+    <li><a id="toc-Tremolos-de-pentagrama-creuat" href="repeats-_002d-cross_002dstaff-tremolos.ca.html">Trèmolos de pentagrama creuat</a></li>
+    <li><a id="toc-Tremols-amb-barres-flotants-1" href="repeats-_002d-engraving-tremolos-with-floating-beams.ca.html">Trèmols amb barres flotants</a></li>
+    <li><a id="toc-Simbols-de-percentatge-aillats" href="repeats-_002d-isolated-percent-repeats.ca.html">Símbols de percentatge aïllats</a></li>
+    <li><a id="toc-Measure-counters" href="repeats-_002d-measure-counters.ca.html">Measure counters</a></li>
+    <li><a id="toc-Visibilitat-del-comptador-de-repeticions-de-tipus-percentatge" href="repeats-_002d-percent-repeat-count-visibility.ca.html">Visibilitat del comptador de repeticions de tipus percentatge</a></li>
+    <li><a id="toc-Comptador-de-repeticions-de-tipus-percentatge" href="repeats-_002d-percent-repeat-counter.ca.html">Comptador de repeticions de tipus percentatge</a></li>
+    <li><a id="toc-Posicionar-els-simbols-de-repeticio-segno-i-coda-_0028amb-salts-de-linia_0029" href="repeats-_002d-positioning-segno-and-coda-_0028with-line-break_0029.ca.html">Posicionar els símbols de repetició segno i coda (amb salts de línia)</a></li>
+    <li><a id="toc-Establiment-del-tipus-de-repeticio-doble-predeterminat-per-a-la-primera-i-la-segona-vegada" href="repeats-_002d-setting-the-double-repeat-default-for-volte.ca.html">Establiment del tipus de repetició doble predeterminat per a la primera i la segona vegada</a></li>
+    <li><a id="toc-Fer-mes-curts-els-corxets-de-primer-i-segona-vegada" href="repeats-_002d-shortening-volta-brackets.ca.html">Fer més curts els corxets de primer i segona vegada</a></li>
+    <li><a id="toc-Unfolding-tremolo-repeats" href="repeats-_002d-unfolding-tremolo-repeats.ca.html">Unfolding tremolo repeats</a></li>
+    <li><a id="toc-Corxets-de-primera-i-segona-vegada-a-sota-dels-acords" href="repeats-_002d-volta-below-chords.ca.html">Corxets de primera i segona vegada a sota dels acords</a></li>
+    <li><a id="toc-Volta-brackets-in-multiple-staves" href="repeats-_002d-volta-brackets-in-multiple-staves.ca.html">Volta brackets in multiple staves</a></li>
+    <li><a id="toc-Elements-de-marcatge-per-al-text-de-les-caselles-de-repeticio-usant-repeatCommands" href="repeats-_002d-volta-text-markup-using-repeatcommands.ca.html">Elements de marcatge per al text de les caselles de repetició usant repeatCommands</a></li>
+  </ul></li>
+  <li><a id="toc-Simultaneous-notes" href="simultaneous-notes.ca.html">5 Simultaneous notes</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Veus-addicionals-per-evitar-col_002alisions" href="simultaneous-notes-_002d-additional-voices-to-avoid-collisions.ca.html">Veus addicionals per evitar col·lisions</a></li>
+    <li><a id="toc-Changing-_005cpartCombine-texts" href="simultaneous-notes-_002d-changing-_005cpartcombine-texts.ca.html">Changing \partCombine texts</a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord" href="simultaneous-notes-_002d-changing-a-single-note_0027s-size-in-a-chord.ca.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-Clusters-_0028_00abraims_00bb_0029" href="simultaneous-notes-_002d-clusters.ca.html">Clusters («raïms»)</a></li>
+    <li><a id="toc-Combinar-dues-parts-sobre-el-mateix-pentagrama" href="simultaneous-notes-_002d-combining-two-parts-on-the-same-staff.ca.html">Combinar dues parts sobre el mateix pentagrama</a></li>
+    <li><a id="toc-Impressio-d_0027acords-complexos" href="simultaneous-notes-_002d-displaying-complex-chords.ca.html">Impressió d&rsquo;acords complexos</a></li>
+    <li><a id="toc-Forcar-el-desplacament-horitzontal-de-les-notes" href="simultaneous-notes-_002d-forcing-horizontal-shift-of-notes.ca.html">Forçar el desplaçament horitzontal de les notes</a></li>
+    <li><a id="toc-Making-an-object-invisible-using-_005chide-1" href="simultaneous-notes-_002d-making-an-object-invisible-using-_005chide.ca.html">Making an object invisible using \hide</a></li>
+    <li><a id="toc-Desplacament-de-les-notes-amb-puntet-en-polifonia-1" href="simultaneous-notes-_002d-moving-dotted-notes-in-polyphony.ca.html">Desplaçament de les notes amb puntet en polifonia</a></li>
+    <li><a id="toc-Evitar-els-advertiments-sobre-columnes-de-notes-que-xoquen" href="simultaneous-notes-_002d-suppressing-warnings-for-clashing-note-columns.ca.html">Evitar els advertiments sobre columnes de notes  que xoquen</a></li>
+    <li><a id="toc-Two-_005cpartCombine-pairs-on-one-staff" href="simultaneous-notes-_002d-two-_005cpartcombine-pairs-on-one-staff.ca.html">Two \partCombine pairs on one staff</a></li>
+  </ul></li>
+  <li><a id="toc-Staff-notation" href="staff-notation.ca.html">6 Staff notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Afegir-un-ambit-per-veu-1" href="staff-notation-_002d-adding-ambitus-per-voice.ca.html">Afegir un àmbit per veu</a></li>
+    <li><a id="toc-Afegir-un-pentagrama-nou" href="staff-notation-_002d-adding-an-extra-staff.ca.html">Afegir un pentagrama nou</a></li>
+    <li><a id="toc-Afegir-un-pentagrama-addicional-a-un-salt-de-linia" href="staff-notation-_002d-adding-an-extra-staff-at-a-line-break.ca.html">Afegir un pentagrama addicional a un salt de línia</a></li>
+    <li><a id="toc-Afegir-indicadors-als-pentagrames-que-es-divideixen-despres-d_0027un-salt-de-linia" href="staff-notation-_002d-adding-indicators-to-staves-which-get-split-after-a-break.ca.html">Afegir indicadors als pentagrames que es divideixen després d&rsquo;un salt de línia</a></li>
+    <li><a id="toc-Afegir-notes-guia-orquestrals-a-una-partitura-vocal" href="staff-notation-_002d-adding-orchestral-cues-to-a-vocal-score.ca.html">Afegir notes guia orquestrals a una partitura vocal</a></li>
+    <li><a id="toc-Numeracio-de-compassos-alternativa" href="staff-notation-_002d-alternative-bar-numbering.ca.html">Numeració de compassos alternativa</a></li>
+    <li><a id="toc-Ambitus-after-key-signature-1" href="staff-notation-_002d-ambitus-after-key-signature.ca.html">Ambitus after key signature</a></li>
+    <li><a id="toc-Changing-the-default-bar-lines-1" href="staff-notation-_002d-changing-the-default-bar-lines.ca.html">Changing the default bar lines</a></li>
+    <li><a id="toc-Canvi-del-nombre-de-linies-d_0027una-pauta" href="staff-notation-_002d-changing-the-number-of-lines-in-a-staff.ca.html">Canvi del nombre de línies d&rsquo;una pauta</a></li>
+    <li><a id="toc-Modificar-la-mida-de-la-pauta" href="staff-notation-_002d-changing-the-staff-size.ca.html">Modificar la mida de la pauta</a></li>
+    <li><a id="toc-Crear-pentagrames-en-blanc" href="staff-notation-_002d-creating-blank-staves.ca.html">Crear pentagrames en blanc</a></li>
+    <li><a id="toc-Creacio-d_0027armadures-personalitzades-1" href="staff-notation-_002d-creating-custom-key-signatures.ca.html">Creació d&rsquo;armadures personalitzades</a></li>
+    <li><a id="toc-Pliques-de-pentagrama-creuat" href="staff-notation-_002d-cross_002dstaff-stems.ca.html">Pliques de pentagrama creuat</a></li>
+    <li><a id="toc-Mostrar-claudator-o-clau-en-grups-d_0027un-sol-pentagrama" href="staff-notation-_002d-display-bracket-with-only-one-staff-in-a-system.ca.html">Mostrar claudàtor o clau en grups d&rsquo;un sol pentagrama</a></li>
+    <li><a id="toc-Mostrar-un-sistema-GrandStaff-complet-si-segueix-amb-vida-un-sol-dels-seus-pentagrames" href="staff-notation-_002d-displaying-a-whole-grandstaff-system-if-only-one-of-its-staves-is-alive.ca.html">Mostrar un sistema GrandStaff complet si segueix amb vida un sol dels seus pentagrames</a></li>
+    <li><a id="toc-Extending-a-trill-spanner" href="staff-notation-_002d-extending-a-trill-spanner.ca.html">Extending a trill spanner</a></li>
+    <li><a id="toc-Estendre-glissandos-sobre-repeticions" href="staff-notation-_002d-extending-glissandi-across-repeats.ca.html">Estendre glissandos sobre repeticions</a></li>
+    <li><a id="toc-Flat-ties" href="staff-notation-_002d-flat-ties.ca.html">Flat ties</a></li>
+    <li><a id="toc-Forcing-measure-width-to-adapt-to-a-metronome-mark_0027s-width" href="staff-notation-_002d-forcing-measure-width-to-adapt-to-a-metronome-mark_0027s-width.ca.html">Forcing measure width to adapt to a metronome mark&rsquo;s width</a></li>
+    <li><a id="toc-Glissando-per-sota-d_0027una-objecte-grafic-1" href="staff-notation-_002d-glissandi-can-skip-grobs.ca.html">Glissando per sota d&rsquo;una objecte gràfic</a></li>
+    <li><a id="toc-Harmonizing-bar-line-thickness-for-staves-with-different-sizes" href="staff-notation-_002d-harmonizing-bar-line-thickness-for-staves-with-different-sizes.ca.html">Harmonizing bar line thickness for staves with different sizes</a></li>
+    <li><a id="toc-Incipit" href="staff-notation-_002d-incipit.ca.html">Incipit</a></li>
+    <li><a id="toc-Inserir-fragments-de-partitures-a-sobre-del-pentagrama-com-elements-de-marcatge" href="staff-notation-_002d-inserting-score-fragments-above-a-staff_002c-as-markups.ca.html">Inserir fragments de partitures a sobre del pentagrama com elements de marcatge</a></li>
+    <li><a id="toc-Let-TabStaff-print-the-topmost-string-at-bottom" href="staff-notation-_002d-let-tabstaff-print-the-topmost-string-at-bottom.ca.html">Let TabStaff print the topmost string at bottom</a></li>
+    <li><a id="toc-Donar-format-a-tabulatures-amb-lletres" href="staff-notation-_002d-letter-tablature-formatting.ca.html">Donar format a tabulatures amb lletres</a></li>
+    <li><a id="toc-Making-glissandi-breakable" href="staff-notation-_002d-making-glissandi-breakable.ca.html">Making glissandi breakable</a></li>
+    <li><a id="toc-Fer-unes-linies-del-pentagrama-mes-gruixudes-que-les-altres" href="staff-notation-_002d-making-some-staff-lines-thicker-than-the-others.ca.html">Fer unes línies del pentagrama més gruixudes que les altres</a></li>
+    <li><a id="toc-Measure-counters-1" href="staff-notation-_002d-measure-counters.ca.html">Measure counters</a></li>
+    <li><a id="toc-Disposicio-Mensurstriche-_0028linies-divisories-entre-pentagrames_0029" href="staff-notation-_002d-mensurstriche-layout-_0028bar-lines-between-the-staves_0029.ca.html">Disposició Mensurstriche (línies divisòries entre pentagrames)</a></li>
+    <li><a id="toc-Modifying-the-ottava-spanner-slope-1" href="staff-notation-_002d-modifying-the-ottava-spanner-slope.ca.html">Modifying the ottava spanner slope</a></li>
+    <li><a id="toc-Niuat-de-grups-de-pentagrames" href="staff-notation-_002d-nesting-staves.ca.html">Niuat de grups de pentagrames</a></li>
+    <li><a id="toc-Armadures-de-tonalitat-no-tradicional-1" href="staff-notation-_002d-non_002dtraditional-key-signatures.ca.html">Armadures de tonalitat no tradicional</a></li>
+    <li><a id="toc-Plantilla-d_0027orquestra-amb-cor-i-piano-1" href="staff-notation-_002d-orchestra_002c-choir-and-piano-template.ca.html">Plantilla d&rsquo;orquestra amb cor i piano</a></li>
+    <li><a id="toc-Print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note" href="staff-notation-_002d-print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note.ca.html">Print chord names with same root and different bass as slash and bass note</a></li>
+    <li><a id="toc-Posar-lletra-dins-del-pentagrama" href="staff-notation-_002d-putting-lyrics-inside-the-staff.ca.html">Posar lletra dins del pentagrama</a></li>
+    <li><a id="toc-Citacio-d_0027una-altra-veu" href="staff-notation-_002d-quoting-another-voice.ca.html">Citació d&rsquo;una altra veu</a></li>
+    <li><a id="toc-Citacio-d_0027una-altra-veu-amb-transposicio-1" href="staff-notation-_002d-quoting-another-voice-with-transposition.ca.html">Citació d&rsquo;una altra veu amb transposició</a></li>
+    <li><a id="toc-Removing-brace-on-first-line-of-piano-score" href="staff-notation-_002d-removing-brace-on-first-line-of-piano-score.ca.html">Removing brace on first line of piano score</a></li>
+    <li><a id="toc-Treure-les-barres-de-compas-entre-els-pentagrames-d_0027un-StaffGroup-PianoStaff-o-GrandStaff" href="staff-notation-_002d-removing-connecting-bar-lines-on-staffgroup_002c-pianostaff_002c-or-grandstaff.ca.html">Treure les barres de compàs entre els pentagrames d&rsquo;un StaffGroup PianoStaff o GrandStaff</a></li>
+    <li><a id="toc-Supressio-de-la-primera-linia-buida" href="staff-notation-_002d-removing-the-first-empty-line.ca.html">Supressió de la primera línia buida</a></li>
+    <li><a id="toc-Fixacio-d_0027un-separador-entre-els-sistemes" href="staff-notation-_002d-setting-system-separators.ca.html">Fixació d&rsquo;un separador entre els sistemes</a></li>
+    <li><a id="toc-Shape-individual-ties-in-chords" href="staff-notation-_002d-shape-individual-ties-in-chords.ca.html">Shape individual ties in chords</a></li>
+    <li><a id="toc-Barres-de-compas-en-forma-de-ratlla-curta" href="staff-notation-_002d-tick-bar-lines.ca.html">Barres de compàs en forma de ratlla curta</a></li>
+    <li><a id="toc-Time-signature-in-brackets-1" href="staff-notation-_002d-time-signature-in-brackets.ca.html">Time signature in brackets</a></li>
+    <li><a id="toc-Compas-entre-parentesis-1" href="staff-notation-_002d-time-signature-in-parentheses.ca.html">Compàs entre parèntesis</a></li>
+    <li><a id="toc-Ajustament-de-les-propietats-de-clau-1" href="staff-notation-_002d-tweaking-clef-properties.ca.html">Ajustament de les propietats de clau</a></li>
+    <li><a id="toc-Two-_005cpartCombine-pairs-on-one-staff-1" href="staff-notation-_002d-two-_005cpartcombine-pairs-on-one-staff.ca.html">Two \partCombine pairs on one staff</a></li>
+    <li><a id="toc-Us-del-corxet-recte-al-comencament-d_0027un-grup-de-pentagrames" href="staff-notation-_002d-use-square-bracket-at-the-start-of-a-staff-group.ca.html">Us del corxet recte al començament d&rsquo;un grup de pentagrames</a></li>
+    <li><a id="toc-Using-_005cautoChange-with-more-than-one-voice-1" href="staff-notation-_002d-using-_005cautochange-with-more-than-one-voice.ca.html">Using \autoChange with more than one voice</a></li>
+    <li><a id="toc-Using-mark-lines-in-a-Frenched-score" href="staff-notation-_002d-using-mark-lines-in-a-frenched-score.ca.html">Using mark lines in a Frenched score</a></li>
+    <li><a id="toc-Vertically-aligned-StaffGroups-without-connecting-SystemStartBar" href="staff-notation-_002d-vertically-aligned-staffgroups-without-connecting-systemstartbar.ca.html">Vertically aligned StaffGroups without connecting SystemStartBar</a></li>
+    <li><a id="toc-Corxets-de-primera-i-segona-vegada-a-sota-dels-acords-1" href="staff-notation-_002d-volta-below-chords.ca.html">Corxets de primera i segona vegada a sota dels acords</a></li>
+    <li><a id="toc-Volta-brackets-in-multiple-staves-1" href="staff-notation-_002d-volta-brackets-in-multiple-staves.ca.html">Volta brackets in multiple staves</a></li>
+  </ul></li>
+  <li><a id="toc-Editorial-annotations" href="editorial-annotations.ca.html">7 Editorial annotations</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Afegir-digitacions-a-la-partitura" href="editorial-annotations-_002d-adding-fingerings-to-a-score.ca.html">Afegir digitacions a la partitura</a></li>
+    <li><a id="toc-Afegir-enllacos-als-objectes" href="editorial-annotations-_002d-adding-links-to-objects.ca.html">Afegir enllaços als objectes</a></li>
+    <li><a id="toc-Adding-markups-in-a-tablature" href="editorial-annotations-_002d-adding-markups-in-a-tablature.ca.html">Adding markups in a tablature</a></li>
+    <li><a id="toc-Permetre-que-les-digitacions-s_0027imprimeixen-del-pentagrama" href="editorial-annotations-_002d-allowing-fingerings-to-be-printed-inside-the-staff.ca.html">Permetre que les digitacions s&rsquo;imprimeixen del pentagrama</a></li>
+    <li><a id="toc-Numeracio-de-compassos-alternativa-1" href="editorial-annotations-_002d-alternative-bar-numbering.ca.html">Numeració de compassos alternativa</a></li>
+    <li><a id="toc-Claus-d_0027analisis-a-sobre-del-pentagrama" href="editorial-annotations-_002d-analysis-brackets-above-the-staff.ca.html">Claus d&rsquo;anàlisis a sobre del pentagrama</a></li>
+    <li><a id="toc-Analysis-brackets-with-labels" href="editorial-annotations-_002d-analysis-brackets-with-labels.ca.html">Analysis brackets with labels</a></li>
+    <li><a id="toc-Aplicar-estils-de-cap-segons-la-nota-de-l_0027escala-1" href="editorial-annotations-_002d-applying-note-head-styles-depending-on-the-step-of-the-scale.ca.html">Aplicar estils de cap segons la nota de l&rsquo;escala</a></li>
+    <li><a id="toc-Posar-en-blanc-les-linies-del-utilitzant-l_0027ordre-_005cwhiteout" href="editorial-annotations-_002d-blanking-staff-lines-using-the-_005cwhiteout-command.ca.html">Posar en blanc les línies del utilitzant l&rsquo;ordre \whiteout</a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord-1" href="editorial-annotations-_002d-changing-a-single-note_0027s-size-in-a-chord.ca.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-Modificar-l_0027aspecte-continu-d_0027una-lligadura-d_0027expressio-a-puntejat-o-intermitent-1" href="editorial-annotations-_002d-changing-the-appearance-of-a-slur-from-solid-to-dotted-or-dashed.ca.html">Modificar l&rsquo;aspecte continu d&rsquo;una lligadura d&rsquo;expressió a puntejat o intermitent</a></li>
+    <li><a id="toc-Acolorir-les-notes-segons-la-seva-alcada-1" href="editorial-annotations-_002d-coloring-notes-depending-on-their-pitch.ca.html">Acolorir les notes segons la seva alçada</a></li>
+    <li><a id="toc-Controlar-la-col_002alocacion-de-les-digitacions-d_0027acords-1" href="editorial-annotations-_002d-controlling-the-placement-of-chord-fingerings.ca.html">Controlar la col·locación de les digitacions d&rsquo;acords</a></li>
+    <li><a id="toc-Crear-un-grupet-d_0027anticipacio-1" href="editorial-annotations-_002d-creating-a-delayed-turn.ca.html">Crear un grupet d&rsquo;anticipació</a></li>
+    <li><a id="toc-Crear-pentagrames-en-blanc-1" href="editorial-annotations-_002d-creating-blank-staves.ca.html">Crear pentagrames en blanc</a></li>
+    <li><a id="toc-Crear-digitacions-de-dues-xifres-1" href="editorial-annotations-_002d-creating-double_002ddigit-fingerings.ca.html">Crear digitacions de dues xifres</a></li>
+    <li><a id="toc-Direccio-predeterminada-de-las-pliques-sobre-la-tercera-linia-del-pentagrama" href="editorial-annotations-_002d-default-direction-of-stems-on-the-center-line-of-the-staff.ca.html">Direcció predeterminada de las pliques sobre la tercera línia del pentagrama</a></li>
+    <li><a id="toc-Different-font-size-settings-for-instrumentName-and-shortInstrumentName" href="editorial-annotations-_002d-different-font-size-settings-for-instrumentname-and-shortinstrumentname.ca.html">Different font size settings for instrumentName and shortInstrumentName</a></li>
+    <li><a id="toc-Rodejar-els-objectes-grafics-amb-rectangles" href="editorial-annotations-_002d-drawing-boxes-around-grobs.ca.html">Rodejar els objectes gràfics amb rectangles</a></li>
+    <li><a id="toc-Tracar-circumferencies-al-voltant-del-cap-de-les-notes" href="editorial-annotations-_002d-drawing-circles-around-note-heads.ca.html">Traçar circumferències al voltant del cap de les notes</a></li>
+    <li><a id="toc-Rodejar-diversos-objectes-amb-una-circumferencia" href="editorial-annotations-_002d-drawing-circles-around-various-objects.ca.html">Rodejar diversos objectes amb una circumferència</a></li>
+    <li><a id="toc-Inserir-PostScript-nadiu-dins-d_0027un-bloc-_005cmarkup" href="editorial-annotations-_002d-embedding-native-postscript-in-a-_005cmarkup-block.ca.html">Inserir PostScript nadiu dins d&rsquo;un bloc \markup</a></li>
+    <li><a id="toc-Generate-special-note-head-shapes" href="editorial-annotations-_002d-generate-special-note-head-shapes.ca.html">Generate special note head shapes</a></li>
+    <li><a id="toc-Linies-de-reixeta_003a-modificar-el-seu-aspecte" href="editorial-annotations-_002d-grid-lines_003a-changing-their-appearance.ca.html">Línies de reixeta: modificar el seu aspecte</a></li>
+    <li><a id="toc-Linies-de-reixeta_003a-destacar-ritmes-i-la-relacio-temporal-entre-notes" href="editorial-annotations-_002d-grid-lines_003a-emphasizing-rhythms-and-notes-synchronization.ca.html">Línies de reixeta: destacar ritmes i la relació temporal entre notes</a></li>
+    <li><a id="toc-Hammer_002don-and-pull_002doff" href="editorial-annotations-_002d-hammer_002don-and-pull_002doff.ca.html">Hammer-on and pull-off</a></li>
+    <li><a id="toc-Hammer_002don-and-pull_002doff-using-chords" href="editorial-annotations-_002d-hammer_002don-and-pull_002doff-using-chords.ca.html">Hammer-on and pull-off using chords</a></li>
+    <li><a id="toc-Hammer_002don-and-pull_002doff-using-voices" href="editorial-annotations-_002d-hammer_002don-and-pull_002doff-using-voices.ca.html">Hammer-on and pull-off using voices</a></li>
+    <li><a id="toc-Fer-unes-linies-del-pentagrama-mes-gruixudes-que-les-altres-1" href="editorial-annotations-_002d-making-some-staff-lines-thicker-than-the-others.ca.html">Fer unes línies del pentagrama més gruixudes que les altres</a></li>
+    <li><a id="toc-Marking-notes-of-spoken-parts-with-a-cross-on-the-stem-_0028Sprechstimme_0029" href="editorial-annotations-_002d-marking-notes-of-spoken-parts-with-a-cross-on-the-stem-_0028sprechstimme_0029.ca.html">Marking notes of spoken parts with a cross on the stem (Sprechstimme)</a></li>
+    <li><a id="toc-Measure-counters-2" href="editorial-annotations-_002d-measure-counters.ca.html">Measure counters</a></li>
+    <li><a id="toc-Measure-spanner" href="editorial-annotations-_002d-measure-spanner.ca.html">Measure spanner</a></li>
+    <li><a id="toc-Posicionament-precis-d_0027indicacions-de-digitacio" href="editorial-annotations-_002d-positioning-fingering-indications-precisely.ca.html">Posicionament precís d&rsquo;indicacions de digitació</a></li>
+    <li><a id="toc-Situar-els-elements-de-marcatge-de-text-por-dins-de-les-lligadures-1" href="editorial-annotations-_002d-positioning-text-markups-inside-slurs.ca.html">Situar els elements de marcatge de text por dins de les lligadures</a></li>
+    <li><a id="toc-Impressio-de-text-de-dreta-a-esquerra" href="editorial-annotations-_002d-printing-text-from-right-to-left.ca.html">Impressió de text de dreta a esquerra</a></li>
+    <li><a id="toc-Linies-d_0027extensio-per-a-nombre-de-corda" href="editorial-annotations-_002d-string-number-extender-lines.ca.html">Línies d&rsquo;extensió per a nombre de corda</a></li>
+    <li><a id="toc-Us-de-la-propietat-whiteout-1" href="editorial-annotations-_002d-using-the-whiteout-property.ca.html">Ús de la propietat whiteout</a></li>
+  </ul></li>
+  <li><a id="toc-Text" href="text.ca.html">8 Text</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Adding-markups-in-a-tablature-1" href="text-_002d-adding-markups-in-a-tablature.ca.html">Adding markups in a tablature</a></li>
+    <li><a id="toc-Afegir-la-data-actual-a-una-partitura" href="text-_002d-adding-the-current-date-to-a-score.ca.html">Afegir la data actual a una partitura</a></li>
+    <li><a id="toc-Adjusting-vertical-spacing-of-lyrics" href="text-_002d-adjusting-vertical-spacing-of-lyrics.ca.html">Adjusting vertical spacing of lyrics</a></li>
+    <li><a id="toc-Alinear-i-centrar-els-noms-dels-instruments" href="text-_002d-aligning-and-centering-instrument-names.ca.html">Alinear i centrar els noms dels instruments</a></li>
+    <li><a id="toc-Alineacio-de-sil_002alabes-amb-melisma" href="text-_002d-aligning-syllables-with-melisma.ca.html">Alineació de síl·labes amb melisma</a></li>
+    <li><a id="toc-Aligning-text-marks-to-notes" href="text-_002d-aligning-text-marks-to-notes.ca.html">Aligning text marks to notes</a></li>
+    <li><a id="toc-Posar-en-blanc-les-linies-del-utilitzant-l_0027ordre-_005cwhiteout-1" href="text-_002d-blanking-staff-lines-using-the-_005cwhiteout-command.ca.html">Posar en blanc les línies del utilitzant l&rsquo;ordre \whiteout</a></li>
+    <li><a id="toc-Centrar-text-a-sota-d_0027un-regulador-1" href="text-_002d-center-text-below-hairpin-dynamics.ca.html">Centrar text a sota d&rsquo;un regulador</a></li>
+    <li><a id="toc-Changing-ottava-text-1" href="text-_002d-changing-ottava-text.ca.html">Changing ottava text</a></li>
+    <li><a id="toc-Canviar-la-familia-de-tipus-de-lletra-predeterminada-per-al-text" href="text-_002d-changing-the-default-text-font-family.ca.html">Canviar la família de tipus de lletra predeterminada per al text</a></li>
+    <li><a id="toc-Combinar-indicacions-dinamiques-amb-marcatges-textuals-1" href="text-_002d-combining-dynamics-with-markup-texts.ca.html">Combinar indicacions dinàmiques amb marcatges textuals</a></li>
+    <li><a id="toc-Combining-dynamics-with-markup-texts-_00282_0029-1" href="text-_002d-combining-dynamics-with-markup-texts-_00282_0029.ca.html">Combining dynamics with markup texts (2)</a></li>
+    <li><a id="toc-Combinar-dues-parts-sobre-el-mateix-pentagrama-1" href="text-_002d-combining-two-parts-on-the-same-staff.ca.html">Combinar dues parts sobre el mateix pentagrama</a></li>
+    <li><a id="toc-Crear-elements-de-extensio-textuals-1" href="text-_002d-creating-text-spanners.ca.html">Crear elements de extensió textuals</a></li>
+    <li><a id="toc-Demonstrating-all-_005cheader-fields" href="text-_002d-demonstrating-all-_005cheader-fields.ca.html">Demonstrating all \header fields</a></li>
+    <li><a id="toc-Inserir-PostScript-nadiu-dins-d_0027un-bloc-_005cmarkup-1" href="text-_002d-embedding-native-postscript-in-a-_005cmarkup-block.ca.html">Inserir PostScript nadiu dins d&rsquo;un bloc \markup</a></li>
+    <li><a id="toc-Donar-format-a-sil_002alabes-de-la-lletra" href="text-_002d-formatting-lyrics-syllables.ca.html">Donar format a síl·labes de la lletra</a></li>
+    <li><a id="toc-Com-posar-lligadures-entre-sil_002alabes-de-la-lletra" href="text-_002d-how-to-put-ties-between-syllables-in-lyrics.ca.html">Com posar lligadures entre síl·labes de la lletra</a></li>
+    <li><a id="toc-Alineacio-de-la-lletra" href="text-_002d-lyrics-alignment.ca.html">Alineació de la lletra</a></li>
+    <li><a id="toc-Markup-list" href="text-_002d-markup-list.ca.html">Markup list</a></li>
+    <li><a id="toc-Marcatge-de-silencis-multicompas-1" href="text-_002d-multi_002dmeasure-rest-markup.ca.html">Marcatge de silencis multicompàs</a></li>
+    <li><a id="toc-Of-the-ubiquity-of-markup-objects" href="text-_002d-of-the-ubiquity-of-markup-objects.ca.html">Of the ubiquity of markup objects</a></li>
+    <li><a id="toc-Imprimir-el-numero-de-versio" href="text-_002d-outputting-the-version-number.ca.html">Imprimir el número de versió</a></li>
+    <li><a id="toc-Plantilla-de-piano-amb-lletra-centrada" href="text-_002d-piano-template-with-centered-lyrics.ca.html">Plantilla de piano amb lletra centrada</a></li>
+    <li><a id="toc-Impressio-de-marques-d_0027assaig-en-qualsevol-pentagrama" href="text-_002d-printing-marks-on-every-staff.ca.html">Impressió de marques d&rsquo;assaig en qualsevol pentagrama</a></li>
+    <li><a id="toc-Impressio-de-text-de-dreta-a-esquerra-1" href="text-_002d-printing-text-from-right-to-left.ca.html">Impressió de text de dreta a esquerra</a></li>
+    <li><a id="toc-Posar-lletra-dins-del-pentagrama-1" href="text-_002d-putting-lyrics-inside-the-staff.ca.html">Posar lletra dins del pentagrama</a></li>
+    <li><a id="toc-Slanted-parentheses-around-dynamics-1" href="text-_002d-slanted-parentheses-around-dynamics.ca.html">Slanted parentheses around dynamics</a></li>
+    <li><a id="toc-Element-de-marcatge-de-text-independent-en-dues-columnes" href="text-_002d-stand_002dalone-two_002dcolumn-markup.ca.html">Element de marcatge de text independent en dues columnes</a></li>
+    <li><a id="toc-Linies-d_0027extensio-per-a-nombre-de-corda-1" href="text-_002d-string-number-extender-lines.ca.html">Línies d&rsquo;extensió per a nombre de corda</a></li>
+    <li><a id="toc-Rectangle-de-tres-segments-visibles-1" href="text-_002d-three_002dsided-box.ca.html">Rectangle de tres segments visibles</a></li>
+    <li><a id="toc-UTF_002d8" href="text-_002d-utf_002d8.ca.html">UTF-8</a></li>
+    <li><a id="toc-Plantilla-per-a-conjunt-amb-lletres-alineades-a-sobre-i-a-sota-dels-pentagrames" href="text-_002d-vocal-ensemble-template-with-lyrics-aligned-below-and-above-the-staves.ca.html">Plantilla per a conjunt amb lletres alineades a sobre i a sota dels pentagrames</a></li>
+    <li><a id="toc-Elements-de-marcatge-per-al-text-de-les-caselles-de-repeticio-usant-repeatCommands-1" href="text-_002d-volta-text-markup-using-repeatcommands.ca.html">Elements de marcatge per al text de les caselles de repetició usant repeatCommands</a></li>
+  </ul></li>
+  <li><a id="toc-Vocal-music" href="vocal-music.ca.html">9 Vocal music</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Afegir-un-ambit-per-veu-2" href="vocal-music-_002d-adding-ambitus-per-voice.ca.html">Afegir un àmbit per veu</a></li>
+    <li><a id="toc-Afegir-indicadors-als-pentagrames-que-es-divideixen-despres-d_0027un-salt-de-linia-1" href="vocal-music-_002d-adding-indicators-to-staves-which-get-split-after-a-break.ca.html">Afegir indicadors als pentagrames que es divideixen després d&rsquo;un salt de línia</a></li>
+    <li><a id="toc-Afegir-notes-guia-orquestrals-a-una-partitura-vocal-1" href="vocal-music-_002d-adding-orchestral-cues-to-a-vocal-score.ca.html">Afegir notes guia orquestrals a una partitura vocal</a></li>
+    <li><a id="toc-Adjusting-vertical-spacing-of-lyrics-1" href="vocal-music-_002d-adjusting-vertical-spacing-of-lyrics.ca.html">Adjusting vertical spacing of lyrics</a></li>
+    <li><a id="toc-Alineacio-de-sil_002alabes-amb-melisma-1" href="vocal-music-_002d-aligning-syllables-with-melisma.ca.html">Alineació de síl·labes amb melisma</a></li>
+    <li><a id="toc-Indicacions-de-tessitura-1" href="vocal-music-_002d-ambitus.ca.html">Indicacions de tessitura</a></li>
+    <li><a id="toc-Ambitus-after-key-signature-2" href="vocal-music-_002d-ambitus-after-key-signature.ca.html">Ambitus after key signature</a></li>
+    <li><a id="toc-Ambits-amb-diverses-veus-1" href="vocal-music-_002d-ambitus-with-multiple-voices.ca.html">Àmbits amb diverses veus</a></li>
+    <li><a id="toc-Ancient-notation-template-_002d-modern-transcription-of-Gregorian-music" href="vocal-music-_002d-ancient-notation-template-_002d-modern-transcription-of-gregorian-music.ca.html#vocal-music-_002d-ancient-notation-template-_2013-modern-transcription-of-gregorian-music">Ancient notation template – modern transcription of Gregorian music</a></li>
+    <li><a id="toc-Plantilla-de-salm-del-cant-anglica" href="vocal-music-_002d-anglican-psalm-template.ca.html">Plantilla de salm del cant anglicà</a></li>
+    <li><a id="toc-Arranging-separate-lyrics-on-a-single-line" href="vocal-music-_002d-arranging-separate-lyrics-on-a-single-line.ca.html">Arranging separate lyrics on a single line</a></li>
+    <li><a id="toc-Modificar-el-tipus-de-lletra-per-a-cada-estrofa" href="vocal-music-_002d-changing-stanza-fonts.ca.html">Modificar el tipus de lletra per a cada estrofa</a></li>
+    <li><a id="toc-Chant-or-psalm-notation-1" href="vocal-music-_002d-chant-or-psalm-notation.ca.html">Chant or psalm notation</a></li>
+    <li><a id="toc-Forcar-la-visibilitat-dels-guions-separadors-de-sil_002alabes" href="vocal-music-_002d-forcing-hyphens-to-be-shown.ca.html">Forçar la visibilitat dels guions separadors de síl·labes</a></li>
+    <li><a id="toc-Donar-format-a-sil_002alabes-de-la-lletra-1" href="vocal-music-_002d-formatting-lyrics-syllables.ca.html">Donar format a síl·labes de la lletra</a></li>
+    <li><a id="toc-Com-posar-lligadures-entre-sil_002alabes-de-la-lletra-1" href="vocal-music-_002d-how-to-put-ties-between-syllables-in-lyrics.ca.html">Com posar lligadures entre síl·labes de la lletra</a></li>
+    <li><a id="toc-Plantilla-per-a-himnes" href="vocal-music-_002d-hymn-template.ca.html">Plantilla per a himnes</a></li>
+    <li><a id="toc-Alineacio-de-la-lletra-1" href="vocal-music-_002d-lyrics-alignment.ca.html">Alineació de la lletra</a></li>
+    <li><a id="toc-Marking-notes-of-spoken-parts-with-a-cross-on-the-stem-_0028Sprechstimme_0029-1" href="vocal-music-_002d-marking-notes-of-spoken-parts-with-a-cross-on-the-stem-_0028sprechstimme_0029.ca.html">Marking notes of spoken parts with a cross on the stem (Sprechstimme)</a></li>
+    <li><a id="toc-Plantilla-d_0027orquestra-amb-cor-i-piano-2" href="vocal-music-_002d-orchestra_002c-choir-and-piano-template.ca.html">Plantilla d&rsquo;orquestra amb cor i piano</a></li>
+    <li><a id="toc-Plantilla-de-piano-amb-melodia-i-lletra" href="vocal-music-_002d-piano-template-with-melody-and-lyrics.ca.html">Plantilla de piano amb melodia i lletra</a></li>
+    <li><a id="toc-Posar-lletra-dins-del-pentagrama-2" href="vocal-music-_002d-putting-lyrics-inside-the-staff.ca.html">Posar lletra dins del pentagrama</a></li>
+    <li><a id="toc-Plantilla-de-cor-SATB_002c-a-quatre-pentagrames" href="vocal-music-_002d-satb-choir-template-_002d_002d-four-staves.ca.html">Plantilla de cor SATB, a quatre pentagrames</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unic-amb-musica_002c-lletra-i-acords" href="vocal-music-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-and-chords.ca.html">Plantilla de pentagrama únic amb música, lletra i acords</a></li>
+    <li><a id="toc-Single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets" href="vocal-music-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets.ca.html">Single-staff template with notes, lyrics, chords, and frets</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unic-amb-notes-i-lletra" href="vocal-music-_002d-single_002dstaff-template-with-notes-and-lyrics.ca.html">Plantilla de pentagrama únic amb notes i lletra</a></li>
+    <li><a id="toc-Silencis-de-separacio-en-mode-de-lletra-1" href="vocal-music-_002d-skips-in-lyric-mode.ca.html">Silencis de separació en mode de lletra</a></li>
+    <li><a id="toc-Silencis-de-separacio-en-mode-de-lletra-_00282_0029-1" href="vocal-music-_002d-skips-in-lyric-mode-_00282_0029.ca.html">Silencis de separació en mode de lletra (2)</a></li>
+    <li><a id="toc-Using-_005carpeggioBracket-to-make-divisi-more-visible-1" href="vocal-music-_002d-using-_005carpeggiobracket-to-make-divisi-more-visible.ca.html">Using \arpeggioBracket to make divisi more visible</a></li>
+    <li><a id="toc-Using-a-bracket-to-clarify-divisi-1" href="vocal-music-_002d-using-a-bracket-to-clarify-divisi.ca.html">Using a bracket to clarify divisi</a></li>
+    <li><a id="toc-Using-tags-to-produce-mensural-and-modern-music-from-the-same-source" href="vocal-music-_002d-using-tags-to-produce-mensural-and-modern-music-from-the-same-source.ca.html">Using tags to produce mensural and modern music from the same source</a></li>
+    <li><a id="toc-Alineacio-vertical-de-la-lletra-i-els-compassos-d_0027ossia" href="vocal-music-_002d-vertically-aligning-ossias-and-lyrics.ca.html">Alineació vertical de la lletra i els compassos d&rsquo;ossia</a></li>
+    <li><a id="toc-Vertically-aligning-stanza-numbers-of-different-staves" href="vocal-music-_002d-vertically-aligning-stanza-numbers-of-different-staves.ca.html">Vertically aligning stanza numbers of different staves</a></li>
+    <li><a id="toc-Lletra-comuna-centrada-verticalment" href="vocal-music-_002d-vertically-centered-common-lyrics.ca.html">Lletra comuna centrada verticalment</a></li>
+    <li><a id="toc-Plantilla-de-conjunt-vocal" href="vocal-music-_002d-vocal-ensemble-template.ca.html">Plantilla de conjunt vocal</a></li>
+    <li><a id="toc-Plantilla-de-conjunt-vocal-amb-reduccio-de-piano-automatica" href="vocal-music-_002d-vocal-ensemble-template-with-automatic-piano-reduction.ca.html">Plantilla de conjunt vocal amb reducció de piano automàtica</a></li>
+    <li><a id="toc-Plantilla-per-a-conjunt-amb-lletres-alineades-a-sobre-i-a-sota-dels-pentagrames-1" href="vocal-music-_002d-vocal-ensemble-template-with-lyrics-aligned-below-and-above-the-staves.ca.html">Plantilla per a conjunt amb lletres alineades a sobre i a sota dels pentagrames</a></li>
+    <li><a id="toc-Estrofa-per-a-solista-i-tornada-a-dues-veus" href="vocal-music-_002d-vocal-ensemble-template-with-verse-and-refrain.ca.html">Estrofa per a solista i tornada a dues veus</a></li>
+  </ul></li>
+  <li><a id="toc-Chord-notation" href="chord-notation.ca.html">10 Chord notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Afegir-un-baix-xifrat-a-sobre-o-a-sota-de-les-notes" href="chord-notation-_002d-adding-a-figured-bass-above-or-below-the-notes.ca.html">Afegir un baix xifrat a sobre o a sota de les notes</a></li>
+    <li><a id="toc-Afegir-barres-de-compas-al-context-de-noms-d_0027acord-_0028ChordNames_0029" href="chord-notation-_002d-adding-bar-lines-to-chordnames-context.ca.html">Afegir barres de compàs al context de noms d&rsquo;acord (ChordNames)</a></li>
+    <li><a id="toc-Adjusting-figured-bass-alteration-glyphs" href="chord-notation-_002d-adjusting-figured-bass-alteration-glyphs.ca.html">Adjusting figured bass alteration glyphs</a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord-2" href="chord-notation-_002d-changing-a-single-note_0027s-size-in-a-chord.ca.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-Modificacio-del-separador-d_0027acords" href="chord-notation-_002d-changing-chord-separator.ca.html">Modificació del separador d&rsquo;acords</a></li>
+    <li><a id="toc-Canviar-les-posicions-de-les-alteracions-de-baix-xifrat" href="chord-notation-_002d-changing-the-positions-of-figured-bass-alterations.ca.html">Canviar les posicions de les alteracions de baix xifrat</a></li>
+    <li><a id="toc-Excepcions-per-als-noms-d_0027acord" href="chord-notation-_002d-chord-name-exceptions.ca.html">Excepcions per als noms d&rsquo;acord</a></li>
+    <li><a id="toc-Nom-d_0027acord-maj7" href="chord-notation-_002d-chord-name-major7.ca.html">Nom d&rsquo;acord maj7</a></li>
+    <li><a id="toc-Chord-names-alternative" href="chord-notation-_002d-chord-names-alternative.ca.html">Chord names alternative</a></li>
+    <li><a id="toc-Chords-with-stretched-fingering-for-FretBoards-and-TabVoice" href="chord-notation-_002d-chords-with-stretched-fingering-for-fretboards-and-tabvoice.ca.html">Chords with stretched fingering for FretBoards and TabVoice</a></li>
+    <li><a id="toc-Clusters-_0028_00abraims_00bb_0029-1" href="chord-notation-_002d-clusters.ca.html">Clusters («raïms»)</a></li>
+    <li><a id="toc-Controlar-la-col_002alocacion-de-les-digitacions-d_0027acords-2" href="chord-notation-_002d-controlling-the-placement-of-chord-fingerings.ca.html">Controlar la col·locación de les digitacions d&rsquo;acords</a></li>
+    <li><a id="toc-Cross_002dstaff-chords-_002d_002d-beaming-problems-workaround" href="chord-notation-_002d-cross_002dstaff-chords-_002d_002d-beaming-problems-workaround.ca.html">Cross-staff chords &ndash; beaming problems workaround</a></li>
+    <li><a id="toc-Customizing-the-chord-grid-style" href="chord-notation-_002d-customizing-the-chord-grid-style.ca.html">Customizing the chord grid style</a></li>
+    <li><a id="toc-Customizing-the-no_002dchord-symbol" href="chord-notation-_002d-customizing-the-no_002dchord-symbol.ca.html">Customizing the no-chord symbol</a></li>
+    <li><a id="toc-Impressio-d_0027acords-complexos-1" href="chord-notation-_002d-displaying-complex-chords.ca.html">Impressió d&rsquo;acords complexos</a></li>
+    <li><a id="toc-Dividir-manualment-les-linies-d_0027extensio-del-baix-xifrat-per-certs-numeros-solament" href="chord-notation-_002d-manually-break-figured-bass-extenders-for-only-some-numbers.ca.html">Dividir manualment les línies d&rsquo;extensió del baix xifrat per certs números solament</a></li>
+    <li><a id="toc-Print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note-1" href="chord-notation-_002d-print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note.ca.html">Print chord names with same root and different bass as slash and bass note</a></li>
+    <li><a id="toc-Imprimir-els-acords-quan-es-produeix-un-canvi" href="chord-notation-_002d-showing-chords-at-changes.ca.html">Imprimir els acords quan es produeix un canvi</a></li>
+    <li><a id="toc-Full-guia-d_0027acords-o-_00ablead-sheet_00bb-senzilla" href="chord-notation-_002d-simple-lead-sheet.ca.html">Full guia d&rsquo;acords o «lead sheet» senzilla</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unic-amb-musica_002c-lletra-i-acords-1" href="chord-notation-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-and-chords.ca.html">Plantilla de pentagrama únic amb música, lletra i acords</a></li>
+    <li><a id="toc-Single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets-1" href="chord-notation-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets.ca.html">Single-staff template with notes, lyrics, chords, and frets</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unic-amb-musica-i-acords" href="chord-notation-_002d-single_002dstaff-template-with-notes-and-chords.ca.html">Plantilla de pentagrama únic amb música i acords</a></li>
+    <li><a id="toc-Centrat-vertical-de-les-linies-de-baix-xifrat-emparellades" href="chord-notation-_002d-vertically-centering-paired-figured-bass-extenders.ca.html">Centrat vertical de les línies de baix xifrat emparellades</a></li>
+    <li><a id="toc-Corxets-de-primera-i-segona-vegada-a-sota-dels-acords-2" href="chord-notation-_002d-volta-below-chords.ca.html">Corxets de primera i segona vegada a sota dels acords</a></li>
+  </ul></li>
+  <li><a id="toc-Keyboard-and-other-multi_002dstaff-instruments" href="keyboard-and-other-multi_002dstaff-instruments.ca.html">11 Keyboard and other multi-staff instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Accordion-register-symbols" href="keyboard-and-other-multi_002dstaff-instruments-_002d-accordion-register-symbols.ca.html">Accordion register symbols</a></li>
+    <li><a id="toc-Modificar-el-text-de-las-indicacions-de-pedal" href="keyboard-and-other-multi_002dstaff-instruments-_002d-changing-the-text-for-sustain-markings.ca.html">Modificar el text de las indicacions de pedal</a></li>
+    <li><a id="toc-Clusters-_0028_00abraims_00bb_0029-2" href="keyboard-and-other-multi_002dstaff-instruments-_002d-clusters.ca.html">Clusters («raïms»)</a></li>
+    <li><a id="toc-Controlar-la-col_002alocacion-de-les-digitacions-d_0027acords-3" href="keyboard-and-other-multi_002dstaff-instruments-_002d-controlling-the-placement-of-chord-fingerings.ca.html">Controlar la col·locación de les digitacions d&rsquo;acords</a></li>
+    <li><a id="toc-Fer-lligadures-entre-veus-diferents-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-creating-slurs-across-voices.ca.html">Fer lligadures entre veus diferents</a></li>
+    <li><a id="toc-Cross_002dstaff-chords-_002d_002d-beaming-problems-workaround-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-cross_002dstaff-chords-_002d_002d-beaming-problems-workaround.ca.html">Cross-staff chords &ndash; beaming problems workaround</a></li>
+    <li><a id="toc-Tremolos-de-pentagrama-creuat-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-cross_002dstaff-tremolos.ca.html">Trèmolos de pentagrama creuat</a></li>
+    <li><a id="toc-Ajustament-fi-de-les-linies-de-pedal" href="keyboard-and-other-multi_002dstaff-instruments-_002d-fine_002dtuning-pedal-brackets.ca.html">Ajustament fi de les línies de pedal</a></li>
+    <li><a id="toc-Indicating-cross_002dstaff-chords-with-a-bracket" href="keyboard-and-other-multi_002dstaff-instruments-_002d-indicating-cross_002dstaff-chords-with-a-bracket.ca.html">Indicating cross-staff chords with a bracket</a></li>
+    <li><a id="toc-Plantilla-per-a-combo-de-jazz" href="keyboard-and-other-multi_002dstaff-instruments-_002d-jazz-combo-template.ca.html">Plantilla per a combo de jazz</a></li>
+    <li><a id="toc-Lligaduras-_201cLaissez-vibrer_201d-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-laissez-vibrer-ties.ca.html">Lligaduras &ldquo;Laissez vibrer&rdquo;</a></li>
+    <li><a id="toc-Plantilla-de-piano-_0028senzilla_0029" href="keyboard-and-other-multi_002dstaff-instruments-_002d-piano-template-_0028simple_0029.ca.html">Plantilla de piano (senzilla)</a></li>
+    <li><a id="toc-Plantilla-de-piano-amb-lletra-centrada-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-piano-template-with-centered-lyrics.ca.html">Plantilla de piano amb lletra centrada</a></li>
+    <li><a id="toc-Plantilla-de-piano-amb-melodia-i-lletra-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-piano-template-with-melody-and-lyrics.ca.html">Plantilla de piano amb melodia i lletra</a></li>
+    <li><a id="toc-Removing-brace-on-first-line-of-piano-score-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-removing-brace-on-first-line-of-piano-score.ca.html">Removing brace on first line of piano score</a></li>
+    <li><a id="toc-Using-_005cautoChange-with-more-than-one-voice-2" href="keyboard-and-other-multi_002dstaff-instruments-_002d-using-_005cautochange-with-more-than-one-voice.ca.html">Using \autoChange with more than one voice</a></li>
+    <li><a id="toc-Plantilla-de-conjunt-vocal-amb-reduccio-de-piano-automatica-1" href="keyboard-and-other-multi_002dstaff-instruments-_002d-vocal-ensemble-template-with-automatic-piano-reduction.ca.html">Plantilla de conjunt vocal amb reducció de piano automàtica</a></li>
+  </ul></li>
+  <li><a id="toc-Percussion" href="percussion.ca.html">12 Percussion</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Escriptura-de-parts-de-percussio-1" href="percussion-_002d-adding-drum-parts.ca.html">Escriptura de parts de percussió</a></li>
+    <li><a id="toc-Cow-and-ride-bell-example-1" href="percussion-_002d-cow-and-ride-bell-example.ca.html">Cow and ride bell example</a></li>
+    <li><a id="toc-Indicacions-polimetricques-de-compas-totalment-personalitzades-1" href="percussion-_002d-heavily-customized-polymetric-time-signatures.ca.html">Indicacions polimètricques de compàs totalment personalitzades</a></li>
+    <li><a id="toc-High-and-low-woodblock-example-1" href="percussion-_002d-high-and-low-woodblock-example.ca.html">High and low woodblock example</a></li>
+    <li><a id="toc-Plantilla-per-a-combo-de-jazz-1" href="percussion-_002d-jazz-combo-template.ca.html">Plantilla per a combo de jazz</a></li>
+    <li><a id="toc-Simbols-de-cops-de-percussio" href="percussion-_002d-percussion-beaters.ca.html">Símbols de cops de percussió</a></li>
+    <li><a id="toc-Percussion-example-1" href="percussion-_002d-percussion-example.ca.html">Percussion example</a></li>
+    <li><a id="toc-Impressio-de-musica-que-tingui-compassos-en-cada-pentagrama-1" href="percussion-_002d-printing-music-with-different-time-signatures.ca.html">Impressió de música que tingui compassos en cada pentagrama</a></li>
+    <li><a id="toc-Tam_002dtam-example-1" href="percussion-_002d-tam_002dtam-example.ca.html">Tam-tam example</a></li>
+    <li><a id="toc-Tambourine-example-1" href="percussion-_002d-tambourine-example.ca.html">Tambourine example</a></li>
+  </ul></li>
+  <li><a id="toc-Fretted-string-instruments" href="fretted-string-instruments.ca.html">13 Fretted string instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Afegir-digitacions-a-la-partitura-1" href="fretted-string-instruments-_002d-adding-fingerings-to-a-score.ca.html">Afegir digitacions a la partitura</a></li>
+    <li><a id="toc-Afegir-digitacions-a-les-tabulatures" href="fretted-string-instruments-_002d-adding-fingerings-to-tablatures.ca.html">Afegir digitacions a les tabulatures</a></li>
+    <li><a id="toc-Adding-markups-in-a-tablature-2" href="fretted-string-instruments-_002d-adding-markups-in-a-tablature.ca.html">Adding markups in a tablature</a></li>
+    <li><a id="toc-Permetre-que-les-digitacions-s_0027imprimeixen-del-pentagrama-1" href="fretted-string-instruments-_002d-allowing-fingerings-to-be-printed-inside-the-staff.ca.html">Permetre que les digitacions s&rsquo;imprimeixen del pentagrama</a></li>
+    <li><a id="toc-Automatic-fretboards-barre" href="fretted-string-instruments-_002d-automatic-fretboards-barre.ca.html#fretted-string-instruments-_002d-automatic-fretboards-barr_00e9">Automatic fretboards barré</a></li>
+    <li><a id="toc-Modificar-l_0027orientacio-dels-trastos" href="fretted-string-instruments-_002d-changing-fret-orientations.ca.html">Modificar l&rsquo;orientació dels trastos</a></li>
+    <li><a id="toc-Chord-changes-for-fretboards" href="fretted-string-instruments-_002d-chord-changes-for-fretboards.ca.html">Chord changes for fretboards</a></li>
+    <li><a id="toc-Glissando-d_0027acords-en-tabulatura" href="fretted-string-instruments-_002d-chord-glissando-in-tablature.ca.html">Glissando d&rsquo;acords en tabulatura</a></li>
+    <li><a id="toc-Chords-with-stretched-fingering-for-FretBoards-and-TabVoice-1" href="fretted-string-instruments-_002d-chords-with-stretched-fingering-for-fretboards-and-tabvoice.ca.html">Chords with stretched fingering for FretBoards and TabVoice</a></li>
+    <li><a id="toc-Controlar-la-col_002alocacion-de-les-digitacions-d_0027acords-4" href="fretted-string-instruments-_002d-controlling-the-placement-of-chord-fingerings.ca.html">Controlar la col·locación de les digitacions d&rsquo;acords</a></li>
+    <li><a id="toc-Personalitzar-els-diagrames-de-posicions" href="fretted-string-instruments-_002d-customizing-fretboard-fret-diagrams.ca.html">Personalitzar els diagrames de posicions</a></li>
+    <li><a id="toc-Personalitzar-diagrames-de-posicions-de-marcatge" href="fretted-string-instruments-_002d-customizing-markup-fret-diagrams.ca.html">Personalitzar diagrames de posicions de marcatge</a></li>
+    <li><a id="toc-Digitacions-_002d-indicacio-del-nombre-de-corda-i-digitacions-de-ma-dreta" href="fretted-string-instruments-_002d-fingerings_002c-string-indications_002c-and-right_002dhand-fingerings.ca.html">Digitacions - indicació del nombre de corda i digitacions de ma dreta</a></li>
+    <li><a id="toc-Notacio-del-flamenco" href="fretted-string-instruments-_002d-flamenco-notation.ca.html">Notació del flamenco</a></li>
+    <li><a id="toc-Diagrames-de-posicions-d_0027acord_002c-explicats-i-desenvolupats" href="fretted-string-instruments-_002d-fret-diagrams-explained-and-developed.ca.html">Diagrames de posicions d&rsquo;acord, explicats i desenvolupats</a></li>
+    <li><a id="toc-Taules-alternatives-de-diagrames-de-posicions" href="fretted-string-instruments-_002d-fretboards-alternate-tables.ca.html">Taules alternatives de diagrames de posicions</a></li>
+    <li><a id="toc-Harmonics-sobre-cordes-pisades-en-tabulatura" href="fretted-string-instruments-_002d-fretted_002dstring-harmonics-in-tablature.ca.html">Harmònics sobre cordes pisades en tabulatura</a></li>
+    <li><a id="toc-Lligadures-de-guitarra" href="fretted-string-instruments-_002d-guitar-slides.ca.html">Lligadures de guitarra</a></li>
+    <li><a id="toc-Ritmes-rasguejats-de-guitarra-1" href="fretted-string-instruments-_002d-guitar-strum-rhythms.ca.html">Ritmes rasguejats de guitarra</a></li>
+    <li><a id="toc-Hammer_002don-and-pull_002doff-1" href="fretted-string-instruments-_002d-hammer_002don-and-pull_002doff.ca.html">Hammer-on and pull-off</a></li>
+    <li><a id="toc-Hammer_002don-and-pull_002doff-using-chords-1" href="fretted-string-instruments-_002d-hammer_002don-and-pull_002doff-using-chords.ca.html">Hammer-on and pull-off using chords</a></li>
+    <li><a id="toc-Hammer_002don-and-pull_002doff-using-voices-1" href="fretted-string-instruments-_002d-hammer_002don-and-pull_002doff-using-voices.ca.html">Hammer-on and pull-off using voices</a></li>
+    <li><a id="toc-Com-canviar-la-posicio-d_0027un-diagrama-de-posicions" href="fretted-string-instruments-_002d-how-to-change-fret-diagram-position.ca.html">Com canviar la posició d&rsquo;un diagrama de posicions</a></li>
+    <li><a id="toc-Plantilla-per-a-combo-de-jazz-2" href="fretted-string-instruments-_002d-jazz-combo-template.ca.html">Plantilla per a combo de jazz</a></li>
+    <li><a id="toc-Lligaduras-_201cLaissez-vibrer_201d-2" href="fretted-string-instruments-_002d-laissez-vibrer-ties.ca.html">Lligaduras &ldquo;Laissez vibrer&rdquo;</a></li>
+    <li><a id="toc-Let-TabStaff-print-the-topmost-string-at-bottom-1" href="fretted-string-instruments-_002d-let-tabstaff-print-the-topmost-string-at-bottom.ca.html">Let TabStaff print the topmost string at bottom</a></li>
+    <li><a id="toc-Donar-format-a-tabulatures-amb-lletres-1" href="fretted-string-instruments-_002d-letter-tablature-formatting.ca.html">Donar format a tabulatures amb lletres</a></li>
+    <li><a id="toc-Referencia-per-a-armonics-sobre-cordes-a-l_0027aire" href="fretted-string-instruments-_002d-open_002dstring-harmonics-in-tablature.ca.html">Referència per a armònics sobre cordes a l&rsquo;aire</a></li>
+    <li><a id="toc-Posicionament-de-digitacions-de-ma-dreta" href="fretted-string-instruments-_002d-placement-of-right_002dhand-fingerings.ca.html">Posicionament de digitacions de mà dreta</a></li>
+    <li><a id="toc-Polifonia-en-tabulatures" href="fretted-string-instruments-_002d-polyphony-in-tablature.ca.html">Polifonia en tabulatures</a></li>
+    <li><a id="toc-Setting-up-predefined-fretboards-for-other-instruments" href="fretted-string-instruments-_002d-setting-up-predefined-fretboards-for-other-instruments.ca.html">Setting up predefined fretboards for other instruments</a></li>
+    <li><a id="toc-Lliscats-en-tabulatura" href="fretted-string-instruments-_002d-slides-in-tablature.ca.html">Lliscats en tabulatura</a></li>
+    <li><a id="toc-Comportament-de-les-pliques-i-les-barres-de-corxera-en-tabulatures" href="fretted-string-instruments-_002d-stem-and-beam-behavior-in-tablature.ca.html">Comportament de les pliques i les barres de corxera en tabulatures</a></li>
+    <li><a id="toc-Linies-d_0027extensio-per-a-nombre-de-corda-2" href="fretted-string-instruments-_002d-string-number-extender-lines.ca.html">Línies d&rsquo;extensió per a nombre de corda</a></li>
+  </ul></li>
+  <li><a id="toc-Unfretted-string-instruments" href="unfretted-string-instruments.ca.html">14 Unfretted string instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Fer-lligadures-entre-veus-diferents-2" href="unfretted-string-instruments-_002d-creating-slurs-across-voices.ca.html">Fer lligadures entre veus diferents</a></li>
+    <li><a id="toc-Harmonics-amb-puntet" href="unfretted-string-instruments-_002d-dotted-harmonics.ca.html">Harmònics amb puntet</a></li>
+    <li><a id="toc-Snap-pizzicato-_0028_201cBartok_201d-pizzicato_0029-1" href="unfretted-string-instruments-_002d-snap-pizzicato-_0028_201cbartok_201d-pizzicato_0029.ca.html">Snap pizzicato (&ldquo;Bartok&rdquo; pizzicato)</a></li>
+    <li><a id="toc-Plantilla-de-quartet-de-cordas-_0028senzilla_0029" href="unfretted-string-instruments-_002d-string-quartet-template-_0028simple_0029.ca.html">Plantilla de quartet de cordas (senzilla)</a></li>
+    <li><a id="toc-Plantilla-de-quartet-de-corda-amb-particel_002ales-independents" href="unfretted-string-instruments-_002d-string-quartet-template-with-separate-parts.ca.html">Plantilla de quartet de corda amb particel·les independents</a></li>
+  </ul></li>
+  <li><a id="toc-Wind-instruments" href="wind-instruments.ca.html">15 Wind instruments</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Modificar-la-mida-dels-diagrames-de-vent-fusta" href="wind-instruments-_002d-changing-the-size-of-woodwind-diagrams.ca.html">Modificar la mida dels diagrames de vent fusta</a></li>
+    <li><a id="toc-Simbols-de-digitacio-per-a-instruments-de-vent" href="wind-instruments-_002d-fingering-symbols-for-wind-instruments.ca.html">Símbols de digitació per a instruments de vent</a></li>
+    <li><a id="toc-Notacio-dels-cops-de-llengua-de-la-flauta" href="wind-instruments-_002d-flute-slap-notation.ca.html">Notació dels cops de llengua de la flauta</a></li>
+    <li><a id="toc-Diagrames-per-a-vent-fusta-grafics-i-textuals" href="wind-instruments-_002d-graphical-and-text-woodwind-diagrams.ca.html">Diagrames per a vent fusta gràfics i textuals</a></li>
+    <li><a id="toc-Diagrames-de-digitacio-per-a-la-flauta-dolca" href="wind-instruments-_002d-recorder-fingering-chart.ca.html">Diagrames de digitació per a la flauta dolça</a></li>
+    <li><a id="toc-Llistes-de-claus-per-als-diagrames-de-vent-fusta" href="wind-instruments-_002d-woodwind-diagrams-key-lists.ca.html">Llistes de claus per als diagrames de vent fusta</a></li>
+    <li><a id="toc-Llistat-dels-diagrames-per-a-vent-fusta" href="wind-instruments-_002d-woodwind-diagrams-listing.ca.html">Llistat dels diagrames per a vent fusta</a></li>
+  </ul></li>
+  <li><a id="toc-Ancient-notation" href="ancient-notation.ca.html">16 Ancient notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Afegir-un-baix-xifrat-a-sobre-o-a-sota-de-les-notes-1" href="ancient-notation-_002d-adding-a-figured-bass-above-or-below-the-notes.ca.html">Afegir un baix xifrat a sobre o a sota de les notes</a></li>
+    <li><a id="toc-Ancient-fonts" href="ancient-notation-_002d-ancient-fonts.ca.html">Ancient fonts</a></li>
+    <li><a id="toc-Ancient-notation-template-_002d-modern-transcription-of-Gregorian-music-1" href="ancient-notation-_002d-ancient-notation-template-_002d-modern-transcription-of-gregorian-music.ca.html#ancient-notation-_002d-ancient-notation-template-_2013-modern-transcription-of-gregorian-music">Ancient notation template – modern transcription of Gregorian music</a></li>
+    <li><a id="toc-Indicacions-de-compas-antigues" href="ancient-notation-_002d-ancient-time-signatures.ca.html">Indicacions de compàs antigues</a></li>
+    <li><a id="toc-Chant-or-psalm-notation-2" href="ancient-notation-_002d-chant-or-psalm-notation.ca.html">Chant or psalm notation</a></li>
+    <li><a id="toc-Custos" href="ancient-notation-_002d-custodes.ca.html">Custos</a></li>
+    <li><a id="toc-Incipit-1" href="ancient-notation-_002d-incipit.ca.html">Incipit</a></li>
+    <li><a id="toc-Disposicio-Mensurstriche-_0028linies-divisories-entre-pentagrames_0029-1" href="ancient-notation-_002d-mensurstriche-layout-_0028bar-lines-between-the-staves_0029.ca.html">Disposició Mensurstriche (línies divisòries entre pentagrames)</a></li>
+    <li><a id="toc-Estils-de-silencis-1" href="ancient-notation-_002d-rest-styles.ca.html">Estils de silencis</a></li>
+    <li><a id="toc-Using-tags-to-produce-mensural-and-modern-music-from-the-same-source-1" href="ancient-notation-_002d-using-tags-to-produce-mensural-and-modern-music-from-the-same-source.ca.html">Using tags to produce mensural and modern music from the same source</a></li>
+    <li><a id="toc-Linia-vertical-com-una-articulacio-barroca-1" href="ancient-notation-_002d-vertical-line-as-a-baroque-articulation-mark.ca.html">Línia vertical com una articulació barroca</a></li>
+  </ul></li>
+  <li><a id="toc-World-music" href="world-music.ca.html">17 World music</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Improvisacio-de-musica-arab" href="world-music-_002d-arabic-improvisation.ca.html">Improvisació de música àrab</a></li>
+    <li><a id="toc-Exemple-de-_00abMakam_00bb-1" href="world-music-_002d-makam-example.ca.html">Exemple de «Makam»</a></li>
+    <li><a id="toc-Impressio-de-text-de-dreta-a-esquerra-2" href="world-music-_002d-printing-text-from-right-to-left.ca.html">Impressió de text de dreta a esquerra</a></li>
+    <li><a id="toc-Turkish-Makam-example-1" href="world-music-_002d-turkish-makam-example.ca.html">Turkish Makam example</a></li>
+  </ul></li>
+  <li><a id="toc-Contexts-and-engravers" href="contexts-and-engravers.ca.html">18 Contexts and engravers</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Afegir-un-ambit-per-veu-3" href="contexts-and-engravers-_002d-adding-ambitus-per-voice.ca.html">Afegir un àmbit per veu</a></li>
+    <li><a id="toc-Afegir-un-pentagrama-nou-1" href="contexts-and-engravers-_002d-adding-an-extra-staff.ca.html">Afegir un pentagrama nou</a></li>
+    <li><a id="toc-Afegir-un-pentagrama-addicional-a-un-salt-de-linia-1" href="contexts-and-engravers-_002d-adding-an-extra-staff-at-a-line-break.ca.html">Afegir un pentagrama addicional a un salt de línia</a></li>
+    <li><a id="toc-Afegir-barres-de-compas-al-context-de-noms-d_0027acord-_0028ChordNames_0029-1" href="contexts-and-engravers-_002d-adding-bar-lines-to-chordnames-context.ca.html">Afegir barres de compàs al context de noms d&rsquo;acord (ChordNames)</a></li>
+    <li><a id="toc-Ambitus-after-key-signature-3" href="contexts-and-engravers-_002d-ambitus-after-key-signature.ca.html">Ambitus after key signature</a></li>
+    <li><a id="toc-Analysis-brackets-with-labels-1" href="contexts-and-engravers-_002d-analysis-brackets-with-labels.ca.html">Analysis brackets with labels</a></li>
+    <li><a id="toc-Canviar-la-direccio-de-la-plica-de-les-notes-de-tercera-linia-automaticament_002c-basat-en-la-melodia-1" href="contexts-and-engravers-_002d-automatically-changing-the-stem-direction-of-the-middle-note-based-on-the-melody.ca.html">Canviar la direcció de la plica de les notes de tercera línia automàticament, basat en la melodia</a></li>
+    <li><a id="toc-Modificar-la-sortida-MIDI-perque-tingui-un-canal-per-a-cada-veu" href="contexts-and-engravers-_002d-changing-midi-output-to-one-channel-per-voice.ca.html">Modificar la sortida MIDI perquè tingui un canal per a cada veu</a></li>
+    <li><a id="toc-Modificar-el-compas-d_0027una-seccio-polimetrica-utilitzant-_005cscaleDurations-1" href="contexts-and-engravers-_002d-changing-time-signatures-inside-a-polymetric-section-using-_005cscaledurations.ca.html">Modificar el compàs d&rsquo;una secció polimètrica utilitzant <code>\scaleDurations</code></a></li>
+    <li><a id="toc-Crear-arpegis-entre-notes-de-veus-diferents-1" href="contexts-and-engravers-_002d-creating-arpeggios-across-notes-in-different-voices.ca.html">Crear arpegis entre notes de veus diferents</a></li>
+    <li><a id="toc-Crear-pentagrames-en-blanc-2" href="contexts-and-engravers-_002d-creating-blank-staves.ca.html">Crear pentagrames en blanc</a></li>
+    <li><a id="toc-Creacio-d_0027arpegis-que-es-creuen-entre-pentagrames-dins-d_0027altres-contextos-1" href="contexts-and-engravers-_002d-creating-cross_002dstaff-arpeggios-in-other-contexts.ca.html">Creació d&rsquo;arpegis que es creuen entre pentagrames dins d&rsquo;altres contextos</a></li>
+    <li><a id="toc-Creacio-d_0027armadures-personalitzades-2" href="contexts-and-engravers-_002d-creating-custom-key-signatures.ca.html">Creació d&rsquo;armadures personalitzades</a></li>
+    <li><a id="toc-Pliques-de-pentagrama-creuat-1" href="contexts-and-engravers-_002d-cross_002dstaff-stems.ca.html">Pliques de pentagrama creuat</a></li>
+    <li><a id="toc-Definir-un-gravador-en-l_0027Scheme_003a-gravador-d_0027ambit-o-tessitura" href="contexts-and-engravers-_002d-defining-an-engraver-in-scheme_003a-ambitus-engraver.ca.html">Definir un gravador en l&rsquo;Scheme: gravador d&rsquo;àmbit o tessitura</a></li>
+    <li><a id="toc-Mostrar-un-sistema-GrandStaff-complet-si-segueix-amb-vida-un-sol-dels-seus-pentagrames-1" href="contexts-and-engravers-_002d-displaying-a-whole-grandstaff-system-if-only-one-of-its-staves-is-alive.ca.html">Mostrar un sistema GrandStaff complet si segueix amb vida un sol dels seus pentagrames</a></li>
+    <li><a id="toc-Els-gravadors_002c-un-per-un" href="contexts-and-engravers-_002d-engravers-one-by-one.ca.html">Els gravadors, un per un</a></li>
+    <li><a id="toc-Linies-de-reixeta_003a-modificar-el-seu-aspecte-1" href="contexts-and-engravers-_002d-grid-lines_003a-changing-their-appearance.ca.html">Línies de reixeta: modificar el seu aspecte</a></li>
+    <li><a id="toc-Linies-de-reixeta_003a-destacar-ritmes-i-la-relacio-temporal-entre-notes-1" href="contexts-and-engravers-_002d-grid-lines_003a-emphasizing-rhythms-and-notes-synchronization.ca.html">Línies de reixeta: destacar ritmes i la relació temporal entre notes</a></li>
+    <li><a id="toc-Measure-counters-3" href="contexts-and-engravers-_002d-measure-counters.ca.html">Measure counters</a></li>
+    <li><a id="toc-Measure-spanner-1" href="contexts-and-engravers-_002d-measure-spanner.ca.html">Measure spanner</a></li>
+    <li><a id="toc-Disposicio-Mensurstriche-_0028linies-divisories-entre-pentagrames_0029-2" href="contexts-and-engravers-_002d-mensurstriche-layout-_0028bar-lines-between-the-staves_0029.ca.html">Disposició Mensurstriche (línies divisòries entre pentagrames)</a></li>
+    <li><a id="toc-Niuat-de-grups-de-pentagrames-1" href="contexts-and-engravers-_002d-nesting-staves.ca.html">Niuat de grups de pentagrames</a></li>
+    <li><a id="toc-Permetre-salts-de-linia-dins-de-grups-especials-amb-barra-1" href="contexts-and-engravers-_002d-permitting-line-breaks-within-beamed-tuplets.ca.html">Permetre salts de línia dins de grups especials amb barra</a></li>
+    <li><a id="toc-Print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note-2" href="contexts-and-engravers-_002d-print-chord-names-with-same-root-and-different-bass-as-slash-and-bass-note.ca.html">Print chord names with same root and different bass as slash and bass note</a></li>
+    <li><a id="toc-Impressio-de-marques-d_0027assaig-en-qualsevol-pentagrama-1" href="contexts-and-engravers-_002d-printing-marks-on-every-staff.ca.html">Impressió de marques d&rsquo;assaig en qualsevol pentagrama</a></li>
+    <li><a id="toc-Impressio-de-musica-que-tingui-compassos-en-cada-pentagrama-2" href="contexts-and-engravers-_002d-printing-music-with-different-time-signatures.ca.html">Impressió de música que tingui compassos en cada pentagrama</a></li>
+    <li><a id="toc-Supressio-dels-nombres-de-compas-de-tota-la-partitura-1" href="contexts-and-engravers-_002d-removing-bar-numbers-from-a-score.ca.html">Supressió dels nombres de compàs de tota la partitura</a></li>
+    <li><a id="toc-Us-del-corxet-recte-al-comencament-d_0027un-grup-de-pentagrames-1" href="contexts-and-engravers-_002d-use-square-bracket-at-the-start-of-a-staff-group.ca.html">Us del corxet recte al començament d&rsquo;un grup de pentagrames</a></li>
+    <li><a id="toc-Using-mark-lines-in-a-Frenched-score-1" href="contexts-and-engravers-_002d-using-mark-lines-in-a-frenched-score.ca.html">Using mark lines in a Frenched score</a></li>
+    <li><a id="toc-Using-tags-to-produce-mensural-and-modern-music-from-the-same-source-2" href="contexts-and-engravers-_002d-using-tags-to-produce-mensural-and-modern-music-from-the-same-source.ca.html">Using tags to produce mensural and modern music from the same source</a></li>
+    <li><a id="toc-Estrofa-per-a-solista-i-tornada-a-dues-veus-1" href="contexts-and-engravers-_002d-vocal-ensemble-template-with-verse-and-refrain.ca.html">Estrofa per a solista i tornada a dues veus</a></li>
+    <li><a id="toc-Corxets-de-primera-i-segona-vegada-a-sota-dels-acords-3" href="contexts-and-engravers-_002d-volta-below-chords.ca.html">Corxets de primera i segona vegada a sota dels acords</a></li>
+    <li><a id="toc-Volta-brackets-in-multiple-staves-2" href="contexts-and-engravers-_002d-volta-brackets-in-multiple-staves.ca.html">Volta brackets in multiple staves</a></li>
+  </ul></li>
+  <li><a id="toc-Tweaks-and-overrides" href="tweaks-and-overrides.ca.html">19 Tweaks and overrides</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Afegir-una-indicacio-d_0027octava-alta-a-una-sola-veu-1" href="tweaks-and-overrides-_002d-adding-an-ottava-marking-to-a-single-voice.ca.html">Afegir una indicació d&rsquo;octava alta a una sola veu</a></li>
+    <li><a id="toc-Afegir-enllacos-als-objectes-1" href="tweaks-and-overrides-_002d-adding-links-to-objects.ca.html">Afegir enllaços als objectes</a></li>
+    <li><a id="toc-Adding-markups-in-a-tablature-3" href="tweaks-and-overrides-_002d-adding-markups-in-a-tablature.ca.html">Adding markups in a tablature</a></li>
+    <li><a id="toc-Afegir-marques-de-temps-a-glissandos-llargs-1" href="tweaks-and-overrides-_002d-adding-timing-marks-to-long-glissandi.ca.html">Afegir marques de temps a glissandos llargs</a></li>
+    <li><a id="toc-Ajustament-d_0027espaiat-de-les-notes-d_0027adorn-1" href="tweaks-and-overrides-_002d-adjusting-grace-note-spacing.ca.html">Ajustament d&rsquo;espaiat de les notes d&rsquo;adorn</a></li>
+    <li><a id="toc-Adjusting-slur-positions-vertically-1" href="tweaks-and-overrides-_002d-adjusting-slur-positions-vertically.ca.html">Adjusting slur positions vertically</a></li>
+    <li><a id="toc-Adjusting-vertical-spacing-of-lyrics-2" href="tweaks-and-overrides-_002d-adjusting-vertical-spacing-of-lyrics.ca.html">Adjusting vertical spacing of lyrics</a></li>
+    <li><a id="toc-Aligning-text-marks-to-notes-1" href="tweaks-and-overrides-_002d-aligning-text-marks-to-notes.ca.html">Aligning text marks to notes</a></li>
+    <li><a id="toc-Alterar-la-longitud-de-les-pliques-unides-per-una-barra-1" href="tweaks-and-overrides-_002d-altering-the-length-of-beamed-stems.ca.html">Alterar la longitud de les pliques unides per una barra</a></li>
+    <li><a id="toc-Numeracio-de-compassos-alternativa-2" href="tweaks-and-overrides-_002d-alternative-bar-numbering.ca.html">Numeració de compassos alternativa</a></li>
+    <li><a id="toc-Claus-d_0027analisis-a-sobre-del-pentagrama-1" href="tweaks-and-overrides-_002d-analysis-brackets-above-the-staff.ca.html">Claus d&rsquo;anàlisis a sobre del pentagrama</a></li>
+    <li><a id="toc-Analysis-brackets-with-labels-2" href="tweaks-and-overrides-_002d-analysis-brackets-with-labels.ca.html">Analysis brackets with labels</a></li>
+    <li><a id="toc-Lligadures-asimetriques-1" href="tweaks-and-overrides-_002d-asymmetric-slurs.ca.html">Lligadures asimètriques</a></li>
+    <li><a id="toc-Breaking-horizontal-alignment-of-dynamics-and-textscripts" href="tweaks-and-overrides-_002d-breaking-horizontal-alignment-of-dynamics-and-textscripts.ca.html">Breaking horizontal alignment of dynamics and textscripts</a></li>
+    <li><a id="toc-Breaking-vertical-alignment-of-dynamics-and-textscripts" href="tweaks-and-overrides-_002d-breaking-vertical-alignment-of-dynamics-and-textscripts.ca.html">Breaking vertical alignment of dynamics and textscripts</a></li>
+    <li><a id="toc-Caesura-_0028_201crailtracks_201d_0029-with-fermata-1" href="tweaks-and-overrides-_002d-caesura-_0028_201crailtracks_201d_0029-with-fermata.ca.html">Caesura (&ldquo;railtracks&rdquo;) with fermata</a></li>
+    <li><a id="toc-Changing-a-single-note_0027s-size-in-a-chord-3" href="tweaks-and-overrides-_002d-changing-a-single-note_0027s-size-in-a-chord.ca.html">Changing a single note&rsquo;s size in a chord</a></li>
+    <li><a id="toc-Changing-beam-thickness-and-spacing" href="tweaks-and-overrides-_002d-changing-beam-thickness-and-spacing.ca.html">Changing beam thickness and spacing</a></li>
+    <li><a id="toc-Canviar-la-forma-dels-silencis-multicompas-1" href="tweaks-and-overrides-_002d-changing-form-of-multi_002dmeasure-rests.ca.html">Canviar la forma dels silencis multicompàs</a></li>
+    <li><a id="toc-Modificacio-de-propietats-per-a-objetes-grafics-individuals" href="tweaks-and-overrides-_002d-changing-properties-for-individual-grobs.ca.html">Modificació de propietats per a objetes gràfics individuals</a></li>
+    <li><a id="toc-Canviar-el-text-i-els-estils-d_0027objecte-d_0027extensio-per-a-les-indicacions-dinamiques-textuals-1" href="tweaks-and-overrides-_002d-changing-text-and-spanner-styles-for-text-dynamics.ca.html">Canviar el text i els estils d&rsquo;objecte d&rsquo;extensió per a les indicacions dinàmiques textuals</a></li>
+    <li><a id="toc-Canviar-la-familia-de-tipus-de-lletra-predeterminada-per-al-text-1" href="tweaks-and-overrides-_002d-changing-the-default-text-font-family.ca.html">Canviar la família de tipus de lletra predeterminada per al text</a></li>
+    <li><a id="toc-Modificar-la-mida-de-la-pauta-1" href="tweaks-and-overrides-_002d-changing-the-staff-size.ca.html">Modificar la mida de la pauta</a></li>
+    <li><a id="toc-Canviar-el-tempo-sense-indicacio-metronomica-1" href="tweaks-and-overrides-_002d-changing-the-tempo-without-a-metronome-mark.ca.html">Canviar el tempo sense indicació metronòmica</a></li>
+    <li><a id="toc-Modificar-el-text-de-las-indicacions-de-pedal-1" href="tweaks-and-overrides-_002d-changing-the-text-for-sustain-markings.ca.html">Modificar el text de las indicacions de pedal</a></li>
+    <li><a id="toc-Controlar-la-visibilitat-dels-objectes-d_0027extensio-despres-d_0027un-salt-de-linia-1" href="tweaks-and-overrides-_002d-controlling-spanner-visibility-after-a-line-break.ca.html">Controlar la visibilitat dels objectes d&rsquo;extensió després d&rsquo;un salt de línia</a></li>
+    <li><a id="toc-Controlling-the-appearance-of-tremolo-slashes-1" href="tweaks-and-overrides-_002d-controlling-the-appearance-of-tremolo-slashes.ca.html">Controlling the appearance of tremolo slashes</a></li>
+    <li><a id="toc-Controlar-l_0027ordenacio-vertical-de-les-inscripcions-1" href="tweaks-and-overrides-_002d-controlling-the-vertical-ordering-of-scripts.ca.html">Controlar l&rsquo;ordenació vertical de les inscripcions</a></li>
+    <li><a id="toc-Control-de-la-visibilitat-dels-corxets-de-grup-especial-1" href="tweaks-and-overrides-_002d-controlling-tuplet-bracket-visibility.ca.html">Control de la visibilitat dels corxets de grup especial</a></li>
+    <li><a id="toc-Crear-un-grupet-d_0027anticipacio-2" href="tweaks-and-overrides-_002d-creating-a-delayed-turn.ca.html">Crear un grupet d&rsquo;anticipació</a></li>
+    <li><a id="toc-Creacio-d_0027armadures-personalitzades-3" href="tweaks-and-overrides-_002d-creating-custom-key-signatures.ca.html">Creació d&rsquo;armadures personalitzades</a></li>
+    <li><a id="toc-Crear-elements-de-extensio-textuals-2" href="tweaks-and-overrides-_002d-creating-text-spanners.ca.html">Crear elements de extensió textuals</a></li>
+    <li><a id="toc-Cross_002dstaff-chords-_002d_002d-beaming-problems-workaround-2" href="tweaks-and-overrides-_002d-cross_002dstaff-chords-_002d_002d-beaming-problems-workaround.ca.html">Cross-staff chords &ndash; beaming problems workaround</a></li>
+    <li><a id="toc-Pliques-de-pentagrama-creuat-2" href="tweaks-and-overrides-_002d-cross_002dstaff-stems.ca.html">Pliques de pentagrama creuat</a></li>
+    <li><a id="toc-Custos-1" href="tweaks-and-overrides-_002d-custodes.ca.html">Custos</a></li>
+    <li><a id="toc-Personalitzar-els-diagrames-de-posicions-1" href="tweaks-and-overrides-_002d-customizing-fretboard-fret-diagrams.ca.html">Personalitzar els diagrames de posicions</a></li>
+    <li><a id="toc-Personalitzar-diagrames-de-posicions-de-marcatge-1" href="tweaks-and-overrides-_002d-customizing-markup-fret-diagrams.ca.html">Personalitzar diagrames de posicions de marcatge</a></li>
+    <li><a id="toc-Mostrar-claudator-o-clau-en-grups-d_0027un-sol-pentagrama-1" href="tweaks-and-overrides-_002d-display-bracket-with-only-one-staff-in-a-system.ca.html">Mostrar claudàtor o clau en grups d&rsquo;un sol pentagrama</a></li>
+    <li><a id="toc-Imprimir-l_0027arbre-genealogic-d_0027un-grob" href="tweaks-and-overrides-_002d-displaying-grob-ancestry.ca.html">Imprimir l&rsquo;arbre genealògic d&rsquo;un grob</a></li>
+    <li><a id="toc-Harmonics-amb-puntet-1" href="tweaks-and-overrides-_002d-dotted-harmonics.ca.html">Harmònics amb puntet</a></li>
+    <li><a id="toc-Rodejar-els-objectes-grafics-amb-rectangles-1" href="tweaks-and-overrides-_002d-drawing-boxes-around-grobs.ca.html">Rodejar els objectes gràfics amb rectangles</a></li>
+    <li><a id="toc-Rodejar-diversos-objectes-amb-una-circumferencia-1" href="tweaks-and-overrides-_002d-drawing-circles-around-various-objects.ca.html">Rodejar diversos objectes amb una circumferència</a></li>
+    <li><a id="toc-Dynamics-spanner-with-custom-text-1" href="tweaks-and-overrides-_002d-dynamics-spanner-with-custom-text.ca.html">Dynamics spanner with custom text</a></li>
+    <li><a id="toc-Extending-a-trill-spanner-1" href="tweaks-and-overrides-_002d-extending-a-trill-spanner.ca.html">Extending a trill spanner</a></li>
+    <li><a id="toc-Estendre-glissandos-sobre-repeticions-1" href="tweaks-and-overrides-_002d-extending-glissandi-across-repeats.ca.html">Estendre glissandos sobre repeticions</a></li>
+    <li><a id="toc-Ajustament-fi-de-les-linies-de-pedal-1" href="tweaks-and-overrides-_002d-fine_002dtuning-pedal-brackets.ca.html">Ajustament fi de les línies de pedal</a></li>
+    <li><a id="toc-Flat-ties-1" href="tweaks-and-overrides-_002d-flat-ties.ca.html">Flat ties</a></li>
+    <li><a id="toc-Force-a-cancellation-natural-before-accidentals-1" href="tweaks-and-overrides-_002d-force-a-cancellation-natural-before-accidentals.ca.html">Force a cancellation natural before accidentals</a></li>
+    <li><a id="toc-Forcar-el-desplacament-horitzontal-de-les-notes-1" href="tweaks-and-overrides-_002d-forcing-horizontal-shift-of-notes.ca.html">Forçar el desplaçament horitzontal de les notes</a></li>
+    <li><a id="toc-Diagrames-de-posicions-d_0027acord_002c-explicats-i-desenvolupats-1" href="tweaks-and-overrides-_002d-fret-diagrams-explained-and-developed.ca.html">Diagrames de posicions d&rsquo;acord, explicats i desenvolupats</a></li>
+    <li><a id="toc-Generate-special-note-head-shapes-1" href="tweaks-and-overrides-_002d-generate-special-note-head-shapes.ca.html">Generate special note head shapes</a></li>
+    <li><a id="toc-Generar-claudators-personalitzats-1" href="tweaks-and-overrides-_002d-generating-custom-flags.ca.html">Generar claudàtors personalitzats</a></li>
+    <li><a id="toc-Glissando-per-sota-d_0027una-objecte-grafic-2" href="tweaks-and-overrides-_002d-glissandi-can-skip-grobs.ca.html">Glissando per sota d&rsquo;una objecte gràfic</a></li>
+    <li><a id="toc-Reguladors-amb-diferents-estils-de-linia-1" href="tweaks-and-overrides-_002d-hairpins-with-different-line-styles.ca.html">Reguladors amb diferents estils de línia</a></li>
+    <li><a id="toc-Horizontally-aligning-custom-dynamics-like-_201cpiu-f_201d-1" href="tweaks-and-overrides-_002d-horizontally-aligning-custom-dynamics-like-_201cpiu-f_201d.ca.html#tweaks-and-overrides-_002d-horizontally-aligning-custom-dynamics-like-_201cpi_00f9-f_201d">Horizontally aligning custom dynamics like &ldquo;più f&rdquo;</a></li>
+    <li><a id="toc-Com-canviar-la-posicio-d_0027un-diagrama-de-posicions-1" href="tweaks-and-overrides-_002d-how-to-change-fret-diagram-position.ca.html">Com canviar la posició d&rsquo;un diagrama de posicions</a></li>
+    <li><a id="toc-Inserir-una-cesura-1" href="tweaks-and-overrides-_002d-inserting-a-caesura.ca.html">Inserir una cesura</a></li>
+    <li><a id="toc-Mantenir-la-mida-del-simbol-en-els-canvis-de-clau-1" href="tweaks-and-overrides-_002d-keep-change-clefs-full_002dsized.ca.html">Mantenir la mida del símbol en els canvis de clau</a></li>
+    <li><a id="toc-Puntes-de-fletxa-per-a-les-linies-1" href="tweaks-and-overrides-_002d-line-arrows.ca.html">Puntes de fletxa per a les línies</a></li>
+    <li><a id="toc-Making-an-object-invisible-using-_005chide-2" href="tweaks-and-overrides-_002d-making-an-object-invisible-using-_005chide.ca.html">Making an object invisible using \hide</a></li>
+    <li><a id="toc-Making-glissandi-breakable-1" href="tweaks-and-overrides-_002d-making-glissandi-breakable.ca.html">Making glissandi breakable</a></li>
+    <li><a id="toc-Control-manual-de-les-posicions-de-les-barres-1" href="tweaks-and-overrides-_002d-manually-controlling-beam-positions.ca.html">Control manual de les posicions de les barres</a></li>
+    <li><a id="toc-Measure_002dcentered-bar-numbers" href="tweaks-and-overrides-_002d-measure_002dcentered-bar-numbers.ca.html">Measure-centered bar numbers</a></li>
+    <li><a id="toc-Disposicio-Mensurstriche-_0028linies-divisories-entre-pentagrames_0029-3" href="tweaks-and-overrides-_002d-mensurstriche-layout-_0028bar-lines-between-the-staves_0029.ca.html">Disposició Mensurstriche (línies divisòries entre pentagrames)</a></li>
+    <li><a id="toc-Modifying-the-ottava-spanner-slope-2" href="tweaks-and-overrides-_002d-modifying-the-ottava-spanner-slope.ca.html">Modifying the ottava spanner slope</a></li>
+    <li><a id="toc-Desplacament-de-les-notes-amb-puntet-en-polifonia-2" href="tweaks-and-overrides-_002d-moving-dotted-notes-in-polyphony.ca.html">Desplaçament de les notes amb puntet en polifonia</a></li>
+    <li><a id="toc-Desplacament-de-les-lligadures-d_0027expressio-verticalment-1" href="tweaks-and-overrides-_002d-moving-slur-positions-vertically.ca.html">Desplaçament de les lligadures d&rsquo;expressió verticalment</a></li>
+    <li><a id="toc-Niuat-de-grups-de-pentagrames-2" href="tweaks-and-overrides-_002d-nesting-staves.ca.html">Niuat de grups de pentagrames</a></li>
+    <li><a id="toc-Modificacio-d_0027articulacions-de-diversos-tipus" href="tweaks-and-overrides-_002d-overriding-articulations-by-type.ca.html">Modificació d&rsquo;articulacions de diversos tipus</a></li>
+    <li><a id="toc-Visibilitat-del-comptador-de-repeticions-de-tipus-percentatge-1" href="tweaks-and-overrides-_002d-percent-repeat-count-visibility.ca.html">Visibilitat del comptador de repeticions de tipus percentatge</a></li>
+    <li><a id="toc-Posicionar-simbols-d_0027arpegi-1" href="tweaks-and-overrides-_002d-positioning-arpeggios.ca.html">Posicionar símbols d&rsquo;arpegi</a></li>
+    <li><a id="toc-Posicionament-precis-d_0027indicacions-de-digitacio-1" href="tweaks-and-overrides-_002d-positioning-fingering-indications-precisely.ca.html">Posicionament precís d&rsquo;indicacions de digitació</a></li>
+    <li><a id="toc-Posicionar-els-silencis-multicompas-1" href="tweaks-and-overrides-_002d-positioning-multi_002dmeasure-rests.ca.html">Posicionar els silencis multicompàs</a></li>
+    <li><a id="toc-Situar-els-elements-de-marcatge-de-text-por-dins-de-les-lligadures-2" href="tweaks-and-overrides-_002d-positioning-text-markups-inside-slurs.ca.html">Situar els elements de marcatge de text por dins de les lligadures</a></li>
+    <li><a id="toc-Impressio-de-nombre-de-compas-dins-de-rectangles-o-circumferencies-1" href="tweaks-and-overrides-_002d-printing-bar-numbers-inside-boxes-or-circles.ca.html">Impressió de nombre de compàs dins de rectangles o circumferències</a></li>
+    <li><a id="toc-Impressio-d_0027indicacions-de-metronom-i-lletres-d_0027assaig-a-sota-del-pentagrama-2" href="tweaks-and-overrides-_002d-printing-metronome-and-rehearsal-marks-below-the-staff.ca.html">Impressió d&rsquo;indicacions de metrònom i lletres d&rsquo;assaig a sota del pentagrama</a></li>
+    <li><a id="toc-Impressio-dels-noms-de-les-notes-amb-o-sense-indicacio-de-l_0027octava" href="tweaks-and-overrides-_002d-printing-note-names-with-and-without-an-octave-marker.ca.html">Impressió dels noms de les notes amb o sense indicació de l&rsquo;octava</a></li>
+    <li><a id="toc-Printing-tuplet-brackets-on-the-note-head-side-1" href="tweaks-and-overrides-_002d-printing-tuplet-brackets-on-the-note-head-side.ca.html">Printing tuplet brackets on the note head side</a></li>
+    <li><a id="toc-Espaiat-de-les-notes-estrictament-proporcional" href="tweaks-and-overrides-_002d-proportional-strict-notespacing.ca.html">Espaiat de les notes estrictament proporcional</a></li>
+    <li><a id="toc-Removing-brace-on-first-line-of-piano-score-2" href="tweaks-and-overrides-_002d-removing-brace-on-first-line-of-piano-score.ca.html">Removing brace on first line of piano score</a></li>
+    <li><a id="toc-Treure-les-barres-de-compas-entre-els-pentagrames-d_0027un-StaffGroup-PianoStaff-o-GrandStaff-1" href="tweaks-and-overrides-_002d-removing-connecting-bar-lines-on-staffgroup_002c-pianostaff_002c-or-grandstaff.ca.html">Treure les barres de compàs entre els pentagrames d&rsquo;un StaffGroup PianoStaff o GrandStaff</a></li>
+    <li><a id="toc-Supressio-de-la-primera-linia-buida-1" href="tweaks-and-overrides-_002d-removing-the-first-empty-line.ca.html">Supressió de la primera línia buida</a></li>
+    <li><a id="toc-Estils-de-silencis-2" href="tweaks-and-overrides-_002d-rest-styles.ca.html">Estils de silencis</a></li>
+    <li><a id="toc-Barres-ritmiques-1" href="tweaks-and-overrides-_002d-rhythmic-slashes.ca.html">Barres rítmiques</a></li>
+    <li><a id="toc-Separar-les-cancel_002alacions-de-tonalitat-dels-canvis-d_0027armadura-1" href="tweaks-and-overrides-_002d-separating-key-cancellations-from-key-signature-changes.ca.html">Separar les cancel·lacions de tonalitat dels canvis d&rsquo;armadura</a></li>
+    <li><a id="toc-Establir-el-comportament-dels-reguladors-a-les-barres-de-compas-1" href="tweaks-and-overrides-_002d-setting-hairpin-behavior-at-bar-lines.ca.html">Establir el comportament dels reguladors a les barres de compàs</a></li>
+    <li><a id="toc-Fixacio-d_0027un-separador-entre-els-sistemes-1" href="tweaks-and-overrides-_002d-setting-system-separators.ca.html">Fixació d&rsquo;un separador entre els sistemes</a></li>
+    <li><a id="toc-Shape-individual-ties-in-chords-1" href="tweaks-and-overrides-_002d-shape-individual-ties-in-chords.ca.html">Shape individual ties in chords</a></li>
+    <li><a id="toc-Impressio-de-la-mateixa-articulacio-a-sobre-i-a-sota-de-la-mateixa-nota-o-acord-1" href="tweaks-and-overrides-_002d-showing-the-same-articulation-above-and-below-a-note-or-chord.ca.html">Impressió de la mateixa articulació a sobre i a sota de la mateixa nota o acord</a></li>
+    <li><a id="toc-Linies-d_0027extensio-per-a-nombre-de-corda-3" href="tweaks-and-overrides-_002d-string-number-extender-lines.ca.html">Línies d&rsquo;extensió per a nombre de corda</a></li>
+    <li><a id="toc-Evitar-els-advertiments-sobre-columnes-de-notes-que-xoquen-1" href="tweaks-and-overrides-_002d-suppressing-warnings-for-clashing-note-columns.ca.html">Evitar els advertiments sobre columnes de notes  que xoquen</a></li>
+    <li><a id="toc-Time-signature-in-brackets-2" href="tweaks-and-overrides-_002d-time-signature-in-brackets.ca.html">Time signature in brackets</a></li>
+    <li><a id="toc-Compas-entre-parentesis-2" href="tweaks-and-overrides-_002d-time-signature-in-parentheses.ca.html">Compàs entre parèntesis</a></li>
+    <li><a id="toc-Indicacio-de-compas-imprimint-sols-el-numerador-_0028en-lloc-de-la-fraccio_0029-1" href="tweaks-and-overrides-_002d-time-signature-printing-only-the-numerator-as-a-number-_0028instead-of-the-fraction_0029.ca.html">Indicació de compàs imprimint sols el numerador (en lloc de la fracció)</a></li>
+    <li><a id="toc-Tuplet-bracket-and-change-staff" href="tweaks-and-overrides-_002d-tuplet-bracket-and-change-staff.ca.html">Tuplet bracket and change staff</a></li>
+    <li><a id="toc-Ajustament-de-les-propietats-de-clau-2" href="tweaks-and-overrides-_002d-tweaking-clef-properties.ca.html">Ajustament de les propietats de clau</a></li>
+    <li><a id="toc-Ajustament-de-la-disposicio-de-les-notes-d_0027adorn-dins-de-la-musica-1" href="tweaks-and-overrides-_002d-tweaking-grace-layout-within-music.ca.html">Ajustament de la disposició de les notes d&rsquo;adorn dins de la música</a></li>
+    <li><a id="toc-Us-d_0027estils-alternatius-per-als-corxets-1" href="tweaks-and-overrides-_002d-using-alternative-flag-styles.ca.html">Ús d&rsquo;estils alternatius per als corxets</a></li>
+    <li><a id="toc-Utilitzar-ly_003agrob_002dobject-per-accedir-als-grobs-amb-_005ctweak" href="tweaks-and-overrides-_002d-using-ly_003agrob_002dobject-to-access-grobs-with-_005ctweak.ca.html">Utilitzar ly:grob-object per accedir als grobs amb \tweak</a></li>
+    <li><a id="toc-Us-de-l_0027ordre-_005ctweak-per-retocar-objectes-grafics-individuals" href="tweaks-and-overrides-_002d-using-the-_005ctweak-command-to-tweak-individual-grobs.ca.html">Ús de l&rsquo;ordre \tweak per retocar objectes gràfics individuals</a></li>
+    <li><a id="toc-Indicacions-dinamiques-i-textuals-alineades-verticalment" href="tweaks-and-overrides-_002d-vertically-aligned-dynamics-and-textscripts.ca.html">Indicacions dinàmiques i textuals alineades verticalment</a></li>
+    <li><a id="toc-Alineacio-vertical-de-la-lletra-i-els-compassos-d_0027ossia-1" href="tweaks-and-overrides-_002d-vertically-aligning-ossias-and-lyrics.ca.html">Alineació vertical de la lletra i els compassos d&rsquo;ossia</a></li>
+    <li><a id="toc-Vertically-aligning-stanza-numbers-of-different-staves-1" href="tweaks-and-overrides-_002d-vertically-aligning-stanza-numbers-of-different-staves.ca.html">Vertically aligning stanza numbers of different staves</a></li>
+    <li><a id="toc-Centrat-vertical-de-les-linies-de-baix-xifrat-emparellades-1" href="tweaks-and-overrides-_002d-vertically-centering-paired-figured-bass-extenders.ca.html">Centrat vertical de les línies de baix xifrat emparellades</a></li>
+  </ul></li>
+  <li><a id="toc-Paper-and-layout" href="paper-and-layout.ca.html">20 Paper and layout</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Alinear-i-centrar-els-noms-dels-instruments-1" href="paper-and-layout-_002d-aligning-and-centering-instrument-names.ca.html">Alinear i centrar els noms dels instruments</a></li>
+    <li><a id="toc-Arranging-separate-lyrics-on-a-single-line-1" href="paper-and-layout-_002d-arranging-separate-lyrics-on-a-single-line.ca.html">Arranging separate lyrics on a single line</a></li>
+    <li><a id="toc-Parts-de-llibre" href="paper-and-layout-_002d-book-parts.ca.html">Parts de llibre</a></li>
+    <li><a id="toc-Modificar-la-mida-de-la-pauta-2" href="paper-and-layout-_002d-changing-the-staff-size.ca.html">Modificar la mida de la pauta</a></li>
+    <li><a id="toc-Retallada-de-sistemes" href="paper-and-layout-_002d-clip-systems.ca.html">Retallada de sistemes</a></li>
+    <li><a id="toc-Crear-pentagrames-en-blanc-3" href="paper-and-layout-_002d-creating-blank-staves.ca.html">Crear pentagrames en blanc</a></li>
+    <li><a id="toc-Demonstrating-all-_005cheader-fields-1" href="paper-and-layout-_002d-demonstrating-all-_005cheader-fields.ca.html">Demonstrating all \header fields</a></li>
+    <li><a id="toc-Mostrar-un-sistema-GrandStaff-complet-si-segueix-amb-vida-un-sol-dels-seus-pentagrames-2" href="paper-and-layout-_002d-displaying-a-whole-grandstaff-system-if-only-one-of-its-staves-is-alive.ca.html">Mostrar un sistema GrandStaff complet si segueix amb vida un sol dels seus pentagrames</a></li>
+    <li><a id="toc-Fixacio-d_0027un-separador-entre-els-sistemes-2" href="paper-and-layout-_002d-setting-system-separators.ca.html">Fixació d&rsquo;un separador entre els sistemes</a></li>
+    <li><a id="toc-Index-general-_0028taul-de-continguts_0029" href="paper-and-layout-_002d-table-of-contents.ca.html">Índex general (taul de continguts)</a></li>
+    <li><a id="toc-Vertically-aligned-StaffGroups-without-connecting-SystemStartBar-1" href="paper-and-layout-_002d-vertically-aligned-staffgroups-without-connecting-systemstartbar.ca.html">Vertically aligned StaffGroups without connecting SystemStartBar</a></li>
+  </ul></li>
+  <li><a id="toc-Titles" href="titles.ca.html">21 Titles</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Afegir-la-data-actual-a-una-partitura-1" href="titles-_002d-adding-the-current-date-to-a-score.ca.html">Afegir la data actual a una partitura</a></li>
+    <li><a id="toc-Alinear-i-centrar-els-noms-dels-instruments-2" href="titles-_002d-aligning-and-centering-instrument-names.ca.html">Alinear i centrar els noms dels instruments</a></li>
+    <li><a id="toc-Demonstrating-all-_005cheader-fields-2" href="titles-_002d-demonstrating-all-_005cheader-fields.ca.html">Demonstrating all \header fields</a></li>
+    <li><a id="toc-Imprimir-el-numero-de-versio-1" href="titles-_002d-outputting-the-version-number.ca.html">Imprimir el número de versió</a></li>
+  </ul></li>
+  <li><a id="toc-Spacing" href="spacing.ca.html">22 Spacing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Adjusting-vertical-spacing-of-lyrics-3" href="spacing-_002d-adjusting-vertical-spacing-of-lyrics.ca.html">Adjusting vertical spacing of lyrics</a></li>
+    <li><a id="toc-Permetre-que-les-digitacions-s_0027imprimeixen-del-pentagrama-2" href="spacing-_002d-allowing-fingerings-to-be-printed-inside-the-staff.ca.html">Permetre que les digitacions s&rsquo;imprimeixen del pentagrama</a></li>
+    <li><a id="toc-Breaking-horizontal-alignment-of-dynamics-and-textscripts-1" href="spacing-_002d-breaking-horizontal-alignment-of-dynamics-and-textscripts.ca.html">Breaking horizontal alignment of dynamics and textscripts</a></li>
+    <li><a id="toc-Breaking-vertical-alignment-of-dynamics-and-textscripts-1" href="spacing-_002d-breaking-vertical-alignment-of-dynamics-and-textscripts.ca.html">Breaking vertical alignment of dynamics and textscripts</a></li>
+    <li><a id="toc-Harmonizing-bar-line-thickness-for-staves-with-different-sizes-1" href="spacing-_002d-harmonizing-bar-line-thickness-for-staves-with-different-sizes.ca.html">Harmonizing bar line thickness for staves with different sizes</a></li>
+    <li><a id="toc-Etiqueta-de-pagina" href="spacing-_002d-page-label.ca.html">Etiqueta de pàgina</a></li>
+    <li><a id="toc-Espaiat-de-les-notes-estrictament-proporcional-1" href="spacing-_002d-proportional-strict-notespacing.ca.html">Espaiat de les notes estrictament proporcional</a></li>
+    <li><a id="toc-Indicacions-dinamiques-i-textuals-alineades-verticalment-1" href="spacing-_002d-vertically-aligned-dynamics-and-textscripts.ca.html">Indicacions dinàmiques i textuals alineades verticalment</a></li>
+    <li><a id="toc-Alineacio-vertical-de-la-lletra-i-els-compassos-d_0027ossia-2" href="spacing-_002d-vertically-aligning-ossias-and-lyrics.ca.html">Alineació vertical de la lletra i els compassos d&rsquo;ossia</a></li>
+  </ul></li>
+  <li><a id="toc-MIDI" href="midi.ca.html">23 MIDI</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Modificar-la-sortida-MIDI-perque-tingui-un-canal-per-a-cada-veu-1" href="midi-_002d-changing-midi-output-to-one-channel-per-voice.ca.html">Modificar la sortida MIDI perquè tingui un canal per a cada veu</a></li>
+    <li><a id="toc-Canviar-el-tempo-sense-indicacio-metronomica-2" href="midi-_002d-changing-the-tempo-without-a-metronome-mark.ca.html">Canviar el tempo sense indicació metronòmica</a></li>
+    <li><a id="toc-Creacio-de-marques-dinamiques-a-la-sortida-MIDI" href="midi-_002d-creating-custom-dynamics-in-midi-output.ca.html">Creació de marques dinàmiques a la sortida MIDI</a></li>
+    <li><a id="toc-Demo-of-MIDI-instruments" href="midi-_002d-demo-of-midi-instruments.ca.html">Demo of MIDI instruments</a></li>
+    <li><a id="toc-Replacing-default-MIDI-instrument-equalization" href="midi-_002d-replacing-default-midi-instrument-equalization.ca.html">Replacing default MIDI instrument equalization</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Templates" href="templates.ca.html">24 Templates</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Ancient-notation-template-_002d-modern-transcription-of-Gregorian-music-2" href="templates-_002d-ancient-notation-template-_002d-modern-transcription-of-gregorian-music.ca.html#templates-_002d-ancient-notation-template-_2013-modern-transcription-of-gregorian-music">Ancient notation template – modern transcription of Gregorian music</a></li>
+    <li><a id="toc-Plantilla-de-salm-del-cant-anglica-1" href="templates-_002d-anglican-psalm-template.ca.html">Plantilla de salm del cant anglicà</a></li>
+    <li><a id="toc-Plantilla-per-a-himnes-1" href="templates-_002d-hymn-template.ca.html">Plantilla per a himnes</a></li>
+    <li class="toc_current"><a id="toc-Plantilla-per-a-combo-de-jazz-3" href="templates-_002d-jazz-combo-template.ca.html">Plantilla per a combo de jazz</a></li>
+    <li><a id="toc-Plantilla-d_0027orquestra-amb-cor-i-piano-3" href="templates-_002d-orchestra_002c-choir-and-piano-template.ca.html">Plantilla d&rsquo;orquestra amb cor i piano</a></li>
+    <li><a id="toc-Plantilla-de-piano-_0028senzilla_0029-1" href="templates-_002d-piano-template-_0028simple_0029.ca.html">Plantilla de piano (senzilla)</a></li>
+    <li><a id="toc-Plantilla-de-piano-amb-lletra-centrada-2" href="templates-_002d-piano-template-with-centered-lyrics.ca.html">Plantilla de piano amb lletra centrada</a></li>
+    <li><a id="toc-Plantilla-de-piano-amb-melodia-i-lletra-2" href="templates-_002d-piano-template-with-melody-and-lyrics.ca.html">Plantilla de piano amb melodia i lletra</a></li>
+    <li><a id="toc-Plantilla-de-cor-SATB_002c-a-quatre-pentagrames-1" href="templates-_002d-satb-choir-template-_002d_002d-four-staves.ca.html">Plantilla de cor SATB, a quatre pentagrames</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unic-amb-musica_002c-lletra-i-acords-2" href="templates-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-and-chords.ca.html">Plantilla de pentagrama únic amb música, lletra i acords</a></li>
+    <li><a id="toc-Single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets-2" href="templates-_002d-single_002dstaff-template-with-notes_002c-lyrics_002c-chords_002c-and-frets.ca.html">Single-staff template with notes, lyrics, chords, and frets</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unic-amb-musica-i-acords-1" href="templates-_002d-single_002dstaff-template-with-notes-and-chords.ca.html">Plantilla de pentagrama únic amb música i acords</a></li>
+    <li><a id="toc-Plantilla-de-pentagrama-unic-amb-notes-i-lletra-1" href="templates-_002d-single_002dstaff-template-with-notes-and-lyrics.ca.html">Plantilla de pentagrama únic amb notes i lletra</a></li>
+    <li><a id="toc-Plantilla-d_0027un-sol-pentagrama_002c-amb-notes-unicament" href="templates-_002d-single_002dstaff-template-with-only-notes.ca.html">Plantilla d&rsquo;un sol pentagrama, amb notes únicament</a></li>
+    <li><a id="toc-Plantilla-de-quartet-de-cordas-_0028senzilla_0029-1" href="templates-_002d-string-quartet-template-_0028simple_0029.ca.html">Plantilla de quartet de cordas (senzilla)</a></li>
+    <li><a id="toc-Plantilla-de-quartet-de-corda-amb-particel_002ales-independents-1" href="templates-_002d-string-quartet-template-with-separate-parts.ca.html">Plantilla de quartet de corda amb particel·les independents</a></li>
+    <li><a id="toc-Plantilla-de-conjunt-vocal-1" href="templates-_002d-vocal-ensemble-template.ca.html">Plantilla de conjunt vocal</a></li>
+    <li><a id="toc-Plantilla-de-conjunt-vocal-amb-reduccio-de-piano-automatica-2" href="templates-_002d-vocal-ensemble-template-with-automatic-piano-reduction.ca.html">Plantilla de conjunt vocal amb reducció de piano automàtica</a></li>
+    <li><a id="toc-Plantilla-per-a-conjunt-amb-lletres-alineades-a-sobre-i-a-sota-dels-pentagrames-2" href="templates-_002d-vocal-ensemble-template-with-lyrics-aligned-below-and-above-the-staves.ca.html">Plantilla per a conjunt amb lletres alineades a sobre i a sota dels pentagrames</a></li>
+    <li><a id="toc-Estrofa-per-a-solista-i-tornada-a-dues-veus-2" href="templates-_002d-vocal-ensemble-template-with-verse-and-refrain.ca.html">Estrofa per a solista i tornada a dues veus</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 9d074d78d7c25852afa87005e21c118630f4f83b
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca a Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

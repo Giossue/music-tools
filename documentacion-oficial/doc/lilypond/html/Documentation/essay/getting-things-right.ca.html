@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2002-2026 pels autors.
+
+La traducció de la següent nota de copyright s'ofereix com a
+cortesia per a les persones de parla no anglesa, però únicament la
+nota en anglès té validesa legal.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+S'atorga permís per copiar, distribuir i/o modificar aquest
+document sota els termes de la Llicència de Documentació Lliure de
+GNU, versió 1.1 o qualsevol posterior publicada per la Free
+Software Foundation; sense cap de les seccions invariants.
+S'inclou una còpia d'aquesta llicència dins de la secció titulada
+"Llicència de Documentació Lliure de GNU".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>Aconseguint que les coses siguin correctes (Assaig sobre gravat musical automatizat)</title>
+
+<meta name="description" content="Aconseguint que les coses siguin correctes (Assaig sobre gravat musical automatizat)">
+<meta name="keywords" content="Aconseguint que les coses siguin correctes (Assaig sobre gravat musical automatizat)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ca.html" rel="start" title="LilyPond &mdash; Assaig sobre gravat musical automatizat">
+<link href="index-of-commands-and-concepts.ca.html" rel="index" title="Appendix B Índex">
+<link href="essay_toc.ca.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="automated-engraving.ca.html" rel="up" title="1.3 Gravat automàtic">
+<link href="improvement-by-benchmarking.ca.html" rel="prev" title="Millores per comparació">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="ca" class="essay">
+<div id="main">
+<div class="unnumberedsubsec" id="getting-things-right">
+<table class="nav_table">
+<tr><td align="left">[<a href="music-engraving.ca.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Gravat musical </a>]</td><td align="center">[<a href="index.ca.html" title="Cover (top) of document" rel="start">Top</a>][<a href="essay_toc.ca.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ca.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="literature-list.ca.html" title="Next chapter"> Llista de referències bibliogràfiques &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="improvement-by-benchmarking.ca.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Millores per comparació </a>]</td><td align="center">[<a href="automated-engraving.ca.html" title="Up section" accesskey="u" rel="up">  Up: Gravat automàtic </a>]</td><td align="right">[<a href="building-software.ca.html" title="Next section in reading order" accesskey="n" rel="next"> Construcció de programari &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Aconseguint-que-les-coses-siguin-correctes"></span><h4 class="unnumberedsubsec">Aconseguint que les coses siguin correctes</h4>
+
+<p>També podem mesurar la capacitat del LilyPond per fer decisions de
+gravació de música comparant la sortida del Lilypond amb la
+sortida d&rsquo;un programari comercial.  En aquest cas hem escollit el
+Finale 2008, que és un dels processadors d&rsquo;edició musical més
+populars, particularment als Estats Units.  Sibelius és el seu
+rival més important i és particularment fort al mercat europeu.
+</p>
+<p>Per a la nostra comparació hem seleccionat la Fuga en sol menor el Clau
+Ben Temperat, llibre I, BWV 861, de Bach. El tema inicial és:
+</p>
+
+<a href="../77/lily-84b0de4f.ly">
+  <img align="middle"
+       border="0"
+       src="../77/lily-84b0de4f.png"
+       alt="[image of music]"></a>
+
+
+
+<p>Vam fer la nostra comparació gravant els primers set compassos de
+l&rsquo;obra (28&ndash;34 al Finale i al LilyPond.  Aquesta és la part de la
+peça on el tema retorna al stretto en tres parts i introdueix la
+secció de tancament.  A la versió del Finale, ens hem resistit a la
+temptació de fer ajustament a la sortida predeterminada atès que
+intentem mostrar les coses que cada programari fa correctament
+sense assistència.  Les úniques edicions importants que vam fer va
+ser ajustar la mida de la pàgina per concordar amb aquest assaig i
+forçar la música dins de dos sistemes per facilitar la
+comparació.  Per defecte, el Finale hauria gravat dos sistemes amb
+tres compassos cadascú i un sistema final d&rsquo;amplada completa,
+contenint un compàs únic.
+</p>
+<p>Moltes de les diferències dels dos gravats són visibles als
+compassos 28&ndash;29, com es mostra aquí amb Finale primer i Lilypond
+segon:
+</p>
+<img src="../pictures/bwv861mm28-29.png" alt="bwv861mm28-29">
+
+
+<a href="../b7/lily-b179776a.ly">
+  <img align="middle"
+       border="0"
+       src="../b7/lily-b179776a.png"
+       alt="[image of music]"></a>
+
+
+<p>Entre les limitacions de la sortida no editada del Finale es pot
+incloure:
+</p><ul>
+<li> La major part de les pliques s&rsquo;estenen més lluny que el
+pentagrama. Una plica que apunta cap al centre del pentagrama
+hauria de tenir una longitud d&rsquo;aproximadament un octau, però els
+gravadors ho fan més curt quan la plica apunta cap a fora del
+pentagrama a la música amb moltes veus.  La manera com el Finale
+gestiona les pliques es pot millorar fàcilment amb el seu
+connector Patterson Beams, però hem preferit saltar-nos aquest pas
+per a aquest example.
+</li><li> Finale no ajusta les posicions dels caps de nota que se
+superposen, cosa que fa extremadament difícil llegir la música
+quan les veus superior i inferior canvien de posició temporalment:
+
+
+<a href="../9f/lily-ca218ddd.ly">
+  <img align="middle"
+       border="0"
+       src="../9f/lily-ca218ddd.png"
+       alt="[image of music]"></a>
+
+
+</li><li> Finale ha posat tots els silencis a alçades fixes sobre la
+  partitura. L&rsquo;usuari té la llibertat d&rsquo;ajustar-ho com calgui,
+  però el programa no intenta considerar el contingut de l&rsquo;altra
+  veu.  Per casualitat, no hi ha col·lisions de veritat entre les
+  notes i els silencis en aquest example, però això te més a veure
+  amb les posicions de les notes que les posicions dels
+  silencis. En altres paraules, Bach ha de rebre més crèdit per
+  evitar una col·lisió completa que el Finale.
+
+</li></ul>
+
+<p>La intenció d&rsquo;aquest exemple no és suggerir que el Finale no es
+pot usar per produir resultats amb qualitat de publicació.  Al
+contrari, en mans d&rsquo;un usuari qualificat, ho pot fer, però
+requereix coneixements professionals i temps. Una de les
+diferències fonamentals entre el LilyPond i els processadors de
+música comercials és que el LilyPond intenta reduir la quantitat
+d&rsquo;intervenció humana a un mínim, mentre que altres paquets
+intenten proveir una interfície atractiva on fer aquest tipus
+d&rsquo;edicions.
+</p>
+<p>Un omissió particularment destacable que hem trobat al Final és un
+bemoll faltant al compàs 33:
+</p>
+<blockquote>
+<img src="../pictures/bwv861mm33-34-annotate.png" alt="bwv861mm33-34-annotate">
+</blockquote>
+
+<p>El símbol de bemoll cal per cancel·lar el bequadre al mateix
+compàs, però el Finale l&rsquo;ignora perquè apareix a una altra veu. De
+manera que, a més d&rsquo;executar un connector de pliques i de verificar
+la separació entre els caps de nota i els silencis, l&rsquo;usuari també
+ha de repassar cada compàs per alteracions entre veus per evitar
+que s&rsquo;aturi una pràctica per culpa d&rsquo;un error de gravat.
+</p>
+<p>Si teniu interès d&rsquo;examinar aquests exemples amb més detall, el
+fragment complete amb set compassos es pot trobar al final
+d&rsquo;aquest assaig amb quatre gravats diferents publicats. Una
+examinació propera mostra que hi ha una mica de variació
+acceptable entre els gravats a mans, però que el LilyPond es
+compara relativament bé amb aquest rang acceptable.  Encara hi ha
+algunes limitacions a la sortida del LilyPond, per exemple, sembla
+ser massa agressiva fent més curtes les pliques, de manera que hi
+ha lloc per més desenvolupament i ajustaments.
+</p>
+<p>Òbviament, el gravat depèn del judici humà sobre l&rsquo;aparença, per
+tant la intervenció humana no es pot reemplaçar completament. No
+obstant, la major part del treball avorrit es pot automatitzar.
+Si el Lilypond resol la major part de les situacions comunes
+correctament, això serà una millora molt gran sobre el programari
+existent.  Al llarg dels anys, el programari es pot refinar per
+fer més i més coses automàticament, de manera que la intervenció
+manual es necessita cada cop menys.  Als llocs on cal l&rsquo;ajustament
+manual, l&rsquo;estructura del LilyPond s&rsquo;ha dissenyat amb aquesta
+flexibilitat en ment.
+</p>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="music-engraving.ca.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Gravat musical </a>]</td><td align="center">[<a href="index.ca.html" title="Cover (top) of document" rel="start">Top</a>][<a href="essay_toc.ca.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ca.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="literature-list.ca.html" title="Next chapter"> Llista de referències bibliogràfiques &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="improvement-by-benchmarking.ca.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Millores per comparació </a>]</td><td align="center">[<a href="automated-engraving.ca.html" title="Up section" accesskey="u" rel="up">  Up: Gravat automàtic </a>]</td><td align="right">[<a href="building-software.ca.html" title="Next section in reading order" accesskey="n" rel="next"> Construcció de programari &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="getting-things-right.html">English</a>, <a href="getting-things-right.de.html">Deutsch</a>, <a href="getting-things-right.es.html">Español</a>, <a href="getting-things-right.fr.html">Français</a>, <a href="getting-things-right.it.html">Italiano</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.ca.html" title="Documentation Index">
+    &lt;&lt; Torna a l'índex de la documentació
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.ca.html#top" title="Cover (top) of document">
+    Assaig sobre gravat musical automatizat  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li class="toc_current"><a id="toc-Gravat-musical" href="music-engraving.ca.html">1 Gravat musical</a>
+  <ul class="no-bullet">
+    <li><a id="toc-La-historia-del-LilyPond" href="the-lilypond-story.ca.html">1.1 La història del LilyPond</a></li>
+    <li><a id="toc-Detalls-del-gravat" href="engraving-details.ca.html">1.2 Detalls del gravat</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Tipus-de-lletra-per-a-musica" href="music-fonts.ca.html">Tipus de lletra per a música</a></li>
+      <li><a id="toc-Espaiat-optic" href="optical-spacing.ca.html">Espaiat òptic</a></li>
+      <li><a id="toc-Linies-addicionals" href="ledger-lines.ca.html">Línies addicionals</a></li>
+      <li><a id="toc-Dimensionament-optic" href="optical-sizing.ca.html">Dimensionament òptic</a></li>
+      <li><a id="toc-Perque-treballar-tan-dur_003f" href="why-work-so-hard_003f.ca.html">Perquè treballar tan dur?</a></li>
+    </ul></li>
+    <li class="toc_current"><a id="toc-Gravat-automatic" href="automated-engraving.ca.html">1.3 Gravat automàtic</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Concursos-de-bellesa" href="beauty-contests.ca.html">Concursos de bellesa</a></li>
+      <li><a id="toc-Millores-per-comparacio" href="improvement-by-benchmarking.ca.html">Millores per comparació</a></li>
+      <li class="toc_current"><a id="toc-Aconseguint-que-les-coses-siguin-correctes" href="getting-things-right.ca.html">Aconseguint que les coses siguin correctes</a></li>
+    </ul></li>
+    <li><a id="toc-Construccio-de-programari" href="building-software.ca.html">1.4 Construcció de programari</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Representacio-de-la-musica" href="music-representation.ca.html">Representació de la música</a></li>
+      <li><a id="toc-Quins-simbols-s_0027han-de-gravar_003f" href="what-symbols-to-engrave_003f.ca.html">Quins símbols s&rsquo;han de gravar?</a></li>
+      <li><a id="toc-Arquitectura-flexible" href="flexible-architecture.ca.html">Arquitectura flexible</a></li>
+    </ul></li>
+    <li><a id="toc-Posant-el-LilyPond-a-treballar" href="putting-lilypond-to-work.ca.html">1.5 Posant el LilyPond a treballar</a></li>
+    <li><a id="toc-Exemples-de-gravat-_0028BWV-861_0029" href="engraved-examples-_0028bwv-861_0029.ca.html">1.6 Exemples de gravat (BWV 861)</a></li>
+  </ul></li>
+  <li><a id="toc-Llista-de-referencies-bibliografiques" href="literature-list.ca.html">2 Llista de referències bibliogràfiques</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Llista-bibliografica-resumida" href="short-literature-list.ca.html">2.1 Llista bibliogràfica resumida</a></li>
+    <li><a id="toc-Llista-bibliografica-ampliada" href="long-literature-list.ca.html">2.2 Llista bibliogràfica ampliada</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.ca.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Index" href="index-of-commands-and-concepts.ca.html" rel="index">Appendix B Índex</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 9d074d78d7c25852afa87005e21c118630f4f83b
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca a Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

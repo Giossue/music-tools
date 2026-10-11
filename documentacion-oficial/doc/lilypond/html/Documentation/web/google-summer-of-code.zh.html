@@ -1,0 +1,407 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2009-2026 by the authors.
+
+LilyPond 网站由本文件归档。
+
+Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License,
+Version 1.1 or any later version published by the Free Software
+Foundation; with no Invariant Sections.  A copy of the license is
+included in the section entitled "GNU Free Documentation
+License". -->
+<title>Google Summer of Code (LilyPond &ndash; 人人的乐谱软件)</title>
+
+<meta name="description" content="Google Summer of Code (LilyPond &ndash; 人人的乐谱软件)">
+<meta name="keywords" content="Google Summer of Code (LilyPond &ndash; 人人的乐谱软件)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.zh.html#top" rel="start" title="LilyPond &ndash; 人人的乐谱软件">
+<link href="web_toc.zh.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="community.zh.html" rel="up" title="社区">
+<link href="authors.zh.html" rel="next" title="作者">
+<link href="development.zh.html" rel="prev" title="开发">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-website.css">
+
+
+</head>
+
+<body lang="zh" class="web">
+<div id="main">
+<div class="unnumberedsec" id="google-summer-of-code">
+<hr>
+<span id="Google-Summer-of-Code"></span><h3 class="unnumberedsec">Google Summer of Code</h3>
+
+
+<div class="column-center-top">
+<span id="What-is-Google-Summer-of-Code_003f"></span><h4 class="subheading">What is Google Summer of Code?</h4>
+
+<p><a href="https://summerofcode.withgoogle.com/">GSoC</a> is a global
+program that offers stipends to contributors to write code for
+free software and open source projects.  Within a flexible time
+frame of three months or more, contributors work to complete a
+given task as part of the project&rsquo;s community and under the
+guidance of experienced mentors.  The program is an excellent
+opportunity for students and non-professionals to gain experience
+with real-world software development and make a contribution that
+benefits everyone.  It brings new contributors to LilyPond and
+enables people who are already involved to become more involved.
+LilyPond participates in GSoC as part of the
+<a href="https://www.gnu.org/">GNU project</a>.
+</p>
+<p>We had GSoC participants in 2012, 2015, 2016, 2017 and 2020.  This
+site is current for the 2023 program.
+</p>
+
+</div>
+
+<div class="column-center-middle-color2 bigger-subsubheadings">
+<span id="Project-Ideas-List"></span><h4 class="subheading">Project Ideas List</h4>
+
+<p>Below is a list of GSoC project ideas, but if you have other ideas
+for a project you are welcome to make a suggestion on our
+developer mailing list (see <a href="contact.zh.html">联系</a>).  There are a number of
+areas where LilyPond could be improved, and our development team
+is always willing to help those who would like to tackle a project
+similar to those listed below.  As mentor availability varies from
+project to project and from year to year it is wise to get in
+touch with us as early as possible.
+</p>
+<p>Note that we also have &ldquo;Community Mentors&rdquo;.  We aim at
+assigning one Community Mentor to each active project who is
+<em>not</em> responsible for discussing the implementation or
+reviewing the code.  Instead they will on the one hand discuss the
+<em>design</em> of the planned features from the (power) user
+perspective, and they will look after the communication between
+participant and mentor, and between the two and the community.
+</p>
+<p>A full list of all the current open issues can be found
+<a href="https://gitlab.com/lilypond/lilypond/-/issues">here</a>.
+</p>
+
+<span id="Adding-more-glyphs-to-LilyPond_0027s-Emmentaler-music-font"></span><h4 class="subsubheading">Adding more glyphs to LilyPond&rsquo;s Emmentaler music font</h4>
+
+<dl compact="compact">
+<dt><span><b>More SMuFL glyphs</b></span></dt>
+<dd><p>The <a href="https://www.w3.org/">World Wide Web (W3C) consortium</a>
+has been maintaining the
+<a href="https://w3c.github.io/smufl/latest/index.html">Standard
+Music Font Layout (SMuFL)</a> with a reference font called
+<a href="https://github.com/steinbergmedia/bravura">Bravura</a> since a
+few years; this font contains a large amount of glyphs not part of
+LilyPond&rsquo;s Emmentaler music font.  A mapping between LilyPond
+glyph names and SMuFL glyph names and encoding can be found in
+<a href="https://wolfgangsta.github.io/emmentaler-bravura/">this
+ongoing project</a>.
+</p>
+</dd>
+<dt><span><b>&lsquo;On&rsquo; and &lsquo;between&rsquo; staff-line variants</b></span></dt>
+<dd><p>For some glyphs it would be beneficial to have different glyphs,
+depending on whether they sit on a staff line or between two staff
+lines.  Examples are
+<a href="https://lilypond.org/doc/v2.24/Documentation/notation/note-heads#shape-note-heads">shaped note heads</a>.
+</p>
+</dd>
+<dt><span><b>Shorter and narrower variants of some glyphs</b></span></dt>
+<dd><p>For tight typesetting situations (i.e., only a small amount of
+horizontal space is available) it would help to have glyph
+variants that need less horizontal space, for example narrower
+accidentals
+(<a href="https://gitlab.com/lilypond/lilypond/-/issues/2141">issues
+#2141ff</a>).  Another, more specific example could be an ancient
+notation breve notehead coming in two variants (with a smaller or
+bigger &lsquo;hole&rsquo;).
+</p>
+</dd>
+</dl>
+
+<p><em>Difficulty:</em> easy to medium
+</p>
+<p><em>Requirements:</em> MetaFont/MetaPost, C++, good eye for details
+</p>
+<p><em>Recommended knowledge:</em> basic LilyPond knowledge
+</p>
+<p><em>Size:</em> 175h/350h, depending on the selected sub-tasks
+</p>
+<p><em>Mentor:</em> Werner Lemberg
+</p>
+
+<span id="Improve_002fExtend-Export-to-MusicXML"></span><h4 class="subsubheading">Improve/Extend Export to MusicXML</h4>
+
+<p>There is experimental support for exporting scores to MusicXML.
+So far there is limited coverage that should be extended, and the export
+should become more robust with regard to unconventionally organized input
+files.  Several strategies can be thought of in that regard.
+</p>
+<p>Significant progress in coverage has been made in a GSoC Project hosted
+by <a href="https://frescobaldi.org">Frescobaldi</a> in 2017, but there is
+still much to be done that could make a nice GSoC project.
+</p>
+<p>Working in this project will mainly be done in the
+<a href="https://github.com/wbsoft/python-ly">python-ly</a> repository.
+</p>
+<p><em>Difficulty:</em> easy to hard (depending on the targeted improvements)
+</p>
+<p><em>Size of project:</em> 175h/350h
+</p>
+<p><em>Requirements:</em> Python, MusicXML
+</p>
+<p><em>Mentor</em>: Peter Bjuhr (?)
+</p>
+
+<span id="Fix-Beaming-Patterns_002fBeam-Subdivisions-and-Tuplets"></span><h4 class="subsubheading">Fix Beaming Patterns/Beam Subdivisions and Tuplets</h4>
+
+<p>Subdivision is an important way to improve the readability of
+beamed music.  However, despite several attempts at fixing it
+LilyPond still does not always produce correct results.  In order
+to properly fix this issue it seems necessary to rewrite the
+responsible code from the ground up.  Much work has already been
+done assessing the issue (see
+<a href="https://lists.gnu.org/archive/html/lilypond-devel/2017-11/msg00037.html">this discussion</a> and
+<a href="https://gitlab.com/lilypond/lilypond/-/issues/5547">issue
+#5547</a>).
+</p>
+<p>In the course of this assessment it has been found that LilyPond&rsquo;s
+conception of <em>tuplets</em> is somewhat flawed as well (see
+<a href="https://lists.gnu.org/archive/html/bug-lilypond/2017-11/msg00016.html">this discussion</a>), and that this has to be fixed as well.
+</p>
+<p><em>Difficulty:</em> medium
+</p>
+<p><em>Size of project:</em> 350h
+</p>
+<p><em>Requirements:</em> C++
+</p>
+<p><em>Recommended knowledge:</em> Good musical and mathematical understanding
+of timing issues
+</p>
+<p><em>Mentors:</em> Carl Sorensen (?)
+</p>
+
+<span id="Support-for-Style-Sheets"></span><h4 class="subsubheading">Support for Style Sheets</h4>
+
+<p>LilyPond&rsquo;s engraving output can be tweaked to the least detail,
+and one important addition in recent years was the ability to use
+alternative notation fonts.  It is possible to create reusable
+modules for &ldquo;house styles&rdquo;, but this project aims at bringing
+this to a new level by creating a convenient extension package
+with support for creating, applying, and sharing modular style
+sheets.  We are looking for a hierarchical structure that allows
+to mix and match style elements for &ldquo;house&rdquo; (e.g.,
+&ldquo;my-personal-style&rdquo;, &ldquo;client-a&rdquo;, &ldquo;client-b&rdquo;, etc.),
+score type, paper size, etc.
+</p>
+<p>Work can be built upon the existing
+<a href="https://github.com/openlilylib/notation-fonts">notation-fonts</a>
+openLilyLib package.  We would like to see a further improvement of the
+loading mechanism for notation fonts (for example, a better separation
+of loading notation and text fonts) as part of the project, and optionally
+(this would involve working on Lilypond&rsquo;s C++ code) support for notation
+fonts that are installed system-wide.
+</p>
+<p><em>Difficulty:</em> medium
+</p>
+<p><em>Size of project:</em> 175h/350h
+</p>
+<p><em>Requirements:</em> Scheme, aesthetic competence
+</p>
+<p><em>Recommended:</em> sense of building hierarchical frameworks
+</p>
+<p><em>Optional:</em> C++ (for font loading internals)
+</p>
+<p><em>Mentor:</em> <em>Abraham Lee</em> (?)
+</p>
+<p><em>Community Mentor:</em> <em>Kieren MacMillan</em>
+</p>
+
+</div>
+
+
+<div class="column-center-middle-color2">
+<span id="Information-for-Applicants_002fParticipants"></span><h4 class="subheading">Information for Applicants/Participants</h4>
+
+<p><strong>For all GSoC issues related to LilyPond, please contact
+our &lsquo;lilypond-devel&rsquo; mailing list (see <a href="contact.zh.html">联系</a>)!</strong>
+</p>
+<p>In order to have a satisfying experience with GSoC applicants are
+strongly advised to thoroughly read the following recommendations.  Some
+of these are relevant for the application process, others for the time
+within the project.
+</p>
+<div class="keep-bullets">
+<ul>
+<li> Read all applicable information on the program&rsquo;s website,
+particularly the
+<a href="https://developers.google.com/open-source/gsoc/resources/manual">students&rsquo; manual</a>.  Make sure you fulfill all of Google&rsquo;s
+prerequisites and are willing to join the program as specified.
+
+</li><li> Please get in touch with us as soon as possible if you are interested in
+applying with a project.  Mentor availability may change without notice,
+project proposals may need fine-tuning, and many other reasons might
+require us to reject or ignore an application that hasn&rsquo;t been discussed
+before.
+
+</li><li> We do not know in advance how many &ldquo;slots&rdquo; we will have available for
+projects, so please be aware that you may find yourself in competition
+with other applicants or not.  Interested or even enthusiastic response
+from our mentors is no guarantee of eventually being accepted, and
+<em>not</em> being accepted does not necessarily indicate a negative
+evaluation of your application.  If we have to decide between different
+applicants there may be various aspects to consider.
+
+</li><li> Integration in the LilyPond community is a fundamental part of
+GSoC, and we expect our participators to make substantial efforts
+to become community members.  Within the <em>bonding period</em> we
+expect you to be active on our mailing lists, introducing yourself
+but also communicating about unrelated tasks.  This goes beyond
+the mere setting up of a working environment and familiarizing
+yourself with the relevant code, but we think it is crucial for
+the GSoC project to be mutually satisfying.
+
+</li><li> If you are accepted to the program you will have one mentor explicitly
+assigned to your project.  With this mentor you will have to agree upon
+a communication strategy, be it emails, chatrooms, issue trackers or
+voice/video chats.  Regular communication is absolutely crucial for the
+success of a GSoC project so you are stricly required to keep talking to
+your mentor.  But keep in mind that your mentor has explicitly taken
+over the responsibility for your project, and while unlike you he isn&rsquo;t
+paid for this activity you are still entitled to get regular attention
+from him.
+
+</li><li> In order to get support from your mentor you have to give him a chance
+to follow your progress and efforts.  Therefore it is important to
+regularly commit your changes to the versioning repository you are
+working on.  Don&rsquo;t hesitate making unfinished code available because you
+are afraid of criticism, and don&rsquo;t suppress questions because you think
+they might be considered stupid.  But ideally your code should at any
+time be accompanied by compatible testing code.  Your mentor may not be
+able to properly assess your code by only <em>reading</em> it without the
+opportunity to apply it in a real example.
+
+</li></ul>
+
+</div>
+
+<p>There is a list of inactive projects in the <a href="attic.zh.html">Attic</a>.  We list
+projects there that are still considered valuable but for which there
+are currently no mentors available.
+</p>
+
+</div>
+
+
+</div>
+<hr>
+
+<div id="footer">
+<p id="languages">
+Other languages: <a href="google-summer-of-code.html">English</a>, <a href="google-summer-of-code.de.html">Deutsch</a>, <a href="google-summer-of-code.es.html">Español</a>, <a href="google-summer-of-code.fr.html">Français</a>, <a href="google-summer-of-code.it.html">Italiano</a>, <a href="google-summer-of-code.ja.html">日本語</a>, <a href="google-summer-of-code.tr.html">Türkçe</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-LilyPond" href="index.zh.html">LilyPond</a></li>
+  <li><a id="toc-Jian-Jie-" href="introduction.zh.html">简介</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Te-Se-" href="features.zh.html">特色</a></li>
+    <li><a id="toc-LiZi-" href="examples.zh.html">例子</a></li>
+    <li><a id="toc-Zi-You-" href="freedom.zh.html">自由</a></li>
+    <li><a id="toc-Bei-Jing-" href="background.zh.html">背景</a></li>
+    <li><a id="toc-Zhi-Zuo-" href="productions.zh.html">制作</a></li>
+    <li><a id="toc-Ping-Jie-" href="reviews.zh.html">评价</a></li>
+    <li><a id="toc-WenBen-Shu-Ru-" href="text-input.zh.html">文本输入</a></li>
+    <li><a id="toc-Bian-Ji-Geng-Jian-Dan-" href="easier-editing.zh.html">编辑更简单</a></li>
+  </ul></li>
+  <li><a id="toc-Download" href="download.zh.html">Download</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Source" href="source.zh.html">Source</a></li>
+    <li><a id="toc-Old-downloads" href="old-downloads.zh.html">Old downloads</a></li>
+    <li><a id="toc-GPL" href="gpl.zh.html">GPL</a></li>
+  </ul></li>
+  <li><a id="toc-Shou-Ce-" href="manuals.zh.html">手册</a>
+  <ul class="no-bullet">
+    <li><a id="toc-XueXi-" href="learning.zh.html">学习</a></li>
+    <li><a id="toc-Zhu-Yu-Biao-" href="glossary.zh.html">术语表</a></li>
+    <li><a id="toc-WenZhang" href="essay.zh.html">文章</a></li>
+    <li><a id="toc-Ji-Pu-Fa-" href="notation.zh.html">记谱法</a></li>
+    <li><a id="toc-Shi-Yong-" href="usage.zh.html">使用</a></li>
+    <li><a id="toc-Pian-Duan-" href="snippets.zh.html">片断</a></li>
+    <li><a id="toc-Chang-Jian-Wen-Ti-" href="faq.zh.html">常见问题</a></li>
+    <li><a id="toc-Web" href="web.zh.html">Web</a></li>
+    <li><a id="toc-Bian-Hua-" href="changes.zh.html">变化</a></li>
+    <li><a id="toc-Kuo-Zhan-" href="extending.zh.html">扩展</a></li>
+    <li><a id="toc-Nei-Bu-Ji-Zhi-" href="internals.zh.html">内部机制</a></li>
+    <li><a id="toc-Suo-You-" href="all.zh.html">所有</a></li>
+    <li><a id="toc-FDL" href="fdl.zh.html">FDL</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-She-Qu-" href="community.zh.html">社区</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Lian-Xi-" href="contact.zh.html">联系</a></li>
+    <li><a id="toc-Xiao-LiZi-" href="tiny-examples.zh.html">小例子</a></li>
+    <li><a id="toc-Cuo-Wu-Bao-Gao-" href="bug-reports.zh.html">错误报告</a></li>
+    <li><a id="toc-Bang-Zhu-Wo-Men-" href="help-us.zh.html">帮助我们</a></li>
+    <li><a id="toc-Zan-Zhu-" href="sponsoring.zh.html">赞助</a></li>
+    <li><a id="toc-Kai-Fa-" href="development.zh.html">开发</a></li>
+    <li class="toc_current"><a id="toc-Google-Summer-of-Code" href="google-summer-of-code.zh.html">Google Summer of Code</a></li>
+    <li><a id="toc-Zuo-Zhe-" href="authors.zh.html">作者</a></li>
+    <li><a id="toc-Chu-Ban-Wu-" href="publications.zh.html">出版物</a></li>
+    <li><a id="toc-Xin-Wen-" href="news.zh.html">新闻</a></li>
+    <li><a id="toc-Attic" href="attic.zh.html">Attic</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: ebe492ca408fb0d9abf80b94c56197eef8dc2f09
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google 搜索">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="搜索">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

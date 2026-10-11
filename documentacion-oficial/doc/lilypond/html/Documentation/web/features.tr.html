@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2003-2026 by the authors.
+
+This file documents the LilyPond website.
+
+Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License,
+Version 1.1 or any later version published by the Free Software
+Foundation; with no Invariant Sections.  A copy of the license is
+included in the section entitled "GNU Free Documentation
+License". -->
+<title>Özellikler (LilyPond &ndash; Herkes için müzik notasyonu)</title>
+
+<meta name="description" content="Özellikler (LilyPond &ndash; Herkes için müzik notasyonu)">
+<meta name="keywords" content="Özellikler (LilyPond &ndash; Herkes için müzik notasyonu)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.tr.html#top" rel="start" title="LilyPond &ndash; Herkes için müzik notasyonu">
+<link href="web_toc.tr.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="introduction.tr.html" rel="up" title="Giriş">
+<link href="examples.tr.html" rel="next" title="Örnekler">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-website.css">
+
+
+</head>
+
+<body lang="tr" class="web">
+<div id="main">
+<div class="unnumberedsec" id="features">
+<hr>
+<span id="Ozellikler"></span><h3 class="unnumberedsec">Özellikler</h3>
+<div class="column-center-top">
+
+
+<span id="Mukemmel-klasik-notasyon"></span><h4 class="subheading">Mükemmel klasik notasyon</h4>
+
+<img class="float-right" src="../pictures/flat-design.png" alt="flat-design">
+
+<p>LilyPond, müzisyenlere kolay okunabilir zarif nota kağıtları üretme imkanı
+tanır.  Geliştirici topluluğu güzel notasyonlu müzikle sonuçlanan güçlü bir
+müzik notasyon yazılımı geliştirmek için binlerce saat harcamıştır.
+LilyPond&rsquo;un tüm stil ayarları, font tasarımları ve algoritmaları, el ile
+çizilmiş en iyi müzik notasyonundan ilham almıştır.  LilyPond çıktısı, en iyi
+notasyon ile hazırlanmış klasik partisyonlar ile aynı güce, dengeye ve zarif
+görünüme sahiptir.  Bu konu daha derin detaylar ile bölümümüzde açıklanmıştır:
+<a href="essay.tr.html">Essay</a>.
+</p>
+
+
+</div>
+
+<div class="column-center-top">
+<span id="Metin-girdisi-1"></span><h4 class="subheading">Metin girdisi</h4>
+
+<span id="Her-sey-acikca-belirtilmistir"></span><h4 class="subsubheading">Her şey açıkça belirtilmiştir</h4>
+
+<p>Lilypond, partisyonun <em>content</em>&rsquo;i hakkında bütün bilgileri içeren
+metin girdisini işler ve herhangi bir insan veya başka bir program tarafından
+kolaylıkla okunabilir.  İkili(binary) dosya depolaması ve menü öğelerinin
+arkasına gizlenmiş karmaşık ayarlar bulunmamaktadır.
+</p>
+<p>Bu konsept hakkında daha fazla bilgi için: <a href="text-input.tr.html">Metin girdisi</a>.
+</p>
+
+<span id="Ince-ayarlar-saglam-ve-takip-edilebilirdir"></span><h4 class="subsubheading">İnce ayarlar sağlam ve takip edilebilirdir</h4>
+
+<p>Eğer sayfa düzeninde herhangi bir şeyi değiştirmeniz gerekiyorsa, bu ince
+ayar insan tarafından okunabilir bir formda giriş dosyasında açıkça
+görünecektir, böylece her zaman daha önce yapmış olduğunuz değişikliği
+takip edebilirsiniz.  Eğer yanlışlıkla bir şeyi bozarsanız, bir <em>Undo</em>
+işlemine bağlı olmadan değişikliği kolayca geri alabilir veya
+değiştirebilirsiniz.
+</p>
+
+<span id="Metin-dosyalari-hataya-dayanikli-ve-gelecek-garantilidir"></span><h4 class="subsubheading">Metin dosyaları hataya dayanıklı ve gelecek garantilidir</h4>
+
+<p>Metin dosyaları dosya bozulmasına karşı çok sağlamdır.  Aynı zamanda insan
+tarafından okunabilir olduklarından, metin dosyalarını oluşturan programlara
+erişiminiz olmasa bile onları her zaman yorumlayabilirsiniz.
+</p>
+
+<span id="Partisyonlarinizi-versiyon-kontrolu-ile-yonetin"></span><h4 class="subsubheading">Partisyonlarınızı versiyon kontrolü ile yönetin</h4>
+
+<p>Metin dosyaları, versiyon kontrolü ile yönetilmek için uygundur.
+Bu yöntemi kullanarak, sınırsız ve seçici geri al/yinele mekanizmalarını
+ve partisyonlarınızın bütün geliştirme geçmişini deneyimleyebilirsiniz.
+Ayrıca versiyon kontrolü, size yeni (işbirlikçi) iş akışları da sunabilir.
+</p>
+
+</div>
+
+<div class="column-center-top">
+<span id="Kullanilabilirlik"></span><h4 class="subheading">Kullanılabilirlik</h4>
+
+<img class="float-right" src="../pictures/lilypond-book.png" alt="lilypond-book">
+
+
+<span id="Efektif-sayfa-duzeni-secenekleri"></span><h4 class="subsubheading">Efektif sayfa düzeni seçenekleri</h4>
+
+<p>Çıktıyı ayarlamakta daha az zaman harcayın; LilyPond biçimlendirmeyi
+başlangıçtan itibaren doğru bir şekilde yerine getirir.  Boşlukları kendisi
+belirler, sıkı ve uyumlu bir sayfa düzeni sağlamak için satırları ve sayfaları
+kendi başına bölümlendirir.  Şarkı sözleri, notalar ve akorlar arasındaki
+çatışmalar çözülür, notalar arasındaki bağlamalar otomatik olarak
+eğimlendirilir!
+</p>
+
+<span id="Muzigi-ve-metni-bir-araya-getirin"></span><h4 class="subsubheading">Müziği ve metni bir araya getirin</h4>
+
+<p>Müzik parçalarını kesme ve yapıştırma yapmadan metinlere ekleyin.  Müziği
+sorunsuz bir şekilde LaTeX veya HTML&rsquo;e entegre edin veya OpenOffice.org
+ve LibreOffice&rsquo;e
+<a href="https://extensions.services.openoffice.org/en/project/OOoLilyPond">OOoLilyPond</a>.
+eklentisi ile müzik ekleyin.  Ayrıca, çevrimdışı işbirliğini mümkün kılabilmek
+sebebiyle LilyPond kodunu çeşitli blog ve wikilere eklemek için eklentiler de
+mevcuttur.
+</p>
+
+<span id="Erisilebilirlik"></span><h4 class="subsubheading">Erişilebilirlik</h4>
+
+<p>Metin tabanlı girdi fiziksel engeli olan kullanıcılar için nota yazımını
+mümkün kılar.  Ortopedik engeli olan, klavyeyi veya bilgisayar faresini
+kontrol edemeyen kullanıcılar, LilyPond dosyalarını düzenlemek için konuşma
+tanıma yazılımlarını kullanabilirler.  Görme engeli olan  kullanıcılar ise
+ekran okuma ayzılımlarını kullanarak LilyPond dosyalarını yazabilirler &ndash;ki
+bu, grafik nota yazma programlarında imkansızdır. Etkileyici bir partisyona
+buradan göz atabilirsiniz:  <a href="examples.tr.html">Örnekler</a>.
+</p>
+<span id="Editor-cesitliligi"></span><h4 class="subsubheading">Editör çeşitliliği</h4>
+
+<p>Aktif olarak LilyPond kullanan birçok geliştirici LilyPond dosyalarını düzenleme
+sürecini daha hızlı ve efektif hale getirmeyi amaçlayan araçlar yazmışlardır; tek
+bir kullanıcı arayüzüne bağlı kalmazsınız, farklı görevler için farklı araçlar
+kullanabilirsiniz.  Hatta evde tam teşekküllü bir LilyPond editörü kullanabilir ve
+hareket halindeyken dosyaları düzenlemek için cep telefonunuzun not defteri uygulamasını
+kullanabilirsiniz.  Örnekler için <a href="easier-editing.tr.html">Daha Kolay Düzenleme</a> bölümüne bakabilirsiniz.
+</p>
+
+
+</div>
+
+<div class="column-center-top">
+
+<span id="Genisletilebilir-yazilim"></span><h4 class="subheading">Genişletilebilir yazılım</h4>
+
+<span id="Stil-sayfalarinin-kolayca-yonetilmesi"></span><h4 class="subsubheading">Stil sayfalarının kolayca yönetilmesi</h4>
+
+<p>Tüm düzen ayarları, kişisel tipografik tercihinize uyacak şekilde değiştirilebilir.
+Böylece LilyPond notalarının varsayılan görünümünü değiştiren stil sayfalarını kolayca
+yazabilirsiniz.  Bu stil sayfaları metin olarak da  yazıldığından ve ayrı dosyalarda
+saklanabildiğinden, iki stil arasında geçiş yaparak tamamen farklı bir görünüm veya
+sayfa düzeni ile notalar oluşturabilirsiniz.
+A4 kağıdına nota yazdırmak ve sayfa başına bir sistem olmak üzere projektörle yansıtmak
+mı istiyorsunuz?  LilyPond&rsquo;un sayfa düzen motoru, aynı girdiden her ikisini de rahatlıkla
+üretecektir.
+</p>
+<span id="Kendi-fonksiyonlarinizi-ekleyin"></span><h4 class="subsubheading">Kendi fonksiyonlarınızı ekleyin</h4>
+
+<p>Eğer bunlar yeterli değilse, LilyPond&rsquo;un sayfa düzen motoruna
+LilyPond&rsquo;un kendisi gibi aynı düzeyde erişebilen dahili betik dil
+Scheme (şema) &rsquo;sını kullanabilirsiniz, bu da onu <em>son derece</em>
+güçlü bir araç haline getirir.
+Ayarlar, değişkenler ve fonksiyonlar, kapsamlı program referans kılavuzunda
+tüm detaylarıyla belgelenmiştir.
+</p>
+<span id="Notalari-programatik-olarak-islemek"></span><h4 class="subsubheading">Notaları programatik olarak işlemek</h4>
+
+<p>LilyPond girdi dosyaları programlar ve betikler tarafından tamamen düzenlenebilir
+veya oluşturulabilir.  Örneğin bu özellik algoritmik besteleme için kullanılabilir.
+Ayrıca müzikal içeriğe, analiz yapmak, girdi parçalarını bir veritabanında yönetmek
+gibi amaçlarla erişilebilir.  Hayal gücünüz dışında hiçbir sınır yoktur.
+</p>
+
+<span id="LilyPond-kullanarak-yeni-araclar-olusturun"></span><h4 class="subsubheading">LilyPond kullanarak yeni araçlar oluşturun</h4>
+
+<p>LilyPond, monolitik bir grafik arayüzü programı olmayıp bir komut satırı aracı olduğu
+için diğer uygulamalar içinde kullanılabilir.  Bu sayede, örneğin web uygulamalarını
+LilyPond&rsquo;un notalama gücü ile donatmak mümkündür.  LilyPond&rsquo;u halihazırda kullanan birkaç
+çevrimiçi araç bulunmaktadır.
+</p>
+
+
+</div>
+
+<div class="column-center-top">
+
+<span id="Calistirma-Ortami"></span><h4 class="subheading">Çalıştırma Ortamı</h4>
+
+<img class="float-right" src="../pictures/frescobaldi-lilypond-editor-small.png" alt="frescobaldi-lilypond-editor-small">
+
+
+
+<span id="Mukemmel-destek"></span><h4 class="subsubheading">Mükemmel destek</h4>
+
+<p>LilyPond, popüler tüm platformlarda çalışır: GNU/Linux, macOS ve
+Windows.  LilyPond, kapsamlı belgelerle birlikte gelir ve yüzlerce
+example dosyası içerir.  LilyPond kullanıcılarından oluşan etkin bir
+topluluk, lilypond-kullanıcı posta listesindeki soruları yanıtlayarak
+size dostça yardım sunar.  Yanıt süresi genellikle çok kısadır ve rapor
+edilen sorunlara sıklıkla parlak çözümler geliştirilir.  Bu gibi çözümler,
+geliştirme ekibi ile yakın etkileşim sayesinde düzenli olarak LilyPond&rsquo;a
+dahil edilir.
+Daha fazlasını <a href="community.tr.html">Community</a> bölümünde okuyabilirsiniz.
+</p>
+
+<span id="Ozgur-yazilim"></span><h4 class="subsubheading">Özgür yazılım</h4>
+
+<p>LilyPond ücretsiz olarak indirilebilir!  Evet - Ücretsiz.  İndirme sayfasından
+LilyPond&rsquo;u edinebilirsiniz.
+</p>
+<p>Ayrıca, bu yazılım ifade (speech) anlamında da özgürdür.  Kaynak kodu ile
+birlikte gelir ve değiştirme ve kopyalama izni verir.  Bir hatadan rahatsız
+mı oldunuz veya farklı bir özellik mi istiyorsunuz?  Sadece kendiniz ekleyin
+veya bunu yapması için başka birini ücretlendirin.
+Daha fazla bilgi için <a href="freedom.tr.html">Özgürlük</a> bölümüne bakın.
+</p>
+
+</div>
+<div class="column-center-bottom">
+<span id="Simdi-ne-yapmalisiniz_003f"></span><h4 class="subheading">Şimdi ne yapmalısınız?</h4>
+
+<p>Hâlâ ikna olmadınız mı?  Bazı <a href="examples.tr.html">Örnekler</a> (örneklere) göz atın.  Eğer LilyPond&rsquo;u
+denemeye karar verdiyseniz, önce <a href="text-input.tr.html">Metin girdisi</a> hakkında okuyun.
+</p>
+</div>
+
+
+
+</div>
+<hr>
+
+<div id="footer">
+<p id="languages">
+Other languages: <a href="features.html">English</a>, <a href="features.ca.html">Català</a>, <a href="features.de.html">Deutsch</a>, <a href="features.es.html">Español</a>, <a href="features.fr.html">Français</a>, <a href="features.it.html">Italiano</a>, <a href="features.ja.html">日本語</a>, <a href="features.zh.html">中文</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-LilyPond" href="index.tr.html">LilyPond</a></li>
+  <li class="toc_current"><a id="toc-Giris" href="introduction.tr.html">Giriş</a>
+  <ul class="no-bullet">
+    <li class="toc_current"><a id="toc-Ozellikler" href="features.tr.html">Özellikler</a></li>
+    <li><a id="toc-Ornekler" href="examples.tr.html">Örnekler</a></li>
+    <li><a id="toc-Ozgurluk" href="freedom.tr.html">Özgürlük</a></li>
+    <li><a id="toc-Arka-Plan" href="background.tr.html">Arka Plan</a></li>
+    <li><a id="toc-Produksiyonlar" href="productions.tr.html">Prodüksiyonlar</a></li>
+    <li><a id="toc-Incelemeler" href="reviews.tr.html">İncelemeler</a></li>
+    <li><a id="toc-Metin-girdisi" href="text-input.tr.html">Metin girdisi</a></li>
+    <li><a id="toc-Daha-Kolay-Duzenleme" href="easier-editing.tr.html">Daha Kolay Düzenleme</a></li>
+  </ul></li>
+  <li><a id="toc-Download" href="download.tr.html">Download</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Source" href="source.tr.html">Source</a></li>
+    <li><a id="toc-Old-downloads" href="old-downloads.tr.html">Old downloads</a></li>
+    <li><a id="toc-GPL" href="gpl.tr.html">GPL</a></li>
+  </ul></li>
+  <li><a id="toc-Manuals" href="manuals.tr.html">Manuals</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Learning" href="learning.tr.html">Learning</a></li>
+    <li><a id="toc-Glossary" href="glossary.tr.html">Glossary</a></li>
+    <li><a id="toc-Essay" href="essay.tr.html">Essay</a></li>
+    <li><a id="toc-Notation" href="notation.tr.html">Notation</a></li>
+    <li><a id="toc-Usage" href="usage.tr.html">Usage</a></li>
+    <li><a id="toc-Snippets" href="snippets.tr.html">Snippets</a></li>
+    <li><a id="toc-FAQ" href="faq.tr.html">FAQ</a></li>
+    <li><a id="toc-Web" href="web.tr.html">Web</a></li>
+    <li><a id="toc-Changes" href="changes.tr.html">Changes</a></li>
+    <li><a id="toc-Extending" href="extending.tr.html">Extending</a></li>
+    <li><a id="toc-Internals" href="internals.tr.html">Internals</a></li>
+    <li><a id="toc-All" href="all.tr.html">All</a></li>
+    <li><a id="toc-FDL" href="fdl.tr.html">FDL</a></li>
+  </ul></li>
+  <li><a id="toc-Community" href="community.tr.html">Community</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Contact" href="contact.tr.html">Contact</a></li>
+    <li><a id="toc-Tiny-examples" href="tiny-examples.tr.html">Tiny examples</a></li>
+    <li><a id="toc-Bug-reports" href="bug-reports.tr.html">Bug reports</a></li>
+    <li><a id="toc-Help-us" href="help-us.tr.html">Help us</a></li>
+    <li><a id="toc-Sponsoring" href="sponsoring.tr.html">Sponsoring</a></li>
+    <li><a id="toc-Development" href="development.tr.html">Development</a></li>
+    <li><a id="toc-Google-Summer-of-Code" href="google-summer-of-code.tr.html">Google Summer of Code</a></li>
+    <li><a id="toc-Authors" href="authors.tr.html">Authors</a></li>
+    <li><a id="toc-Publications" href="publications.tr.html">Publications</a></li>
+    <li><a id="toc-News" href="news.tr.html">News</a></li>
+    <li><a id="toc-Attic" href="attic.tr.html">Attic</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: FILL-IN-HEAD-COMMITTISH
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google Search">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Search">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

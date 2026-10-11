@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2002-2026 por los autores.
+
+La traducción de la siguiente nota de copyright se ofrece como
+cortesía para las personas de habla no inglesa, pero únicamente la
+nota en inglés tiene validez legal.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+Se otorga permiso para copiar, distribuir y/o modificar este documento
+bajo los términos de la Licencia de Documentación Libre de GNU, versión 1.1
+o cualquier versión posterior publicada por la Free Software Foundation;
+sin ninguna de las secciones invariantes.
+Se incluye una copia de esta licencia dentro de la sección titulada "Licencia
+de Documentación Libre de GNU".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>Arquitectura flexible (Ensayo sobre grabado musical automatizado)</title>
+
+<meta name="description" content="Arquitectura flexible (Ensayo sobre grabado musical automatizado)">
+<meta name="keywords" content="Arquitectura flexible (Ensayo sobre grabado musical automatizado)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.es.html" rel="start" title="LilyPond &mdash; Ensayo sobre grabado musical automatizado">
+<link href="index-of-commands-and-concepts.es.html" rel="index" title="Appendix B Índice">
+<link href="essay_toc.es.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="building-software.es.html" rel="up" title="1.4 Construcción del software">
+<link href="what-symbols-to-engrave_003f.es.html" rel="prev" title="¿Qué símbolos grabar?">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="es" class="essay">
+<div id="main">
+<div class="unnumberedsubsec" id="flexible-architecture">
+<table class="nav_table">
+<tr><td align="left">[<a href="music-engraving.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Grabado musical </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="essay_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.es.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="literature-list.es.html" title="Next chapter"> Lista de referencias bibliográficas &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="what-symbols-to-engrave_003f.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; ¿Qué símbolos grabar? </a>]</td><td align="center">[<a href="building-software.es.html" title="Up section" accesskey="u" rel="up">  Up: Construcción del software </a>]</td><td align="right">[<a href="putting-lilypond-to-work.es.html" title="Next section in reading order" accesskey="n" rel="next"> Poner a LilyPond a trabajar &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Arquitectura-flexible"></span><h4 class="unnumberedsubsec">Arquitectura flexible</h4>
+
+<p>Al principio escribimos el programa LilyPond completamente en el
+lenguaje de programación C++; la funcionalidad del programa estaba
+grabada en piedra por parte de los desarrolladores.  Se comprobó
+que esto no era satisfactorio por unas cuantas razones:
+</p>
+<ul>
+<li> Cuando LilyPond comete errores, los usuarios necesitan sobreescribir
+las decisiones de formateo.  Por tanto, el usuario debe tener
+acceso al motor de formateo.  De aquí que las reglas y los ajustes
+predeterminados no se puedan fijar por nuestra parte en el tiempo
+de compilación sino que deben estar accesibles para los usuarios
+en el tiempo de ejecución.
+
+</li><li> El grabado musical es cuestión de juicio visual, y por tanto está en
+el terreno del buen gusto.  Por más entendidos que pretendamos
+ser, nuestros usuarios siempre podrían discrepar de nuestras
+decisiones personales.  Por ello, las definiciones del estilo
+tipográfico debe también ser accesible para el usuario.
+
+</li><li> Finalmente, nos encontramos refinando continuamente los algoritmos de
+formateo, por lo que necesitamos un enfoque flexible para las
+reglas.  El lenguaje C++ fuerza un cierto método de agrupación de
+las reglas que no está preparado para aplicarse al formateo de la
+notación musical.
+
+</li></ul>
+
+<span id="index-Scheme_002c-lenguaje-de-programacion"></span>
+
+<p>Estos programas se han solucionado integrando un intérprete para
+el lenguaje de programación Scheme y reescribiendo partes de
+LilyPond en Scheme.  La arquitectura de formateo actual está
+construida alrededor de la noción de objetos gráficos, descritos
+por medio de variables y funciones de Scheme.  Esta arquitectura
+coordina las reglas de formateo, el estilo tipográfico y las
+decisiones de formateo individuales.  El usuario tiene acceso
+directo a la mayoría de esos controles.
+</p>
+<p>Las variables de Scheme controlan las decisiones de disposición en
+la página.  Por ejemplo, muchos objetos gráficos tienen una
+variable de dirección que codifica la elección entre arriba y
+abajo (o izquierda y derecha).  A continuación vemos dos acordes,
+con acentos y símbolos de arpegio.  En el primer acorde, los
+objetos gráficos tienen todas las direcciones hacia abajo (o hacia
+la izquierda).  El segundo acorde tiene todas las direcciones
+hacia arriba (o hacia la derecha).
+</p>
+
+<blockquote>
+<a href="../16/lily-14c9be2b.ly">
+  <img align="middle"
+       border="0"
+       src="../16/lily-14c9be2b.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<span id="index-partitura_002c-formateo-de"></span>
+<span id="index-formateo-de-una-partitura"></span>
+<span id="index-formateo_002c-reglas-de"></span>
+
+<p>El proceso de dar formato a una partitura comprende la lectura y
+escritura de las variables de los objetos gráficos.  Algunas
+variables tienen un valor preestablecido.  Por ejemplo, el grosor
+de muchas líneas (una característica del estilo tipográfico) es
+una variable con un valor preestablecido. Somos libres de alterar
+este valor, dando a nuestra partitura una impresión tipográfica
+distinta.
+</p>
+
+<blockquote>
+<a href="../c0/lily-c0bced13.ly">
+  <img align="middle"
+       border="0"
+       src="../c0/lily-c0bced13.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Las reglas de formateado también son variables preestablecidas:
+cada objeto tiene variables que contienen procedimientos.  Estos
+procedimientos realizan el formateo propiamente dicho, y mediante
+la sustitución de unos u otros, podemos modificar el aspecto de
+los objetos.  En el ejemplo siguiente, la regla que gobierna qué
+objetos de cabeza se utilizan para producir el símbolo de la
+cabeza, se cambia a lo largo del fragmento musical.
+</p>
+
+<blockquote>
+<a href="../b4/lily-519c5d5b.ly">
+  <img align="middle"
+       border="0"
+       src="../b4/lily-519c5d5b.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="music-engraving.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Grabado musical </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="essay_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.es.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="literature-list.es.html" title="Next chapter"> Lista de referencias bibliográficas &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="what-symbols-to-engrave_003f.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; ¿Qué símbolos grabar? </a>]</td><td align="center">[<a href="building-software.es.html" title="Up section" accesskey="u" rel="up">  Up: Construcción del software </a>]</td><td align="right">[<a href="putting-lilypond-to-work.es.html" title="Next section in reading order" accesskey="n" rel="next"> Poner a LilyPond a trabajar &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="flexible-architecture.html">English</a>, <a href="flexible-architecture.ca.html">Català</a>, <a href="flexible-architecture.de.html">Deutsch</a>, <a href="flexible-architecture.fr.html">Français</a>, <a href="flexible-architecture.it.html">Italiano</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.es.html" title="Documentation Index">
+    &lt;&lt; Volver al índice de la documentación
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.es.html#top" title="Cover (top) of document">
+    Ensayo sobre grabado musical automatizado  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li class="toc_current"><a id="toc-Grabado-musical" href="music-engraving.es.html">1 Grabado musical</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Historia-de-LilyPond" href="the-lilypond-story.es.html">1.1 Historia de LilyPond</a></li>
+    <li><a id="toc-Detalles-del-grabado" href="engraving-details.es.html">1.2 Detalles del grabado</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Fuentes-tipograficas-de-musica" href="music-fonts.es.html">Fuentes tipográficas de música</a></li>
+      <li><a id="toc-Espaciado-optico" href="optical-spacing.es.html">Espaciado óptico</a></li>
+      <li><a id="toc-Lineas-adicionales" href="ledger-lines.es.html">Líneas adicionales</a></li>
+      <li><a id="toc-Escalado-optico" href="optical-sizing.es.html">Escalado óptico</a></li>
+      <li><a id="toc-_00bfPara-que-tanto-esfuerzo_003f" href="why-work-so-hard_003f.es.html">¿Para qué tanto esfuerzo?</a></li>
+    </ul></li>
+    <li><a id="toc-Grabado-automatizado" href="automated-engraving.es.html">1.3 Grabado automatizado</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Concursos-de-belleza" href="beauty-contests.es.html">Concursos de belleza</a></li>
+      <li><a id="toc-Mejoras-por-medio-de-pruebas" href="improvement-by-benchmarking.es.html">Mejoras por medio de pruebas</a></li>
+      <li><a id="toc-Hacer-las-cosas-bien" href="getting-things-right.es.html">Hacer las cosas bien</a></li>
+    </ul></li>
+    <li class="toc_current"><a id="toc-Construccion-del-software" href="building-software.es.html">1.4 Construcción del software</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Representacion-musical" href="music-representation.es.html">Representación musical</a></li>
+      <li><a id="toc-_00bfQue-simbolos-grabar_003f" href="what-symbols-to-engrave_003f.es.html">¿Qué símbolos grabar?</a></li>
+      <li class="toc_current"><a id="toc-Arquitectura-flexible" href="flexible-architecture.es.html">Arquitectura flexible</a></li>
+    </ul></li>
+    <li><a id="toc-Poner-a-LilyPond-a-trabajar" href="putting-lilypond-to-work.es.html">1.5 Poner a LilyPond a trabajar</a></li>
+    <li><a id="toc-Ejemplos-de-partituras-_0028BWV-861_0029" href="engraved-examples-_0028bwv-861_0029.es.html">1.6 Ejemplos de partituras (BWV 861)</a></li>
+  </ul></li>
+  <li><a id="toc-Lista-de-referencias-bibliograficas" href="literature-list.es.html">2 Lista de referencias bibliográficas</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Lista-bibliografica-resumida" href="short-literature-list.es.html">2.1 Lista bibliográfica resumida</a></li>
+    <li><a id="toc-Lista-bibliografica-ampliada" href="long-literature-list.es.html">2.2 Lista bibliográfica ampliada</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.es.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Indice" href="index-of-commands-and-concepts.es.html" rel="index">Appendix B Índice</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Búsqueda de Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

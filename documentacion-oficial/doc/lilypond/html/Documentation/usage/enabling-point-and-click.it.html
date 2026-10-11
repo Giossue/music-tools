@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1999-2026 degli autori.
+
+La traduzione della seguente nota di copyright è gentilmente
+offerta alle persone che non parlano inglese, ma solo
+la nota in inglese ha valore legale.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+È garantito il permesso di copiare, distribuire e/o modificare questo
+documento seguendo i termini della GNU Free Documentation License,
+versione 1.1 o ogni versione successiva pubblicata dalla
+Free Software Foundation; senza alcuna sezione non modificabile.
+Una copia della licenza si trova nella sezione intitolata
+"GNU Free Documentation License".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>Abilitare il punta e clicca (LilyPond: manuale d&rsquo;uso del programma)</title>
+
+<meta name="description" content="Abilitare il punta e clicca (LilyPond: manuale d&rsquo;uso del programma)">
+<meta name="keywords" content="Abilitare il punta e clicca (LilyPond: manuale d&rsquo;uso del programma)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.it.html" rel="start" title="LilyPond &mdash; Utilizzo">
+<link href="index-of-commands-and-concepts.it.html" rel="index" title="Appendix B Indice">
+<link href="usage_toc.it.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="point-and-click.it.html" rel="up" title="4.1 Punta e clicca">
+<link href="selective-point_002dand_002dclick.it.html" rel="next" title="Punta e clicca selettivo">
+<link href="configuring-the-system-for-point-and-click.it.html" rel="prev" title="4.1.1 Configurare il sistema">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="it" class="usage">
+<div id="main">
+<div class="unnumberedsubsec" id="enabling-point-and-click">
+<table class="nav_table">
+<tr><td align="left">[<a href="external-programs.it.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Programmi esterni </a>]</td><td align="center">[<a href="index.it.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.it.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.it.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="suggestions-for-writing-files.it.html" title="Next chapter"> Consigli su come scrivere i file &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="extra-configuration-for-evince.it.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Ulteriore configurazione per Evince </a>]</td><td align="center">[<a href="point-and-click.it.html" title="Up section" accesskey="u" rel="up">  Up: Punta e clicca </a>]</td><td align="right">[<a href="selective-point_002dand_002dclick.it.html" title="Next section in reading order" accesskey="n" rel="next"> Punta e clicca selettivo &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Abilitare-il-punta-e-clicca"></span><h4 class="unnumberedsubsec">Abilitare il punta e clicca</h4>
+
+<span id="index-dimensione-del-file-di-output"></span>
+<span id="index-file-di-output_002c-dimensione"></span>
+
+<p>La funzionalità &quot;punta e clicca&quot; è abilitata di default quando si creano
+i file PDF o SVG.
+</p>
+<p>I collegamenti &quot;punta e clicca&quot; appesantiscono sensibilmente i file di output.  Per
+ridurre la dimensione di questi file (e dei file PS), è possibile disattivare
+il &quot;punta e clicca&quot; inserendo
+</p>
+<div class="example">
+<pre class="example">\pointAndClickOff
+</pre></div>
+
+<p>in un file <samp>.ly</samp>.  Il &quot;punta e clicca&quot; può essere abilitato esplicitamente con
+</p>
+<div class="example">
+<pre class="example">\pointAndClickOn
+</pre></div>
+
+<p>Si può disabilitare il &quot;punta e clicca&quot; anche con un&rsquo;opzione da linea di
+comando:
+</p>
+<div class="example">
+<pre class="example">lilypond -dno-point-and-click file.ly
+</pre></div>
+
+<div class="warning">
+<p><strong>Nota:</strong> Occorre sempre disattivare il &quot;punta e clicca&quot; nei file LilyPond
+che si vogliano diffondere, per evitare di includere nel file PDF delle informazioni
+sui percorsi del proprio computer: questo infatti può costituire un rischio di
+sicurezza.
+</p>
+</div>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="external-programs.it.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Programmi esterni </a>]</td><td align="center">[<a href="index.it.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.it.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.it.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="suggestions-for-writing-files.it.html" title="Next chapter"> Consigli su come scrivere i file &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="extra-configuration-for-evince.it.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Ulteriore configurazione per Evince </a>]</td><td align="center">[<a href="point-and-click.it.html" title="Up section" accesskey="u" rel="up">  Up: Punta e clicca </a>]</td><td align="right">[<a href="selective-point_002dand_002dclick.it.html" title="Next section in reading order" accesskey="n" rel="next"> Punta e clicca selettivo &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="enabling-point-and-click.html">English</a>, <a href="enabling-point-and-click.ca.html">Català</a>, <a href="enabling-point-and-click.de.html">Deutsch</a>, <a href="enabling-point-and-click.es.html">Español</a>, <a href="enabling-point-and-click.fr.html">Français</a>, <a href="enabling-point-and-click.ja.html">日本語</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.it.html" title="Documentation Index">
+    &lt;&lt; Torna all'indice della documentazione
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.it.html#top" title="Cover (top) of document">
+    LilyPond: manuale d&rsquo;uso del programma  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Eseguire-lilypond" href="running-lilypond.it.html">1 Eseguire <code>lilypond</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-Uso-normale" href="normal-usage.it.html">1.1 Uso normale</a></li>
+    <li><a id="toc-Uso-da-linea-di-comando" href="command_002dline-usage.it.html">1.2 Uso da linea di comando</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Utilizzo-di-lilypond" href="invoking-lilypond.it.html">Utilizzo di <code>lilypond</code></a></li>
+      <li><a id="toc-Opzioni-di-base-della-linea-di-comando-per-LilyPond" href="basic-command_002dline-options-for-lilypond.it.html">Opzioni di base della linea di comando per LilyPond</a></li>
+      <li><a id="toc-Opzioni-avanzate-della-linea-di-comando-per-lilypond" href="advanced-command_002dline-options-for-lilypond.it.html">Opzioni avanzate della linea di comando per <code>lilypond</code></a></li>
+      <li><a id="toc-Variabili-d_0027ambiente" href="environment-variables.it.html">Variabili d&rsquo;ambiente</a></li>
+      <li><a id="toc-Riposizionamento" href="relocation.it.html">Riposizionamento</a>
+      <ul class="no-bullet">
+        <li><a id="toc-File-di-riposizionamento" href="relocation-files.it.html">File di riposizionamento</a></li>
+        <li><a id="toc-Algoritmo-di-riposizionamento" href="relocation-algorithm.it.html">Algoritmo di riposizionamento</a></li>
+      </ul></li>
+      <li><a id="toc-LilyPond-in-una-gabbia-chroot" href="lilypond-in-chroot-jail.it.html">LilyPond in una gabbia chroot</a></li>
+    </ul></li>
+    <li><a id="toc-Messaggi-di-errore" href="error-messages.it.html">1.3 Messaggi di errore</a></li>
+    <li><a id="toc-Errori-comuni" href="common-errors.it.html">1.4 Errori comuni</a>
+    <ul class="no-bullet">
+      <li><a id="toc-La-musica-esce-dalla-pagina" href="music-runs-off-the-page.it.html">La musica esce dalla pagina</a></li>
+      <li><a id="toc-Appare-un-rigo-in-piu" href="an-extra-staff-appears.it.html">Appare un rigo in più</a></li>
+      <li><a id="toc-Messaggio-di-errore-Unbound-variable-_0025" href="error-message-unbound-variable-_0025.it.html">Messaggio di errore Unbound variable %</a></li>
+      <li><a id="toc-Messaggio-di-errore-FT_005fGet_005fGlyph_005fName" href="error-message-ft_005fget_005fglyph_005fname.it.html">Messaggio di errore FT_Get_Glyph_Name</a></li>
+      <li><a id="toc-Avvertimento-sul-fatto-che-le-affinita-del-rigo-devono-solo-diminuire" href="warning-staff-affinities-should-only-decrease.it.html">Avvertimento sul fatto che le affinità del rigo devono solo diminuire</a></li>
+      <li><a id="toc-Messaggio-di-errore-_005cnew-inaspettato" href="error-message-unexpected-new.it.html">Messaggio di errore <code>\new</code> inaspettato</a></li>
+      <li><a id="toc-Avviso-questa-voce-ha-bisogno-di-un_0027impostazione-_005cvoiceXx-o-_005cshiftXx" href="warning-this-voice-needs-a-voicexx-or-shiftxx-setting.it.html">Avviso questa voce ha bisogno di un&rsquo;impostazione \voiceXx o \shiftXx</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Aggiornare-i-file-con-convert_002dly" href="updating-files-with-convert_002dly.it.html">2 Aggiornare i file con <code>convert-ly</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-Perche-la-sintassi-cambia_003f" href="why-does-the-syntax-change_003f.it.html">2.1 Perché la sintassi cambia?</a></li>
+    <li><a id="toc-Utilizzo-di-convert_002dly" href="invoking-convert_002dly.it.html">2.2 Utilizzo di <code>convert-ly</code></a></li>
+    <li><a id="toc-Opzioni-da-linea-di-comando-per-convert_002dly" href="command-line-options-for-convert_002dly.it.html">2.3 Opzioni da linea di comando per <code>convert-ly</code></a></li>
+    <li><a id="toc-Problemi-nell_0027eseguire-convert_002dly" href="problems-running-convert_002dly.it.html">2.4 Problemi nell&rsquo;eseguire <code>convert-ly</code></a></li>
+    <li><a id="toc-Conversioni-manuali" href="manual-conversions.it.html">2.5 Conversioni manuali</a></li>
+    <li><a id="toc-Scrivere-codice-che-funzioni-su-molteplici-versioni" href="writing-code-to-support-multiple-versions.it.html">2.6 Scrivere codice che funzioni su molteplici versioni</a></li>
+  </ul></li>
+  <li><a id="toc-Eseguire-lilypond_002dbook" href="lilypond_002dbook.it.html">3 Eseguire <code>lilypond-book</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-Un-esempio-di-documento-musicologico" href="an-example-of-a-musicological-document.it.html">3.1 Un esempio di documento musicologico</a></li>
+    <li><a id="toc-Integrare-musica-e-testo" href="integrating-music-and-text.it.html">3.2 Integrare musica e testo</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LaTeX" href="latex.it.html">3.2.1 LaTeX</a></li>
+      <li><a id="toc-Texinfo" href="texinfo.it.html">3.2.2 Texinfo</a></li>
+      <li><a id="toc-HTML" href="html.it.html">3.2.3 HTML</a></li>
+      <li><a id="toc-DocBook" href="docbook.it.html">3.2.4 DocBook</a></li>
+    </ul></li>
+    <li><a id="toc-Opzioni-dei-frammenti-musicali" href="music-fragment-options.it.html">3.3 Opzioni dei frammenti musicali</a></li>
+    <li><a id="toc-Utilizzo-di-lilypond_002dbook" href="invoking-lilypond_002dbook.it.html">3.4 Utilizzo di <code>lilypond-book</code></a></li>
+    <li><a id="toc-Estensioni-dei-nomi-di-file" href="filename-extensions.it.html">3.5 Estensioni dei nomi di file</a></li>
+    <li><a id="toc-Modelli-per-lilypond_002dbook" href="lilypond_002dbook-templates.it.html">3.6 Modelli per lilypond-book</a></li>
+    <li><a id="toc-Condividere-l_0027indice" href="sharing-the-table-of-contents.it.html">3.7 Condividere l&rsquo;indice</a></li>
+    <li><a id="toc-Metodi-alternativi-per-combinare-testo-e-musica" href="alternate-methods-of-mixing-text-and-music.it.html">3.8 Metodi alternativi per combinare testo e musica</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Programmi-esterni" href="external-programs.it.html">4 Programmi esterni</a>
+  <ul class="no-bullet">
+    <li class="toc_current"><a id="toc-Punta-e-clicca" href="point-and-click.it.html">4.1 Punta e clicca</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Configurare-il-sistema" href="configuring-the-system-for-point-and-click.it.html">4.1.1 Configurare il sistema</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Usare-Xpdf" href="using-xpdf-for-point-and-click.it.html">Usare Xpdf</a></li>
+        <li><a id="toc-Usare-GNOME-2" href="using-gnome-2-for-point-and-click.it.html">Usare GNOME 2</a></li>
+        <li><a id="toc-Usare-GNOME-3" href="using-gnome-3-for-point-and-click.it.html">Usare GNOME 3</a></li>
+        <li><a id="toc-Ulteriore-configurazione-per-Evince" href="extra-configuration-for-evince.it.html">Ulteriore configurazione per Evince</a></li>
+      </ul></li>
+      <li class="toc_current"><a id="toc-Abilitare-il-punta-e-clicca" href="enabling-point-and-click.it.html">Abilitare il punta e clicca</a></li>
+      <li><a id="toc-Punta-e-clicca-selettivo" href="selective-point_002dand_002dclick.it.html">Punta e clicca selettivo</a></li>
+    </ul></li>
+    <li><a id="toc-LilyPond-e-gli-editor-di-testo" href="text-editor-support.it.html">4.2 LilyPond e gli editor di testo</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Modalita-di-Emacs" href="emacs-mode.it.html">Modalità di Emacs</a></li>
+      <li><a id="toc-Modalita-di-Vim" href="vim-mode.it.html">Modalità di Vim</a></li>
+      <li><a id="toc-Altri-editor" href="other-editors.it.html">Altri editor</a></li>
+    </ul></li>
+    <li><a id="toc-Conversione-da-altri-formati" href="converting-from-other-formats.it.html">4.3 Conversione da altri formati</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Utilizzo-di-midi2ly" href="invoking-midi2ly.it.html">4.3.1 Utilizzo di <code>midi2ly</code></a></li>
+      <li><a id="toc-Utilizzo-di-musicxml2ly" href="invoking-musicxml2ly.it.html">4.3.2 Utilizzo di <code>musicxml2ly</code></a></li>
+      <li><a id="toc-Utilizzo-di-abc2ly" href="invoking-abc2ly.it.html">4.3.3 Utilizzo di <code>abc2ly</code></a></li>
+      <li><a id="toc-Utilizzo-di-etf2ly" href="invoking-etf2ly.it.html">4.3.4 Utilizzo di <code>etf2ly</code></a></li>
+      <li><a id="toc-Altri-formati" href="other-formats.it.html">4.3.5 Altri formati</a></li>
+    </ul></li>
+    <li><a id="toc-Inclusione-di-partiture-LilyPond-in-altri-programmi" href="lilypond-output-in-other-programs.it.html">4.4 Inclusione di partiture LilyPond in altri programmi</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LuaTeX" href="luatex.it.html">4.4.1 LuaTeX</a></li>
+      <li><a id="toc-OpenOffice-e-LibreOffice" href="openoffice-and-libreoffice.it.html">4.4.2 OpenOffice e LibreOffice</a></li>
+      <li><a id="toc-Altri-programmi" href="other-programs.it.html">4.4.3 Altri programmi</a></li>
+    </ul></li>
+    <li><a id="toc-include-indipendenti" href="independent-includes.it.html">4.5 <code>include</code> indipendenti</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Articolazione-MIDI" href="midi-articulation.it.html">4.5.1 Articolazione MIDI</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Consigli-su-come-scrivere-i-file" href="suggestions-for-writing-files.it.html">5 Consigli su come scrivere i file</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Consigli-generali" href="general-suggestions.it.html">5.1 Consigli generali</a></li>
+    <li><a id="toc-Scrivere-musica-esistente" href="typesetting-existing-music.it.html">5.2 Scrivere musica esistente</a></li>
+    <li><a id="toc-Grandi-progetti" href="large-projects.it.html">5.3 Grandi progetti</a></li>
+    <li><a id="toc-Risoluzione-dei-problemi" href="troubleshooting.it.html">5.4 Risoluzione dei problemi</a></li>
+    <li><a id="toc-Make-e-Makefile" href="make-and-makefiles.it.html">5.5 Make e Makefile</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.it.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Indice" href="index-of-commands-and-concepts.it.html" rel="index">Appendix B Indice</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca con Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Cerca">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

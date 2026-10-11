@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Ce document a été placé dans le domaine public ; en France, les auteurs
+renoncent à tous leurs droits patrimoniaux. -->
+<title>Modifications majeures de LilyPond (LilyPond Changes)</title>
+
+<meta name="description" content="Modifications majeures de LilyPond (LilyPond Changes)">
+<meta name="keywords" content="Modifications majeures de LilyPond (LilyPond Changes)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.fr.html" rel="start" title="LilyPond &mdash; Nouveautés">
+<link href="changes_toc.fr.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.fr.html" rel="up" title="LilyPond &mdash; Nouveautés">
+<link href="new-for-musical-notation.fr.html" rel="next" title="Nouveautés en matière de notation musicale">
+<link href="index.fr.html" rel="prev" title="LilyPond &mdash; Nouveautés">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="fr" class="changes">
+<div id="main">
+<div class="unnumbered" id="major-changes-in-lilypond">
+<table class="nav_table">
+<tr><td align="left">[<a href="index.fr.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Top </a>]</td><td align="center">[<a href="index.fr.html" title="Cover (top) of document" rel="start">Top</a>][<a href="changes_toc.fr.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="new-for-musical-notation.fr.html" title="Next chapter"> Nouveautés en matière de notation musicale &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="index.fr.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Top </a>]</td><td align="center">[<a href="index.fr.html" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[<a href="notes-for-source-compilation-and-packagers.fr.html" title="Next section in reading order" accesskey="n" rel="next"> Notes à propos de la compilation des sources et à l&rsquo;attention des empaqueteurs &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Modifications-majeures-de-LilyPond"></span><h2 class="unnumbered">Modifications majeures de LilyPond</h2>
+
+<ul>
+<li> Les marges sont désormais plus larges, suivant ainsi les mises en pages
+de nombreux éditeurs, et conformément aux recommandations d&rsquo;Elaine
+Gould.
+
+<p>Pour retrouver les mêmes réglages que précédemment, notamment dans le
+but de conserver la mise en page après mise à jour d&rsquo;une partition à la
+version 2.26.0, il suffit d&rsquo;ajouter le code suivant :
+</p>
+<div class="example">
+<pre class="example">\paper {
+  top-margin = 5\mm
+  bottom-margin = 6\mm
+  top-system-spacing.basic-distance = 1
+  top-markup-spacing.basic-distance = 0
+  left-margin = 10\mm
+  right-margin = 10\mm
+  inner-margin = 10\mm
+  outer-margin = 20\mm
+  binding-offset = 0\mm
+}
+</pre></div>
+
+
+</li><li> Au lieu de générer des sorties PostScript ou SVG par lui-même, LilyPond
+peut désormais utiliser la bibliothèque Cairo pour produire ses
+résultats. Il est ici fait référence au « moteur Cairo » qui peut être
+activé par l&rsquo;option <code>-dbackend-cairo</code> en ligne de commande. Cette
+fonctionnalité est opérationnelle pour tous les formats de sortie (PDF,
+SVG, PNG, PostScript) et apporte vitesse et amélioration du rendu SVG en
+particulier. Néanmoins, les fonctionnalités des moteurs par défaut ne
+sont pas encore toutes implémentées. Sont entre autre absents le plan
+des PDF, l&rsquo;option <code>-dembed-source-code</code> pour le PDF et la propriété
+<code>output-attributes</code> pour le SVG.
+
+</li><li> Les distances entre la clef et la métrique ainsi qu&rsquo;entre la clef et
+l&rsquo;armure sont désormais calculées différemment. Par voie de conséquence,
+on obtient un meilleur espacement pour des clefs imposantes, comme
+<code>\clef &quot;GG&quot;</code>, ou très fines comme <code>\clef &quot;petrucci-c3&quot;</code>.
+
+<p>L&rsquo;image suivante illustre les modifications apportées aux
+positionnements. Le pourcentage indique la différence d&rsquo;espacement entre
+la clef et la métrique, et entre la clef et l&rsquo;armure.
+</p>
+
+<blockquote>
+<a href="../6c/lily-7b6da4f7.ly">
+  <img align="middle"
+       border="0"
+       src="../6c/lily-7b6da4f7.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>Notez bien que, comme précédemment, c&rsquo;est la clef la plus large d&rsquo;un
+regroupement de portées qui détermine le positionnement horizontal de
+toutes les clefs d&rsquo;un système. Ceci signifie, par exemple, qu&rsquo;une
+partition pour piano comportant une clef de sol et une clef de fa ne
+sera en rien modifiée.
+</p>
+<p>Pour retrouver les valeurs par défaut antérieures, quelle qu&rsquo;en soit la
+raison, il suffit d&rsquo;ajouter
+</p>
+<div class="example">
+<pre class="example">\override Staff.Clef.space-alist.time-signature =
+            #'(minimum-space . 3.5)
+\override Staff.Clef.space-alist.key-cancellation =
+            #'(minimum-space . 3.5)
+\override Staff.Clef.space-alist.key-signature =
+            #'(minimum-space . 4.2)
+</pre></div>
+
+<p>à la partition.
+</p>
+</li><li> Le mode majeur LilyPond de l&rsquo;éditeur de texte GNU Emacs fourni au
+travers du paquetage Emacs Lisp <code>lilypond-mode.el</code> a été renommé de
+<code>LilyPond-mode</code> en <code>lilypond-mode</code>. Le préfixe d&rsquo;espace de
+noms est désormais tout en minuscules, passant de <code>LilyPond-</code> à
+<code>lilypond-</code> et, par conséquent, toutes les fonctions, variables,
+etc. ont toutes leur préfixe en minuscules. Ce changement est apporté
+pour se conformer aux conventions de nommage d&rsquo;Emacs et, plus
+particulièrement, afin que le nom du mode corresponde au paquetage qui
+le fournit. Il en sera ainsi plus facile aux nouveaux utilisateurs
+d&rsquo;utiliser LilyPond au sein d&rsquo;Emacs.
+
+<p>Ceci pourrait perturber certaines configurations d&rsquo;Emacs existantes sans
+une simple adaptation du fichier d&rsquo;initialisation d&rsquo;Emacs. Voici
+comment, par exemple, spécifier l&rsquo;utilisation du <code>lilypond-mode</code> à
+l&rsquo;aide de la macro <code>use-package</code> d&rsquo;Emacs :
+</p>
+<div class="example">
+<pre class="example">(use-package lilypond-mode
+  :ensure nil
+  :mode &quot;\\.\\(ly\\|ily\\)$&quot;)
+</pre></div>
+
+</li></ul>
+
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="notes-for-source-compilation-and-packagers.fr.html" accesskey="1">Notes à propos de la compilation des sources et à l&rsquo;attention des empaqueteurs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="index.fr.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Top </a>]</td><td align="center">[<a href="index.fr.html" title="Cover (top) of document" rel="start">Top</a>][<a href="changes_toc.fr.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[<a href="new-for-musical-notation.fr.html" title="Next chapter"> Nouveautés en matière de notation musicale &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="index.fr.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Top </a>]</td><td align="center">[<a href="index.fr.html" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[<a href="notes-for-source-compilation-and-packagers.fr.html" title="Next section in reading order" accesskey="n" rel="next"> Notes à propos de la compilation des sources et à l&rsquo;attention des empaqueteurs &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="major-changes-in-lilypond.html">English</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.fr.html" title="Documentation Index">
+    &lt;&lt; Retour à l'accueil de la documentation
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.fr.html#top" title="Cover (top) of document">
+    LilyPond Changes  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li class="toc_current"><a id="toc-Modifications-majeures-de-LilyPond" href="major-changes-in-lilypond.fr.html">Modifications majeures de LilyPond</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Notes-a-propos-de-la-compilation-des-sources-et-a-l_0027attention-des-empaqueteurs" href="notes-for-source-compilation-and-packagers.fr.html">Notes à propos de la compilation des sources et à l&rsquo;attention des empaqueteurs</a></li>
+  </ul></li>
+  <li><a id="toc-Nouveautes-en-matiere-de-notation-musicale" href="new-for-musical-notation.fr.html">Nouveautés en matière de notation musicale</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Ameliorations-de-la-representation-des-hauteurs" href="pitches-improvements.fr.html">Améliorations de la représentation des hauteurs</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-de-rythme" href="rhythm-improvements.fr.html">Améliorations en matière de rythme</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-d_0027expressivite" href="expressive-mark-improvements.fr.html">Améliorations en matière d&rsquo;expressivité</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-de-reprises" href="repeat-improvements.fr.html">Améliorations en matière de reprises</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-d_0027annotations-editoriales" href="editorial-annotation-improvements.fr.html">Améliorations en matière d&rsquo;annotations éditoriales</a></li>
+    <li><a id="toc-Ameliorations-en-matiere-de-fontes-et-de-mise-en-forme-du-texte" href="text-and-font-improvements.fr.html">Améliorations en matière de fontes et de mise en forme du texte</a></li>
+  </ul></li>
+  <li><a id="toc-Nouveautes-en-matiere-de-notation-specialisee" href="new-for-specialist-notation.fr.html">Nouveautés en matière de notation spécialisée</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Ameliorations-pour-la-musique-vocale" href="vocal-music-improvements.fr.html">Améliorations pour la musique vocale</a></li>
+    <li><a id="toc-Ameliorations-pour-instruments-a-portees-multiples" href="keyboard-and-multi_002dstaff-music-improvements.fr.html">Améliorations pour instruments à portées multiples</a></li>
+    <li><a id="toc-Ameliorations-pour-les-cordes-non-frettees" href="unfretted-string-instrument-improvements.fr.html">Améliorations pour les cordes non frettées</a></li>
+    <li><a id="toc-Ameliorations-pour-les-cordes-frettees" href="fretted-string-instrument-improvements.fr.html">Améliorations pour les cordes frettées</a></li>
+    <li><a id="toc-Ameliorations-pour-la-notation-des-accords" href="chord-notation-improvements.fr.html">Améliorations pour la notation des accords</a></li>
+    <li><a id="toc-Ameliorations-pour-les-notations-anciennes" href="ancient-notation-improvements.fr.html">Améliorations pour les notations anciennes</a></li>
+    <li><a id="toc-Ameliorations-pour-les-musiques-du-monde" href="world-music-improvements.fr.html">Améliorations pour les musiques du monde</a></li>
+  </ul></li>
+  <li><a id="toc-Autres-ameliorations-diverses" href="miscellaneous-improvements.fr.html">Autres améliorations diverses</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 5b32cd8c0c41b63b0a07ea8bbf2060496397a368
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Recherche sur Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Rechercher">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

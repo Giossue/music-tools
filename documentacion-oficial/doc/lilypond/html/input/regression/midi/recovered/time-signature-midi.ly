@@ -1,0 +1,120 @@
+% Lily was here -- automatically converted by midi2ly.py from out-www/time-signature.midi
+\version "2.14.0"
+
+\layout {
+  \context {
+    \Voice
+    \remove Note_heads_engraver
+    \consists Completion_heads_engraver
+    \remove Rest_engraver
+    \consists Completion_rest_engraver
+  }
+}
+
+% included from ./out-www/time-signature.header
+\header {
+texidoc=""
+options=""
+}
+% end
+
+trackAchannelA = {
+  
+  % [TEXT_EVENT] creator: 
+  
+  % [TEXT_EVENT] LilyPond 2.26.0               
+  
+  \time 5/8
+  
+  \tempo 4 = 60
+  \skip 8*5 
+  | % 2
+  
+  \time 5/8
+  \skip 8*5 
+  | % 3
+  
+  \time 3/4
+  \skip 2. 
+  | % 4
+  
+  \time 6/8
+  \skip 2. 
+  | % 5
+  
+  \time #'(2) 2/1
+  \skip \breve 
+  | % 6
+  
+  \time #'(85) 255/32
+  \skip 32*255 
+  | % 7
+  
+  \time 1/32
+  \skip 32 
+  | % 8
+  
+}
+
+trackA = <<
+  \context Voice = voiceA \trackAchannelA
+>>
+
+
+trackBchannelA = {
+  
+  \set Staff.instrumentName = "\new:"
+  \skip 4*51 
+}
+
+trackBchannelB = \relative c {
+  c'8 c c c c d d d d d f f f f f f g g g g g g a a a a a a a a 
+  a a a a a a a a b32 
+  | % 154
+  b 
+  | % 155
+  b1 b b2 b32 
+  | % 236
+  b 
+  | % 237
+  b 
+  | % 238
+  b 
+  | % 239
+  b 
+  | % 240
+  b1 b b2 b32 
+  | % 321
+  b 
+  | % 322
+  b 
+  | % 323
+  b 
+  | % 324
+  b 
+  | % 325
+  b1 b b2 b32 
+  | % 406
+  b 
+  | % 407
+  b 
+  | % 408
+  c 
+  | % 409
+  
+}
+
+trackB = <<
+  \context Voice = voiceA \trackBchannelA
+  \context Voice = voiceB \trackBchannelB
+>>
+
+
+\score {
+  <<
+    \context Staff=trackB \trackA
+    \context Staff=trackB \trackB
+  >>
+  \layout {}
+  \midi {}
+}

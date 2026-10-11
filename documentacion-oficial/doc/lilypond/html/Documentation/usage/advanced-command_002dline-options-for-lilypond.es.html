@@ -1,0 +1,818 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1999-2026 por los autores.
+
+La traducción de la siguiente nota de copyright se ofrece como
+cortesía para las personas de habla no inglesa, pero únicamente la
+nota en inglés tiene validez legal.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+Se otorga permiso para copiar, distribuir y/o modificar este documento
+bajo los términos de la Licencia de Documentación Libre de GNU, versión 1.1
+o cualquier versión posterior publicada por la Free Software Foundation;
+sin ninguna de las secciones invariantes.
+Se incluye una copia de esta licencia dentro de la sección titulada "Licencia
+de Documentación Libre de GNU".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>Opciones avanzadas de línea de órdenes para LilyPond (LilyPond: manual de utilización del programa)</title>
+
+<meta name="description" content="Opciones avanzadas de línea de órdenes para LilyPond (LilyPond: manual de utilización del programa)">
+<meta name="keywords" content="Opciones avanzadas de línea de órdenes para LilyPond (LilyPond: manual de utilización del programa)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.es.html" rel="start" title="LilyPond &mdash; Utilización">
+<link href="index-of-commands-and-concepts.es.html" rel="index" title="Appendix B Índice">
+<link href="usage_toc.es.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="command_002dline-usage.es.html" rel="up" title="1.2 Utilización desde la línea de órdenes">
+<link href="environment-variables.es.html" rel="next" title="Variables de entorno">
+<link href="basic-command_002dline-options-for-lilypond.es.html" rel="prev" title="Opciones básicas de la línea de órdenes para LilyPond">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="es" class="usage">
+<div id="main">
+<div class="unnumberedsubsec" id="advanced-command_002dline-options-for-lilypond">
+<table class="nav_table">
+<tr><td align="left">[<a href="running-lilypond.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Ejecutar LilyPond </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.es.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="updating-files-with-convert_002dly.es.html" title="Next chapter"> Actualizar ficheros con <code>convert-ly</code> &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="basic-command_002dline-options-for-lilypond.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Opciones básicas de la línea de órdenes para LilyPond </a>]</td><td align="center">[<a href="command_002dline-usage.es.html" title="Up section" accesskey="u" rel="up">  Up: Utilización desde la línea de órdenes </a>]</td><td align="right">[<a href="environment-variables.es.html" title="Next section in reading order" accesskey="n" rel="next"> Variables de entorno &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Opciones-avanzadas-de-linea-de-ordenes-para-LilyPond"></span><h4 class="unnumberedsubsec">Opciones avanzadas de línea de órdenes para LilyPond</h4>
+
+<p>La opción <samp>-d</samp> es la interfaz de la línea de órdenes a la
+función de Scheme de LilyPond <code>ly:set-option</code>.  Esto significa
+que todas las opciones que se relacionan aquí pueden establecerse
+también dentro de los propios archivos <samp>.ly</samp>.
+</p>
+<dl compact="compact">
+<dt><span><code>-d</code>, <code>--define-default=</code><var>opción</var>[<code>=</code><var>valor</var>]</span></dt>
+<dt><span><code>-d</code>, <code>--define-default=no-</code><var>opción</var></span></dt>
+<dd><p>Fijar el símbolo interno de Scheme equivalente <var>opción</var> a
+<var>valor</var>.  Por ejemplo, la opción de línea de órdenes
+</p>
+<div class="example">
+<pre class="example">-dbackend=svg
+</pre></div>
+
+<p>equivale a
+</p>
+<div class="example">
+<pre class="example">#(ly:set-option 'backend 'svg)
+</pre></div>
+
+<p>dentro de un archivo de entrada de LilyPond.
+</p>
+<p>Si no se proporciona el <var>valor</var>, usar <code>#t</code> como valor.
+Se puede añadir el prefijo <code>no-</code> a la <var>opción</var> para
+&lsquo;desactivar&rsquo; una opción, aportando <code>#f</code> como valor. Por
+ejemplo,
+</p>
+<span id="index-apuntar-y-pulsar_002c-linea-de-ordenes"></span>
+
+<div class="example">
+<pre class="example">-dpoint-and-click=&quot;#f&quot;
+</pre></div>
+
+<p>es lo mismo que
+</p><div class="example">
+<pre class="example">-dno-point-and-click
+</pre></div>
+</dd>
+</dl>
+
+<p>[Observe que el carácter &lsquo;<samp>#</samp>&rsquo; introduce un comentario en
+muchos shells.  Por este motivo se recomienda siempre
+entrecomillar las expresiones que lo contengan.]
+</p>
+<p>La siguiente tabla relaciona todos los nombres de opción junto con
+sus valores. Dentro del código de Scheme, los valores de opción se
+pueden leer usando la función <code>ly:get-option</code>.
+</p>
+<dl compact="compact">
+<dt><span><code>anti-alias-factor</code> <var>número</var></span></dt>
+<dd><p>Generar el gráfico a mayor resolución (usando el factor
+<var>número</var>, which must be a positive integer &le;&nbsp;8) y
+reducir la escala para evitar el pixelado en las imágenes PNG.
+Predeterminado: <code>1</code>.
+</p>
+</dd>
+<dt><span><code>aux-files</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, crear archivos <samp>.tex</samp>, <samp>.texi</samp> y
+<samp>.count</samp>. Esta opción existe principalmente para usarla por parte
+de <code>lilypond-book</code>.  Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>backend</code> <var>símbolo</var></span></dt>
+<dd><p>Usar <var>símbolo</var> como backend para la salida de LilyPond.  Los
+valores posiboles son:
+</p>
+<dl compact="compact">
+<dt><span><code>ps</code></span></dt>
+<dd><p>Es el ajuste predeterminado.  Los archivos de PostScript incluyen
+las fuentes TTF, Type1 y OTF. No se genera ningún &lsquo;subconjunto&rsquo;
+de dichas fuentes tipográficas.  Advierta que el uso de conjuntos
+de caracteres &lsquo;orientales&rsquo; como el japonés puede dar lugar a
+archivos de tamaño muy grande.
+</p>
+<p>Para la salida PDF se utiliza también el backend <code>ps</code>; los
+datos PS resultantes se post-procesan mediante el guión
+<code>ps2pdf</code> de Ghostscript, que también efectúa subconjuntos de
+fuentes de manera predeterminada.
+</p>
+</dd>
+<dt><span><code>cairo</code></span></dt>
+<dd><p>Crea una salida de gráficos a través de la biblioteca Cairo.  Este
+<em>backend</em> puede producir salidas PS, EPS, PDF, PNG y SVG.
+</p>
+</dd>
+<dt><span><code>svg</code></span></dt>
+<dd><p>Gráficos vectoriales escalables.  Por cada página de la salida, se
+crea un solo archivo <code>SVG</code>.  Los glifos musicales se
+codifican como gráficos vectoriales, pero las fuentes tipográficas
+del texto <em>no</em> se incrustan en los archivos SVG.  Cualquier
+visor de SVG necesita que las fuentes de texto correspondientes
+estén disponibles para la correcta representación tanto del texto
+como de la letra. Se recomienda no utilizar &lsquo;alias&rsquo; ni
+&lsquo;listas&rsquo; de fuentes tipográficas por si el visor de SVG no es
+capaz de manejarlas.
+</p>
+</dd>
+</dl>
+
+</dd>
+<dt><span><code>clip-systems</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, extraer fragmentos de música de la
+partitura.  Requiere que la función <code>clip-regions</code> esté
+definida dentro del bloque <code>\layout</code>.  Véase
+<a href="../notation/extracting-fragments-of-music.es.html">Extracción de
+fragmentos de música</a>.  No se extrae ningún fragmento si se usa
+con la opción <samp>-dno-print-pages</samp>.  Predeterminado:
+<code>#f</code>.
+</p>
+</dd>
+<dt><span><code>compile-scheme-code</code> <var>bool</var></span></dt>
+<dd><p>Usar el compilador Guile para ejecutar código de Scheme, en lugar
+del evaluador.  Para más información, véase
+<a href="../extending/debugging-scheme-code.es.html">Debugging Scheme code</a>.
+</p>
+</dd>
+<dt><span><code>crop</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, se crea un segundo archivo PDF (con la
+extensión <samp>.cropped.pdf</samp>), junto con una copia de él en
+formato imagen de matriz de puntos (con la extensión
+<samp>.cropped.png</samp>).  Esta salida incluye toda la música y los
+títulos de cabecera, sin los márgenes, en una sola imagen,
+posiblemente muy alta.  Si se establece la opción <samp>--eps</samp> o
+<samp>--ps</samp>, se produce un archivo EPS recortado (con la
+extensión <samp>.cropped.eps</samp>) en lugar de un PDF recortado.
+Predeterminado: <code>#f</code>.
+</p>
+<p>De acuerdo con el funcionamiento de LilyPond, las dimensiones del
+archivo de salida que se crea siempre se redondean a un número
+entero de puntos grandes de PostScript; esto puede producir una
+pequeña cantidad de espacio en blanco en el margen derecho.  Para
+evitarlo, establezca la variable de papel <code>line-width</code> a un
+número entero de puntos grandes como <code>450\bp</code>.
+</p>
+<p>Observe que por el momento esta opción no se adapta demasiado bien
+a la salida multisistema porque el espacio vertical entre los
+sistemas se elimina.
+</p>
+</dd>
+<dt><span><code>datadir</code></span></dt>
+<dd><p>Prefijo de los archivos de datos.  Esta opción es de solo lectura;
+su establecimiento no tiene ningún efecto.
+</p>
+</dd>
+<dt><span><code>debug-eval</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, usar el evaluador depurador de Scheme,
+que imprime trazas con números de línea cuando hay errores.
+Predeterminado: <code>#f</code>, o <code>#t</code> cuando se usa
+<code>--verbose</code>.
+</p>
+</dd>
+<dt><span><code>debug-skylines</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, efectuar una depuración de las líneas
+de horizonte.  Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>delete-intermediate-files</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, eliminar los archivos intermedios
+<code>.ps</code> inútiles que se crean durante la compilación.
+Predeterminado: <code>#t</code>.
+</p>
+</dd>
+<dt><span><code>embed-source-code</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, empotrar los archivos de entrada en
+código de LilyPond dentro del documento PDF generado.
+Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>eps-box-padding</code> <var>número</var></span></dt>
+<dd><p>Rellenar el borde izquierdo de la caja contenedora (bounding box)
+del EPS de salida en <var>número</var> milímetros.  Predeterminado:
+<code>#f</code> (que significa que no se rellena la caja contenedora).
+</p>
+</dd>
+<dt><span><code>first</code> <var>cadena</var></span></dt>
+<dd><p>Mostrar solo la música que tenga una longitud dada por
+<var>cadena</var> al principio.  Esto es equivalente a
+</p>
+<div class="example">
+<pre class="example">showFirstLength = <var>cadena</var>
+</pre></div>
+
+<p>si se escribe al principio del archivo de entrada.  Si están
+fijadas tanto <samp>-dfirst</samp> como <code>showFirstLength</code>, la
+opción de la línea de órdenes tiene prioridad.  Véase
+<a href="../notation/extracting-fragments-of-music.es.html">Extracción de fragmentos de música</a>.  Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>font-export-dir</code> <var>cadena</var></span></dt>
+<dd><p>Fijar el directorio para la exportación de fuentes tipográficas
+como archivos de PostScript a <var>cadena</var>.  Esto es de utilidad
+cuando queremos crear primero un PDF sin las fuentes incrustadas,
+e incrustar más tarde las fuentes con Ghostscript como se ve más
+abajo.
+</p>
+<div class="example">
+<pre class="example">$ lilypond -dfont-export-dir=fontdir \
+           -dgs-never-embed-fonts foo.ly
+$ gs -q -dBATCH -dNOPAUSE -sDEVICE=pdfwrite \
+     -sOutputFile=foo.embedded.pdf foo.pdf fontdir/*.font.ps
+</pre></div>
+
+<p>Nota: a diferencia de <code>font-ps-resdir</code>, este método no puede
+empotrar las fuentes CID con Ghostscript 9.26 y posteriores.
+</p>
+<p>Nota: de forma parecida a <code>font-ps-resdir</code>, esta opción se
+salta las fuentes TrueType porque el empotrado de fuentes TrueType
+puede producir un desbaratamiento de los caracteres.  Para evitar
+este dessbaratabiento, use <code>gs-never-embed-fonts</code>, pues a
+pesar de su nombre esta opción empotra las fuentes TrueType.
+</p>
+<p>Predeterminado: <code>#f</code> (que significa no exportar el directorio).
+</p>
+</dd>
+<dt><span><code>font-ps-resdir</code> <var>cadena</var></span></dt>
+<dd><p>Fijar el directorio (como <var>cadena</var>) para construir un
+subconjunto del directorio de recursos PostScript y usarlo para
+empotrar las fuentes más tarde.  Esto es útil si queremos crear
+primero un PDF sin las fuentes empotradas y empotrar las fuentes
+más tarde con Ghostscript como se ve más abajo.
+</p>
+<div class="example">
+<pre class="example">$ lilypond -dfont-ps-resdir=resdir \
+           -dgs-never-embed-fonts foo.ly
+$ gs -q -dBATCH -dNOPAUSE -sDEVICE=pdfwrite \
+     -I resdir -I resdir/Font \
+     -sOutputFile=foo.embedded.pdf foo.pdf
+</pre></div>
+
+<p>Nota: es mejor no especificar un directorio que contenga el nombre
+<samp>Resource</samp> porque este tiene un significado especial al
+especificarlo con la opción <code>-I</code> para Ghostscript.
+</p>
+<p>Nota: a diferencia de <code>font-export-dir</code>, este método puede
+empotrar fuentes CID con Ghostscript 9.26 y posteriores.
+</p>
+<p>Nota: de forma parecida a <code>font-export-dir</code>, esta opción se
+salta las fuentes TrueType porque el empotrado tardío de fuentes
+TrueType puede causar un desbaratamiento de los caracteres.  Para
+evitar el desbaratamiento, use <code>gs-never-embed-fonts</code>, ya que
+este empotra las fuentes TrueType a pesar de su nombre.
+</p>
+<p>Predeterminado: <code>#f</code> (que significa no crear subconjuntos en
+el directorio).
+</p>
+</dd>
+<dt><span><code>gs-load-fonts</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, cargar fuentes a través de
+Ghostscript.  Esta opción hace que los archivos de salida de
+LilyPond solo contenga referencias a todas las fuentes, lo que
+debe después resolverse a las fuentes reales en un paso de
+post-procesado por medio de Ghostscript.  Predeterminado:
+<code>#f</code>.
+</p>
+</dd>
+<dt><span><code>gs-load-lily-fonts</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, cargar las fuentes de LilyPond por
+medio de Ghostscript.  Esta opción hace que los archivos de salida
+de LilyPond contengan solamente referencias a sus fuentes de
+música, lo que debe después resolverse a las fuentes reales en un
+paso de post-procesado por medio de Ghostscript.  Todas las demás
+fuentes se dirigen a la salida como es habitual.  Predeterminado:
+<code>#f</code>.
+</p>
+</dd>
+<dt><span><code>gs-never-embed-fonts</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, hacer que Ghostscript incruste
+solamente tipos de letra TrueType y ningún otro formato de fuente.
+Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>help</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, mostrar una pantalla de ayuda y salir.
+Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>include-book-title-preview</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, incluir los títulos de libro en las
+imágenes de vista previa.  Predeterminado: <code>#t</code>.
+</p>
+</dd>
+<dt><span><code>include-eps-fonts</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, incluir las fuentes tipográficas en
+los archivos EPS de cada uno de los sistemas.  Predeterminado:
+<code>#t</code>.
+</p>
+</dd>
+<dt><span><code>include-settings</code> <var>cadena</var></span></dt>
+<dd><p>Incluir el archivo <var>cadena</var> de ajustes globales, que se
+incluye antes de que la partitura se procese.  Esta opción se
+puede pasar más de una vez para incluir varios
+archivos. Predeterminado: sin establecer (que significa que no se
+incluye ningún archivo de ajustes globales).
+</p>
+</dd>
+<dt><span><code>job-count</code> <var>número</var></span></dt>
+<dd><p>Procesar en paralelo, utilizando el <var>número</var> de tareas
+especificado (siendo <var>número</var> un entero positivo).
+Predeterminado: <code>#f</code> (que significa que no se hace ningún
+procesado paralelo).
+</p>
+</dd>
+<dt><span><code>last</code> <var>cadena</var></span></dt>
+<dd><p>Mostrar solamente la música con una duración dada por el valor de
+<var>cadena</var> al final.  Esto es equivalente a
+</p>
+<div class="example">
+<pre class="example">showLastLength = <var>cadena</var>
+</pre></div>
+
+<p>si se escribe al principio del archivo de entrada.  Si están
+establecidos tanto <samp>-dlast</samp> como <code>showLastLength</code>,
+tiene prioridad la opción de la línea de órdenes.  Véase
+<a href="../notation/extracting-fragments-of-music.es.html">Extracción de fragmentos de música</a>.  Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>log-file</code> <var>cadena</var></span></dt>
+<dd><p>Redirigir la salida hacia el archivo de registro
+<samp><var>cadena</var>.log</samp>.  Predeterminado: <code>#f</code> (que significa
+ningún archivo de registro).
+</p>
+</dd>
+<dt><span><code>max-markup-depth</code> <var>número</var></span></dt>
+<dd><p>Fijar la profundidad máxima del árbol de marcado al valor
+<var>número</var> (being a non-negative integer).  Si un elemento de
+marcado tiene más niveles, suponer que no va a finalizar por sí
+mismo, imprimir un mensaje de advertencia y devolver un elemento
+de marcado nulo en su lugar.  Predeterminado: <code>1024</code>.
+</p>
+</dd>
+<dt><span><code>midi-extension</code> <var>cadena</var></span></dt>
+<dd><p>Fijar la extensión de archivo predeterminada para los archivos
+MIDI de salida a <samp>.<var>cadena</var></samp>.  Predeterminado:
+<code>&quot;midi&quot;</code>.
+</p>
+</dd>
+<dt><span><code>music-strings-to-paths</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, converir las cadenas de texto a
+trayectos cuando los glifos pertenecen a una fuente musical.
+Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>paper-size</code> <var>cadena</var></span></dt>
+<dd><p>Fijar el tamaño del papel a <var>cadena</var>.  Predeterminado:
+<code>&quot;a4&quot;</code>.
+</p>
+</dd>
+<dt><span><code>pixmap-format</code> <var>cadena</var></span></dt>
+<dd><p>Establecer el formato de salida de Ghostscript para las imágenes
+de matriz de puntos a <var>cadena</var>.  Predeterminado:
+<code>&quot;png16m&quot;</code>.
+</p>
+</dd>
+<dt><span><code>png-width</code> <var>altura</var></span></dt>
+<dt><span><code>png-height</code> <var>anchura</var></span></dt>
+<dd><p>Para la salida PNG, fijar la anchura y la altura (en píxeles) del
+archivo de imagen creado.  Si falta una de las opciones, la otra
+dimensión se calcula de acuerdo a la caja circundante EPS,
+reteniendo la relación de aspecto.  Tanto <var>altura</var> como
+<var>anchura</var> deben ser números enteros no negativos.
+</p>
+<p>Además de <samp>--png</samp>, se deben usar <samp>--eps</samp>,
+<samp>-dcrop</samp> o <samp>-dpreview</samp> para conseguir un escalado
+adecuado sin que haya recorte.
+</p>
+<p>La opción <samp>-dresolution</samp> se ignora.
+</p>
+<p>Observe que hay un bug en las versiones de Ghostscript hasta la
+9.52 para estas dos opciones: produce imágenes PNG vacías si la
+altura es más grande que la anchura.
+</p>
+<p>Predeterminado: <code>0</code> tanto para <var>anchura</var> como para
+<var>altura</var> (que significa que las dos dimensiones se derivan a
+partir de la caja circundante de EPS).
+</p>
+</dd>
+<dt><span><code>point-and-click</code> <var>valor</var></span></dt>
+<dd><p>Si <var>valor</var> es <code>#t</code>, añadir enlaces de &lsquo;apuntar y
+pulsar&rsquo; a las salidas de PDF y SVG.  Hay más valores de opción
+posibles; see <a href="point-and-click.es.html">Apuntar y pulsar</a>.  Predeterminado: <code>#t</code>.
+</p>
+</dd>
+<dt><span><code>preview</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, crear imágenes de vista previa además
+de la salida normal.  Predeterminado: <code>#f</code>.
+</p>
+<p>Para un nombre de archivo de entrada <var>archivo</var> y el formato de
+salida <var>fmt</var>, genera un archivo de salida, con el nombre
+<samp><var>file</var><code>.preview.</code><var>fmt</var></samp>, que contiene los
+títulos y el primer sistema de la música.  Si se están utilizando
+bloques <code>\book</code> o <code>\bookpart</code>, aparecen en la salida los
+títulos de <code>\book</code>, <code>\bookpart</code> o <code>\score</code>,
+incluido el primer sistema de cada bloque <code>\score</code> si la
+variable de <code>\paper</code> <code>print-all-headers</code> está fijada al
+valor <code>#t</code>.
+</p>
+<p>Para suprimir la salida usual, utilice las opciones
+<samp>-dprint-pages</samp> o <samp>-dno-print-pages</samp> según sus
+necesidades.
+</p>
+</dd>
+<dt><span><code>print-pages</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, generar páginas completas.
+Predeterminado: <code>#t</code>.
+</p>
+<p>La opción <samp>-dno-print-pages</samp> es útil en combinación con las
+opciones <samp>-dpreview</samp> o <samp>-dcrop</samp>.
+</p>
+</dd>
+<dt><span><code>protected-scheme-parsing</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, continuar cuando se interceptan
+errores en el código empotrado de Scheme dentro del analizador
+sintáctico.  Si se establece al valor <code>#f</code>, detenerse cuando
+se produzca algún error e imprimir una traza de la pila.
+Predeterminado: <code>#t</code>.
+</p>
+</dd>
+<dt><span><code>read-file-list</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, manejar todos los argumentos de
+archivo en la línea de órdenes como listas de archivos de entrada
+de LilyPond que procesar, con un archivo de entrada por cada línea
+en dichas listas.  Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>relative-includes</code> <var>bool</var></span></dt>
+<dd><p>Cuando se procesa una instrucción <code>\include</code>, buscar el
+archivo de inclusión en una ruta relativa al archivo actual si
+<var>bool</var> es <code>#t</code>.  Si se establece a <code>#f</code>, buscar el
+archivo según una ruta relativa al archivo raíz.  Predeterminado:
+<code>#t</code>.
+</p>
+</dd>
+<dt><span><code>resolution</code> <var>número</var></span></dt>
+<dd><p>Fijar la resolución para generar imágenes de matriz de puntos
+<code>PNG</code> a <var>número</var> ppp (que debe ser un número positivo).
+Predeterminado: <code>101</code>.
+</p>
+</dd>
+<dt><span><code>separate-log-files</code> <var>bool</var></span></dt>
+<dd><p>Para los archivos de entrada <samp>archivo1.ly</samp>,
+<samp>archivo2.ly</samp>, &hellip;, dar salida a datos de registro hacia
+los archivos <samp>archivo1.log</samp>, <samp>archivo2.log</samp>, &hellip;, si
+<var>bool</var> es <code>#t</code>.  Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>separate-page-formats</code> <var>cadena</var></span></dt>
+<dd><p>Lista de formatos separados por comas (<code>svg</code>, <code>pdf</code>,
+<code>png</code> o <code>eps</code>) para usarlos para las imágenes de página
+separadas en <code>lilypond-book</code>.  See <a href="other-programs.es.html">Otros programas</a>.
+Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>show-available-fonts</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, imprimir un listado de los nombres de
+fuente tipográfica disponibles tal y como los proporciona la
+biblioteca fontconfig.  Al final de esta lista, LilyPond presenta
+los ajustes de configuración del propio fontconfig.
+Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>staff-size</code> <var>número</var></span></dt>
+<dd><p>Fijar el tamaño global del pentagrama en <var>número</var> puntos (que
+debe ser un número positivo).  Esto es equivalente a
+</p>
+<div class="example">
+<pre class="example">#(set-global-staff-size <var>número</var>)
+</pre></div>
+
+<p>si se escribe al comienzo del archivo de entrada.  Predeterminado:
+20pt.
+</p>
+</dd>
+<dt><span><code>strip-output-dir</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, no utilizar la parte del directorio
+tomada de las rutas de los archivos cuando se construyen nombres
+de archivos de salida.  Predeterminado: <code>#t</code>.
+</p>
+</dd>
+<dt><span><code>strokeadjust</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, forzar el ajuste de los trazos de
+PostScript.  Esta opción es relevante principalmente cuando se
+genera un PDF a partir de la salida de PostScript (el ajuste del
+trazo está por lo general activado automáticamente para
+dispositivos de mapa de puntos de baja resolución).  Sin esta
+opción, los visores de PDF tienden a producir anchuras de plica
+muy poco consistentes con las resoluciones típicas de las
+pantallas de ordenador.  Sin embargo, la opción no afecta de forma
+muy significativa a la calidad de la impresión y causa grandes
+incrementos en el tamaño del archivo PDF.  Predeterminado:
+<code>#f</code>.
+</p>
+</dd>
+<dt><span><code>tall-page-formats</code> <var>cadena</var></span></dt>
+<dd><p>Lista de formatos separados por comas (<code>svg</code>, <code>pdf</code>,
+<code>png</code> o <code>eps</code>) que usar para la imagen de &lsquo;página
+larga&rsquo; en <code>lilypond-book</code>.  See <a href="other-programs.es.html">Otros programas</a>.
+Predeterminado: <code>#f</code>.
+</p>
+</dd>
+<dt><span><code>use-paper-size-for-page</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, cada página se fija al tamaño del
+papel, posiblemente recortanfo partes que se salen de la página.
+Si se establece a <code>#f</code> se redimensiona la página según sea
+necesario de forma que todo el contenido esté incluido.
+Predeterminado: <code>#t</code>.
+</p>
+</dd>
+<dt><span><code>verbose</code> <var>bool</var></span></dt>
+<dd><p>Nivel de verbosidad.  Esta es una opción de solo lectura; su
+establecimiento no tiene ningún efecto.
+</p>
+</dd>
+<dt><span><code>warning-as-error</code> <var>bool</var></span></dt>
+<dd><p>Si <var>bool</var> es <code>#t</code>, cambiar todos los mensajes de
+advertencia y de &lsquo;error de programación&rsquo; a errores.
+Predeterminado: <code>#f</code>.
+</p>
+</dd>
+</dl>
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="running-lilypond.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Ejecutar LilyPond </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="usage_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.es.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="updating-files-with-convert_002dly.es.html" title="Next chapter"> Actualizar ficheros con <code>convert-ly</code> &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="basic-command_002dline-options-for-lilypond.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Opciones básicas de la línea de órdenes para LilyPond </a>]</td><td align="center">[<a href="command_002dline-usage.es.html" title="Up section" accesskey="u" rel="up">  Up: Utilización desde la línea de órdenes </a>]</td><td align="right">[<a href="environment-variables.es.html" title="Next section in reading order" accesskey="n" rel="next"> Variables de entorno &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="advanced-command_002dline-options-for-lilypond.html">English</a>, <a href="advanced-command_002dline-options-for-lilypond.ca.html">Català</a>, <a href="advanced-command_002dline-options-for-lilypond.de.html">Deutsch</a>, <a href="advanced-command_002dline-options-for-lilypond.fr.html">Français</a>, <a href="advanced-command_002dline-options-for-lilypond.it.html">Italiano</a>, <a href="advanced-command_002dline-options-for-lilypond.ja.html">日本語</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.es.html" title="Documentation Index">
+    &lt;&lt; Volver al índice de la documentación
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.es.html#top" title="Cover (top) of document">
+    LilyPond: manual de utilización del programa  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li class="toc_current"><a id="toc-Ejecutar-LilyPond" href="running-lilypond.es.html">1 Ejecutar LilyPond</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Utilizacion-normal" href="normal-usage.es.html">1.1 Utilización normal</a></li>
+    <li class="toc_current"><a id="toc-Utilizacion-desde-la-linea-de-ordenes" href="command_002dline-usage.es.html">1.2 Utilización desde la línea de órdenes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-La-variable-de-entorno-PATH" href="the-path-environment-variable.es.html">La variable de entorno <code>PATH</code></a></li>
+      <li><a id="toc-Invocar-lilypond" href="invoking-lilypond.es.html">Invocar <code>lilypond</code></a></li>
+      <li><a id="toc-Opciones-basicas-de-la-linea-de-ordenes-para-LilyPond" href="basic-command_002dline-options-for-lilypond.es.html">Opciones básicas de la línea de órdenes para LilyPond</a></li>
+      <li class="toc_current"><a id="toc-Opciones-avanzadas-de-linea-de-ordenes-para-LilyPond" href="advanced-command_002dline-options-for-lilypond.es.html">Opciones avanzadas de línea de órdenes para LilyPond</a></li>
+      <li><a id="toc-Variables-de-entorno" href="environment-variables.es.html">Variables de entorno</a></li>
+      <li><a id="toc-Reubicacion-del-programa" href="relocation.es.html">Reubicación del programa</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Archivos-de-reubicacion" href="relocation-files.es.html">Archivos de reubicación</a></li>
+        <li><a id="toc-Algoritmo-de-la-reubicacion" href="relocation-algorithm.es.html">Algoritmo de la reubicación</a></li>
+      </ul></li>
+      <li><a id="toc-LilyPond-en-una-jaula-de-chroot" href="lilypond-in-chroot-jail.es.html">LilyPond en una jaula de chroot</a></li>
+    </ul></li>
+    <li><a id="toc-Mensajes-de-error" href="error-messages.es.html">1.3 Mensajes de error</a></li>
+    <li><a id="toc-Errores-comunes" href="common-errors.es.html">1.4 Errores comunes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-La-musica-se-sale-de-la-pagina" href="music-runs-off-the-page.es.html">La música se sale de la página</a></li>
+      <li><a id="toc-Aparece-un-pentagrama-de-mas" href="an-extra-staff-appears.es.html">Aparece un pentagrama de más</a></li>
+      <li><a id="toc-Mensaje-de-error-Unbound-variable-_0025" href="error-message-unbound-variable-_0025.es.html">Mensaje de error Unbound variable %</a></li>
+      <li><a id="toc-Mensaje-de-error-FT_005fGet_005fGlyph_005fName" href="error-message-ft_005fget_005fglyph_005fname.es.html">Mensaje de error FT_Get_Glyph_Name</a></li>
+      <li><a id="toc-Advertencia-sobre-que-las-afinidades-del-pentagrama-solo-deben-decrecer" href="warning-staff-affinities-should-only-decrease.es.html">Advertencia sobre que las afinidades del pentagrama sólo deben decrecer</a></li>
+      <li><a id="toc-Mensaje-de-error-Unexpected-_005cnew" href="error-message-unexpected-new.es.html">Mensaje de error Unexpected <code>\new</code></a></li>
+      <li><a id="toc-Advertencia-de-que-una-voz-requiere-ajustes-_005cvoiceXx-o-_005cshiftXx" href="warning-this-voice-needs-a-voicexx-or-shiftxx-setting.es.html">Advertencia de que una voz requiere ajustes <code>\voiceXx</code> o <code>\shiftXx</code></a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Actualizar-ficheros-con-convert_002dly" href="updating-files-with-convert_002dly.es.html">2 Actualizar ficheros con <code>convert-ly</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-_00bfPor-que-cambia-la-sintaxis_003f" href="why-does-the-syntax-change_003f.es.html">2.1 ¿Por qué cambia la sintaxis?</a></li>
+    <li><a id="toc-Introduccion-a-la-linea-de-ordenes" href="command_002dline-preliminaries.es.html">2.2 Introducción a la línea de órdenes</a></li>
+    <li><a id="toc-Invocacion-de-convert_002dly" href="invoking-convert_002dly.es.html">2.3 Invocación de <code>convert-ly</code></a></li>
+    <li><a id="toc-Opciones-de-la-linea-de-ordenes-para-convert_002dly" href="command-line-options-for-convert_002dly.es.html">2.4 Opciones de la línea de órdenes para <code>convert-ly</code></a></li>
+    <li><a id="toc-Problemas-con-convert_002dly" href="problems-running-convert_002dly.es.html">2.5 Problemas con <code>convert-ly</code></a></li>
+    <li><a id="toc-Conversiones-manuales" href="manual-conversions.es.html">2.6 Conversiones manuales</a></li>
+    <li><a id="toc-Escritura-de-codigo-que-contemple-varias-versiones" href="writing-code-to-support-multiple-versions.es.html">2.7 Escritura de código que contemple varias versiones</a></li>
+  </ul></li>
+  <li><a id="toc-Ejecucion-de-lilypond_002dbook" href="lilypond_002dbook.es.html">3 Ejecución de <code>lilypond-book</code></a>
+  <ul class="no-bullet">
+    <li><a id="toc-Un-ejemplo-de-documento-musicologico" href="an-example-of-a-musicological-document.es.html">3.1 Un ejemplo de documento musicológico</a></li>
+    <li><a id="toc-Integrar-musica-y-texto" href="integrating-music-and-text.es.html">3.2 Integrar música y texto</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LaTeX" href="latex.es.html">3.2.1 LaTeX</a></li>
+      <li><a id="toc-Texinfo" href="texinfo.es.html">3.2.2 Texinfo</a></li>
+      <li><a id="toc-HTML" href="html.es.html">3.2.3 HTML</a></li>
+      <li><a id="toc-DocBook" href="docbook.es.html">3.2.4 DocBook</a></li>
+    </ul></li>
+    <li><a id="toc-Opciones-de-fragmentos-de-musica" href="music-fragment-options.es.html">3.3 Opciones de fragmentos de música</a></li>
+    <li><a id="toc-Invocar-lilypond_002dbook" href="invoking-lilypond_002dbook.es.html">3.4 Invocar <code>lilypond-book</code></a></li>
+    <li><a id="toc-Extensiones-de-nombres-de-archivo" href="filename-extensions.es.html">3.5 Extensiones de nombres de archivo</a></li>
+    <li><a id="toc-Ejecucion-paralela" href="parallel-execution.es.html">3.6 Ejecución paralela</a></li>
+    <li><a id="toc-Plantillas-de-lilypond_002dbook" href="lilypond_002dbook-templates.es.html">3.7 Plantillas de lilypond-book</a></li>
+    <li><a id="toc-Compartir-el-indice-general" href="sharing-the-table-of-contents.es.html">3.8 Compartir el índice general</a></li>
+    <li><a id="toc-Metodos-alternativos-para-mezclar-texto-y-musica" href="alternate-methods-of-mixing-text-and-music.es.html">3.9 Métodos alternativos para mezclar texto y música</a></li>
+  </ul></li>
+  <li><a id="toc-Programas-externos" href="external-programs.es.html">4 Programas externos</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Apuntar-y-pulsar" href="point-and-click.es.html">4.1 Apuntar y pulsar</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Configuracion-del-sistema" href="configuring-the-system-for-point-and-click.es.html">4.1.1 Configuración del sistema</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Uso-de-GNOME-para-apuntar-y-pulsar" href="using-gnome-for-point-and-click.es.html">Uso de GNOME para apuntar y pulsar</a></li>
+        <li><a id="toc-Configuracion-adicional-para-Evince" href="extra-configuration-for-evince.es.html">Configuración adicional para Evince</a></li>
+      </ul></li>
+      <li><a id="toc-Habilitar-la-opcion-de-apuntar-y-pulsar" href="enabling-point-and-click.es.html">Habilitar la opción de apuntar y pulsar</a></li>
+      <li><a id="toc-Apuntar-y-pulsar-selectivo" href="selective-point_002dand_002dclick.es.html">Apuntar y pulsar selectivo</a></li>
+    </ul></li>
+    <li><a id="toc-Apoyo-respecto-de-los-editores-de-texto" href="text-editor-support.es.html">4.2 Apoyo respecto de los editores de texto</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Modo-de-Emacs" href="emacs-mode.es.html">Modo de Emacs</a></li>
+      <li><a id="toc-Modo-de-Vim" href="vim-mode.es.html">Modo de Vim</a></li>
+      <li><a id="toc-Otros-editores" href="other-editors.es.html">Otros editores</a></li>
+    </ul></li>
+    <li><a id="toc-Conversion-desde-otros-formatos" href="converting-from-other-formats.es.html">4.3 Conversión desde otros formatos</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Invocar-midi2ly" href="invoking-midi2ly.es.html">4.3.1 Invocar <code>midi2ly</code></a></li>
+      <li><a id="toc-Invocar-musicxml2ly" href="invoking-musicxml2ly.es.html">4.3.2 Invocar <code>musicxml2ly</code></a></li>
+      <li><a id="toc-Invocar-abc2ly" href="invoking-abc2ly.es.html">4.3.3 Invocar <code>abc2ly</code></a></li>
+      <li><a id="toc-Invocar-etf2ly" href="invoking-etf2ly.es.html">4.3.4 Invocar <code>etf2ly</code></a></li>
+      <li><a id="toc-Otros-formatos" href="other-formats.es.html">4.3.5 Otros formatos</a></li>
+    </ul></li>
+    <li><a id="toc-Salida-de-LilyPond-dentro-de-otros-programas" href="lilypond-output-in-other-programs.es.html">4.4 Salida de LilyPond dentro de otros programas</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LuaTeX" href="luatex.es.html">4.4.1 LuaTeX</a></li>
+      <li><a id="toc-OpenOffice-y-LibreOffice" href="openoffice-and-libreoffice.es.html">4.4.2 OpenOffice y LibreOffice</a></li>
+      <li><a id="toc-ly2video-1" href="ly2video.es.html">4.4.3 <code>ly2video</code></a></li>
+      <li><a id="toc-Otros-programas" href="other-programs.es.html">4.4.4 Otros programas</a></li>
+    </ul></li>
+    <li><a id="toc-Archivos-de-inclusion-independientes" href="independent-includes.es.html">4.5 Archivos de inclusión independientes</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Articulacion-MIDI" href="midi-articulation.es.html">4.5.1 Articulación MIDI</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Sugerencias-para-escribir-archivos-de-entrada" href="suggestions-for-writing-files.es.html">5 Sugerencias para escribir archivos de entrada</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Sugerencias-de-tipo-general" href="general-suggestions.es.html">5.1 Sugerencias de tipo general</a></li>
+    <li><a id="toc-Tipografiar-musica-existente" href="typesetting-existing-music.es.html">5.2 Tipografiar música existente</a></li>
+    <li><a id="toc-Proyectos-grandes" href="large-projects.es.html">5.3 Proyectos grandes</a></li>
+    <li><a id="toc-Solucion-de-problemas" href="troubleshooting.es.html">5.4 Solución de problemas</a></li>
+    <li><a id="toc-Make-y-los-Makefiles" href="make-and-makefiles.es.html">5.5 Make y los Makefiles</a></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.es.html">Appendix A GNU Free Documentation License</a></li>
+  <li><a id="toc-Indice" href="index-of-commands-and-concepts.es.html" rel="index">Appendix B Índice</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Búsqueda de Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

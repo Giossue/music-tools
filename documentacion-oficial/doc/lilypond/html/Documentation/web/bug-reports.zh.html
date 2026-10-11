@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2009-2026 by the authors.
+
+LilyPond 网站由本文件归档。
+
+Permission is granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License,
+Version 1.1 or any later version published by the Free Software
+Foundation; with no Invariant Sections.  A copy of the license is
+included in the section entitled "GNU Free Documentation
+License". -->
+<title>错误报告 (LilyPond &ndash; 人人的乐谱软件)</title>
+
+<meta name="description" content="错误报告 (LilyPond &ndash; 人人的乐谱软件)">
+<meta name="keywords" content="错误报告 (LilyPond &ndash; 人人的乐谱软件)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.zh.html#top" rel="start" title="LilyPond &ndash; 人人的乐谱软件">
+<link href="web_toc.zh.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="community.zh.html" rel="up" title="社区">
+<link href="help-us.zh.html" rel="next" title="帮助我们">
+<link href="tiny-examples.zh.html" rel="prev" title="小例子">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-website.css">
+
+
+</head>
+
+<body lang="zh" class="web">
+<div id="main">
+<div class="unnumberedsec" id="bug-reports">
+<hr>
+<span id="Cuo-Wu-Bao-Gao-"></span><h3 class="unnumberedsec">错误报告</h3>
+
+
+<div class="heading-center">
+<p>如果你的输入引发了崩溃或者错误的输出，则这是一个错误。
+</p>
+</div>
+
+<div class="column-center-top">
+<span id="Di-1-Bu-_003aJian-Cha-Shi-Fou-Yi-Zhi-Cuo-Wu-"></span><h4 class="subheading">第 1 步：检查是否已知错误</h4>
+
+<p>我们已经知晓了这个错误。请检查这里：
+</p>
+<div class="example">
+<pre class="example"><a href="https://gitlab.com/lilypond/lilypond/-/issues">https://gitlab.com/lilypond/lilypond/-/issues</a>
+</pre></div>
+
+<div class="warning">
+<p><strong>注意：</strong>请 <strong>不要</strong> 直接向错误记录器提交错误报告。
+一旦一个议题（issue）被添加至错误记录器后，可以向该报告
+增加更多信息。
+</p>
+</div>
+
+
+</div>
+
+
+<div class="column-left-bottom">
+<span id="Di-2-Bu-_003aChuang-Jian-Cuo-Wu-Bao-Gao-"></span><h4 class="subheading">第 2 步：创建错误报告</h4>
+
+<p>如果你发现一个未被列出的错误，
+请帮助我们创建一个错误报告。
+</p>
+<div class="warning">
+<p><strong>注意：</strong>我们只接受 <a href="tiny-examples.zh.html">小例子</a> 形式的报告。
+我们的资源有限，所以任何非最小的例子都会被拒绝。几乎所有
+的错误都可以在 4 个或者更少的音符内演示！
+</p>
+</div>
+
+<p>这是一个好的错误报告的例子：
+</p>
+<div class="example">
+<pre class="example">% Accidentals should be printed for only
+% the first note in a tie, but this version
+% prints flats on both notes.
+\version &quot;2.10.1&quot;
+
+\relative c'' {
+ bes1 ~
+ bes1
+}
+</pre></div>
+
+
+</div>
+
+<div class="column-right-bottom">
+<span id="Di-3-Bu-_003aFa-Song-Cuo-Wu-Bao-Gao-"></span><h4 class="subheading">第 3 步：发送错误报告</h4>
+
+<p>一旦你确认这个议题不是已知的，且创建了错误报告，
+那么请将它发送给我们！
+</p>
+<p>不幸的是目前 bug-lilypond 列表在不订阅的情形下不再提供
+投递接口；参阅
+</p><div class="example">
+<pre class="example"><a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">https://lists.gnu.org/mailman/listinfo/bug-lilypond</a>
+</pre></div>
+<p>获得更多信息。
+</p>
+</div>
+
+<div class="column-center-bottom">
+<span id="Di-4-Bu-_003aDeng-Dai-Hui-Ying-"></span><h4 class="subheading">第 4 步：等待回应</h4>
+
+<p>当你的错误报告发送到邮件列表后，我们的错误组（Bug Squard）
+会检查它；他们可能会向你询问更多信息。当报告添加至错误追
+踪器时，你会收到通知。请预留 4 天时间，因为我们从事这项工
+作的志愿者数量有限。
+</p>
+<p>当一个错误被添加至追踪器，你可以在其下评论来添加更多关于
+它的信息。
+为了保证该追踪器议题上的任何活动都能通知到你，你可能需要
+订阅它：点击议题标题旁边的邮箱按钮。
+</p>
+
+</div>
+
+<div class="column-center-bottom">
+<span id="Ke-Xuan-De-Bang-Zhu-_003aZhan-ShiSuo-Qi-Wang-De-Xing-Wei-"></span><h4 class="subheading">可选的帮助：展示所期望的行为</h4>
+
+<p>当一个议题已经添加到追踪器，如果我们能看到期望输出，那将
+非常有用。你可以添加输入代码和/或期望的输出的演示（可以由
+其它工具创建）！
+</p>
+
+</div>
+
+
+</div>
+<hr>
+
+<div id="footer">
+<p id="languages">
+Other languages: <a href="bug-reports.html">English</a>, <a href="bug-reports.ca.html">Català</a>, <a href="bug-reports.de.html">Deutsch</a>, <a href="bug-reports.es.html">Español</a>, <a href="bug-reports.fr.html">Français</a>, <a href="bug-reports.it.html">Italiano</a>, <a href="bug-reports.ja.html">日本語</a>, <a href="bug-reports.tr.html">Türkçe</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-LilyPond" href="index.zh.html">LilyPond</a></li>
+  <li><a id="toc-Jian-Jie-" href="introduction.zh.html">简介</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Te-Se-" href="features.zh.html">特色</a></li>
+    <li><a id="toc-LiZi-" href="examples.zh.html">例子</a></li>
+    <li><a id="toc-Zi-You-" href="freedom.zh.html">自由</a></li>
+    <li><a id="toc-Bei-Jing-" href="background.zh.html">背景</a></li>
+    <li><a id="toc-Zhi-Zuo-" href="productions.zh.html">制作</a></li>
+    <li><a id="toc-Ping-Jie-" href="reviews.zh.html">评价</a></li>
+    <li><a id="toc-WenBen-Shu-Ru-" href="text-input.zh.html">文本输入</a></li>
+    <li><a id="toc-Bian-Ji-Geng-Jian-Dan-" href="easier-editing.zh.html">编辑更简单</a></li>
+  </ul></li>
+  <li><a id="toc-Download" href="download.zh.html">Download</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Source" href="source.zh.html">Source</a></li>
+    <li><a id="toc-Old-downloads" href="old-downloads.zh.html">Old downloads</a></li>
+    <li><a id="toc-GPL" href="gpl.zh.html">GPL</a></li>
+  </ul></li>
+  <li><a id="toc-Shou-Ce-" href="manuals.zh.html">手册</a>
+  <ul class="no-bullet">
+    <li><a id="toc-XueXi-" href="learning.zh.html">学习</a></li>
+    <li><a id="toc-Zhu-Yu-Biao-" href="glossary.zh.html">术语表</a></li>
+    <li><a id="toc-WenZhang" href="essay.zh.html">文章</a></li>
+    <li><a id="toc-Ji-Pu-Fa-" href="notation.zh.html">记谱法</a></li>
+    <li><a id="toc-Shi-Yong-" href="usage.zh.html">使用</a></li>
+    <li><a id="toc-Pian-Duan-" href="snippets.zh.html">片断</a></li>
+    <li><a id="toc-Chang-Jian-Wen-Ti-" href="faq.zh.html">常见问题</a></li>
+    <li><a id="toc-Web" href="web.zh.html">Web</a></li>
+    <li><a id="toc-Bian-Hua-" href="changes.zh.html">变化</a></li>
+    <li><a id="toc-Kuo-Zhan-" href="extending.zh.html">扩展</a></li>
+    <li><a id="toc-Nei-Bu-Ji-Zhi-" href="internals.zh.html">内部机制</a></li>
+    <li><a id="toc-Suo-You-" href="all.zh.html">所有</a></li>
+    <li><a id="toc-FDL" href="fdl.zh.html">FDL</a></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-She-Qu-" href="community.zh.html">社区</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Lian-Xi-" href="contact.zh.html">联系</a></li>
+    <li><a id="toc-Xiao-LiZi-" href="tiny-examples.zh.html">小例子</a></li>
+    <li class="toc_current"><a id="toc-Cuo-Wu-Bao-Gao-" href="bug-reports.zh.html">错误报告</a></li>
+    <li><a id="toc-Bang-Zhu-Wo-Men-" href="help-us.zh.html">帮助我们</a></li>
+    <li><a id="toc-Zan-Zhu-" href="sponsoring.zh.html">赞助</a></li>
+    <li><a id="toc-Kai-Fa-" href="development.zh.html">开发</a></li>
+    <li><a id="toc-Google-Summer-of-Code" href="google-summer-of-code.zh.html">Google Summer of Code</a></li>
+    <li><a id="toc-Zuo-Zhe-" href="authors.zh.html">作者</a></li>
+    <li><a id="toc-Chu-Ban-Wu-" href="publications.zh.html">出版物</a></li>
+    <li><a id="toc-Xin-Wen-" href="news.zh.html">新闻</a></li>
+    <li><a id="toc-Attic" href="attic.zh.html">Attic</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: ebe492ca408fb0d9abf80b94c56197eef8dc2f09
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google 搜索">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="搜索">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

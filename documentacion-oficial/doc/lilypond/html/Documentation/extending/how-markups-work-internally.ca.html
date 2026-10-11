@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2003-2026 pels autors.
+
+La traducció de la següent nota de copyright s'ofereix com a
+cortesia per a les persones de parla no anglesa, però únicament la
+nota en anglès té validesa legal.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+S'atorga permís per copiar, distribuir i/o modificar aquest
+document sota els termes de la Llicència de Documentació Lliure de
+GNU, versió 1.1 o qualsevol posterior publicada per la Free
+Software Foundation; sense cap de les seccions invariants.
+S'inclou una còpia d'aquesta llicència dins de la secció titulada
+"Llicència de Documentació Lliure de GNU".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>B.5.2 Com funcionen internament els elements de marcatge (Extender LilyPond)</title>
+
+<meta name="description" content="B.5.2 Com funcionen internament els elements de marcatge (Extender LilyPond)">
+<meta name="keywords" content="B.5.2 Com funcionen internament els elements de marcatge (Extender LilyPond)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ca.html" rel="start" title="LilyPond &mdash; Extender">
+<link href="lilypond-index.ca.html" rel="index" title="Appendix E Índex del LilyPond">
+<link href="extending_toc.ca.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="markup-functions.ca.html" rel="up" title="B.5 Funcions de marcatge">
+<link href="new-markup-command-definition.ca.html" rel="next" title="B.5.3 Definició d&rsquo;una ordre nova de marcatge">
+<link href="markup-construction-in-scheme.ca.html" rel="prev" title="B.5.1 Construcció d&rsquo;elements de marcatge a l&rsquo;Scheme">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="ca" class="extending">
+<div id="main">
+<div class="subsection" id="how-markups-work-internally">
+<table class="nav_table">
+<tr><td align="left">[<a href="interfaces-for-programmers.ca.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Interfícies per a programadors </a>]</td><td align="center">[<a href="index.ca.html" title="Cover (top) of document" rel="start">Top</a>][<a href="extending_toc.ca.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="lilypond-index.ca.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="lilypond-scheme-interfaces.ca.html" title="Next chapter"> Interfícies de l&rsquo;Scheme del LilyPond &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="markup-construction-in-scheme.ca.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Construcció d&rsquo;elements de marcatge a l&rsquo;Scheme </a>]</td><td align="center">[<a href="markup-functions.ca.html" title="Up section" accesskey="u" rel="up">  Up: Funcions de marcatge </a>]</td><td align="right">[<a href="new-markup-command-definition.ca.html" title="Next section in reading order" accesskey="n" rel="next"> Definició d&rsquo;una ordre nova de marcatge &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Com-funcionen-internament-els-elements-de-marcatge"></span><h4 class="subsection">B.5.2 Com funcionen internament els elements de marcatge</h4>
+
+<p>En un element de marcatge com
+</p>
+<div class="example">
+<pre class="example">\raise #0.5 &quot;exemple de text&quot;
+</pre></div>
+
+<p><code>\raise</code> es representa en realitat per mitjà de la funció
+<code>raise-markup</code>.  L&rsquo;expressió de marcatge s&rsquo;emmagatzema com
+</p>
+<div class="example">
+<pre class="example">(list raise-markup 0.5 &quot;exemple de text&quot;)
+</pre></div>
+
+<p>Quan el marcatge es converteix en objectes imprimibles (Stencils o
+segells), es crida la funció <code>raise-markup</code> com
+</p>
+<div class="example">
+<pre class="example">(apply raise-markup
+       <var>\objecte de marcatge</var>
+       <var>llista de llistes associatives de propietats</var>
+       0.5
+       <var>el marcatge &quot;exemple de text&quot;</var>)
+</pre></div>
+
+<p>Primer la funció <code>raise-markup</code> crea el segell per a la
+cadena <code>exemple de text</code>, i després eleva el segell Stencil
+en 0.5 espais de pentagrama.  Aquest és un exemple força senzill;
+a la resta de la secció es podran veure exemple més complexos,
+així com a <samp>scm/define-markup-commands.scm</samp>.
+</p>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="interfaces-for-programmers.ca.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Interfícies per a programadors </a>]</td><td align="center">[<a href="index.ca.html" title="Cover (top) of document" rel="start">Top</a>][<a href="extending_toc.ca.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="lilypond-index.ca.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="lilypond-scheme-interfaces.ca.html" title="Next chapter"> Interfícies de l&rsquo;Scheme del LilyPond &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="markup-construction-in-scheme.ca.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Construcció d&rsquo;elements de marcatge a l&rsquo;Scheme </a>]</td><td align="center">[<a href="markup-functions.ca.html" title="Up section" accesskey="u" rel="up">  Up: Funcions de marcatge </a>]</td><td align="right">[<a href="new-markup-command-definition.ca.html" title="Next section in reading order" accesskey="n" rel="next"> Definició d&rsquo;una ordre nova de marcatge &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="how-markups-work-internally.html">English</a>, <a href="how-markups-work-internally.de.html">Deutsch</a>, <a href="how-markups-work-internally.es.html">Español</a>, <a href="how-markups-work-internally.fr.html">Français</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.ca.html" title="Documentation Index">
+    &lt;&lt; Torna a l'índex de la documentació
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.ca.html#top" title="Cover (top) of document">
+    Extender LilyPond  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Tutorial-de-l_0027Scheme" href="scheme-tutorial.ca.html">Appendix A Tutorial de l&rsquo;Scheme</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Introduccio-a-l_0027Scheme" href="introduction-to-scheme.ca.html">A.1 Introducció a l&rsquo;Scheme</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Banc-de-sorra-de-l_0027Scheme" href="scheme-sandbox.ca.html">A.1.1 Banc de sorra de l&rsquo;Scheme</a></li>
+      <li><a id="toc-Variables-de-l_0027Scheme" href="scheme-variables.ca.html">A.1.2 Variables de l&rsquo;Scheme</a></li>
+      <li><a id="toc-Tipus-de-dades-simples-de-l_0027Scheme" href="scheme-simple-data-types.ca.html">A.1.3 Tipus de dades simples de l&rsquo;Scheme</a></li>
+      <li><a id="toc-Tipus-de-dades-compostes-de-l_0027Scheme" href="scheme-compound-data-types.ca.html">A.1.4 Tipus de dades compostes de l&rsquo;Scheme</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Parelles" href="pairs.ca.html">Parelles</a></li>
+        <li><a id="toc-Llistes" href="lists.ca.html">Llistes</a></li>
+        <li><a id="toc-Llistes-associatives-_0028llistes_002dA_0029" href="association-lists-_0028alists_0029.ca.html">Llistes associatives (llistes-A)</a></li>
+        <li><a id="toc-Taules-de-hash" href="hash-tables.ca.html">Taules de hash</a></li>
+      </ul></li>
+      <li><a id="toc-Calculs-a-l_0027Scheme" href="calculations-in-scheme.ca.html">A.1.5 Càlculs a l&rsquo;Scheme</a></li>
+      <li><a id="toc-Procediments-de-l_0027Scheme" href="scheme-procedures.ca.html">A.1.6 Procediments de l&rsquo;Scheme</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Definicio-de-procediments" href="defining-procedures.ca.html">Definició de procediments</a></li>
+        <li><a id="toc-Predicats" href="predicates.ca.html">Predicats</a></li>
+        <li><a id="toc-Valors-de-retorn" href="return-values.ca.html">Valors de retorn</a></li>
+      </ul></li>
+      <li><a id="toc-Condicionals-de-l_0027Scheme" href="scheme-conditionals.ca.html">A.1.7 Condicionals de l&rsquo;Scheme</a>
+      <ul class="no-bullet">
+        <li><a id="toc-if-1" href="if.ca.html">if</a></li>
+        <li><a id="toc-cond-1" href="cond.ca.html">cond</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Scheme-dins-del-LilyPond" href="scheme-in-lilypond.ca.html">A.2 Scheme dins del LilyPond</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Sintaxi-de-l_0027Scheme-del-LilyPond" href="lilypond-scheme-syntax.ca.html">A.2.1 Sintaxi de l&rsquo;Scheme del LilyPond</a></li>
+      <li><a id="toc-Variables-del-LilyPond" href="lilypond-variables.ca.html">A.2.2 Variables del LilyPond</a></li>
+      <li><a id="toc-Variables-d_0027entrada-i-l_0027Scheme" href="input-variables-and-scheme.ca.html">A.2.3 Variables d&rsquo;entrada i l&rsquo;Scheme</a></li>
+      <li><a id="toc-Importacio-de-l_0027Scheme-dins-del-LilyPond" href="importing-scheme-in-lilypond.ca.html">A.2.4 Importació de l&rsquo;Scheme dins del LilyPond</a></li>
+      <li><a id="toc-Propietats-dels-objectes" href="object-properties.ca.html">A.2.5 Propietats dels objectes</a></li>
+      <li><a id="toc-Variables-del-LilyPond-compostes" href="lilypond-compound-variables.ca.html">A.2.6 Variables del LilyPond compostes</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Desplacaments" href="offsets.ca.html">Desplaçaments</a></li>
+        <li><a id="toc-Fraccions" href="fractions.ca.html">Fraccions</a></li>
+        <li><a id="toc-Dimensions" href="extents.ca.html">Dimensions</a></li>
+        <li><a id="toc-Llistes_002dA-de-propietats" href="property-alists.ca.html">Llistes-A de propietats</a></li>
+        <li><a id="toc-Cadenes-de-llistes_002dA" href="alist-chains.ca.html">Cadenes de llistes-A</a></li>
+      </ul></li>
+      <li><a id="toc-Representacio-interna-de-la-musica" href="internal-music-representation.ca.html">A.2.7 Representació interna de la música</a></li>
+    </ul></li>
+    <li><a id="toc-Construccio-de-funcions-complicades" href="building-complicated-functions.ca.html">A.3 Construcció de funcions complicades</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Presentacio-de-les-expressions-musicals" href="displaying-music-expressions.ca.html">A.3.1 Presentació de les expressions musicals</a></li>
+      <li><a id="toc-Propietats-musicals" href="music-properties.ca.html">A.3.2 Propietats musicals</a></li>
+      <li><a id="toc-Duplicacio-una-nota-amb-lligadures-_0028exemple_0029" href="doubling-a-note-with-slurs-_0028example_0029.ca.html">A.3.3 Duplicació una nota amb lligadures (exemple)</a></li>
+      <li><a id="toc-Afegir-articulacions-a-les-notes-_0028exemple_0029" href="adding-articulation-to-notes-_0028example_0029.ca.html">A.3.4 Afegir articulacions a les notes (exemple)</a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Interficies-per-a-programadors" href="interfaces-for-programmers.ca.html">B Interfícies per a programadors</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Blocs-de-codi-del-LilyPond" href="lilypond-code-blocks.ca.html">B.1 Blocs de codi del LilyPond</a></li>
+    <li><a id="toc-Funcions-de-l_0027Scheme" href="scheme-functions.ca.html">B.2 Funcions de l&rsquo;Scheme</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Definicio-de-funcions-de-l_0027Scheme" href="scheme-function-definitions.ca.html">B.2.1 Definició de funcions de l&rsquo;Scheme</a></li>
+      <li><a id="toc-Us-de-les-funcions-de-l_0027Scheme" href="scheme-function-usage.ca.html">B.2.2 Ús de les funcions de l&rsquo;Scheme</a></li>
+      <li><a id="toc-Funcions-de-l_0027Scheme-buides" href="void-scheme-functions.ca.html">B.2.3 Funcions de l&rsquo;Scheme buides</a></li>
+    </ul></li>
+    <li><a id="toc-Funcions-musicals" href="music-functions.ca.html">B.3 Funcions musicals</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Definicions-de-funcions-musicals" href="music-function-definitions.ca.html">B.3.1 Definicions de funcions musicals</a></li>
+      <li><a id="toc-Us-de-les-funcions-musicals" href="music-function-usage.ca.html">B.3.2 Ús de les funcions musicals</a></li>
+      <li><a id="toc-Funcions-de-substitucio-senzilles" href="simple-substitution-functions.ca.html">B.3.3 Funcions de substitució senzilles</a></li>
+      <li><a id="toc-Funcions-de-substitucio-intermedies" href="intermediate-substitution-functions.ca.html">B.3.4 Funcions de substitució intermèdies</a></li>
+      <li><a id="toc-Matematiques-dins-de-les-funcions" href="mathematics-in-functions.ca.html">B.3.5 Matemàtiques dins de les funcions</a></li>
+      <li><a id="toc-Funcions-sense-arguments" href="functions-without-arguments.ca.html">B.3.6 Funcions sense arguments</a></li>
+      <li><a id="toc-Funcions-musicals-buides" href="void-music-functions.ca.html">B.3.7 Funcions musicals buides</a></li>
+    </ul></li>
+    <li><a id="toc-Funcions-d_0027esdeveniments" href="event-functions.ca.html">B.4 Funcions d&rsquo;esdeveniments</a></li>
+    <li class="toc_current"><a id="toc-Funcions-de-marcatge" href="markup-functions.ca.html">B.5 Funcions de marcatge</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Construccio-d_0027elements-de-marcatge-a-l_0027Scheme" href="markup-construction-in-scheme.ca.html">B.5.1 Construcció d&rsquo;elements de marcatge a l&rsquo;Scheme</a></li>
+      <li class="toc_current"><a id="toc-Com-funcionen-internament-els-elements-de-marcatge" href="how-markups-work-internally.ca.html">B.5.2 Com funcionen internament els elements de marcatge</a></li>
+      <li><a id="toc-Definicio-d_0027una-ordre-nova-de-marcatge" href="new-markup-command-definition.ca.html">B.5.3 Definició d&rsquo;una ordre nova de marcatge</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Sintaxi-de-la-definicio-d_0027ordre-de-marcatge" href="markup-command-definition-syntax.ca.html">Sintaxi de la definició d&rsquo;ordre de marcatge</a></li>
+        <li><a id="toc-Quant-a-les-propietats" href="on-properties.ca.html">Quant a les propietats</a></li>
+        <li><a id="toc-Un-exemple-complet" href="a-complete-example.ca.html">Un exemple complet</a></li>
+        <li><a id="toc-Adaptacio-d_0027ordres-incorporades" href="adapting-builtin-commands.ca.html">Adaptació d&rsquo;ordres incorporades</a></li>
+      </ul></li>
+      <li><a id="toc-Definicio-de-noves-ordres-de-llista-de-marcatge" href="new-markup-list-command-definition.ca.html">B.5.4 Definició de noves ordres de llista de marcatge</a></li>
+    </ul></li>
+    <li><a id="toc-Contextos-per-a-programadors" href="contexts-for-programmers.ca.html">B.6 Contextos per a programadors</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Avaluacio-de-contextos" href="context-evaluation.ca.html">B.6.1 Avaluació de contextos</a></li>
+      <li><a id="toc-Execucio-d_0027una-funcio-sobre-tots-els-objectes-de-la-presentacio" href="running-a-function-on-all-layout-objects.ca.html">B.6.2 Execució d&rsquo;una funció sobre tots els objectes de la presentació</a></li>
+    </ul></li>
+    <li><a id="toc-Funcions-de-callback" href="callback-functions.ca.html">B.7 Funcions de callback</a></li>
+    <li><a id="toc-Ajustaments-dificils" href="difficult-tweaks.ca.html">B.8 Ajustaments difícils</a></li>
+  </ul></li>
+  <li><a id="toc-Interficies-de-l_0027Scheme-del-LilyPond" href="lilypond-scheme-interfaces.ca.html">C Interfícies de l&rsquo;Scheme del LilyPond</a></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.ca.html">Appendix D GNU Free Documentation License</a></li>
+  <li><a id="toc-Index-del-LilyPond" href="lilypond-index.ca.html" rel="index">Appendix E Índex del LilyPond</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 9d074d78d7c25852afa87005e21c118630f4f83b
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Cerca a Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1998-2026 por los autores.
+
+La traducción de la siguiente nota de copyright se ofrece como
+cortesía para las personas de habla no inglesa, pero únicamente la
+nota en inglés tiene validez legal.
+
+The translation of the following copyright notice is provided
+for courtesy to non-English speakers, but only the notice in English
+legally counts.
+
+Se otorga permiso para copiar, distribuir y/o modificar este documento
+bajo los términos de la Licencia de Documentación Libre de GNU, versión 1.1
+o cualquier versión posterior publicada por la Free Software Foundation;
+sin ninguna de las secciones invariantes.
+Se incluye una copia de esta licencia dentro de la sección titulada "Licencia
+de Documentación Libre de GNU".
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1
+or any later version published by the Free Software Foundation;
+with no Invariant Sections.
+A copy of the license is included in the section entitled "GNU
+Free Documentation License". -->
+<title>A.3.3 Piano con letra centrada (Manual de aprendizaje de GNU LilyPond)</title>
+
+<meta name="description" content="A.3.3 Piano con letra centrada (Manual de aprendizaje de GNU LilyPond)">
+<meta name="keywords" content="A.3.3 Piano con letra centrada (Manual de aprendizaje de GNU LilyPond)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.es.html" rel="start" title="LilyPond &mdash; Manual de aprendizaje">
+<link href="index-of-commands-and-concepts.es.html" rel="index" title="Appendix C Índice">
+<link href="learning_toc.es.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="piano-templates.es.html" rel="up" title="A.3 Plantillas de piano">
+<link href="piano-and-melody-with-lyrics.es.html" rel="prev" title="A.3.2 Piano y melodía con letra">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="es" class="learning">
+<div id="main">
+<div class="appendixsubsec" id="piano-centered-lyrics">
+<table class="nav_table">
+<tr><td align="left">[<a href="templates.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Plantillas </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.es.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="gnu-free-documentation-license.es.html" title="Next chapter"> GNU Free Documentation License &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="piano-and-melody-with-lyrics.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Piano y melodía con letra </a>]</td><td align="center">[<a href="piano-templates.es.html" title="Up section" accesskey="u" rel="up">  Up: Plantillas de piano </a>]</td><td align="right">[<a href="string-quartet-templates.es.html" title="Next section in reading order" accesskey="n" rel="next"> Plantillas de cuarteto de cuerda &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Piano-con-letra-centrada"></span><h4 class="appendixsubsec">A.3.3 Piano con letra centrada</h4>
+
+
+<p>En lugar de tener un pentagrama dedicado a la melodía y la letra, ésta
+se puede centrar entre los pentagramas de un sistema de piano.
+</p>
+
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">upper</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">treble</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="nb nb-Scale">\major</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\time</span><span class="w"> </span><span class="m m-Fraction">4/4</span>
+
+<span class="w">  </span><span class=" -Pitch">a</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">b</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class=" -Pitch">d</span>
+<span class="p">}</span>
+
+<span class="n n-Lvalue">lower</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\clef</span><span class="w"> </span><span class="nb nb-Clef">bass</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">c</span><span class="w"> </span><span class="nb nb-Scale">\major</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\time</span><span class="w"> </span><span class="m m-Fraction">4/4</span>
+
+<span class="w">  </span><span class=" -Pitch">a</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">c</span>
+<span class="p">}</span>
+
+<span class="nb nb-GrobProperty">text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">\lyricmode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>Aaa<span class="w"> </span>Bee<span class="w"> </span>Cee<span class="w"> </span>Dee
+<span class="p">}</span>
+
+<span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">PianoStaff</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span>upper<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Voice</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;singer&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\upper</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Lyrics</span><span class="w"> </span><span class="k">\lyricsto</span><span class="w"> </span><span class="s">&quot;singer&quot;</span><span class="w"> </span><span class="n n-BackslashReference">\text</span>
+<span class="w">    </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span>lower<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb nb-MarkupCommand">\lower</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+<span class="w">  </span><span class="k">\layout</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">\midi</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../7e/lily-1147360c.ly">
+  <img align="middle"
+       border="0"
+       src="../7e/lily-1147360c.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="templates.es.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; Plantillas </a>]</td><td align="center">[<a href="index.es.html" title="Cover (top) of document" rel="start">Top</a>][<a href="learning_toc.es.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.es.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="gnu-free-documentation-license.es.html" title="Next chapter"> GNU Free Documentation License &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="piano-and-melody-with-lyrics.es.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; Piano y melodía con letra </a>]</td><td align="center">[<a href="piano-templates.es.html" title="Up section" accesskey="u" rel="up">  Up: Plantillas de piano </a>]</td><td align="right">[<a href="string-quartet-templates.es.html" title="Next section in reading order" accesskey="n" rel="next"> Plantillas de cuarteto de cuerda &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="piano-centered-lyrics.ca.html">Català</a>, <a href="piano-centered-lyrics.de.html">Deutsch</a>, <a href="piano-centered-lyrics.it.html">Italiano</a>, <a href="piano-centered-lyrics.ja.html">日本語</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.es.html" title="Documentation Index">
+    &lt;&lt; Volver al índice de la documentación
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.es.html#top" title="Cover (top) of document">
+    Manual de aprendizaje de GNU LilyPond  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Installing" href="installing.es.html">1 Installing</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Graphical-setup" href="graphical-setup.es.html">1.1 Graphical setup</a></li>
+    <li><a id="toc-Command-line-setup" href="command-line-setup.es.html">1.2 Command line setup</a></li>
+  </ul></li>
+  <li><a id="toc-Tutorial" href="tutorial.es.html">2 Tutorial</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Compilacion-del-archivo" href="compiling-a-file.es.html">2.1 Compilación del archivo</a></li>
+    <li><a id="toc-Como-escribir-archivos-de-entrada" href="how-to-write-input-files.es.html">2.2 Cómo escribir archivos de entrada</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Notacion-sencilla" href="simple-notation.es.html">2.2.1 Notación sencilla</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Alturas" href="pitches.es.html">Alturas</a></li>
+        <li><a id="toc-Duraciones-_0028valores-ritmicos_0029" href="durations-_0028rhythms_0029.es.html">Duraciones (valores rítmicos)</a></li>
+        <li><a id="toc-Silencios" href="rests.es.html">Silencios</a></li>
+        <li><a id="toc-Indicacion-de-compas" href="time-signature.es.html">Indicación de compás</a></li>
+        <li><a id="toc-Indicaciones-de-tempo" href="tempo-marks.es.html">Indicaciones de tempo</a></li>
+        <li><a id="toc-Clave" href="clef.es.html">Clave</a></li>
+        <li><a id="toc-Todo-junto" href="all-together.es.html">Todo junto</a></li>
+      </ul></li>
+      <li><a id="toc-Trabajar-sobre-los-archivos-de-entrada" href="working-on-input-files.es.html">2.2.2 Trabajar sobre los archivos de entrada</a></li>
+    </ul></li>
+    <li><a id="toc-Tratar-con-los-errores" href="dealing-with-errors.es.html">2.3 Tratar con los errores</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Consejos-generales-de-solucion-de-problemas" href="general-troubleshooting-tips.es.html">2.3.1 Consejos generales de solución de problemas</a></li>
+      <li><a id="toc-Algunos-errores-comunes" href="some-common-errors.es.html">2.3.2 Algunos errores comunes</a></li>
+    </ul></li>
+    <li><a id="toc-Como-leer-los-manuales" href="how-to-read-the-manuals.es.html">2.4 Cómo leer los manuales</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Material-omitido" href="omitted-material.es.html">2.4.1 Material omitido</a></li>
+      <li><a id="toc-Ejemplos-con-enlace" href="clickable-examples.es.html">2.4.2 Ejemplos con enlace</a></li>
+      <li><a id="toc-Panoramica-de-los-manuales" href="overview-of-manuals.es.html">2.4.3 Panorámica de los manuales</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Notacion-corriente" href="common-notation.es.html">3 Notación corriente</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Notacion-en-un-solo-pentagrama" href="single-staff-notation.es.html">3.1 Notación en un solo pentagrama</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Lineas-divisorias-y-comprobaciones-de-compas" href="bar-lines-and-bar-checks.es.html">3.1.1 Líneas divisorias y comprobaciones de compás</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Lineas-divisorias" href="bar-lines.es.html">Líneas divisorias</a></li>
+        <li><a id="toc-Comprobaciones-de-compas" href="bar-checks.es.html">Comprobaciones de compás</a></li>
+      </ul></li>
+      <li><a id="toc-Alturas-y-armaduras" href="pitches-and-key-signatures.es.html">3.1.2 Alturas y armaduras</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Alteraciones-accidentales" href="pitch-alterations.es.html">Alteraciones accidentales</a></li>
+        <li><a id="toc-Armaduras" href="key-signatures.es.html">Armaduras</a></li>
+        <li><a id="toc-Advertencia_003a-armaduras-y-alturas" href="warning-key-signatures-and-pitches.es.html">Advertencia: armaduras y alturas</a></li>
+      </ul></li>
+      <li><a id="toc-Ligaduras-de-union-y-de-expresion" href="ties-and-slurs.es.html">3.1.3 Ligaduras de unión y de expresión</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Ligaduras-de-union" href="ties.es.html">Ligaduras de unión</a></li>
+        <li><a id="toc-Ligaduras-de-expresion" href="slurs.es.html">Ligaduras de expresión</a></li>
+        <li><a id="toc-Ligaduras-de-fraseo" href="phrasing-slurs.es.html">Ligaduras de fraseo</a></li>
+        <li><a id="toc-Advertencias_003a-ligaduras-de-expresion-frente-a-ligaduras-de-union" href="warnings-slurs-vs-ties.es.html">Advertencias: ligaduras de expresión frente a ligaduras de unión</a></li>
+      </ul></li>
+      <li><a id="toc-Articulaciones-y-matices-dinamicos" href="articulations-and-dynamics.es.html">3.1.4 Articulaciones y matices dinámicos</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Articulaciones" href="articulations.es.html">Articulaciones</a></li>
+        <li><a id="toc-Indicaciones-de-digitacion" href="fingerings.es.html">Indicaciones de digitación</a></li>
+        <li><a id="toc-Matices-dinamicos" href="dynamics.es.html">Matices dinámicos</a></li>
+      </ul></li>
+      <li><a id="toc-Anadir-texto" href="adding-text.es.html">3.1.5 Añadir texto</a></li>
+      <li><a id="toc-Barras-automaticas-y-manuales" href="automatic-and-manual-beams.es.html">3.1.6 Barras automáticas y manuales</a></li>
+      <li><a id="toc-Instrucciones-ritmicas-avanzadas" href="advanced-rhythmic-commands.es.html">3.1.7 Instrucciones rítmicas avanzadas</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Compas-parcial" href="partial-measure.es.html">Compás parcial</a></li>
+        <li><a id="toc-Grupos-especiales" href="tuplets.es.html">Grupos especiales</a></li>
+        <li><a id="toc-Notas-de-adorno" href="grace-notes.es.html">Notas de adorno</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Varias-notas-a-la-vez" href="multiple-notes-at-once.es.html">3.2 Varias notas a la vez</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Explicacion-de-las-expresiones-musicales" href="music-expressions-explained.es.html">3.2.1 Explicación de las expresiones musicales</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Analogia_003a-expresiones-matematicas" href="analogy-mathematical-expressions.es.html">Analogía: expresiones matemáticas</a></li>
+        <li><a id="toc-Expresiones-musicales-simultaneas_003a-varios-pentagramas" href="simultaneous-music-expressions-multiple-staves.es.html">Expresiones musicales simultáneas: varios pentagramas</a></li>
+        <li><a id="toc-Expresiones-musicales-simultaneas_003a-un-solo-pentagrama" href="simultaneous-music-expressions-single-staff.es.html">Expresiones musicales simultáneas: un solo pentagrama</a></li>
+      </ul></li>
+      <li><a id="toc-Varios-pentagramas" href="multiple-staves.es.html">3.2.2 Varios pentagramas</a></li>
+      <li><a id="toc-Grupos-de-pentagramas" href="staff-groups.es.html">3.2.3 Grupos de pentagramas</a></li>
+      <li><a id="toc-Combinar-notas-para-formar-acordes" href="combining-notes-into-chords.es.html">3.2.4 Combinar notas para formar acordes</a></li>
+      <li><a id="toc-Polifonia-en-un-solo-pentagrama" href="single-staff-polyphony.es.html">3.2.5 Polifonía en un solo pentagrama</a></li>
+    </ul></li>
+    <li><a id="toc-Canciones" href="songs.es.html">3.3 Canciones</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Elaborar-canciones-sencillas" href="setting-simple-songs.es.html">3.3.1 Elaborar canciones sencillas</a></li>
+      <li><a id="toc-Alineacion-de-la-letra-a-una-melodia" href="aligning-lyrics-to-a-melody.es.html">3.3.2 Alineación de la letra a una melodía</a></li>
+      <li><a id="toc-Letra-en-varios-pentagramas" href="lyrics-to-multiple-staves.es.html">3.3.3 Letra en varios pentagramas</a></li>
+    </ul></li>
+    <li><a id="toc-Retoques-finales" href="final-touches.es.html">3.4 Retoques finales</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Organizar-las-piezas-mediante-variables" href="organizing-pieces-with-variables.es.html">3.4.1 Organizar las piezas mediante variables</a></li>
+      <li><a id="toc-Anadir-titulos" href="adding-titles.es.html">3.4.2 Añadir títulos</a></li>
+      <li><a id="toc-Nombres-de-nota-absolutos" href="absolute-note-names.es.html">3.4.3 Nombres de nota absolutos</a></li>
+      <li><a id="toc-Mas-alla-del-tutorial" href="after-the-tutorial.es.html">3.4.4 Más allá del tutorial</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Conceptos-fundamentales" href="fundamental-concepts.es.html">4 Conceptos fundamentales</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Como-funcionan-los-archivos-de-entrada-de-LilyPond" href="how-lilypond-input-files-work.es.html">4.1 Cómo funcionan los archivos de entrada de LilyPond</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Introduccion-a-la-estructura-de-los-archivos-de-LilyPond" href="introduction-to-the-lilypond-file-structure.es.html">4.1.1 Introducción a la estructura de los archivos de LilyPond</a></li>
+      <li><a id="toc-La-partitura-es-una-_0028unica_0029-expresion-musical-compuesta" href="score-is-a-_0028single_0029-compound-musical-expression.es.html">4.1.2 La partitura es una (única) expresión musical compuesta</a></li>
+      <li><a id="toc-Anidado-de-expresiones-musicales" href="nesting-music-expressions.es.html">4.1.3 Anidado de expresiones musicales</a></li>
+      <li><a id="toc-Estructura-de-un-elemento-de-nota" href="structure-of-a-note-entry.es.html">4.1.4 Estructura de un elemento de nota</a></li>
+      <li><a id="toc-Acerca-de-la-no-anidabilidad-de-llaves-y-ligaduras" href="on-the-un_002dnestedness-of-brackets-and-ties.es.html">4.1.5 Acerca de la no anidabilidad de llaves y ligaduras</a></li>
+    </ul></li>
+    <li><a id="toc-Las-voces-contienen-musica" href="voices-contain-music.es.html">4.2 Las voces contienen música</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Oigo-voces" href="i_0027m-hearing-voices.es.html">4.2.1 Oigo voces</a></li>
+      <li><a id="toc-Voces-explicitas" href="explicitly-instantiating-voices.es.html">4.2.2 Voces explícitas</a></li>
+      <li><a id="toc-Voces-y-musica-vocal" href="voices-and-vocals.es.html">4.2.3 Voces y música vocal</a></li>
+    </ul></li>
+    <li><a id="toc-Contextos-y-grabadores" href="contexts-and-engravers.es.html">4.3 Contextos y grabadores</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Explicacion-de-los-contextos" href="contexts-explained.es.html">4.3.1 Explicación de los contextos</a></li>
+      <li><a id="toc-Crear-contextos" href="creating-contexts.es.html">4.3.2 Crear contextos</a></li>
+      <li><a id="toc-Explicacion-de-los-grabadores" href="engravers-explained.es.html">4.3.3 Explicación de los grabadores</a></li>
+      <li><a id="toc-Modificar-las-propiedades-de-los-contextos" href="modifying-context-properties.es.html">4.3.4 Modificar las propiedades de los contextos</a></li>
+      <li><a id="toc-Anadir-y-eliminar-grabadores" href="adding-and-removing-engravers.es.html">4.3.5 Añadir y eliminar grabadores</a></li>
+    </ul></li>
+    <li><a id="toc-Extender-las-plantillas" href="extending-the-templates.es.html">4.4 Extender las plantillas</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Soprano-y-violoncello" href="soprano-and-cello.es.html">4.4.1 Soprano y violoncello</a></li>
+      <li><a id="toc-Partitura-vocal-a-cuatro-voces-SATB" href="four_002dpart-satb-vocal-score.es.html">4.4.2 Partitura vocal a cuatro voces SATB</a></li>
+      <li><a id="toc-Crear-una-partitura-partiendo-de-cero" href="building-a-score-from-scratch.es.html">4.4.3 Crear una partitura partiendo de cero</a></li>
+      <li><a id="toc-Ahorrar-tecleo-mediante-variables-y-funciones" href="saving-typing-with-variables-and-functions.es.html">4.4.4 Ahorrar tecleo mediante variables y funciones</a></li>
+      <li><a id="toc-Partituras-y-particellas" href="scores-and-parts.es.html">4.4.5 Partituras y particellas</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Trucar-la-salida" href="tweaking-output.es.html">5 Trucar la salida</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Elementos-de-trucaje" href="tweaking-basics.es.html">5.1 Elementos de trucaje</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Objetos-e-interfaces" href="objects-and-interfaces.es.html">5.1.1 Objetos e interfaces</a></li>
+      <li><a id="toc-Convenciones-de-nombres-de-objetos-y-propiedades" href="naming-conventions-of-objects-and-properties.es.html">5.1.2 Convenciones de nombres de objetos y propiedades</a></li>
+      <li><a id="toc-Metodos-de-trucaje" href="tweaking-methods.es.html">5.1.3 Métodos de trucaje</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-instruccion-_005coverride" href="the-override-command.es.html">La instrucción <code>\override</code></a></li>
+        <li><a id="toc-La-instruccion-_005crevert" href="the-revert-command.es.html">La instrucción <code>\revert</code></a></li>
+        <li><a id="toc-El-prefijo-_005conce" href="the-once-prefix.es.html">El prefijo <code>\once</code></a></li>
+        <li><a id="toc-Las-instrucciones-_005ctweak-y-_005coffset" href="the-tweak-and-offset-commands.es.html">Las instrucciones <code>\tweak</code> y <code>\offset</code></a></li>
+        <li><a id="toc-El-prefijo-_005csingle" href="the-single-prefix.es.html">El prefijo <code>\single</code></a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Manual-de-referencia-de-funcionamiento-interno" href="the-internals-reference-manual.es.html">5.2 Manual de referencia de funcionamiento interno</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Propiedades-de-los-objetos-de-presentacion" href="properties-of-layout-objects.es.html">5.2.1 Propiedades de los objetos de presentación</a></li>
+      <li><a id="toc-Propiedades-de-las-interfaces" href="properties-found-in-interfaces.es.html">5.2.2 Propiedades de las interfaces</a></li>
+      <li><a id="toc-Tipos-de-propiedades" href="types-of-properties.es.html">5.2.3 Tipos de propiedades</a></li>
+    </ul></li>
+    <li><a id="toc-Apariencia-de-los-objetos" href="appearance-of-objects.es.html">5.3 Apariencia de los objetos</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Visibilidad-y-color-de-los-objetos" href="visibility-and-color-of-objects.es.html">5.3.1 Visibilidad y color de los objetos</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-propiedad-stencil-_0028sello_0029" href="the-stencil-property.es.html">La propiedad <code>stencil</code> (sello)</a></li>
+        <li><a id="toc-La-propiedad-break_002dvisibility-_0028visibilidad-en-el-salto_0029" href="the-break_002dvisibility-property.es.html">La propiedad <code>break-visibility</code> (visibilidad en el salto)</a></li>
+        <li><a id="toc-La-propiedad-transparent-_0028transparente_0029" href="the-transparent-property.es.html">La propiedad <code>transparent</code> (transparente)</a></li>
+        <li><a id="toc-La-propiedad-color" href="the-color-property.es.html">La propiedad <code>color</code></a></li>
+      </ul></li>
+      <li><a id="toc-Tamano-de-los-objetos" href="size-of-objects.es.html">5.3.2 Tamaño de los objetos</a></li>
+      <li><a id="toc-Longitud-y-grosor-de-los-objetos" href="length-and-thickness-of-objects.es.html">5.3.3 Longitud y grosor de los objetos</a></li>
+    </ul></li>
+    <li><a id="toc-Desplazamientos-y-alineaciones" href="offsets-and-alignments.es.html">5.4 Desplazamientos y alineaciones</a></li>
+    <li><a id="toc-Colocacion-de-los-objetos" href="placement-of-objects.es.html">5.5 Colocación de los objetos</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Comportamiento-automatico" href="automatic-behavior.es.html">5.5.1 Comportamiento automático</a></li>
+      <li><a id="toc-Objetos-interiores-al-pentagrama" href="within_002dstaff-objects.es.html">5.5.2 Objetos interiores al pentagrama</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-propiedad-direction-_0028direccion_0029" href="the-direction-property.es.html">La propiedad <code>direction</code> (dirección)</a></li>
+        <li><a id="toc-Digitaciones" href="fingering.es.html">Digitaciones</a></li>
+      </ul></li>
+      <li><a id="toc-Objetos-fuera-del-pentagrama" href="outside_002dstaff-objects.es.html">5.5.3 Objetos fuera del pentagrama</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-propiedad-outside_002dstaff_002dpriority-_0028prioridad-fuera-del-pentagrama_0029" href="the-outside_002dstaff_002dpriority-property.es.html">La propiedad <code>outside-staff-priority</code> (prioridad fuera del pentagrama)</a></li>
+        <li><a id="toc-La-instruccion-_005ctextLengthOn" href="the-textlengthon-command.es.html">La instrucción <code>\textLengthOn</code></a></li>
+        <li><a id="toc-Posicionamiento-de-los-matices-dinamicos" href="dynamics-placement.es.html">Posicionamiento de los matices dinámicos</a></li>
+        <li><a id="toc-Escalado-de-un-_00abGrob_00bb" href="grob-sizing.es.html">Escalado de un «Grob»</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Espaciado-vertical" href="vertical-spacing.es.html">5.6 Espaciado vertical</a></li>
+    <li><a id="toc-Colisiones-de-objetos" href="collisions-of-objects.es.html">5.7 Colisiones de objetos</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Mover-objetos" href="moving-objects.es.html">5.7.1 Mover objetos</a></li>
+      <li><a id="toc-Arreglar-notacion-con-superposiciones" href="fixing-overlapping-notation.es.html">5.7.2 Arreglar notación con superposiciones</a>
+      <ul class="no-bullet">
+        <li><a id="toc-La-propiedad-padding-_0028relleno_0029" href="the-padding-property.es.html">La propiedad <code>padding</code> (relleno)</a></li>
+        <li><a id="toc-La-propiedad-right_002dpadding-_0028relleno-por-la-derecha_0029" href="the-right_002dpadding-property.es.html">La propiedad <code>right-padding</code> (relleno por la derecha)</a></li>
+        <li><a id="toc-La-propiedad-staff_002dpadding-_0028relleno-de-pentagrama_0029" href="the-staff_002dpadding-property.es.html">La propiedad <code>staff-padding</code> (relleno de pentagrama)</a></li>
+        <li><a id="toc-La-propiedad-self_002dalignment_002dX-_0028auto_002dalineacion-en-X_0029" href="the-self_002dalignment_002dx-property.es.html">La propiedad <code>self-alignment-X</code> (auto-alineación en X)</a></li>
+        <li><a id="toc-La-propiedad-staff_002dposition-_0028posicion-en-el-pentagrama_0029" href="the-staff_002dposition-property.es.html">La propiedad <code>staff-position</code> (posición en el pentagrama)</a></li>
+        <li><a id="toc-La-propiedad-extra_002doffset-_0028desplazamiento-adicional_0029" href="the-extra_002doffset-property.es.html">La propiedad <code>extra-offset</code> (desplazamiento adicional)</a></li>
+        <li><a id="toc-La-propiedad-positions-_0028posiciones_0029" href="the-positions-property.es.html">La propiedad <code>positions</code> (posiciones)</a></li>
+        <li><a id="toc-La-propiedad-force_002dhshift-_0028forzar-desplazamiento-horizontal_0029" href="the-force_002dhshift-property.es.html">La propiedad <code>force-hshift</code> (forzar desplazamiento horizontal)</a></li>
+      </ul></li>
+      <li><a id="toc-Ejemplos-reales-de-musica" href="real-music-example.es.html">5.7.3 Ejemplos reales de música</a></li>
+    </ul></li>
+    <li><a id="toc-Trucajes-adicionales" href="further-tweaking.es.html">5.8 Trucajes adicionales</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Otras-aplicaciones-de-los-trucos" href="other-uses-for-tweaks.es.html">5.8.1 Otras aplicaciones de los trucos</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Unir-notas-entre-voces-distintas" href="tying-notes-across-voices.es.html">Unir notas entre voces distintas</a></li>
+        <li><a id="toc-Simulacion-de-un-calderon-en-el-MIDI" href="simulating-a-fermata-in-midi.es.html">Simulación de un calderón en el MIDI</a></li>
+      </ul></li>
+      <li><a id="toc-Uso-de-variables-para-los-ajustes-de-disposicion" href="using-variables-for-layout-adjustments.es.html">5.8.2 Uso de variables para los ajustes de disposición</a></li>
+      <li><a id="toc-Hojas-de-estilo" href="style-sheets.es.html">5.8.3 Hojas de estilo</a></li>
+      <li><a id="toc-Otras-fuentes-de-informacion" href="other-sources-of-information.es.html">5.8.4 Otras fuentes de información</a></li>
+      <li><a id="toc-Trucos-avanzados-con-Scheme" href="advanced-tweaks-with-scheme.es.html">5.8.5 Trucos avanzados con Scheme</a></li>
+    </ul></li>
+  </ul></li>
+  <li class="toc_current"><a id="toc-Plantillas" href="templates.es.html">Appendix A Plantillas</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Plantillas-incorporadas" href="built_002din-templates.es.html">A.1 Plantillas incorporadas</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Plantilla-coral-SATB" href="satb-template.es.html">A.1.1 Plantilla coral SATB</a></li>
+      <li><a id="toc-Plantilla-coral-SSAATTBB" href="ssaattbb-template.es.html">A.1.2 Plantilla coral SSAATTBB</a></li>
+    </ul></li>
+    <li><a id="toc-Plantillas-de-pentagrama-unico" href="single-staff-templates.es.html">A.2 Plantillas de pentagrama único</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Solo-notas" href="notes-only.es.html">A.2.1 Sólo notas</a></li>
+      <li><a id="toc-Notas-y-letra" href="notes-and-lyrics.es.html">A.2.2 Notas y letra</a></li>
+      <li><a id="toc-Notas-y-acordes" href="notes-and-chords.es.html">A.2.3 Notas y acordes</a></li>
+      <li><a id="toc-Notas_002c-letra-y-acordes" href="notes-lyrics-and-chords.es.html">A.2.4 Notas, letra y acordes</a></li>
+    </ul></li>
+    <li class="toc_current"><a id="toc-Plantillas-de-piano" href="piano-templates.es.html">A.3 Plantillas de piano</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Piano-solo" href="solo-piano.es.html">A.3.1 Piano solo</a></li>
+      <li><a id="toc-Piano-y-melodia-con-letra" href="piano-and-melody-with-lyrics.es.html">A.3.2 Piano y melodía con letra</a></li>
+      <li class="toc_current"><a id="toc-Piano-con-letra-centrada" href="piano-centered-lyrics.es.html">A.3.3 Piano con letra centrada</a></li>
+    </ul></li>
+    <li><a id="toc-Plantillas-de-cuarteto-de-cuerda" href="string-quartet-templates.es.html">A.4 Plantillas de cuarteto de cuerda</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Cuarteto-de-cuerda-simple" href="string-quartet.es.html">A.4.1 Cuarteto de cuerda simple</a></li>
+      <li><a id="toc-Particellas-de-cuarteto-de-cuerda" href="string-quartet-parts.es.html">A.4.2 Particellas de cuarteto de cuerda</a></li>
+    </ul></li>
+    <li><a id="toc-Plantillas-de-conjuntos-vocales" href="vocal-ensembles-templates.es.html">A.5 Plantillas de conjuntos vocales</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Partitura-vocal-SATB" href="satb-vocal-score.es.html">A.5.1 Partitura vocal SATB</a></li>
+      <li><a id="toc-Partitura-vocal-SATB-y-reduccion-para-piano-automatica" href="satb-vocal-score-and-automatic-piano-reduction.es.html">A.5.2 Partitura vocal SATB y reducción para piano automática</a></li>
+      <li><a id="toc-SATB-con-contextos-alineados" href="satb-with-aligned-contexts.es.html">A.5.3 SATB con contextos alineados</a></li>
+      <li><a id="toc-SATB-sobre-cuatro-pentagramas" href="satb-on-four-staves.es.html">A.5.4 SATB sobre cuatro pentagramas</a></li>
+      <li><a id="toc-Estrofas-a-solo-y-estribillo-a-dos-voces" href="solo-verse-and-two_002dpart-refrain.es.html">A.5.5 Estrofas a solo y estribillo a dos voces</a></li>
+      <li><a id="toc-Melodias-de-himnos" href="hymn-tunes.es.html">A.5.6 Melodías de himnos</a></li>
+      <li><a id="toc-Salmos" href="psalms.es.html">A.5.7 Salmos</a></li>
+    </ul></li>
+    <li><a id="toc-Plantillas-orquestales" href="orchestral-templates.es.html">A.6 Plantillas orquestales</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Orquesta_002c-coro-y-piano" href="orchestra-choir-and-piano.es.html">A.6.1 Orquesta, coro y piano</a></li>
+    </ul></li>
+    <li><a id="toc-Plantillas-para-notacion-antigua" href="ancient-notation-templates.es.html">A.7 Plantillas para notación antigua</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Transcripcion-de-musica-mensural" href="transcription-of-mensural-music.es.html">A.7.1 Transcripción de música mensural</a></li>
+      <li><a id="toc-Plantilla-para-transcripcion-de-canto-gregoriano" href="gregorian-transcription-template.es.html">A.7.2 Plantilla para transcripción de canto gregoriano</a></li>
+    </ul></li>
+    <li><a id="toc-Otras-plantillas" href="other-templates.es.html">A.8 Otras plantillas</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Combo-de-jazz" href="jazz-combo.es.html">A.8.1 Combo de jazz</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.es.html">Appendix B GNU Free Documentation License</a></li>
+  <li><a id="toc-Indice" href="index-of-commands-and-concepts.es.html" rel="index">Appendix C Índice</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: a9fe9385483eb2165d4636cafbb1849050b57e4a
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Búsqueda de Google">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Buscar">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

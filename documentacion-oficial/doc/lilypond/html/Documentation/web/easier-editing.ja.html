@@ -1,0 +1,444 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2003-2026 by the authors.
+
+このファイルは LilyPond Web サイトのドキュメントです。
+
+GNU フリー文書利用許諾契約書バージョン 1.1 またはフリー ソフトウェア財団によって
+発行されたその後のバージョンの約定に従う限り、このドキュメントを複製、変更する
+許可を与えます。
+変更不可部分はありません。
+この利用許諾契約書のコピーは "GNU フリー文書利用許諾契約書" という章に含まれて
+います。 -->
+<title>より簡単な編集手段 (LilyPond &ndash; みんなの楽譜作成)</title>
+
+<meta name="description" content="より簡単な編集手段 (LilyPond &ndash; みんなの楽譜作成)">
+<meta name="keywords" content="より簡単な編集手段 (LilyPond &ndash; みんなの楽譜作成)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ja.html#top" rel="start" title="LilyPond &ndash; みんなの楽譜作成">
+<link href="web_toc.ja.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="introduction.ja.html" rel="up" title="導入部">
+<link href="text-input.ja.html" rel="prev" title="テキスト入力">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-website.css">
+
+
+</head>
+
+<body lang="ja" class="web">
+<div id="main">
+<div class="unnumberedsec" id="easier-editing">
+<hr>
+<span id="yoriJian-Dan-naBian-Ji-Shou-Duan-"></span><h3 class="unnumberedsec">より簡単な編集手段</h3>
+
+
+<div class="column-center-top">
+<span id="hurontoendoapurikesiyon"></span><h4 class="subheading">フロントエンドアプリケーション</h4>
+<span id="Frescobaldi"></span><h4 class="subsubheading">Frescobaldi</h4>
+
+<div class="float-right">
+  <a class="clickable" href="../pictures/frescobaldi-lilypond-editor.png">
+    <img src="../pictures/frescobaldi-lilypond-editor-small.png" alt="frescobaldi-lilypond-editor-small">
+  </a>
+  <p style="text-align: center">
+      (クリックすると拡大します)
+  </p>
+</div>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<p><a href="https://www.frescobaldi.org">https://www.frescobaldi.org</a>
+</p>
+<p>Frescobaldi は LilyPond のために追加、強化された多くの機能がある、軽量かつ強力な、音楽・テキストエディタです。主な機能には、楽譜をクリックすると対応するコードが表示される「ポイント・アンド・クリック」、詳細なスコアウィザード、組み込みの LilyPond ドキュメントブラウザ、構文ハイライト、自動コマンド補完があります。Frescobaldi は Python と、ユーザインタフェースのための PyQt4 で書かれており、すべての主要な OS (GNU/Linux、Mac OS X、それに Windows) で実行できます。
+</p>
+<span id="Denemo"></span><h4 class="subsubheading">Denemo</h4>
+
+<div class="float-right">
+  <a class="clickable" href="../pictures/screenshot-denemo.png">
+    <img src="../pictures/screenshot-denemo-small.png" alt="screenshot-denemo-small">
+  </a>
+  <p style="text-align: center">
+      (クリックすると拡大)
+  </p>
+</div>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<p><a href="http://denemo.org">http://denemo.org</a>
+</p>
+<p>Denemo は、LilyPond ソース コードを生成し、演奏することもできるグラフィカルなエディタです。LilyPond ソースコードをグラフィカル ビューと並べて表示することができます。音符や和音等に LilyPond が処理可能な調整を加えることができ、それを Denemo ファイルとして保存することができるため、ユーザはグラフィカル環境で楽譜を編集することができます。
+</p>
+<p>LilyPond テキストの中でカーソルを動かすと、グラフィカル ビューの中でもカーソルが動きます。調整で構文エラーが起きると、テキスト ビューで該当部分がハイライトされます。
+</p>
+
+</div>
+
+<div class="column-center-top">
+<span id="burauzabesunoedeita"></span><h4 class="subheading">ブラウザベースのエディタ</h4>
+
+<span id="LilyBin"></span><h4 class="subsubheading">LilyBin</h4>
+<p><a href="http://lilybin.com/">http://lilybin.com/</a>
+</p>
+<p>LilyPond をインストールすることなく、直接オンラインで楽譜を組版することができる、Web ベースの LilyPond エディタです。コードスニペットは、いわゆる &lsquo;pastebin&rsquo; Web サイトのように、
+一意の URL が有効になります。そのコードは
+<a href="https://github.com/LilyBin/LilyBin">development page</a>
+から MIT ライセンスで自由に利用できます。</p>
+<span id="Hacklily"></span><h4 class="subsubheading">Hacklily</h4>
+<p><a href="https://www.hacklily.org/">https://www.hacklily.org/</a>
+</p>
+<div class="float-right">
+  <a class="clickable" href="../pictures/screenshot-hacklily.png">
+    <img src="../pictures/screenshot-hacklily-small.png" alt="screenshot-hacklily-small">
+  </a>
+  <p style="text-align: center">
+      (クリックすると拡大します)
+  </p>
+</div>
+
+<p>オートコンプリートやコンテキストヘルプなどの追加機能を持った、
+LilyPond によるオンラインの楽譜エディタおよび出版ツール。基礎となる Web ホスティングのコードは AGPL ライセンスで
+<a href="https://github.com/hacklily/hacklily">development page</a>
+から入手できます。
+</p>
+<span id="www_002eomet_002eca"></span><h4 class="subsubheading">www.omet.ca</h4>
+<p><a href="http://www.omet.ca/">http://www.omet.ca/</a>
+</p>
+<div class="float-right">
+  <a class="clickable" href="../pictures/screenshot-omet.png">
+    <img src="../pictures/screenshot-omet-small.png" alt="screenshot-omet-small">
+  </a>
+  <p style="text-align: center">
+      (クリックすると拡大します)
+  </p>
+</div>
+
+<p>2010 年より、 Online Music Editing Tools (OMET) は、特別仕立ての Web インタフェースを備えた、すぐに使用できる LilyPond サービスを提供します。登録が必要ですが、料金は無料です。
+</p>
+<span id="WebLily_002enet"></span><h4 class="subsubheading">WebLily.net</h4>
+<p><a href="https://www.weblily.net/">https://www.weblily.net/</a>
+</p>
+<p>2009 開始の WebLily.net は
+LilyPond に基づく最初の Web サービスの一つであり、以来定期的に更新されています。利用は無料（登録は必要）で、クリック可能なバージョンの LilyPond ドキュメントが含まれています。
+</p>
+
+</div>
+
+<div class="column-center-top">
+<span id="Tong-He-Kai-Fa-Huan-Jing-puraguin"></span><h4 class="subheading">統合開発環境プラグイン</h4>
+
+<span id="Elysium"></span><h4 class="subsubheading">Elysium</h4>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-freebsd.png" alt="logo-freebsd">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<p><a href="https://github.com/thSoft/elysium">https://github.com/thSoft/elysium</a>
+</p>
+<p>EclipseでLilyPondスコアを編集するフル機能の環境です。LilyPondを便利に扱うための豊富なツールキットを提供します。
+</p>
+
+</div>
+
+<div class="column-center-top">
+<span id="tekisuto-edeita"></span><h4 class="subheading">テキスト エディタ</h4>
+
+<img src="../pictures/logo-linux.png" alt="logo-linux">
+<img src="../pictures/logo-freebsd.png" alt="logo-freebsd">
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<img src="../pictures/logo-windows.png" alt="logo-windows">
+
+<span id="Emacs"></span><h4 class="subsubheading">Emacs</h4>
+<p><a href="https://www.gnu.org/software/emacs/">https://www.gnu.org/software/emacs/</a>
+Emacs は、多くのコンピュータ言語に対応する言語検出機能を持つテキスト エディタです。Emacs には高い拡張性があり、統合開発環境として使用することができます。LilyPond ソース ファイルを作成するための言語定義を提供する &lsquo;lilypond モード&rsquo; があります。
+また、LilyPond 開発者の 1 人が Emacs メジャーモード
+<a href="https://github.com/nsceaux/lyqi">lyqi</a>
+を作成しています。
+</p>
+<p>Emacs に慣れていない場合、LilyPond 入力ファイルを書くために、別のエディタを使うこともできます。
+</p>
+<p>Emacs をセットアップするための更なる情報が
+<a href="../usage/text-editor-support.ja.html">テキスト エディタ サポート</a> にあります。
+</p>
+<span id="Vim"></span><h4 class="subsubheading">Vim</h4>
+<p><a href="https://www.vim.org">https://www.vim.org</a>
+Vim は最小限度の機能を持つテキスト エディタであり、古い Unix <code>vi</code> エディタの機能拡張版です。このプログラムも拡張やコンフィグレーションを行うことができます。
+</p>
+<p>Vi に慣れていない場合、LilyPond 入力ファイルを書くために、別のエディタを使うこともできます。
+</p>
+<p>Vim をセットアップするための更なる情報が
+<a href="../usage/text-editor-support.ja.html">テキスト エディタ サポート</a> にあります。
+</p>
+<img src="../pictures/logo-macosx.png" alt="logo-macosx">
+<span id="TeXShop"></span><h4 class="subsubheading">TeXShop</h4>
+<p><a href="https://pages.uoregon.edu/koch/texshop/">https://pages.uoregon.edu/koch/texshop/</a>
+</p>
+<p>MacOS&nbsp;X 用のエディタ TeXShop を拡張して、
+エディタから LilyPond, <code>lilypond-book</code> それに
+<code>convert-ly</code> を実行させることができます。
+拡張機能は以下で入手できます:
+</p>
+<div class="example">
+<pre class="example"><a href="http://users.dimi.uniud.it/~nicola.vitacolonna/home/content/lilypond-scripts">http://users.dimi.uniud.it/~nicola.vitacolonna/home/content/lilypond-scripts</a>
+</pre></div>
+
+
+</div>
+
+<div class="column-center-top">
+<span id="LilyPond-kodowoekusupotodekirupuroguramu"></span><h4 class="subheading">LilyPond コードをエクスポートできるプログラム</h4>
+
+<span id="Le-Pu-_002c-tabu_002c-MIDI-edeita_003a"></span><h4 class="subsubheading">楽譜、タブ、MIDI エディタ:</h4>
+
+<ul>
+<li> <a href="http://www.jezra.net/projects/bwwtolily">bwwtolily</a>
+は <code>.bww</code> や <code>.bmw</code> ファイルを LilyPond へ変換しようとします。すべての装飾が正しく変換されないかもしれませんが（piobaireachd では特にそうです）一覧表示されます。
+
+</li><li> <a href="http://www.canorus.org">Canorus</a>:
+楽譜エディタで、LilyPond コードをエクスポートできますが、まだベータ版です。テスターを歓迎しています。
+
+</li><li> <a href="http://enc2ly.sourceforge.net/en/">Enc2ly</a> は Encore のファイルを
+LilyPondに変換する GNU/Linux プログラムです。
+
+</li><li> <a href="https://github.com/hanwen/go-enc2ly">go-enc2ly</a> は Go 言語のツールで
+Encode のファイルを LilyPond に変換します。
+Felipe Castro によるバージョン 4.55 体験版の .enc ファイルの研究やリバースエンジニアリングを基に作られました。
+
+</li><li> <a href="https://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml">NtEd</a>,
+<a href="https://www.cairographics.org">Cairo</a> ライブラリをベースにした楽譜エディタで、試験的に LilyPond へのエクスポートをサポートしています。
+
+</li><li> <a href="http://www.holmessoft.co.uk/homepage/software/NWC2LY/index.htm">NW2LY</a>
+は NoteWorthy で記譜した曲を LilyPond に変換する C# プログラムです。
+
+</li><li> <a href="https://github.com/ciconia/ripple/blob/master/README.markdown">Ripple</a>
+は総譜とパート譜の作成を支援するプログラムで、異なる楽譜ソースから総譜やパート譜を作成するモードがあります。
+
+</li><li> <a href="https://www.rosegardenmusic.com">Rosegarden</a>:
+オーディオ・MIDI シーケンサであり、単一譜を扱える楽譜エディタでもあります。
+
+</li></ul>
+
+<span id="arugorizumuniyorukodoSheng-Cheng-"></span><h4 class="subsubheading">アルゴリズムによるコード生成</h4>
+
+<ul>
+<li> <a href="http://www.projectabjad.org/">Abjad</a> は形式化された楽譜の制御 (Formalized Score Control) をする
+<a href="https://www.python.org/">Python</a> API で、LilyPond による複雑な音楽を、反復型開発の手法で作成することができます。
+
+</li><li> <a href="https://common-lisp.net/project/fomus/">FOMUS</a> (FOrmat MUSic) はアルゴリズム生成された音楽を記譜するためのツールです。Lisp言語で書かれており、多くのインタプリタで動作します。C++に移植されたものもあります。
+
+</li><li> <a href="http://strasheela.sourceforge.net/strasheela/doc/index.html">Strasheela</a>
+は <a href="https://mozart.github.io/">The Mozart Programming System</a> 上の環境です。
+
+</li></ul>
+
+</div>
+
+<div class="column-center-top">
+
+<span id="Huo-Fa-nihaKai-Fa-sareteinaiTa-nopuroguramu"></span><h4 class="subheading">活発には開発されていない他のプログラム</h4>
+
+<ul>
+<li> <a href="https://sourceforge.net/projects/lily4jedit">LilyPondTool</a>
+は <a href="http://www.jedit.org">jEdit</a> テキストエディタ用プラグインでした。
+
+</li><li> <a href="https://lilykde.googlecode.com/">LilyKDE</a> は
+<a href="https://www.frescobaldi.org/">Frescobaldi</a> に置き換わり、
+KDE 3.5 用の LilyKDE3 と KDE 4.1 用の lilypond-KDE4 だけが存在します。
+
+</li><li> <a href="https://lilycomp.sourceforge.net">LilyComp</a> はグラフィカルに音符を入力できるプログラムで、LilyPond 版のテンキーのようなものです。
+
+</li><li> <a href="https://www.musescore.org">MuseScore</a>:
+楽譜エディタです。バージョン 2.0 で LilyPond エクスポートがなくなりましたが、古いバージョンがまだ
+<a href="https://sourceforge.net/projects/mscore/files/mscore/">Sourceforge</a>
+でダウンロードできます。
+
+</li><li> <a href="https://sourceforge.net/projects/noteedit.berlios/">NoteEdit</a> は<a href="https://www.musicxml.com/">MusicXML</a> をインポートできましたが、<a href="https://vsr.informatik.tu-chemnitz.de/staff/jan/nted/nted.xhtml">NtEd</a>
+と <a href="https://canorus.org">Canorus</a> にフォークされました。
+
+</li><li> <a href="https://extensions.services.openoffice.org/en/project/OOoLilyPond">OOoLilyPond</a>,
+OpenOffice.org の拡張機能で、OpenOffice.org ドキュメント中で LilyPond ファイルを画像に変換できます。もう開発されていませんが、まだバージョン 4 で動作すると思われます。
+
+</li><li> <a href="https://launchpad.net/rumor/">Rumor</a>:
+リアルタイムに単声の MIDI を LilyPond に変換します。
+
+</li><li> <a href="https://github.com/tiredpixel/tunefl">tunefl</a>
+
+<p>LilyPond をインストールすることなく、直接オンラインでミニスコアを組版することができます。これは、便利な Web インタフェースを使用して、すべてのプログラムの機能を試すことができます。
+</p>
+</li><li> <a href="https://sourceforge.net/projects/tuxguitar/">TuxGuitar</a>:
+マルチトラックなタブ譜のエディタ・プレイヤで、楽譜ビューアを持ち、LilyPond コードのエクスポートが可能です。
+
+</li></ul>
+
+
+</div>
+
+
+<div class="column-center-bottom">
+<span id="doudesuka_003f-7"></span><h4 class="subheading">どうですか？</h4>
+
+<p><a href="download.ja.html">LilyPond をダウンロードする</a> ところまで来ました。</p>
+<p>まだ迷っていますか？多くの作曲家、音楽家、それに指揮者が LilyPond 入力フォーマットで記述することを学んでいます。経験を積んだユーザは、LilyPond を使うことで、ピアノやマウス＆GUI を使うよりも短時間で総譜を入力できるとレポートしてさえいます！LilyPond が提供する <a href="features.ja.html">特徴</a>, <a href="examples.ja.html">例</a>, あるいは <a href="freedom.ja.html">自由</a> を読み返してみてください。また、ユーザの <a href="productions.ja.html">成果物</a> と <a href="reviews.ja.html">人々の評価</a> を読んでみてください。さらに、伝統的な譜刻の審美性をコンピュータで実現するための我々のアプローチが <a href="background.ja.html">バックグラウンド</a> で説明されています。
+</p>
+
+</div>
+
+
+<div class="column-center-bottom">
+<span id="Fa-Lu-Yong-Yu-"></span><h4 class="subheading">法律用語</h4>
+
+<div class="legal">
+<p>すべてのロゴと製品イメージには著作権があり、商標登録されています。
+</p>
+<p>Tux the Linux Penguin was created by
+<a href="mailto:lewing@isc.tamu.edu">lewing@isc.tamu.edu</a> with
+<a href="http://www.isc.tamu.edu/~lewing/gimp/">the Gnu Image
+Manipulation Program</a>.
+</p>
+
+<p>The FreeBSD logo is a registered trademark of
+<a href="https://www.freebsd.org/">The FreeBSD Foundation</a>.
+</p>
+
+<p>The &ldquo;X image&rdquo; is not a registered trademark.  It was created by
+<a href="https://en.wikipedia.org/wiki/User:Nihonjoe">Nihonjoe</a> and
+<a href="https://en.wikipedia.org/wiki/User:CyberSkull">CyberSkull</a>, and
+placed under the GNU Free Documentation License version 1.2 or later.
+We found the image on
+<a href="https://commons.wikimedia.org/wiki/File:Mac_OS_X_Userbox_X.png">this Wikimedia Commons page</a>.
+</p>
+
+<p>The &ldquo;four colored rectangles image&rdquo; is not a registered
+trademark.  It was created by
+<a href="https://en.wikipedia.org/wiki/User:Rohitbd">Rohitbd</a> and
+placed under the GNU Free Documentation License version 1.2.  We
+found the image on
+<a href="https://commons.wikimedia.org/wiki/Category:Microsoft_Windows_logos">this Wikimedia Commons page</a>.
+</p>
+
+
+</div>
+
+
+</div>
+
+</div>
+<hr>
+
+<div id="footer">
+<p id="languages">
+Other languages: <a href="easier-editing.html">English</a>, <a href="easier-editing.ca.html">Català</a>, <a href="easier-editing.de.html">Deutsch</a>, <a href="easier-editing.es.html">Español</a>, <a href="easier-editing.fr.html">Français</a>, <a href="easier-editing.it.html">Italiano</a>, <a href="easier-editing.tr.html">Türkçe</a>, <a href="easier-editing.zh.html">中文</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-LilyPond" href="index.ja.html">LilyPond</a></li>
+  <li class="toc_current"><a id="toc-Dao-Ru-Bu-" href="introduction.ja.html">導入部</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Te-Zheng-" href="features.ja.html">特徴</a></li>
+    <li><a id="toc-Li" href="examples.ja.html">例</a></li>
+    <li><a id="toc-Zi-You-" href="freedom.ja.html">自由</a></li>
+    <li><a id="toc-batukuguraundo" href="background.ja.html">バックグラウンド</a></li>
+    <li><a id="toc-Cheng-Guo-Wu-" href="productions.ja.html">成果物</a></li>
+    <li><a id="toc-Ren-_0022noPing-Jia-" href="reviews.ja.html">人々の評価</a></li>
+    <li><a id="toc-tekisutoRu-Li-" href="text-input.ja.html">テキスト入力</a></li>
+    <li class="toc_current"><a id="toc-yoriJian-Dan-naBian-Ji-Shou-Duan-" href="easier-editing.ja.html">より簡単な編集手段</a></li>
+  </ul></li>
+  <li><a id="toc-Download" href="download.ja.html">Download</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Source" href="source.ja.html">Source</a></li>
+    <li><a id="toc-Old-downloads" href="old-downloads.ja.html">Old downloads</a></li>
+    <li><a id="toc-GPL" href="gpl.ja.html">GPL</a></li>
+  </ul></li>
+  <li><a id="toc-maniyuaru" href="manuals.ja.html">マニュアル</a>
+  <ul class="no-bullet">
+    <li><a id="toc-XueXi" href="learning.ja.html">学習</a></li>
+    <li><a id="toc-Yong-Yu-Ji-" href="glossary.ja.html">用語集</a></li>
+    <li><a id="toc-etuse" href="essay.ja.html">エッセー</a></li>
+    <li><a id="toc-Ji-Pu-Fa-" href="notation.ja.html">記譜法</a></li>
+    <li><a id="toc-Shi-Yong-Fang-Fa-" href="usage.ja.html">使用方法</a></li>
+    <li><a id="toc-kodoDuan-Pian-Ji-" href="snippets.ja.html">コード断片集</a></li>
+    <li><a id="toc-FAQ" href="faq.ja.html">FAQ</a></li>
+    <li><a id="toc-Web" href="web.ja.html">Web</a></li>
+    <li><a id="toc-Bian-Geng-Dian-" href="changes.ja.html">変更点</a></li>
+    <li><a id="toc-Kuo-Zhang-" href="extending.ja.html">拡張</a></li>
+    <li><a id="toc-Nei-Bu-rihuarensu" href="internals.ja.html">内部リファレンス</a></li>
+    <li><a id="toc-subete" href="all.ja.html">すべて</a></li>
+    <li><a id="toc-FDL" href="fdl.ja.html">FDL</a></li>
+  </ul></li>
+  <li><a id="toc-komiyunitei" href="community.ja.html">コミュニティ</a>
+  <ul class="no-bullet">
+    <li><a id="toc-kontakuto" href="contact.ja.html">コンタクト</a></li>
+    <li><a id="toc-Zui-Xiao-Hua-Li" href="tiny-examples.ja.html">最小化例</a></li>
+    <li><a id="toc-baguBao-Gao-" href="bug-reports.ja.html">バグ報告</a></li>
+    <li><a id="toc-Yuan-Zhu-gaBi-Yao-desu" href="help-us.ja.html">援助が必要です</a></li>
+    <li><a id="toc-suponsa" href="sponsoring.ja.html">スポンサー</a></li>
+    <li><a id="toc-Kai-Fa-" href="development.ja.html">開発</a></li>
+    <li><a id="toc-Google-Summer-of-Code" href="google-summer-of-code.ja.html">Google Summer of Code</a></li>
+    <li><a id="toc-Zhu-Zhe-" href="authors.ja.html">著者</a></li>
+    <li><a id="toc-Chu-Ban-Wu-" href="publications.ja.html">出版物</a></li>
+    <li><a id="toc-niyusu" href="news.ja.html">ニュース</a></li>
+    <li><a id="toc-Wu-Zhi-" href="attic.ja.html">物置</a></li>
+  </ul></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 0cc270b871321ae5aa8622cea8d8262aafd16641
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google 検索">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="検索">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

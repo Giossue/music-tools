@@ -1,0 +1,736 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- This document has been placed in the public domain. -->
+<title>Miscellaneous improvements (LilyPond Changes)</title>
+
+<meta name="description" content="Miscellaneous improvements (LilyPond Changes)">
+<meta name="keywords" content="Miscellaneous improvements (LilyPond Changes)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="LilyPond &mdash; Changes">
+<link href="changes_toc.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="LilyPond &mdash; Changes">
+<link href="new-for-specialist-notation.html" rel="prev" title="New for specialist notation">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="en" class="changes">
+<div id="main">
+<div class="unnumbered" id="miscellaneous-improvements">
+<table class="nav_table">
+<tr><td align="left">[<a href="new-for-specialist-notation.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; New for specialist notation </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="changes_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="new-for-specialist-notation.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; New for specialist notation </a>]</td><td align="center">[<a href="index.html" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[  &gt; ]</td></tr>
+</table>
+<hr>
+<span id="Miscellaneous-improvements"></span><h2 class="unnumbered">Miscellaneous improvements</h2>
+
+<ul>
+<li> The <code>\tempo</code> command now accepts exact rational values.  The
+default formatter rounds to the nearest 0.25; the context property
+<code>tempoCountPrecision</code> controls this.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MusicFunction">\fixed</span><span class="w"> </span><span class=" -Pitch">c&#39;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\once</span><span class="w"> </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-Context">Timing</span><span class="p">.</span><span class="n n-Lvalue">tempoCountPrecision</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="mi">1/1000000</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\tempo</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="mi">200/3</span>
+<span class="w">  </span><span class=" -Pitch">g</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">e</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">f</span><span class="m">4</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../ea/lily-774bcc32.ly">
+  <img align="middle"
+       border="0"
+       src="../ea/lily-774bcc32.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> The new Scheme function <code>ly:parser-define-once!</code> defines a
+variable if it is not already defined.
+
+</li><li> The <code>timeSignatureFraction</code> context property is deprecated in
+favor of <code>timeSignature</code>.  The new property accepts
+subdivided and alternating time signatures in addition to the
+simple fractions that the old property accepted.  Accessing the
+old property transparently derives a simple fraction from the new
+property and triggers a warning.
+
+</li><li> <code>(make-music 'Music)</code> and <code>(make-music 'Event)</code> now
+create music expressions that have the <code>void</code> property set to
+<code>#t</code> by default.  The function <code>empty-music</code> has been
+removed in favor of <code>(make-music 'Music)</code>.  The new predicate
+<code>unspecified-music?</code>  recognizes any music expression with
+the <code>void</code> flag set.
+
+</li><li> The new Scheme function <code>ly:number-&gt;duration</code> converts a
+duration expressed in units of whole notes to a
+<code>ly:duration</code>.  The log, number of dots, and scaling factor
+are chosen automatically.
+
+</li><li> The markup commands <code>\hspace</code> and <code>\vspace</code> are used to insert space,
+which may be negative.  Other objects are moved accordingly.  This movement may
+be indicated by arrows printed by the new markup command <code>annotate-moving</code>.
+Note that the arrows do not reflect the actual extents of the objects created
+by <code>\vspace</code> and <code>\hspace</code>; you might use <code>\box</code> for that.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>left<span class="w"> </span><span class="nb nb-MarkupCommand">\annotate-moving</span><span class="w"> </span><span class="nb nb-MarkupCommand">\hspace</span><span class="w"> </span><span class="p">#</span><span class="mi">4</span><span class="w"> </span>right
+<span class="w">  </span><span class="nb nb-MarkupCommand">\column</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>top<span class="w"> </span><span class="nb nb-MarkupCommand">\annotate-moving</span><span class="w"> </span><span class="nb nb-MarkupCommand">\vspace</span><span class="w"> </span><span class="p">#</span><span class="mi">-4/3</span><span class="w"> </span>bottom<span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../dd/lily-c62f16fc.ly">
+  <img align="middle"
+       border="0"
+       src="../dd/lily-c62f16fc.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> The new <code>\contextPropertyCheck</code> command verifies that a
+property is set to an expected value or is unset in a specific
+context.
+
+</li><li> Various context properties that previously held <code>ly:moment</code>
+values now hold rational numbers.  To ease this transition, each
+number property is paired with a fallback <code>ly:moment</code>
+property.  Using the fallback property transparently accesses the
+number property and triggers a warning.
+
+<blockquote class="indentedblock">
+<table>
+<tr><td width="50%"><b>Deprecated Context Property</b></td><td width="50%"><b>New Context Property</b></td></tr>
+<tr><td width="50%"><code>baseMoment</code></td><td width="50%"><code>beatBase</code></td></tr>
+<tr><td width="50%"><code>completionUnitAsMoment</code></td><td width="50%"><code>completionUnit</code></td></tr>
+<tr><td width="50%"><code>gridIntervalAsMoment</code></td><td width="50%"><code>gridInterval</code></td></tr>
+<tr><td width="50%"><code>measureLengthAsMoment</code></td><td width="50%"><code>measureLength</code></td></tr>
+<tr><td width="50%"><code>minimumPageTurnLength</code></td><td width="50%"><code>pageTurnMinimumRestLength</code></td></tr>
+<tr><td width="50%"><code>minimumRepeatLengthForPageTurn</code></td><td width="50%"><code>pageTurnMinimumRepeatLength</code></td></tr>
+<tr><td width="50%"><code>proportionalNotationDurationAsMoment</code></td><td width="50%"><code>proportionalNotationDuration</code></td></tr>
+<tr><td width="50%"><code>tempoWholesPerMinuteAsMoment</code></td><td width="50%"><code>tempoWholesPerMinute</code></td></tr>
+<tr><td width="50%"><code>tupletSpannerDurationAsMoment</code></td><td width="50%"><code>tupletSpannerDuration</code></td></tr>
+<tr><td width="50%"><code>voltaSpannerDurationAsMoment</code></td><td width="50%"><code>voltaSpannerDuration</code></td></tr>
+</table>
+</blockquote>
+
+</li><li> <code>\tempo <var>dur</var> = <var>min</var> - <var>max</var></code> used to set the
+context property <code>tempoWholesPerMinute</code> after rounding the
+center of the range to the nearest integer.  It no longer rounds.
+This is expected to change the MIDI tempo in certain cases.
+
+</li><li> The Scheme functions <code>duration-length</code> and
+<code>ly:duration-length</code> are renamed to
+<code>ly:duration-&gt;number</code> and <code>ly:duration-&gt;moment</code>,
+respectively.
+
+</li><li> The new Scheme function <code>ly:parser-append-to-include-path</code>
+appends its argument to the current parser&rsquo;s include path.
+
+</li><li> The value of the <code>timeSignatureSettings</code> context property
+uses the symbol <code>beatBase</code> where it formerly used
+<code>baseMoment</code>.  <code>convert-ly</code> does not address this
+change.
+
+</li><li> Embedding PNG images is now supported using the new <code>\image</code>
+markup command.  This supplements the existing <code>\epsfile</code>
+command for EPS images.
+
+<p><code>\image</code> works for both PNG and EPS images.  For EPS images,
+the difference between using <code>\image</code> and <code>\epsfile</code> is
+that <code>\image</code> adds a white background by default, while
+<code>\epsfile</code> does not.
+</p>
+</li><li> The new <code>\qr-code</code> markup command inserts a QR code of the
+specified size for the specified URL.  This can be used to link
+to, e.g., the website of a composer or publisher, the LilyPond
+source files for the score, recordings, etc.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="nb nb-MarkupCommand">\qr-code</span><span class="w"> </span><span class="p">#</span><span class="mi">10</span><span class="w"> </span><span class="s">&quot;https://lilypond.org&quot;</span>
+</pre>
+
+<a href="../9d/lily-7878c139.ly">
+  <img align="middle"
+       border="0"
+       src="../9d/lily-7878c139.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> Parentheses for text markup have been added to the Emmentaler
+fonts, which harmonize with digits (in contrast to the already
+available parentheses for accidentals).
+
+</li><li> Glyphs for a figure-dash (U+2012), an en-dash (U+2013), and a
+slash (U+002F) have been added to the Emmentaler fonts.
+
+</li><li> A figure space (U+2007), a thin space (U+2009), and a hair space
+(U+200A) have been added to the Emmentaler fonts.
+
+</li><li> The <code>-dinclude-settings</code> option can now be given multiple times
+to include several stylesheets.
+
+</li><li> In the LaTeX backend of <code>lilypond-book</code>, all inline
+images are now vertically shifted.  The amount can be controlled
+globally with command-line option <samp>--inline-vshift</samp> and
+locally with an argument to the snippet option <code>inline</code>.
+
+</li><li> It is possible to use various command-line options of
+<code>musicxml2ly</code> as options for <code>lilypond-book</code>&rsquo;s
+<code>musicxmlfile</code> command.  This was actually introduced in
+version 2.15.9 (in 2011) but stayed undocumented until now.
+
+</li><li> Two new command-line options <samp>-dfirst</samp> and <samp>-dlast</samp>
+have been introduced; they are equivalent to setting
+<code>showFirstLength</code> and <code>showLastLength</code>, respectively, in
+a LilyPond input file.  For example, saying
+
+<div class="example">
+<pre class="example">lilypond -dlast=R1*5 ...
+</pre></div>
+
+<p>makes LilyPond render only the last five measures (assuming a 4/4
+time signature).
+</p>
+</li><li> A visual index of all LilyPond graphical objects (grobs) is now
+available as a manual.  This is based on
+<a href="https://github.com/joram-berger/visualindex">Joram Berger&rsquo;s
+work for LilyPond 2.19</a>.
+
+</li><li> LilyPond provides support for in-notes, i.e., footnote-like
+annotations between music systems.  This isn&rsquo;t new (it has
+actually been available since version 2.15.17, published in 2011)
+but it had some flaws and wasn&rsquo;t documented until now.
+
+</li><li> The <code>lilysong</code> script has been removed.  Besides lacking
+any documentation, it hasn&rsquo;t been maintained for a long time.
+Additionally, it has been using an external speech synthesis
+program called <code>festival</code>, which is no longer maintained
+either.
+
+</li><li> Two new spacing styles are available for the <code>space-alist</code>
+grob property: <code>shrink-space</code> and <code>semi-shrink-space</code>;
+these spaces only shrink and don&rsquo;t stretch.  They are also used
+directly in LilyPond, improving the formatting of tightly spaced
+staves.
+
+</li><li> The <code>lilypond</code> binary has a new command-line option
+<samp>-dstaff-size</samp> to set the global staff size, equivalent to
+setting <code>set-global-staff-size</code> in a LilyPond input file.
+
+</li><li> Instead of the functions <code>\bookOutputName</code> and
+<code>\bookOutputSuffix</code> we now recommend using the paper
+variables <code>output-filename</code> and <code>output-suffix</code> (which
+are not new but stayed undocumented until now).  While the former
+will work unchanged, the latter is more coherent and easier to
+understand, especially if combined with predefined paper
+variables.
+
+</li><li> The <code>Stem.details.lengths</code> property now also accepts pairs as
+list elements, allowing to set the length for up and down stems
+separately.
+
+</li><li> The <code>ly:self-alignment-interface::aligned-on-x-parent</code>
+function (used by many grobs to compute the x-offset) now listens
+to a new <code>PaperColumn</code> property called
+<code>X-alignment-extent</code>.  Set by default, it provides a fallback
+width for the <code>PaperColumn</code> grob in case it doesn&rsquo;t contain
+note heads.  This helps align dynamic scripts that are attached to
+spacer rests, for example.
+
+
+<blockquote>
+<pre class="verbatim"><span class="n n-Lvalue">music</span><span class="w"> </span><span class="p">=</span>
+<span class="w">  </span><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="p">&lt;&lt;</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">f&#39;</span><span class="m">2</span><span class="w"> </span><span class=" -Pitch">g&#39;</span><span class="m">2</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span>s<span class="m">4</span><span class="nb nb-Dynamic">\f</span><span class="w"> </span>s<span class="nb nb-Dynamic">\f</span><span class="w"> </span>s<span class="nb nb-Dynamic">\f</span><span class="w"> </span>s<span class="nb nb-Dynamic">\f</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">&gt;&gt;</span>
+
+<span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\music</span>
+<span class="p">}</span>
+
+<span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n n-BackslashReference">\music</span>
+
+<span class="w">  </span><span class="k">\layout</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">\context</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb nb-Context">\Score</span>
+<span class="w">      </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="nb nb-Grob">PaperColumn</span><span class="p">.</span><span class="nb nb-GrobProperty">X-alignment-extent</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">#</span><span class="no">#f</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../0b/lily-56eaf92c.ly">
+  <img align="middle"
+       border="0"
+       src="../0b/lily-56eaf92c.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> <code>BassFigureContinuation</code> grobs now support
+<code>horizontal-line-spanner-interface</code>; the <code>padding</code>
+property has been replaced with the corresponding subproperties in
+<code>bound-details</code>.
+
+</li><li> The <code>\align-on-other</code> markup command now accepts <code>#f</code> as
+a value for the alignment, indicating a markup&rsquo;s reference point.
+
+</li><li> A new function <code>\withRelativeDir</code> is now available for markup
+commands that include files, and where such files should be found
+relative to the input file.  Example:
+
+<div class="example">
+<pre class="example">\markup { \image #X #3 \withRelativeDir &quot;test.png&quot; }
+</pre></div>
+
+</li><li> The positioning of horizontal (analysis) brackets has been
+improved; in particular, the <code>HorizontalBracket</code> grob now has
+an <code>outside-staff-priority</code> value of 800.  As a consequence,
+however, nested horizontal brackets might be positioned
+differently than before.  You can fix this by adjusting
+<code>outside-staff-priority</code> values with <code>\tweak</code> (where the
+outermost bracket should get the highest priority value).
+
+</li><li> A new Scheme function <code>to-staff-space</code> is provided to convert
+absolute dimensions (in various units) to staff-space units.
+Examples:
+
+<div class="example">
+<pre class="example">top-markup-spacing.basic-distance = #(to-staff-space 2 'cm)
+
+% default unit is pt
+\markup
+  \override #`(baseline-skip . ,(to-staff-space 20))
+  \column {
+    foo
+    bar
+  }
+</pre></div>
+
+</li><li> Two new markup functions <code>\abs-hspace</code> and <code>\abs-vspace</code>
+are available to provide absolute dimensions that stay the same
+regardless of the current staff size.
+
+</li><li> The data emitted by the command-line option
+<samp>-dshow-available-fonts</samp> is now sent to standard output.
+
+</li><li> The function <code>ly:font-config-display-fonts</code> now takes an
+optional argument for output port selection.
+
+</li><li> Scheme command-line option handling is now more robust.  In the
+course of the new implementation, some minor changes were
+necessary.
+
+<ul class="no-bullet">
+<li>− On the command line, the argument for the <samp>-dpaper-size</samp>
+option no longer needs to be extra-quoted, i.e., a call like
+<code>-dpaper-size=a3</code> works just fine.
+
+</li><li>− The <samp>pixmap-format</samp> option now expects a string as a value,
+not a symbol.  No change on the command line, but a call like
+
+<div class="example">
+<pre class="example">#(ly:set-option 'pixmap-format 'pngalpha)
+</pre></div>
+
+<p>must be changed to
+</p>
+<div class="example">
+<pre class="example">#(ly:set-option 'pixmap-format &quot;pngalpha&quot;)
+</pre></div>
+
+<p>The same holds for options <samp>separate-page-formats</samp> and
+<samp>tall-page-formats</samp>.  Note that <code>convert-ly</code> can
+handle this automatically.
+</p></li></ul>
+
+</li><li> The <code>side-position-interface</code> now offers two new properties,
+<code>X-padding</code> and <code>minimum-X-space</code>, to control the
+horizontal padding and minimum distance to a grob&rsquo;s parent object,
+independently of the vertical padding and minimum distance.  This
+is useful for grobs like <code>Fingering</code> that can be attached
+either horizontally or vertically to note heads, and which need
+different padding values for the X- and Y-axis, respectively.
+
+</li><li> <code>\pushContextProperty</code> and <code>\popContextProperty</code> are two
+new commands for manipulating context properties.  The first one
+pushes the current value to a stack, while the second one pops off
+the value from the stack and uses it to restore the property.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\pushContextProperty</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">fontSize</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">fontSize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">3</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\pushContextProperty</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">fontSize</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\set</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">fontSize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">6</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\popContextProperty</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">fontSize</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\popContextProperty</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="p">.</span><span class="nb nb-ContextProperty">fontSize</span>
+<span class="w">  </span><span class=" -Pitch">c&#39;</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../1d/lily-f312dbf7.ly">
+  <img align="middle"
+       border="0"
+       src="../1d/lily-f312dbf7.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> A new grob property <code>whiteout-color</code> is available to set the
+color used for white-out operations.  Similarly, the
+<code>\whiteout</code> markup command now listens to a <code>color</code>
+property to do the same.
+
+</li><li> The <code>musicxml2ly</code> script has been completely revised to
+better convert MusicXML to LilyPond.  It now supports more
+MusicXML features and elements and tries to be more faithful in
+the conversion, retaining more of the original appearance if
+possible (and sensible).
+
+<p>Here is a list of some notable changes (not taking bug fixes into
+account).
+</p>
+<ul class="no-bullet">
+<li>− The script is now much faster.
+
+</li><li>− Overlapping and nested slurs work as expected.
+
+</li><li>− Better automatic support of circumventing LilyPond&rsquo;s
+infamous issue #34 (i.e., synchronization of grace note timing
+between staves at the beginning of a piece).
+
+</li><li>− Support of two-stem tremolos and nested tuplets.
+
+</li><li>− Color and font size support for almost all MusicXML
+elements.  A new command-line option <samp>--dynamics-scale</samp>
+helps compensate glyph size differences of dynamics signs in
+various music fonts.
+
+</li><li>− Correct handling of ottava endings for MusicXML files
+created by Finale.  The script looks at the <code>&lt;software&gt;</code>
+element to detect the used notation software.  If necessary, this
+can be overridden with the new command-line option
+<samp>--ottavas-end-early</samp>.
+
+</li><li>− Option <samp>--shift-meter</samp> has been replaced with option
+<samp>--shift-durations</samp>, using a simpler syntax.
+
+</li><li>− New command-line option <samp>--no-tagline</samp> to suppress
+the output of a LilyPond tagline.
+
+</li><li>− New command-line option <samp>--book</samp> to wrap the
+top-level score with <code>\book</code>.
+
+</li><li>− If <code>&lt;credit&gt;</code> elements are present, they now fill the
+fields in LilyPond&rsquo;s <code>\header</code> block instead of metadata
+elements like <code>&lt;work-title&gt;</code> or <code>&lt;creator&gt;</code>.
+
+</li><li>− New command-line option <samp>--credit-page</samp> to specify
+the page from which LilyPond should take <code>&lt;credit&gt;</code> data to
+fill the <code>\header</code> block.
+
+</li><li>− All metadata elements that are not mapped to standard
+<code>\header</code> fields (and which are not ignored like the &lsquo;page
+number&rsquo; type) are output with more consistent field names: the
+prefix &lsquo;<samp>id:&nbsp;</samp>&rsquo; is used for <code>&lt;identification&gt;</code>
+children, &lsquo;<samp>credit:&nbsp;</samp>&rsquo; for <code>&lt;credit&gt;</code> elements, and
+the MusicXML element name (without a prefix) in all other cases.
+As a consequence, some (unused) fields got new names.
+
+<blockquote class="indentedblock">
+<table>
+<thead><tr><th width="30%">old</th><th width="40%">new</th></tr></thead>
+<tr><td width="30%"><code>movementnumber</code></td><td width="40%"><code>movement-number</code></td></tr>
+<tr><td width="30%"><code>encodingsoftware</code></td><td width="40%"><code>id: software</code></td></tr>
+<tr><td width="30%"><code>encodingdate</code></td><td width="40%"><code>id: encoding-date</code></td></tr>
+<tr><td width="30%"><code>encoder</code></td><td width="40%"><code>id: encoder</code></td></tr>
+<tr><td width="30%"><code>encodingdescription</code></td><td width="40%"><code>id: encoding-description</code></td></tr>
+<tr><td width="30%"><code>source</code></td><td width="40%"><code>id: source</code></td></tr>
+</table>
+</blockquote>
+
+</li><li>− The bar numbers shown as comments in the created LilyPond
+input file are now as expected, i.e., the values shown refer to
+the previous bar.
+
+</li></ul>
+
+</li><li> The markup command <code>\page-ref</code> has a new property
+<code>x-align</code> to control the X-alignment of the
+gauge replacement.
+
+
+<blockquote>
+<pre class="verbatim"><span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\box</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\page-ref</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;foo</span><span class="w"> </span><span class="s">&quot;???&quot;</span><span class="w"> </span><span class="s">&quot;?&quot;</span><span class="w"> </span><span class="s">&quot; right-aligned (default)&quot;</span>
+<span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\box</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="p">#</span><span class="o">`</span><span class="p">(</span><span class="nf">x-align</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="o">,</span><span class="nv">LEFT</span><span class="p">)</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\page-ref</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;foo</span><span class="w"> </span><span class="s">&quot;???&quot;</span><span class="w"> </span><span class="s">&quot;?&quot;</span><span class="w"> </span><span class="s">&quot; left-aligned&quot;</span>
+<span class="p">}</span>
+<span class="nb nb-MarkupCommand">\markup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb nb-MarkupCommand">\box</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\override</span><span class="w"> </span><span class="p">#</span><span class="o">&#39;</span><span class="p">(</span><span class="nv">x-align</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mf">-2.5</span><span class="p">)</span>
+<span class="w">    </span><span class="nb nb-MarkupCommand">\page-ref</span><span class="w"> </span><span class="p">#</span><span class="ss">&#39;foo</span><span class="w"> </span><span class="s">&quot;???&quot;</span><span class="w"> </span><span class="s">&quot;?&quot;</span><span class="w"> </span><span class="s">&quot; left outside&quot;</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../aa/lily-9e39b24a.ly">
+  <img align="middle"
+       border="0"
+       src="../aa/lily-9e39b24a.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> It is now also possible to set the <code>ledger-extra</code> property via the
+<code>NoteHead</code> grob.
+
+
+<blockquote>
+<pre class="verbatim"><span class="k">\score</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class=" -Pitch">c&#39;&#39;&#39;</span><span class="m">1</span>
+<span class="w">    </span><span class="nb nb-MusicFunction">\tweak</span><span class="w"> </span><span class="nb nb-GrobProperty">ledger-extra</span><span class="w"> </span><span class="p">#</span><span class="mi">4</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;&#39;</span><span class="m">1</span>
+<span class="w">    </span><span class=" -Pitch">c&#39;&#39;&#39;</span><span class="m">1</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../27/lily-7851e4ac.ly">
+  <img align="middle"
+       border="0"
+       src="../27/lily-7851e4ac.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> For grob <code>NonMusicalPaperColumn</code>, the subproperty
+<code>bottom-space</code> of the <code>line-break-system-details</code>
+property has been renamed to <code>bottom-padding</code>.  While
+available since version 2.13.4 (released in 2009) it wasn&rsquo;t
+documented before.
+
+</li><li> It is now possible to modify tag groups created with
+<code>\tagGroup</code> or <code>\tagGroupRef</code> by using the
+commands <code>\resetTagGroups</code>, <code>\resetTagGroup</code>,
+<code>\addToTagGroup</code>, and <code>\removeFromTagGroup</code>.
+
+</li><li> The current input language (as selected with <code>\language</code>) can
+be accessed in the new Scheme variable <code>input-language</code> (as a
+symbol).
+
+</li><li> The new function <code>\breakAlignInsert</code> makes it easy to
+change the order of notational elements like clefs, time
+signatures, bar lines etc.  Previously, this required
+re-defining the <code>Score.BreakAlignment.break-align-orders</code>
+vector.
+
+
+<blockquote>
+<pre class="verbatim"><span class="p">{</span>
+<span class="w">  </span><span class=" -Pitch">g&#39;</span><span class="m">1</span>
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class="nb nb-Scale">\major</span>
+<span class="w">  </span><span class=" -Pitch">g&#39;</span>
+<span class="w">  </span><span class="n n-BackslashReference">\breakAlignInsert</span><span class="w"> </span>staff-bar<span class="w"> </span>after<span class="w"> </span>key-signature
+<span class="w">  </span><span class="nb nb-MusicFunction">\key</span><span class="w"> </span><span class=" -Pitch">g</span><span class="w"> </span><span class="nb nb-Scale">\minor</span>
+<span class="w">  </span><span class=" -Pitch">g&#39;</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../67/lily-49b933a1.ly">
+  <img align="middle"
+       border="0"
+       src="../67/lily-49b933a1.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+</li><li> The output option <samp>-dcrop</samp> now takes all stencils
+into account while calculating the bounding box.
+This can change the size of cropped output.
+
+</li><li> These functions, which have been deprecated since version 2.13.19,
+have been removed: <code>\deprecatedcresc</code>,
+<code>\deprecatedendcresc</code>, <code>\deprecateddim</code>, and
+<code>\deprecatedenddim</code>.
+
+</li></ul>
+
+
+<p>For older news, go to
+<a href="https://lilypond.org/doc/v2.22/Documentation/changes/">https://lilypond.org/doc/v2.22/Documentation/changes/</a>,
+or <a href="../">go back</a> to the Documentation index.
+</p>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="new-for-specialist-notation.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; New for specialist notation </a>]</td><td align="center">[<a href="index.html" title="Cover (top) of document" rel="start">Top</a>][<a href="changes_toc.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</td><td align="right">[  &gt;&gt; ]</td></tr>
+<tr><td align="left">[<a href="new-for-specialist-notation.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; New for specialist notation </a>]</td><td align="center">[<a href="index.html" title="Up section" accesskey="u" rel="up">  Up: Top </a>]</td><td align="right">[  &gt; ]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="miscellaneous-improvements.fr.html">Français</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.html" title="Documentation Index">
+    &lt;&lt; Back to Documentation Index
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.html#top" title="Cover (top) of document">
+    LilyPond Changes  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-Major-changes-in-LilyPond" href="major-changes-in-lilypond.html">Major changes in LilyPond</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Notes-for-source-compilation-and-packagers" href="notes-for-source-compilation-and-packagers.html">Notes for source compilation and packagers</a></li>
+  </ul></li>
+  <li><a id="toc-New-for-musical-notation" href="new-for-musical-notation.html">New for musical notation</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Pitches-improvements" href="pitches-improvements.html">Pitches improvements</a></li>
+    <li><a id="toc-Rhythm-improvements" href="rhythm-improvements.html">Rhythm improvements</a></li>
+    <li><a id="toc-Expressive-mark-improvements" href="expressive-mark-improvements.html">Expressive mark improvements</a></li>
+    <li><a id="toc-Repeat-improvements" href="repeat-improvements.html">Repeat improvements</a></li>
+    <li><a id="toc-Editorial-annotation-improvements" href="editorial-annotation-improvements.html">Editorial annotation improvements</a></li>
+    <li><a id="toc-Text-and-font-improvements" href="text-and-font-improvements.html">Text and font improvements</a></li>
+  </ul></li>
+  <li><a id="toc-New-for-specialist-notation" href="new-for-specialist-notation.html">New for specialist notation</a></li>
+  <li class="toc_current"><a id="toc-Miscellaneous-improvements" href="miscellaneous-improvements.html">Miscellaneous improvements</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: FILL-IN-HEAD-COMMITTISH
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  For details, see the Contributors'
+    Guide, node Updating translation committishes.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google Search">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="Search">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>

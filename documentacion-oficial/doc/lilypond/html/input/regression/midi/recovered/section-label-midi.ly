@@ -1,0 +1,73 @@
+% Lily was here -- automatically converted by midi2ly.py from out-www/section-label.midi
+\version "2.14.0"
+
+\layout {
+  \context {
+    \Voice
+    \remove Note_heads_engraver
+    \consists Completion_heads_engraver
+    \remove Rest_engraver
+    \consists Completion_rest_engraver
+  }
+}
+
+% included from ./out-www/section-label.header
+\header {
+texidoc=""
+options=""
+}
+% end
+
+trackAchannelA = {
+  
+  % [TEXT_EVENT] creator: 
+  
+  % [TEXT_EVENT] LilyPond 2.26.0               
+  
+  \time 4/4
+  
+  % [MARKER] Intro
+  
+  \tempo 4 = 60
+  \skip 1 
+  | % 2
+  
+  % [MARKER] Coda
+  \skip 1 
+  | % 3
+  
+}
+
+trackA = <<
+  \context Voice = voiceA \trackAchannelA
+>>
+
+
+trackBchannelA = {
+  
+  \set Staff.instrumentName = "\new:"
+  \skip \breve 
+}
+
+trackBchannelB = \relative c {
+  c'1 
+  | % 2
+  d 
+  | % 3
+  
+}
+
+trackB = <<
+  \context Voice = voiceA \trackBchannelA
+  \context Voice = voiceB \trackBchannelB
+>>
+
+
+\score {
+  <<
+    \context Staff=trackB \trackA
+    \context Staff=trackB \trackB
+  >>
+  \layout {}
+  \midi {}
+}

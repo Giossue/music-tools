@@ -1,0 +1,1152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- Created by GNU Texinfo 6.8, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 1999-2026 by 著作者一同
+
+GNU フリー文書利用許諾契約書バージョン 1.1 またはフリー ソフトウェア財団によって発行されたその後のバージョンの約定に従う限り、このドキュメントを複製、変更する許可を与えます。変更不可部分はありません。この利用許諾契約書のコピーは「GNU フリー文書利用許諾契約書」という章に含まれています。 -->
+<title>新たに譜をインスタンス化する (LilyPond 記譜法リファレンス)</title>
+
+<meta name="description" content="新たに譜をインスタンス化する (LilyPond 記譜法リファレンス)">
+<meta name="keywords" content="新たに譜をインスタンス化する (LilyPond 記譜法リファレンス)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.ja.html" rel="start" title="LilyPond &mdash; 記譜法リファレンス">
+<link href="index-of-commands-and-concepts.ja.html" rel="index" title="Appendix D インデックス">
+<link href="notation_toc.ja.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="displaying-staves.ja.html" rel="up" title="1.6.1 譜を表示する">
+<link href="grouping-staves.ja.html" rel="next" title="譜をグループ化する">
+<style type="text/css">
+<!--
+a.copiable-anchor {visibility: hidden; text-decoration: none; line-height: 0em}
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+span:hover a.copiable-anchor {visibility: visible}
+ul.no-bullet {list-style: none}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../css/lilypond-manuals.css">
+<link rel="stylesheet" type="text/css" href="../css/lilypond-highlighting.css">
+
+
+</head>
+
+<body lang="ja" class="notation">
+<div id="main">
+<div class="unnumberedsubsubsec" id="instantiating-new-staves">
+<table class="nav_table">
+<tr><td align="left">[<a href="musical-notation.ja.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; 音楽記譜法 </a>]</td><td align="center">[<a href="index.ja.html" title="Cover (top) of document" rel="start">Top</a>][<a href="notation_toc.ja.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ja.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="specialist-notation.ja.html" title="Next chapter"> 専門的な記譜法 &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="displaying-staves.ja.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; 譜を表示する </a>]</td><td align="center">[<a href="displaying-staves.ja.html" title="Up section" accesskey="u" rel="up">  Up: 譜を表示する </a>]</td><td align="right">[<a href="grouping-staves.ja.html" title="Next section in reading order" accesskey="n" rel="next"> 譜をグループ化する &gt; </a>]</td></tr>
+</table>
+<hr>
+<span id="Xin-taniPu-woinsutansuHua-suru"></span><h4 class="unnumberedsubsubsec">新たに譜をインスタンス化する</h4>
+
+<span id="index-new-staff-_0028Xin-siiPu-_0029"></span>
+<span id="index-staff-initiation-_0028Pu-noKai-Shi-_0029"></span>
+<span id="index-staff-instantiation-_0028Pu-noinsutansuHua-_0029"></span>
+<span id="index-staff_002c-new-_0028Xin-siiPu-_0029"></span>
+<span id="index-staff_002c-single-_0028Dan-YinoPu-_0029"></span>
+<span id="index-staff_002c-drum-_0028doramuPu-_0029"></span>
+<span id="index-staff_002c-percussion-_0028Da-Le-Qi-Pu-_0029"></span>
+<span id="index-drum-staff-_0028doramuPu-_0029"></span>
+<span id="index-percussion-staff-_0028Da-Le-Qi-Pu-_0029"></span>
+<span id="index-Gregorian-transcription-staff-_0028guregorioSheng-Ge-noZhuan-Xie-Pu-_0029"></span>
+<span id="index-rhythmic-staff-_0028rizumuPu-_0029"></span>
+<span id="index-tablature-_0028tabuPu-_0029"></span>
+
+<span id="index-_005cdrummode"></span>
+<span id="index-DrumStaff"></span>
+<span id="index-RhythmicStaff"></span>
+<span id="index-TabStaff"></span>
+<span id="index-MensuralStaff"></span>
+<span id="index-VaticanaStaff"></span>
+<span id="index-GregorianTranscriptionStaff"></span>
+
+<p><var>stave: 譜</var> (<var>staff</var>: 譜 (表) の単称) は
+<code>\new</code> コマンドや <code>\context</code> コマンドで作成されます。詳細は <a href="creating-and-referencing-contexts.ja.html">コンテキストを作成して参照する</a> を参照してください。
+</p>
+<p>基本的な譜コンテキストは <code>Staff</code> です:
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">Staff</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class="p">}</span>
+</pre>
+
+<a href="../5c/lily-d5cdc2ed.ly">
+  <img align="middle"
+       border="0"
+       src="../5c/lily-d5cdc2ed.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p><code>DrumStaff</code> コンテキストは、一般的なドラム セットのための 5 線譜を作成します。各楽器は異なるシンボルで示されます。<code>\drummode</code> コマンドの後に続けて、楽器をドラム モードで入力します。各楽器は名前によって指定されます。詳細は <a href="percussion-staves.ja.html">打楽器の譜</a> を参照してください。
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">DrumStaff</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">\drummode</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">cymc</span><span class="w"> </span><span class=" -Pitch">hh</span><span class="w"> </span><span class=" -Pitch">ss</span><span class="w"> </span><span class=" -Pitch">tomh</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre>
+
+<a href="../af/lily-5433b37d.ly">
+  <img align="middle"
+       border="0"
+       src="../af/lily-5433b37d.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p><code>RhythmicStaff</code> は、入力のリズム価だけを表示する単線譜を作成します。(ピッチは無視されますが) 演奏時間が保持されます。詳細は <a href="showing-melody-rhythms.ja.html">旋律のリズムを示す</a> を参照してください。
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">RhythmicStaff</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class="p">}</span>
+</pre>
+
+<a href="../44/lily-9ccb204e.ly">
+  <img align="middle"
+       border="0"
+       src="../44/lily-9ccb204e.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p><code>TabStaff</code> は、標準のギター チューニングの 6 弦のタブ譜を作成します。詳細は <a href="default-tablatures.ja.html">デフォルトのタブ譜</a> を参照してください。
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">TabStaff</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class="p">}</span>
+</pre>
+
+<a href="../ec/lily-f1963a0c.ly">
+  <img align="middle"
+       border="0"
+       src="../ec/lily-f1963a0c.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>古代音楽の記譜法のために 2 つの譜コンテキストが用意されています:
+<code>MensuralStaff</code> と <code>VaticanaStaff</code> です。これらのことは <a href="pre_002ddefined-contexts.ja.html">定義されているコンテキスト</a> で説明されています。
+</p>
+<p><code>GregorianTranscriptionStaff</code> コンテキストは、現代グレゴリア聖歌を記譜するための譜を作成します。これは小節線を譜刻しません。
+</p>
+
+<blockquote>
+<pre class="verbatim"><span class="k">\new</span><span class="w"> </span><span class="nb nb-Context">GregorianTranscriptionStaff</span><span class="w"> </span><span class="nb nb-MusicFunction">\relative</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class=" -Pitch">c&#39;&#39;</span><span class="m">4</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">f</span><span class="w"> </span><span class=" -Pitch">e</span><span class="w"> </span><span class=" -Pitch">d</span><span class="w"> </span><span class="p">}</span>
+</pre>
+
+<a href="../e9/lily-63d10cac.ly">
+  <img align="middle"
+       border="0"
+       src="../e9/lily-63d10cac.png"
+       alt="[image of music]"></a>
+</blockquote>
+
+
+<p>新たに単一譜コンテキストを定義する場合があります。詳細は <a href="defining-new-contexts.ja.html">新しいコンテキストを定義する</a> を参照してください。
+</p>
+<span id="Can-Zhao--67"></span><h4 class="subsubheading">参照</h4>
+<p>音楽用語集:
+<a href="../music-glossary/staff.html">staff</a>,
+<a href="../music-glossary/staves.html">staves</a>
+</p>
+<p>記譜法リファレンス:
+<a href="creating-and-referencing-contexts.ja.html">コンテキストを作成して参照する</a>,
+<a href="percussion-staves.ja.html">打楽器の譜</a>,
+<a href="showing-melody-rhythms.ja.html">旋律のリズムを示す</a>,
+<a href="default-tablatures.ja.html">デフォルトのタブ譜</a>,
+<a href="pre_002ddefined-contexts.ja.html">定義されているコンテキスト</a>,
+<a href="staff-symbol.ja.html">譜シンボル</a>,
+<a href="gregorian-chant-contexts.ja.html">グレゴリオ聖歌のコンテキスト</a>,
+<a href="mensural-contexts.ja.html">計量記譜法のコンテキスト</a>,
+<a href="defining-new-contexts.ja.html">新しいコンテキストを定義する</a>
+</p>
+<p>コード断片集:
+<a href="../snippets/staff-notation.ja.html">Staff notation</a>
+</p>
+<p>内部リファレンス:
+<a href="../internals/staff.html">Staff</a>,
+<a href="../internals/drumstaff.html">DrumStaff</a>,
+<a href="../internals/gregoriantranscriptionstaff.html">GregorianTranscriptionStaff</a>,
+<a href="../internals/rhythmicstaff.html">RhythmicStaff</a>,
+<a href="../internals/tabstaff.html">TabStaff</a>,
+<a href="../internals/mensuralstaff.html">MensuralStaff</a>,
+<a href="../internals/vaticanastaff.html">VaticanaStaff</a>,
+<a href="../internals/staffsymbol.html">StaffSymbol</a>
+</p>
+
+</div>
+<hr>
+<table class="nav_table">
+<tr><td align="left">[<a href="musical-notation.ja.html" title="Beginning of this chapter or previous chapter"> &lt;&lt; 音楽記譜法 </a>]</td><td align="center">[<a href="index.ja.html" title="Cover (top) of document" rel="start">Top</a>][<a href="notation_toc.ja.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="index-of-commands-and-concepts.ja.html" title="Index" rel="index">Index</a>]</td><td align="right">[<a href="specialist-notation.ja.html" title="Next chapter"> 専門的な記譜法 &gt;&gt; </a>]</td></tr>
+<tr><td align="left">[<a href="displaying-staves.ja.html" title="Previous section in reading order" accesskey="p" rel="prev"> &lt; 譜を表示する </a>]</td><td align="center">[<a href="displaying-staves.ja.html" title="Up section" accesskey="u" rel="up">  Up: 譜を表示する </a>]</td><td align="right">[<a href="grouping-staves.ja.html" title="Next section in reading order" accesskey="n" rel="next"> 譜をグループ化する &gt; </a>]</td></tr>
+</table>
+
+<div id="footer">
+<p class="footer_version">
+This page is for LilyPond-2.26.0 (stable-branch).
+</p>
+<p class="footer_report">
+We welcome your aid; please <a href="https://lilypond.org/help-us.html">help us</a> by reporting errors to our <a href="https://lists.gnu.org/mailman/listinfo/bug-lilypond">bug list</a>.
+</p>
+
+<p id="languages">
+Other languages: <a href="instantiating-new-staves.html">English</a>, <a href="instantiating-new-staves.ca.html">Català</a>, <a href="instantiating-new-staves.de.html">Deutsch</a>, <a href="instantiating-new-staves.es.html">Español</a>, <a href="instantiating-new-staves.fr.html">Français</a>, <a href="instantiating-new-staves.it.html">Italiano</a>.
+<br>
+About <a href="http://www.lilypond.org/misc/browser-language">automatic language selection</a>.
+</p>
+
+<script type='text/javascript'>
+    // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+    (function () {
+        let handled = false;
+        function restoreHighlighting () {
+            if (handled) return;
+            if (localStorage.getItem('syntax-highlighting') !== 'no') {
+            enable_highlighting();
+            }
+            else {
+              disable_highlighting();
+            }
+            handled = true;
+        }
+
+        // Attempt early handling but fall back to onload just in case.
+        document.addEventListener('DOMContentLoaded', restoreHighlighting);
+        document.addEventListener('load', restoreHighlighting);
+    })();
+
+    let enabled = true;
+    function enable_highlighting() {
+        document.body.classList.add('highlight');
+        enabled = true;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:disable_highlighting()'>Disable syntax highlighting<\/a>";
+    }
+    function disable_highlighting() {
+        document.body.classList.remove('highlight');
+        enabled = false;
+        document.getElementById('highlighting-active-link').innerHTML =
+            "<a href='javascript:enable_highlighting()'>Enable syntax highlighting<\/a>";
+    }
+
+    function save_preference() {
+        if (confirm("Remembering your preference regarding syntax highlighting for later visits on this documentation necessitates storing the preference in cookie-like browser storage.  This information remains local to your device and is never accessed by lilypond.org.")) // EU law compliance
+            localStorage.setItem('syntax-highlighting', enabled ? 'yes' : 'no');
+    }
+    // @license-end
+</script>
+
+<div id="highlighting-settings">
+  <a id="highlighting-active-link"></a>
+  &ndash;
+  <a href='javascript:save_preference()'>Save syntax highlighting preference</a>
+</div>
+</div>
+<!-- FOOTER -->
+</div>
+
+<div id="tocframe">
+
+<p class="toc_uplink">
+  <a href="../web/manuals.ja.html" title="Documentation Index">
+    &lt;&lt; ドキュメント インデックスに戻る
+  </a>
+</p>
+<h4 class="toc_header">
+  <a href="index.ja.html#top" title="Cover (top) of document">
+    LilyPond 記譜法リファレンス  v2.26.0 (stable-branch).
+  </a>
+</h4>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li class="toc_current"><a id="toc-Yin-Le-Ji-Pu-Fa-" href="musical-notation.ja.html">1 音楽記譜法</a>
+  <ul class="no-bullet">
+    <li><a id="toc-pituti" href="pitches.ja.html">1.1 ピッチ</a>
+    <ul class="no-bullet">
+      <li><a id="toc-pitutiwoJi-Shu-suru" href="writing-pitches.ja.html">1.1.1 ピッチを記述する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Jue-Dui-okutabuRu-Li-" href="absolute-octave-entry.ja.html">絶対オクターブ入力</a></li>
+        <li><a id="toc-Xiang-Dui-okutabuRu-Li-" href="relative-octave-entry.ja.html">相対オクターブ入力</a></li>
+        <li><a id="toc-Lin-Shi-Ji-Hao-" href="accidentals.ja.html">臨時記号</a></li>
+        <li><a id="toc-Ta-noYan-Yu-denoYin-Fu-Ming-" href="note-names-in-other-languages.ja.html">他の言語での音符名</a></li>
+      </ul></li>
+      <li><a id="toc-Fu-Shu-nopitutiwoBian-Geng-suru" href="changing-multiple-pitches.ja.html">1.1.2 複数のピッチを変更する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-okutabu-tietuku" href="octave-checks.ja.html">オクターブ チェック</a></li>
+        <li><a id="toc-Yi-Diao-" href="transpose.ja.html">移調</a></li>
+        <li><a id="toc-Fan-Zhuan-" href="inversion.ja.html">反転</a></li>
+        <li><a id="toc-Ni-Xing-" href="retrograde.ja.html">逆行</a></li>
+        <li><a id="toc-Yang-Shi-De-naBian-Xing-" href="modal-transformations.ja.html">様式的な変形</a></li>
+      </ul></li>
+      <li><a id="toc-pitutiwoBiao-Shisuru" href="displaying-pitches.ja.html">1.1.3 ピッチを表示する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Yin-Bu-Ji-Hao-" href="clef.ja.html">音部記号</a></li>
+        <li><a id="toc-Diao-Hao-" href="key-signature.ja.html">調号</a></li>
+        <li><a id="toc-otutabaWei-mi" href="ottava-brackets.ja.html">オッターバ囲み</a></li>
+        <li><a id="toc-Le-Qi-noYi-Diao-" href="instrument-transpositions.ja.html">楽器の移調</a></li>
+        <li><a id="toc-Zi-Dong-Lin-Shi-Ji-Hao-" href="automatic-accidentals.ja.html">自動臨時記号</a></li>
+        <li><a id="toc-Yin-Yu-" href="ambitus.ja.html">音域</a></li>
+      </ul></li>
+      <li><a id="toc-Fu-Tou-" href="note-heads.ja.html">1.1.4 符頭</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Te-Shu-naFu-Tou-" href="special-note-heads.ja.html">特殊な符頭</a></li>
+        <li><a id="toc-Yan-Zou-woRong-Yi-nisuruJi-Pu-Fa-noFu-Tou-" href="easy-notation-note-heads.ja.html">演奏を容易にする記譜法の符頭</a></li>
+        <li><a id="toc-sieipu-notonoFu-Tou-" href="shape-note-heads.ja.html">シェイプ ノートの符頭</a></li>
+        <li><a id="toc-Ji-Xing-" href="improvisation.ja.html">即興</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-rizumu" href="rhythms.ja.html">1.2 リズム</a>
+    <ul class="no-bullet">
+      <li><a id="toc-rizumuwoJi-Shu-suru" href="writing-rhythms.ja.html">1.2.1 リズムを記述する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Yan-Zou-Shi-Jian-" href="durations.ja.html">演奏時間</a></li>
+        <li><a id="toc-Lian-Fu-" href="tuplets.ja.html">連符</a></li>
+        <li><a id="toc-Yan-Zou-Shi-Jian-woBian-Geng-suru" href="scaling-durations.ja.html">演奏時間を変更する</a></li>
+        <li><a id="toc-tai" href="ties.ja.html">タイ</a></li>
+      </ul></li>
+      <li><a id="toc-Xiu-Fu-woJi-Shu-suru" href="writing-rests.ja.html">1.2.2 休符を記述する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Xiu-Fu-" href="rests.ja.html">休符</a></li>
+        <li><a id="toc-Bu-Ke-Shi-noXiu-Fu-" href="invisible-rests.ja.html">不可視の休符</a></li>
+        <li><a id="toc-Xiao-Jie-Dan-Wei-noXiu-Fu-" href="full-measure-rests.ja.html">小節単位の休符</a></li>
+      </ul></li>
+      <li><a id="toc-rizumuwoBiao-Shisuru" href="displaying-rhythms.ja.html">1.2.3 リズムを表示する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Pai-Zi-" href="time-signature.ja.html">拍子</a></li>
+        <li><a id="toc-metoronomuJi-Hao-" href="metronome-marks.ja.html">メトロノーム記号</a></li>
+        <li><a id="toc-Shang-Pai-" href="upbeats.ja.html">上拍</a></li>
+        <li><a id="toc-Wu-Yun-Lu-noYin-Le-" href="unmetered-music.ja.html">無韻律の音楽</a></li>
+        <li><a id="toc-Duo-Pai-Zi-Ji-Pu-Fa-" href="polymetric-notation.ja.html">多拍子記譜法</a></li>
+        <li><a id="toc-Zi-Dong-Yin-Fu-Fen-Ge-" href="automatic-note-splitting.ja.html">自動音符分割</a></li>
+        <li><a id="toc-Xuan-Lu-norizumuwoShisu" href="showing-melody-rhythms.ja.html">旋律のリズムを示す</a></li>
+      </ul></li>
+      <li><a id="toc-Lian-Hang-" href="beams.ja.html">1.2.4 連桁</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Zi-Dong-Lian-Hang-" href="automatic-beams.ja.html">自動連桁</a></li>
+        <li><a id="toc-Zi-Dong-Lian-Hang-noZhen-ruWu-iwoShe-Ding-suru" href="setting-automatic-beam-behavior.ja.html">自動連桁の振る舞いを設定する</a></li>
+        <li><a id="toc-Shou-Dong-Lian-Hang-" href="manual-beams.ja.html">手動連桁</a></li>
+        <li><a id="toc-Yu-Zhuang-noLian-Hang-" href="feathered-beams.ja.html">羽状の連桁</a></li>
+      </ul></li>
+      <li><a id="toc-Xiao-Jie-" href="bars.ja.html">1.2.5 小節</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Xiao-Jie-Xian-" href="bar-lines.ja.html">小節線</a></li>
+        <li><a id="toc-Xiao-Jie-Fan-Hao-" href="bar-numbers.ja.html">小節番号</a></li>
+        <li><a id="toc-Xiao-Jie-toXiao-Jie-Fan-Hao-notietuku" href="bar-and-bar-number-checks.ja.html">小節と小節番号のチェック</a></li>
+        <li><a id="toc-rihasaruJi-Hao-" href="rehearsal-marks.ja.html">リハーサル記号</a></li>
+      </ul></li>
+      <li><a id="toc-Te-Shu-narizumuGuan-Lian-Shi-Xiang-" href="special-rhythmic-concerns.ja.html">1.2.6 特殊なリズム関連事項</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Zhuang-Shi-Xiao-Yin-Fu-" href="grace-notes.ja.html">装飾小音符</a></li>
+        <li><a id="toc-kadentuaniJian-eru" href="aligning-to-cadenzas.ja.html">カデンツァに揃える</a></li>
+        <li><a id="toc-Shi-Jian-Guan-Li-" href="time-administration.ja.html">時間管理</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Fa-Xiang-Ji-Hao-" href="expressive-marks.ja.html">1.3 発想記号</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Yin-Fu-niFu-kerareruFa-Xiang-Ji-Hao-" href="expressive-marks-attached-to-notes.ja.html">1.3.1 音符に付けられる発想記号</a>
+      <ul class="no-bullet">
+        <li><a id="toc-ateikiyuresiyontoZhuang-Shi-" href="articulations-and-ornamentations.ja.html">アーティキュレーションと装飾</a></li>
+        <li><a id="toc-Qiang-Ruo-Ji-Hao-" href="dynamics.ja.html">強弱記号</a></li>
+        <li><a id="toc-Xin-tanaQiang-Ruo-Ji-Hao-" href="new-dynamic-marks.ja.html">新たな強弱記号</a></li>
+      </ul></li>
+      <li><a id="toc-Qu-Xian-noFa-Xiang-Ji-Hao-" href="expressive-marks-as-curves.ja.html">1.3.2 曲線の発想記号</a>
+      <ul class="no-bullet">
+        <li><a id="toc-sura" href="slurs.ja.html">スラー</a></li>
+        <li><a id="toc-hurezingu-sura" href="phrasing-slurs.ja.html">フレージング スラー</a></li>
+        <li><a id="toc-buresuJi-Hao-" href="breath-marks.ja.html">ブレス記号</a></li>
+        <li><a id="toc-Fall-to-Doit" href="falls-and-doits.ja.html">Fall と Doit</a></li>
+      </ul></li>
+      <li><a id="toc-Zhi-Xian-noFa-Xiang-Ji-Hao-" href="expressive-marks-as-lines.ja.html">1.3.3 直線の発想記号</a>
+      <ul class="no-bullet">
+        <li><a id="toc-guritusando" href="glissando.ja.html">グリッサンド</a></li>
+        <li><a id="toc-arupezio" href="arpeggio.ja.html">アルペジオ</a></li>
+        <li><a id="toc-toriru" href="trills.ja.html">トリル</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Zao-riFan-si" href="repeats.ja.html">1.4 繰り返し</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Chang-iZao-riFan-si" href="long-repeats.ja.html">1.4.1 長い繰り返し</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Tong-Chang-noZao-riFan-si" href="normal-repeats.ja.html">通常の繰り返し</a></li>
+        <li><a id="toc-Shou-Dong-noZao-riFan-siJi-Hao-" href="manual-repeat-marks.ja.html">手動の繰り返し記号</a></li>
+        <li><a id="toc-Zao-riFan-siwoMiao-kiChu-su" href="written_002dout-repeats.ja.html">繰り返しを描き出す</a></li>
+      </ul></li>
+      <li><a id="toc-Duan-iZao-riFan-si" href="short-repeats.ja.html">1.4.2 短い繰り返し</a>
+      <ul class="no-bullet">
+        <li><a id="toc-pasentoZao-riFan-si" href="percent-repeats.ja.html">パーセント繰り返し</a></li>
+        <li><a id="toc-toremoronoZao-riFan-si" href="tremolo-repeats.ja.html">トレモロの繰り返し</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Tong-Shi-Jin-Xing-suruYin-Fu-" href="simultaneous-notes.ja.html">1.5 同時進行する音符</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Dan-Yinoboisu" href="single-voice.ja.html">1.5.1 単一のボイス</a>
+      <ul class="no-bullet">
+        <li><a id="toc-He-Yin-noYin-Fu-" href="chorded-notes.ja.html">和音の音符</a></li>
+        <li><a id="toc-He-Yin-noZao-riFan-si" href="chord-repetition.ja.html">和音の繰り返し</a></li>
+        <li><a id="toc-Tong-Shi-Jin-Xing-Biao-Ji-" href="simultaneous-expressions.ja.html">同時進行表記</a></li>
+        <li><a id="toc-kurasuta" href="clusters.ja.html">クラスタ</a></li>
+      </ul></li>
+      <li><a id="toc-Fu-Shu-noboisu" href="multiple-voices.ja.html">1.5.2 複数のボイス</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Dan-YiPu-noDuo-Sheng-" href="single_002dstaff-polyphony.ja.html">単一譜の多声</a></li>
+        <li><a id="toc-boisu-sutairu" href="voice-styles.ja.html">ボイス スタイル</a></li>
+        <li><a id="toc-Chong-Tu-noJie-Jue-" href="collision-resolution.ja.html">衝突の解決</a></li>
+        <li><a id="toc-Xiu-Fu-nomazi" href="merging-rests.ja.html">休符のマージ</a></li>
+        <li><a id="toc-Zi-Dong-patoJie-He-" href="automatic-part-combining.ja.html">自動パート結合</a></li>
+        <li><a id="toc-Yin-Le-woBing-Lie-niJi-Shu-suru" href="writing-music-in-parallel.ja.html">音楽を並列に記述する</a></li>
+      </ul></li>
+    </ul></li>
+    <li class="toc_current"><a id="toc-Pu-noJi-Pu-Fa-" href="staff-notation.ja.html">1.6 譜の記譜法</a>
+    <ul class="no-bullet">
+      <li class="toc_current"><a id="toc-Pu-woBiao-Shisuru" href="displaying-staves.ja.html">1.6.1 譜を表示する</a>
+      <ul class="no-bullet">
+        <li class="toc_current"><a id="toc-Xin-taniPu-woinsutansuHua-suru" href="instantiating-new-staves.ja.html">新たに譜をインスタンス化する</a></li>
+        <li><a id="toc-Pu-wogurupuHua-suru" href="grouping-staves.ja.html">譜をグループ化する</a></li>
+        <li><a id="toc-nesutosaretaPu-gurupu" href="nested-staff-groups.ja.html">ネストされた譜グループ</a></li>
+        <li><a id="toc-sisutemuwoFen-Ge-suru" href="separating-systems.ja.html">システムを分割する</a></li>
+      </ul></li>
+      <li><a id="toc-Ge-_0022noPu-woBian-Geng-suru" href="modifying-single-staves.ja.html">1.6.2 個々の譜を変更する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Pu-sinboru" href="staff-symbol.ja.html">譜シンボル</a></li>
+        <li><a id="toc-otusiaPu-" href="ossia-staves.ja.html">オッシア譜</a></li>
+        <li><a id="toc-Pu-woYin-su" href="hiding-staves.ja.html">譜を隠す</a></li>
+      </ul></li>
+      <li><a id="toc-patowoJi-Shu-suru" href="writing-parts.ja.html">1.6.3 パートを記述する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Le-Qi-Ming-" href="instrument-names.ja.html">楽器名</a></li>
+        <li><a id="toc-Ta-noboisuwoYin-Yong-suru" href="quoting-other-voices.ja.html">他のボイスを引用する</a></li>
+        <li><a id="toc-He-Tu-Yin-Fu-wohuomatutosuru" href="formatting-cue-notes.ja.html">合図音符をフォーマットする</a></li>
+        <li><a id="toc-Kong-noXiao-Jie-woYa-Suo-suru" href="compressing-empty-measures.ja.html">空の小節を圧縮する</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Bian-Ji-Zhe-noZhu-Shi-" href="editorial-annotations.ja.html">1.7 編集者の注釈</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Pu-noNei-Bu-" href="inside-the-staff.ja.html">1.7.1 譜の内部</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Ji-Pu-huonto-saizuwoXuan-Ze-suru" href="selecting-notation-font-size.ja.html">記譜フォント サイズを選択する</a></li>
+        <li><a id="toc-Yun-Zhi-noZhi-Shi" href="fingering-instructions.ja.html">運指の指示</a></li>
+        <li><a id="toc-Yin-saretaYin-Fu-" href="hidden-notes.ja.html">隠された音符</a></li>
+        <li><a id="toc-obuziekutoniSe-woFu-keru" href="coloring-objects.ja.html">オブジェクトに色を付ける</a></li>
+        <li><a id="toc-Gua-Hu-" href="parentheses.ja.html">括弧</a></li>
+        <li><a id="toc-Fu-Gan-" href="stems.ja.html">符幹</a></li>
+      </ul></li>
+      <li><a id="toc-Pu-noWai-Bu-" href="outside-the-staff.ja.html">1.7.2 譜の外部</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Yin-Fu-Ming-" href="note-names.ja.html">音符名</a></li>
+        <li><a id="toc-barun-herupu" href="balloon-help.ja.html">バルーン ヘルプ</a></li>
+        <li><a id="toc-guritudo-rain" href="grid-lines.ja.html">グリッド ライン</a></li>
+        <li><a id="toc-Fen-Xi-noWei-mi" href="analysis-brackets.ja.html">分析の囲み</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-tekisuto" href="text.ja.html">1.8 テキスト</a>
+    <ul class="no-bullet">
+      <li><a id="toc-tekisutowoJi-Shu-suru" href="writing-text.ja.html">1.8.1 テキストを記述する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-tekisuto-obuziekutonoGai-Yao-" href="text-objects-overview.ja.html">テキスト オブジェクトの概要</a></li>
+        <li><a id="toc-tekisuto-sukuriputo" href="text-scripts.ja.html">テキスト スクリプト</a></li>
+        <li><a id="toc-tekisuto-supana" href="text-spanners.ja.html">テキスト スパナ</a></li>
+        <li><a id="toc-tekisuto-maku" href="text-marks.ja.html">テキスト マーク</a></li>
+        <li><a id="toc-Du-Li-sitatekisuto" href="separate-text.ja.html">独立したテキスト</a></li>
+      </ul></li>
+      <li><a id="toc-tekisutowohuomatutosuru" href="formatting-text.ja.html">1.8.2 テキストをフォーマットする</a>
+      <ul class="no-bullet">
+        <li><a id="toc-tekisuto-makuatupunoDao-Ru-Bu-" href="text-markup-introduction.ja.html">テキスト マークアップの導入部</a></li>
+        <li><a id="toc-huontotohuonto-saizuwoXuan-Ze-suru" href="selecting-font-and-font-size.ja.html">フォントとフォント サイズを選択する</a></li>
+        <li><a id="toc-tekisutoJian-e" href="text-alignment.ja.html">テキスト揃え</a></li>
+        <li><a id="toc-makuatupuNei-Bu-denogurahuitukuJi-Pu-Fa-" href="graphic-notation-inside-markup.ja.html">マークアップ内部でのグラフィック記譜法</a></li>
+        <li><a id="toc-makuatupuNei-Bu-denoYin-Le-Ji-Pu-Fa-" href="music-notation-inside-markup.ja.html">マークアップ内部での音楽記譜法</a></li>
+        <li><a id="toc-Fu-Shu-peziniwatarumakuatupu" href="multi_002dpage-markup.ja.html">複数ページにわたるマークアップ</a></li>
+      </ul></li>
+      <li><a id="toc-huonto" href="fonts.ja.html">1.8.3 フォント</a>
+      <ul class="no-bullet">
+        <li><a id="toc-huontonoShuo-Ming-" href="fonts-explained.ja.html">フォントの説明</a></li>
+        <li><a id="toc-Ge-_0022niDeng-Lu-suruhuonto" href="single-entry-fonts.ja.html">個々に登録するフォント</a></li>
+        <li><a id="toc-dokiyumentoQuan-Ti-nohuonto" href="entire-document-fonts.ja.html">ドキュメント全体のフォント</a></li>
+      </ul></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Zhuan-Men-De-naJi-Pu-Fa-" href="specialist-notation.ja.html">2 専門的な記譜法</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Sheng-Le-" href="vocal-music.ja.html">2.1 声楽</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Sheng-Le-deGong-Tong-noJi-Pu-Fa-" href="common-notation-for-vocal-music.ja.html">2.1.1 声楽で共通の記譜法</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Sheng-Le-notamenorihuarensu" href="references-for-vocal-music.ja.html">声楽のためのリファレンス</a></li>
+        <li><a id="toc-Ge-Ci-woRu-Li-suru" href="entering-lyrics.ja.html">歌詞を入力する</a></li>
+        <li><a id="toc-Ge-Ci-woXuan-Lu-niJian-eru" href="aligning-lyrics-to-a-melody.ja.html">歌詞を旋律に揃える</a></li>
+        <li><a id="toc-Ge-Ci-Yin-Jie-noZi-Dong-Yan-Zou-Shi-Jian-" href="automatic-syllable-durations.ja.html">歌詞音節の自動演奏時間</a></li>
+        <li><a id="toc-Ge-Ci-Yin-Jie-noShou-Dong-Yan-Zou-Shi-Jian-" href="manual-syllable-durations.ja.html">歌詞音節の手動演奏時間</a></li>
+        <li><a id="toc-Fu-Shu-noGe-Ci-Yin-Jie-wo-1-tunoYin-Fu-niGe-riDang-teru" href="multiple-syllables-to-one-note.ja.html">複数の歌詞音節を 1 つの音符に割り当てる</a></li>
+        <li><a id="toc-Fu-Shu-noYin-Fu-wo-1-tunoGe-Ci-Yin-Jie-niGe-riDang-teru" href="multiple-notes-to-one-syllable.ja.html">複数の音符を 1 つの歌詞音節に割り当てる</a></li>
+        <li><a id="toc-Yan-Chang-Xian-tohaihun" href="extenders-and-hyphens.ja.html">延長線とハイフン</a></li>
+        <li><a id="toc-Mu-Yin-noDuan-Jie-De-naBian-Hua-" href="gradual-changes-of-vowel.ja.html">母音の段階的な変化</a></li>
+      </ul></li>
+      <li><a id="toc-Ge-Ci-niTe-You-notekunituku" href="techniques-specific-to-lyrics.ja.html">2.1.2 歌詞に特有のテクニック</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Ge-Ci-toBian-Shu-niQu-riZu-mu" href="working-with-lyrics-and-variables.ja.html">歌詞と変数に取り組む</a></li>
+        <li><a id="toc-Ge-Ci-noChui-Zhi-Fang-Xiang-noPei-Zhi-" href="placing-lyrics-vertically.ja.html">歌詞の垂直方向の配置</a></li>
+        <li><a id="toc-Ge-Ci-noShui-Ping-Fang-Xiang-noPei-Zhi-" href="placing-syllables-horizontally.ja.html">歌詞の水平方向の配置</a></li>
+        <li><a id="toc-Ge-Ci-toZao-riFan-si" href="lyrics-and-repeats.ja.html">歌詞と繰り返し</a></li>
+        <li><a id="toc-Ge-Ci-nodeivuizi" href="divisi-lyrics.ja.html">歌詞のディヴィージ</a></li>
+        <li><a id="toc-Ge-Ci-woGong-You-suruDuo-Sheng-" href="polyphony-with-shared-lyrics.ja.html">歌詞を共有する多声</a></li>
+      </ul></li>
+      <li><a id="toc-Ge-Ci-noJie-" href="stanzas.ja.html">2.1.3 歌詞の節</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Ge-Ci-noJie-Fan-Hao-woZhui-Jia-suru" href="adding-stanza-numbers.ja.html">歌詞の節番号を追加する</a></li>
+        <li><a id="toc-Ge-Ci-noJie-niQiang-Ruo-Ji-Hao-woZhui-Jia-suru" href="adding-dynamics-marks-to-stanzas.ja.html">歌詞の節に強弱記号を追加する</a></li>
+        <li><a id="toc-Ge-Ci-noJie-niGe-Shou-noMing-Qian-woZhui-Jia-suru" href="adding-singers_0027-names-to-stanzas.ja.html">歌詞の節に歌手の名前を追加する</a></li>
+        <li><a id="toc-rizumugaYi-naruGe-Ci-noJie-" href="stanzas-with-different-rhythms.ja.html">リズムが異なる歌詞の節</a></li>
+        <li><a id="toc-Ge-Ci-noJie-woLe-Pu-noZhong-wariniPu-Ke-suru" href="printing-stanzas-at-the-end.ja.html">歌詞の節を楽譜の終わりに譜刻する</a></li>
+        <li><a id="toc-Ge-Ci-noJie-woLe-Pu-noZhong-wariniFu-Shu-noLie-dePu-Ke-suru" href="printing-stanzas-at-the-end-in-multiple-columns.ja.html">歌詞の節を楽譜の終わりに複数の列で譜刻する</a></li>
+      </ul></li>
+      <li><a id="toc-Ge-Qu-" href="songs.ja.html">2.1.4 歌曲</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Ge-Qu-notamenorihuarensu" href="references-for-songs.ja.html">歌曲のためのリファレンス</a></li>
+        <li><a id="toc-ridoPu-" href="lead-sheets.ja.html">リード譜</a></li>
+      </ul></li>
+      <li><a id="toc-He-Chang-" href="choral.ja.html">2.1.5 合唱</a>
+      <ul class="no-bullet">
+        <li><a id="toc-He-Chang-notamenorihuarensu" href="references-for-choral.ja.html">合唱のためのリファレンス</a></li>
+        <li><a id="toc-He-Chang-notamenoLe-Pu-reiauto" href="score-layouts-for-choral.ja.html">合唱のための楽譜レイアウト</a></li>
+      </ul></li>
+      <li><a id="toc-operatoWu-Tai-miyuzikaru" href="opera-and-stage-musicals.ja.html">2.1.6 オペラと舞台ミュージカル</a>
+      <ul class="no-bullet">
+        <li><a id="toc-operayaWu-Tai-miyuzikarunotamenorihuarensu" href="references-for-opera-and-stage-musicals.ja.html">オペラや舞台ミュージカルのためのリファレンス</a></li>
+        <li><a id="toc-Yi-Ming-" href="character-names.ja.html">役名</a></li>
+        <li><a id="toc-He-Tu-" href="musical-cues.ja.html">合図</a></li>
+        <li><a id="toc-Yu-riYin-Le-" href="spoken-music.ja.html">語り音楽</a></li>
+        <li><a id="toc-Yin-Le-noZhongdenoHui-Hua-" href="dialogue-over-music.ja.html">音楽の中での会話</a></li>
+      </ul></li>
+      <li><a id="toc-Sheng-Ge-toZan-Mei-Ge-" href="chants-psalms-and-hymns.ja.html">2.1.7 聖歌と賛美歌</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Sheng-Ge-toZan-Mei-Ge-notamenorihuarensu" href="references-for-chants-and-psalms.ja.html">聖歌と賛美歌のためのリファレンス</a></li>
+        <li><a id="toc-Sheng-Ge-woShe-Ding-suru" href="setting-a-chant.ja.html">聖歌を設定する</a></li>
+        <li><a id="toc-Zan-Mei-Ge-woPei-Zhi-suru" href="pointing-a-psalm.ja.html">賛美歌を配置する</a></li>
+        <li><a id="toc-Zan-Mei-Ge-denoBu-Fen-Xiao-Jie-" href="partial-measures-in-hymn-tunes.ja.html">賛美歌での部分小節</a></li>
+      </ul></li>
+      <li><a id="toc-Gu-Dai-noSheng-Le-" href="ancient-vocal-music.ja.html">2.1.8 古代の声楽</a></li>
+    </ul></li>
+    <li><a id="toc-kibodotoTa-noFu-Shu-Pu-noLe-Qi-" href="keyboard-and-other-multi_002dstaff-instruments.ja.html">2.2 キーボードと他の複数譜の楽器</a>
+    <ul class="no-bullet">
+      <li><a id="toc-kibododeGong-Tong-noJi-Pu-Fa-" href="common-notation-for-keyboards.ja.html">2.2.1 キーボードで共通の記譜法</a>
+      <ul class="no-bullet">
+        <li><a id="toc-kibodonotamenorihuarensu" href="references-for-keyboards.ja.html">キーボードのためのリファレンス</a></li>
+        <li><a id="toc-Pu-woShou-Dong-deBian-Geng-suru" href="changing-staff-manually.ja.html">譜を手動で変更する</a></li>
+        <li><a id="toc-Pu-woZi-Dong-deBian-Geng-suru" href="changing-staff-automatically.ja.html">譜を自動で変更する</a></li>
+        <li><a id="toc-Pu-Bian-Geng-Xian-" href="staff_002dchange-lines.ja.html">譜変更線</a></li>
+      </ul></li>
+      <li><a id="toc-piano-1" href="piano.ja.html">2.2.2 ピアノ</a>
+      <ul class="no-bullet">
+        <li><a id="toc-piano-pedaru" href="piano-pedals.ja.html">ピアノ ペダル</a></li>
+      </ul></li>
+      <li><a id="toc-akodeion" href="accordion.ja.html">2.2.3 アコーディオン</a>
+      <ul class="no-bullet">
+        <li><a id="toc-deisukantoJi-Hao-" href="discant-symbols.ja.html">ディスカント記号</a></li>
+      </ul></li>
+      <li><a id="toc-hapu" href="harp.ja.html">2.2.4 ハープ</a>
+      <ul class="no-bullet">
+        <li><a id="toc-hapunotamenorihuarensu" href="references-for-harps.ja.html">ハープのためのリファレンス</a></li>
+        <li><a id="toc-hapu-pedaru" href="harp-pedals.ja.html">ハープ ペダル</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-huretutonoWu-iXian-Le-Qi-" href="unfretted-string-instruments.ja.html">2.3 フレットの無い弦楽器</a>
+    <ul class="no-bullet">
+      <li><a id="toc-huretutonoWu-iXian-Le-Qi-deGong-Tong-noJi-Pu-Fa-" href="common-notation-for-unfretted-strings.ja.html">2.3.1 フレットの無い弦楽器で共通の記譜法</a>
+      <ul class="no-bullet">
+        <li><a id="toc-huretutonoWu-iXian-Le-Qi-notamenorihuarensu" href="references-for-unfretted-strings.ja.html">フレットの無い弦楽器のためのリファレンス</a></li>
+        <li><a id="toc-boinguZhi-Shi" href="bowing-indications.ja.html">ボーイング指示</a></li>
+        <li><a id="toc-hamonikusu" href="harmonics.ja.html">ハーモニクス</a></li>
+        <li><a id="toc-sunatupu-_0028barutoku_0029-pitutuikato" href="snap-_0028bartok_0029-pizzicato.ja.html">スナップ (バルトーク) ピッツィカート</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-huretutonoaruXian-Le-Qi-" href="fretted-string-instruments.ja.html">2.4 フレットのある弦楽器</a>
+    <ul class="no-bullet">
+      <li><a id="toc-huretutonoaruXian-Le-Qi-deGong-Tong-noJi-Pu-Fa-" href="common-notation-for-fretted-strings.ja.html">2.4.1 フレットのある弦楽器で共通の記譜法</a>
+      <ul class="no-bullet">
+        <li><a id="toc-huretutonoaruXian-Le-Qi-notamenorihuarensu" href="references-for-fretted-strings.ja.html">フレットのある弦楽器のためのリファレンス</a></li>
+        <li><a id="toc-Xian-Fan-Hao-noZhi-Shi" href="string-number-indications.ja.html">弦番号の指示</a></li>
+        <li><a id="toc-dehuorutonotabuPu-" href="default-tablatures.ja.html">デフォルトのタブ譜</a></li>
+        <li><a id="toc-kasutamu-tabuPu-" href="custom-tablatures.ja.html">カスタム タブ譜</a></li>
+        <li><a id="toc-huretuto-daiaguramu-makuatupu" href="fret-diagram-markups.ja.html">フレット ダイアグラム マークアップ</a></li>
+        <li><a id="toc-arakazimeDing-Yi-saretahuretuto-daiaguramu" href="predefined-fret-diagrams.ja.html">あらかじめ定義されたフレット ダイアグラム</a></li>
+        <li><a id="toc-Zi-Dong-huretuto-daiaguramu" href="automatic-fret-diagrams.ja.html">自動フレット ダイアグラム</a></li>
+        <li><a id="toc-You-Shou-noYun-Zhi-" href="right_002dhand-fingerings.ja.html">右手の運指</a></li>
+      </ul></li>
+      <li><a id="toc-gita" href="guitar.ja.html">2.4.2 ギター</a>
+      <ul class="no-bullet">
+        <li><a id="toc-pozisiyontobarenoZhi-Shi" href="indicating-position-and-barring.ja.html">ポジションとバレーの指示</a></li>
+        <li><a id="toc-hamonikusutodetudo-notonoZhi-Shi" href="indicating-harmonics-and-dampened-notes.ja.html">ハーモニクスとデッド ノートの指示</a></li>
+        <li><a id="toc-pawa-kodonoZhi-Shi" href="indicating-power-chords.ja.html">パワー コードの指示</a></li>
+      </ul></li>
+      <li><a id="toc-banziyo" href="banjo.ja.html">2.4.3 バンジョー</a>
+      <ul class="no-bullet">
+        <li><a id="toc-banziyonotabuPu-" href="banjo-tablatures.ja.html">バンジョーのタブ譜</a></li>
+      </ul></li>
+      <li><a id="toc-riyuto" href="lute.ja.html">2.4.4 リュート</a>
+      <ul class="no-bullet">
+        <li><a id="toc-riyutonotabuPu-" href="lute-tablatures.ja.html">リュートのタブ譜</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Da-Le-Qi-" href="percussion.ja.html">2.5 打楽器</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Da-Le-Qi-deGong-Tong-noJi-Pu-Fa-" href="common-notation-for-percussion.ja.html">2.5.1 打楽器で共通の記譜法</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Da-Le-Qi-notamenorihuarensu" href="references-for-percussion.ja.html">打楽器のためのリファレンス</a></li>
+        <li><a id="toc-Ji-Ben-De-naDa-Le-Qi-noJi-Pu-Fa-" href="basic-percussion-notation.ja.html">基本的な打楽器の記譜法</a></li>
+        <li><a id="toc-doramu-roru" href="drum-rolls.ja.html">ドラム ロール</a></li>
+        <li><a id="toc-pitutiwoChi-tuDa-Le-Qi-" href="pitched-percussion.ja.html">ピッチを持つ打楽器</a></li>
+        <li><a id="toc-Da-Le-Qi-noPu-" href="percussion-staves.ja.html">打楽器の譜</a></li>
+        <li><a id="toc-kasutamuDa-Le-Qi-Pu-" href="custom-percussion-staves.ja.html">カスタム打楽器譜</a></li>
+        <li><a id="toc-gosuto-noto" href="ghost-notes.ja.html">ゴースト ノート</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Guan-Le-Qi-" href="wind-instruments.ja.html">2.6 管楽器</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Guan-Le-Qi-deGong-Tong-noJi-Pu-Fa-" href="common-notation-for-wind-instruments.ja.html">2.6.1 管楽器で共通の記譜法</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Guan-Le-Qi-notamenorihuarensu" href="references-for-wind-instruments.ja.html">管楽器のためのリファレンス</a></li>
+        <li><a id="toc-Yun-Zhi-" href="fingerings.ja.html">運指</a></li>
+      </ul></li>
+      <li><a id="toc-bagupaipu" href="bagpipes.ja.html">2.6.2 バグパイプ</a>
+      <ul class="no-bullet">
+        <li><a id="toc-bagupaipunoDing-Yi-" href="bagpipe-definitions.ja.html">バグパイプの定義</a></li>
+        <li><a id="toc-bagupaipunoLi" href="bagpipe-example.ja.html">バグパイプの例</a></li>
+      </ul></li>
+      <li><a id="toc-Mu-Guan-Le-Qi-" href="woodwinds.ja.html">2.6.3 木管楽器</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Mu-Guan-Le-Qi-nodaiaguramu" href="woodwind-diagrams.ja.html">2.6.3.1 木管楽器のダイアグラム</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-He-Yin-Ji-Pu-Fa-" href="chord-notation.ja.html">2.7 和音記譜法</a>
+    <ul class="no-bullet">
+      <li><a id="toc-He-Yin-modo" href="chord-mode.ja.html">2.7.1 和音モード</a>
+      <ul class="no-bullet">
+        <li><a id="toc-He-Yin-modonoGai-Yao-" href="chord-mode-overview.ja.html">和音モードの概要</a></li>
+        <li><a id="toc-YiBan-De-naHe-Yin-" href="common-chords.ja.html">一般的な和音</a></li>
+        <li><a id="toc-He-Yin-noKuo-Zhang-toBian-Xing-" href="extended-and-altered-chords.ja.html">和音の拡張と変形</a></li>
+        <li><a id="toc-He-Yin-noZhuan-Hui-toTe-Shu-naboisingu" href="chord-inversions-and-specific-voicings.ja.html">和音の転回と特殊なボイシング</a></li>
+      </ul></li>
+      <li><a id="toc-He-Yin-woBiao-Shisuru" href="displaying-chords.ja.html">2.7.2 和音を表示する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-kodo-nemuwoPu-Ke-suru" href="printing-chord-names.ja.html">コード ネームを譜刻する</a></li>
+        <li><a id="toc-kodo-nemuwokasutamaizusuru" href="customizing-chord-names.ja.html">コード ネームをカスタマイズする</a></li>
+      </ul></li>
+      <li><a id="toc-Tong-Zou-Di-Yin-" href="figured-bass.ja.html">2.7.3 通奏低音</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Tong-Zou-Di-Yin-noDao-Ru-Bu-" href="introduction-to-figured-bass.ja.html">通奏低音の導入部</a></li>
+        <li><a id="toc-Tong-Zou-Di-Yin-woRu-Li-suru" href="entering-figured-bass.ja.html">通奏低音を入力する</a></li>
+        <li><a id="toc-Tong-Zou-Di-Yin-woBiao-Shisuru" href="displaying-figured-bass.ja.html">通奏低音を表示する</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Xian-Dai-Yin-Le-" href="contemporary-music.ja.html">2.8 現代音楽</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Xian-Dai-Yin-Le-denopitutitoDiao-He-Yin-" href="pitch-and-harmony-in-contemporary-music.ja.html">2.8.1 現代音楽でのピッチと調和音</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Xian-Dai-Yin-Le-denopitutitoDiao-He-Yin-notamenorihuarensu" href="references-for-pitch-and-harmony-in-contemporary-music.ja.html">現代音楽でのピッチと調和音のためのリファレンス</a></li>
+        <li><a id="toc-Wei-Fen-Yin-Ji-Pu-Fa-" href="microtonal-notation.ja.html">微分音記譜法</a></li>
+        <li><a id="toc-Xian-Dai-Yin-Le-noDiao-Hao-toHe-Sheng-" href="contemporary-key-signatures-and-harmony.ja.html">現代音楽の調号と和声</a></li>
+      </ul></li>
+      <li><a id="toc-Xian-Dai-Yin-Le-norizumuhenoapuroti" href="contemporary-approaches-to-rhythm.ja.html">2.8.2 現代音楽のリズムへのアプローチ</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Xian-Dai-Yin-Le-norizumuhenoapurotinotamenorihuarensu" href="references-for-contemporary-approaches-to-rhythm.ja.html">現代音楽のリズムへのアプローチのためのリファレンス</a></li>
+        <li><a id="toc-Xian-Dai-Yin-Le-noLian-Fu-" href="tuplets-in-contemporary-music.ja.html">現代音楽の連符</a></li>
+        <li><a id="toc-Xian-Dai-Yin-Le-noPai-Zi-" href="contemporary-time-signatures.ja.html">現代音楽の拍子</a></li>
+        <li><a id="toc-Duo-Pai-Zi-Ji-Pu-Fa-noKuo-Zhang-" href="extended-polymetric-notation.ja.html">多拍子記譜法の拡張</a></li>
+        <li><a id="toc-Duo-Pai-Zi-Ji-Pu-Fa-noLian-Hang-" href="beams-in-contemporary-music.ja.html">多拍子記譜法の連桁</a></li>
+        <li><a id="toc-Duo-Pai-Zi-Ji-Pu-Fa-noXiao-Jie-Xian-" href="bar-lines-in-contemporary-music.ja.html">多拍子記譜法の小節線</a></li>
+      </ul></li>
+      <li><a id="toc-gurahuikaruJi-Pu-Fa-" href="graphical-notation.ja.html">2.8.3 グラフィカル記譜法</a></li>
+      <li><a id="toc-Xian-Dai-Yin-Le-noLe-Pu-Zuo-Cheng-Ji-Shu-" href="contemporary-scoring-techniques.ja.html">2.8.4 現代音楽の楽譜作成技術</a></li>
+      <li><a id="toc-Xin-siiLe-Qi-Ji-Shu-" href="new-instrumental-techniques.ja.html">2.8.5 新しい楽器技術</a></li>
+      <li><a id="toc-Xian-Dai-Yin-Le-niGuan-suruBen-toLe-Pu-" href="further-reading-and-scores-of-interest.ja.html">2.8.6 現代音楽に関する本と楽譜</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Xian-Dai-Yin-Le-Ji-Pu-Fa-nituitenoBen-toJi-Shi-" href="books-and-articles-on-contemporary-musical-notation.ja.html">現代音楽記譜法についての本と記事</a></li>
+        <li><a id="toc-Le-Pu-Li" href="scores-and-musical-examples.ja.html">楽譜例</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Gu-Dai-noJi-Pu-Fa-" href="ancient-notation.ja.html">2.9 古代の記譜法</a>
+    <ul class="no-bullet">
+      <li><a id="toc-sapotosareteirusutairunoGai-Yao-" href="overview-of-the-supported-styles.ja.html">2.9.1 サポートされているスタイルの概要</a></li>
+      <li><a id="toc-Gu-Dai-Yin-Le-deGong-Tong-noJi-Pu-Fa-" href="ancient-notation-_002d-common-features.ja.html">2.9.2 古代音楽で共通の記譜法</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Ding-Yi-sareteirukontekisuto" href="pre_002ddefined-contexts.ja.html">定義されているコンテキスト</a></li>
+        <li><a id="toc-rigatoura" href="ligatures.ja.html">リガトゥーラ</a></li>
+        <li><a id="toc-kusutosu" href="custodes.ja.html">クストス</a></li>
+      </ul></li>
+      <li><a id="toc-Ji-Liang-Yin-Le-noJi-Pu-" href="typesetting-mensural-music.ja.html">2.9.3 計量音楽の記譜</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Ji-Liang-Ji-Pu-Fa-nokontekisuto" href="mensural-contexts.ja.html">計量記譜法のコンテキスト</a></li>
+        <li><a id="toc-Ji-Liang-Ji-Pu-Fa-noYin-Bu-Ji-Hao-" href="mensural-clefs.ja.html">計量記譜法の音部記号</a></li>
+        <li><a id="toc-Ji-Liang-Ji-Pu-Fa-noPai-Zi-Ji-Hao-" href="mensural-time-signatures.ja.html">計量記譜法の拍子記号</a></li>
+        <li><a id="toc-Ji-Liang-Ji-Pu-Fa-noFu-Tou-" href="mensural-note-heads.ja.html">計量記譜法の符頭</a></li>
+        <li><a id="toc-Ji-Liang-Ji-Pu-Fa-noFu-Wei-" href="mensural-flags.ja.html">計量記譜法の符尾</a></li>
+        <li><a id="toc-Ji-Liang-Ji-Pu-Fa-noXiu-Fu-" href="mensural-rests.ja.html">計量記譜法の休符</a></li>
+        <li><a id="toc-Ji-Liang-Ji-Pu-Fa-noLin-Shi-Ji-Hao-toDiao-Hao-" href="mensural-accidentals-and-key-signatures.ja.html">計量記譜法の臨時記号と調号</a></li>
+        <li><a id="toc-Zhu-Shi-De-naLin-Shi-Ji-Hao--_0028muzikahuikuta_0029" href="annotational-accidentals-_0028musica-ficta_0029.ja.html">注釈的な臨時記号 (<em>ムジカ・フィクタ</em>)</a></li>
+        <li><a id="toc-Bai-Se-Ji-Liang-Ji-Pu-Fa-norigatoura" href="white-mensural-ligatures.ja.html">白色計量記譜法のリガトゥーラ</a></li>
+      </ul></li>
+      <li><a id="toc-guregorioSheng-Ge-noJi-Pu-" href="typesetting-gregorian-chant.ja.html">2.9.4 グレゴリオ聖歌の記譜</a>
+      <ul class="no-bullet">
+        <li><a id="toc-guregorioSheng-Ge-nokontekisuto" href="gregorian-chant-contexts.ja.html">グレゴリオ聖歌のコンテキスト</a></li>
+        <li><a id="toc-guregorioSheng-Ge-noYin-Bu-Ji-Hao-" href="gregorian-clefs.ja.html">グレゴリオ聖歌の音部記号</a></li>
+        <li><a id="toc-guregorioSheng-Ge-noLin-Shi-Ji-Hao-toDiao-Hao-" href="gregorian-accidentals-and-key-signatures.ja.html">グレゴリオ聖歌の臨時記号と調号</a></li>
+        <li><a id="toc-deibizio" href="divisiones.ja.html">ディビジオ</a></li>
+        <li><a id="toc-guregorioSheng-Ge-noateikiyuresiyon" href="gregorian-articulation-signs.ja.html">グレゴリオ聖歌のアーティキュレーション</a></li>
+        <li><a id="toc-Fu-Dian--_0028mora_0029" href="augmentum-dots-_0028morae_0029.ja.html">付点 (<em>モラ</em>)</a></li>
+        <li><a id="toc-guregorioSheng-Ge-noSi-Jiao-Xing-neumanorigatoura" href="gregorian-square-neume-ligatures.ja.html">グレゴリオ聖歌の四角形ネウマのリガトゥーラ</a></li>
+      </ul></li>
+      <li><a id="toc-kiehuJi-Pu-Fa-dePu-Ke-suru" href="typesetting-kievan-square-notation.ja.html">2.9.5 キエフ記譜法で譜刻する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-kiehuJi-Pu-Fa-nokontekisuto" href="kievan-contexts.ja.html">キエフ記譜法のコンテキスト</a></li>
+        <li><a id="toc-kiehuJi-Pu-Fa-noYin-Bu-Ji-Hao-" href="kievan-clefs.ja.html">キエフ記譜法の音部記号</a></li>
+        <li><a id="toc-kiehuJi-Pu-Fa-noYin-Fu-" href="kievan-notes.ja.html">キエフ記譜法の音符</a></li>
+        <li><a id="toc-kiehuJi-Pu-Fa-noLin-Shi-Ji-Hao-" href="kievan-accidentals.ja.html">キエフ記譜法の臨時記号</a></li>
+        <li><a id="toc-kiehuJi-Pu-Fa-noXiao-Jie-Xian-" href="kievan-bar-line.ja.html">キエフ記譜法の小節線</a></li>
+        <li><a id="toc-kiehuJi-Pu-Fa-nomerisuma" href="kievan-melismata.ja.html">キエフ記譜法のメリスマ</a></li>
+      </ul></li>
+      <li><a id="toc-Gu-Dai-Yin-Le-niQu-riZu-mu-_002d_002d-Shi-LitosonoJie-Jue-Fa-" href="working-with-ancient-music-_002d-scenarios-and-solutions.ja.html">2.9.6 古代音楽に取り組む &ndash; 事例とその解決法</a>
+      <ul class="no-bullet">
+        <li><a id="toc-inkipituto" href="incipits.ja.html">インキピット</a></li>
+        <li><a id="toc-Mensurstriche-reiauto" href="mensurstriche-layout.ja.html">Mensurstriche レイアウト</a></li>
+        <li><a id="toc-guregorioSheng-Ge-woZhuan-Xie-suru" href="transcribing-gregorian-chant.ja.html">グレゴリオ聖歌を転写する</a></li>
+        <li><a id="toc-1-tunososukaraGu-Dai-Pu-toXian-Dai-Pu-noLiang-Fang-woSheng-Cheng-suru" href="ancient-and-modern-from-one-source.ja.html">1 つのソースから古代譜と現代譜の両方を生成する</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Shi-Jie-noYin-Le-" href="world-music.ja.html">2.10 世界の音楽</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Fei-Xi-Yang-Yin-Le-noYiBan-De-naJi-Pu-Fa-" href="common-notation-for-non_002dwestern-music.ja.html">2.10.1 非西洋音楽の一般的な記譜法</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Ji-Pu-Fa-totiyuningu-sisutemuwoKuo-Zhang-suru" href="extending-notation-and-tuning-systems.ja.html">記譜法とチューニング システムを拡張する</a></li>
+      </ul></li>
+      <li><a id="toc-arabuYin-Le-" href="arabic-music.ja.html">2.10.2 アラブ音楽</a>
+      <ul class="no-bullet">
+        <li><a id="toc-arabuYin-Le-notamenorihuarensu" href="references-for-arabic-music.ja.html">アラブ音楽のためのリファレンス</a></li>
+        <li><a id="toc-arabuYin-Le-denoYin-Fu-Ming-" href="arabic-note-names.ja.html">アラブ音楽での音符名</a></li>
+        <li><a id="toc-arabuYin-Le-denoDiao-Hao-" href="arabic-key-signatures.ja.html">アラブ音楽での調号</a></li>
+        <li><a id="toc-arabuYin-Le-denoPai-Zi-" href="arabic-time-signatures.ja.html">アラブ音楽での拍子</a></li>
+        <li><a id="toc-arabuYin-Le-noLi" href="arabic-music-example.ja.html">アラブ音楽の例</a></li>
+        <li><a id="toc-arabuYin-Le-notamenoGeng-naruZhi-Shi-" href="further-reading-for-arabic-music.ja.html">アラブ音楽のための更なる知識</a></li>
+      </ul></li>
+      <li><a id="toc-torukonoChuan-Tong-Yin-Le-" href="turkish-classical-music.ja.html">2.10.3 トルコの伝統音楽</a>
+      <ul class="no-bullet">
+        <li><a id="toc-torukonoChuan-Tong-Yin-Le-notamenorihuarensu" href="references-for-turkish-classical-music.ja.html">トルコの伝統音楽のためのリファレンス</a></li>
+        <li><a id="toc-torukoYin-Le-noYin-Fu-Ming-" href="turkish-note-names.ja.html">トルコ音楽の音符名</a></li>
+        <li><a id="toc-torukoYin-Le-noDiao-Hao-" href="turkish-key-signatures.ja.html">トルコ音楽の調号</a></li>
+        <li><a id="toc-torukoYin-Le-notamenoGeng-naruZhi-Shi-" href="further-reading-for-turkish-music.ja.html">トルコ音楽のための更なる知識</a></li>
+      </ul></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Ru-Chu-Li-Quan-Ban-" href="general-input-and-output.ja.html">3 入出力全般</a>
+  <ul class="no-bullet">
+    <li><a id="toc-Ru-Li-noGou-Zao-" href="input-structure.ja.html">3.1 入力の構造</a>
+    <ul class="no-bullet">
+      <li><a id="toc-sukoanoGou-Zao-" href="structure-of-a-score.ja.html">3.1.1 スコアの構造</a></li>
+      <li><a id="toc-butukunoZhongniaruFu-Shu-nosukoa" href="multiple-scores-in-a-book.ja.html">3.1.2 ブックの中にある複数のスコア</a></li>
+      <li><a id="toc-1-tunoRu-Li-huairukaraFu-Shu-noChu-Li-huairuwoSheng-Cheng-suru" href="multiple-output-files-from-one-input-file.ja.html">3.1.3 1 つの入力ファイルから複数の出力ファイルを生成する</a></li>
+      <li><a id="toc-Chu-Li-huairuMing-" href="output-file-names.ja.html">3.1.4 出力ファイル名</a></li>
+      <li><a id="toc-huairuGou-Zao-" href="file-structure.ja.html">3.1.5 ファイル構造</a></li>
+    </ul></li>
+    <li><a id="toc-taitorutohetuda" href="titles-and-headers.ja.html">3.2 タイトルとヘッダ</a>
+    <ul class="no-bullet">
+      <li><a id="toc-taitoru_002c-hetuda_002c-hututawoZuo-Cheng-suru" href="creating-titles-headers-and-footers.ja.html">3.2.1 タイトル、ヘッダ、フッタを作成する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-taitorunoShuo-Ming-" href="titles-explained.ja.html">タイトルの説明</a></li>
+        <li><a id="toc-butuku-patotosukoanotaitorunodehuoruto-reiauto" href="default-layout-of-bookpart-and-score-titles.ja.html">ブック パートとスコアのタイトルのデフォルト レイアウト</a></li>
+        <li><a id="toc-hetudatohututanodehuoruto-reiauto" href="default-layout-of-headers-and-footers.ja.html">ヘッダとフッタのデフォルト レイアウト</a></li>
+      </ul></li>
+      <li><a id="toc-kasutamu-taitoru_002c-hetuda_002c-hututa" href="custom-titles-headers-and-footers.ja.html">3.2.2 カスタム タイトル、ヘッダ、フッタ</a>
+      <ul class="no-bullet">
+        <li><a id="toc-taitorunokasutamu-tekisuto-huomatuto" href="custom-text-formatting-for-titles.ja.html">タイトルのカスタム テキスト フォーマット</a></li>
+        <li><a id="toc-taitorunokasutamu-reiauto" href="custom-layout-for-titles.ja.html">タイトルのカスタム レイアウト</a></li>
+        <li><a id="toc-hetudatohututanokasutamu-reiauto" href="custom-layout-for-headers-and-footers.ja.html">ヘッダとフッタのカスタム レイアウト</a></li>
+      </ul></li>
+      <li><a id="toc-Chu-Li-huairunometadetawoZuo-Cheng-suru" href="creating-output-file-metadata.ja.html">3.2.3 出力ファイルのメタデータを作成する</a></li>
+      <li><a id="toc-Jiao-Zhu-woZuo-Cheng-suru" href="creating-footnotes.ja.html">3.2.4 脚注を作成する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Yin-Le-Biao-Ji-noZhongniaruJiao-Zhu-" href="footnotes-in-music-expressions.ja.html">音楽表記の中にある脚注</a></li>
+        <li><a id="toc-Du-Li-sitatekisutonoZhongniaruJiao-Zhu-" href="footnotes-in-stand_002dalone-text.ja.html">独立したテキストの中にある脚注</a></li>
+      </ul></li>
+      <li><a id="toc-peziFan-Hao-noCan-Zhao-" href="reference-to-page-numbers.ja.html">3.2.5 ページ番号の参照</a></li>
+      <li><a id="toc-Mu-Ci-" href="table-of-contents.ja.html">3.2.6 目次</a></li>
+    </ul></li>
+    <li><a id="toc-Ru-Li-huairuniQu-riZu-mu" href="working-with-input-files.ja.html">3.3 入力ファイルに取り組む</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LilyPond-huairuwoinkurudosuru" href="including-lilypond-files.ja.html">3.3.1 LilyPond ファイルをインクルードする</a></li>
+      <li><a id="toc-1-tunososukaraYi-naruBan-woSheng-Cheng-suru" href="different-editions-from-one-source.ja.html">3.3.2 1 つのソースから異なる版を生成する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Bian-Shu-woShi-Yong-suru" href="using-variables.ja.html">変数を使用する</a></li>
+        <li><a id="toc-taguwoShi-Yong-suru" href="using-tags.ja.html">タグを使用する</a></li>
+        <li><a id="toc-gurobaruShe-Ding-woShi-Yong-suru" href="using-global-settings.ja.html">グローバル設定を使用する</a></li>
+      </ul></li>
+      <li><a id="toc-Te-Shu-WenZi-" href="special-characters.ja.html">3.3.3 特殊文字</a>
+      <ul class="no-bullet">
+        <li><a id="toc-tekisuto-enkodeingu" href="text-encoding.ja.html">テキスト エンコーディング</a></li>
+        <li><a id="toc-Unicode" href="unicode.ja.html">Unicode</a></li>
+        <li><a id="toc-ASCII-eiriasu" href="ascii-aliases.ja.html">ASCII エイリアス</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Chu-Li-woZhi-Yu-suru" href="controlling-output.ja.html">3.4 出力を制御する</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Yin-Le-noDuan-Pian-woChou-Chu-suru" href="extracting-fragments-of-music.ja.html">3.4.1 音楽の断片を抽出する</a></li>
+      <li><a id="toc-Xiao-Zheng-Ji-minoYin-Le-wosukitupusuru" href="skipping-corrected-music.ja.html">3.4.2 校正済みの音楽をスキップする</a></li>
+      <li><a id="toc-Ta-noChu-Li-huomatuto" href="alternative-output-formats.ja.html">3.4.3 他の出力フォーマット</a>
+      <ul class="no-bullet">
+        <li><a id="toc-SVG-Chu-Li-" href="svg-output.ja.html">SVG 出力</a></li>
+      </ul></li>
+      <li><a id="toc-Ji-Pu-huontowoZhi-Huan-suru" href="replacing-the-notation-font.ja.html">3.4.4 記譜フォントを置換する</a></li>
+    </ul></li>
+    <li><a id="toc-MIDI-Chu-Li-woZuo-riChu-su" href="creating-midi-output.ja.html">3.5 MIDI 出力を作り出す</a>
+    <ul class="no-bullet">
+      <li><a id="toc-MIDI-desapotosareteiruJi-Fa-" href="supported-notation-for-midi.ja.html">3.5.1 MIDI でサポートされている記法</a></li>
+      <li><a id="toc-MIDI-desapotosareteinaiJi-Fa-" href="unsupported-notation-for-midi.ja.html">3.5.2 MIDI でサポートされていない記法</a></li>
+      <li><a id="toc-MIDI-burotuku" href="the-midi-block.ja.html">3.5.3 MIDI ブロック</a></li>
+      <li><a id="toc-MIDI-denoYin-noQiang-Ruo-woZhi-Yu-suru" href="controlling-midi-dynamics.ja.html">3.5.4 MIDI での音の強弱を制御する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-MIDI-denoQiang-Ruo-Ji-Hao-" href="dynamic-marks-in-midi.ja.html">MIDI での強弱記号</a></li>
+        <li><a id="toc-MIDI-noYin-Liang-woShe-Ding-suru" href="setting-midi-volume.ja.html">MIDI の音量を設定する</a></li>
+        <li><a id="toc-MIDI-burotuku-puropateiwoShe-Ding-suru" href="setting-midi-block-properties.ja.html">MIDI ブロック プロパティを設定する</a></li>
+      </ul></li>
+      <li><a id="toc-MIDI-noLe-Qi-woYong-iru" href="using-midi-instruments.ja.html">3.5.5 MIDI の楽器を用いる</a></li>
+      <li><a id="toc-MIDI-deZao-riFan-siwoYong-iru" href="using-repeats-with-midi.ja.html">3.5.6 MIDI で繰り返しを用いる</a></li>
+      <li><a id="toc-MIDI-notiyanneru-matupingu" href="midi-channel-mapping.ja.html">3.5.7 MIDI のチャンネル マッピング</a></li>
+      <li><a id="toc-MIDI-ehuekutonotamenokontekisuto-puropatei" href="context-properties-for-midi-effects.ja.html">3.5.8 MIDI エフェクトのためのコンテキスト プロパティ</a></li>
+      <li><a id="toc-MIDI-Chu-Li-woyoriLiang-kusuru" href="enhancing-midi-output.ja.html">3.5.9 MIDI 出力をより良くする</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Zou-Fa-sukuriputo" href="the-articulate-script.ja.html">奏法スクリプト</a></li>
+        <li><a id="toc-suuingu-sukuriputo" href="the-swing-script.ja.html">スウィング スクリプト</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Yin-Le-Qing-Bao-woChou-Chu-suru" href="extracting-musical-information.ja.html">3.6 音楽情報を抽出する</a>
+    <ul class="no-bullet">
+      <li><a id="toc-LilyPond-Ji-Pu-Fa-woBiao-Shisuru" href="displaying-lilypond-notation.ja.html">3.6.1 LilyPond 記譜法を表示する</a></li>
+      <li><a id="toc-Scheme-Yin-Le-Biao-Ji-woBiao-Shisuru" href="displaying-scheme-music-expressions.ja.html">3.6.2 Scheme 音楽表記を表示する</a></li>
+      <li><a id="toc-Yin-Le-ibentowohuairuniBao-Cun-suru" href="saving-music-events-to-a-file.ja.html">3.6.3 音楽イベントをファイルに保存する</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-supesunoWen-Ti-" href="spacing-issues.ja.html">4 スペースの問題</a>
+  <ul class="no-bullet">
+    <li><a id="toc-pezi-reiauto" href="page-layout.ja.html">4.1 ページ レイアウト</a>
+    <ul class="no-bullet">
+      <li><a id="toc-_005cpaper-burotuku" href="the-paper-block.ja.html">4.1.1 <code>\paper</code> ブロック</a></li>
+      <li><a id="toc-Zhi-Mian-saizutoZi-Dong-Kuo-Suo-" href="paper-size-and-automatic-scaling.ja.html">4.1.2 紙面サイズと自動拡縮</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Zhi-Mian-saizuwoShe-Ding-suru" href="setting-the-paper-size.ja.html">紙面サイズを設定する</a></li>
+        <li><a id="toc-Zhi-Mian-saizuniYing-zitaZi-Dong-Kuo-Suo-" href="automatic-scaling-to-paper-size.ja.html">紙面サイズに応じた自動拡縮</a></li>
+      </ul></li>
+      <li><a id="toc-Gu-Ding-saretaChui-Zhi-Fang-Xiang-no-_005cpaper-supesuBian-Shu-" href="fixed-vertical-spacing-paper-variables.ja.html">4.1.3 固定された垂直方向の <code>\paper</code> スペース変数</a></li>
+      <li><a id="toc-Ke-Bian-naChui-Zhi-Fang-Xiang-no-_005cpaper-supesuBian-Shu-" href="flexible-vertical-spacing-paper-variables.ja.html">4.1.4 可変な垂直方向の <code>\paper</code> スペース変数</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Ke-Bian-naChui-Zhi-Fang-Xiang-supesuLian-Xiang-risutonoGou-Zao-" href="structure-of-flexible-vertical-spacing-alists.ja.html">可変な垂直方向スペース連想リストの構造</a></li>
+        <li><a id="toc-Ke-Bian-naChui-Zhi-Fang-Xiang-no-_005cpaper-supesuBian-Shu-norisuto" href="list-of-flexible-vertical-spacing-paper-variables.ja.html">可変な垂直方向の <code>\paper</code> スペース変数のリスト</a></li>
+      </ul></li>
+      <li><a id="toc-Shui-Ping-Fang-Xiang-no-_005cpaper-supesuBian-Shu-" href="horizontal-spacing-paper-variables.ja.html">4.1.5 水平方向の <code>\paper</code> スペース変数</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Fu-tomazinno-_005cpaper-Bian-Shu-" href="paper-variables-for-widths-and-margins.ja.html">幅とマージンの <code>\paper</code> 変数</a></li>
+        <li><a id="toc-Liang-Mian-modonotameno-_005cpaper-Bian-Shu-" href="paper-variables-for-two_002dsided-mode.ja.html">両面モードのための <code>\paper</code> 変数</a></li>
+        <li><a id="toc-sihutotoindentonotameno-_005cpaper-Bian-Shu-" href="paper-variables-for-shifts-and-indents.ja.html">シフトとインデントのための <code>\paper</code> 変数</a></li>
+      </ul></li>
+      <li><a id="toc-Ta-no-_005cpaper-Bian-Shu-" href="other-paper-variables.ja.html">4.1.6 他の <code>\paper</code> 変数</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Gai-Xing-notameno-_005cpaper-Bian-Shu-" href="paper-variables-for-line-breaking.ja.html">改行のための <code>\paper</code> 変数</a></li>
+        <li><a id="toc-Gai-pezinotameno-_005cpaper-Bian-Shu-" href="paper-variables-for-page-breaking.ja.html">改ページのための <code>\paper</code> 変数</a></li>
+        <li><a id="toc-peziFan-Hao-notameno-_005cpaper-Bian-Shu-" href="paper-variables-for-page-numbering.ja.html">ページ番号のための <code>\paper</code> 変数</a></li>
+        <li><a id="toc-sonoTa-no-_005cpaper-Bian-Shu-" href="miscellaneous-paper-variables.ja.html">その他の <code>\paper</code> 変数</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Le-Pu-reiauto" href="score-layout.ja.html">4.2 楽譜レイアウト</a>
+    <ul class="no-bullet">
+      <li><a id="toc-_005clayout-burotuku" href="the-layout-block.ja.html">4.2.1 <code>\layout</code> ブロック</a></li>
+      <li><a id="toc-Pu-saizuwoShe-Ding-suru" href="setting-the-staff-size.ja.html">4.2.2 譜サイズを設定する</a></li>
+    </ul></li>
+    <li><a id="toc-Gai-Xing-_002fGai-pezi" href="breaks.ja.html">4.3 改行/改ページ</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Gai-Xing-" href="line-breaking.ja.html">4.3.1 改行</a></li>
+      <li><a id="toc-Gai-pezi" href="page-breaking.ja.html">4.3.2 改ページ</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Shou-Dong-Gai-pezi" href="manual-page-breaking.ja.html">手動改ページ</a></li>
+        <li><a id="toc-Zui-Shi-Gai-pezi" href="optimal-page-breaking.ja.html">最適改ページ</a></li>
+        <li><a id="toc-Zui-Xiao-Gai-pezi" href="minimal-page-breaking.ja.html">最小改ページ</a></li>
+        <li><a id="toc-1-pezinoGai-pezi" href="one_002dpage-page-breaking.ja.html">1 ページの改ページ</a></li>
+        <li><a id="toc-1-Xing-noGai-pezi" href="one_002dline-page-breaking.ja.html">1 行の改ページ</a></li>
+        <li><a id="toc-Gao-sagaZi-Dong-no-1-Xing-noGai-pezi" href="one_002dline_002dauto_002dheight-page-breaking.ja.html">高さが自動の 1 行の改ページ</a></li>
+        <li><a id="toc-Zui-Shi-pezimekuri" href="optimal-page-turning.ja.html">最適ページめくり</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Chui-Zhi-Fang-Xiang-nosupesu" href="vertical-spacing.ja.html">4.4 垂直方向のスペース</a>
+    <ul class="no-bullet">
+      <li><a id="toc-sisutemuNei-Bu-noKe-Bian-naChui-Zhi-Fang-Xiang-nosupesu" href="flexible-vertical-spacing-within-systems.ja.html">4.4.1 システム内部の可変な垂直方向のスペース</a>
+      <ul class="no-bullet">
+        <li><a id="toc-sisutemuNei-Bu-nosupesu-puropatei" href="within_002dsystem-spacing-properties.ja.html">システム内部のスペース プロパティ</a></li>
+        <li><a id="toc-gurupuHua-sareteinaiPu-nosupesu" href="spacing-of-ungrouped-staves.ja.html">グループ化されていない譜のスペース</a></li>
+        <li><a id="toc-gurupuHua-sareteiruPu-nosupesu" href="spacing-of-grouped-staves.ja.html">グループ化されている譜のスペース</a></li>
+        <li><a id="toc-Pu-dehanaiXing-nosupesu" href="spacing-of-non_002dstaff-lines.ja.html">譜ではない行のスペース</a></li>
+      </ul></li>
+      <li><a id="toc-Pu-tosisutemuwoMing-ShiDe-niPei-Zhi-suru" href="explicit-staff-and-system-positioning.ja.html">4.4.2 譜とシステムを明示的に配置する</a></li>
+      <li><a id="toc-Chui-Zhi-Fang-Xiang-noChong-Tu-Hui-Bi-" href="vertical-collision-avoidance.ja.html">4.4.3 垂直方向の衝突回避</a></li>
+    </ul></li>
+    <li><a id="toc-Shui-Ping-Fang-Xiang-nosupesu" href="horizontal-spacing.ja.html">4.5 水平方向のスペース</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Shui-Ping-Fang-Xiang-nosupesunoGai-Yao-" href="horizontal-spacing-overview.ja.html">4.5.1 水平方向のスペースの概要</a></li>
+      <li><a id="toc-Xin-siisupesu-sekusiyon" href="new-spacing-section.ja.html">4.5.2 新しいスペース セクション</a></li>
+      <li><a id="toc-Shui-Ping-Fang-Xiang-nosupesuwoBian-Geng-suru" href="changing-horizontal-spacing.ja.html">4.5.3 水平方向のスペースを変更する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Lian-Fu-woJun-Deng-niGe-riFu-keru" href="uniform-stretching-of-tuplets.ja.html">連符を均等に割り付ける</a></li>
+        <li><a id="toc-Yan-Mi-naYin-Fu-nosupesingu" href="strict-note-spacing.ja.html">厳密な音符のスペーシング</a></li>
+      </ul></li>
+      <li><a id="toc-Xing-noFu-" href="line-width.ja.html">4.5.4 行の幅</a></li>
+      <li><a id="toc-puroposiyonaru-notesiyon" href="proportional-notation.ja.html">4.5.5 プロポーショナル ノーテーション</a></li>
+    </ul></li>
+    <li><a id="toc-Yin-Le-woShao-naipeziniShou-meru" href="fitting-music-onto-fewer-pages.ja.html">4.6 音楽を少ないページに収める</a>
+    <ul class="no-bullet">
+      <li><a id="toc-supesuwoBiao-Shisuru" href="displaying-spacing.ja.html">4.6.1 スペースを表示する</a></li>
+      <li><a id="toc-supesuwoBian-Geng-suru" href="changing-spacing.ja.html">4.6.2 スペースを変更する</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-dehuorutowoBian-Geng-suru" href="changing-defaults.ja.html">5 デフォルトを変更する</a>
+  <ul class="no-bullet">
+    <li><a id="toc-kontekisutowoLi-Jie-suru" href="interpretation-contexts.ja.html">5.1 コンテキストを理解する</a>
+    <ul class="no-bullet">
+      <li><a id="toc-kontekisutonoShuo-Ming-" href="contexts-explained.ja.html">5.1.1 コンテキストの説明</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Chu-Li-Ding-Yi--_002d-kontekisutonoQing-Xie-Zhen-" href="output-definitions-_002d-blueprints-for-contexts.ja.html">出力定義 - コンテキストの青写真</a></li>
+        <li><a id="toc-Score-_002d-subetenokontekisutonomasuta" href="score-_002d-the-master-of-all-contexts.ja.html">Score - すべてのコンテキストのマスタ</a></li>
+        <li><a id="toc-Shang-Wei-kontekisuto-_002d-Pu-kontena" href="top_002dlevel-contexts-_002d-staff-containers.ja.html">上位コンテキスト - 譜コンテナ</a></li>
+        <li><a id="toc-ZhongWei-kontekisuto-_002d-Pu-" href="intermediate_002dlevel-contexts-_002d-staves.ja.html">中位コンテキスト - 譜</a></li>
+        <li><a id="toc-Xia-Wei-kontekisuto-_002d-boisu" href="bottom_002dlevel-contexts-_002d-voices.ja.html">下位コンテキスト - ボイス</a></li>
+      </ul></li>
+      <li><a id="toc-kontekisutowoZuo-Cheng-siteCan-Zhao-suru" href="creating-and-referencing-contexts.ja.html">5.1.2 コンテキストを作成して参照する</a></li>
+      <li><a id="toc-kontekisutowoCan-siteoku" href="keeping-contexts-alive.ja.html">5.1.3 コンテキストを残しておく</a></li>
+      <li><a id="toc-kontekisutonopuraguinwoBian-Geng-suru" href="modifying-context-plug_002dins.ja.html">5.1.4 コンテキストのプラグインを変更する</a></li>
+      <li><a id="toc-kontekisutonodehuorutoShe-Ding-woBian-Geng-suru" href="changing-context-default-settings.ja.html">5.1.5 コンテキストのデフォルト設定を変更する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-Tong-zitaipunoQuan-kontekisutowoBian-Geng-suru" href="changing-all-contexts-of-the-same-type.ja.html">同じタイプの全コンテキストを変更する</a></li>
+        <li><a id="toc-Zhi-Ding-sitakontekisutodakewoBian-Geng-suru" href="changing-just-one-specific-context.ja.html">指定したコンテキストだけを変更する</a></li>
+        <li><a id="toc-Shi-Yong-Shun-Xu-" href="order-of-precedence.ja.html">適用順序</a></li>
+      </ul></li>
+      <li><a id="toc-Xin-siikontekisutowoDing-Yi-suru" href="defining-new-contexts.ja.html">5.1.6 新しいコンテキストを定義する</a></li>
+      <li><a id="toc-kontekisutonoPei-Zhi-Shun-Xu-" href="context-layout-order.ja.html">5.1.7 コンテキストの配置順序</a></li>
+    </ul></li>
+    <li><a id="toc-Nei-Bu-rihuarensunoShuo-Ming-" href="explaining-the-internals-reference.ja.html">5.2 内部リファレンスの説明</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Nei-Bu-rihuarensuwoShi-ikonasu" href="navigating-the-program-reference.ja.html">5.2.1 内部リファレンスを使いこなす</a></li>
+      <li><a id="toc-reiauto-intahueisu" href="layout-interfaces.ja.html">5.2.2 レイアウト インターフェイス</a></li>
+      <li><a id="toc-gurahuikaru-obuziekuto-puropateiwoJue-Ding-suru" href="determining-the-grob-property.ja.html">5.2.3 グラフィカル オブジェクト プロパティを決定する</a></li>
+      <li><a id="toc-Ming-Ming-Gui-Yue-" href="naming-conventions.ja.html">5.2.4 命名規約</a></li>
+    </ul></li>
+    <li><a id="toc-puropateiwoBian-Geng-suru" href="modifying-properties.ja.html">5.3 プロパティを変更する</a>
+    <ul class="no-bullet">
+      <li><a id="toc-puropateiBian-Geng-noGai-Yao-" href="overview-of-modifying-properties.ja.html">5.3.1 プロパティ変更の概要</a></li>
+      <li><a id="toc-_005cset-komando" href="the-set-command.ja.html">5.3.2 <code>\set</code> コマンド</a></li>
+      <li><a id="toc-_005coverride-komando" href="the-override-command.ja.html">5.3.3 <code>\override</code> コマンド</a></li>
+      <li><a id="toc-_005ctweak-komando" href="the-tweak-command.ja.html">5.3.4 <code>\tweak</code> コマンド</a></li>
+      <li><a id="toc-_005cset-Dui--_005coverride" href="set-versus-override.ja.html">5.3.5 <code>\set</code> 対 <code>\override</code></a></li>
+      <li><a id="toc-_005coffset-komando" href="the-offset-command.ja.html">5.3.6 <code>\offset</code> コマンド</a></li>
+      <li><a id="toc-Lian-Xiang-Pei-Lie-woBian-Geng-suru" href="modifying-alists.ja.html">5.3.7 連想配列を変更する</a></li>
+    </ul></li>
+    <li><a id="toc-Yi-niLi-tukonseputotopuropatei" href="useful-concepts-and-properties.ja.html">5.4 役に立つコンセプトとプロパティ</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Ru-Li-modo" href="input-modes.ja.html">5.4.1 入力モード</a></li>
+      <li><a id="toc-Xiang-kitoPei-Zhi-" href="direction-and-placement.ja.html">5.4.2 向きと配置</a>
+      <ul class="no-bullet">
+        <li><a id="toc-ateikiyuresiyonnoFang-Xiang-Zhi-ShiZi-" href="articulation-direction-indicators.ja.html">アーティキュレーションの方向指示子</a></li>
+        <li><a id="toc-Fang-Xiang-puropatei" href="the-direction-property.ja.html">方向プロパティ</a></li>
+      </ul></li>
+      <li><a id="toc-Ju-Li-toJu-Li-noDan-Wei-" href="distances-and-measurements.ja.html">5.4.3 距離と距離の単位</a></li>
+      <li><a id="toc-Cun-Fa-" href="dimensions.ja.html">5.4.4 寸法</a></li>
+      <li><a id="toc-Pu-Ji-Hao-puropatei" href="staff-symbol-properties.ja.html">5.4.5 譜記号プロパティ</a></li>
+      <li><a id="toc-supana" href="spanners.ja.html">5.4.6 スパナ</a>
+      <ul class="no-bullet">
+        <li><a id="toc-spanner_002dinterface-woShi-Yong-suru" href="using-the-spanner_002dinterface.ja.html"><code>spanner-interface</code> を使用する</a></li>
+        <li><a id="toc-line_002dspanner_002dinterface-woShi-Yong-suru" href="using-the-line_002dspanner_002dinterface.ja.html"><code>line-spanner-interface</code> を使用する</a></li>
+      </ul></li>
+      <li><a id="toc-obuziekutonoKe-Shi-Xing-" href="visibility-of-objects.ja.html">5.4.7 オブジェクトの可視性</a>
+      <ul class="no-bullet">
+        <li><a id="toc-sutensiruwoXue-Chu-suru" href="removing-the-stencil.ja.html">ステンシルを削除する</a></li>
+        <li><a id="toc-obuziekutowoTou-Ming-nisuru" href="making-objects-transparent.ja.html">オブジェクトを透明にする</a></li>
+        <li><a id="toc-obuziekutowoBai-deMiao-ku" href="painting-objects-white.ja.html">オブジェクトを白で描く</a></li>
+        <li><a id="toc-break_002dvisibility-woYong-iru" href="using-break_002dvisibility.ja.html">break-visibility を用いる</a></li>
+        <li><a id="toc-Te-Bie-naKao-Lu-woBi-Yao-tosurumono" href="special-considerations.ja.html">特別な考慮を必要とするもの</a></li>
+      </ul></li>
+      <li><a id="toc-rain-sutairu" href="line-styles.ja.html">5.4.8 ライン スタイル</a></li>
+      <li><a id="toc-obuziekutowoHui-Zhuan-saseru" href="rotating-objects.ja.html">5.4.9 オブジェクトを回転させる</a>
+      <ul class="no-bullet">
+        <li><a id="toc-reiauto-obuziekutowoHui-Zhuan-saseru" href="rotating-layout-objects.ja.html">レイアウト オブジェクトを回転させる</a></li>
+        <li><a id="toc-makuatupuwoHui-Zhuan-saseru" href="rotating-markup.ja.html">マークアップを回転させる</a></li>
+      </ul></li>
+    </ul></li>
+    <li><a id="toc-Gao-Du-naDiao-Zheng-" href="advanced-tweaks.ja.html">5.5 高度な調整</a>
+    <ul class="no-bullet">
+      <li><a id="toc-obuziekutowoJian-eru" href="aligning-objects.ja.html">5.5.1 オブジェクトを揃える</a>
+      <ul class="no-bullet">
+        <li><a id="toc-X_002doffset-to-Y_002doffset-woZhi-Jie-She-Ding-suru" href="setting-x_002doffset-and-y_002doffset-directly.ja.html"><code>X-offset</code> と <code>Y-offset</code> を直接設定する</a></li>
+        <li><a id="toc-side_002dposition_002dinterface-woShi-Yong-suru" href="using-the-side_002dposition_002dinterface.ja.html"><code>side-position-interface</code> を使用する</a></li>
+        <li><a id="toc-self_002dalignment_002dinterface-woShi-Yong-suru" href="using-the-self_002dalignment_002dinterface.ja.html"><code>self-alignment-interface</code> を使用する</a></li>
+        <li><a id="toc-break_002dalignable_002dinterface-woShi-Yong-suru" href="using-the-break_002dalignable_002dinterface.ja.html"><code>break-alignable-interface</code> を使用する</a></li>
+      </ul></li>
+      <li><a id="toc-gurahuikaru-obuziekutowoChui-Zhi-Fang-Xiang-nigurupuHua-suru" href="vertical-grouping-of-grobs.ja.html">5.5.2 グラフィカル オブジェクトを垂直方向にグループ化する</a></li>
+      <li><a id="toc-sutensiruwoBian-Geng-suru" href="modifying-stencils.ja.html">5.5.3 ステンシルを変更する</a></li>
+      <li><a id="toc-Xing-Zhuang-woBian-Geng-suru" href="modifying-shapes.ja.html">5.5.4 形状を変更する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-taitosuranoXing-Zhuang-woBian-Geng-suru" href="modifying-ties-and-slurs.ja.html">タイとスラーの形状を変更する</a></li>
+      </ul></li>
+      <li><a id="toc-Gai-Xing-surusupanawoBian-Geng-suru" href="modifying-broken-spanners.ja.html">5.5.5 改行するスパナを変更する</a>
+      <ul class="no-bullet">
+        <li><a id="toc-_005calterBroken-woShi-Yong-suru" href="using-alterbroken.ja.html"><code>\alterBroken</code> を使用する</a></li>
+      </ul></li>
+      <li><a id="toc-unpure_002dpure-kontena" href="unpure_002dpure-containers.ja.html">5.5.6 unpure-pure コンテナ</a></li>
+    </ul></li>
+    <li><a id="toc-Yin-Le-Guan-Shu-woShi-Yong-suru" href="using-music-functions.ja.html">5.6 音楽関数を使用する</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Zhi-Huan-Guan-Shu-noGou-Wen" href="substitution-function-syntax.ja.html">5.6.1 置換関数の構文</a></li>
+      <li><a id="toc-Zhi-Huan-Guan-Shu-noLi" href="substitution-function-examples.ja.html">5.6.2 置換関数の例</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Fu-Biao-" href="notation-manual-tables.ja.html">Appendix A 付表</a>
+  <ul class="no-bullet">
+    <li><a id="toc-kodo-nemuBiao-" href="chord-name-chart.ja.html">A.1 コード ネーム表</a></li>
+    <li><a id="toc-YiBan-De-naHe-Yin-Xiu-Shi-Zi-" href="common-chord-modifiers.ja.html">A.2 一般的な和音修飾子</a></li>
+    <li><a id="toc-Ding-Yi-saretaXian-tiyuningu" href="predefined-string-tunings.ja.html">A.3 定義された弦チューニング</a></li>
+    <li><a id="toc-Ding-Yi-saretahuretutoTu-" href="predefined-fretboard-diagrams.ja.html">A.4 定義されたフレット図</a>
+    <ul class="no-bullet">
+      <li><a id="toc-gitanohuretutoTu-" href="diagrams-for-guitar.ja.html">ギターのフレット図</a></li>
+      <li><a id="toc-ukurerenohuretutoTu-" href="diagrams-for-ukulele.ja.html">ウクレレのフレット図</a></li>
+      <li><a id="toc-mandorinnohuretutoTu-" href="diagrams-for-mandolin.ja.html">マンドリンのフレット図</a></li>
+    </ul></li>
+    <li><a id="toc-Ding-Yi-saretaYong-Zhi-saizu" href="predefined-paper-sizes.ja.html">A.5 定義された用紙サイズ</a></li>
+    <li><a id="toc-MIDI-Le-Qi-" href="midi-instruments.ja.html">A.6 MIDI 楽器</a></li>
+    <li><a id="toc-Se-noYiLan-" href="list-of-colors.ja.html">A.7 色の一覧</a></li>
+    <li><a id="toc-Emmentaler-huonto" href="the-emmentaler-font.ja.html">A.8 Emmentaler フォント</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Yin-Bu-Ji-Hao-gurihu" href="clef-glyphs.ja.html">音部記号グリフ</a></li>
+      <li><a id="toc-Pai-Zi-Ji-Hao-gurihu" href="time-signature-glyphs.ja.html">拍子記号グリフ</a></li>
+      <li><a id="toc-Shu-Zi-gurihu" href="number-glyphs.ja.html">数字グリフ</a></li>
+      <li><a id="toc-Lin-Shi-Ji-Hao-gurihu" href="accidental-glyphs.ja.html">臨時記号グリフ</a></li>
+      <li><a id="toc-dehuorutonoFu-Tou-gurihu" href="default-notehead-glyphs.ja.html">デフォルトの符頭グリフ</a></li>
+      <li><a id="toc-Te-Shu-naFu-Tou-gurihu" href="special-notehead-glyphs.ja.html">特殊な符頭グリフ</a></li>
+      <li><a id="toc-sieipu-notonoFu-Tou-gurihu" href="shape_002dnote-notehead-glyphs.ja.html">シェイプ ノートの符頭グリフ</a></li>
+      <li><a id="toc-Xiu-Fu-gurihu" href="rest-glyphs.ja.html">休符グリフ</a></li>
+      <li><a id="toc-Fu-Wei-gurihu" href="flag-glyphs.ja.html">符尾グリフ</a></li>
+      <li><a id="toc-Fu-Dian-gurihu" href="dot-glyphs.ja.html">付点グリフ</a></li>
+      <li><a id="toc-Qiang-Ruo-Ji-Hao-gurihu" href="dynamic-glyphs.ja.html">強弱記号グリフ</a></li>
+      <li><a id="toc-sukuriputo-gurihu" href="script-glyphs.ja.html">スクリプト グリフ</a></li>
+      <li><a id="toc-Shi-Yin-gurihu" href="arrowhead-glyphs.ja.html">矢印グリフ</a></li>
+      <li><a id="toc-Gua-Hu-noDuan-Bu-Fen-nogurihu" href="bracket_002dtip-glyphs.ja.html">括弧の端部分のグリフ</a></li>
+      <li><a id="toc-pedaru-gurihu" href="pedal-glyphs.ja.html">ペダル グリフ</a></li>
+      <li><a id="toc-akodeion-gurihu" href="accordion-glyphs.ja.html">アコーディオン グリフ</a></li>
+      <li><a id="toc-tai-gurihu" href="tie-glyphs.ja.html">タイ グリフ</a></li>
+      <li><a id="toc-Vaticana-gurihu" href="vaticana-glyphs.ja.html">Vaticana グリフ</a></li>
+      <li><a id="toc-Medicaea-gurihu" href="medicaea-glyphs.ja.html">Medicaea グリフ</a></li>
+      <li><a id="toc-Hufnagel-gurihu" href="hufnagel-glyphs.ja.html">Hufnagel グリフ</a></li>
+      <li><a id="toc-Ji-Liang-Yin-Le-gurihu" href="mensural-glyphs.ja.html">計量音楽グリフ</a></li>
+      <li><a id="toc-Neomensural-gurihu" href="neomensural-glyphs.ja.html">Neomensural グリフ</a></li>
+      <li><a id="toc-Petrucci-gurihu" href="petrucci-glyphs.ja.html">Petrucci グリフ</a></li>
+      <li><a id="toc-Solesmes-gurihu" href="solesmes-glyphs.ja.html">Solesmes グリフ</a></li>
+      <li><a id="toc-kiehuJi-Pu-Fa-gurihu" href="kievan-notation-glyphs.ja.html">キエフ記譜法グリフ</a></li>
+    </ul></li>
+    <li><a id="toc-Fu-Tou-nosutairu" href="note-head-styles.ja.html">A.9 符頭のスタイル</a></li>
+    <li><a id="toc-Yin-Bu-Ji-Hao-nosutairu" href="clef-styles.ja.html">A.10 音部記号のスタイル</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Tong-Chang-noYin-Bu-Ji-Hao-" href="standard-clefs.ja.html">通常の音部記号</a></li>
+      <li><a id="toc-Da-Le-Qi-Pu-noYin-Bu-Ji-Hao-" href="percussion-staff-clef.ja.html">打楽器譜の音部記号</a></li>
+      <li><a id="toc-tabuPu-noYin-Bu-Ji-Hao-" href="tab-staff-clefs.ja.html">タブ譜の音部記号</a></li>
+      <li><a id="toc-Gu-Dai-Yin-Le-noYin-Bu-Ji-Hao-" href="ancient-music-clefs.ja.html">古代音楽の音部記号</a></li>
+    </ul></li>
+    <li><a id="toc-_005cmarkup-komandonoYiLan-" href="text-markup-commands.ja.html">A.11 \markup コマンドの一覧</a>
+    <ul class="no-bullet">
+      <li><a id="toc-Font-markup" href="font-markup.ja.html">A.11.1 Font markup</a></li>
+      <li><a id="toc-Markup-for-text-alignment" href="markup-for-text-alignment.ja.html">A.11.2 Markup for text alignment</a></li>
+      <li><a id="toc-Graphical-markup" href="graphical-markup.ja.html">A.11.3 Graphical markup</a></li>
+      <li><a id="toc-Markup-for-music-and-musical-symbols" href="markup-for-music-and-musical-symbols.ja.html">A.11.4 Markup for music and musical symbols</a></li>
+      <li><a id="toc-Conditional-markup" href="conditional-markup.ja.html">A.11.5 Conditional markup</a></li>
+      <li><a id="toc-Instrument_002dspecific-markup" href="instrument_002dspecific-markup.ja.html">A.11.6 Instrument-specific markup</a></li>
+      <li><a id="toc-Accordion-registers" href="accordion-registers.ja.html">A.11.7 Accordion registers</a></li>
+      <li><a id="toc-Other-markup-commands" href="other-markup-commands.ja.html">A.11.8 Other markup commands</a></li>
+    </ul></li>
+    <li><a id="toc-_005cmarkuplist-komandonoYiLan-" href="text-markup-list-commands.ja.html">A.12 \markuplist コマンドの一覧</a></li>
+    <li><a id="toc-Te-Shu-WenZi-noYiLan-" href="list-of-special-characters.ja.html">A.13 特殊文字の一覧</a></li>
+    <li><a id="toc-ateikiyuresiyonnoYiLan-" href="list-of-articulations.ja.html">A.14 アーティキュレーションの一覧</a>
+    <ul class="no-bullet">
+      <li><a id="toc-ateikiyuresiyon-sukuriputo" href="articulation-scripts.ja.html">アーティキュレーション スクリプト</a></li>
+      <li><a id="toc-Zhuang-Shi-Yin-sukuriputo" href="ornament-scripts.ja.html">装飾音スクリプト</a></li>
+      <li><a id="toc-huerumata-sukuriputo" href="fermata-scripts.ja.html">フェルマータ スクリプト</a></li>
+      <li><a id="toc-Le-Qi-niGu-You-nosukuriputo" href="instrument_002dspecific-scripts.ja.html">楽器に固有のスクリプト</a></li>
+      <li><a id="toc-Zao-riFan-siJi-Hao-nosukuriputo" href="repeat-sign-scripts.ja.html">繰り返し記号のスクリプト</a></li>
+      <li><a id="toc-Gu-Dai-Yin-Le-nosukuriputo" href="ancient-scripts.ja.html">古代音楽のスクリプト</a></li>
+    </ul></li>
+    <li><a id="toc-Da-Le-Qi-noYin-Fu-" href="percussion-notes.ja.html">A.15 打楽器の音符</a></li>
+    <li><a id="toc-Ji-Shu-Yong-Yu-Ji-" href="technical-glossary.ja.html">A.16 技術用語集</a>
+    <ul class="no-bullet">
+      <li><a id="toc-alist-_0028Lian-Xiang-Pei-Lie-_0029" href="alist.ja.html">alist (連想配列)</a></li>
+      <li><a id="toc-callback-_0028korubatuku_0029" href="callback.ja.html">callback (コールバック)</a></li>
+      <li><a id="toc-closure-_0028kuroziya_0029" href="closure.ja.html">closure (クロージャ)</a></li>
+      <li><a id="toc-glyph-_0028gurihu_0029" href="glyph.ja.html">glyph (グリフ)</a></li>
+      <li><a id="toc-grob-_0028gurahuikaru-obuziekuto_0029" href="grob.ja.html">grob (グラフィカル オブジェクト)</a></li>
+      <li><a id="toc-immutable-_0028imiyutaburu_0029" href="immutable.ja.html">immutable (イミュータブル)</a></li>
+      <li><a id="toc-interface-_0028intahueisu_0029" href="interface.ja.html">interface (インターフェイス)</a></li>
+      <li><a id="toc-lexer-_0028Zi-Ju-Jie-Xi-Qi-_0029" href="lexer.ja.html">lexer (字句解析器)</a></li>
+      <li><a id="toc-mutable-_0028miyutaburu_0029" href="mutable.ja.html">mutable (ミュータブル)</a></li>
+      <li><a id="toc-output_002ddef-_0028Chu-Li-Ding-Yi-kurasu_0029" href="output_002ddef.ja.html">output-def (出力定義クラス)</a></li>
+      <li><a id="toc-parser-_0028Gou-WenJie-Xi-Qi-_002c-pasa_0029" href="parser.ja.html">parser (構文解析器、パーサ)</a></li>
+      <li><a id="toc-parser-variable-_0028pasaBian-Shu-_0029" href="parser-variable.ja.html">parser variable (パーサ変数)</a></li>
+      <li><a id="toc-prob-_0028puropatei-obuziekuto_0029" href="prob.ja.html">prob (プロパティ オブジェクト)</a></li>
+      <li><a id="toc-smob-_0028Scheme-obuziekuto_0029" href="smob.ja.html">smob (Scheme オブジェクト)</a></li>
+      <li><a id="toc-stencil-_0028sutensiru_0029" href="stencil.ja.html">stencil (ステンシル)</a></li>
+    </ul></li>
+    <li><a id="toc-Yin-Le-Guan-Shu-noYiLan-" href="available-music-functions.ja.html">A.17 音楽関数の一覧</a></li>
+    <li><a id="toc-kontekisutowoBian-Geng-suruShi-Bie-Zi-" href="context-modification-identifiers.ja.html">A.18 コンテキストを変更する識別子</a></li>
+    <li><a id="toc-Ding-Yi-saretaXing-Shu-Yu-" href="predefined-type-predicates.ja.html">A.19 定義された型述語</a>
+    <ul class="no-bullet">
+      <li><a id="toc-R5RS-primary-predicates" href="r5rs-primary-predicates.ja.html">A.19.1 R5RS primary predicates</a></li>
+      <li><a id="toc-R5RS-secondary-predicates" href="r5rs-secondary-predicates.ja.html">A.19.2 R5RS secondary predicates</a></li>
+      <li><a id="toc-Guile-predicates" href="guile-predicates.ja.html">A.19.3 Guile predicates</a></li>
+      <li><a id="toc-LilyPond-scheme-predicates" href="lilypond-scheme-predicates.ja.html">A.19.4 LilyPond scheme predicates</a></li>
+      <li><a id="toc-LilyPond-exported-predicates" href="lilypond-exported-predicates.ja.html">A.19.5 LilyPond exported predicates</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-kanningu-pepa" href="cheat-sheet.ja.html">Appendix B カンニング ペーパー</a></li>
+  <li><a id="toc-GNU-Free-Documentation-License" href="gnu-free-documentation-license.ja.html">Appendix C GNU Free Documentation License</a></li>
+  <li><a id="toc-indetukusu" href="index-of-commands-and-concepts.ja.html" rel="index">Appendix D インデックス</a></li>
+</ul>
+</div>
+
+<!--
+    Translation of GIT committish: 0cc270b871321ae5aa8622cea8d8262aafd16641
+
+    When revising a translation, copy the HEAD committish of the
+    version that you are working on.  See TRANSLATION for details.
+-->
+
+<form action="https://www.google.com/search"
+      method="get"
+      name="search"
+      onSubmit="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onMouseMove="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value"
+      onKeyUp="search.q.value='site:lilypond.org/doc/v2.25 ' + search.brute_query.value">
+  <input type="hidden" name="btnG" value="Google 検索">
+  <input type="text" name="brute_query" onfocus="this.value=''" value="検索">
+  <input type="hidden" name="q" value="">
+</form>
+
+</div>
+
+</body>
+</html>
